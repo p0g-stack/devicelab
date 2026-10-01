@@ -1,0 +1,98 @@
+[cf] installing cuttlefish host packages
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ii  cuttlefish-base 1.57.0       amd64        Cuttlefish Android Virtual Device companion package
+[cf] fetching aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug
+cvd(3885)  I 10-01 07:05:40  3885  3885 main.cc:137] version: 1.57.0 | VCS: 9bb9c72329cedcb436bb75afc05c24d73fbcdf5d
+By using this Android Virtual Device, you agree to Google Terms of Service (https://policies.google.com/terms). The Google Privacy Policy (https://policies.google.com/privacy) describes how Google handles information generated as you use Google services.
+cvd(3885)  I 10-01 07:05:40  3885  3885 fetch_cvd.cc:495] Starting fetch to "/mnt/cf"
+cvd(3885)  I 10-01 07:05:40  3885  3888 host_package.cc:43] Downloading host package for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(3885)  I 10-01 07:05:41  3885  3885 fetch_cvd.cc:206] Downloading image zip for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(3885)  I 10-01 07:06:46  3885  3885 fetch_cvd.cc:511] Completed target fetch to '/mnt/cf' (1 out of 1)
+cvd(3885)  I 10-01 07:06:46  3885  3885 fetch_cvd.cc:520] Completed all fetches
+android-info.txt
+bin
+boot.img
+chromeos
+com.android.i18n
+cuttlefish_example_custom.img
+etc
+fastboot-info.txt
+fetch.log
+fetcher_config.json
+framework
+init_boot.img
+lib64
+metrics
+misc_info.txt
+nativetest64
+otatools
+super.img
+test_suites
+userdata.img
+usr
+vbmeta.img
+vbmeta_system.img
+vbmeta_system_dlkm.img
+vbmeta_vendor_dlkm.img
+vendor_boot.img
+[cf] launching (gpu_mode=drm_virgl)
+VIRTUAL_DEVICE_BOOT_FAILED
+assemble_cvd(4229)  D 10-01 07:07:01  4229  4229 graphics_flags.cc:903] errors: "Graphics check failure for PopulateVulkanAvailability: ErrorIncompatibleDriver"
+assemble_cvd(4229)  D 10-01 07:07:01  4229  4229 graphics_flags.cc:903] errors: "Graphics check failure for PopulateVulkanExternalMemoryHostQuirk: ErrorIncompatibleDriver"
+assemble_cvd(4229)  D 10-01 07:07:01  4229  4229 graphics_flags.cc:903] errors: "Graphics check failure for PopulateVulkanPrecisionQualifiersOnYuvSamplersQuirk: ErrorIncompatibleDriver"
+run_cvd(4353)  E 10-01 07:07:05  4353  4353 boot_state_machine.cc:211] VIRTUAL_DEVICE_BOOT_FAILED
+[cf] gpu_mode=drm_virgl failed; falling back to guest_swiftshader (no render node in the guest)
+[cf] launching (gpu_mode=guest_swiftshader)
+[cf] booted in 59s: generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys
+[cf] state recovery after 6s
+[cf] recovery adb uid 0
+/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf: 1 file pushed, 0 skipped. 51.9 MB/s (759720 bytes in 0.014s)
+/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf: 1 file pushed, 0 skipped. 137.4 MB/s (708920 bytes in 0.005s)
+[cf] /twres/fonts absent in stock recovery: pushed host DejaVu as a stand-in
+[cf] facts: 1111 lines -> /home/runner/work/devicelab/devicelab/out/stock-recovery-facts.txt
+[cf] screenshot failed:
+Exited with code '1'
+
+    If the error above is unclear, please copy the text and `cvd version` output into an issue at:
+        http://go/cuttlefish-bug
+
+app 11 members, kit 23 members
+/home/runner/work/devicelab/devicelab/out/counter-1.0.0-x64.aerap: 34 members, 136.3 MB expanded, 26.0 MB xz
+/home/runner/work/devicelab/devicelab/out/counter-sim/payload.tgz: 1 file pushed, 0 skipped. 230.2 MB/s (43999231 bytes in 0.182s)
+/home/runner/work/_temp/kitx64/aera-host-sim: 1 file pushed, 0 skipped. 196.1 MB/s (1425120 bytes in 0.007s)
+[sim] pushed in 2s; 130M	/tmp/aera-lab/root
+[sim] exit 0 after 10s
+sim: handshake done, 1080x2400 x3 slots
+aera-flutter: surface 1080x2400 stride 4320 slots 3 scale 2.75 @60Hz
+MESA-EGL: warning: egl: failed to create dri2 screen
+MESA-EGL: warning: DRI2: failed to create screen
+flutter: The Dart VM service is listening on http://127.0.0.1:42945/amPJZzDQCRw=/
+aera-flutter: GL renderer softpipe
+sim: first frame after 1225 ms
+sim:   4000 ms Snap("start")
+sim: wrote /tmp/aera-lab/out/start.png
+sim:   4500 ms Tap(980, 2250)
+sim:   5000 ms Tap(980, 2250)
+sim:   5500 ms Tap(980, 2250)
+sim:   8000 ms Snap("after")
+sim: wrote /tmp/aera-lab/out/after.png
+sim: 31 frames
+sim: wrote /tmp/aera-lab/out/last.png
+aera-flutter: shutting down after 31 frames
+sim: embedder exited with exit status: 0
+total 496
+drwxr-xr-x 3 runner runner   4096 Oct  1 07:09 .
+drwxr-xr-x 3 runner runner   4096 Oct  1 07:09 ..
+-rw-r--r-- 1 runner runner 163715 Oct  1 07:09 after.png
+-rw-r--r-- 1 runner runner 163715 Oct  1 07:09 last.png
+drwxr-xr-x 6 runner runner   4096 Oct  1 07:09 plugin-data
+-rw-r--r-- 1 runner runner 164374 Oct  1 07:09 start.png
