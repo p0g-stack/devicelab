@@ -18,6 +18,17 @@ if [ "${1:-}" = build ]; then
   D=$(mktemp -d); mkdir -p "$D/system/product/app/WebuiTermuxApi"
   cp "$2" "$D/system/product/app/WebuiTermuxApi/WebuiTermuxApi.apk"; cp "$3" "$D/sockprobe"
   printf 'id=%s\nname=devicelab app plane\nversion=1\nversionCode=1\nauthor=p0g-stack\ndescription=webui-termux-api as a system app, plus a root socket listener\n' $ID >"$D/module.prop"
+  # KernelSU 3.3.0 mounts module system/ only through a metamodule and its
+  # release ships none, so this module overlays its own product/app at
+  # post-fs-data, the way a metamodule (or Magisk) would.
+  cat >"$D/post-fs-data.sh" <<'S'
+#!/system/bin/sh
+MODDIR=${0%/*}
+chcon -R u:object_r:system_file:s0 "$MODDIR/system"
+mount -t overlay overlay -o "lowerdir=$MODDIR/system/product/app:/product/app" /product/app \
+  && echo "overlay ok" >/data/local/tmp/app-plane-mount.log \
+  || echo "overlay failed: $?" >/data/local/tmp/app-plane-mount.log
+S
   cat >"$D/service.sh" <<'S'
 #!/system/bin/sh
 MODDIR=${0%/*}
@@ -30,7 +41,7 @@ S
 fi
 
 : >"$J"
-rec mount "$(adb shell "ls -la /product/app/WebuiTermuxApi/ 2>&1; grep -E 'product|modules' /proc/mounts | head -5" | tr -d '\r' | js)"
+rec mount "$(adb shell "cat /data/local/tmp/app-plane-mount.log 2>&1; ls -laZ /product/app/WebuiTermuxApi/ 2>&1; grep -E 'product|modules' /proc/mounts | head -5" | tr -d '\r' | js)"
 rec package "$(adb shell "pm path $PKG; dumpsys package $PKG | grep -E 'codePath|flags=|privateFlags|versionName|userId' | head -8" | tr -d '\r' | js)"
 UID_=$(adb shell "stat -c %u /data/data/$PKG 2>/dev/null" | tr -d '\r')
 # adb-root listener (u:r:su) next to the module's one.

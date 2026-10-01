@@ -73,10 +73,10 @@ jobs:
             id=$(unzip -p "inputs/modules/$m" module.prop | sed -n 's/^id=//p' | tr -d '\r')
             name=$(unzip -p "inputs/modules/$m" module.prop | sed -n 's/^name=//p' | tr -d '\r')
             MODULE=$id checks/open_module.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
-            [ "$id" = flutter_webui_counter ] && checks/flutter_webui.sh "$HOST-$id" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"
+            if [ "$id" = flutter_webui_counter ]; then checks/flutter_webui.sh "$HOST-$id" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
           done
       - name: App plane
-        if: matrix.host == 'kernelsu'
+        if: always() && matrix.host == 'kernelsu'
         run: checks/app_plane.sh run 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Result
         if: always()
