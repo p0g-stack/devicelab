@@ -25,14 +25,14 @@ adb shell am force-stop $KSU; adb shell monkey -p $KSU -c android.intent.categor
 UI_EXACT=1 UI_WAIT=30 $UI tap Superuser; sleep 8
 adb exec-out screencap -p >"$OUT/webuix-ksu-superuser.png"
 # The Superuser list exposes no nodes either: search, tap the first row.
-$UI tapxy 160 152; sleep 1; $UI type "WebUI X"; sleep 3
-if $UI tapxy 160 218; then
+$UI tapxy 160 152; sleep 3; $UI type "WebUI X"; sleep 4
+if $UI tap "$PKG"; then
   sleep 3; $UI dump "$OUT/webuix-ksu-profile.xml"; adb exec-out screencap -p >"$OUT/webuix-ksu-profile.png"
   # The App Profile screen: its first switch is Superuser.
   $UI switch 1 && sleep 2 && granted=ui
   adb exec-out screencap -p >"$OUT/webuix-ksu-granted.png"; $UI dump "$OUT/webuix-ksu-granted.xml" >/dev/null
 fi
-log "root grant: $granted; su as app uid $UID_: $(adb shell "su $UID_ -c 'su -c id' 2>&1 || true" | tr -d '\r' | head -2)"
+log "root grant: $granted; su as app uid $UID_: $(adb shell "su $UID_ /system/bin/su -c id 2>&1 || true" | tr -d '\r' | head -2)"
 adb shell input keyevent KEYCODE_HOME
 
 # First launch: walk through any onboarding, keep what it shows.
