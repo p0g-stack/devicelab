@@ -1,0 +1,81 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 57s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.0
+total 16428
+drwx------  2 runner runner     4096 Oct  1 06:01 .
+drwxrwxrwt 16 root   root       4096 Oct  1 06:01 ..
+-rw-r--r--  1 runner runner 10777987 Oct  1 06:01 KernelSU_v3.3.0_32601-release.apk
+-rw-r--r--  1 runner runner  5713312 Oct  1 06:01 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   318824 Oct  1 06:01 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu)
+/tmp/tmp.wra0F36T6B/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 6.2 MB/s (318824 bytes in 0.049s)
+/tmp/tmp.wra0F36T6B/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 71.0 MB/s (5713312 bytes in 0.077s)
+== ksud: ksud 3.3.0 (uapi: 2)
+== ksud late-load /data/adb/kernelsu.ko: error: unexpected argument '/data/adb/kernelsu.ko' found
+
+Usage: ksud late-load [OPTIONS]
+
+For more information, try '--help'.
+rc=2
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+[   92.377775] KernelSU: Found new base.apk at path: /data/app/~~XQEyhG4oump-7JRt4KDlGA==/me.weishu.kernelsu-bcTRuct55iHzRo50nVCs2A==/base.apk, is_manager: 1
+[   92.391469] KernelSU: manager pkg: me.weishu.kernelsu
+[   92.395187] KernelSU: Crowning manager: me.weishu.kernelsu(uid=10209)
+[   92.399528] KernelSU: Stop searching
+[   92.403352] KernelSU: Search manager finished
+kernelsu              159744  0 
+== lsmod: kernelsu              159744  1 
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.047s)
+== modules: [
+  {
+    "name": "devicelab probe",
+    "mount": "false",
+    "enabled": "true",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "remove": "false",
+    "author": "p0g-stack",
+    "update": "false",
+    "versionCode": "1",
+    "id": "devicelab_probe",
+    "action": "false",
+    "version": "1",
+    "web": "true"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+ERROR: null root node returned by UiTestAutomationBridge.
+cat: /data/local/tmp/ui.xml: No such file or directory
+== home text: 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 54.5 MB/s (7843260 bytes in 0.137s)
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+LaunchState: WARM
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+TotalTime: 1156
+WaitTime: 1158
+Complete
+{"check":"targets","result":[]}
+{"check":"globals","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ksu-exec","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ws-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"fetch-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"webview-uid","result":["webview_zygote 1053 webview_zygote", "u0_a209      10209 me.weishu.kernelsu"]}
+{"check":"while-home-heartbeat","result":{"error":"no page target","sockets":["webview_devtools_remote_1685"],"targets":[]}}
+{"check":"lifecycle","result":{"error":"no page target","sockets":["webview_devtools_remote_1685"],"targets":[]}}
+cat: /data/local/tmp/labserver.log: No such file or directory

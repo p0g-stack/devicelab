@@ -1,0 +1,67 @@
+KernelSU userspace cli
+
+Usage: ksud <COMMAND>
+
+Commands:
+  module          Manage KernelSU modules
+  post-fs-data    Trigger `post-fs-data` event
+  services        Trigger `service` event
+  boot-completed  Trigger `boot-complete` event
+  late-load       Load kernelsu.ko and execute late-load stage scripts
+  soft-reboot     Emulate system reboot
+  insmod          Load a kernel module with kallsyms access
+  install         Install KernelSU userspace component to system
+  unload          Unload KernelSU kernel module (LKM Only)
+  uninstall       Uninstall KernelSU modules and itself(LKM Only)
+  sepolicy        SELinux policy Patch tool
+  profile         Manage App Profiles
+  feature         Manage kernel features
+  boot-patch      Patch boot or init_boot images to apply KernelSU
+  boot-restore    Restore boot or init_boot images patched by KernelSU
+  boot-patch-v2   Patch KernelSU into a boot image
+  boot-info       Show boot information
+  debug           For developers
+  kernel          Kernel interface
+  resetprop       Resetprop - Magisk-compatible system property tool
+  initrc          Manage initrc injection
+  help            Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+Load kernelsu.ko and execute late-load stage scripts
+
+Usage: ksud late-load [OPTIONS]
+
+Options:
+      --magica [<MAGICA>]            Use adb root to execute late-load for jailbreaking by Magica
+      --allow-shell                  Pass allow_shell=1 when loading kernelsu.ko
+      --post-magica                  Restore adb properties after magica late-load
+      --kmi <KMI>                    Specify kernel KMI version instead of auto-detection
+      --package-name <PACKAGE_NAME>  manager package name [default: me.weishu.kernelsu]
+  -h, --help                         Print help
+Load a kernel module with kallsyms access
+
+Usage: ksud insmod <MODULE> [PARAMS]...
+
+Arguments:
+  <MODULE>     kernel module path
+  [PARAMS]...  module load parameters (e.g. key=val key2=val2)
+
+Options:
+  -h, --help  Print help
+Show boot information
+
+Usage: ksud boot-info <COMMAND>
+
+Commands:
+  current-kmi           show current kmi version
+  supported-kmis        show supported kmi versions
+  is-ab-device          check if device is A/B capable
+  default-partition     show auto-selected boot partition name
+  available-partitions  list available partitions for current or OTA toggled slot
+  slot-suffix           show slot suffix for current or OTA toggled slot
+  help                  Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help  Print help
