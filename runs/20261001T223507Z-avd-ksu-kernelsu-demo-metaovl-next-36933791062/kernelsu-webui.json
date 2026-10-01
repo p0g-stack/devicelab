@@ -1,0 +1,205 @@
+{
+ "check": "webui_host",
+ "label": "kernelsu",
+ "date": "2026-10-01",
+ "fingerprint": "google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+ "kernel": "6.6.50-android15-8-g8adecb593e9b-ab12525588",
+ "webview": "versionName=124.0.6367.219",
+ "results": [
+  {
+   "check": "targets",
+   "result": [
+    {
+     "socket": "webview_devtools_remote_8545",
+     "type": "page",
+     "url": "https://mui.kernelsu.org/index.html",
+     "title": "devicelab probe"
+    }
+   ]
+  },
+  {
+   "check": "globals",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8545",
+    "value": {
+     "ua": "Mozilla/5.0 (Linux; Android 15; sdk_gphone64_x86_64 Build/AE3A.240806.043; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/124.0.6367.219 Mobile Safari/537.36",
+     "origin": "https://mui.kernelsu.org",
+     "href": "https://mui.kernelsu.org/index.html",
+     "globals": [
+      "ksu"
+     ],
+     "ksu": [
+      "cacheAllPackageIcons",
+      "copyFile",
+      "createShortcut",
+      "enableInsets",
+      "exec",
+      "fileOutputStream",
+      "fullScreen",
+      "getPackagesIcons",
+      "getPackagesInfo",
+      "listFile",
+      "listPackages",
+      "moduleInfo",
+      "moveFile",
+      "readFile",
+      "removeFile",
+      "spawn",
+      "toast",
+      "writeFile",
+      "cacheAllPackageIcons",
+      "copyFile",
+      "createShortcut",
+      "enableInsets",
+      "exec",
+      "fileOutputStream",
+      "fullScreen",
+      "getPackagesIcons",
+      "getPackagesInfo",
+      "listFile",
+      "listPackages",
+      "moduleInfo",
+      "moveFile",
+      "readFile",
+      "removeFile",
+      "spawn",
+      "toast",
+      "writeFile"
+     ]
+    }
+   }
+  },
+  {
+   "check": "ksu-exec",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8545",
+    "value": {
+     "code": 0,
+     "out": "uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0\nu:r:ksu:s0\u0000",
+     "err": ""
+    }
+   }
+  },
+  {
+   "check": "ws-loopback",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8545",
+    "value": {
+     "got": [
+      "{\"origin\":\"https://mui.kernelsu.org\",\"peerUid\":10209,\"remote\":\"127.0.0.1:49262\",\"serverUid\":0,\"t\":1790893080732,\"uidSource\":\"/proc/net/tcp\"}",
+      "hi"
+     ],
+     "ms": 71
+    }
+   }
+  },
+  {
+   "check": "fetch-loopback",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8545",
+    "value": {
+     "origin": "https://mui.kernelsu.org",
+     "peerUid": 10209,
+     "remote": "127.0.0.1:49266",
+     "serverUid": 0,
+     "t": 1790893080879,
+     "uidSource": "/proc/net/tcp"
+    }
+   }
+  },
+  {
+   "check": "webview-uid",
+   "result": [
+    "webview_zygote 1053 webview_zygote",
+    "u0_a209      10209 com.rifsxd.ksunext",
+    "u0_a151      10151 com.google.android.webview:webview_service",
+    "u0_i9000     99000 com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0",
+    "u0_a151      10151 com.google.android.webview:webview_apk"
+   ]
+  },
+  {
+   "check": "while-home-heartbeat",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8545",
+    "value": {
+     "now": 11382,
+     "vis": "hidden"
+    }
+   }
+  },
+  {
+   "check": "lifecycle",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8545",
+    "value": {
+     "events": [
+      {
+       "type": "pageshow",
+       "t": 328,
+       "vis": "visible"
+      },
+      {
+       "type": "visibilitychange",
+       "t": 5641,
+       "vis": "hidden"
+      },
+      {
+       "type": "visibilitychange",
+       "t": 13596,
+       "vis": "visible"
+      }
+     ],
+     "gaps": [
+      {
+       "from": 9255,
+       "ms": 1000,
+       "vis": "hidden"
+      },
+      {
+       "from": 10256,
+       "ms": 1000,
+       "vis": "hidden"
+      },
+      {
+       "from": 11256,
+       "ms": 1000,
+       "vis": "hidden"
+      }
+     ],
+     "slow": {
+      "heldMs": 3001,
+      "sentAt": 1790893084079,
+      "resolvedAt": 1790893084083,
+      "vis": "hidden"
+     }
+    }
+   }
+  },
+  {
+   "check": "dev-url",
+   "result": {
+    "url": "http://127.0.0.1:8090/index.html",
+    "socket": "webview_devtools_remote_8545",
+    "value": {
+     "href": "http://127.0.0.1:8090/index.html",
+     "ksu": "object",
+     "webui": "undefined",
+     "globals": [
+      "ksu"
+     ],
+     "exec": {
+      "code": 0,
+      "out": "uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0",
+      "err": ""
+     }
+    }
+   }
+  }
+ ]
+}
