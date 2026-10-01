@@ -37,10 +37,39 @@ Results land on the `lab-results` branch under `runs/*-aera-cf-*`.
 
 ## Building AERA for Cuttlefish
 
-AERA's manifest (`AERA-Recovery/android_manifest`, `aera-16.0`) is public
-apart from a few LineageOS projects, and is a full Android 16 tree minus
-`remove-minimal.xml`. Building `recoveryimage` needs roughly 100 GB of disk
-and 32 GB of RAM; the free runner has 14 GB free disk and 7 GB RAM. AERA's
-vendor prebuilts (busybox, bash, ...) exist only for arm/arm64. AERA
-publishes no images (no GitHub releases, no download page; checked
-2026-10-01), so the image has to come from this build.
+Pin: AERA `android_manifest` 250b38e (`aera-16.0`, 2026-10-01) with every
+AERA project pinned by commit in `build/pins.xml` (`bootable/recovery`
+abf3316); Android projects stay on the manifest's `android-16.0.0_r1` tag.
+`build/pin.sh` regenerates the pins. `build/patches/bootable/recovery/` holds
+flutter-aera's Host API 3 series (`third_party/aera` there; `SOURCE` names
+the commit). `build/device/` is the `aera_cf` device tree (x86_64, no
+kernel; AERA's arm-only prebuilts dropped in `vendorsetup.sh`).
+
+AERA publishes no images (no GitHub releases, no download page; checked
+2026-10-01), and the build does not fit GitHub's free runners (2 cores,
+7 GB RAM, 14 GB disk). Run it on any x86_64 Ubuntu 22.04/24.04 box with sudo,
+~150 GB free and 32 GB RAM (+swap):
+
+```sh
+git clone https://github.com/p0g-stack/devicelab && cd devicelab
+aera/build/build.sh ~/aera-src ~/aera-out      # unattended; rerunnable
+```
+
+It installs the apt packages and `repo`, syncs shallowly (406 projects),
+applies the patches, builds `adbd recoveryimage` for `twrp_aera_cf-bp2a-eng`
+and ends by printing `BUILD-INFO` (manifest, recovery commit, patch-set hash)
+and `SHA256SUMS` for the files in `~/aera-out`. `SKIP_SYNC=1` reruns only the
+patch + build steps (for a new patch series). Full log: `~/aera-out/build.log`.
+
+Publish the result for the lab (needs `gh auth login` with push to
+devicelab):
+
+```sh
+aera/build/publish.sh ~/aera-out
+```
+
+Checked here without a full build (2026-10-01): repo init at the pin and
+manifest resolution (406 projects), sync of every GitHub-hosted project
+(AERA, LineageOS, TeamWin), and the patch series applying in-tree. Not yet
+run: the Android build itself, so expect a first round of x86_64 fixes in
+`build/device/`.

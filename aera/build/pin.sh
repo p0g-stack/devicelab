@@ -11,7 +11,8 @@ mrev=$(git -C "$m" rev-parse HEAD)
   python3 - "$m" <<'PY' | while read -r path name; do
 import re, sys
 for f in ('aera.xml', 'twrp-default.xml'):
-    for t in re.findall(r'<project\b[^>]*>', open(f"{sys.argv[1]}/{f}").read()):
+    text = re.sub(r'<!--.*?-->', '', open(f"{sys.argv[1]}/{f}").read(), flags=re.S)
+    for t in re.findall(r'<project\b[^>]*>', text):
         if 'remote="AERA"' in t:
             print(re.search(r'path="([^"]+)"', t)[1], re.search(r'name="([^"]+)"', t)[1])
 PY
