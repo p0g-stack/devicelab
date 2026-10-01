@@ -20,7 +20,6 @@ Future<Object?> attempt(Future<Object?> Function() f) async {
 Future<void> main(List<String> args) async {
   final out = <String, Object?>{
     'os': Platform.operatingSystem,
-    'osVersion': Platform.operatingSystemVersion,
     'dart': Platform.version,
     'executable': Platform.resolvedExecutable,
     'pid': pid,
@@ -29,6 +28,8 @@ Future<void> main(List<String> args) async {
         k: Platform.environment[k],
     },
   };
+  // Throws in a chroot without the property service (qemu arm64 run).
+  out['osVersion'] = await attempt(() async => Platform.operatingSystemVersion);
   out['selinux'] = await attempt(
       () async => File('/proc/self/attr/current').readAsStringSync().trim());
   out['status'] = await attempt(() async => File('/proc/self/status')
