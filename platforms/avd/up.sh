@@ -8,7 +8,10 @@ IMG="system-images;android-$API;$TAG;$ABI"
 SDK=${ANDROID_HOME:?}
 BIN=$SDK/cmdline-tools/latest/bin
 "$BIN/sdkmanager" --install emulator platform-tools "$IMG" < <(yes) >/dev/null
-echo no | "$BIN/avdmanager" create avd -f -n lab -k "$IMG" -d pixel_6 >/dev/null
+export ANDROID_AVD_HOME=${ANDROID_AVD_HOME:-$HOME/.android/avd}; mkdir -p "$ANDROID_AVD_HOME"
+command -v apt-get >/dev/null && sudo apt-get install -y -qq libpulse0 >/dev/null 2>&1
+echo no | "$BIN/avdmanager" create avd -f -n lab -k "$IMG" | tail -2
+ls "$ANDROID_AVD_HOME"
 "$SDK/emulator/emulator" -avd lab -no-window -no-audio -no-boot-anim -no-snapshot \
   -gpu swiftshader_indirect -memory 4096 -cores 4 -writable-system \
   >"${LAB_OUT:-.}/emulator.log" 2>&1 &

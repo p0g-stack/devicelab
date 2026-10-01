@@ -26,10 +26,9 @@ sudo sgdisk -p "$DEV" 2>/dev/null | tail -8
 for p in "$DEV"p*; do echo "$p: $(sudo file -sL "$p" | cut -d: -f2 | cut -c1-120) $(sudo blkid -o export "$p" | tr '\n' ' ')"; done
 mkdir -p "$W/sys"; for p in "$DEV"p*; do sudo mount -o ro "$p" "$W/sys" 2>/dev/null && { echo "mounted $p"; break; }; done
 if ! mountpoint -q "$W/sys"; then
-  # Dynamic partitions: the GPT holds a 'super' image; unpack system from it.
-  pip install -q lpunpack 2>/dev/null || true
-  for p in "$DEV"p*; do sudo dd if="$p" bs=4M 2>/dev/null | head -c 8192 | strings | grep -q -m1 -e system -e gpt && echo "$p has lp metadata?"; done
-  exit 1
+  SUPER=$(for p in "$DEV"p*; do sudo blkid -o value -s PARTLABEL "$p" | grep -qx super && echo "$p"; done)
+  sudo python3 "$HERE/../../tools/lpunpack.py" "$SUPER" system "$W/system.img" || exit 1
+  file "$W/system.img"; mnt "$W/system.img" "$W/sys" || exit 1
 fi
 ls "$W/sys" | head; S=$W/sys; [ -d "$S/system/bin" ] && S=$S/system
 mkdir -p "$R"/{system,apex/com.android.runtime,data,proc,dev,tmp,linkerconfig}
