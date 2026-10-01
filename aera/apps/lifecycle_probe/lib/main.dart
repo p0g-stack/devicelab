@@ -37,7 +37,15 @@ class _ProbeState extends State<Probe> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context) => PopScope(
+        // Back stays in the app (counted), so a short Back must leave it in
+        // front; only AERA's held Back (flutter-aera 0024) leaves it.
+        canPop: false,
+        onPopInvokedWithResult: (didPop, _) {
+          debugPrint('LIFECYCLE back count=$count');
+          setState(() => states.add('back'));
+        },
+        child: Scaffold(
         body: Column(children: [
           Expanded(
             child: Padding(
@@ -66,5 +74,6 @@ class _ProbeState extends State<Probe> {
             ),
           ),
         ]),
+      ),
       );
 }
