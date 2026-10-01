@@ -13,7 +13,7 @@ rec() { echo "{\"check\":\"$1\",\"result\":$2}" | tee -a "$J"; }
 ev() { $WV eval "$1" --match "${MATCH:-}" 2>&1 | tail -1; }
 
 adb push "$LABSERVER" /data/local/tmp/labserver >/dev/null
-adb shell "chmod 755 /data/local/tmp/labserver; pkill -f labserver; (nohup /data/local/tmp/labserver >/data/local/tmp/labserver.log 2>&1 &)"
+adb shell "chmod 755 /data/local/tmp/labserver; pkill -x labserver; (nohup /data/local/tmp/labserver >/data/local/tmp/labserver.log 2>&1 &)"
 "$HERE/managers/open_webui.sh" "$LABEL" "$PKG" "$ID" "$NAME"
 sleep 2
 adb exec-out screencap -p >"$OUT/$LABEL-webui.png"
