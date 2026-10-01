@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       flavor: { default: kernelsu, description: "kernelsu | next" }
+      host: { default: all, description: "all | kernelsu | webuix (WebUI host legs to run)" }
       tag: { default: "", description: "release tag, empty = latest" }
       api: { default: "35" }
       label: { default: "", description: "extra name for the lab-results run, e.g. demo-0.9" }
@@ -25,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        host: [kernelsu, webuix]
+        host: ${{ fromJSON((inputs.host == '' || inputs.host == 'all') && '["kernelsu","webuix"]' || format('["{0}"]', inputs.host)) }}
     env:
       LAB_OUT: ${{ github.workspace }}/out
       GH_TOKEN: ${{ github.token }}
@@ -45,6 +46,12 @@ jobs:
         run: |
           cd tools/labserver && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o "$LAB_OUT/labserver" . && echo "LABSERVER=$LAB_OUT/labserver" >> "$GITHUB_ENV"
           cd ../sockprobe && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o "$LAB_OUT/sockprobe" . && echo "SOCKPROBE=$LAB_OUT/sockprobe" >> "$GITHUB_ENV"
+      # The system image is ~1.5 GB from dl.google.com on every run otherwise.
+      - name: Cache system image
+        uses: actions/cache@v4
+        with:
+          path: /usr/local/lib/android/sdk/system-images/android-${{ inputs.api || '35' }}/google_apis/x86_64
+          key: sysimg-${{ inputs.api || '35' }}-google_apis-x86_64-v1
       - name: Boot AVD
         run: |
           echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
