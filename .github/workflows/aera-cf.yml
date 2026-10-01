@@ -66,20 +66,8 @@ jobs:
           # GPU (gfxstream modes): launcher default (Vulkan on gfxstream), Impeller on it, GL forced.
           sim counter-default --gpu
           SWITCHES=--enable-impeller sim counter-impeller --gpu
-          # Zink diagnostics: GL forced, Mesa/EGL debug logging.
-          SWITCHES=--gl ENVIRONMENT=$'VK_LOADER_DEBUG=error,warn,driver\nLIBGL_DEBUG=verbose\nMESA_LOG_LEVEL=debug\nEGL_LOG_LEVEL=debug' sim counter-gl-zink --gpu
-          SWITCHES=--gl ENVIRONMENT=$'D3D_ALWAYS_SOFTWARE=1\nVK_LOADER_DEBUG=error,warn,driver\nLIBGL_DEBUG=verbose\nMESA_LOG_LEVEL=debug\nEGL_LOG_LEVEL=debug' sim counter-gl-zink-sw --gpu
           # CPU reference: softpipe.
           sim counter-softpipe ""
-          # Zink diagnostics with the kit's debug Mesa (mesa-debug-linux-x64.tar.xz over usr/lib).
-          (cd "$RUNNER_TEMP/kitx64" && gh release download kit-3.47.5 -R p0g-stack/flutter-aera --clobber -p 'mesa-debug-linux-x64.tar.xz') && {
-            cp -a "$RUNNER_TEMP/counter-x64/root" "$RUNNER_TEMP/counter-x64-dbg"
-            tar -tJf "$RUNNER_TEMP/kitx64/mesa-debug-linux-x64.tar.xz" | head -5
-            if tar -tJf "$RUNNER_TEMP/kitx64/mesa-debug-linux-x64.tar.xz" | grep -q '^\(\./\)\?usr/lib/'; then d="$RUNNER_TEMP/counter-x64-dbg"; else d="$RUNNER_TEMP/counter-x64-dbg/usr/lib"; fi
-            tar -C "$d" -xJf "$RUNNER_TEMP/kitx64/mesa-debug-linux-x64.tar.xz"
-            SWITCHES=--gl ENVIRONMENT=$'MESA_LOG_LEVEL=debug' aera/cuttlefish/run-sim.sh counter-gl-mesa-debug "$RUNNER_TEMP/counter-x64-dbg" "$RUNNER_TEMP/kitx64/aera-host-sim" $taps --gpu 2>&1 | tee -a "$LAB_OUT/job.log" || true
-            rm -rf "$RUNNER_TEMP/counter-x64-dbg"
-          } || echo "no mesa-debug asset"
       - name: vulkaninfo through the kit's launcher and loader
         run: |
           adb=$CF_HOME/bin/adb
