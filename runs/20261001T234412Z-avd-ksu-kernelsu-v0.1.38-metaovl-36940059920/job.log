@@ -1,0 +1,630 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 22s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.0
+total 16428
+drwx------  2 runner runner     4096 Oct  1 23:20 .
+drwxrwxrwt 16 root   root       4096 Oct  1 23:20 ..
+-rw-r--r--  1 runner runner 10777987 Oct  1 23:20 KernelSU_v3.3.0_32601-release.apk
+-rw-r--r--  1 runner runner  5713312 Oct  1 23:20 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   318824 Oct  1 23:20 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu, KernelSU_v3.3.0_32601-release.apk)
+/tmp/tmp.ZZ4ti3RmP0/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 2.4 MB/s (318824 bytes in 0.127s)
+/tmp/tmp.ZZ4ti3RmP0/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 308.0 MB/s (5713312 bytes in 0.018s)
+== ksud: ksud 3.3.0 (uapi: 2)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              159744  0 
+== lsmod: kernelsu              159744  1 
+KernelSU_v3.3.0_32601-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-pc-windows-gnu.exe
+ksud-x86_64-unknown-linux-musl
+ksuinit-aarch64
+ksuinit-x86_64
+lkm-aarch64-android12-5.10_kernelsu.ko
+lkm-aarch64-android13-5.10_kernelsu.ko
+lkm-aarch64-android13-5.15_kernelsu.ko
+lkm-aarch64-android14-5.15_kernelsu.ko
+lkm-aarch64-android14-6.1_kernelsu.ko
+lkm-aarch64-android15-6.6_kernelsu.ko
+lkm-aarch64-android16-6.12_kernelsu.ko
+lkm-aarch64-android17-6.18_kernelsu.ko
+lkm-x86_64-android12-5.10_kernelsu.ko
+lkm-x86_64-android13-5.10_kernelsu.ko
+lkm-x86_64-android13-5.15_kernelsu.ko
+lkm-x86_64-android14-5.15_kernelsu.ko
+lkm-x86_64-android14-6.1_kernelsu.ko
+lkm-x86_64-android15-6.6_kernelsu.ko
+lkm-x86_64-android16-6.12_kernelsu.ko
+lkm-x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in tiann/KernelSU v3.3.0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.1 MB/s (1474 bytes in 0.011s)
+== modules: [
+  {
+    "version": "1",
+    "update": "false",
+    "remove": "false",
+    "web": "true",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "id": "devicelab_probe",
+    "mount": "false",
+    "action": "false",
+    "name": "devicelab probe",
+    "enabled": "true",
+    "versionCode": "1",
+    "author": "p0g-stack"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+== home text: text="LKM" text="Working [Jailbreak mode]" text="Version: 32601-2" text="Manager version" text="v3.3.0 (32601-2)" text="Kernel version" text="6.6.50-android15-8-g8adecb593e9b-ab12525588" text="Device model" text="Google sdk_gphone64_x86_64" text="Fingerprint" text="google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys" text="Enforcing" text="KernelSU" text="Home" text="Superuser" text="1" text="Module" text="Settings" 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+== metamodule index http: 404== metamodule index entry: index unreadable Expecting value: line 1 column 1 (char 0)
+== metamodule search: MySU-org/meta-overlayfs 3 2026-09-17T14:32:09Z;korzenroot/meta-overlayfs 0 2026-09-28T14:55:15Z;M4LiNuX/meta-readonly-overlayfs 0 2021-09-08T12:18:44Z;cpb-/meta-squashfs-overlayfs-rpi 0 2022-10-06T05:00:37Z;
+release not found
+release not found
+== metamodule detail http: 404 keys: Traceback (most recent call last):   File "<string>", line 1, in <module>   File "/usr/lib/python3.12/json/__init__.py", line 293, in load     return loads(fp.read(),            ^^^^^^^^^^^^^^^^   File "/usr/lib/python3.12/json/__init__.py", line 346, in loads     return _default_decoder.decode(s)            ^^^^^^^^^^^^^^^^^^^^^^^^^^   File "/usr/lib/python3.12/json/decoder.py", line 337, in decode     obj, end = self.raw_decode(s, idx=_w(s, 0).end())                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode     raise JSONDecodeError("Expecting value", s, err.value) from None json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0) 
+== metamodule zip url: 
+== metamodule: no zip found for KernelSU-Modules-Repo/meta-overlayfs
+inputs/modules/flutter_webui_counter-0.1.5.zip: 1 file pushed, 0 skipped. 345.9 MB/s (21434766 bytes in 0.059s)
+== install flutter_webui_counter-0.1.5.zip
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.8.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.2.woff2
+   creating: webroot/fonts/notosansmath/
+   creating: webroot/fonts/notosansmath/v15/
+  inflating: webroot/fonts/notosansmath/v15/7Aump_cpkSecTWaHRlH2hyV5UHkD-V048PW0.woff2
+   creating: webroot/fonts/roboto/
+   creating: webroot/fonts/roboto/v32/
+  inflating: webroot/fonts/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2
+  inflating: webroot/.last_build_id
+  inflating: webroot/config.json
+  inflating: webroot/flutter_webui.js
+  inflating: customize.sh
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 280.4 MB/s (6582359 bytes in 0.022s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+inputs/modules/demo.zip: 1 file pushed, 0 skipped. 335.7 MB/s (28109334 bytes in 0.080s)
+== install demo.zip
+  inflating: webroot/manifest.json
+  inflating: webroot/pkg/.gitignore
+  inflating: webroot/pkg/demo_native.js
+  inflating: webroot/pkg/demo_native_bg.wasm
+  inflating: webroot/pkg/package.json
+  inflating: webroot/version.json
+  inflating: webroot/workers/demo_service.web.g.dart.js
+  inflating: webroot/workers/hello_service.web.g.dart.js
+  inflating: webui_app_plane/arm64-v8a/webui_termux_api.aot
+  inflating: webui_app_plane/termux-api
+  inflating: webui_app_plane/x86_64/webui_termux_api.aot
+! No metamodule installed: this module's app needs one to be mounted (KernelSU 3.x)
+- Handle partition /product
+- Done
+- Module installed successfully!
+/home/runner/work/devicelab/devicelab/app_plane.zip: 1 file pushed, 0 skipped. 262.2 MB/s (4528305 bytes in 0.016s)
+== install app_plane.zip
+Archive:  /data/local/tmp/m.zip
+- Extracting module files
+Archive:  /data/local/tmp/m.zip
+  inflating: post-fs-data.sh
+  inflating: module.prop
+   creating: system/
+   creating: system/product/
+   creating: system/product/app/
+   creating: system/product/app/WebuiTermuxApi/
+  inflating: system/product/app/WebuiTermuxApi/WebuiTermuxApi.apk
+  inflating: service.sh
+  inflating: sockprobe
+- Handle partition /product
+- Done
+- Module installed successfully!
+/home/runner/work/devicelab/devicelab/envdump.zip: 1 file pushed, 0 skipped. 32.0 MB/s (1766 bytes in 0.000s)
+== install envdump.zip
+ devicelab envdump 
+ by p0g-stack 
+*******************
+*********************
+ Powered by KernelSU 
+*********************
+Archive:  /data/local/tmp/m.zip
+  inflating: customize.sh
+- Extracting module files
+Archive:  /data/local/tmp/m.zip
+  inflating: module.prop
+  inflating: customize.sh
+- devicelab envdump: written /data/local/tmp/customize-env.txt
+- Done
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (35s): [
+  {
+    "mount": "false",
+    "versionCode": "1",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "version": "1",
+    "remove": "false",
+    "web": "true",
+    "author": "p0g-stack",
+    "id": "devicelab_probe",
+    "name": "devicelab probe",
+    "enabled": "true",
+    "update": "false",
+    "action": "false"
+  },
+  {
+    "action": "false",
+    "version": "0.1.5",
+    "enabled": "true",
+    "versionCode": "6",
+    "author": "p0g-stack",
+    "id": "flutter_webui_counter",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "mount": "false",
+    "name": "flutter-webui Counter",
+    "remove": "false",
+    "update": "false",
+    "web": "true"
+  },
+  {
+    "description": "A new Flutter project.",
+    "action": "false",
+    "mount": "false",
+    "web": "true",
+    "id": "counter",
+    "version": "v1.0.0",
+    "enabled": "true",
+    "name": "Counter",
+    "versionCode": "1",
+    "author": "Yuv",
+    "remove": "false",
+    "update": "false"
+  },
+  {
+    "versionCode": "38",
+    "update": "false",
+    "mount": "true",
+    "remove": "false",
+    "enabled": "true",
+    "action": "false",
+    "web": "true",
+    "description": "The demo GUI. Flutter on top of the core.",
+    "id": "demo",
+    "updateJson": "https://github.com/p0g-stack/demo/releases/latest/download/update.json",
+    "author": "",
+    "name": "Demo",
+    "version": "v0.1.38"
+  },
+  {
+    "name": "devicelab app plane",
+    "we
+total 64
+drwxrwxrwx 8 root root 4096 2026-10-01 23:20 .
+drwx------ 5 root root 4096 2026-10-01 23:20 ..
+drwxr-xr-x 3 root root 4096 2026-10-01 23:20 counter
+drwxr-xr-x 8 root root 4096 2026-10-01 23:20 demo
+drwxr-xr-x 4 root root 4096 2026-10-01 23:20 devicelab_app_plane
+drwxr-xr-x 2 root root 4096 2026-10-01 23:20 devicelab_envdump
+drwxr-xr-x 3 root root 4096 2026-10-01 23:20 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-10-01 23:20 flutter_webui_counter
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 100.8 MB/s (7843260 bytes in 0.074s)
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+
+
+
+
+
+
+
+
+Status: ok
+
+
+
+
+
+
+
+
+Status: ok
+https://mui.kernelsu.org/index.html
+token found in manager data: 0000000000000000000000000000000000000000000000000000000000000000
+opened: intent-token
+{"check":"targets","result":[{"socket": "webview_devtools_remote_8447", "type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "devicelab probe"}]}
+{"check":"globals","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_8447","value":{"ua":"Mozilla/5.0 (Linux; Android 15; sdk_gphone64_x86_64 Build/AE3A.240806.043; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/124.0.6367.219 Mobile Safari/537.36","origin":"https://mui.kernelsu.org","href":"https://mui.kernelsu.org/index.html","globals":["ksu"],"ksu":["enableEdgeToEdge","exec","exit","fullScreen","getPackagesInfo","listPackages","moduleInfo","spawn","toast","enableEdgeToEdge","exec","exit","fullScreen","getPackagesInfo","listPackages","moduleInfo","spawn","toast"]}}}
+{"check":"ksu-exec","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_8447","value":{"code":0,"out":"uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0\nu:r:ksu:s0\u0000","err":""}}}
+{"check":"ws-loopback","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_8447","value":{"got":["{\"origin\":\"https://mui.kernelsu.org\",\"peerUid\":10209,\"remote\":\"127.0.0.1:56398\",\"serverUid\":0,\"t\":1790896912886,\"uidSource\":\"/proc/net/tcp\"}","hi"],"ms":27}}}
+{"check":"fetch-loopback","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_8447","value":{"origin":"https://mui.kernelsu.org","peerUid":10209,"remote":"127.0.0.1:56408","serverUid":0,"t":1790896912991,"uidSource":"/proc/net/tcp"}}}
+{"check":"webview-uid","result":["webview_zygote 1053 webview_zygote", "u0_a209      10209 me.weishu.kernelsu", "u0_a151      10151 com.google.android.webview:webview_service", "u0_i9000     99000 com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0", "u0_a151      10151 com.google.android.webview:webview_apk"]}
+{"check":"while-home-heartbeat","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_8447","value":{"now":10015,"vis":"hidden"}}}
+{"check":"lifecycle","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_8447","value":{"events":[{"type":"pageshow","t":130,"vis":"visible"},{"type":"visibilitychange","t":3923,"vis":"hidden"},{"type":"visibilitychange","t":12264,"vis":"visible"}],"gaps":[{"from":7196,"ms":1000,"vis":"hidden"},{"from":9196,"ms":1000,"vis":"hidden"},{"from":10196,"ms":1000,"vis":"hidden"}],"slow":{"heldMs":3002,"sentAt":1790896916133,"resolvedAt":1790896916136,"vis":"hidden"}}}}
+{"check":"dev-url","result":{"url":"http://127.0.0.1:8090/index.html","socket":"webview_devtools_remote_8447","value":{"href":"http://127.0.0.1:8090/index.html","ksu":"object","webui":"undefined","globals":["ksu"],"exec":{"code":0,"out":"uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0","err":""}}}}
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+
+
+
+
+
+
+
+
+Status: ok
+
+
+
+
+
+
+
+
+Segmentation fault 
+intent path: no page; manager log:
+10-01 23:22:11.443  8878  8878 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-01 23:22:11.443  8878  8878 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+10-01 23:22:11.455  8878  8878 V GraphicsEnvironment: Currently set values for:
+10-01 23:22:11.455  8878  8878 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-01 23:22:11.455  8878  8878 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-01 23:22:11.455  8878  8878 V GraphicsEnvironment: Global.Settings values are invalid: number of packages: 0, number of values: 0
+10-01 23:22:11.455  8878  8878 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-01 23:22:11.467  8878  8878 W weishu.kernelsu: Unsupported class loader
+10-01 23:22:11.504  8878  8878 W weishu.kernelsu: Unsupported class loader
+10-01 23:22:11.504  8878  8878 W weishu.kernelsu: Unsupported class loader
+10-01 23:22:11.644  8878  8878 W HWUI    : Unknown dataspace 0
+10-01 23:22:11.670  8878  8904 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-01 23:22:11.671  8878  8904 I EGL_emulation: Opening libGLESv2_emulation.so
+10-01 23:22:11.683  8878  8904 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 23:22:11.713  8878  8904 I Gralloc4: mapper 4.x is not supported
+10-01 23:22:12.263  8878  8893 I SuperUserRepository: load cost: 155
+10-01 23:22:12.274  8878  8898 W SuperUserRepository: KsuService disconnected
+10-01 23:22:12.411  8878  8878 D VRI[WebUIActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 23:22:12.431  8878  8878 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@669081f
+10-01 23:22:17.097  8878  8946 D ProfileInstaller: Skipping profile installation for me.weishu.kernelsu
+10-01 23:22:20.322  8878  8904 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-01 23:22:20.323  8878  8904 I EGL_emulation: Opening libGLESv2_emulation.so
+10-01 23:22:20.329  8878  8904 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 23:22:21.022  8878  8878 D VRI[WebUIActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 23:22:21.047  8878  8878 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@bbdbb89
+ui: tapped 'Module' at 200,584
+ui: tapped 160,152
+ui: tapped 'Clean' at 209,64
+ui: tapped 'Clean' at 209,64
+ui: tapped 'Clean' at 209,64
+[0,0][320,640] search | Cancel
+[12,40][235,88] search
+[251,40][304,88] Cancel
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+ui: no node with 'Open'
+
+
+
+
+
+
+
+
+
+
+
+
+[0,0][320,640] search | Cancel
+[12,40][235,88] search
+[251,40][304,88] Cancel
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"java-exceptions","result":["--", "10-01 23:23:02.738  6541  7097 W GLSUser : Caused by: bpcw: Parse Proto Exception with response code 400", "10-01 23:23:02.738  6541  7097 W GLSUser : \tat bpdw.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):80)", "10-01 23:23:02.738  6541  7097 W GLSUser : \tat bpgb.e(:com.google.android.gms@242335041@24.23.35 (190800-646585959):17)", "10-01 23:23:02.738  6541  7097 W GLSUser : \tat bpgp.onSucceeded(:com.google.android.gms@242335041@24.23.35 (190800-646585959):7)", "10-01 23:23:02.738  6541  7097 W GLSUser : \tat m.mw.onSucceeded(:com.google.android.gms.dynamite_cronetdynamite@242335041@24.23.35 (190800-0):3)", "10-01 23:23:02.738  6541  7097 W GLSUser : \tat m.lt.run(:com.google.android.gms.dynamite_cronetdynamite@242335041@24.23.35 (190800-0):25)", "10-01 23:23:02.738  6541  7097 W GLSUser : \t... 6 more", "10-01 23:23:02.738  6541  7097 W GLSUser : Caused by: fkhe: Protocol message contained an invalid tag (zero).", "10-01 23:23:02.738  6541  7097 W GLSUser : \tat fkea.k(:com.google.android.gms@242335041@24.23.35 (190800-646585959):39)", "10-01 23:23:02.738  6541  7097 W GLSUser : \tat fkid.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):309)", "10-01 23:23:02.738  6541  7097 W GLSUser : \tat fkid.i(:com.google.android.gms@242335041@24.23.35 (190800-646585959):8)", "10-01 23:23:02.738  6541  7097 W GLSUser : \tat fkgi.fe(:com.google.android.gms@242335041@24.23.35 (190800-646585959):25)", "10-01 23:23:02.738  6541  7097 W GLSUser : \tat fkgc.g(:com.google.android.gms@242335041@24.23.35 (190800-646585959):3)", "--", "10-01 23:23:05.250  6541  7882 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 23:23:05.250  6541  7882 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 23:23:05.380  6084  6118 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:23:05.380  6084  6118 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:23:05.620  8878  8904 D EGL_emulation: app_time_stats: avg=508.55ms min=499.87ms max=517.22ms count=2", "10-01 23:23:06.246  9268  9268 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<", "10-01 23:23:06.248  9268  9268 I AndroidRuntime: Using default boot image", "10-01 23:23:06.249  9268  9268 I AndroidRuntime: Leaving lock profiling enabled", "10-01 23:23:06.250  9268  9268 I app_process: Core platform API reporting enabled, enforcing=false", "10-01 23:23:06.250  9268  9268 I app_process: Using CollectorTypeCMC GC.", "10-01 23:23:06.315  9268  9268 D app_process: u_setTimeZoneFilesDirectory(\"/apex/com.android.tzdata/etc/tz/versioned/8/icu\") succeeded. ", "--", "10-01 23:23:35.294  6541  8374 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 23:23:35.294  6541  8374 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 23:23:35.294  6884  7083 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=58 ]", "10-01 23:23:35.294  6884  7257 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix=\"RcsEngineImpl[DUAL_REG]:[4be19b82-48fc]>Handler\" thread_id=65 ]", "10-01 23:23:35.295  6084  6542 D OomAdjuster: Not killing cached processes", "10-01 23:23:35.344  6084  6118 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:23:35.344  6084  6118 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:23:35.364  9419  9419 W AccessibilityNodeInfoDumper: Fetch time: 2ms", "10-01 23:23:35.367  6084  6542 W MagnificationConnectionManager: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED", "10-01 23:23:35.367  6084  6542 D AccessibilityManagerService: restoreCurrentUserForTestAutomationIfNeededLocked(): ignoring because device doesn't support visible background users", "10-01 23:23:35.367  6084  6084 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:23:35.368  6084  6084 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:23:35.368  6084  6084 W IPCThreadState: Sending oneway calls to frozen process."]}
+{"check":"console-errors","result":[]}
+{"check":"first-frame-warm","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"root-start","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"session","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ws-hello","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"channel-process","result":""}
+{"check":"root-log","result":"tail: /data/adb/modules/flutter_webui_counter/webroot/.run/root.log: No such file or directory"}
+{"check":"session-mode","result":"ls: /data/adb/modules/flutter_webui_counter/webroot/.run/: No such file or directory"}
+{"check":"home-resume","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"before-back","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"back-events","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"back-console","result":[]}
+{"check":"back-at-root","result":"topResumedActivity=ActivityRecord{d4227f4 u0 me.weishu.kernelsu/.ui.MainActivity t16}"}
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+
+
+
+
+
+
+
+
+Status: ok
+
+
+
+
+
+
+
+
+Status: ok
+https://mui.kernelsu.org/index.html
+token found in manager data: 0000000000000000000000000000000000000000000000000000000000000000
+opened: intent-token
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Flutter Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9663","value":{"href":"https://mui.kernelsu.org/index.html","title":"Flutter Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":188,"load":469},"paint":{"first-paint":1207,"first-contentful-paint":1207},"glassAt":"present","firstFrame":null,"insets":null,"vv":[320,592,1]}}}
+{"check":"java-exceptions","result":["10-01 23:24:53.346  6541  9234 W FontLog : \tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)", "--", "10-01 23:24:56.421  6541  7312 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 23:24:56.422  6884  7083 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=58 ]", "10-01 23:24:56.422  6541  7312 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 23:24:56.422  6884  7257 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix=\"RcsEngineImpl[DUAL_REG]:[4be19b82-48fc]>Handler\" thread_id=65 ]", "10-01 23:24:58.321  6084  6231 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14", "10-01 23:24:58.321  6084  6231 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14", "10-01 23:24:58.321  6084  6231 D InetDiagMessage: Destroyed live tcp sockets for uids={10151} in 2ms", "10-01 23:24:58.322  6084  6231 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14", "10-01 23:24:58.322  6084  6231 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14", "10-01 23:24:58.322  6084  6231 D InetDiagMessage: Destroyed live tcp sockets for uids={20151} in 0ms", "10-01 23:24:58.636  6084  6118 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:24:58.710  6084  6118 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:24:59.414  6084  6118 D OomAdjuster: Not killing cached processes", "--", "10-01 23:25:02.430  6541  7312 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 23:25:02.431  6884  7083 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=58 ]", "10-01 23:25:02.431  6541  7312 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 23:25:02.431  6884  7257 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix=\"RcsEngineImpl[DUAL_REG]:[4be19b82-48fc]>Handler\" thread_id=65 ]", "10-01 23:25:03.319  6084  6173 D ActivityManager: freezing 8612 com.google.android.webview:webview_service", "10-01 23:25:03.321  6084  6231 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14", "10-01 23:25:03.322  6084  6231 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14", "10-01 23:25:03.322  6084  6231 D InetDiagMessage: Destroyed live tcp sockets for uids={10151} in 1ms", "10-01 23:25:05.844  6007  9898 I resolv  : GetAddrInfoHandler::run: {101 786533 101 983141 10143 0}", "10-01 23:25:05.845  6007  9899 I resolv  : res_nmkquery: (QUERY, IN, AAAA)", "10-01 23:25:05.845  6007  9900 I resolv  : res_nmkquery: (QUERY, IN, A)", "10-01 23:25:05.845  6007  9899 I resolv  : resolv_cache_lookup: FOUND IN CACHE entry=0x7ac75844f250", "10-01 23:25:05.845  6007  9899 I resolv  : doQuery: rcode=0, ancount=8, return value=264", "--", "10-01 23:25:08.437  6541  8410 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 23:25:08.437  6541  8410 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 23:25:09.527  9906  9906 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.", "10-01 23:25:09.527  9906  9906 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.", "10-01 23:25:09.533   167   167 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.", "10-01 23:25:09.534  9906  9907 I Gralloc4: mapper 4.x is not supported", "10-01 23:25:09.677     0     0 I servicemanager: Caller(pid=9906,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.", "10-01 23:25:09.732  9663  9663 W ThreadPoolForeg: type=1400 audit(0.0:162): avc:  denied  { getattr } for  path=\"/data/adb\" dev=\"dm-46\" ino=319489 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:adb_data_file:s0 tclass=dir permissive=0 app=me.weishu.kernelsu", "10-01 23:25:09.732  9663  9663 W ThreadPoolForeg: type=1400 audit(0.0:163): avc:  denied  { getattr } for  path=\"/data/adb\" dev=\"dm-46\" ino=319489 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:adb_data_file:s0 tclass=dir permissive=0 app=me.weishu.kernelsu", "10-01 23:25:09.918     0     0 I logd    : logdr: UID=0 GID=0 PID=9913 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-01 23:24:53.099  9663  9812 E chromium: [1001/232453.099405:ERROR:variations_seed_loader.cc(37)] Seed missing signature.", "10-01 23:24:53.100  9663  9812 I chromium: [1001/232453.100326:INFO:variations_seed_loader.cc(66)] Failed to open file for reading.: No such file or directory (2)", "10-01 23:24:53.138  9663  9825 E chromium: [ERROR:simple_file_enumerator.cc(21)] opendir /data/user/0/me.weishu.kernelsu/cache/WebView/Default/HTTP Cache/Code Cache/js: No such file or directory (2)", "10-01 23:24:53.138  9663  9825 E chromium: [ERROR:simple_index_file.cc(614)] Could not reconstruct index from disk", "10-01 23:24:53.138  9663  9825 E chromium: [ERROR:simple_file_enumerator.cc(21)] opendir /data/user/0/me.weishu.kernelsu/cache/WebView/Default/HTTP Cache/Code Cache/wasm: No such file or directory (2)", "10-01 23:24:53.138  9663  9825 E chromium: [ERROR:simple_index_file.cc(614)] Could not reconstruct index from disk", "10-01 23:24:53.274  9830  9851 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-01 23:24:53.274  9830  9851 W chromium: [WARNING:runtime_features.cc(730)] AttributionReportingCrossAppWeb cannot be enabled in this configuration. Use --enable-features=ConversionMeasurement,AttributionReportingCrossAppWeb in addition.", "10-01 23:24:53.471  9663  9663 I chromium: [INFO:CONSOLE(1)] \"Injecting <script> tag. Using callback.\", source: https://mui.kernelsu.org/flutter_bootstrap.js (1)"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9663","value":{"firstFrameMs":299,"now":15017,"flutter":true,"resizes":[],"paint":{"first-paint":592,"first-contentful-paint":592},"calls":[[21,"at-preload","ksu:undefined webui:undefined"],[24,"ksu-defined"],[28,"wrap-failed","exec"],[29,"wrap-failed","spawn"],[29,"wrap-failed","moduleInfo"],[29,"wrap-failed","fullScreen"],[29,"wrap-failed","enableEdgeToEdge"],[29,"wrap-failed","toast"],[29,"wrap-failed","exit"]],"resources":[["/flutter_bootstrap.js",23,54,"script",0],["/canvaskit/chromium/canvaskit.wasm",78,113,"fetch",0],["/canvaskit/chromium/canvaskit.js",78,96,"other",0],["/main.dart.js",78,113,"script",0],["/assets/FontManifest.json",233,245,"fetch",0],["/favicon.png",235,246,"other",0],["/assets/fonts/MaterialIcons-Regular.otf",245,258,"fetch",0],["/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",245,259,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",246,261,"fetch",0],["/favicon.png",590,611,"other",0]],"marks":[],"measures":[],"fonts":[]}}}
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+
+
+
+
+
+
+
+
+Status: ok
+
+
+
+
+
+
+
+
+Segmentation fault 
+intent path: no page; manager log:
+10-01 23:25:25.322  9972  9972 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-01 23:25:25.325  9972  9972 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+10-01 23:25:25.336  9972  9972 V GraphicsEnvironment: Currently set values for:
+10-01 23:25:25.336  9972  9972 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-01 23:25:25.336  9972  9972 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-01 23:25:25.336  9972  9972 V GraphicsEnvironment: Global.Settings values are invalid: number of packages: 0, number of values: 0
+10-01 23:25:25.336  9972  9972 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-01 23:25:25.349  9972  9972 W weishu.kernelsu: Unsupported class loader
+10-01 23:25:25.371  9972  9972 W weishu.kernelsu: Unsupported class loader
+10-01 23:25:25.372  9972  9972 W weishu.kernelsu: Unsupported class loader
+10-01 23:25:25.520  9972  9972 W HWUI    : Unknown dataspace 0
+10-01 23:25:25.573  9972  9999 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-01 23:25:25.573  9972  9999 I EGL_emulation: Opening libGLESv2_emulation.so
+10-01 23:25:25.598  9972  9999 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 23:25:25.623  9972  9999 I Gralloc4: mapper 4.x is not supported
+10-01 23:25:26.202  9972  9987 I SuperUserRepository: load cost: 177
+10-01 23:25:26.214  9972  9996 W SuperUserRepository: KsuService disconnected
+10-01 23:25:26.309  9972  9972 D VRI[WebUIActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 23:25:26.332  9972  9972 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@22c176c
+10-01 23:25:30.447  9972 10034 D ProfileInstaller: Skipping profile installation for me.weishu.kernelsu
+10-01 23:25:34.245  9972  9999 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-01 23:25:34.245  9972  9999 I EGL_emulation: Opening libGLESv2_emulation.so
+10-01 23:25:34.264  9972  9999 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 23:25:34.845  9972  9972 D VRI[WebUIActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 23:25:34.867  9972  9972 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@3e2c78e
+ui: tapped 'Module' at 200,584
+ui: tapped 160,152
+[0,0][320,640] Demo | search | Clean | Cancel | Demo | Version: v0.1.38 | Author:  | The demo GUI. Flutter on top of the core. | Open |
+[12,40][235,88] Demo | search | Clean
+[185,40][233,88] Clean
+[251,40][304,88] Cancel
+[12,98][308,251] Demo | Version: v0.1.38 | Author:  | The demo GUI. Flutter on top of the core. | Open | Open | Uninstall
+[243,116][292,164] 
+[28,194][110,242] Open | Open
+[186,194][292,242] Uninstall
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+ui: tapped 'Open' at 69,218
+https://mui.kernelsu.org/index.html
+    * Hist  #1: ActivityRecord{b15db97 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t22}
+      packageName=me.weishu.kernelsu processName=me.weishu.kernelsu
+      launchedFromUid=10209 launchedFromPackage=me.weishu.kernelsu launchedFromFeature=null userId=0
+      app=ProcessRecord{7492e4e 9972:me.weishu.kernelsu/u0a209}
+      Intent { dat=ksu://webui?id=demo&token=021170c745c282173473446e8c40ee7dba7c36e6275cecc7692b3a4f2cb0a53c flg=0x80000 cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity }
+opened: ui
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":{"href":"https://mui.kernelsu.org/index.html","title":"Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":113,"load":541},"paint":{"first-paint":1233,"first-contentful-paint":1233},"glassAt":"present","firstFrame":null,"insets":"24px","vv":[320,640,1]}}}
+{"check":"java-exceptions","result":["--", "10-01 23:26:09.976  9972 10330 E SuFilePathHandler: java.io.FileNotFoundException: No such file or directory: /data/adb/modules/demo/webroot/favicon.ico", "10-01 23:26:09.976  9972 10330 E SuFilePathHandler: \tat zb3.a(r8-map-id-9f7f45feba6f2c95784574c49c444982ed6e6c85bfa15582daceb837f5e42ea2:151)", "10-01 23:26:09.976  9972 10330 E SuFilePathHandler: \tat fk3.e(r8-map-id-9f7f45feba6f2c95784574c49c444982ed6e6c85bfa15582daceb837f5e42ea2:308)", "10-01 23:26:09.976  9972 10330 E SuFilePathHandler: \tat ja4.a(r8-map-id-9f7f45feba6f2c95784574c49c444982ed6e6c85bfa15582daceb837f5e42ea2:99)", "10-01 23:26:09.976  9972 10330 E SuFilePathHandler: \tat o11.shouldInterceptRequest(r8-map-id-9f7f45feba6f2c95784574c49c444982ed6e6c85bfa15582daceb837f5e42ea2:247)", "10-01 23:26:10.297 10394 10394 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.", "10-01 23:26:10.297 10394 10394 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.", "10-01 23:26:10.308   167   167 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.", "10-01 23:26:10.308 10394 10395 I Gralloc4: mapper 4.x is not supported", "10-01 23:26:10.450     0     0 I servicemanager: Caller(pid=10394,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.", "10-01 23:26:10.656  9972  9972 W ThreadPoolForeg: type=1400 audit(0.0:230): avc:  denied  { getattr } for  path=\"/data/adb\" dev=\"dm-46\" ino=319489 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:adb_data_file:s0 tclass=dir permissive=0 app=me.weishu.kernelsu", "--", "10-01 23:26:14.536  6541  8410 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 23:26:14.536  6541  8410 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 23:26:14.536  6884  7257 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix=\"RcsEngineImpl[DUAL_REG]:[4be19b82-48fc]>Handler\" thread_id=65 ]", "10-01 23:26:14.536  6884  7083 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=58 ]", "10-01 23:26:14.537  6084  9652 D OomAdjuster: Not killing cached processes", "10-01 23:26:14.792  6084  9652 D WifiNl80211Manager: Scan result ready event", "10-01 23:26:14.792  6084  9652 D WifiNative: Scan result ready event", "10-01 23:26:14.795  6084  6224 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]", "10-01 23:26:14.961  6991  6991 D BoundBrokerSvc: onUnbind: Intent { act=com.google.firebase.dynamiclinks.service.START pkg=com.google.android.gms }", "10-01 23:26:15.183  6084  6118 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:26:15.183  6084  6118 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:26:16.206  6084  6118 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:26:16.549 10406 10406 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.", "--", "10-01 23:26:17.539  6541  8374 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 23:26:17.539  6541  8374 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 23:26:17.541  6884  7083 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=58 ]", "10-01 23:26:17.542  6884  7257 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix=\"RcsEngineImpl[DUAL_REG]:[4be19b82-48fc]>Handler\" thread_id=65 ]", "10-01 23:26:18.255  6084  6118 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 23:26:19.510  6084  6173 D ActivityManager: freezing 8612 com.google.android.webview:webview_service", "10-01 23:26:19.512  6084  6231 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14", "10-01 23:26:19.512  6084  6231 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14", "10-01 23:26:19.512  6084  6231 D InetDiagMessage: Destroyed live tcp sockets for uids={10151} in 2ms", "10-01 23:26:19.643  6771  6809 I ProtoXDBBufferWrapper: ProtoXDBBufferWrapper.flushToStorage():158 Flushed 12 data item(s) to storage.", "10-01 23:26:20.183  7035  8512 W okhttp.OkHttpClient: A connection to https://www.gstatic.com/ was leaked. Did you forget to close a response body? To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);", "10-01 23:26:20.183  7035  8512 W okhttp.OkHttpClient: A connection to https://www.gstatic.com/ was leaked. Did you forget to close a response body? To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);", "10-01 23:26:20.184  7035  8512 W okhttp.OkHttpClient: A connection to https://www.gstatic.com/ was leaked. Did you forget to close a response body? To see where this was allocated, set the OkHttpClient logger level to FINE: Logger.getLogger(OkHttpClient.class.getName()).setLevel(Level.FINE);"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-01 23:26:09.344  9972 10325 E chromium: [1001/232609.344645:ERROR:variations_seed_loader.cc(37)] Seed missing signature.", "10-01 23:26:09.344  9972 10325 I chromium: [1001/232609.344943:INFO:variations_seed_loader.cc(66)] Failed to open file for reading.: No such file or directory (2)", "10-01 23:26:09.374  9972 10351 E chromium: [ERROR:simple_version_upgrade.cc(152)] Failed to write a new fake index.", "10-01 23:26:09.457 10335 10361 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-01 23:26:09.457 10335 10361 W chromium: [WARNING:runtime_features.cc(730)] AttributionReportingCrossAppWeb cannot be enabled in this configuration. Use --enable-features=ConversionMeasurement,AttributionReportingCrossAppWeb in addition.", "10-01 23:26:09.508 10335 10361 I chromium: [INFO:viewport_data.cc(133)] E2E_Used ViewportFitCover", "10-01 23:26:09.678  9972  9972 I chromium: [INFO:CONSOLE(3)] \"Injecting <script> tag. Using callback.\", source: https://mui.kernelsu.org/flutter_bootstrap.js (3)"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":{"firstFrameMs":425,"now":15051,"flutter":true,"resizes":[],"paint":{"first-paint":808,"first-contentful-paint":808},"calls":[[33,"at-preload","ksu:undefined webui:undefined"],[36,"ksu-defined"],[39,"wrap-failed","exec"],[41,"wrap-failed","spawn"],[42,"wrap-failed","moduleInfo"],[46,"wrap-failed","fullScreen"],[51,"wrap-failed","enableEdgeToEdge"],[54,"wrap-failed","toast"],[55,"wrap-failed","exit"]],"resources":[["/internal/insets.css",31,55,"link",0],["/internal/colors.css",31,55,"link",0],["/flutter_webui.css",31,59,"link",0],["/flutter_webui.js",31,56,"script",0],["/flutter_bootstrap.js",31,62,"script",0],["/canvaskit/chromium/canvaskit.wasm",90,125,"fetch",0],["/canvaskit/chromium/canvaskit.js",90,102,"other",0],["/main.dart.js",90,128,"script",0],["/assets/FontManifest.json",325,335,"fetch",0],["/favicon.ico",329,336,"other",0],["/assets/fonts/MaterialIcons-Regular.otf",336,344,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",336,346,"fetch",0],["/internal/colors.css",353,426,"fetch",0],["/pkg/demo_native.js",800,824,"fetch",0]],"marks":[["flutter_webui:register",348],["flutter_webui:registered",349],["flutter_webui:register",350],["flutter_webui:registered",350],["flutter_webui:first-frame",425]],"measures":[],"fonts":[]}}}
+{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":"semantics on"}
+{"check":"home","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Squadron","Process","native","net","Say hello","Count to 5","SHA-256","Demo pages\nOne page per thing the stack promises.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"colors-css","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":{"status":200,"type":"text/css","body":""}}}
+{"check":"wasm-at-home","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":{"wasm":[{"name":"chromium/canvaskit.wasm","start":90,"dur":35}],"marks":[{"name":"flutter_webui:register","t":348},{"name":"flutter_webui:registered","t":349},{"name":"flutter_webui:register","t":350},{"name":"flutter_webui:registered","t":350},{"name":"flutter_webui:first-frame","t":425}],"measures":[],"now":18444}}}
+{"check":"tap-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","One service, DemoService, opened in every place this build knows. Each place probes its own facts from inside; the page never guesses from the platform it was built for.","200k","1M","3M","Count primes in every place","Restart places","inline (the caller)\nkind: inline\nstart 338 ms, first facts() round trip 58 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 268 ms, first facts() round trip 36 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"places-scroll-1","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","200k","1M","3M","Count primes in every place","Restart places","inline (the caller)\nkind: inline\nstart 338 ms, first facts() round trip 58 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 268 ms, first facts() round trip 36 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root process (the app CLI, serve mode)\nkind: process\nstart 163 ms, first facts() round trip 0 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"places-scroll-2","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","inline (the caller)\nkind: inline\nstart 338 ms, first facts() round trip 58 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 268 ms, first facts() round trip 36 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root process (the app CLI, serve mode)\nkind: process\nstart 163 ms, first facts() round trip 0 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"places-scroll-3","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","worker (isolate or Web Worker)\nkind: web_worker\nstart 268 ms, first facts() round trip 36 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root process (the app CLI, serve mode)\nkind: process\nstart 163 ms, first facts() round trip 0 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Reference: one call and one stream per place\nsquadron_process doc/benchmark.md, a 4-vCPU VM. Not measured here; devicelab measures devices.\nCall: isolate 31 µs, Web Worker (dart2js) 120 µs, process 247 µs, process from the page 401 µs.\n64 KiB stream: isolate 3643 MiB/s, Web Worker 631 MiB/s, process link about 110 MiB/s.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-strategy","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":"tapped Strategy at 53,536 size 53x80 role tab tappable"}}
+{"check":"strategy","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","Objective: list the device's partitions. Strategies in preference order: on the device as root, then from a host over USB. The first one the place's facts allow runs; nothing reads kIsWeb or Platform.","Place","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Facts from inline (the caller)\nSwitch a fact off to see the fallback. You can only take facts away.\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root","block_devices","usb.native","process.spawn","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-strategy-root","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":"tapped root process at 24,358 size 272x48 role checkbox tappable"}}
+{"check":"strategy-root","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","Objective: list the device's partitions. Strategies in preference order: on the device as root, then from a host over USB. The first one the place's facts allow runs; nothing reads kIsWeb or Platform.","Place","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Facts from root process (the app CLI, serve mode)\nSwitch a fact off to see the fallback. You can only take facts away.\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root","block_devices","usb.native","process.spawn","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"strategy-root-scroll-1","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","Place","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Facts from root process (the app CLI, serve mode)\nSwitch a fact off to see the fallback. You can only take facts away.\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root","block_devices","usb.native","process.spawn","Chosen: on device (/proc/partitions as root)\non_device chosen","on device (/proc/partitions as root)\nneeds root + block_devices: has them","from host (fastboot getvar all)\nneeds usb.native + process.spawn: has them","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"strategy-root-scroll-2","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","Facts from root process (the app CLI, serve mode)\nSwitch a fact off to see the fallback. You can only take facts away.\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","usb.native","process.spawn","Chosen: on device (/proc/partitions as root)\non_device chosen","on device (/proc/partitions as root)\nneeds root + block_devices: has them","from host (fastboot getvar all)\nneeds usb.native + process.spawn: has them","Run on_device in process","Log\nEvery run: objective, strategy, place and the facts it saw.\nNothing has run yet.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-rust","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":"tapped Rust at 107,536 size 53x80 role tab tappable"}}
+{"check":"rust","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","The demo crate (rust/) counts the primes below 1000000 with the same loop as page 1's Dart. The service loads it in its own place through flutter_rust_bridge, so each place runs its own build.","Run in every place","inline (the caller)","Run here","worker (isolate or Web Worker)","Run here","root process (the app CLI, serve mode)","Run here","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-rust-run","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":"tapped Run in every place at 16,196 size 288x48 role button tappable"}}
+{"check":"rust-ran","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","The demo crate (rust/) counts the primes below 1000000 with the same loop as page 1's Dart. The service loads it in its own place through flutter_rust_bridge, so each place runs its own build.","Run in every place","inline (the caller)\nBuilt for: wasm32-unknown (single-threaded)\nLoad: 81 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 112 ms, Dart 891 ms (same count: 78498)","Run here","worker (isolate or Web Worker)\nBuilt for: wasm32-unknown (single-threaded)\nLoad: 42 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 155 ms, Dart 200 ms (same count: 78498)","Run here","root process (the app CLI, serve mode)\nBuilt for: x86_64-android\nLoad: 0 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 106 ms, Dart 109 ms (same count: 78498)","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"wasm-after-rust","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":{"wasm":[{"name":"chromium/canvaskit.wasm","start":90,"dur":35},{"name":"pkg/demo_native_bg.wasm","start":80778,"dur":38}],"marks":[{"name":"flutter_webui:register","t":348},{"name":"flutter_webui:registered","t":349},{"name":"flutter_webui:register","t":350},{"name":"flutter_webui:registered","t":350},{"name":"flutter_webui:first-frame","t":425}],"measures":[],"now":101719}}}
+{"check":"tap-rust-run-2","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":"tapped Run in every place at 16,196 size 288x48 role button tappable"}}
+{"check":"rust-ran-2","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","The demo crate (rust/) counts the primes below 1000000 with the same loop as page 1's Dart. The service loads it in its own place through flutter_rust_bridge, so each place runs its own build.","Run in every place","inline (the caller)\nBuilt for: wasm32-unknown (single-threaded)\nLoad: 0 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 109 ms, Dart 897 ms (same count: 78498)","Run here","worker (isolate or Web Worker)\nBuilt for: wasm32-unknown (single-threaded)\nLoad: 0 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 114 ms, Dart 187 ms (same count: 78498)","Run here","root process (the app CLI, serve mode)\nBuilt for: x86_64-android\nLoad: 0 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 105 ms, Dart 108 ms (same count: 78498)","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-lifecycle","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":"tapped Lifecycle at 160,536 size 53x80 role tab tappable"}}
+{"check":"tap-root-process","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":"tapped root process at 24,390 size 272x48 role checkbox tappable"}}
+{"check":"tap-start","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":"tapped Start at 24,462 size 97x48 role button tappable"}}
+{"check":"lifecycle-running","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","Start a five-minute task, then switch away (Home, another app or tab) and come back: hidden keeps going. Close the app instead and reopen it: closed stops, and this page says where the task was when it ended.","Task\ntick every 500 ms, stamped with the place's own clock\nrunning in process: tick 17/600, longest gap 502 ms, app resumed 3","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Stop","Lifecycle\n23:28:34  started in process","Facts from root process (the app CLI, serve mode)\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"lifecycle-after-home","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Back\nBack","Start a five-minute task, then switch away (Home, another app or tab) and come back: hidden keeps going. Close the app instead and reopen it: closed stops, and this page says where the task was when it ended.","Task\ntick every 500 ms, stamped with the place's own clock\nrunning in process: tick 41/600, longest gap 503 ms, app resumed 7","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Stop","Lifecycle\n23:28:50  away 7.1 s: the place produced 15 ticks (on schedule: 14); longest gap 503 ms\n23:28:50  inactive -> resumed\n23:28:50  hidden -> inactive\n23:28:43  inactive -> hidden\n23:28:43  resumed -> inactive\n23:28:34  started in process","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"root-process","result":"root             0 u:r:ksu:s0                     10484 dartaotruntime\nroot             0 u:r:ksu:s0                     10525 dartaotruntime"}
+/home/runner/work/devicelab/devicelab/out/sockprobe: 1 file pushed, 0 skipped. 315.9 MB/s (3501149 bytes in 0.011s)
+{"check":"block-devices","result":"dm-0\ndm-1\ndm-11\ndm-13\ndm-14\ndm-16\ndm-17\ndm-18\ntotal 0\ndrwxr-xr-x 2 root root u:object_r:block_device:s0                140 2026-10-01 23:19 by-name\nbrw------- 1 root root u:object_r:dm_device:s0              254,   0 2026-10-01 23:19 dm-0\nbrw------- 1 root root u:object_r:dm_device:s0              254,   1 2026-10-01 23:19 dm-1\nbrw------- 1 root root u:object_r:dm_device:s0              254,  11 2026-10-01 23:19 dm-11\nbrw------- 1 root root u:object_r:dm_device:s0              254,  13 2026-10-01 23:19 dm-13\nbrw------- 1 root root u:object_r:dm_device:s0              254,  14 2026-10-01 23:19 dm-14\nbrw------- 1 root root u:object_r:dm_device:s0              254,  16 2026-10-01 23:19 dm-16\nbrw------- 1 root root u:object_r:dm_device:s0              254,  17 2026-10-01 23:19 dm-17\nbrw------- 1 root root u:object_r:dm_device:s0              254,  18 2026-10-01 23:19 dm-18\nbrw------- 1 root root u:object_r:dm_device:s0              254,  19 2026-10-01 23:19 dm-19\nbrw------- 1 root root u:object_r:dm_device:s0              254,   2 2026-10-01 23:19 dm-2\n-- su:\n0000000  \\0\n-- ksu:\n{\"error\":\"write /proc/thread-self/attr/current: operation not permitted\",\"op\":\"setcon\"}\n-- avc:"}
+{"check":"back-1","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9972","value":["Squadron","Process","native","net","Say hello","Count to 5","SHA-256","Demo pages\nOne page per thing the stack promises.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"back-1-top","result":"topResumedActivity=ActivityRecord{b15db97 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t22}"}
+{"check":"back-2-top","result":"topResumedActivity=ActivityRecord{7473cde u0 me.weishu.kernelsu/.ui.MainActivity t22}"}
+{"check":"back-3-top","result":"topResumedActivity=ActivityRecord{7473cde u0 me.weishu.kernelsu/.ui.MainActivity t22}"}
+{"check":"monet-dark-sys-light","night":"no","color_mode":"5","opened":"opened: intent-token","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10876","value":{"dark":false,"primary":"#277af7","background":"#242424","cssBytes":1427}}}
+{"check":"monet-light-sys-dark","night":"yes","color_mode":"4","opened":"opened: intent-token","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11151","value":{"dark":true,"primary":"#3482ff","background":"#ffffff","cssBytes":1425}}}
+{"check":"monet-system-sys-dark","night":"yes","color_mode":"3","opened":"opened: intent-token","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11397","value":{"dark":true,"primary":"#277af7","background":"#242424","cssBytes":1427}}}
+{"check":"dark-sys-light","night":"no","color_mode":"2","opened":"opened: intent-token","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11671","value":{"dark":false,"primary":null,"background":null,"cssBytes":0}}}
+{"check":"system-sys-dark","night":"yes","color_mode":"0","opened":"opened: intent-token","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11919","value":{"dark":true,"primary":null,"background":null,"cssBytes":0}}}
+{"check":"app","result":"ls: /product/app/WebuiApi_demo/: No such file or directory"}
+{"check":"mounts","result":"ls: /data/adb/metamodule: No such file or directory\ntmpfs /product/app tmpfs rw,seclabel,relatime,mode=755 0 0\nCalendarGooglePrebuilt Camera2 Chrome Chrome-Stub Drive GoogleContacts GoogleTTS LatinIMEGooglePrebuilt LicenseChecker Maps MarkupGoogle_v2 ModuleMetadataGoogle NexusWallpapersStubPrebuilt2018 Photos PixelThemesStub PrebuiltDeskClockGoogle PrebuiltGmail PrebuiltGoogleAdservicesTvp PrebuiltGoogleTelemetryTvp SoundPickerPrebuilt TrichromeLibrary TrichromeLibrary-Stub WebViewGoogle WebViewGoogle-Stub WebuiTermuxApi YouTube YouTubeMusicPrebuilt talkback"}
+{"check":"app-label","result":"No activities found"}
+{"check":"module-config","result":"manage module configuration\n\nUsage: ksud module config [OPTIONS] <COMMAND>\n\nCommands:\n  get     Get a config value\n  set     Set a config value\n  list    List all config entries\n  delete  Delete a config entry\n  clear   Clear all config entries\n  help    Print this message or the help of the given subcommand(s)\n\n-- files:\ntotal 32\ndrwxr-xr-x 2 root root 4096 2026-10-01 23:26 .\ndrwxr-xr-x 3 root root 4096 2026-10-01 23:20 ..\n-rw-r--r-- 1 root root   36 2026-10-01 23:20 persist.config\n-rw------- 1 root root  284 2026-10-01 23:26 tmp.config\n== /data/adb/ksu/module_configs/demo/persist.config\nMUSK\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u000f\u0000\u0000\u0000webui.installed\u0001\u0000\u0000\u00001\n== /data/adb/ksu/module_configs/demo/tmp.config\nMUSK\u0001\u0000\u0000\u0000\u0002\u0000\u0000\u0000\n\u0000\u0000\u0000webui.boot$\u0000\u0000\u00008b96d83a-4d1e-4e93-9ea7-87c4aadffd30\u0000\u0000\u0000webui.session\udcc5\u0000\u0000\u0000{\"protocol\":1,\"version\":\"0.2.0\",\"port\":44893,\"token\":\"nZNfED_Z-MzIRk7jMMRGIwQFoICwTyFsW1-l6YC-LDI\",\"pid\":10484,\"boot\":\"8b96d83a-4d1e-4e93-9ea7-87c4aadffd30\",\"started\":\"2026-10-01T23:26:45.504114Z\"}\n-- ksud get:\n1\nwebui.boot=8b96d83a-4d1e-4e93-9ea7-87c4aadffd30\nwebui.session={\"protocol\":1,\"version\":\"0.2.0\",\"port\":44893,\"token\":\"nZNfED_Z-MzIRk7jMMRGIwQFoICwTyFsW1-l6YC-LDI\",\"pid\":10484,\"boot\":\"8b96d83a-4d1e-4e93-9ea7-87c4aadffd30\",\"started\":\"2026-10-01T23:26:45.504114Z\"}\nwebui.installed=1"}
+{"check":"module-dirs","result":"/data/adb/demo:\ntotal 24\ndrwx------ 3 root root 4096 2026-10-01 23:26 .\ndrwx------ 6 root root 4096 2026-10-01 23:26 ..\ndrwx------ 2 root root 4096 2026-10-01 23:26 tmp\n\n/data/adb/demo/tmp:\ntotal 16\ndrwx------ 2 root root 4096 2026-10-01 23:26 .\ndrwx------ 3 root root 4096 2026-10-01 23:26 .."}
+{"check":"open","result":"opened: intent-token"}
+{"check":"tap-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_12209","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"tap-plugins","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_12209","value":"tapped Plugins at 267,536 size 53x80 role tab tappable"}}
+{"check":"plugins","result":The app calls share_plus, permission_handler, the clipboard and file_selector as on any platform. Running in a WebUI host, so their *_webui packages answer.
+share_plus
+On WebUI: share_plus_webui: Android's share sheet, opened by the module's own app
+Share text
+permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: denied}
+{"check":"tap-share","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_12209","value":"tapped Share text at 24,278 size 112x48 role button tappable"}}
+{"check":"share-top","result":"com.google.android.gm/.welcome.WelcomeTourActivity"}
+{"check":"app-process","result":""}
+{"check":"share-log","result":"10-01 23:32:30.634 12209 12209 I chromium: [INFO:CONSOLE(28366)] \"2026-10-01T23:32:30.632 INFO ui.plugins: share: unavailable\", source: https://mui.kernelsu.org/main.dart.js (28366)\n10-01 23:32:31.337  6084  6272 D ShortcutService: Package com.google.android.gm has 1 manifest shortcut(s), and 1 share target(s)\n10-01 23:32:31.799  6084  6272 D ShortcutService: Package com.google.android.gm has 1 manifest shortcut(s), and 1 share target(s)\n10-01 23:32:33.054  6084  6272 D ShortcutService: Package com.google.android.gm has 1 manifest shortcut(s), and 1 share target(s)\n10-01 23:32:36.840  7035  7349 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of com.google.android.apps.messaging.shared.experiments.receiver.BuglePhenotypeBroadcastReceiver@a543ad6\n10-01 23:32:36.998  7035 12778 D MddListenableWorkerFactory: createWorker for class: com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim\n10-01 23:32:37.002  7035 12781 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=58fee5c2-0034-4a85-9957-fea6106b2b1f, tags={ com.google.android.apps.messaging.shared.datamodel.workqueue.WorkQueueWorkerShim,data_upgrade- } ]\n10-01 23:32:38.863 12790 12790 W app_process: ClassLoaderContext shared library size mismatch. Expected=2, found=0 (PCL[]{PCL[/system/framework/android.test.base.jar*724373495]#PCL[/system/framework/android.test.mock.jar*1452759902]} | PCL[])"}
+{"check":"share-result","result":share_plus
+On WebUI: share_plus_webui: Android's share sheet, opened by the module's own app
+Share result: unavailable}
+Failure [package not found]
+Error: package not found
+{"check":"cam-deny-1-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_12209","value":"tapped Request camera at 24,490 size 150x46 role button tappable"}}
+{"check":"cam-deny-1-top","result":"me.weishu.kernelsu/.ui.webui.WebUIActivity"}
+{"check":"cam-deny-1-dialog","result":"Back Back\nShare text\nRequest camera\nCopy text\nPaste\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-deny-1-press","result":"ui: no node with 'Don'"}
+{"check":"cam-deny-1-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: permanentlyDenied}
+{"check":"cam-deny-1-perm","result":""}
+{"check":"cam-deny-2-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_12209","value":"tapped Request camera at 24,490 size 150x46 role button tappable"}}
+{"check":"cam-deny-2-top","result":"me.weishu.kernelsu/.ui.webui.WebUIActivity"}
+{"check":"cam-deny-2-dialog","result":"Back Back\nShare text\nRequest camera\nCopy text\nPaste\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-deny-2-press","result":"ui: no node with 'Don'"}
+{"check":"cam-deny-2-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: permanentlyDenied}
+{"check":"cam-deny-2-perm","result":""}
+{"check":"cam-after-deny-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_12209","value":"tapped Request camera at 24,490 size 150x46 role button tappable"}}
+{"check":"cam-after-deny-top","result":"me.weishu.kernelsu/.ui.webui.WebUIActivity"}
+{"check":"cam-after-deny-dialog","result":"Back Back\nShare text\nRequest camera\nCopy text\nPaste\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-after-deny-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: permanentlyDenied}
+{"check":"cam-after-deny-perm","result":""}
+Failure [package not found]
+Error: package not found
+{"check":"cam-grant-tap","result":{"error":"no page target","sockets":["webview_devtools_remote_12209"],"targets":[]}}
+{"check":"cam-grant-top","result":"com.google.android.apps.nexuslauncher/.NexusLauncherActivity"}
+{"check":"cam-grant-dialog","result":"Thu, Oct 1 | Thu, Oct 1\nThu, Oct 1 | Thu, Oct 1\nPhone | Phone\nMessages | Messages\nKernelSU | Predicted app: KernelSU\nChrome | Chrome\nCamera | Camera\nGoogle search | Google app | Voice search | Google Lens\nGoogle app\nVoice search\nGoogle Lens"}
+{"check":"cam-grant-press","result":"ui: no node with 'While using the app'"}
+{"check":"cam-grant-status","result":null}
+{"check":"cam-grant-perm","result":""}
+{"check":"clipboard","result":"no Paste button on page 6"}
+{"check":"file-pick","result":"no Pick a file button on page 6"}
+{"check":"app-settings","result":"Thu, Oct 1 | Thu, Oct 1\nThu, Oct 1 | Thu, Oct 1\nPhone | Phone\nMessages | Messages\nKernelSU | Predicted app: KernelSU\nChrome | Chrome\nCamera | Camera\nGoogle search | Google app | Voice search | Google Lens\nGoogle app\nVoice search\nGoogle Lens"}
+{"check":"uninstall","result":""}
+{"check":"after-uninstall","result":"ls: /data/adb/modules/demo: No such file or directory\nls: /data/adb/demo: No such file or directory\nls: /data/adb/ksu/module_configs/demo: No such file or directory\nls: /product/app/WebuiApi_demo: No such file or directory\ncmd: Can't find service: package\ncmd: Can't find service: package"}
+{"check":"mount","result":"mount: mounting overlay on /product/app failed: Invalid argument\noverlay failed: 255\nmagic mount ok\nmount: mounting overlay on /product/app failed: Invalid argument\noverlay failed: 255\nmagic mount ok\ntotal 3736\ndrwxr-xr-x 2 root root u:object_r:system_file:s0     4096 2026-10-01 23:20 .\ndrwxr-xr-x 4 root root u:object_r:system_file:s0       80 2026-10-01 23:34 ..\n-rw-r--r-- 1 root root u:object_r:system_file:s0  3809993 2026-10-01 23:20 WebuiTermuxApi.apk\n*\nWebuiTermuxApi\n/dev/block/dm-3 /product ext4 ro,seclabel,relatime 0 0\ntmpfs /dev/app_plane_app tmpfs rw,seclabel,relatime,mode=755 0 0\ntmpfs /product/app tmpfs rw,seclabel,relatime,mode=755 0 0\n/dev/block/dm-3 /product/app/CalendarGooglePrebuilt ext4 ro,seclabel,relatime 0 0\n/dev/block/dm-3 /product/app/Camera2 ext4 ro,seclabel,relatime 0 0\n/dev/block/dm-3 /product/app/Chrome ext4 ro,seclabel,relatime 0 0\n/dev/block/dm-3 /product/app/Chrome-Stub ext4 ro,seclabel,relatime 0 0\n/dev/block/dm-3 /product/app/Drive ext4 ro,seclabel,relatime 0 0\n32"}
+Error with service 'package' while dumping: DEAD_OBJECT
+{"check":"package","result":"cmd: Failure calling service package: Broken pipe (32)"}
+Error with service 'package' while dumping: DEAD_OBJECT
+/home/runner/work/devicelab/devicelab/out/sockprobe: 1 file pushed, 0 skipped. 342.9 MB/s (3501149 bytes in 0.010s)
+cmd: Can't find service: activity
+cmd: Can't find service: activity
+{"check":"broadcast","result":"cmd: Can't find service: activity\ncmd: Can't find service: activity"}
+{"check":"app-process","result":""}
+{"check":"listener-module","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"wx_ksu_out\",\"wx_ksu_in\"],\"uid\":0}\n{\"event\":\"exit\"}\nunix @wx_ksu_out: bind: address already in use\",\"event\":\"listen-error\",\"name\":\"wx_ksu_out\"}\n{\"error\":\"listen unix @wx_ksu_in: bind: address already in use\",\"event\":\"listen-error\",\"name\":\"wx_ksu_in\"}"}
+{"check":"listener-su","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"wx_su_out\",\"wx_su_in\"],\"uid\":0}"}
+{"check":"avc","result":"10-01 23:42:40.540  7082  7082 W PackageSettings: Missing permission state for package com.webui.termux.api on user 0\n10-01 23:42:40.919   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:40.919   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:40.919   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:40.919   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:40.919   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:40.919   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:41.082   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:41.082   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:41.082   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:41.082   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:41.082   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:41.082   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:41.087   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:41.087   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:41.087   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:41.087   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:41.087   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:41.087   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:41.088   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:41.088   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:41.088   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:41.088   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:41.088   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:41.088   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi"}
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+{"check":"restorecon","result":"u:object_r:app_data_file:s0:c210,c256,c512,c768 /data/data/com.webui.termux.api\nu:object_r:app_data_file:s0                     /data/data/com.webui.termux.api/files/devicelab/probe.txt"}
+{"check":"app-read","result":"u:object_r:app_data_file:s0:c210,c256,c512,c768 chcon.txt\nu:object_r:app_data_file:s0                     probe.txt\n{\"error\":\"write /proc/thread-self/attr/current: operation not permitted\",\"op\":\"setcon\"}"}
+Can't find service: activity
+{"check":"share-text","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_text_out\",\"sh_text_in\"],\"uid\":0}\n10-01 23:42:56.109   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:56.109   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:56.109   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:56.109   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:56.110   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:56.110   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:56.110   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:56.110   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:56.110   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:42:56.110   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:42:56.152  7973  7973 D nativeloader: Load libservice-connectivity.so using ns clns-shared-13 from class loader (caller=/apex/com.android.tethering/javalib/service-connectivity.jar): ok\n10-01 23:42:56.243  7928  7928 D AudioFlinger: isLowRamDevice:false totalMemory:6217895936 mClientSharedHeapSize:33554432"}
+cmd: Can't find service: input
+Can't find service: activity
+{"check":"share-file","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_file_out\",\"sh_file_in\"],\"uid\":0}\n10-01 23:43:11.097   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:43:11.097   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:43:11.097   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:43:11.097   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:43:11.098   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:43:11.098   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:43:11.098   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:43:11.098   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:43:11.098   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:43:11.098   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:43:11.134  8833  8833 D nativeloader: Load libservice-connectivity.so using ns clns-shared-13 from class loader (caller=/apex/com.android.tethering/javalib/service-connectivity.jar): ok\n10-01 23:43:11.222  8789  8897 D AudioFlinger: isLowRamDevice:false totalMemory:6217895936 mClientSharedHeapSize:33554432"}
+cmd: Can't find service: input
+Can't find service: activity
+{"check":"share-text-saw","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_text-saw_out\",\"sh_text-saw_in\"],\"uid\":0}\n10-01 23:43:26.146   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:43:26.146   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:43:26.146   503   503 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:43:26.146   503   503 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:43:26.147   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:43:26.147   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:43:26.147   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:43:26.147   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:43:26.147   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:43:26.147   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:43:26.187  9696  9696 D nativeloader: Load libservice-connectivity.so using ns clns-shared-13 from class loader (caller=/apex/com.android.tethering/javalib/service-connectivity.jar): ok\n10-01 23:43:26.291  9652  9763 D AudioFlinger: isLowRamDevice:false totalMemory:6217895936 mClientSharedHeapSize:33554432"}
+cmd: Can't find service: input
+Can't find service: activity
+{"check":"share-file-saw","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_file-saw_out\",\"sh_file-saw_in\"],\"uid\":0}\n10-01 23:43:45.667 10840 10840 V AconfigFlags: Read Aconfig default flag value com.android.systemui.shared.enable_home_delay = false\n10-01 23:43:45.667 10840 10840 V AconfigFlags: Read Aconfig default flag value com.android.systemui.shared.example_shared_flag = false\n10-01 23:43:45.667 10840 10840 V AconfigFlags: Read Aconfig default flag value com.android.systemui.shared.return_animation_framework_library = false\n10-01 23:43:45.667 10840 10840 V AconfigFlags: Read Aconfig default flag value com.android.systemui.shared.shade_allow_back_gesture = false\n10-01 23:43:45.667 10840 10840 V AconfigFlags: Read Aconfig default flag value com.android.systemui.shared.sidefps_controller_refactor = true\n10-01 23:43:45.676 10840 10840 V AconfigFlags: Read Aconfig default flag value android.content.pm.restrict_nonpreloads_system_shareduids = true\n10-01 23:43:45.678 10840 10840 V AconfigFlags: Read Aconfig default flag value android.service.chooser.chooser_album_text = true\n10-01 23:43:45.678 10840 10840 V AconfigFlags: Read Aconfig default flag value android.service.chooser.chooser_payload_toggling = true\n10-01 23:43:45.678 10840 10840 V AconfigFlags: Read Aconfig default flag value android.service.chooser.enable_chooser_result = true\n10-01 23:43:45.678 10840 10840 V AconfigFlags: Read Aconfig default flag value android.service.chooser.enable_sharesheet_metadata_extra = true\n10-01 23:43:45.678 10840 10840 V AconfigFlags: Read Aconfig default flag value android.service.chooser.fix_resolver_memory_leak = true\n10-01 23:43:45.678 10840 10840 V AconfigFlags: Read Aconfig default flag value android.view.accessibility.allow_shortcut_chooser_on_lockscreen = false"}
+cmd: Can't find service: input
+app uid: 10210
+/system/bin/sh: can't create /storage/emulated/0/Download/dl-scan-fuse.txt: Transport endpoint is not connected
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+Error while accessing provider:media
+java.lang.IllegalStateException: Could not find provider: media
+	at com.android.commands.content.Content$Command.execute(Content.java:519)
+	at com.android.commands.content.Content.main(Content.java:735)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:369)
+{"check":"media-before","result":"-rw-rw---- 1 10195 1023 u:object_r:media_rw_data_file:s0  4 2026-10-01 23:43 dl-scan-app.txt\n-rw-rw---- 1 10195 1023 u:object_r:media_rw_data_file:s0  6 2026-10-01 23:43 dl-scan-bcast.txt\n-rw-rw---- 1 10195 1023 u:object_r:media_rw_data_file:s0  5 2026-10-01 23:43 dl-scan-none.txt\n-- mediastore:"}
+Error while accessing provider:media
+android.os.DeadObjectException
+	at android.os.BinderProxy.transactNative(Native Method)
+	at android.os.BinderProxy.transact(BinderProxy.java:586)
+	at android.app.IActivityManager$Stub$Proxy.getContentProviderExternal(IActivityManager.java:8154)
+	at com.android.commands.content.Content$Command.execute(Content.java:516)
+	at com.android.commands.content.Content.main(Content.java:735)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:369)
+{"check":"media-scan-app","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"ms_out\",\"ms_in\"],\"uid\":0}\n10-01 23:44:01.124   503   512 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:44:01.124   503   512 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:44:01.124   503   512 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:44:01.124   503   512 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:44:01.124   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:44:01.124   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:44:01.125   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-01 23:44:01.125   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:44:01.125   503 15303 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-01 23:44:01.125   503 15303 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n-- mediastore:"}
+Error while accessing provider:media
+java.lang.IllegalStateException: Could not find provider: media
+	at com.android.commands.content.Content$Command.execute(Content.java:519)
+	at com.android.commands.content.Content.main(Content.java:735)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:369)
+{"check":"media-scan-bcast","result":"cmd: Can't find service: activity\n10-01 23:44:10.349 12290 12290 D nativeloader:   com_android_mediaprovider: libpdfclient.so\n10-01 23:44:10.461 12290 12290 D CompatConfig: Found a config file: /apex/com.android.mediaprovider/etc/compatconfig/framework-pdf-v-platform-compat-config.xml\n10-01 23:44:10.461 12290 12290 D CompatConfig: Found a config file: /apex/com.android.mediaprovider/etc/compatconfig/media-provider-platform-compat-config.xml\n10-01 23:44:10.463 12290 12316 I SystemConfig: Reading permissions from /apex/com.android.mediaprovider/etc/permissions/privapp_allowlist_com.google.android.providers.media.module.xml\n10-01 23:44:10.639 12290 12290 W PackageManager: No package known for package restrictions com.google.android.mediaprovider\n10-01 23:44:10.658 12290 12290 D PackageManager: Directories scanned as system partitions: [/system:0, /vendor:524288, /odm:4194304, /oem:262144, /product:1048576, /system_ext:2097152, /apex/com.android.tethering:41943040, /apex/com.android.apex.cts.shim:41943040, /apex/com.android.hardware.authsecret:42467328, /apex/com.android.rkpd:41943040, /apex/com.android.scheduling:41943040, /apex/com.android.ondevicepersonalization:41943040, /apex/com.android.cellbroadcast:41943040, /apex/com.android.devicelock:41943040, /apex/com.google.mainline.primary.libs:41943040, /apex/com.android.healthfitness:41943040, /apex/com.android.profiling:41943040, /apex/com.android.adservices:41943040, /apex/com.android.resolv:41943040, /apex/com.android.adbd:41943040, /apex/com.android.neuralnetworks:41943040, /apex/com.android.hardware.rebootescrow:42467328, /apex/com.android.tzdata:41943040, /apex/com.android.uwb:41943040, /apex/com.android.i18n:41943040, /apex/com.android.conscrypt:41943040, /apex/com.android.wifi:41943040, /apex/com.android.extservices:41943040, /apex/com.android.hardware.cas:42467328, /apex/com.android.mediaprovider:41943040, /apex/com.android.appsearch:41943040, /apex/com.android.media.swcodec:41943040, /apex/com.android.os.statsd:41943040, /apex/com.android.runtime:41943040, /apex/com.android.hardware.neuralnetworks:42467328, /apex/com.android.nfcservices:41943040, /apex/com.android.sdkext:41943040, /apex/com.google.android.widevine:42467328, /apex/com.android.compos:44040192, /apex/com.android.configinfrastructure:41943040, /apex/com.android.art:41943040, /apex/com.android.permission:41943040, /apex/com.android.media:41943040, /apex/com.android.ipsec:41943040, /apex/com.android.btservices:41943040, /apex/com.android.virt:41943040]\n10-01 23:44:10.753 12290 12290 I PackageManager: /data/apex/decompressed/com.android.mediaprovider@350820300.decompressed.apex changed; collecting certs\n10-01 23:44:10.889 12290 12290 I ApexManager: Registering com.google.android.providers.media.module as apk-in-apex of com.android.mediaprovider\n10-01 23:44:10.890 12290 12290 D PackageManager: No files in app dir /apex/com.android.mediaprovider/app\n10-01 23:44:10.972 12290 12355 W PackageManager: Skipping preparing app data for com.google.android.mediaprovider\n-- mediastore:"}
