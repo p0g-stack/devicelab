@@ -41,7 +41,7 @@ grep -h -m1 ro.build.fingerprint "$CF_HOME"/*.prop 2>/dev/null || true
 # drm_virgl: virglrenderer in crosvm renders guest GL through the host's EGL
 # (llvmpipe on a GPU-less runner), giving the guest /dev/dri/renderD128.
 GPU=${CF_GPU:-drm_virgl}
-[ "$GPU" = drm_virgl ] && sudo apt-get install -y -qq libegl1 libgles2 libgl1-mesa-dri mesa-libgallium >/dev/null 2>&1
+[ "$GPU" = drm_virgl ] && sudo apt-get install -y -qq libegl1 libgles2 libegl-dev libgles-dev libgl1-mesa-dri mesa-libgallium >/dev/null 2>&1
 launch() {
   log "launching (gpu_mode=$1)"
   asme "$CF_HOME/bin/launch_cvd" --daemon --report_anonymous_usage_stats=n \

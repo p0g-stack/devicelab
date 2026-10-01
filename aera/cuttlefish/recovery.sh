@@ -20,6 +20,12 @@ if [ "$(a get-state 2>/dev/null)" != recovery ]; then
   echo "[cf] state $(a get-state 2>&1) after $((SECONDS - t0))s"
 fi
 sleep 5
+# adbd comes back unprivileged after the reboot; ask for root again.
+for _ in 1 2 3; do
+  [ "$(a shell id -u 2>/dev/null | tr -d '\r')" = 0 ] && break
+  a root >/dev/null 2>&1; sleep 3; $ADB connect $S >/dev/null 2>&1; a wait-for-recovery 2>/dev/null
+done
+echo "[cf] recovery adb uid $(a shell id -u | tr -d '\r')"
 # Stock recovery has no AERA fonts; stand in with the host's DejaVu so the
 # launcher's /twres/fonts bind has something to bind (substitute, logged).
 if [ "$(a shell 'ls /twres/fonts 2>/dev/null | wc -l' | tr -d '\r')" = 0 ]; then
