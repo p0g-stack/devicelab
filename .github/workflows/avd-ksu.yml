@@ -10,7 +10,7 @@ on:
       flavor: { default: kernelsu, description: "kernelsu | next" }
       tag: { default: "", description: "release tag, empty = latest" }
       api: { default: "35" }
-      modules: { default: "flutter_webui_counter-0.1.1.zip counter-v1.0.0.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
+      modules: { default: "flutter_webui_counter-0.1.2.zip counter-v1.0.0.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
     branches: [main]
     paths: [".github/workflows/avd-ksu.yml", "managers/**", "checks/**", "driver/**", "modules/**", "tools/labserver/**", "tools/sockprobe/**"]
@@ -29,7 +29,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       FLAVOR: ${{ inputs.flavor || 'kernelsu' }}
       HOST: ${{ matrix.host }}
-      MODULES: ${{ inputs.modules || 'flutter_webui_counter-0.1.1.zip counter-v1.0.0.zip' }}
+      MODULES: ${{ inputs.modules || 'flutter_webui_counter-0.1.2.zip counter-v1.0.0.zip' }}
     steps:
       - uses: actions/checkout@v4
       - name: KVM
