@@ -32,6 +32,15 @@ REPO=${REPO:-KernelSU-Modules-Repo/$ID}
 gh release view -R "$REPO" --json tagName,publishedAt,assets --jq '"== metamodule release: '"$REPO"' \(.tagName) \(.publishedAt) \([.assets[].name]|join(" "))"' 2>&1
 gh release download -R "$REPO" -D "$D/rel" -p '*.zip' 2>&1 | tail -2
 Z=$(ls "$D"/rel/*.zip 2>/dev/null | head -1)
+# The manager's own route: modules.kernelsu.org/module/<id>.json (ModuleRepoApi.kt) -> releases.
+if [ -z "$Z" ]; then
+  code=$(curl -sSL -A "Mozilla/5.0 devicelab" -w "%{http_code}" "https://modules.kernelsu.org/module/$ID.json" -o "$D/detail.json")
+  cp "$D/detail.json" "$OUT/ksu-module-$ID.json" 2>/dev/null
+  echo "== metamodule detail http: $code keys: $(python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(list(d)[:20]); r=(d.get("releases") or [{}])[0]; print("release0", {k: (v if len(str(v))<120 else "...") for k,v in r.items() if k!="descriptionHTML"})' "$D/detail.json" 2>&1 | tr '\n' ' ')"
+  U=$(grep -o 'https://[^"]*\.zip' "$D/detail.json" | head -1)
+  echo "== metamodule zip url: $U"
+  [ -n "$U" ] && mkdir -p "$D/rel" && curl -fsSL -A "Mozilla/5.0 devicelab" "$U" -o "$D/rel/$ID.zip" && Z=$D/rel/$ID.zip
+fi
 [ -n "$Z" ] || { echo "== metamodule: no zip found for $REPO"; exit 1; }
 echo "== metamodule zip: $(basename "$Z") sha256 $(sha256sum "$Z" | cut -c1-64)"
 echo "== metamodule module.prop: $(unzip -p "$Z" module.prop | tr -d '\r' | tr '\n' ' ')"
