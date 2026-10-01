@@ -1,0 +1,31 @@
+KernelSU userspace cli
+
+Usage: ksud <COMMAND>
+
+Commands:
+  module          Manage KernelSU modules
+  post-fs-data    Trigger `post-fs-data` event
+  services        Trigger `service` event
+  boot-completed  Trigger `boot-complete` event
+  late-load       Load kernelsu.ko and execute late-load stage scripts
+  soft-reboot     Emulate system reboot
+  insmod          Load a kernel module with kallsyms access
+  install         Install KernelSU userspace component to system
+  unload          Unload KernelSU kernel module (LKM Only)
+  uninstall       Uninstall KernelSU modules and itself(LKM Only)
+  sepolicy        SELinux policy Patch tool
+  profile         Manage App Profiles
+  feature         Manage kernel features
+  boot-patch      Patch boot or init_boot images to apply KernelSU
+  boot-restore    Restore boot or init_boot images patched by KernelSU
+  boot-patch-v2   Patch KernelSU into a boot image
+  boot-info       Show boot information
+  debug           For developers
+  kernel          Kernel interface
+  resetprop       Resetprop - Magisk-compatible system property tool
+  initrc          Manage initrc injection
+  help            Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version

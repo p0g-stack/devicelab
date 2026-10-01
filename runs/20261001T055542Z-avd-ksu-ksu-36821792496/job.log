@@ -1,0 +1,94 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 57s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.0
+total 16428
+drwx------  2 runner runner     4096 Oct  1 05:54 .
+drwxrwxrwt 16 root   root       4096 Oct  1 05:54 ..
+-rw-r--r--  1 runner runner 10777987 Oct  1 05:54 KernelSU_v3.3.0_32601-release.apk
+-rw-r--r--  1 runner runner  5713312 Oct  1 05:54 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   318824 Oct  1 05:54 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu)
+/tmp/tmp.qJMrNMW5ns/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 6.5 MB/s (318824 bytes in 0.047s)
+/tmp/tmp.qJMrNMW5ns/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 57.7 MB/s (5713312 bytes in 0.094s)
+== ksud: ksud 3.3.0 (uapi: 2)
+== insmod: insmod: failed to load /data/local/tmp/kernelsu.ko: No such file or directory
+rc=1
+[   81.527246] kernelsu: Unknown symbol selinux_status_update_policyload (err -2)
+[   81.533183] kernelsu: Unknown symbol symtab_search (err -2)
+[   81.534450] kernelsu: Unknown symbol symtab_insert (err -2)
+[   81.537933] kernelsu: Unknown symbol ebitmap_set_bit (err -2)
+[   81.545264] kernelsu: Unknown symbol ebitmap_get_bit (err -2)
+[   81.546340] kernelsu: Unknown symbol policydb_filenametr_search (err -2)
+[   81.550919] kernelsu: Unknown symbol __hashtab_insert (err -2)
+[   81.554779] kernelsu: Unknown symbol policydb_destroy (err -2)
+[   81.557217] kernelsu: Unknown symbol policydb_write (err -2)
+[   81.561504] kernelsu: Unknown symbol policydb_read (err -2)
+[   81.563473] kernelsu: Unknown symbol avtab_search_node (err -2)
+[   81.567886] kernelsu: Unknown symbol avtab_alloc (err -2)
+[   81.572898] kernelsu: Unknown symbol avtab_destroy (err -2)
+[   81.575117] kernelsu: Unknown symbol avtab_search_node_next (err -2)
+[   81.579490] kernelsu: Unknown symbol avtab_insert_nonunique (err -2)
+[   81.582687] kernelsu: Unknown symbol change_pid (err -2)
+[   81.584795] kernelsu: Unknown symbol avc_has_perm (err -2)
+[   81.590234] kernelsu: Unknown symbol sidtab_destroy (err -2)
+[   81.591789] kernelsu: Unknown symbol ebitmap_destroy (err -2)
+[   81.600430] kernelsu: Unknown symbol mls_context_to_sid (err -2)
+[   81.601706] kernelsu: Unknown symbol policydb_context_isvalid (err -2)
+[   81.604453] kernelsu: Unknown symbol sidtab_context_to_sid (err -2)
+[   81.610433] kernelsu: Unknown symbol sidtab_search_entry (err -2)
+[   81.616039] kernelsu: Unknown symbol sidtab_sid2str_get (err -2)
+[   81.621273] kernelsu: Unknown symbol mls_compute_context_len (err -2)
+[   81.622522] kernelsu: Unknown symbol mls_sid_to_context (err -2)
+[   81.628062] kernelsu: Unknown symbol sidtab_sid2str_put (err -2)
+[   81.633522] kernelsu: Unknown symbol cond_compute_av (err -2)
+[   81.633533] kernelsu: Unknown symbol ebitmap_cmp (err -2)
+[   81.633538] kernelsu: Unknown symbol ebitmap_contains (err -2)
+== ksud post-fs-data: rc=0
+== ksud services: rc=0
+== ksud boot-completed: rc=0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.046s)
+== modules: [
+  {
+    "id": "devicelab_probe",
+    "version": "1",
+    "remove": "false",
+    "mount": "false",
+    "versionCode": "1",
+    "author": "p0g-stack",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "update": "false",
+    "action": "false",
+    "enabled": "true",
+    "web": "true",
+    "name": "devicelab probe"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+== home text: text="Not installed" text="Tap to install" text="Manager version" text="v3.3.0 (32601-2)" text="Kernel version" text="6.6.50-android15-8-g8adecb593e9b-ab12525588" text="Device model" text="Google sdk_gphone64_x86_64" text="Fingerprint" text="google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys" text="SELinux status" text="Enforcing" text="Seccomp status" text="Filter" text="KernelSU" 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 47.3 MB/s (7843260 bytes in 0.158s)
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+LaunchState: WARM
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+TotalTime: 1608
+WaitTime: 1742
+Complete
+{"check":"targets","result":[]}
+{"check":"globals","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ksu-exec","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ws-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"fetch-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"webview-uid","result":["webview_zygote 1053 webview_zygote", "u0_a209      10209 me.weishu.kernelsu"]}
+{"check":"while-home-heartbeat","result":{"error":"no page target","sockets":["webview_devtools_remote_1668"],"targets":[]}}
+{"check":"lifecycle","result":{"error":"no page target","sockets":["webview_devtools_remote_1668"],"targets":[]}}
+cat: /data/local/tmp/labserver.log: No such file or directory
