@@ -23,7 +23,7 @@ rpc() {
   a shell '[ -p /system/bin/aerain ] && { timeout 60 cat /system/bin/aeraout & sleep 0.3; cat /tmp/lab-req.json > /system/bin/aerain; wait; }' 2>&1 | tr -d '\r'
 }
 post() { curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" -d "$2" "$REMOTE$1"; }
-mark() { a shell "log -t lab-taps '$*'" >/dev/null 2>&1; echo "== $(date +%T.%N | cut -c1-12) $*" >> "$OUT/getevent.txt"; }
+mark() { a shell "log -t lab-taps '$*'; echo 'lab-taps: $*' >> /tmp/recovery.log" >/dev/null 2>&1; echo "== $(date +%T.%N | cut -c1-12) $*" >> "$OUT/getevent.txt"; }
 tap() {  # tap LABEL X Y
   mark "$1 at $2,$3"
   post /api/input/touch "{\"action\":\"down\",\"x\":$2,\"y\":$3}" >/dev/null; sleep 0.1
@@ -50,6 +50,10 @@ key home; sleep 3; shot home
 xy=${FILES_CARD:-378,660}
 for n in 1 2 3; do tap "files-$n" $(( ${xy%,*} - n * 5 )) $(( ${xy#*,} + n * 5 )); sleep 3; shot "files-$n"; key back; sleep 3; done
 kill $GE 2>/dev/null; wait $GE 2>/dev/null
+# minuitwrp closes and reopens every input device when /dev/input changed
+# (events.cpp ev_get, "Reloading input devices"); show when that happened.
+a shell 'grep -nE "lab-taps|Reloading input devices" /tmp/recovery.log; stat -c "%y %n" /dev/input /dev/input/*; cat /proc/bus/input/devices | grep -E "^N:|Handlers"' | tr -d '\r' > "$OUT/input-reload.txt"
+log "input reloads during the check: $(awk '/lab-taps: app-1/{on=1} on && /Reloading input/{n++} END{print n+0}' "$OUT/input-reload.txt")"
 a shell 'logcat -d 2>/dev/null | grep -E "lab-taps|touch|Touch|pointer|edge|Back gesture"' | tr -d '\r' > "$OUT/logcat-touch.txt"
 applog | grep -E "POINTER|LIFECYCLE" > "$OUT/app.txt"
 log "app got: $(grep -c 'POINTER down' "$OUT/app.txt") downs, $(grep -c 'LIFECYCLE tap' "$OUT/app.txt") counted taps"

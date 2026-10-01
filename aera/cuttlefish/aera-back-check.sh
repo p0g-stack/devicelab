@@ -65,8 +65,10 @@ gesture_nav() {  # gesture_nav 0|1: save it and restart AERA so it is read
   log "gesture navigation $1 in $f, AERA restarted"
   remote
 }
+reloads() { a shell 'grep -nE "lab-back|Reloading input devices" /tmp/recovery.log; stat -c "%y %n" /dev/input /dev/input/*' | tr -d '\r' > "$OUT/input-reload-$1.txt"; }
 round() {  # round NAME: open, tap, short Back, held Back key, reopen, held swipe, reopen
   local n=$1 before
+  a shell "echo 'lab-back: round $n' >> /tmp/recovery.log"
   a shell 'pkill -f aera-flutter; sleep 2'
   open_; sleep "${APP_WAIT:-25}"
   tap 360 1000; sleep 1; tap 352 1010; sleep 2; shot "$n-1-tapped"
@@ -78,6 +80,7 @@ round() {  # round NAME: open, tap, short Back, held Back key, reopen, held swip
   held_swipe; sleep 3; shot "$n-5-held-swipe"
   open_; sleep 4; shot "$n-6-reopened"
   [ -n "$before" ] && [ "$before" = "$(apppids)" ] && log "$n SAME PROCESS" || log "$n PROCESS CHANGED or gone"
+  reloads "$n"
 }
 
 id=$(unzip -p "$PKG" plugin.json | python3 -c 'import json,sys;print(json.load(sys.stdin)["id"])')
