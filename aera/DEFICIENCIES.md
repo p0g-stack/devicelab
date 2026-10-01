@@ -175,6 +175,22 @@ add device 7: /dev/input/event6  name: "AERA Remote Input"
   second raw tap (610,1286), not an exact repeat this time: every raw tap is
   now recorded with getevent to see why.
 
+## D8. AERA Remote's Home and Menu buttons do nothing
+
+Found in the source, not yet on screen: `aera_remote/client/index.html`
+offers Home (`key('home')`), and `aera_remote/input.cpp` emits
+`KEY_HOMEPAGE` / `KEY_MENU` for `home` / `menu`, but nothing in aeraui
+handles either code (`core/runner.cpp` acts on POWER, VOLUMEUP/DOWN and
+BACK only; no other `KEY_HOMEPAGE`/`KEY_MENU` in the tree at abf3316 +
+0001-0022). A remote viewer can only reach Home or Recents with the
+bottom-edge swipe.
+
+- Suggested upstream fix: in `HandleKey`, `KEY_HOMEPAGE` release -> the
+  same path as an accepted bottom-edge swipe (`ShowHome()`), and
+  `KEY_MENU` (or `KEY_APPSELECT`, which Remote could send) -> `ShowRecents()`.
+- The lab's lifecycle check (`aera-lifecycle-check.sh`) uses the swipe
+  for that reason.
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
