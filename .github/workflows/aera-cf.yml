@@ -25,7 +25,6 @@ jobs:
     env:
       LAB_OUT: ${{ github.workspace }}/out
       CF_HOME: /mnt/cf
-      P0G_TOKEN: ${{ secrets.P0G_READ_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: KVM and disk
@@ -103,12 +102,11 @@ jobs:
         run: |
           set -o pipefail
           aera/cuttlefish/aera-open.sh aera-counter "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 | tee -a "$LAB_OUT/job.log"
-      # flutter_p0g is private: needs a devicelab secret P0G_READ_TOKEN that can read it.
       - name: flutter_p0g checkout
         id: p0g
-        if: steps.aera.outputs.tag != '' && env.P0G_TOKEN != ''
+        if: steps.aera.outputs.tag != ''
         run: |
-          git clone -q --depth 1 "https://x-access-token:$P0G_TOKEN@github.com/p0g-stack/flutter_p0g" "$RUNNER_TEMP/flutter_p0g"
+          git clone -q --depth 1 https://github.com/p0g-stack/flutter_p0g "$RUNNER_TEMP/flutter_p0g"
           echo "rev=$(git -C "$RUNNER_TEMP/flutter_p0g" rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
       - uses: subosito/flutter-action@v2
         if: steps.p0g.outputs.rev != ''
