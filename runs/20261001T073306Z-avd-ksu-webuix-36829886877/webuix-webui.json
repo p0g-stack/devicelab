@@ -1,0 +1,117 @@
+{
+ "check": "webui_host",
+ "label": "webuix",
+ "date": "2026-10-01",
+ "fingerprint": "google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+ "kernel": "6.6.50-android15-8-g8adecb593e9b-ab12525588",
+ "webview": "versionName=124.0.6367.219",
+ "results": [
+  {
+   "check": "targets",
+   "result": [
+    {
+     "socket": "webview_devtools_remote_8609",
+     "type": "page",
+     "url": "https://mui.kernelsu.org/index.html",
+     "title": "Webpage not available"
+    }
+   ]
+  },
+  {
+   "check": "globals",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8609",
+    "value": {
+     "ua": "WebUI X/438 (Linux; Android 15; sdk_gphone64_x86_64; NonRoot/0)",
+     "origin": "null",
+     "href": "chrome-error://chromewebdata/",
+     "globals": [
+      "$DeFile",
+      "$DeFileInputStream",
+      "$DeFileOutputStream",
+      "$devicelab_probe",
+      "$intent",
+      "$packageManager",
+      "$userManager",
+      "ksu",
+      "webui"
+     ],
+     "ksu": [
+      "exec",
+      "execBool",
+      "fullScreen",
+      "mmrl",
+      "moduleInfo",
+      "spawn",
+      "toast",
+      "exec",
+      "execBool",
+      "fullScreen",
+      "mmrl",
+      "moduleInfo",
+      "spawn",
+      "toast"
+     ]
+    }
+   }
+  },
+  {
+   "check": "ksu-exec",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8609",
+    "value": {
+     "code": 0,
+     "out": "uid=10210(u0_a210) gid=10210(u0_a210) groups=10210(u0_a210),3003(inet),9997(everybody),20210(u0_a210_cache),50210(all_a210) context=u:r:untrusted_app:s0:c210,c256,c512,c768\nu:r:untrusted_app:s0:c210,c256,c512,c768\u0000",
+     "err": ""
+    }
+   }
+  },
+  {
+   "check": "ws-loopback",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8609",
+    "value": {
+     "error": "ws error"
+    }
+   }
+  },
+  {
+   "check": "fetch-loopback",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8609",
+    "value": {
+     "error": "TypeError: Failed to fetch"
+    }
+   }
+  },
+  {
+   "check": "webview-uid",
+   "result": [
+    "webview_zygote 1053 webview_zygote",
+    "u0_a210      10210 com.dergoogler.mmrl.wx",
+    "u0_a151      10151 com.google.android.webview:webview_service",
+    "u0_i9000     99000 com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0"
+   ]
+  },
+  {
+   "check": "while-home-heartbeat",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8609",
+    "exception": "TypeError: Cannot read properties of undefined (reading 'last')\n    at <anonymous>:1:22"
+   }
+  },
+  {
+   "check": "lifecycle",
+   "result": {
+    "url": "https://mui.kernelsu.org/index.html",
+    "socket": "webview_devtools_remote_8609",
+    "exception": "TypeError: Cannot read properties of undefined (reading 'events')\n    at <anonymous>:1:24"
+   }
+  }
+ ]
+}
