@@ -11,6 +11,7 @@ on:
       tag: { default: "", description: "release tag, empty = latest" }
       api: { default: "35" }
       label: { default: "", description: "extra name for the lab-results run, e.g. demo-0.9" }
+      demo_tag: { default: "", description: "demo release tag to install (e.g. v0.1.28) instead of the module branch; also runs the manager update check" }
       modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
     branches: [main]
@@ -58,8 +59,14 @@ jobs:
         run: |
           git fetch -q --depth 1 origin lab-inputs && mkdir -p inputs && git archive FETCH_HEAD modules | tar -x -C inputs
           # The demo module comes from demo CI (its `module` branch), not lab-inputs.
+          if [ -n "${{ inputs.demo_tag }}" ]; then
+            gh release download -R p0g-stack/demo "${{ inputs.demo_tag }}" -D "$RUNNER_TEMP/demo-rel" -p 'demo-v*.zip'
+            z=$(ls "$RUNNER_TEMP"/demo-rel/demo-v*.zip | head -1); cp "$z" inputs/modules/demo.zip
+            echo "demo zip: release ${{ inputs.demo_tag }} $(basename "$z")" | tee -a "$LAB_OUT/inputs.txt"
+          else
           git clone -q --depth 1 -b module https://github.com/p0g-stack/demo "$RUNNER_TEMP/demo-module"
           (cd "$RUNNER_TEMP/demo-module" && sha256sum -c SHA256SUMS && git log -1 --format='demo module: %s' && z=$(ls demo-*.zip | head -1) && cp "$z" "$GITHUB_WORKSPACE/inputs/modules/demo.zip" && echo "demo zip: $z") | tee -a "$LAB_OUT/inputs.txt"
+          fi
           sha256sum inputs/modules/*.zip | tee -a "$LAB_OUT/inputs.txt"
           zips=(); for m in $MODULES; do zips+=("inputs/modules/$m"); done
           if [ "$HOST" = kernelsu ]; then
@@ -82,6 +89,7 @@ jobs:
             if [ "$id" = flutter_webui_counter ]; then checks/flutter_webui.sh "$HOST-$id" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ]; then checks/demo_walk.sh "$HOST-$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ]; then checks/theme.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
+            if [ "$id" = demo ] && [ -n "${{ inputs.demo_tag }}" ]; then checks/module_update.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
           done
       - name: App plane
         if: always() && matrix.host == 'kernelsu'
