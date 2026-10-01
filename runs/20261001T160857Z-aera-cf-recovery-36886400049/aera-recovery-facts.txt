@@ -1,0 +1,75 @@
+
+$ id
+adb: device offline
+
+$ uname -a
+adb: device offline
+
+$ uname -m
+adb: device offline
+
+$ ls -l /dev/dri /twres/fonts
+adb: device offline
+
+$ df -h /tmp
+adb: device offline
+
+$ getprop ro.build.fingerprint
+adb: device offline
+
+$ getprop ro.bootmode
+adb: device offline
+
+$ cat /proc/cmdline
+adb: device offline
+
+$ ls -la /
+adb: device offline
+
+$ ls -la /dev/dri /dev/input /dev/graphics
+adb: device offline
+
+$ cat /proc/mounts
+adb: device offline
+
+$ ps -A
+adb: device offline
+
+$ ls /system/bin
+adb: device offline
+
+$ ls /system/lib64 | head -80
+adb: device offline
+
+$ cat /proc/meminfo | head -3
+adb: device offline
+
+$ nproc
+adb: device offline
+
+$ cat /sys/kernel/debug/dri/0/clients /sys/kernel/debug/dri/0/name 2>&1
+adb: device offline
+
+$ cat /sys/class/drm/card0-*/modes 2>&1
+adb: device offline
+
+$ getevent -pl 2>&1 | head -60
+adb: device offline
+
+$ cat /system/etc/init/hw/init.rc 2>/dev/null | grep -n -A3 "service recovery"
+adb: device offline
+
+$ ls /*.rc /system/etc/init 2>&1
+adb: device offline
+
+$ getenforce
+adb: device offline
+
+$ getprop
+adb: device offline
+
+$ cat /proc/sys/kernel/osrelease
+adb: device offline
+
+$ ls /lib/modules 2>&1 | head; lsmod 2>&1 | head -40
+adb: device offline

@@ -1,0 +1,42 @@
+$ getprop init.svc.recovery
+adb: device offline
+
+$ getprop | grep -E "ro.build.version.(sdk|release)|ro.twrp|aera|ro.boot.mode|bootmode"
+adb: device offline
+
+$ ls -la /tmp /tmp/recovery.log 2>&1
+adb: device offline
+
+$ tail -80 /tmp/recovery.log 2>&1
+adb: device offline
+
+$ grep -rn -A8 "service recovery" /init.rc /system/etc/init/hw/init.rc /*.rc 2>/dev/null | head -40
+adb: device offline
+
+$ file /system/bin/recovery 2>&1; ls -la /system/bin/recovery
+adb: device offline
+
+$ readelf -d /system/bin/recovery 2>/dev/null | grep NEEDED
+adb: device offline
+
+$ ls /system/lib64 | head -100; ls /system/lib64 | wc -l
+adb: device offline
+
+$ ls -la /twres /twres/fonts 2>&1 | head -20
+adb: device offline
+
+$ ls -la /etc /system/etc/task_profiles.json /etc/task_profiles.json 2>&1 | head -20
+adb: device offline
+
+$ stop recovery; sleep 1; cd /; (timeout 15 /system/bin/recovery; echo "exit $?") 2>&1 | tail -60
+adb: device offline
+
+$ tail -60 /tmp/recovery.log 2>&1
+adb: device offline
+
+$ logcat -d 2>/dev/null | tail -80
+adb: device offline
+
+$ dmesg | grep -iE "recovery|aera|twrp|linker|CANNOT|avc" | tail -60
+adb: device offline
+
