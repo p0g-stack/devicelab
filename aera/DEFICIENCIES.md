@@ -54,5 +54,8 @@ each with eight lines of `NULL VINTF MANIFEST` around it)
 AERA (TWRP) sets `sys.usb.config` to `none` at start; init.rc stops adbd,
 and devicelab's device tree sets `AERA_EXCLUDE_DEFAULT_USB_INIT`, so no USB
 rc starts it again. Cuttlefish's adb is vsock-only, so adb stays `offline`.
-boot-aera.sh appends `on property:sys.usb.config=* start adbd` to the
-carried `init.recovery.cutf_cvm.rc`.
+Cuttlefish-only: real supported devices use a USB gadget and want this.
+Handled by the fake `patches-cf/bootable/recovery/0001-FAKE-keep-adbd-running-on-Cuttlefish-*`
+(init.rc: `on property:sys.usb.config=* && property:ro.hardware=cutf_cvm
+start adbd`), carried from the next image build. Until an image carries it,
+boot-aera.sh appends the same trigger to `init.recovery.cutf_cvm.rc`.

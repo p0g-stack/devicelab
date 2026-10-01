@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Thu, 1 Oct 2026 16:52:42 +0000
+Subject: [PATCH] FAKE: keep adbd running on Cuttlefish whatever the USB config
+
+Cuttlefish's adbd uses vsock, not a USB gadget. AERA sets
+sys.usb.config=none at start, and the recovery init.rc then stops adbd,
+which leaves the lab VM with no adb. On real devices this is the right
+behaviour, so this stays a devicelab-only fake, gated on
+ro.hardware=cutf_cvm.
+---
+ etc/init.rc | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/etc/init.rc b/etc/init.rc
+index c7f3d04..e16d898 100644
+--- a/etc/init.rc
++++ b/etc/init.rc
+@@ -257,3 +257,9 @@ on property:sys.usb.config=fastboot && property:sys.usb.ffs.ready=1 && property:
+     symlink /config/usb_gadget/g1/functions/ffs.fastboot /config/usb_gadget/g1/configs/b.1/f1
+     write /config/usb_gadget/g1/UDC ${sys.usb.controller}
+     setprop sys.usb.state ${sys.usb.config}
++
++# FAKE (devicelab patches-cf, Cuttlefish only): Cuttlefish's adbd talks over
++# vsock, not a USB gadget, so stopping it when AERA sets the USB config to
++# "none" only cuts the lab off. Defined last so it runs after the stops above.
++on property:sys.usb.config=* && property:ro.hardware=cutf_cvm
++    start adbd
+-- 
+2.43.0
+

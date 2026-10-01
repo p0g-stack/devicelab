@@ -68,7 +68,8 @@ if [ -n "$overlay" ]; then
   # Cuttlefish's adb is vsock-only, but AERA (TWRP) switches
   # sys.usb.config to none and then to an MTP config at start, and the
   # device tree excludes the USB init that would restart adbd for it; keep
-  # adbd running whatever the USB config says (Cuttlefish-only).
+  # adbd running whatever the USB config says (Cuttlefish-only). Images
+  # built with patches-cf carry the same trigger; this covers older ones.
   cat >> "$w/new/init.recovery.cutf_cvm.rc" <<'RC'
 
 # devicelab boot-aera.sh: adbd stays up across AERA's USB config changes
