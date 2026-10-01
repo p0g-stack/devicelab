@@ -1,0 +1,1110 @@
+
+$ id
+uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:su:s0
+
+$ uname -a
+Linux localhost 6.12.74-android16-6-g3ec022196c4e-ab15076761 #1 SMP PREEMPT Tue Mar 24 05:36:21 UTC 2026 x86_64 Toybox
+
+$ uname -m
+x86_64
+
+$ ls -l /dev/dri /twres/fonts
+/dev/dri:
+total 0
+crw-rw-rw- 1 root graphics 226,   0 2026-10-01 14:00 card0
+crw-rw-rw- 1 root graphics 226, 128 2026-10-01 14:00 renderD128
+
+/twres/fonts:
+total 1440
+-rwxrwxrwx 1 root root 708920 2023-08-10 17:39 DejaVuSans-Bold.ttf
+-rwxrwxrwx 1 root root 759720 2023-08-10 17:39 DejaVuSans.ttf
+
+$ df -h /tmp
+Filesystem      Size Used Avail Use% Mounted on
+tmpfs           1.9G  28K  1.9G   1% /tmp
+
+$ getprop ro.build.fingerprint
+generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys
+
+$ getprop ro.bootmode
+unknown
+
+$ cat /proc/cmdline
+vmw_vsock_virtio_transport_common.virtio_transport_max_vsock_pkt_buf_size=16384 console=ttynull stack_depot_disable=on cgroup_disable=pressure bootconfig  printk.devkmsg=on audit=1 panic=-1 8250.nr_uarts=1 binder.impl=rust cma=0 firmware_class.path=/vendor/etc/ loop.max_part=7 init=/init bootconfig panic=-1 console=hvc0 earlycon=uart8250,io,0x3f8 ramoops.mem_address=0x138000000 ramoops.mem_size=0x200000
+
+$ ls -la /
+total 4784
+drwxrwxrwt  35 root root      1200 2026-10-01 14:00 .
+drwxrwxrwt  35 root root      1200 2026-10-01 14:00 ..
+lrwxrwxrwx   1 root root        30 1970-01-01 00:00 adb_keys -> /product/etc/security/adb_keys
+drwxr-xr-x   2 root root        40 2026-10-01 14:00 apex
+lrwxrwxrwx   1 root root        11 1970-01-01 00:00 bin -> /system/bin
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 bootstrap-apex
+lrwxrwxrwx   1 root root        50 1970-01-01 00:00 bugreports -> /data/user_de/0/com.android.shell/files/bugreports
+drwxr-xr-x   2 root root        40 2026-10-01 14:00 cache
+dr-xr-xr-x   2 root root        40 1970-01-01 00:00 config
+lrwxrwxrwx   1 root root        17 1970-01-01 00:00 d -> /sys/kernel/debug
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 data
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 data_mirror
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 debug_ramdisk
+lrwxrwxrwx   1 root root        12 1970-01-01 00:00 default.prop -> prop.default
+drwxr-xr-x  13 root root      2780 2026-10-01 14:00 dev
+lrwxrwxrwx   1 root root        11 1970-01-01 00:00 etc -> /system/etc
+drwxr-xr-x  10 root root       200 1970-01-01 00:00 first_stage_ramdisk
+-rwxr-x---   1 root root   3631136 1970-01-01 00:00 init
+-rwxr-x---   1 root root       217 1970-01-01 00:00 init.recovery.cutf_cvm.rc
+drwxr-xr-x   3 root root        60 1970-01-01 00:00 lib
+drwxr-xr-x   2 root root        60 2026-10-01 14:00 linkerconfig
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 metadata
+drwxr-xr-x   8 root system     160 2026-10-01 14:00 mnt
+drwxr-xr-x   2 root root       260 1970-01-01 00:00 odm
+drwxr-xr-x   2 root root        60 1970-01-01 00:00 odm_dlkm
+-rw-r--r--   1 root root         0 1970-01-01 00:00 odm_file_contexts
+-rw-r--r--   1 root root       194 1970-01-01 00:00 odm_property_contexts
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 oem
+-rw-r--r--   1 root root     50849 1970-01-01 00:00 plat_file_contexts
+-rw-r--r--   1 root root    127819 1970-01-01 00:00 plat_property_contexts
+-rw-r--r--   1 root root     47192 1970-01-01 00:00 plat_service_contexts
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 postinstall
+dr-xr-xr-x 138 root root         0 2026-10-01 14:00 proc
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 product
+-rw-r--r--   1 root root        71 1970-01-01 00:00 product_file_contexts
+-rw-r--r--   1 root root       498 1970-01-01 00:00 product_property_contexts
+-rw-r--r--   1 root root         0 1970-01-01 00:00 product_service_contexts
+-rw-r--r--   1 root root     19270 1970-01-01 00:00 prop.default
+drwxr-xr-x   3 root root        60 1970-01-01 00:00 res
+drwx------   2 root root        40 2026-03-24 05:36 root
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 sdcard
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 second_stage_resources
+-rw-r--r--   1 root root    930777 1970-01-01 00:00 sepolicy
+drwxr-xr-x   2 root root        40 2026-10-01 14:00 sideload
+drwxr-x--x   2 root root        40 1970-01-01 00:00 storage
+dr-xr-xr-x  13 root root         0 2026-10-01 14:00 sys
+drwxr-xr-x   5 root root       100 1970-01-01 00:00 system
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 system_dlkm
+drwxr-xr-x   2 root root        40 1970-01-01 00:00 system_ext
+-rw-r--r--   1 root root      2185 1970-01-01 00:00 system_ext_file_contexts
+-rw-r--r--   1 root root      1146 1970-01-01 00:00 system_ext_property_contexts
+-rw-r--r--   1 root root       107 1970-01-01 00:00 system_ext_service_contexts
+drwxrwxr-x   2 root shell       60 2026-10-01 14:00 tmp
+drwxrwxrwx   3 root root        60 2026-10-01 14:00 twres
+-rw-r--r--   1 root root      1318 1970-01-01 00:00 ueventd.cutf_cvm.rc
+drwxr-xr-x   3 root root        60 1970-01-01 00:00 vendor
+drwxr-xr-x   2 root root        60 1970-01-01 00:00 vendor_dlkm
+-rw-r--r--   1 root root     33745 1970-01-01 00:00 vendor_file_contexts
+-rw-r--r--   1 root root      3520 1970-01-01 00:00 vendor_property_contexts
+-rw-r--r--   1 root root      1350 1970-01-01 00:00 vendor_service_contexts
+
+$ ls -la /dev/dri /dev/input /dev/graphics
+ls: /dev/graphics: No such file or directory
+/dev/dri:
+total 0
+drwxr-xr-x  2 root root           80 2026-10-01 14:00 .
+drwxr-xr-x 13 root root         2780 2026-10-01 14:00 ..
+crw-rw-rw-  1 root graphics 226,   0 2026-10-01 14:00 card0
+crw-rw-rw-  1 root graphics 226, 128 2026-10-01 14:00 renderD128
+
+/dev/input:
+total 0
+drwxr-xr-x  2 root root      160 2026-10-01 14:00 .
+drwxr-xr-x 13 root root     2780 2026-10-01 14:00 ..
+crw-rw----  1 root input 13,  64 2026-10-01 14:00 event0
+crw-rw----  1 root input 13,  65 2026-10-01 14:00 event1
+crw-rw----  1 root input 13,  66 2026-10-01 14:00 event2
+crw-rw----  1 root input 13,  67 2026-10-01 14:00 event3
+crw-rw----  1 root input 13,  68 2026-10-01 14:00 event4
+crw-rw----  1 root input 13,  69 2026-10-01 14:00 event5
+
+$ cat /proc/mounts
+rootfs / rootfs rw,seclabel,size=1981996k,nr_inodes=495499 0 0
+tmpfs /dev tmpfs rw,seclabel,nosuid,relatime,mode=755 0 0
+devpts /dev/pts devpts rw,seclabel,relatime,mode=600,ptmxmode=000 0 0
+proc /proc proc rw,relatime,gid=3009,hidepid=invisible 0 0
+sysfs /sys sysfs rw,seclabel,relatime 0 0
+selinuxfs /sys/fs/selinux selinuxfs rw,relatime 0 0
+tmpfs /mnt tmpfs rw,seclabel,nosuid,nodev,noexec,relatime,mode=755,gid=1000 0 0
+tmpfs /apex tmpfs rw,seclabel,nosuid,nodev,noexec,relatime,mode=755 0 0
+tmpfs /linkerconfig tmpfs rw,seclabel,nosuid,nodev,noexec,relatime,mode=755 0 0
+tmpfs /mnt/installer tmpfs rw,seclabel,nosuid,nodev,noexec,relatime,mode=755,gid=1000 0 0
+tmpfs /mnt/androidwritable tmpfs rw,seclabel,nosuid,nodev,noexec,relatime,mode=755,gid=1000 0 0
+none /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,memory_recursiveprot 0 0
+none /dev/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset,noprefix,cpuset_v2_mode 0 0
+tmpfs /tmp tmpfs rw,seclabel,relatime 0 0
+binder /dev/binderfs binder rw,relatime,max=1048576,stats=global 0 0
+
+$ ps -A
+USER           PID  PPID        VSZ    RSS WCHAN            ADDR S NAME                       
+root             1     0    8970932  12756 do_epoll_wait       0 S init
+root             2     0          0      0 kthreadd            0 S [kthreadd]
+root             3     2          0      0 kthread_worker_fn   0 S [pool_workqueue_release]
+root             4     2          0      0 rescuer_thread      0 I [kworker/R-kvfree_rcu_reclaim]
+root             5     2          0      0 rescuer_thread      0 I [kworker/R-rcu_gp]
+root             6     2          0      0 rescuer_thread      0 I [kworker/R-sync_wq]
+root             7     2          0      0 rescuer_thread      0 I [kworker/R-slub_flushwq]
+root             8     2          0      0 rescuer_thread      0 I [kworker/R-netns]
+root             9     2          0      0 worker_thread       0 I [kworker/0:0-events]
+root            10     2          0      0 worker_thread       0 I [kworker/0:0H-events_highpri]
+root            11     2          0      0 worker_thread       0 I [kworker/0:1-virtio_vsock]
+root            12     2          0      0 worker_thread       0 I [kworker/u8:0-events_unbound]
+root            13     2          0      0 rescuer_thread      0 I [kworker/R-mm_percpu_wq]
+root            14     2          0      0 worker_thread       0 I [kworker/u8:1-ipv6_addrconf]
+root            15     2          0      0 rcu_tasks_one_gp    0 I [rcu_tasks_kthread]
+root            16     2          0      0 rcu_tasks_one_gp    0 I [rcu_tasks_trace_kthread]
+root            17     2          0      0 smpboot_thread_fn   0 S [ksoftirqd/0]
+root            18     2          0      0 rcu_gp_kthread      0 I [rcu_preempt]
+root            19     2          0      0 nocb_gp_sleep       0 S [rcuog/0]
+root            20     2          0      0 rcu_nocb_cb_kthread 0 S [rcuop/0]
+root            21     2          0      0 rcu_boost_kthread   0 S [rcub/0]
+root            22     2          0      0 kthread_worker_fn   0 S [rcu_exp_par_gp_kthread_worker/0]
+root            23     2          0      0 kthread_worker_fn   0 S [rcu_exp_gp_kthread_worker]
+root            24     2          0      0 smpboot_thread_fn   0 S [migration/0]
+root            25     2          0      0 smpboot_thread_fn   0 S [idle_inject/0]
+root            26     2          0      0 smpboot_thread_fn   0 S [cpuhp/0]
+root            27     2          0      0 smpboot_thread_fn   0 S [cpuhp/1]
+root            28     2          0      0 smpboot_thread_fn   0 S [idle_inject/1]
+root            29     2          0      0 smpboot_thread_fn   0 S [migration/1]
+root            30     2          0      0 smpboot_thread_fn   0 S [ksoftirqd/1]
+root            31     2          0      0 worker_thread       0 I [kworker/1:0-slub_flushwq]
+root            32     2          0      0 worker_thread       0 I [kworker/1:0H-events_highpri]
+root            33     2          0      0 rcu_nocb_cb_kthread 0 S [rcuop/1]
+root            34     2          0      0 worker_thread       0 I [kworker/u9:0-events_unbound]
+root            35     2          0      0 worker_thread       0 I [kworker/u10:0-events_unbound]
+root            36     2          0      0 rescuer_thread      0 I [kworker/R-inet_frag_wq]
+root            37     2          0      0 kauditd_thread      0 S [kauditd]
+root            38     2          0      0 watchdog            0 S [khungtaskd]
+root            39     2          0      0 oom_reaper          0 S [oom_reaper]
+root            40     2          0      0 worker_thread       0 I [kworker/u9:1-events_unbound]
+root            41     2          0      0 rescuer_thread      0 I [kworker/R-writeback]
+root            42     2          0      0 kcompactd           0 S [kcompactd0]
+root            43     2          0      0 khugepaged          0 S [khugepaged]
+root            44     2          0      0 rescuer_thread      0 I [kworker/R-cryptd]
+root            45     2          0      0 rescuer_thread      0 I [kworker/R-kblockd]
+root            46     2          0      0 irq_thread          0 S [irq/5-acpi]
+root            47     2          0      0 worker_thread       0 I [kworker/1:1-virtio_vsock]
+root            48     2          0      0 rescuer_thread      0 I [kworker/R-edac-poller]
+root            49     2          0      0 rescuer_thread      0 I [kworker/R-devfreq_wq]
+root            50     2          0      0 kthread_worker_fn   0 S [watchdogd]
+root            51     2          0      0 worker_thread       0 I [kworker/u10:1-events_unbound]
+root            52     2          0      0 rescuer_thread      0 I [kworker/R-quota_events_unbound]
+root            53     2          0      0 worker_thread       0 I [kworker/1:1H-kblockd]
+root            54     2          0      0 kswapd              0 S [kswapd0]
+root            55     2          0      0 worker_thread       0 I [kworker/u11:0]
+root            56     2          0      0 worker_thread       0 I [kworker/u12:0]
+root            57     2          0      0 worker_thread       0 I [kworker/u13:0]
+root            58     2          0      0 irq_thread          0 S [irq/24-pciehp]
+root            59     2          0      0 rescuer_thread      0 I [kworker/R-nvme-wq]
+root            60     2          0      0 rescuer_thread      0 I [kworker/R-nvme-reset-wq]
+root            61     2          0      0 rescuer_thread      0 I [kworker/R-nvme-delete-wq]
+root            62     2          0      0 rescuer_thread      0 I [kworker/R-uas]
+root            63     2          0      0 rescuer_thread      0 I [kworker/R-dm_bufio_cache]
+root            64     2          0      0 rescuer_thread      0 I [kworker/R-mld]
+root            65     2          0      0 rescuer_thread      0 I [kworker/R-ipv6_addrconf]
+root            67     2          0      0 worker_thread       0 I [kworker/0:1H-kblockd]
+root            69     2          0      0 rescuer_thread      0 I [kworker/R-cfg80211]
+root            70     2          0      0 khvcd               0 S [khvcd]
+root            71     2          0      0 add_hwgenerator_randomness 0 S [hwrng]
+root            74     1    8837376   7732 do_sys_poll         0 S init
+root            75     1    8852232   8940 do_sys_poll         0 S ueventd
+root            79     1   10759888   5940 do_epoll_wait       0 S servicemanager
+root            80     1   10866160  26772 futex_wait_queue    0 S recovery
+system          81     1    8690412   5080 do_epoll_wait       0 S android.hardware.health-service.cuttlefish_recovery
+root            83    80   10823384   2036 pipe_read           0 S recovery
+root           101     1    8733704  13048 do_epoll_wait       0 S adbd
+root           152   101    8684080   5180 0                   0 R ps
+
+$ ls /system/bin
+[
+acpi
+adbd
+base64
+basename
+blkdiscard
+blockdev
+brctl
+cal
+cat
+chattr
+chcon
+chgrp
+chmod
+chown
+chroot
+chrt
+cksum
+clear
+cmp
+comm
+cp
+cpio
+cut
+date
+dd
+defrag.f2fs
+devmem
+df
+diff
+dirname
+dmesg
+dos2unix
+du
+dump.erofs
+dump.f2fs
+e2fsdroid
+echo
+egrep
+env
+expand
+expr
+fallocate
+false
+fastbootd
+fgrep
+file
+find
+flock
+fmt
+free
+fsck.erofs
+fsck.f2fs
+fsync
+getconf
+getenforce
+getevent
+getfattr
+getopt
+getprop
+gpiodetect
+gpiofind
+gpioget
+gpioinfo
+gpioset
+grep
+groups
+gunzip
+gzip
+head
+hostname
+hw
+hwclock
+i2cdetect
+i2cdump
+i2cget
+i2cset
+i2ctransfer
+iconv
+id
+ifconfig
+init
+inotifyd
+insmod
+install
+ionice
+iorenice
+kill
+killall
+linker64
+linker_asan64
+ln
+load_policy
+log
+logger
+logname
+losetup
+ls
+lsattr
+lsmod
+lsof
+lspci
+lsusb
+make_f2fs
+md5sum
+memeater
+microcom
+minadbd
+mkdir
+mke2fs
+mkfifo
+mkfs.erofs
+mkfs.ext2
+mkfs.ext3
+mkfs.ext4
+mknod
+mkswap
+mktemp
+modinfo
+modprobe
+more
+mount
+mountpoint
+mv
+nc
+netcat
+netstat
+nice
+nl
+nohup
+nproc
+nsenter
+od
+paste
+patch
+pgrep
+pidof
+pkill
+pmap
+printenv
+printf
+ps
+pwd
+readelf
+readlink
+realpath
+reboot
+recovery
+renice
+resize.f2fs
+restorecon
+rm
+rmdir
+rmmod
+rtcwake
+runcon
+sed
+sendevent
+seq
+servicemanager
+setenforce
+setfattr
+setprop
+setsid
+sh
+sha1sum
+sha224sum
+sha256sum
+sha384sum
+sha512sum
+sleep
+sload_f2fs
+snapuserd
+snapuserd_ramdisk
+sort
+split
+start
+stat
+stop
+strings
+stty
+swapoff
+swapon
+sync
+sysctl
+tac
+tail
+tar
+taskset
+tee
+test
+time
+timeout
+toolbox
+toolbox_ramdisk
+top
+touch
+toybox
+tr
+true
+truncate
+tty
+uclampset
+ueventd
+ulimit
+umount
+uname
+uniq
+unix2dos
+unlink
+unshare
+unzip
+update_engine_sideload
+uptime
+usleep
+uudecode
+uuencode
+uuidgen
+vi
+vmstat
+watch
+watchdogd
+wc
+which
+whoami
+xargs
+xxd
+yes
+zcat
+zipinfo
+ziptool
+
+$ ls /system/lib64 | head -80
+android.hardware.boot-V1-ndk.so
+android.hardware.boot@1.0.so
+android.hardware.boot@1.1.so
+android.hardware.boot@1.2.so
+android.hardware.fastboot-V1-ndk.so
+android.hardware.fastboot@1.0.so
+android.hardware.fastboot@1.1.so
+android.hardware.health-V5-ndk.so
+android.hardware.health@1.0.so
+android.hardware.health@2.0.so
+hw
+ld-android.so
+libadbd_auth.so
+libadbd_fs.so
+libasyncio.so
+libbase.so
+libbinder.so
+libbinder_ndk.so
+libboot_control_client.so
+libbootloader_message.so
+libc++.so
+libc.so
+libcrypto.so
+libcrypto_utils.so
+libcutils.so
+libdl.so
+libext2_blkid.so
+libext2_com_err.so
+libext2_e2p.so
+libext2_misc.so
+libext2_quota.so
+libext2_uuid.so
+libext2fs.so
+libext4_utils.so
+libfec.so
+libfec_rs.so
+libfs_mgr.so
+libfusesideload.so
+libgsi.so
+libhidl-gen-utils.so
+libhidlbase.so
+libjsoncpp.so
+liblog.so
+liblogwrap.so
+liblp.so
+liblz4.so
+liblzma.so
+libm.so
+libpackagelistparser.so
+libpcre2.so
+libpng.so
+libprocessgroup.so
+libprocessgroup_setup.so
+libprotobuf-cpp-lite-6.33.5.so
+librecovery_ui.so
+librecovery_ui_ext.so
+libselinux.so
+libsparse.so
+libtinyxml2.so
+libunwindstack.so
+libutils.so
+libvendorsupport.so
+libvintf.so
+libz.so
+libziparchive.so
+
+$ cat /proc/meminfo | head -3
+MemTotal:        3990372 kB
+MemFree:         3623880 kB
+MemAvailable:    3558740 kB
+
+$ nproc
+2
+
+$ cat /sys/kernel/debug/dri/0/clients /sys/kernel/debug/dri/0/name 2>&1
+cat: /sys/kernel/debug/dri/0/clients: No such file or directory
+cat: /sys/kernel/debug/dri/0/name: No such file or directory
+
+$ cat /sys/class/drm/card0-*/modes 2>&1
+720x1348
+720x1348
+1920x1200
+1856x1160
+1680x1050
+1600x1000
+1440x900
+1400x875
+1280x800
+800x500
+
+$ getevent -pl 2>&1 | head -60
+add device 1: /dev/input/event4
+  name:     "Cuttlefish Vhost User Keyboard 0"
+  events:
+    KEY (0001): KEY_ESC               KEY_1                 KEY_2                 KEY_3                
+                KEY_4                 KEY_5                 KEY_6                 KEY_7                
+                KEY_8                 KEY_9                 KEY_0                 KEY_MINUS            
+                KEY_EQUAL             KEY_BACKSPACE         KEY_TAB               KEY_Q                
+                KEY_W                 KEY_E                 KEY_R                 KEY_T                
+                KEY_Y                 KEY_U                 KEY_I                 KEY_O                
+                KEY_P                 KEY_LEFTBRACE         KEY_RIGHTBRACE        KEY_ENTER            
+                KEY_LEFTCTRL          KEY_A                 KEY_S                 KEY_D                
+                KEY_F                 KEY_G                 KEY_H                 KEY_J                
+                KEY_K                 KEY_L                 KEY_SEMICOLON         KEY_APOSTROPHE       
+                KEY_GRAVE             KEY_LEFTSHIFT         KEY_BACKSLASH         KEY_Z                
+                KEY_X                 KEY_C                 KEY_V                 KEY_B                
+                KEY_N                 KEY_M                 KEY_COMMA             KEY_DOT              
+                KEY_SLASH             KEY_RIGHTSHIFT        KEY_KPASTERISK        KEY_LEFTALT          
+                KEY_SPACE             KEY_CAPSLOCK          KEY_F1                KEY_F2               
+                KEY_F3                KEY_F4                KEY_F5                KEY_F6               
+                KEY_F7                KEY_F8                KEY_F9                KEY_F10              
+                KEY_NUMLOCK           KEY_SCROLLLOCK        KEY_KP7               KEY_KP8              
+                KEY_KP9               KEY_KPMINUS           KEY_KP4               KEY_KP5              
+                KEY_KP6               KEY_KPPLUS            KEY_KP1               KEY_KP2              
+                KEY_KP3               KEY_KP0               KEY_KPDOT             KEY_F11              
+                KEY_F12               KEY_KPENTER           KEY_RIGHTCTRL         KEY_KPSLASH          
+                KEY_SYSRQ             KEY_RIGHTALT          KEY_HOME              KEY_UP               
+                KEY_PAGEUP            KEY_LEFT              KEY_RIGHT             KEY_END              
+                KEY_DOWN              KEY_PAGEDOWN          KEY_INSERT            KEY_DELETE           
+                KEY_MUTE              KEY_VOLUMEDOWN        KEY_VOLUMEUP          KEY_POWER            
+                KEY_PAUSE             KEY_MENU              KEY_BACK              KEY_HOMEPAGE         
+                KEY_PRINT            
+    LED (0011): LED_NUML              LED_CAPSL             LED_SCROLLL          
+  input props:
+    <none>
+add device 2: /dev/input/event2
+  name:     "Cuttlefish Vhost User Multitouch Touchscreen 0"
+  events:
+    KEY (0001): BTN_TOUCH            
+    ABS (0003): ABS_X                 : value 0, min 0, max 720, fuzz 0, flat 0, resolution 0
+                ABS_Y                 : value 0, min 0, max 1348, fuzz 0, flat 0, resolution 0
+                ABS_MT_SLOT           : value 0, min 0, max 10, fuzz 0, flat 0, resolution 0
+                ABS_MT_POSITION_X     : value 0, min 0, max 720, fuzz 0, flat 0, resolution 0
+                ABS_MT_POSITION_Y     : value 0, min 0, max 1348, fuzz 0, flat 0, resolution 0
+                ABS_MT_TRACKING_ID    : value 0, min 0, max 65535, fuzz 0, flat 0, resolution 0
+  input props:
+    INPUT_PROP_DIRECT
+add device 3: /dev/input/event5
+  name:     "Cuttlefish Vhost User Switches 0"
+  events:
+    SW  (0005): SW_LID                SW_TABLET_MODE        SW_HEADPHONE_INSERT   SW_RFKILL_ALL        
+                SW_MICROPHONE_INSERT  SW_DOCK               SW_LINEOUT_INSERT     SW_JACK_PHYSICAL_INS    
+                SW_VIDEOOUT_INSERT    SW_CAMERA_LENS_COVER  SW_KEYPAD_SLIDE       SW_FRONT_PROXIMITY   
+                SW_ROTATE_LOCK        SW_LINEIN_INSERT      SW_MUTE_DEVICE        SW_PEN_INSERTED      
+                SW_MACHINE_COVER     
+  input props:
+    <none>
+add device 4: /dev/input/event3
+  name:     "Cuttlefish Vhost User Rotary 0"
+  events:
+    REL (0002): REL_WHEEL            
+
+$ cat /system/etc/init/hw/init.rc 2>/dev/null | grep -n -A3 "service recovery"
+84:service recovery /system/bin/recovery
+85-    socket recovery stream 422 system system
+86-    seclabel u:r:recovery:s0
+87-    user root
+
+$ ls /*.rc /system/etc/init 2>&1
+/init.recovery.cutf_cvm.rc
+/ueventd.cutf_cvm.rc
+
+/system/etc/init:
+android.hardware.boot-service.default_recovery.rc
+android.hardware.health-service.cuttlefish_recovery.rc
+hw
+servicemanager.recovery.rc
+snapuserd.rc
+
+$ getenforce
+Enforcing
+
+$ getprop
+[aaudio.hw_burst_min_usec]: [2000]
+[aaudio.mmap_exclusive_policy]: [2]
+[aaudio.mmap_policy]: [2]
+[apexd.config.compressed_apex]: [false]
+[bluetooth.device.class_of_device]: [90,2,12]
+[bluetooth.hardware.degraded_performance_mode.enabled]: [true]
+[bluetooth.hci.timeout_milliseconds]: [5000]
+[bluetooth.profile.a2dp.source.enabled]: [true]
+[bluetooth.profile.asha.central.enabled]: [true]
+[bluetooth.profile.avrcp.target.enabled]: [true]
+[bluetooth.profile.bap.broadcast.assist.enabled]: [false]
+[bluetooth.profile.bap.unicast.client.enabled]: [true]
+[bluetooth.profile.bas.client.enabled]: [true]
+[bluetooth.profile.ccp.server.enabled]: [true]
+[bluetooth.profile.csip.set_coordinator.enabled]: [true]
+[bluetooth.profile.gatt.enabled]: [true]
+[bluetooth.profile.hap.client.enabled]: [true]
+[bluetooth.profile.hfp.ag.enabled]: [true]
+[bluetooth.profile.hid.device.enabled]: [true]
+[bluetooth.profile.hid.host.enabled]: [true]
+[bluetooth.profile.map.server.enabled]: [true]
+[bluetooth.profile.mcp.server.enabled]: [true]
+[bluetooth.profile.opp.enabled]: [true]
+[bluetooth.profile.pan.nap.enabled]: [true]
+[bluetooth.profile.pan.panu.enabled]: [true]
+[bluetooth.profile.pbap.server.enabled]: [true]
+[bluetooth.profile.vcp.controller.enabled]: [true]
+[dalvik.vm.appimageformat]: [lz4]
+[dalvik.vm.dex2oat-Xms]: [64m]
+[dalvik.vm.dex2oat-Xmx]: [512m]
+[dalvik.vm.dex2oat-max-image-block-size]: [524288]
+[dalvik.vm.dex2oat-minidebuginfo]: [true]
+[dalvik.vm.dex2oat-resolve-startup-strings]: [true]
+[dalvik.vm.dex2oat64.enabled]: [true]
+[dalvik.vm.dexopt.secondary]: [true]
+[dalvik.vm.dexopt.thermal-cutoff]: [2]
+[dalvik.vm.enable_pr_dexopt]: [true]
+[dalvik.vm.heapgrowthlimit]: [192m]
+[dalvik.vm.heapmaxfree]: [8m]
+[dalvik.vm.heapminfree]: [512k]
+[dalvik.vm.heapsize]: [512m]
+[dalvik.vm.heapstartsize]: [8m]
+[dalvik.vm.heaptargetutilization]: [0.75]
+[dalvik.vm.image-dex2oat-Xms]: [64m]
+[dalvik.vm.image-dex2oat-Xmx]: [512m]
+[dalvik.vm.isa.x86_64.features]: [default]
+[dalvik.vm.isa.x86_64.variant]: [silvermont]
+[dalvik.vm.lockprof.threshold]: [500]
+[dalvik.vm.madvise.odexfile.size]: [104857600]
+[dalvik.vm.madvise.vdexfile.size]: [104857600]
+[dalvik.vm.minidebuginfo]: [true]
+[dalvik.vm.usap_pool_enabled]: [false]
+[dalvik.vm.usap_pool_refill_delay_ms]: [3000]
+[dalvik.vm.usap_pool_size_max]: [3]
+[dalvik.vm.usap_pool_size_min]: [1]
+[dalvik.vm.usap_refill_threshold]: [1]
+[dalvik.vm.useartservice]: [true]
+[dalvik.vm.usejit]: [true]
+[debug.atrace.tags.enableflags]: [0]
+[debug.c2.use_dmabufheaps]: [1]
+[debug.stagefright.c2inputsurface]: [-1]
+[drm.service.enabled]: [true]
+[external_storage.casefold.enabled]: [1]
+[external_storage.projid.enabled]: [1]
+[external_storage.sdcardfs.enabled]: [0]
+[gsid.image_installed]: [0]
+[hwservicemanager.always_sets_disabled]: [true]
+[init.svc.adbd]: [running]
+[init.svc.console]: [stopped]
+[init.svc.fastbootd]: [stopped]
+[init.svc.recovery]: [running]
+[init.svc.servicemanager]: [running]
+[init.svc.ueventd]: [running]
+[init.svc.vendor.health-cuttlefish]: [running]
+[init.svc_debug_pid.adbd]: [101]
+[init.svc_debug_pid.console]: []
+[init.svc_debug_pid.fastbootd]: []
+[init.svc_debug_pid.recovery]: [80]
+[init.svc_debug_pid.servicemanager]: [79]
+[init.svc_debug_pid.ueventd]: [75]
+[init.svc_debug_pid.vendor.health-cuttlefish]: [81]
+[log.tag.stats_log]: [I]
+[media.c2.hal.selection]: [aidl]
+[net.bt.name]: [Android]
+[persist.adb.tcp.port]: [5555]
+[persist.bluetooth.leaudio_sw_offload]: [true]
+[persist.debug.dalvik.vm.core_platform_api_policy]: [just-warn]
+[persist.pcc.audit_mode.batching.enabled]: [1]
+[persist.pcc.audit_mode.batching.flush_time_ms]: [10000]
+[persist.pcc.audit_mode.batching.max_batch_size]: [100]
+[persist.pcc.audit_mode.enabled]: [0]
+[persist.pcc.audit_mode.max_log_file_size_kb]: [10240]
+[persist.pcc.audit_mode.max_log_files]: [10]
+[persist.sys.dalvik.vm.lib.2]: [libart.so]
+[persist.sys.fuse.passthrough.enable]: [true]
+[persist.sys.usb.config]: [adb]
+[persist.sys.zram_enabled]: [1]
+[persist.traced.enable]: [1]
+[persist.vendor.audio.a2dp_codec_extensibility]: [true]
+[persist.vendor.audio.leaudio_sw_offload]: [true]
+[persist.wm.extensions.activity_embedding_guard_with_android_15]: [false]
+[persist.wm.extensions.enabled]: [true]
+[pm.dexopt.ab-ota]: [speed-profile]
+[pm.dexopt.bg-dexopt]: [speed-profile]
+[pm.dexopt.boot-after-mainline-update]: [verify]
+[pm.dexopt.boot-after-ota]: [verify]
+[pm.dexopt.cmdline]: [verify]
+[pm.dexopt.first-boot]: [verify]
+[pm.dexopt.inactive]: [verify]
+[pm.dexopt.install]: [speed-profile]
+[pm.dexopt.install-bulk]: [speed-profile]
+[pm.dexopt.install-bulk-downgraded]: [verify]
+[pm.dexopt.install-bulk-secondary]: [verify]
+[pm.dexopt.install-bulk-secondary-downgraded]: [verify]
+[pm.dexopt.install-fast]: [skip]
+[pm.dexopt.post-boot]: [verify]
+[pm.dexopt.shared]: [speed]
+[remote_provisioning.hostname]: [preprod-remoteprovisioning.googleapis.com]
+[remote_provisioning.tee.rkp_only]: [1]
+[ro.actionable_compatible_property.enabled]: [true]
+[ro.allow.mock.location]: [0]
+[ro.apex.updatable]: [true]
+[ro.appsearch.feature.enable_isolated_storage]: [true]
+[ro.audio.ihaladaptervendorextension_enabled]: [true]
+[ro.baseband]: [unknown]
+[ro.bionic.2nd_arch]: []
+[ro.bionic.2nd_cpu_variant]: []
+[ro.bionic.arch]: [x86_64]
+[ro.bionic.cpu_variant]: []
+[ro.bluetooth.a2dp_offload.supported]: [true]
+[ro.board.api_frozen]: [true]
+[ro.board.api_level]: [202604]
+[ro.board.platform]: [vsoc_x86_64]
+[ro.boot.auto_eth_guest_addr]: [192.168.98.3]
+[ro.boot.avb_version]: [1.4]
+[ro.boot.boot_devices]: [pci0000:00/0000:00:13.0, pci0000:00/0000:00:14.0]
+[ro.boot.cpuvulkan.version]: [0]
+[ro.boot.ddr_size]: [4915MB]
+[ro.boot.dynamic_partitions]: [true]
+[ro.boot.enable_bootanimation]: [1]
+[ro.boot.enable_confirmationui]: [1]
+[ro.boot.flash.locked]: [0]
+[ro.boot.fstab_suffix]: [cf.f2fs.hctr2]
+[ro.boot.hardware]: [cutf_cvm]
+[ro.boot.hardware.angle_feature_overrides_disabled]: [exposeES32ForTesting]
+[ro.boot.hardware.angle_feature_overrides_enabled]: [mapUnspecifiedColorSpaceToPassThrough]
+[ro.boot.hardware.cpu.pagesize]: [4096]
+[ro.boot.hardware.egl]: [angle]
+[ro.boot.hardware.gltransport]: [virtio-gpu-asg]
+[ro.boot.hardware.gralloc]: [minigbm]
+[ro.boot.hardware.hwcomposer]: [ranchu]
+[ro.boot.hardware.hwcomposer.display_finder_mode]: [drm]
+[ro.boot.hardware.hwcomposer.display_framebuffer_format]: [rgba]
+[ro.boot.hardware.vulkan]: [ranchu]
+[ro.boot.hw_timeout_multiplier]: [3]
+[ro.boot.hypervisor.protected_vm.supported]: [0]
+[ro.boot.hypervisor.version]: [cf-crosvm]
+[ro.boot.hypervisor.vm.supported]: [1]
+[ro.boot.lcd_density]: [280]
+[ro.boot.modem_simulator_ports]: [9600]
+[ro.boot.opengles.version]: [196609]
+[ro.boot.openthread_node_id]: [1]
+[ro.boot.serialconsole]: [0]
+[ro.boot.serialno]: [CUTTLEFISHCVD01]
+[ro.boot.setupwizard_mode]: [DISABLED]
+[ro.boot.slot_suffix]: [_a]
+[ro.boot.vbmeta.avb_version]: [1.2]
+[ro.boot.vbmeta.device]: [PARTUUID=32a26d41-b2a5-4be5-6b90-c1ab1f2a769f]
+[ro.boot.vbmeta.device_state]: [unlocked]
+[ro.boot.vbmeta.digest]: [a21d61eaf900bc1b2ffb4d97a584f44fd0be788f85d0ce2bda278af11f5a72e0]
+[ro.boot.vbmeta.hash_alg]: [sha256]
+[ro.boot.vbmeta.invalidate_on_error]: [yes]
+[ro.boot.vbmeta.size]: [22912]
+[ro.boot.vendor.apex.com.android.hardware.gatekeeper]: [com.android.hardware.gatekeeper.nonsecure]
+[ro.boot.vendor.apex.com.android.hardware.graphics.composer]: [com.android.hardware.graphics.composer.ranchu]
+[ro.boot.vendor.apex.com.android.hardware.keymint]: [com.android.hardware.keymint.rust_nonsecure]
+[ro.boot.vendor.apex.com.android.hardware.secure_element]: [com.android.hardware.secure_element]
+[ro.boot.vendor.apex.com.android.hardware.strongbox]: [none]
+[ro.boot.vendor.apex.com.android.hardware.weaver]: [none]
+[ro.boot.vendor.apex.com.google.emulated.camera.provider.hal]: [com.google.emulated.camera.provider.hal]
+[ro.boot.vendor.audiocontrol.server.cid]: [3]
+[ro.boot.vendor.audiocontrol.server.port]: [9410]
+[ro.boot.verifiedbootstate]: [orange]
+[ro.boot.veritymode]: [enforcing]
+[ro.boot.vhal_proxy_server_port]: [9300]
+[ro.boot.vsock_lights_cid]: [3]
+[ro.boot.vsock_lights_port]: [6900]
+[ro.boot.vsock_tombstone_port]: [6600]
+[ro.boot.wifi_impl]: [mac80211_hwsim_virtio]
+[ro.boot.wifi_mac_prefix]: [5554]
+[ro.bootimage.build.date]: [Thu Sep 17 15:55:36 UTC 2026]
+[ro.bootimage.build.date.utc]: [1789660536]
+[ro.bootimage.build.fingerprint]: [generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys]
+[ro.bootimage.build.id]: [CP2A.260605.016]
+[ro.bootimage.build.tags]: [test-keys]
+[ro.bootimage.build.type]: [userdebug]
+[ro.bootimage.build.uuid]: [yXiZJxwbP2KHkAC0PFhrTHbybdRL6BEFcNnVSXoAgeY]
+[ro.bootimage.build.version.incremental]: [16373615]
+[ro.bootimage.build.version.release]: [17]
+[ro.bootimage.build.version.release_or_codename]: [17]
+[ro.bootimage.build.version.sdk]: [37]
+[ro.bootimage.build.version.sdk_full]: [37.0]
+[ro.bootloader]: [unknown]
+[ro.bootmode]: [unknown]
+[ro.boottime.adbd]: [2684371482]
+[ro.boottime.console]: [2550274825]
+[ro.boottime.event.boot]: [2538288312]
+[ro.boottime.event.early-boot]: [2538176014]
+[ro.boottime.event.early-fs]: [2534742539]
+[ro.boottime.event.early-init]: [2291887343]
+[ro.boottime.event.firmware_mounts_complete]: [2537524914]
+[ro.boottime.event.fs]: [2534875587]
+[ro.boottime.event.init]: [2524840259]
+[ro.boottime.event.late-init]: [2534202714]
+[ro.boottime.event.post-fs]: [2537320650]
+[ro.boottime.event.post-fs-data]: [2537434720]
+[ro.boottime.init]: [1402099775]
+[ro.boottime.init.cold_boot_wait]: [220]
+[ro.boottime.init.first_stage]: [768812942]
+[ro.boottime.init.modules]: [744]
+[ro.boottime.init.selinux]: [48399308]
+[ro.boottime.recovery]: [2541627707]
+[ro.boottime.servicemanager]: [2527903433]
+[ro.boottime.ueventd]: [2294788295]
+[ro.boottime.vendor.health-cuttlefish]: [2546341595]
+[ro.build.ab_update]: [true]
+[ro.build.backported_fixes.alias_bitset.long_list]: [114]
+[ro.build.characteristics]: [default]
+[ro.build.date]: [Thu Sep 17 15:55:36 UTC 2026]
+[ro.build.date.utc]: [1789660536]
+[ro.build.description]: [aosp_cf_x86_64_only_phone-userdebug 17 CP2A.260605.016 16373615 test-keys]
+[ro.build.display.id]: [aosp_cf_x86_64_only_phone-userdebug 17 CP2A.260605.016 16373615 test-keys]
+[ro.build.fingerprint]: [generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys]
+[ro.build.flavor]: [aosp_cf_x86_64_only_phone-userdebug]
+[ro.build.host]: [c4bde86166cf]
+[ro.build.id]: [CP2A.260605.016]
+[ro.build.product]: [vsoc_x86_64_only]
+[ro.build.tags]: [test-keys]
+[ro.build.type]: [userdebug]
+[ro.build.user]: [android-build]
+[ro.build.uuid]: [yXiZJxwbP2KHkAC0PFhrTHbybdRL6BEFcNnVSXoAgeY]
+[ro.build.version.all_codenames]: [REL]
+[ro.build.version.base_os]: []
+[ro.build.version.codename]: [REL]
+[ro.build.version.incremental]: [16373615]
+[ro.build.version.known_codenames]: [Base,Base11,Cupcake,Donut,Eclair,Eclair01,EclairMr1,Froyo,Gingerbread,GingerbreadMr1,Honeycomb,HoneycombMr1,HoneycombMr2,IceCreamSandwich,IceCreamSandwichMr1,JellyBean,JellyBeanMr1,JellyBeanMr2,Kitkat,KitkatWatch,Lollipop,LollipopMr1,M,N,NMr1,O,OMr1,P,Q,R,S,Sv2,Tiramisu,UpsideDownCake,VanillaIceCream,Baklava,CANARY,CinnamonBun]
+[ro.build.version.min_supported_target_sdk]: [28]
+[ro.build.version.preview_sdk]: [0]
+[ro.build.version.preview_sdk_fingerprint]: [REL]
+[ro.build.version.release]: [17]
+[ro.build.version.release_or_codename]: [17]
+[ro.build.version.release_or_preview_display]: [17]
+[ro.build.version.sdk]: [37]
+[ro.build.version.sdk_full]: [37.0]
+[ro.build.version.security_patch]: [2026-06-05]
+[ro.camerax.extensions.enabled]: [true]
+[ro.carrier]: [unknown]
+[ro.cold_boot_done]: [true]
+[ro.com.android.dataroaming]: [true]
+[ro.com.google.locationfeatures]: [1]
+[ro.config.alarm_alert]: [Alarm_Classic.ogg]
+[ro.config.isolated_compilation_enabled]: [true]
+[ro.config.notification_sound]: [pixiedust.ogg]
+[ro.config.ringtone]: [Ring_Synth_04.ogg]
+[ro.control_privapp_permissions]: [enforce]
+[ro.cp_system_other_odex]: [1]
+[ro.crypto.metadata_init_delete_all_keys.enabled]: [true]
+[ro.dalvik.vm.enable_uffd_gc]: [true]
+[ro.dalvik.vm.native.bridge]: [0]
+[ro.debuggable]: [1]
+[ro.enable.nonprotected_appsearch_vm]: [true]
+[ro.force.debuggable]: [0]
+[ro.frp.pst]: [/dev/block/by-name/frp]
+[ro.gsid.image_running]: [0]
+[ro.hardware]: [cutf_cvm]
+[ro.hardware.keystore_desede]: [true]
+[ro.hardware.virtual_device]: [1]
+[ro.hwui.use_vulkan]: []
+[ro.incremental.enable]: [1]
+[ro.init.mnt_ns.count]: [1]
+[ro.kernel.version]: [6.12]
+[ro.launcher.depth.widget]: [0]
+[ro.llndk.api_level]: [202604]
+[ro.logd.size]: [1M]
+[ro.logd.size.stats]: [64K]
+[ro.minui.pixel_format]: [ABGR_8888]
+[ro.odm.build.date]: [Thu Sep 17 15:55:36 UTC 2026]
+[ro.odm.build.date.utc]: [1789660536]
+[ro.odm.build.fingerprint]: [generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys]
+[ro.odm.build.id]: [CP2A.260605.016]
+[ro.odm.build.tags]: [test-keys]
+[ro.odm.build.type]: [userdebug]
+[ro.odm.build.uuid]: [yXiZJxwbP2KHkAC0PFhrTHbybdRL6BEFcNnVSXoAgeY]
+[ro.odm.build.version.incremental]: [16373615]
+[ro.odm.build.version.release]: [17]
+[ro.odm.build.version.release_or_codename]: [17]
+[ro.odm.build.version.sdk]: [37]
+[ro.odm.build.version.sdk_full]: [37.0]
+[ro.odm.product.cpu.abilist]: [x86_64,arm64-v8a]
+[ro.odm.product.cpu.abilist32]: []
+[ro.odm.product.cpu.abilist64]: [x86_64,arm64-v8a]
+[ro.oem_unlock_supported]: [1]
+[ro.postinstall.fstab.prefix]: [/system]
+[ro.product.ab_ota_partitions]: [boot,init_boot,odm,odm_dlkm,product,system,system_dlkm,system_ext,vbmeta,vbmeta_system,vbmeta_system_dlkm,vbmeta_vendor_dlkm,vendor,vendor_boot,vendor_dlkm]
+[ro.product.board]: [cutf]
+[ro.product.bootimage.brand]: [generic]
+[ro.product.bootimage.device]: [vsoc_x86_64_only]
+[ro.product.bootimage.manufacturer]: [Google]
+[ro.product.bootimage.model]: [Cuttlefish x86_64 phone 64-bit only]
+[ro.product.bootimage.name]: [aosp_cf_x86_64_only_phone]
+[ro.product.brand]: [generic]
+[ro.product.build.16k_page.enabled]: [false]
+[ro.product.build.date]: [Thu Sep 17 15:55:36 UTC 2026]
+[ro.product.build.date.utc]: [1789660536]
+[ro.product.build.fingerprint]: [generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys]
+[ro.product.build.id]: [CP2A.260605.016]
+[ro.product.build.tags]: [test-keys]
+[ro.product.build.type]: [userdebug]
+[ro.product.build.uuid]: [yXiZJxwbP2KHkAC0PFhrTHbybdRL6BEFcNnVSXoAgeY]
+[ro.product.build.version.incremental]: [16373615]
+[ro.product.build.version.release]: [17]
+[ro.product.build.version.release_or_codename]: [17]
+[ro.product.build.version.sdk]: [37]
+[ro.product.build.version.sdk_full]: [37.0]
+[ro.product.cpu.abi]: [x86_64]
+[ro.product.cpu.abilist]: [x86_64,arm64-v8a]
+[ro.product.cpu.abilist32]: []
+[ro.product.cpu.abilist64]: [x86_64,arm64-v8a]
+[ro.product.cpu.pagesize.max]: [16384]
+[ro.product.debugfs_restrictions.enabled]: [true]
+[ro.product.device]: [vsoc_x86_64_only]
+[ro.product.first_api_level]: [37]
+[ro.product.locale]: [en-US]
+[ro.product.manufacturer]: [Google]
+[ro.product.model]: [Cuttlefish x86_64 phone 64-bit only]
+[ro.product.name]: [aosp_cf_x86_64_only_phone]
+[ro.product.odm.brand]: [generic]
+[ro.product.odm.device]: [vsoc_x86_64_only]
+[ro.product.odm.manufacturer]: [Google]
+[ro.product.odm.model]: [Cuttlefish x86_64 phone 64-bit only]
+[ro.product.odm.name]: [aosp_cf_x86_64_only_phone]
+[ro.product.page_size]: [4096]
+[ro.product.product.brand]: [generic]
+[ro.product.product.device]: [vsoc_x86_64_only]
+[ro.product.product.manufacturer]: [Google]
+[ro.product.product.model]: [Cuttlefish x86_64 phone 64-bit only]
+[ro.product.product.name]: [aosp_cf_x86_64_only_phone]
+[ro.product.system.brand]: [Android]
+[ro.product.system.device]: [generic]
+[ro.product.system.manufacturer]: [Android]
+[ro.product.system.model]: [Generic System]
+[ro.product.system.name]: [generic_system]
+[ro.product.system_ext.brand]: [generic]
+[ro.product.system_ext.device]: [vsoc_x86_64_only]
+[ro.product.system_ext.manufacturer]: [Google]
+[ro.product.system_ext.model]: [Cuttlefish x86_64 phone 64-bit only]
+[ro.product.system_ext.name]: [aosp_cf_x86_64_only_phone]
+[ro.product.vendor.brand]: [generic]
+[ro.product.vendor.device]: [vsoc_x86_64_only]
+[ro.product.vendor.manufacturer]: [Google]
+[ro.product.vendor.model]: [Cuttlefish x86_64 phone 64-bit only]
+[ro.product.vendor.name]: [aosp_cf_x86_64_only_phone]
+[ro.property_service.version]: [2]
+[ro.rebootescrow.device]: [/dev/block/pmem0]
+[ro.recovery.usb.adb.pid]: [D001]
+[ro.recovery.usb.fastboot.pid]: [4EE0]
+[ro.recovery.usb.vid]: [18D1]
+[ro.revision]: [0]
+[ro.secure]: [1]
+[ro.serialno]: [CUTTLEFISHCVD01]
+[ro.soc.manufacturer]: [Google]
+[ro.soc.model]: [vsoc_x86_64_only]
+[ro.surface_flinger.game_default_frame_rate_override]: [60]
+[ro.surface_flinger.running_without_sync_framework]: [true]
+[ro.surface_flinger.supports_background_blur]: [1]
+[ro.system.build.date]: [Thu Sep 17 15:55:36 UTC 2026]
+[ro.system.build.date.utc]: [1789660536]
+[ro.system.build.fingerprint]: [Android/generic_system/generic:17/CP2A.260605.016/16373615:userdebug/test-keys]
+[ro.system.build.id]: [CP2A.260605.016]
+[ro.system.build.tags]: [test-keys]
+[ro.system.build.type]: [userdebug]
+[ro.system.build.uuid]: [yXiZJxwbP2KHkAC0PFhrTHbybdRL6BEFcNnVSXoAgeY]
+[ro.system.build.version.incremental]: [16373615]
+[ro.system.build.version.release]: [17]
+[ro.system.build.version.release_or_codename]: [17]
+[ro.system.build.version.sdk]: [37]
+[ro.system.build.version.sdk_full]: [37.0]
+[ro.system.product.cpu.abilist]: [x86_64,arm64-v8a]
+[ro.system.product.cpu.abilist32]: []
+[ro.system.product.cpu.abilist64]: [x86_64,arm64-v8a]
+[ro.system_ext.build.date]: [Thu Sep 17 15:55:36 UTC 2026]
+[ro.system_ext.build.date.utc]: [1789660536]
+[ro.system_ext.build.fingerprint]: [generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys]
+[ro.system_ext.build.id]: [CP2A.260605.016]
+[ro.system_ext.build.tags]: [test-keys]
+[ro.system_ext.build.type]: [userdebug]
+[ro.system_ext.build.uuid]: [yXiZJxwbP2KHkAC0PFhrTHbybdRL6BEFcNnVSXoAgeY]
+[ro.system_ext.build.version.incremental]: [16373615]
+[ro.system_ext.build.version.release]: [17]
+[ro.system_ext.build.version.release_or_codename]: [17]
+[ro.system_ext.build.version.sdk]: [37]
+[ro.system_ext.build.version.sdk_full]: [37.0]
+[ro.telephony.default_network]: [33]
+[ro.treble.enabled]: [true]
+[ro.vendor.api_level]: [202604]
+[ro.vendor.boot_security_patch]: [2026-06-05]
+[ro.vendor.build.ab_ota_partitions]: [boot,init_boot,odm,odm_dlkm,product,system,system_dlkm,system_ext,vbmeta,vbmeta_system,vbmeta_system_dlkm,vbmeta_vendor_dlkm,vendor,vendor_boot,vendor_dlkm]
+[ro.vendor.build.date]: [Thu Sep 17 15:55:36 UTC 2026]
+[ro.vendor.build.date.utc]: [1789660536]
+[ro.vendor.build.fingerprint]: [generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys]
+[ro.vendor.build.id]: [CP2A.260605.016]
+[ro.vendor.build.security_patch]: [2026-06-05]
+[ro.vendor.build.tags]: [test-keys]
+[ro.vendor.build.type]: [userdebug]
+[ro.vendor.build.uuid]: [yXiZJxwbP2KHkAC0PFhrTHbybdRL6BEFcNnVSXoAgeY]
+[ro.vendor.build.version.incremental]: [16373615]
+[ro.vendor.build.version.release]: [17]
+[ro.vendor.build.version.release_or_codename]: [17]
+[ro.vendor.build.version.sdk]: [37]
+[ro.vendor.build.version.sdk_full]: [37.0]
+[ro.vendor.fingerprint_virtual_hal_start]: [true]
+[ro.vendor.hwc.drm.present_fence_not_reliable]: [true]
+[ro.vendor.hwcomposer.pmem]: [/dev/block/pmem1]
+[ro.vendor.init_dev_config.path]: [/vendor/bin/init_dev_config]
+[ro.vendor.product.cpu.abilist]: [x86_64,arm64-v8a]
+[ro.vendor.product.cpu.abilist32]: []
+[ro.vendor.product.cpu.abilist64]: [x86_64,arm64-v8a]
+[ro.vendor.uwb.dev]: [/dev/hvc9]
+[ro.vendor.virtwifi.port]: [eth2]
+[ro.virtual_ab.batch_writes]: [true]
+[ro.virtual_ab.compression.enabled]: [true]
+[ro.virtual_ab.compression.threads]: [true]
+[ro.virtual_ab.compression.xor.enabled]: [true]
+[ro.virtual_ab.enabled]: [true]
+[ro.virtual_ab.io_uring.enabled]: [true]
+[ro.virtual_ab.ublk.enabled]: [true]
+[ro.virtual_ab.userspace.snapshots.enabled]: [true]
+[ro.wifi.channels]: []
+[ro.zygote]: [zygote64]
+[security.perf_harden]: [1]
+[service.adb.root]: [1]
+[service.aiseal.protected_vm]: [0]
+[service.sf.prime_shader_cache]: [0]
+[servicemanager.ready]: [true]
+[sys.usb.config]: [adb]
+[sys.usb.configfs]: [0]
+[sys.usb.state]: [adb]
+[tombstoned.max_tombstone_count]: [100]
+[traced.relay_producer_port]: [vsock://-1:2010]
+[vendor.hwc.drm.device]: [/dev/dri/card0]
+[vendor.ser.bt-uart]: [/dev/hvc5]
+[wifi.direct.interface]: [p2p-dev-wlan0]
+[wifi.interface]: [wlan0]
+[wlan.driver.status]: [ok]
+
+$ cat /proc/sys/kernel/osrelease
+6.12.74-android16-6-g3ec022196c4e-ab15076761
+
+$ ls /lib/modules 2>&1 | head; lsmod 2>&1 | head -40
+cfg80211.ko
+failover.ko
+libarc4.ko
+mac80211.ko
+mac80211_hwsim.ko
+modules.alias
+modules.dep
+modules.load
+modules.options
+modules.softdep
+Module                  Size  Used by
+vmw_vsock_virtio_transport    24576  2 
+virtio_pci             40960  0 
+virtio_pci_legacy_dev    16384  1 virtio_pci
+virtio_pci_modern_dev    20480  1 virtio_pci
+virtio_console         45056  0 
+virtio_blk             32768  0 
+mac80211_hwsim         94208  0 
+mac80211             1163264  1 mac80211_hwsim
+cfg80211             1220608  2 mac80211_hwsim,mac80211
+rfkill                 32768  1 cfg80211
+libarc4                12288  1 mac80211
+virtio_rng             16384  0 
+virtio_net             98304  0 
+virtio_input           20480  0 
+virtio_gpu             94208  1 
+virtio_dma_buf         12288  1 virtio_gpu
+net_failover           20480  1 virtio_net
+nd_virtio              16384  0 
+failover               16384  1 net_failover
