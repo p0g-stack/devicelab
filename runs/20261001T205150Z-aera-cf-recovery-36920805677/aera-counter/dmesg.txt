@@ -1,0 +1,60 @@
+[  123.315483] servicemanager: getDeviceHalManifest: status from fetching VINTF information: -2
+[  123.315677] servicemanager: getDeviceHalManifest: -2 VINTF parse error: Cannot read /vendor/manifest.xml: No such file or directory
+[  123.315964] servicemanager: getFrameworkHalManifest: Reading VINTF information.
+[  123.316155] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[  123.316435] servicemanager: getFrameworkHalManifest: status from fetching VINTF information: -2
+[  123.316639] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[  123.316917] servicemanager: NULL VINTF MANIFEST!: device
+[  123.317027] servicemanager: NULL VINTF MANIFEST!: framework
+[  123.317149] servicemanager: getDeviceHalManifest: Reading VINTF information.
+[  123.317351] servicemanager: getDeviceHalManifest: status from fetching VINTF information: -2
+[  123.317576] servicemanager: getDeviceHalManifest: -2 VINTF parse error: Cannot read /vendor/manifest.xml: No such file or directory
+[  123.317847] servicemanager: getFrameworkHalManifest: Reading VINTF information.
+[  123.318040] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[  123.320279] servicemanager: getFrameworkHalManifest: status from fetching VINTF information: -2
+[  123.320567] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[  123.321058] servicemanager: NULL VINTF MANIFEST!: device
+[  123.322019] servicemanager: NULL VINTF MANIFEST!: framework
+[  123.322182] servicemanager: Caller(pid=94,uid=0,sid=u:r:recovery:s0) Could not find android.hardware.health.IHealth/default in the VINTF manifest. No alternative instances declared in VINTF.
+[  126.100154] type=1400 audit(1790886638.160:264): avc:  denied  { write } for  comm="recovery" name="aeraout" dev="rootfs" ino=742 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[  126.101574] type=1300 audit(1790886638.160:264): arch=c000003e syscall=257 success=yes exit=18 a0=ffffff9c a1=6182d4e7c0fb a2=241 a3=1b6 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[  126.102432] type=1327 audit(1790886638.160:264): proctitle="/system/bin/recovery"
+[  126.102661] type=1320 audit(1790886638.160:264): 
+[  126.103567] type=1400 audit(1790886638.160:265): avc:  denied  { read } for  comm="recovery" name="plugin.json" dev="tmpfs" ino=17 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+[  126.104159] type=1400 audit(1790886638.160:265): avc:  denied  { open } for  comm="recovery" path="/tmp/aera/plugins/counter/plugin.json" dev="tmpfs" ino=17 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+[  126.104702] type=1300 audit(1790886638.160:265): arch=c000003e syscall=257 success=yes exit=23 a0=ffffff9c a1=716d6ec10f50 a2=a0000 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[  126.105342] type=1327 audit(1790886638.160:265): proctitle="/system/bin/recovery"
+[  126.105508] type=1320 audit(1790886638.160:265): 
+[  126.105660] type=1400 audit(1790886638.160:266): avc:  denied  { getattr } for  comm="recovery" path="/tmp/aera/plugins/counter/plugin.json" dev="tmpfs" ino=17 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+[  126.106187] type=1300 audit(1790886638.160:266): arch=c000003e syscall=5 success=yes exit=0 a0=17 a1=716c7b9e5180 a2=a0000 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[  126.106874] type=1327 audit(1790886638.160:266): proctitle="/system/bin/recovery"
+[  126.107087] type=1320 audit(1790886638.160:266): 
+[  126.107237] type=1400 audit(1790886638.160:267): avc:  denied  { search } for  comm="recovery" name="AERA" dev="rootfs" ino=737 scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=dir permissive=1
+[  126.107660] type=1300 audit(1790886638.160:267): arch=c000003e syscall=257 success=no exit=-2 a0=ffffff9c a1=6182d5237b20 a2=90000 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[  126.108329] type=1327 audit(1790886638.160:267): proctitle="/system/bin/recovery"
+[  126.108507] type=1320 audit(1790886638.160:267): 
+[  126.108661] type=1400 audit(1790886638.160:268): avc:  denied  { getattr } for  comm="recovery" path="/system/bin/aeraout" dev="rootfs" ino=742 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[  126.109151] type=1300 audit(1790886638.160:268): arch=c000003e syscall=5 success=yes exit=0 a0=12 a1=716c7b9e55c0 a2=0 a3=38000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[  126.109741] type=1327 audit(1790886638.160:268): proctitle="/system/bin/recovery"
+[  126.109957] type=1320 audit(1790886638.160:268): 
+[  126.110120] type=1400 audit(1790886638.160:269): avc:  denied  { unlink } for  comm="recovery" name="aerain" dev="rootfs" ino=741 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[  126.110641] type=1300 audit(1790886638.160:269): arch=c000003e syscall=263 success=yes exit=0 a0=ffffff9c a1=6182d4e8dfc5 a2=0 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[  126.111271] type=1327 audit(1790886638.160:269): proctitle="/system/bin/recovery"
+[  126.111455] type=1320 audit(1790886638.160:269): 
+[  126.111594] type=1400 audit(1790886638.160:270): avc:  denied  { create } for  comm="recovery" name="aerain" scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[  126.111957] type=1300 audit(1790886638.160:270): arch=c000003e syscall=259 success=yes exit=0 a0=ffffff9c a1=6182d4e8dfc5 a2=11b0 a3=0 items=2 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[  126.112526] type=1307 audit(1790886638.160:270): cwd="/"
+[  126.112665] type=1302 audit(1790886638.160:270): item=0 name=(null) inode=235 dev=00:02 mode=040751 ouid=0 ogid=0 rdev=00:00 obj=u:object_r:rootfs:s0 nametype=PARENT cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+[  126.113064] type=1302 audit(1790886638.160:270): item=1 name=(null) inode=746 dev=00:02 mode=010660 ouid=0 ogid=0 rdev=00:00 obj=u:object_r:rootfs:s0 nametype=CREATE cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+[  126.113512] type=1327 audit(1790886638.160:270): proctitle="/system/bin/recovery"
+[  126.113737] type=1320 audit(1790886638.160:270): 
+[  126.113928] type=1400 audit(1790886638.160:271): avc:  denied  { read } for  comm="recovery" name="aerain" dev="rootfs" ino=746 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[  126.114436] type=1400 audit(1790886638.160:271): avc:  denied  { open } for  comm="recovery" path="/system/bin/aerain" dev="rootfs" ino=746 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[  126.114922] type=1300 audit(1790886638.160:271): arch=c000003e syscall=257 success=yes exit=18 a0=ffffff9c a1=6182d4e8dfc5 a2=80800 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[  126.115436] type=1327 audit(1790886638.160:271): proctitle="/system/bin/recovery"
+[  126.115647] type=1320 audit(1790886638.160:271): 
+[  126.115801] type=1400 audit(1790886638.164:272): avc:  denied  { map } for  comm="recovery" path="/tmp/aera/plugins/counter/runtime.xz" dev="tmpfs" ino=18 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+[  126.116213] type=1300 audit(1790886638.164:272): arch=c000003e syscall=9 success=yes exit=124710706561024 a0=0 a1=195738c a2=1 a3=2 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[  126.116779] type=1327 audit(1790886638.164:272): proctitle="/system/bin/recovery"
+[  126.116970] type=1320 audit(1790886638.164:272): 
+[  128.435495] logd: logdr: UID=0 GID=0 PID=512 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
