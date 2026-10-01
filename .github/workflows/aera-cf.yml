@@ -136,6 +136,9 @@ jobs:
           (sleep 90; sed -i 's/Flutter Demo Home Page/Reloaded on AERA/' lib/main.dart; echo r; sleep 20; echo q) \
             | timeout 300 flutter_p0g run --aera --ram -s 0.0.0.0:6520 --aerap "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 \
             | tee "$LAB_OUT/flutter_p0g-run.log" || true
+          # Where a stalled open stops: the pipes, AERA's own log, who holds the FIFOs
+          adb -s 0.0.0.0:6520 shell 'ls -la /system/bin/aerain /system/bin/aeraout; ps -A -o PID,S,WCHAN,NAME,ARGS | grep -vE " \\[|ps -A"; for p in $(pidof recovery); do ls -la /proc/$p/fd | grep -iE "aera|pipe"; done; tail -60 /tmp/recovery.log' \
+            > "$LAB_OUT/flutter_p0g-run-state.txt" 2>&1 || true
           cd "$GITHUB_WORKSPACE" && aera/cuttlefish/aera-shot.sh flutter_p0g-reloaded || true
       - name: Logs
         if: always()

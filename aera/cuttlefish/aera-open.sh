@@ -35,13 +35,14 @@ remote_start() {
   local r; r=$(rpc '{"v":1,"id":"lab-mirror","op":"mirror","args":{"action":"start","port":'$RPORT'}}')
   echo "$r" >> "$OUT/rpc.txt"
   if echo "$r" | grep -q '"running":true'; then
+    RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1)
     a forward tcp:1$RPORT tcp:$RPORT >/dev/null && REMOTE=http://127.0.0.1:1$RPORT
-    curl -s -m 5 "$REMOTE/api/status" > "$OUT/remote-status.json" || true
+    curl -s -m 5 -H "x-aera-code: $RCODE" "$REMOTE/api/status" > "$OUT/remote-status.json" || true
     log "AERA Remote up: $(cat "$OUT/remote-status.json" 2>/dev/null | head -c 300)"
   else log "AERA Remote did not start: $(echo "$r" | tail -2 | tr '\n' ' ')"; fi
 }
 touch_remote() {  # touch_remote ACTION X Y
-  curl -s -m 5 -X POST -H 'Content-Type: application/json' \
+  curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" \
     -d "{\"action\":\"$1\",\"x\":$2,\"y\":$3}" "$REMOTE/api/input/touch"
 }
 tap() {  # tap X Y NAME (screen pixels of the captured frame)
@@ -86,7 +87,7 @@ set -- ${APP_TAPS:-$((W - 70)),$((H - 70)) $((W - 70)),$((H - 70)) $((W - 70)),$
 # One raw evdev tap first (recorded with getevent), then AERA Remote.
 TAP_WAIT=1 tap "${1%,*}" "${1#*,}" raw; shift
 remote_start
-[ -n "$REMOTE" ] && curl -s -m 10 -o "$OUT/remote-screen.jpg" "$REMOTE/screen.jpg"
+[ -n "$REMOTE" ] && curl -s -m 10 -H "x-aera-code: $RCODE" -o "$OUT/remote-screen.jpg" "$REMOTE/screen.jpg"
 for t in "$@"; do TAP_WAIT=1 tap "${t%,*}" "${t#*,}" app; done
 sleep 2; shot after
 a shell "ls -la $data; tail -40 $data/aera-flutter.log" > "$OUT/aera-flutter.log" 2>&1

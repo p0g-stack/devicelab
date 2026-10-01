@@ -74,8 +74,11 @@ Atomic commit failed ret=-22
   shape.
 - Upstream fix (draft): without a topology, one layer mixer on the CRTC's own
   primary plane (by `possible_crtcs` and plane `type`); SDE devices unchanged.
-  `/mnt/project-files/devicelab-aera/patches-draft/0013-*`, syntax-checked,
-  applies after 0001-0012; not yet built.
+  Patch 0013 (flutter-aera ab5de47).
+- FIXED on image `aera-cf-x86_64-e54e216-4aabff1095d6546e` (run `runs/20261001T175801Z-aera-cf-recovery-36899838494`):
+  `no SDE topology: 1 layer mixer, plane 32`, `Atomic Commit succeed`, zero
+  `Atomic commit failed`; debugfs `dri/0/state` shows plane 32 on crtc-0
+  holding a 720x1348 XR24 FB allocated by `recovery`.
 
 ## D4. logd aborts every few seconds: no task_profiles.json in the ramdisk
 
@@ -92,17 +95,22 @@ init: Service 'logd' (pid 856) received signal 6
   root (the `cp` in `prebuilt/Android.mk` is commented out). The ramdisk has
   an empty `/system/etc/task_profiles/` directory instead.
 - Effect: no logcat in recovery, init restarts logd forever.
-- Upstream fix (draft): require it on every build and copy it to
-  `/system/etc/task_profiles.json`. `patches-draft/0014-*`; not yet built.
+- Upstream fix: require it on every build and copy it to
+  `/system/etc/task_profiles.json`. Patch 0014 (flutter-aera ab5de47).
+- FIXED on image e54e216 (run `runs/20261001T175801Z-aera-cf-recovery-36899838494`): `init.svc.logd=running`, logcat
+  works in recovery.
 
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
   not reach the counter: three taps on its + leave 0 (`aera-counter/06-after.png`).
-  Not yet known whether minuitwrp ignores the device or the injected events.
-- `flutter_p0g run --aera` gets the VM service URL and then `flutter attach`
-  says `Target file "lib/main.dart" not found.` though it runs in a fresh
-  `flutter create` app (`flutter_p0g-run.log`). Reported to flutter_p0g.
+  getevent on the node shows the written events going out to readers
+  (protocol B, BTN_TOUCH, ABS_X/Y), so AERA receives them and does not act
+  on them. Next: AERA Remote's uinput touch (`op mirror`, header `x-aera-code`).
+- `flutter_p0g run --aera`: the attach error was this workflow's
+  `flutter create -q` (no such flag). With that fixed (a8b887d), the second
+  `plugin open` (after `install --open` already opened the counter) printed
+  nothing until the 300 s timeout; state capture added.
 
 ## D-cf1 (devicelab, not AERA). adbd stops at `sys.usb.config=none`
 
