@@ -1,0 +1,91 @@
+[cf] installing cuttlefish host packages
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ii  cuttlefish-base 1.57.0       amd64        Cuttlefish Android Virtual Device companion package
+[cf] fetching aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug
+cvd(3917)  I 10-01 07:28:25  3917  3917 main.cc:137] version: 1.57.0 | VCS: 9bb9c72329cedcb436bb75afc05c24d73fbcdf5d
+By using this Android Virtual Device, you agree to Google Terms of Service (https://policies.google.com/terms). The Google Privacy Policy (https://policies.google.com/privacy) describes how Google handles information generated as you use Google services.
+cvd(3917)  I 10-01 07:28:26  3917  3917 fetch_cvd.cc:495] Starting fetch to "/mnt/cf"
+cvd(3917)  I 10-01 07:28:26  3917  3920 host_package.cc:43] Downloading host package for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(3917)  I 10-01 07:28:29  3917  3917 fetch_cvd.cc:206] Downloading image zip for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(3917)  I 10-01 07:29:00  3917  3917 fetch_cvd.cc:511] Completed target fetch to '/mnt/cf' (1 out of 1)
+cvd(3917)  I 10-01 07:29:00  3917  3917 fetch_cvd.cc:520] Completed all fetches
+android-info.txt
+bin
+boot.img
+chromeos
+com.android.i18n
+cuttlefish_example_custom.img
+etc
+fastboot-info.txt
+fetch.log
+fetcher_config.json
+framework
+init_boot.img
+lib64
+metrics
+misc_info.txt
+nativetest64
+otatools
+super.img
+test_suites
+userdata.img
+usr
+vbmeta.img
+vbmeta_system.img
+vbmeta_system_dlkm.img
+vbmeta_vendor_dlkm.img
+vendor_boot.img
+[cf] launching (gpu_mode=gfxstream_guest_angle_host_swiftshader)
+[cf] booted in 99s: generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys
+[cf] state recovery after 9s
+[cf] recovery adb uid 0
+/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf: 1 file pushed, 0 skipped. 92.6 MB/s (759720 bytes in 0.008s)
+/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf: 1 file pushed, 0 skipped. 141.6 MB/s (708920 bytes in 0.005s)
+[cf] /twres/fonts absent in stock recovery: pushed host DejaVu as a stand-in
+[cf] facts: 1112 lines -> /home/runner/work/devicelab/devicelab/out/stock-recovery-facts.txt
+[cf] screenshot failed:
+Exited with code '1'
+
+    If the error above is unclear, please copy the text and `cvd version` output into an issue at:
+        http://go/cuttlefish-bug
+
+app 11 members, kit 23 members
+/home/runner/work/devicelab/devicelab/out/counter-1.0.0-x64.aerap: 34 members, 136.3 MB expanded, 26.0 MB xz
+/home/runner/work/devicelab/devicelab/out/counter-sim/payload.tgz: 1 file pushed, 0 skipped. 335.8 MB/s (43999287 bytes in 0.125s)
+/home/runner/work/_temp/kitx64/aera-host-sim: 1 file pushed, 0 skipped. 162.3 MB/s (1425120 bytes in 0.008s)
+[sim] pushed in 2s; 130M	/tmp/aera-lab/root
+[sim] exit 0 after 11s
+sim: handshake done, 1080x2400 x3 slots
+aera-flutter: surface 1080x2400 stride 4320 slots 3 scale 2.75 @60Hz
+No virgl contexts available on hostMESA-EGL: warning: egl: failed to create dri2 screen
+MESA-EGL: warning: DRI2: failed to create screen
+flutter: The Dart VM service is listening on http://127.0.0.1:35227/64tKSUgmfig=/
+aera-flutter: GL renderer softpipe
+sim: first frame after 1691 ms
+sim:   4000 ms Snap("start")
+sim: wrote /tmp/aera-lab/out/start.png
+sim:   4500 ms Tap(980, 2250)
+sim:   5000 ms Tap(980, 2250)
+sim:   5500 ms Tap(980, 2250)
+sim:   8000 ms Snap("after")
+sim: wrote /tmp/aera-lab/out/after.png
+sim: 27 frames
+sim: wrote /tmp/aera-lab/out/last.png
+aera-flutter: shutting down after 27 frames
+sim: embedder exited with exit status: 0
+total 496
+drwxr-xr-x 3 runner runner   4096 Oct  1 07:32 .
+drwxr-xr-x 3 runner runner   4096 Oct  1 07:32 ..
+-rw-r--r-- 1 runner runner 163715 Oct  1 07:32 after.png
+-rw-r--r-- 1 runner runner 163715 Oct  1 07:32 last.png
+drwxr-xr-x 6 runner runner   4096 Oct  1 07:32 plugin-data
+-rw-r--r-- 1 runner runner 164374 Oct  1 07:32 start.png
