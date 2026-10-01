@@ -1,0 +1,368 @@
+$ getprop init.svc.recovery
+running
+
+$ getprop | grep -E "ro.build.version.(sdk|release)|ro.twrp|aera|ro.boot.mode|bootmode"
+[aera.crash_counter]: [0]
+[aera.postinit.status]: [1]
+[aera.product.partition]: [0]
+[aera.rom.sdk]: [29]
+[aera.super.block_device]: [/dev/block/by-name/super]
+[aera.super.mount_point]: [/super]
+[aera.super.partition]: [true]
+[ro.aera.boot]: [1]
+[ro.aera.boot.header.version]: [4]
+[ro.aera.build]: [aera]
+[ro.aera.build.status]: [Unofficial]
+[ro.aera.crypto_enabled]: [0]
+[ro.aera.home]: [/sdcard/AERA]
+[ro.aera.kernel]: [6.12.74-android16-6-g3ec022196c4e-ab15076761]
+[ro.aera.release.channel]: [Nightly]
+[ro.aera.release.version]: [R1.0]
+[ro.aera.sar]: [0]
+[ro.aera.settings]: [/data/recovery/AERA]
+[ro.aera.status]: [Unofficial]
+[ro.aera.substitute_permissions]: [1]
+[ro.aera.type]: [Unofficial]
+[ro.aera.vanilla]: [1]
+[ro.aera.variant]: [default]
+[ro.board.platform]: [aera_cf]
+[ro.boot.modem_simulator_ports]: [9600]
+[ro.bootimage.build.date.utc_aera]: [1790863215]
+[ro.bootmode]: [unknown]
+[ro.build.aera_codebase]: [2026-10-01 (b540be3)]
+[ro.build.aera_id]: [17783d42-f3e1-4661-bc18-8ec9f08b32a9]
+[ro.build.date.utc_aera]: [1790863215]
+[ro.build.description]: [aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys]
+[ro.build.display.id]: [aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys]
+[ro.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.build.flavor]: [aera_aera-eng]
+[ro.build.product]: [aera_cf]
+[ro.build.version.release]: [99.87.36]
+[ro.build.version.release_or_codename]: [99.87.36]
+[ro.build.version.release_or_preview_display]: [16]
+[ro.build.version.sdk]: [36]
+[ro.build.version.sdk_full]: [36.0]
+[ro.odm.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.product.board]: [aera_cf]
+[ro.product.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.product.device]: [aera_cf]
+[ro.product.name]: [aera_aera]
+[ro.product.odm.device]: [aera_cf]
+[ro.product.odm.name]: [aera_aera]
+[ro.product.product.device]: [aera_cf]
+[ro.product.product.name]: [aera_aera]
+[ro.product.system.device]: [aera_cf]
+[ro.product.system.name]: [aera_aera]
+[ro.product.system_ext.device]: [aera_cf]
+[ro.product.system_ext.name]: [aera_aera]
+[ro.product.vendor.device]: [aera_cf]
+[ro.product.vendor.name]: [aera_aera]
+[ro.system.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.system_ext.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[sys.usb.config.aera_fastbootd]: [0]
+[sys.usb.config.aera_soft_switch]: [0]
+
+$ ls -la /tmp /tmp/recovery.log 2>&1
+
+-rw-rw-rw- 1 root root  37128 2026-10-01 18:24 /tmp/recovery.log
+
+/tmp:
+total 116
+drwxrwxr-x  3 root shell   180 2026-10-01 18:24 .
+drwxr-xr-x 35 root root   1480 2026-10-01 18:24 ..
+-rw-------  1 root root      2 2026-10-01 18:24 aera-audio-volume
+-rw-rw-rw-  1 root root    135 2026-10-01 18:24 aera-live.cfg
+-rw-rw-rw-  1 root root  63619 2026-10-01 18:24 dmesg.log
+-rw-rw-rw-  1 root root     72 2026-10-01 18:24 logcat.log
+drwxr-xr-x  3 root root     60 2026-10-01 18:24 misc
+-rw-rw-rw-  1 root root  37128 2026-10-01 18:24 recovery.log
+prwSrwS---  1 root root      0 2026-10-01 18:24 twadbfifo
+
+$ tail -80 /tmp/recovery.log 2>&1
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+E:[MTP] could not open MTP driver, errno: 2
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+Atomic commit failed ret=-22
+
+$ grep -rn -A8 "service recovery" /init.rc /system/etc/init/hw/init.rc /*.rc 2>/dev/null | head -40
+/system/etc/init/hw/init.rc:130:service recovery /system/bin/recovery
+/system/etc/init/hw/init.rc-131-    socket recovery stream 422 system system
+/system/etc/init/hw/init.rc-132-    seclabel u:r:recovery:s0
+/system/etc/init/hw/init.rc-133-    user root
+/system/etc/init/hw/init.rc-134-
+/system/etc/init/hw/init.rc-135-service adbd /system/bin/adbd --root_seclabel=u:r:su:s0 --device_banner=recovery
+/system/etc/init/hw/init.rc-136-    disabled
+/system/etc/init/hw/init.rc-137-    socket adbd stream 660 system system
+/system/etc/init/hw/init.rc-138-    seclabel u:r:adbd:s0
+/init.recovery.service.rc:4:service recovery /system/bin/recovery
+/init.recovery.service.rc-5-    socket recovery stream 422 system system
+/init.recovery.service.rc-6-    seclabel u:r:recovery:s0
+/init.recovery.service.rc-7-    user root
+
+$ file /system/bin/recovery 2>&1; ls -la /system/bin/recovery
+/system/bin/recovery: ELF shared object, 64-bit LSB x86-64, dynamic (/system/bin/linker64), for Android 36, BuildID=2316155f408238fd0810e400adbd3999, stripped
+-rwxr-xr-x 1 root root 10341224 1970-01-01 01:00 /system/bin/recovery
+
+$ readelf -d /system/bin/recovery 2>/dev/null | grep NEEDED
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.boot@1.0.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.boot@1.1.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.boot@1.2.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.health@2.0.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.health@2.1.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.health-V3-ndk.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.health-translate-ndk.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libbinder.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libbinder_ndk.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libboot_control_client.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libfs_mgr.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libhardware.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libhidlbase.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [liblog.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [liblp.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [liblz4.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libprotobuf-cpp-lite.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libutils.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libz.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libcutils.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libtar.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libblkid.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libminuitwrp.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libmtdutils.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libtwadbbu.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libjpeg.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libpng.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libbootloader_message.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libcrecovery.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libtwrpdigest.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc++.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libaosprecovery.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libcrypto.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libbase.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libandroidfw.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libziparchive.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libselinux.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libdl_android.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libft2.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libtwrpmtp-ffs.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libresetprop.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libdl.so]
+
+$ ls /system/lib64 | head -100; ls /system/lib64 | wc -l
+android.frameworks.stats@1.0.so
+android.hardware.boot-V1-ndk.so
+android.hardware.boot@1.0.so
+android.hardware.boot@1.1.so
+android.hardware.boot@1.2.so
+android.hardware.health-V3-ndk.so
+android.hardware.health-V4-ndk.so
+android.hardware.health-translate-ndk.so
+android.hardware.health@1.0.so
+android.hardware.health@2.0.so
+android.hardware.health@2.1.so
+android.hardware.vibrator-V1-cpp.so
+android.hardware.vibrator-V1-ndk.so
+android.hardware.vibrator-V2-cpp.so
+android.hardware.vibrator-V2-ndk.so
+android.hardware.vibrator@1.0.so
+android.hardware.vibrator@1.1.so
+android.hardware.vibrator@1.2.so
+android.hidl.token@1.0.so
+hw
+ld-android.so
+libadb_crypto.so
+libadb_protos.so
+libadb_sysdeps.so
+libadb_tls_connection.so
+libadbconnection_server.so
+libadbd.so
+libadbd_auth.so
+libadbd_fs.so
+libadbd_services.so
+libandroid_runtime_lazy.so
+libandroidfw.so
+libandroidicu.so
+libaosprecovery.so
+libapexsupport.so
+libapp_processes_protos_lite.so
+libasyncio.so
+libbase.so
+libbinder.so
+libbinder_ndk.so
+libblkid.so
+libbmlutils.so
+libboot_control_client.so
+libbootloader_message.so
+libc++.so
+libc.so
+libcap.so
+libchrome.so
+libcrecovery.so
+libcrypto.so
+libcrypto_utils.so
+libcutils.so
+libcutils_sockets.so
+libdl.so
+libdl_android.so
+libevent.so
+libexfat_twrp.so
+libext2_blkid.so
+libext2_com_err.so
+libext2_e2p.so
+libext2_misc.so
+libext2_profile.so
+libext2_quota.so
+libext2_uuid.so
+libext2fs.so
+libext4_utils.so
+libfec.so
+libflashutils.so
+libfs_mgr.so
+libfscrypt.so
+libft2.so
+libfusesideload.so
+libgsi.so
+libhardware.so
+libhidl-gen-utils.so
+libhidlbase.so
+libhidltransport.so
+libicui18n.so
+libicuuc.so
+libincfs.so
+libjpeg.so
+libjsoncpp.so
+libkeyutils.so
+liblog.so
+liblogwrap.so
+liblp.so
+liblz4.so
+liblzma.so
+libm.so
+libmdnssd.so
+libminuitwrp.so
+libmmcutils.so
+libmtdutils.so
+libncurses.so
+libnetd_client.so
+libnl.so
+libpackagelistparser.so
+libpcre2.so
+libperfetto_c.so
+libpng.so
+125
+
+$ ls -la /twres /twres/fonts 2>&1 | head -20
+/twres:
+total 0
+drwxr-xr-x  3 root root   60 2026-10-01 18:21 .
+drwxr-xr-x 35 root root 1480 2026-10-01 18:24 ..
+drwxr-xr-x  2 root root  220 2026-10-01 18:21 fonts
+
+/twres/fonts:
+total 6532
+drwxr-xr-x 2 root root     220 2026-10-01 18:21 .
+drwxr-xr-x 3 root root      60 2026-10-01 18:21 ..
+-rw-r--r-- 1 root root    4350 1970-01-01 01:00 Noto-OFL.txt
+-rw-r--r-- 1 root root  120800 1970-01-01 01:00 NotoNaskhArabicUI-Regular.ttf
+-rw-r--r-- 1 root root  246772 1970-01-01 01:00 NotoSansBengaliUI-VF.ttf
+-rw-r--r-- 1 root root  709712 1970-01-01 01:00 NotoSansCJKjp-Regular.ttf
+-rw-r--r-- 1 root root  247460 1970-01-01 01:00 NotoSansDevanagariUI-VF.ttf
+-rw-r--r-- 1 root root   66156 1970-01-01 01:00 NotoSansHebrew-Regular.ttf
+-rw-r--r-- 1 root root   22024 1970-01-01 01:00 NotoSansThaiUI-Regular.ttf
+-rw-r--r-- 1 root root   67908 1970-01-01 01:00 Roboto-Regular.ttf
+-rw-r--r-- 1 root root 5177387 1970-01-01 01:00 wqy-microhei.ttf
+
+$ ls -la /etc /system/etc/task_profiles.json /etc/task_profiles.json 2>&1 | head -20
+ls: /system/etc/task_profiles.json: No such file or directory
+ls: /etc/task_profiles.json: No such file or directory
+lrwxrwxrwx 1 root root 11 1970-01-01 01:00 /etc -> /system/etc
+
+$ stop recovery; sleep 1; cd /; (timeout 15 /system/bin/recovery; echo "exit $?") 2>&1 | tail -60
+
+$ tail -60 /tmp/recovery.log 2>&1
+adb: device offline
+
+$ logcat -d 2>/dev/null | tail -80
+adb: device offline
+
+$ dmesg | grep -iE "recovery|aera|twrp|linker|CANNOT|avc" | tail -60
+adb: device offline
+
