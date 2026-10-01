@@ -45,6 +45,12 @@ class _ProbeState extends State<Probe> {
           debugPrint('LIFECYCLE back count=$count');
           setState(() => states.add('back'));
         },
+        // Every pointer event the framework gets, to tell a lost touch in
+        // AERA or the embedder from one the app ignored.
+        child: Listener(
+        onPointerDown: (e) => debugPrint('POINTER down ${e.pointer} dev=${e.device} ${e.position}'),
+        onPointerUp: (e) => debugPrint('POINTER up ${e.pointer} dev=${e.device} ${e.position}'),
+        onPointerCancel: (e) => debugPrint('POINTER cancel ${e.pointer} dev=${e.device}'),
         child: Scaffold(
         body: Column(children: [
           Expanded(
@@ -74,6 +80,7 @@ class _ProbeState extends State<Probe> {
             ),
           ),
         ]),
+      ),
       ),
       );
 }

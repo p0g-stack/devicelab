@@ -51,7 +51,10 @@ before=$(pids); log "before: $before"
 
 swipe 360 10 360 900; sleep 2; shot 2-shade
 xy=${ROTATE_TILE:-240,400}; tap "${xy%,*}" "${xy#*,}"; sleep 3; shot 3-after-toggle
-sleep 8; shot 4-rotated
+# Close the shade with Back (in run 36934450186 it stayed open over the app).
+a shell 'logcat -d 2>/dev/null | grep -iE "rotat|landscape" | tail -10' | tr -d '\r' >> "$OUT/log.txt"
+curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" -d '{"key":"back"}' "$REMOTE/api/input/key" >/dev/null; log "back (close the shade)"; sleep 3
+sleep 5; shot 4-rotated
 after=$(pids); log "after: $after"
 [ -n "$before" ] && [ "$(echo "$before" | head -1)" = "$(echo "$after" | head -1)" ] \
   && log "SAME PROCESS" || log "PROCESS CHANGED or gone"

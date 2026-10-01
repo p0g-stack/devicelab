@@ -60,5 +60,7 @@ for name in openFile openFiles getDirectoryPath getSaveLocation; do
 done
 a shell "grep -h PICKER /sdcard/AERA/plugin-data/$id/aera-flutter.log /tmp/aera/plugin-data/$id/aera-flutter.log 2>/dev/null; tail -30 /sdcard/AERA/plugin-data/$id/aera-flutter.log 2>/dev/null" > "$OUT/aera-flutter.log" 2>&1
 a shell 'grep -iE "picker|pick_files|kPickFiles|file_selector" /tmp/recovery.log | tail -40' > "$OUT/recovery-picker.log" 2>&1
+# The picker opened in /data/media with "Cannot open folder" in run 36934450186.
+a shell 'getprop | grep -iE "crypto|storage"; ls -la /data/media /data/media/0 2>&1 | head -20; logcat -d 2>/dev/null | grep -iE "picker|cannot open|avc: denied" | tail -30' > "$OUT/storage.log" 2>&1
 rm -rf "$OUT/.pkg" "$OUT/.req.json"
 exit 0

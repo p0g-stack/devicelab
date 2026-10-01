@@ -34,6 +34,8 @@ remote() {
 touch_() { curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" \
   -d "{\"action\":\"$1\",\"x\":$2,\"y\":$3}" "$REMOTE/api/input/touch" >/dev/null; }
 tap() { touch_ down "$1" "$2"; sleep 0.1; touch_ up "$1" "$2"; log "tap $1,$2"; }
+# What reached AERA (its "touch released" debug lines) and the app (POINTER lines).
+touches() { a shell 'logcat -d 2>/dev/null | grep -E "touch released|Back gesture|edge" | tail -40' | tr -d '\r' > "$OUT/touches-aera.log"; }
 key() { log "key $1: $(curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" -d "{\"key\":\"$1\"}" "$REMOTE/api/input/key")"; }
 # Held Back key: KEY_BACK down, 0.8 s, up, written to Remote's uinput node
 # (it has KEY_BACK); Remote's own key API presses and releases at once.
@@ -49,7 +51,7 @@ held_swipe() {
   for i in 1 2 3 4 5 6; do touch_ move $(( 8 + 220 * i / 6 )) $(( 700 + i )); sleep 0.03; done
   sleep 0.8; touch_ up 228 706; log "held edge swipe"
 }
-apppids() { a shell 'for p in /proc/[0-9]*; do grep -qa aera-flutter $p/cmdline 2>/dev/null && echo ${p#/proc/}; done' | tr -d '\r' | sort -n | tr '\n' ' '; }
+apppids() { a shell 'for p in /proc/[0-9]*; do grep -qa "aera-host-ap[i]" $p/cmdline 2>/dev/null && echo ${p#/proc/}; done' | tr -d '\r' | sort -n | tr '\n' ' '; }
 open_() { log "open: $(rpc '{"v":1,"id":"back","op":"plugin","args":{"action":"open","id":"'"$id"'"}}' | tr '\n' ' ')"; }
 applog() { a shell "cat /sdcard/AERA/plugin-data/$id/aera-flutter.log /tmp/aera/plugin-data/$id/aera-flutter.log 2>/dev/null" | tr -d '\r'; }
 gesture_nav() {  # gesture_nav 0|1: save it and restart AERA so it is read
@@ -95,7 +97,8 @@ remote || exit 0
 round on
 gesture_nav 0 && round off
 gesture_nav 1
-applog | grep LIFECYCLE > "$OUT/lifecycle.log"
+touches
+applog | grep -E "LIFECYCLE|POINTER" > "$OUT/lifecycle.log"
 log "app saw: $(grep -oE 'LIFECYCLE [a-z]+ [^ ]*' "$OUT/lifecycle.log" | sed 's/LIFECYCLE //' | tr '\n' ';')"
 a shell 'grep -iE "Back|held|lifecycle|pause|resume" /tmp/recovery.log | tail -60' > "$OUT/recovery-back.log" 2>&1
 a shell 'pkill -f aera-flutter'
