@@ -48,3 +48,9 @@ AERA_INCLUDE_LOGCAT := true
 AERA_DEFAULT_LANGUAGE := en
 AERA_DEVICE_VERSION := Cuttlefish_x86_64
 AERA_EXCLUDE_DEFAULT_USB_INIT := true
+
+# libandroidfw (linked by the recovery binary) needs libincfs, but AERA's
+# prebuilt/Android.mk packs libincfs only for FBE crypto builds; without
+# it the recovery exits at link time (aera/DEFICIENCIES.md, D1).
+TARGET_RECOVERY_DEVICE_MODULES += libincfs
+RECOVERY_LIBRARY_SOURCE_FILES += $(TARGET_OUT_SHARED_LIBRARIES)/libincfs.so

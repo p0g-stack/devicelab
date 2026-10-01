@@ -92,4 +92,7 @@ until [ "$($ADB -s $S shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')
   sleep 3
 done
 $ADB -s $S root >/dev/null 2>&1; sleep 3; $ADB connect $S >/dev/null 2>&1
-log "Android up; rebooting into AERA"
+# Android's own libraries, for aera-fixlibs.sh to stand in for ones the
+# AERA ramdisk lacks (recorded as AERA deficiencies).
+[ -d "$CF_HOME/android-lib64" ] || { mkdir -p "$CF_HOME/android-lib64"; $ADB -s $S pull /system/lib64/. "$CF_HOME/android-lib64/" >/dev/null 2>&1 || true; }
+log "Android up ($(ls "$CF_HOME/android-lib64" | wc -l) system libs saved); rebooting into AERA"
