@@ -105,12 +105,16 @@ init: Service 'logd' (pid 856) received signal 6
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
   not reach the counter: three taps on its + leave 0 (`aera-counter/06-after.png`).
   getevent on the node shows the written events going out to readers
-  (protocol B, BTN_TOUCH, ABS_X/Y), so AERA receives them and does not act
-  on them. Next: AERA Remote's uinput touch (`op mirror`, header `x-aera-code`).
+  (protocol B, BTN_TOUCH, ABS_X/Y). AERA's own UI does act on them: in run
+  `runs/20261001T181707Z-aera-cf-recovery-36903585783` the open answered
+  late, the counter was not up yet, and the same tap at 650,1278 selected
+  the Wipe tab (`aera-counter/03-raw.png`). So touches stop between AERA's
+  pixel-plugin scene (patch 0006) and the plugin. Under investigation.
 - `flutter_p0g run --aera`: the attach error was this workflow's
   `flutter create -q` (no such flag). With that fixed (a8b887d), the second
-  `plugin open` (after `install --open` already opened the counter) printed
-  nothing until the 300 s timeout; state capture added.
+  `plugin open` once printed nothing until the 300 s timeout; on the next
+  run (36903585783) attach and hot reload worked: `Reloaded 1 of 754
+  libraries in 700ms`. A `plugin open` result can take over 10 s.
 
 ## D-cf1 (devicelab, not AERA). adbd stops at `sys.usb.config=none`
 

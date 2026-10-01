@@ -28,7 +28,7 @@ TS=$(a shell 'for d in /sys/class/input/event*; do grep -qi touch $d/device/name
 read -r TX TY < <(a shell "getevent -pl $TS" | tr -d '\r' | awk '/ABS_MT_POSITION_X/ {for(i=1;i<=NF;i++) if($i=="max") x=$(i+1)} /ABS_MT_POSITION_Y/ {for(i=1;i<=NF;i++) if($i=="max") y=$(i+1)} END {gsub(",","",x); gsub(",","",y); print x, y}')
 rpc() {  # rpc JSON: one request through AERA's FIFOs, prints the event lines
   echo "$1" > "$OUT/.req.json"; a push "$OUT/.req.json" /tmp/lab-req.json >/dev/null
-  a shell '[ -p /system/bin/aerain ] && { timeout 10 cat /system/bin/aeraout & sleep 0.3; cat /tmp/lab-req.json > /system/bin/aerain; wait; }' 2>&1 | tr -d '\r'
+  a shell '[ -p /system/bin/aerain ] && { timeout ${RPC_WAIT:-60} cat /system/bin/aeraout & sleep 0.3; cat /tmp/lab-req.json > /system/bin/aerain; wait; }' 2>&1 | tr -d '\r'
 }
 RPORT=8088 REMOTE=
 remote_start() {
