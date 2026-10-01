@@ -20,8 +20,17 @@ if [ "$(a get-state 2>/dev/null)" != recovery ]; then
   echo "[cf] state $(a get-state 2>&1) after $((SECONDS - t0))s"
 fi
 sleep 5
+# Stock recovery has no AERA fonts; stand in with the host's DejaVu so the
+# launcher's /twres/fonts bind has something to bind (substitute, logged).
+if [ "$(a shell 'ls /twres/fonts 2>/dev/null | wc -l' | tr -d '\r')" = 0 ]; then
+  a shell 'mkdir -p /twres/fonts'
+  for t in /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf; do
+    [ -f "$t" ] && a push "$t" /twres/fonts/ >/dev/null
+  done
+  echo "[cf] /twres/fonts absent in stock recovery: pushed host DejaVu as a stand-in"
+fi
 f=$OUT/$LABEL-facts.txt
-for c in 'id' 'uname -a' 'getprop ro.build.fingerprint' 'getprop ro.bootmode' 'cat /proc/cmdline' \
+for c in 'id' 'uname -a' 'uname -m' 'ls -l /dev/dri /twres/fonts' 'df -h /tmp' 'getprop ro.build.fingerprint' 'getprop ro.bootmode' 'cat /proc/cmdline' \
          'ls -la /' 'ls -la /dev/dri /dev/input /dev/graphics' 'cat /proc/mounts' 'ps -A' \
          'ls /system/bin' 'ls /system/lib64 | head -80' 'cat /proc/meminfo | head -3' 'nproc' \
          'cat /sys/kernel/debug/dri/0/clients /sys/kernel/debug/dri/0/name 2>&1' \
