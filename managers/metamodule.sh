@@ -3,10 +3,24 @@
 # KernelSU's official one, meta-overlayfs, moved out of tiann/KernelSU
 # (3e8b4a7, "Moved to module repo"): look it up in the module repo index and
 # take its latest release zip. Records which one, its version and sha256.
-# Usage: metamodule.sh [module id, default meta-overlayfs]   needs gh, adb
+# Usage: metamodule.sh [module id | owner/repo | search:<words>]   needs gh, adb
+# (owner/repo and search: take the latest release zip whose module.prop has
+# metamodule=1; Yuv 23:52Z: forks and other metamodules, e.g. hybrid mount, are fine)
 set -uo pipefail
-ID=${1:-meta-overlayfs}; OUT=${LAB_OUT:-$PWD/out}; HERE=$(cd "$(dirname "$0")/.." && pwd)
+ARG=${1:-meta-overlayfs}; ID=${ARG##*/}; ID=${ID#search:}
+case $ARG in */*) REPO_GIVEN=$ARG;; esac; OUT=${LAB_OUT:-$PWD/out}; HERE=$(cd "$(dirname "$0")/.." && pwd)
 D=$(mktemp -d)
+pick() { # <repo>: latest release zip with metamodule=1 in module.prop -> $Z
+  rm -rf "$D/rel"; gh release download -R "$1" -D "$D/rel" -p '*.zip' >/dev/null 2>&1 || return 1
+  for z in "$D"/rel/*.zip; do unzip -p "$z" module.prop 2>/dev/null | grep -q -E '^metamodule=(1|true)' && { Z=$z; REPO=$1; return 0; }; done; return 1; }
+Z=
+if [ -n "${REPO_GIVEN:-}" ]; then pick "$REPO_GIVEN" && echo "== metamodule repo (given): $REPO_GIVEN"; fi
+case $ARG in search:*)
+  gh api "search/repositories?q=$ID+in:name,description,topics&sort=stars&per_page=15" --jq '.items[]|"\(.full_name) \(.stargazers_count)"' >"$D/cands.txt" 2>&1
+  echo "== metamodule candidates ($ID): $(tr '\n' ';' <"$D/cands.txt")"
+  while read -r r _; do pick "$r" && { echo "== metamodule repo (search): $r"; break; }; done <"$D/cands.txt";;
+esac
+if [ -z "$Z" ]; then
 curl -sSL -A "Mozilla/5.0 devicelab" -w "%{http_code}" https://modules.kernelsu.org/modules.json -o "$D/index.json" | sed "s/^/== metamodule index http: /"
 python3 - "$D/index.json" "$ID" >"$D/entry.txt" <<'P'
 import json, sys
@@ -49,6 +63,7 @@ if [ -z "$Z" ]; then
     gh release download -R tiann/KernelSU "$t" -D "$D/rel" -p 'meta-overlayfs*.zip' >/dev/null 2>&1 && { echo "== metamodule from tiann/KernelSU release $t"; break; }
   done
   Z=$(ls "$D"/rel/*.zip 2>/dev/null | head -1)
+fi
 fi
 [ -n "$Z" ] || { echo "== metamodule: no zip found for $REPO"; exit 1; }
 echo "== metamodule zip: $(basename "$Z") sha256 $(sha256sum "$Z" | cut -c1-64)"
