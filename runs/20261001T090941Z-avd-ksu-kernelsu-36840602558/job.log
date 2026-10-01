@@ -1,0 +1,30 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 57s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+{"check":"mount","result":"cat: /data/local/tmp/app-plane-mount.log: No such file or directory\nls: /product/app/WebuiTermuxApi/: No such file or directory\n/dev/block/dm-3 /product ext4 ro,seclabel,relatime 0 0"}
+{"check":"package","result":""}
+/home/runner/work/devicelab/devicelab/out/sockprobe: 1 file pushed, 0 skipped. 21.4 MB/s (3475681 bytes in 0.155s)
+Broadcasting: Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }
+Broadcast completed: result=0
+Broadcasting: Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }
+Broadcast completed: result=0
+{"check":"broadcast","result":"Broadcasting: Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }\nBroadcast completed: result=0\nBroadcasting: Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }\nBroadcast completed: result=0"}
+{"check":"app-process","result":""}
+{"check":"listener-module","result":"cat: /data/local/tmp/sockprobe-module.log: No such file or directory"}
+{"check":"listener-su","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"wx_su_out\",\"wx_su_in\"],\"uid\":0}"}
+Segmentation fault 
+{"check":"avc","result":""}
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+SELinux:	Could not look up information for package com.webui.termux.api, cannot restorecon /data/data/com.webui.termux.api/files/devicelab.
+SELinux: Could not set context for /data/data/com.webui.termux.api/files/devicelab:  No such file or directory
+restorecon: restorecon failed: /data/data/com.webui.termux.api/files/devicelab
+{"check":"restorecon","result":"u:object_r:system_data_file:s0 /data/data/com.webui.termux.api\nu:object_r:system_data_file:s0 /data/data/com.webui.termux.api/files/devicelab/probe.txt"}
+app uid: 
