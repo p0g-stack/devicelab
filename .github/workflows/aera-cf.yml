@@ -131,7 +131,7 @@ jobs:
         run: |
           export PATH=$CF_HOME/bin:$PATH:$HOME/.pub-cache/bin
           dart pub global activate --source path "$RUNNER_TEMP/flutter_p0g" >/dev/null
-          cd "$RUNNER_TEMP" && flutter create -q --project-name counter counter-app && cd counter-app
+          cd "$RUNNER_TEMP" && flutter create --project-name counter counter-app >/dev/null && cd counter-app
           # The app in the .aerap is the stock template: edit the title so a reload shows.
           (sleep 90; sed -i 's/Flutter Demo Home Page/Reloaded on AERA/' lib/main.dart; echo r; sleep 20; echo q) \
             | timeout 300 flutter_p0g run --aera --ram -s 0.0.0.0:6520 --aerap "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 \
