@@ -78,6 +78,12 @@ readelf -lhd "$RT" >"$OUT/readelf-termux-dartaotruntime.txt" 2>&1
 $ADB push "$RT" "$W/probe.aot" $LAB/ >/dev/null; $ADB shell chmod 755 $LAB/dartaotruntime
 dev aot-host-snapshot-termux-runtime "env -i PATH=/system/bin $LAB/dartaotruntime $LAB/probe.aot"
 ls -l "$W"/probe-* "$W/probe.aot" "$RT" | awk '{print $5, $NF}' >"$OUT/sizes.txt"; cat "$OUT/sizes.txt"
+# 4. glibc loader + stock Linux dartaotruntime + snapshot (no appended exe,
+#    so /proc/self/exe pointing at the loader does not matter).
+$ADB push "$HSDK/dart-sdk/bin/dartaotruntime" $LAB/glibc/dartaotruntime-linux >/dev/null
+$ADB shell chmod 755 $LAB/glibc/dartaotruntime-linux
+dev glibc-loader-linux-runtime-aot "env -i PATH=/system/bin $LAB/glibc/$LD --library-path $LAB/glibc $LAB/glibc/dartaotruntime-linux $LAB/probe.aot"
+du -b "$HSDK/dart-sdk/bin/dartaotruntime" "$W"/$LD "$W"/lib*.so* 2>/dev/null >>"$OUT/sizes.txt"
 dev bionic-cold-start-x5 "for i in 1 2 3 4 5; do env -i $LAB/probe-bionic >/dev/null; done"
 dev selinux-context "id; cat /proc/self/attr/current; getenforce"
 

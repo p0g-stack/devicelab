@@ -39,3 +39,21 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: observations, path: out/ }
+  arm64-qemu:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      LAB_OUT: ${{ github.workspace }}/out
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get install -y -qq qemu-user-static binfmt-support erofs-utils >/dev/null && ls /proc/sys/fs/binfmt_misc/ | grep -i aarch64
+      - name: Probe
+        run: probes/dart_bionic/run_arm64_qemu.sh 35
+      - name: Result
+        if: always()
+        run: cat "$LAB_OUT"/*.json || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: observations-arm64
+          path: out/
