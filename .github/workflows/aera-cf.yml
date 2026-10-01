@@ -8,6 +8,7 @@ on:
       build: { default: "aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug" }
       build_id: { default: "" }
       pick_taps: { default: "", description: "aera-picker-check.sh PICK_TAPS (name:x,y ...)" }
+      recents_card: { default: "", description: "aera-lifecycle-check.sh RECENTS_CARD x,y of the app card in Recents" }
       aera_release: { default: "latest", description: "devicelab release with ramdisk-recovery.img (aera-cf-x86_64-*), latest, or none" }
       aera_taps: { default: "", description: "launcher taps 'x,y x,y' in AERA screen pixels, used when the image has no RPC plugin open (patch 0008)" }
   release:
@@ -163,6 +164,16 @@ jobs:
           { flutter_p0g create --platforms=aera . && flutter_p0g build aera --debug; } 2>&1 | tail -20 | tee "$LAB_OUT/picker-probe-build.log"
           "$GITHUB_WORKSPACE/aera/tools/aerap.py" retarget build/aera/*.aerap "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/picker-probe-x64.aerap" || exit 0
           cd "$GITHUB_WORKSPACE" && PICK_TAPS="${{ inputs.pick_taps }}" aera/cuttlefish/aera-picker-check.sh "$LAB_OUT/picker-probe-x64.aerap"
+      - name: Pixel plugin lifecycle across Home and Recents (flutter-aera 0021/0022)
+        if: steps.p0g.outputs.rev != ''
+        timeout-minutes: 25
+        run: |
+          export PATH=$CF_HOME/bin:$PATH:$HOME/.pub-cache/bin
+          cd "$RUNNER_TEMP" && flutter create --project-name lifecycle_probe lifecycle-probe >/dev/null && cd lifecycle-probe
+          cp "$GITHUB_WORKSPACE/aera/apps/lifecycle_probe/lib/main.dart" lib/main.dart && rm -rf test
+          { flutter_p0g create --platforms=aera . && flutter_p0g build aera --debug; } 2>&1 | tail -20 | tee "$LAB_OUT/lifecycle-probe-build.log"
+          "$GITHUB_WORKSPACE/aera/tools/aerap.py" retarget build/aera/*.aerap "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/lifecycle-probe-x64.aerap" || exit 0
+          cd "$GITHUB_WORKSPACE" && RECENTS_CARD="${{ inputs.recents_card }}" aera/cuttlefish/aera-lifecycle-check.sh "$LAB_OUT/lifecycle-probe-x64.aerap"
       - name: Rotate AERA with the counter running (flutter-aera 0020)
         if: steps.aera.outputs.tag != ''
         timeout-minutes: 10
