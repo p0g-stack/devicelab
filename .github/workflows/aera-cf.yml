@@ -70,6 +70,11 @@ jobs:
           SWITCHES=--gl ENVIRONMENT=$'D3D_ALWAYS_SOFTWARE=1\nVK_LOADER_DEBUG=error,warn,driver\nLIBGL_DEBUG=verbose\nMESA_LOG_LEVEL=debug\nEGL_LOG_LEVEL=debug' sim counter-gl-zink-sw --gpu
           # CPU reference: softpipe.
           sim counter-softpipe ""
+      - name: vulkaninfo through the kit's launcher and loader
+        run: |
+          adb=$CF_HOME/bin/adb
+          $adb -s 0.0.0.0:6520 shell 'cd /tmp/aera-lab/root && AERA_PLUGIN_ROOT=/tmp/aera-lab/root usr/bin/aera-plugin --vulkan-info' > "$LAB_OUT/vulkan-info.txt" 2>&1 || true
+          wc -l "$LAB_OUT/vulkan-info.txt"; head -40 "$LAB_OUT/vulkan-info.txt"
       - name: AERA image (devicelab release from aera/build/publish.sh)
         id: aera
         env: { GH_TOKEN: "${{ github.token }}" }
