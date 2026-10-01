@@ -1,5 +1,6 @@
-# AERA on Cuttlefish (aera/README.md). Step 1: boot x86_64 Cuttlefish and
-# its stock recovery, record what a plugin host sees there.
+# AERA on Cuttlefish (aera/README.md). Boots x86_64 Cuttlefish and its stock
+# recovery, records what a plugin host sees there, then runs the counter
+# through flutter-aera's x86_64 kit and host simulator inside that recovery.
 name: aera-cf
 on:
   workflow_dispatch:
@@ -8,12 +9,51 @@ on:
       build_id: { default: "" }
   push:
     branches: [main]
-    paths: [".github/workflows/aera-cf.yml", "aera/**"]
+    paths: [".github/workflows/aera-cf.yml", "aera/cuttlefish/**", "aera/kit/**"]
 permissions:
   contents: write
-concurrency: { group: aera-cf, cancel-in-progress: true }
+concurrency: { group: aera-cf, cancel-in-progress: false }
 jobs:
+  bundle:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Counter app bundle (debug kernel, architecture independent)
+        run: |
+          curl -fsSL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.47.5-stable.tar.xz | tar -C "$RUNNER_TEMP" -xJ
+          export PATH=$RUNNER_TEMP/flutter/bin:$PATH
+          flutter --disable-analytics >/dev/null
+          flutter create --no-pub --project-name counter counter
+          cd counter && flutter pub get && flutter build bundle --debug
+      - uses: actions/upload-artifact@v4
+        with: { name: counter-bundle, path: counter/build/flutter_assets }
+
+  kit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ninja-build pkg-config flex bison glslang-tools libdrm-dev libexpat1-dev \
+            libzstd-dev zlib1g-dev libelf-dev libclang-dev python3-pip >/dev/null
+          pip3 install -q --user --break-system-packages 'meson>=1.4' mako pyyaml packaging
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/kitx64/work/mesa
+          key: mesa-x64-${{ hashFiles('aera/kit/build-x64.sh') }}
+      - name: x86_64 kit + static simulator
+        run: aera/kit/build-x64.sh "$RUNNER_TEMP/kitx64"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kit-x64
+          path: |
+            ${{ runner.temp }}/kitx64/kit
+            ${{ runner.temp }}/kitx64/aera-host-sim
+
   recovery:
+    needs: [bundle, kit]
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     env:
@@ -35,6 +75,17 @@ jobs:
           timeout 60 ~/.local/bin/vncdo -s 127.0.0.1::6444 capture "$LAB_OUT/android.png" || true
       - name: Stock recovery
         run: set -o pipefail; aera/cuttlefish/recovery.sh stock-recovery 2>&1 | tee -a "$LAB_OUT/job.log"
+      - uses: actions/download-artifact@v4
+        with: { name: kit-x64, path: "${{ runner.temp }}/kitx64" }
+      - uses: actions/download-artifact@v4
+        with: { name: counter-bundle, path: "${{ runner.temp }}/payload/usr/share/flutter/flutter_assets" }
+      - name: Counter through the kit in recovery (simulated host, frames to PNG)
+        run: |
+          set -o pipefail
+          cp -a "$RUNNER_TEMP/kitx64/kit/." "$RUNNER_TEMP/payload/"; rm -f "$RUNNER_TEMP/payload/kit.json"
+          aera/cuttlefish/run-sim.sh counter-sim "$RUNNER_TEMP/payload" "$RUNNER_TEMP/kitx64/aera-host-sim" \
+            --until 9000 --snap start@4000 --tap 980,2250@4500 --tap 980,2250@5000 --tap 980,2250@5500 --snap after@8000 \
+            2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Logs
         if: always()
         run: |
