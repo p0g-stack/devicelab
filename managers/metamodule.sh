@@ -12,6 +12,7 @@ case $ARG in */*) REPO_GIVEN=$ARG;; esac; OUT=${LAB_OUT:-$PWD/out}; HERE=$(cd "$
 D=$(mktemp -d)
 pick() { # <repo>: latest release zip with metamodule=1 in module.prop -> $Z
   rm -rf "$D/rel"; gh release download -R "$1" -D "$D/rel" -p '*.zip' >/dev/null 2>&1 || return 1
+  for z in "$D"/rel/*.zip; do echo "== metamodule candidate $1 $(basename "$z"): $(unzip -p "$z" module.prop 2>/dev/null | tr -d '\r' | grep -E '^(id|version|versionCode|metamodule)=' | tr '\n' ' ')"; done
   for z in "$D"/rel/*.zip; do unzip -p "$z" module.prop 2>/dev/null | grep -q -E '^metamodule=(1|true)' && { Z=$z; REPO=$1; return 0; }; done; return 1; }
 Z=
 if [ -n "${REPO_GIVEN:-}" ]; then pick "$REPO_GIVEN" && echo "== metamodule repo (given): $REPO_GIVEN"; fi
