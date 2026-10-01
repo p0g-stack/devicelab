@@ -21,7 +21,16 @@ mnt() { # mount an fs image read-only, whatever its type
   for p in "$dev"p*; do sudo mount -o ro "$p" "$dir" 2>/dev/null && { echo "mounted $p"; return; }; done
   echo "cannot mount $img"; return 1
 }
-mnt "$D/system.img" "$W/sys" || exit 1
+DEV=$(sudo losetup -fP --show "$D/system.img")
+sudo sgdisk -p "$DEV" 2>/dev/null | tail -8
+for p in "$DEV"p*; do echo "$p: $(sudo file -sL "$p" | cut -d: -f2 | cut -c1-120) $(sudo blkid -o export "$p" | tr '\n' ' ')"; done
+mkdir -p "$W/sys"; for p in "$DEV"p*; do sudo mount -o ro "$p" "$W/sys" 2>/dev/null && { echo "mounted $p"; break; }; done
+if ! mountpoint -q "$W/sys"; then
+  # Dynamic partitions: the GPT holds a 'super' image; unpack system from it.
+  pip install -q lpunpack 2>/dev/null || true
+  for p in "$DEV"p*; do sudo dd if="$p" bs=4M 2>/dev/null | head -c 8192 | strings | grep -q -m1 -e system -e gpt && echo "$p has lp metadata?"; done
+  exit 1
+fi
 ls "$W/sys" | head; S=$W/sys; [ -d "$S/system/bin" ] && S=$S/system
 mkdir -p "$R"/{system,apex/com.android.runtime,data,proc,dev,tmp,linkerconfig}
 sudo mount --bind "$S" "$R/system"

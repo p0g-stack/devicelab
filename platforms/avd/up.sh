@@ -12,11 +12,14 @@ echo no | "$BIN/avdmanager" create avd -f -n lab -k "$IMG" -d pixel_6 >/dev/null
 "$SDK/emulator/emulator" -avd lab -no-window -no-audio -no-boot-anim -no-snapshot \
   -gpu swiftshader_indirect -memory 4096 -cores 4 -writable-system \
   >"${LAB_OUT:-.}/emulator.log" 2>&1 &
+echo "emulator $("$SDK/emulator/emulator" -version | head -1)"
 ADB=$SDK/platform-tools/adb
-"$ADB" wait-for-device
+LOG=${LAB_OUT:-.}/emulator.log
+fail() { echo "$1"; tail -40 "$LOG"; exit 1; }
+timeout 300 "$ADB" wait-for-device || fail "no adb device after 300s"
 t0=$SECONDS
 until [ "$("$ADB" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ]; do
-  (( SECONDS - t0 > 600 )) && { echo "boot timeout"; exit 1; }
+  (( SECONDS - t0 > 600 )) && fail "boot timeout"
   sleep 3
 done
 "$ADB" root >/dev/null; sleep 2; "$ADB" wait-for-device
