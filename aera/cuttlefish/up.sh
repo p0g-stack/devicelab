@@ -36,7 +36,7 @@ grep -h -m1 ro.build.fingerprint "$CF_HOME"/*.prop 2>/dev/null || true
 log "launching"
 t0=$SECONDS
 asme "$CF_HOME/bin/launch_cvd" --daemon --report_anonymous_usage_stats=n \
-  --cpus 4 --memory_mb 6144 --gpu_mode=guest_swiftshader \
+  --cpus "${CF_CPUS:-2}" --memory_mb "${CF_MEM:-4096}" --gpu_mode=guest_swiftshader \
   ${CF_EXTRA:-} \
   >"$OUT/launch_cvd.log" 2>&1 || { tail -60 "$OUT/launch_cvd.log"; exit 1; }
 ADB=$CF_HOME/bin/adb; [ -x "$ADB" ] || ADB=adb

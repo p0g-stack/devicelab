@@ -27,7 +27,7 @@ for c in 'id' 'uname -a' 'getprop ro.build.fingerprint' 'getprop ro.bootmode' 'c
          'cat /sys/kernel/debug/dri/0/clients /sys/kernel/debug/dri/0/name 2>&1' \
          'cat /sys/class/drm/card0-*/modes 2>&1' 'getevent -pl 2>&1 | head -60' \
          'cat /system/etc/init/hw/init.rc 2>/dev/null | grep -n -A3 "service recovery"' \
-         'ls /*.rc /system/etc/init 2>&1' 'getenforce' 'cat /proc/sys/kernel/osrelease' \
+         'ls /*.rc /system/etc/init 2>&1' 'getenforce' 'getprop' 'cat /proc/sys/kernel/osrelease' \
          'ls /lib/modules 2>&1 | head; lsmod 2>&1 | head -40'; do
   printf '\n$ %s\n' "$c" >>"$f"; timeout 20 $ADB -s $S shell "$c" >>"$f" 2>&1
 done

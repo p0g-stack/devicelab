@@ -1,0 +1,51 @@
+# Builds AERA Recovery's ramdisk for Cuttlefish x86_64 from AERA's public
+# Android 16 manifest (aera/build/). Heavy: dispatch only.
+name: aera-build
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LAB_OUT: ${{ github.workspace }}/out
+    steps:
+      - uses: actions/checkout@v4
+      - name: Free disk, add swap
+        run: |
+          df -h / /mnt
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL \
+            /usr/local/share/boost /usr/share/swift /usr/local/share/powershell /usr/local/lib/node_modules /opt/microsoft || true
+          sudo docker image prune -af >/dev/null 2>&1 || true
+          sudo swapoff -a || true; sudo rm -f /mnt/swapfile
+          sudo fallocate -l 24G /mnt/swapfile && sudo chmod 600 /mnt/swapfile && sudo mkswap /mnt/swapfile >/dev/null && sudo swapon /mnt/swapfile
+          sudo mkdir -p /mnt/aera && sudo chown "$USER" /mnt/aera
+          mkdir -p "$LAB_OUT"; df -h / /mnt; free -g
+      - name: Host packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq git-core gnupg flex bison build-essential zip curl zlib1g-dev libc6-dev-i386 \
+            x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig \
+            python3 python-is-python3 rsync bc cpio lz4 >/dev/null
+      - name: Sync and build
+        run: |
+          set -o pipefail
+          # Sources on / (bigger after cleanup), out/ on /mnt.
+          mkdir -p ~/aera && ln -sfn /mnt/aera ~/aera/out
+          aera/build/build.sh ~/aera "$LAB_OUT" 2>&1 | tee "$LAB_OUT/job.log"
+      - name: Disk
+        if: always()
+        run: df -h / /mnt; du -sh ~/aera/.repo /mnt/aera 2>/dev/null || true; tail -80 "$LAB_OUT/build.log" > "$LAB_OUT/build-tail.log" 2>/dev/null || true
+      - name: Release the ramdisk
+        if: success()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          tag=aera-cf-x86_64-$(date -u +%Y%m%d)-${GITHUB_RUN_ID}
+          gh release create "$tag" --prerelease --title "AERA recovery ramdisk, Cuttlefish x86_64" \
+            --notes "aera/build/build.sh at $GITHUB_SHA; AERA android_manifest aera-16.0" "$LAB_OUT"/*.img "$LAB_OUT"/recovery-root.tgz
+      - name: Publish to lab-results
+        if: always()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: rm -f "$LAB_OUT"/*.img "$LAB_OUT"/*.tgz; tools/publish.sh "${{ github.workflow }}-${{ github.job }}"
