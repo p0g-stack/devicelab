@@ -23,6 +23,13 @@ adb shell pm grant "$PKG" android.permission.POST_NOTIFICATIONS 2>/dev/null
 if [ -n "$ACT" ]; then
   adb shell am start -W -n "$ACT" -e id "'$ID'" -e name "'$NAME'" 2>&1 | tr -d '\r' | grep -E 'Status|Activity|Error|Warning'
   if wait_page 8; then adb exec-out screencap -p >"$O-intent.png"; echo "opened: intent"; exit 0; fi
+  # KernelSU 3.3.0 starts its own WebUI as VIEW ksu://webui?id=<id>&token=<64 hex>
+  # and closes the activity without a valid token. Look for the token in the
+  # manager's data and retry with it.
+  for T in $(adb shell "grep -rhoE '[0-9a-f]{64}' /data/data/$PKG/shared_prefs /data/data/$PKG/files /data/adb/ksu 2>/dev/null | sort -u | head -5" | tr -d '\r'); do
+    adb shell am start -W -a android.intent.action.VIEW -d "'ksu://webui?id=$ID&token=$T'" -n "$ACT" 2>&1 | tr -d '\r' | grep -E 'Status|Error'
+    if wait_page 8; then adb exec-out screencap -p >"$O-intent.png"; echo "token found in manager data: $T"; echo "opened: intent-token"; exit 0; fi
+  done
 fi
 adb exec-out screencap -p >"$O-intent.png"
 adb logcat -d 2>/dev/null | grep -v -E 'nativeloader|WindowManager' | tail -1500 >"$O-intent-logcat.txt"
@@ -33,7 +40,12 @@ echo "intent path: no page; manager log:"; grep -E " $(adb shell pidof "$PKG" | 
 adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 5
 UI_EXACT=1 UI_WAIT=30 $UI tap Module || $UI tap Modules; sleep 6
 adb exec-out screencap -p >"$O-modules.png"
-$UI tapxy 160 152; sleep 3; $UI type "$NAME"; sleep 4
+$UI tapxy 160 152; sleep 3
+for _ in 1 2 3; do
+  $UI type "$NAME"; sleep 3
+  UI_EXACT=1 UI_WAIT=3 $UI has "$NAME" && break
+  UI_EXACT=1 UI_WAIT=2 $UI tap Clean; sleep 2   # typing raced the field focus; clear and retype
+done
 adb exec-out screencap -p >"$O-search.png"; $UI dump "$O-search.xml"
 UI_EXACT=1 $UI tap Open
 if wait_page 12; then

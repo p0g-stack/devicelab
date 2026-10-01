@@ -32,12 +32,18 @@ if $UI tap "$PKG"; then
   $UI switch 1 && sleep 2 && granted=ui
   adb exec-out screencap -p >"$OUT/webuix-ksu-granted.png"; $UI dump "$OUT/webuix-ksu-granted.xml" >/dev/null
 fi
+log "ksud feature list: $(adb shell /data/adb/ksud feature list 2>&1 | tr -d '\r' | tr '\n' ' ')"
+log "su_compat: $(adb shell /data/adb/ksud feature get su_compat 2>&1 | tr -d '\r' | tr '\n' ' ')"
 log "root grant: $granted; su as app uid $UID_: $(adb shell "su $UID_ /system/bin/su -c id 2>&1 || true" | tr -d '\r' | head -2)"
 adb shell input keyevent KEYCODE_HOME
 
 # First launch: walk through any onboarding, keep what it shows.
 adb shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 6
-# Onboarding (v438): "Select your Platform" list, then Next / Continue.
+# Onboarding (v438): "Select your Platform" list, then a button that gets
+# zero height on the AVD's 320x640 (160 dpi) screen, so make the screen
+# taller for the onboarding only.
+adb shell wm size 320x900; sleep 2
+adb shell am force-stop $PKG; adb shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 6
 export UI_EXACT=1
 UI_WAIT=20 $UI tap KernelSU && sleep 1
 for i in 1 2 3 4 5; do
@@ -49,5 +55,7 @@ for i in 1 2 3 4 5; do
   UI_WAIT=2 $UI has "Select your Platform" || [ $i -lt 3 ] || break
 done
 unset UI_EXACT
+adb exec-out screencap -p >"$OUT/webuix-after-onboarding.png"; $UI dump "$OUT/webuix-after-onboarding.xml" | head -20
+adb shell wm size reset; sleep 2
 log "WebUI X platform after onboarding: $(adb shell "ls /data/data/$PKG/files/datastore/ 2>/dev/null; strings /data/data/$PKG/files/datastore/*.pb 2>/dev/null | head -20" | tr -d '\r' | tr '\n' ' ')"
 log "devtools sockets: $(adb shell cat /proc/net/unix | grep -o '@[a-z_]*devtools_remote[0-9_]*' | tr '\n' ' ')"
