@@ -57,7 +57,8 @@ fi
 for i in $(seq 60); do [ "$(adb shell getprop sys.boot_completed | tr -d '\r')" = 1 ] && break; sleep 2; done
 rec mount "$(adb shell "cat /data/local/tmp/app-plane-mount.log 2>&1; ls -laZ /product/app/WebuiTermuxApi/ 2>&1; ls /product/app | head -5; grep -E 'product|modules|app_plane' /proc/mounts | grep -v '/dev/app_plane_app/' | head -8; grep -c ' /product/app/' /proc/mounts" | tr -d '\r' | js)"
 rec package "$(adb shell "pm path $PKG; dumpsys package $PKG | grep -E 'codePath|flags=|privateFlags|versionName|userId' | head -8" | tr -d '\r' | js)"
-UID_=$(adb shell "stat -c %u /data/data/$PKG 2>/dev/null" | tr -d '\r')
+UID_=$(adb shell "dumpsys package $PKG | grep -m1 -o 'userId=[0-9]*' | cut -d= -f2" | tr -d '\r')
+UID_=${UID_:-$(adb shell "stat -c %u /data/data/$PKG 2>/dev/null" | tr -d '\r')}
 # adb-root listener (u:r:su) next to the module's one.
 adb push "$SOCKPROBE" /data/local/tmp/sockprobe >/dev/null
 adb shell "chmod 755 /data/local/tmp/sockprobe; (nohup /data/local/tmp/sockprobe -t 300 wx_su_out wx_su_in >/data/local/tmp/sockprobe-su.log 2>&1 &)"
