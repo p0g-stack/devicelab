@@ -26,14 +26,15 @@ adb push "$D"/ksud-x86_64-linux-android /data/adb/ksud >/dev/null
 adb shell chmod 755 /data/adb/ksud
 log "ksud: $(adb shell /data/adb/ksud -V 2>&1 | tr -d '\r')"
 adb shell /data/adb/ksud --help >"$OUT/ksud-help.txt" 2>&1
-for c in late-load insmod boot-info; do adb shell /data/adb/ksud $c --help >>"$OUT/ksud-help.txt" 2>&1; done
+for c in late-load insmod boot-info profile debug feature module; do adb shell /data/adb/ksud $c --help >>"$OUT/ksud-help.txt" 2>&1; done
 # Plain insmod can't resolve the SELinux internals the LKM uses (they are not
-# exported); ksud loads it with kallsyms access. late-load = load + run the
-# late-load stage scripts, the supported no-boot-patch path.
+# exported). `ksud late-load` (no path argument; it picks the LKM for the
+# running KMI) loads it with kallsyms access and runs the late-load stages:
+# on 3.3.0 that gives "Working [Jailbreak mode]" / LKM in the manager.
+# `ksud insmod <ko>` is the fallback with our downloaded LKM.
 adb shell cp /data/local/tmp/kernelsu.ko /data/adb/kernelsu.ko
-for try in "late-load /data/adb/kernelsu.ko" "late-load" "insmod /data/adb/kernelsu.ko"; do
+for try in "late-load" "insmod /data/adb/kernelsu.ko"; do
   log "ksud $try: $(adb shell /data/adb/ksud $try 2>&1 | tail -5 | tr -d '\r'; echo rc=$?)"
-  adb shell "dmesg | grep -i kernelsu | grep -v 'Unknown symbol' | tail -5"
   adb shell "lsmod 2>/dev/null | grep -i kernelsu" && break
 done
 adb shell "dmesg | grep -i -E 'kernelsu|ksu' | tail -40" >"$OUT/ksu-dmesg.txt"

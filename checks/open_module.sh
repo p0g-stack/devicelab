@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 # Open one module's WebUI in the manager and record what a person would see:
 # screenshots over time, DevTools targets, console-visible state, and for
-# Flutter pages the first-frame time. Usage: open_module.sh <label> <am args>
+# Flutter pages the first-frame time. Usage: open_module.sh <label> <pkg> <module id> [name]
 set -uo pipefail
-LABEL=$1; shift
+LABEL=$1; PKG=$2; ID=$3; NAME=${4:-$3}
 OUT=${LAB_OUT:-$PWD/out}; HERE=$(cd "$(dirname "$0")/.." && pwd)
 WV="node $HERE/driver/webview.mjs"
 J=$OUT/$LABEL.jsonl; : >"$J"
 rec() { echo "{\"check\":\"$1\",\"result\":$2}" | tee -a "$J"; }
 ev() { $WV eval "$1" 2>&1 | tail -1; }
-adb shell am force-stop "$(echo "$2" | cut -d/ -f1)" 2>/dev/null
-adb shell am start -W "$@" | tr -d '\r'
+"$HERE/managers/open_webui.sh" "$LABEL" "$PKG" "$ID" "$NAME"
 for t in 2 6 15; do sleep $(( t == 2 ? 2 : t == 6 ? 4 : 9 )); adb exec-out screencap -p >"$OUT/$LABEL-${t}s.png"; done
 rec targets "$($WV list | python3 -c 'import json,sys; print(json.dumps([{k:t.get(k) for k in ("type","url","title")} for t in json.load(sys.stdin)]))')"
 rec page "$(ev '({href: location.href, title: document.title, ready: document.readyState, flutter: !!window._flutter, glass: !!document.querySelector("flt-glass-pane, flutter-view"), nav: performance.getEntriesByType("navigation").map(e => ({dcl: Math.round(e.domContentLoadedEventEnd), load: Math.round(e.loadEventEnd)}))[0], firstFrame: window.__devicelabFirstFrame ?? null, insets: getComputedStyle(document.documentElement).getPropertyValue("--safe-area-inset-top") || null, vv: [innerWidth, innerHeight, devicePixelRatio]})')"
