@@ -1,0 +1,29 @@
+boot magic: VNDRBOOT
+vendor boot image header version: 4
+page size: 0x00000800
+kernel load address: 0x10008000
+ramdisk load address: 0x11000000
+vendor ramdisk total size: 19034404
+vendor command line args: printk.devkmsg=on audit=1 panic=-1 8250.nr_uarts=1 binder.impl=rust cma=0 firmware_class.path=/vendor/etc/ loop.max_part=7 init=/init bootconfig
+kernel tags load address: 0x10000100
+product name: 
+vendor boot image header size: 2128
+dtb size: 72
+dtb address: 0x0000000011f00000
+vendor ramdisk table size: 108
+vendor ramdisk table: [
+    vendor_ramdisk00: {
+        size: 19034404
+        offset: 0
+        type: 0x1
+        name: 
+        board_id: [
+            0x00000000, 0x00000000, 0x00000000, 0x00000000,
+            0x00000000, 0x00000000, 0x00000000, 0x00000000,
+            0x00000000, 0x00000000, 0x00000000, 0x00000000,
+            0x00000000, 0x00000000, 0x00000000, 0x00000000,
+        ]
+    }
+]
+vendor bootconfig size: 117
+--header_version 4 --pagesize 0x00000800 --base 0x00000000 --kernel_offset 0x10008000 --ramdisk_offset 0x11000000 --tags_offset 0x10000100 --dtb_offset 0x0000000011f00000 --vendor_cmdline printk.devkmsg=on audit=1 panic=-1 8250.nr_uarts=1 binder.impl=rust cma=0 firmware_class.path=/vendor/etc/ loop.max_part=7 init=/init bootconfig --board  --dtb /tmp/tmp.nEhELZqF2Y/vb/dtb --vendor_bootconfig /tmp/tmp.nEhELZqF2Y/vb/bootconfig --ramdisk_type 1 --ramdisk_name  --vendor_ramdisk_fragment /tmp/tmp.nEhELZqF2Y/vb/vendor_ramdisk00 
