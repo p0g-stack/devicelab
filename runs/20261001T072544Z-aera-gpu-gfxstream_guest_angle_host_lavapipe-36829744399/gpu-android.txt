@@ -1,0 +1,37 @@
+# gpu_mode gfxstream_guest_angle_host_lavapipe
+## ls -l /dev/dri
+total 0
+crw-rw-rw- 1 system graphics 226,   0 2026-10-01 07:23 card0
+crw-rw-rw- 1 system graphics 226, 128 2026-10-01 07:23 renderD128
+## dmesg | grep -iE "virtio.?gpu|virgl|drm|capset" | head -40
+[   11.098107] init: starting service 'vendor.drm-clearkey-service'...
+[   11.118689] init: ... started service 'vendor.drm-clearkey-service' has pid 628
+[   11.274292] servicemanager: Caller(pid=628,uid=1013,sid=u:r:hal_drm_clearkey_aidl:s0) Found android.hardware.drm.IDrmFactory/clearkey in device VINTF manifest.
+[   13.049084] init: processing action (drm.service.enabled=true) from (/system/etc/init/drmserver.rc:8)
+[   13.050754] init: starting service 'drm'...
+[   13.060998] init: ... started service 'drm' has pid 711
+[   13.279091] init: service 'drm' requested start, but it is already running (flags: 132, pid: 711, started 227ms ago)
+[   33.743775] init: service 'drm' requested start, but it is already running (flags: 132, pid: 711, started 20691ms ago)
+## cat /sys/kernel/debug/dri/*/virtio-gpu-features 2>&1
+cat: /sys/kernel/debug/dri/*/virtio-gpu-features: No such file or directory
+## cat /sys/kernel/debug/dri/*/name 2>&1
+cat: /sys/kernel/debug/dri/*/name: No such file or directory
+## getprop | grep -E "egl|vulkan|gfxstream|graphics|gralloc|hwui" | head -30
+[debug.hwui.renderer]: [skiavk]
+[debug.hwui.skia_tracing_enabled]: [false]
+[debug.hwui.skia_use_perfetto_track_events]: [false]
+[init.svc.vendor.graphics.allocator]: [running]
+[init.svc_debug_pid.vendor.graphics.allocator]: [672]
+[ro.boot.cpuvulkan.version]: [0]
+[ro.boot.hardware.egl]: [angle]
+[ro.boot.hardware.gralloc]: [minigbm]
+[ro.boot.hardware.guest_hwui_renderer]: [skiavk]
+[ro.boot.hardware.vulkan]: [ranchu]
+[ro.boot.vendor.apex.com.android.hardware.graphics.composer]: [com.android.hardware.graphics.composer.ranchu]
+[ro.boottime.vendor.graphics.allocator]: [12214647382]
+[ro.cpuvulkan.version]: [0]
+[ro.hardware.egl]: [angle]
+[ro.hardware.gralloc]: [minigbm]
+[ro.hardware.vulkan]: [ranchu]
+[ro.hwui.use_vulkan]: []
+[ro.vulkan.apex]: [com.google.cf.vulkan]
