@@ -12,7 +12,8 @@ UI="python3 $HERE/managers/ui.py"; O=$OUT/$LABEL-open
 page() { node "$HERE/driver/webview.mjs" list 2>/dev/null | python3 -c 'import json,sys; t=[x for x in json.load(sys.stdin) if x.get("type")=="page"]; print(t[0]["url"] if t else ""); sys.exit(0 if t else 1)'; }
 wait_page() { for _ in $(seq 1 "${1:-8}"); do sleep 1; page && return 0; done; return 1; }
 case $PKG in
-  me.weishu.kernelsu|com.rifsxd.ksunext|com.sukisu.ultra) ACT=$PKG/.ui.webui.WebUIActivity;;
+  me.weishu.kernelsu|com.sukisu.ultra) ACT=$PKG/.ui.webui.WebUIActivity;;
+  com.rifsxd.ksunext) ACT=$(adb shell "dumpsys package $PKG" | tr -d '\r' | grep -o "$PKG/[A-Za-z0-9_.]*WebUI[A-Za-z0-9_]*Activity" | head -1);;
   com.dergoogler.mmrl.wx) ACT=$PKG/.ui.activity.webui.WebUIActivity;;
   *) ACT=${WEBUI_ACTIVITY:-};;
 esac

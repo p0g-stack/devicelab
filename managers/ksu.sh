@@ -20,9 +20,12 @@ gh release download -R "$REPO" "$TAG" -D "$D" -p "$(printf "$KO" "$KMI")" -p "$A
 ls -la "$D"
 log() { echo "== $*"; }
 
-adb install -r "$D"/*.apk >/dev/null && log "manager installed ($PKG)"
+# Next ships a "-spoofed" APK beside the normal one; install the normal one.
+MAPK=$(ls "$D"/*.apk | grep -v -i spoof | head -1)
+adb install -r "$MAPK" >/dev/null && log "manager installed ($PKG, $(basename "$MAPK"))"
 adb push "$D"/*kernelsu.ko /data/local/tmp/kernelsu.ko >/dev/null
 adb push "$D"/ksud-x86_64-linux-android /data/adb/ksud >/dev/null
+adb shell cp /data/adb/ksud /data/local/tmp/ksud
 adb shell chmod 755 /data/adb/ksud
 log "ksud: $(adb shell /data/adb/ksud -V 2>&1 | tr -d '\r')"
 adb shell /data/adb/ksud --help >"$OUT/ksud-help.txt" 2>&1
@@ -43,7 +46,10 @@ if ! adb shell "lsmod | grep -q kernelsu"; then
     log "ksud $stage: $(adb shell /data/adb/ksud $stage 2>&1 | tail -3 | tr -d '\r'; echo rc=$?)"
   done
 fi
-log "lsmod: $(adb shell lsmod | grep -i kernelsu | tr -d '\r')"
+log "lsmod: $(adb shell lsmod | grep -i -E 'kernelsu|ksu' | tr -d '\r')"
+# Next's late-load moved /data/adb/ksud away (its layout is /data/adb/ksu/bin);
+# the scripts here call /data/adb/ksud, so put it back if it is gone.
+adb shell "[ -x /data/adb/ksud ] || { ls -la /data/adb /data/adb/ksu/bin 2>&1; cp /data/local/tmp/ksud /data/adb/ksud && chmod 755 /data/adb/ksud && echo restored /data/adb/ksud; }" | tr -d '\r' | sed 's/^/== /'
 
 # KernelSU 2+ leaves mounting a module's system/ to a "metamodule". Without
 # one, modules install with mount=true but nothing appears under /product
