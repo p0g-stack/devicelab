@@ -5,8 +5,12 @@
   ui.py tap <text> [--desc]    tap the nearest clickable ancestor of the first node
                                whose text (or content-desc) contains <text>
   ui.py has <text>             exit 0 if some node's text or desc contains <text>
+  ui.py switch [n]             tap the n-th (default 1st) checkable node (a switch)
+tap and has keep re-dumping for up to UI_WAIT seconds (default 12) until the
+node shows up, and dismiss "isn't responding" dialogs with Wait on the way
+(the emulator renders slowly; a dump taken too early has an empty list).
 """
-import re, subprocess, sys, xml.etree.ElementTree as ET
+import os, re, subprocess, sys, time, xml.etree.ElementTree as ET
 
 def adb(*a):
     return subprocess.run(["adb", *a], capture_output=True, text=True).stdout
@@ -40,8 +44,25 @@ def main():
             if n.get("clickable") == "true":
                 print(n.get("bounds"), label(n)[:120])
         return 0
+    if cmd == "switch":
+        sw = [n for n in root.iter("node") if n.get("checkable") == "true"]
+        k = int(sys.argv[2]) if len(sys.argv) > 2 else 1
+        if len(sw) < k:
+            print("ui: no switch"); return 1
+        n = sw[k - 1]; adb("shell", "input", "tap", *map(str, center(n)))
+        print(f"ui: tapped switch {k} ({label(n)[:60]!r}, was checked={n.get('checked')})"); return 0
     want = sys.argv[2]
-    hit = next((n for n in root.iter("node") if want in (n.get("text") or "") or want in (n.get("content-desc") or "")), None)
+    find = lambda r, w: next((n for n in r.iter("node") if w == (n.get("text") or "") or w == (n.get("content-desc") or "")), None) \
+        or next((n for n in r.iter("node") if w in (n.get("text") or "") or w in (n.get("content-desc") or "")), None)
+    end = time.time() + float(os.environ.get("UI_WAIT", "12"))
+    while True:
+        hit = find(root, want)
+        if hit is not None or time.time() > end:
+            break
+        anr = find(root, "Wait")
+        if anr is not None and find(root, "Close app") is not None:
+            adb("shell", "input", "tap", *map(str, center(anr))); print("ui: dismissed ANR dialog")
+        time.sleep(1.5); root = dump()
     if cmd == "has":
         return 0 if hit is not None else 1
     if hit is None:

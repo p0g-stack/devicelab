@@ -18,5 +18,6 @@ t0=$SECONDS
 until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ] && adb shell pidof system_server >/dev/null; do
   (( SECONDS - t0 > 300 )) && { echo "no boot_completed after soft-reboot"; break; }; sleep 3
 done
+sleep 25  # system_server and the launcher settle; earlier taps hit ANR dialogs
 echo "== after soft-reboot ($((SECONDS - t0))s): $(adb shell /data/adb/ksud module list 2>&1 | tr -d '\r' | head -c 1500)"
 adb shell "ls -la /data/adb/modules/" | tr -d '\r'

@@ -13,7 +13,7 @@ APK=$(grep -i -E '\.apk$' "$OUT/webuix-assets.txt" | grep -i -v -E 'debug|arm|x8
 [ -n "$APK" ] || APK=$(grep -i -E '\.apk$' "$OUT/webuix-assets.txt" | head -1)
 gh release download -R "$REPO" "$TAG" -D "$D" -p "$APK" && log "downloaded $REPO $TAG $APK"
 adb install -r -g "$D/$APK" 2>&1 | tail -1
-UID_=$(adb shell dumpsys package $PKG | sed -n 's/.*userId=\([0-9]*\).*/\1/p' | head -1 | tr -d '\r')
+UID_=$(adb shell stat -c %u /data/data/$PKG | tr -d '\r')
 log "installed $PKG uid=$UID_ $(adb shell dumpsys package $PKG | grep -m1 versionName | tr -d '\r')"
 log "activities: $(adb shell dumpsys package $PKG | grep -o "$PKG/[A-Za-z0-9_.]*" | sort -u | tr '\n' ' ')"
 
@@ -24,19 +24,23 @@ granted=no
 adb shell am force-stop $KSU; adb shell monkey -p $KSU -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 4
 $UI tap Superuser; sleep 3; $UI dump "$OUT/webuix-ksu-superuser.xml" >/dev/null
 adb exec-out screencap -p >"$OUT/webuix-ksu-superuser.png"
-if $UI tap "WebUI X" || $UI tap "WebUI-X" || $UI tap "$PKG"; then
+if $UI tap "$PKG"; then
   sleep 3; $UI dump "$OUT/webuix-ksu-profile.xml"; adb exec-out screencap -p >"$OUT/webuix-ksu-profile.png"
-  $UI tap Superuser && sleep 2 && granted=ui
-  adb exec-out screencap -p >"$OUT/webuix-ksu-granted.png"
+  # The App Profile screen: its first switch is Superuser.
+  $UI switch 1 && sleep 2 && granted=ui
+  adb exec-out screencap -p >"$OUT/webuix-ksu-granted.png"; $UI dump "$OUT/webuix-ksu-granted.xml" >/dev/null
 fi
-log "root grant: $granted; su as app: $(adb shell "su $UID_ -c '/data/adb/ksu/bin/su -c id' 2>&1 || true" | tr -d '\r' | head -2)"
+log "root grant: $granted; su as app uid $UID_: $(adb shell "su $UID_ -c 'su -c id' 2>&1 || true" | tr -d '\r' | head -2)"
 adb shell input keyevent KEYCODE_HOME
 
 # First launch: walk through any onboarding, keep what it shows.
 adb shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 6
+# Onboarding (v438): "Select your Platform" list, then Next / Continue.
+$UI tap KernelSU && sleep 1
 for i in 1 2 3 4; do
   adb exec-out screencap -p >"$OUT/webuix-start-$i.png"; $UI dump "$OUT/webuix-start-$i.xml" | head -20
-  $UI tap Grant || $UI tap Allow || $UI tap Continue || $UI tap Next || $UI tap "Get started" || $UI tap OK || break
+  UI_WAIT=3 $UI tap Grant || UI_WAIT=1 $UI tap Allow || UI_WAIT=1 $UI tap Continue || UI_WAIT=1 $UI tap Next || UI_WAIT=1 $UI tap "Get started" || UI_WAIT=1 $UI tap OK || UI_WAIT=1 $UI tap Done || break
   sleep 3
 done
+log "WebUI X platform after onboarding: $(adb shell "ls /data/data/$PKG/files/datastore/ 2>/dev/null; strings /data/data/$PKG/files/datastore/*.pb 2>/dev/null | head -20" | tr -d '\r' | tr '\n' ' ')"
 log "devtools sockets: $(adb shell cat /proc/net/unix | grep -o '@[a-z_]*devtools_remote[0-9_]*' | tr '\n' ' ')"
