@@ -13,7 +13,7 @@ command -v apt-get >/dev/null && sudo apt-get install -y -qq libpulse0 >/dev/nul
 echo no | "$BIN/avdmanager" create avd -f -n lab -k "$IMG" | tail -2
 ls "$ANDROID_AVD_HOME"
 "$SDK/emulator/emulator" -avd lab -no-window -no-audio -no-boot-anim -no-snapshot \
-  -gpu swiftshader_indirect -memory 4096 -cores 4 -writable-system \
+  -gpu swiftshader_indirect -memory 6144 -cores 4 -writable-system \
   >"${LAB_OUT:-.}/emulator.log" 2>&1 &
 echo "emulator $("$SDK/emulator/emulator" -version | head -1)"
 ADB=$SDK/platform-tools/adb

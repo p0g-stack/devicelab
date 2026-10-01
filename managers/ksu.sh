@@ -57,6 +57,10 @@ else
   log "no metamodule asset in $REPO $TAG"
 fi
 
+# The Google app spun at ~90% CPU and starved the AVD (adb timing out) in
+# the KernelSU leg; nothing here needs it.
+adb shell pm disable-user --user 0 com.google.android.googlequicksearchbox >/dev/null 2>&1
+
 # Probe module, as if installed and rebooted (WebUI needs only the dir).
 adb shell "mkdir -p /data/adb/modules/devicelab_probe" 
 adb push "$HERE/modules/probe/." /data/adb/modules/devicelab_probe/ >/dev/null

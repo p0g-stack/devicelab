@@ -31,6 +31,8 @@ rec places "$(text)"; shot places
 for n in 1 2 3; do adb shell input swipe 160 480 160 180 400; sleep 2; rec places-scroll-$n "$(text)"; shot places-scroll-$n; done
 rec tap-strategy "$(step Strategy)"; sleep 10
 rec strategy "$(text)"; shot strategy
+rec tap-strategy-root "$(step 'root process')"; sleep 6
+rec strategy-root "$(text)"; shot strategy-root
 rec tap-rust "$(step Rust)"; sleep 10
 rec rust "$(text)"; shot rust
 rec tap-rust-run "$(step 'Run in every place')"; sleep 20
