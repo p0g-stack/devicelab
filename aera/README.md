@@ -22,6 +22,13 @@ arm64 Cuttlefish would be TCG emulation.
   headless, wait for boot, adb root on `0.0.0.0:6520`.
 - `cuttlefish/recovery.sh LABEL`: `adb reboot recovery`, record kernel, DRM
   and input nodes, mounts, processes, props and a frame.
+- `cuttlefish/boot-aera.sh ramdisk-recovery.img`: swap AERA's ramdisk into
+  the RECOVERY fragment of Cuttlefish's `vendor_boot` (keeping its kernel,
+  vendor ramdisk and `init.recovery.cutf_cvm.rc`), relaunch, boot Android.
+  The workflow then runs `recovery.sh aera-recovery`. It takes the newest
+  `aera-cf-x86_64-*` devicelab release (input `aera_release`).
+- `tools/aerap.py`: unpack/pack/retarget `.aerap` with AERA's exact stream
+  layout.
 - `cuttlefish/shot.sh FILE.png`: display 0 through `cvd display screenshot`.
 - `cuttlefish/run-sim.sh LABEL PAYLOAD SIM [args]`: push a payload tree and
   the static simulator to `/tmp/aera-lab` in recovery, run it, pull frames.
