@@ -72,6 +72,16 @@ open_; sleep "${APP_WAIT:-25}"; shot 6-ram-data
 log "env (RAM): $(appenv | tr '\n' ' ')"
 applog | grep 'LIFECYCLE start' | tail -1 | sed 's/^/[lifecycle] app (RAM): /' | tee -a "$OUT/log.txt"
 a shell 'pkill -f aera-flutter; sleep 2; [ -d /sdcard/AERA.lab ] && { rm -rf /sdcard/AERA; mv /sdcard/AERA.lab /sdcard/AERA; }'
+
+# D8 (flutter-aera 0023): Remote's Home and Menu buttons reach Home and
+# Recents; Menu again closes Recents.
+key() { log "key $1: $(curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" -d "{\"key\":\"$1\"}" "$REMOTE/api/input/key")"; }
+open_; sleep "${APP_WAIT:-25}"; shot 7-app-for-keys
+key home; sleep 3; shot 8-key-home
+key menu; sleep 3; shot 9-key-menu-recents
+key menu; sleep 3; shot 10-key-menu-again
+log "pids after keys: $(apppids)"
+a shell 'pkill -f aera-flutter'
 a shell 'grep -iE "lifecycle|pause|resume|recents|plugin" /tmp/recovery.log | tail -60' > "$OUT/recovery-lifecycle.log" 2>&1
 applog | tail -60 > "$OUT/aera-flutter.log"
 rm -rf "$OUT/.pkg" "$OUT/.req.json"

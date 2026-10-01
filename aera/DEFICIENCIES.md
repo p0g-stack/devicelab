@@ -177,6 +177,9 @@ add device 7: /dev/input/event6  name: "AERA Remote Input"
 
 ## D8. AERA Remote's Home and Menu buttons do nothing
 
+- Fix: flutter-aera 0023 (744cb68, devicelab 9d9c371). Lab check: the
+  key steps at the end of `aera-lifecycle-check.sh` (frames 8-10).
+
 Found in the source, not yet on screen: `aera_remote/client/index.html`
 offers Home (`key('home')`), and `aera_remote/input.cpp` emits
 `KEY_HOMEPAGE` / `KEY_MENU` for `home` / `menu`, but nothing in aeraui
