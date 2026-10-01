@@ -1,0 +1,337 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 54s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.0
+total 16428
+drwx------  2 runner runner     4096 Oct  1 09:13 .
+drwxrwxrwt 16 root   root       4096 Oct  1 09:13 ..
+-rw-r--r--  1 runner runner 10777987 Oct  1 09:13 KernelSU_v3.3.0_32601-release.apk
+-rw-r--r--  1 runner runner  5713312 Oct  1 09:13 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   318824 Oct  1 09:13 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu)
+/tmp/tmp.oZIMR70qH7/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 8.6 MB/s (318824 bytes in 0.035s)
+/tmp/tmp.oZIMR70qH7/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 71.3 MB/s (5713312 bytes in 0.076s)
+== ksud: ksud 3.3.0 (uapi: 2)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              159744  0 
+== lsmod: kernelsu              159744  1 
+KernelSU_v3.3.0_32601-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-pc-windows-gnu.exe
+ksud-x86_64-unknown-linux-musl
+ksuinit-aarch64
+ksuinit-x86_64
+lkm-aarch64-android12-5.10_kernelsu.ko
+lkm-aarch64-android13-5.10_kernelsu.ko
+lkm-aarch64-android13-5.15_kernelsu.ko
+lkm-aarch64-android14-5.15_kernelsu.ko
+lkm-aarch64-android14-6.1_kernelsu.ko
+lkm-aarch64-android15-6.6_kernelsu.ko
+lkm-aarch64-android16-6.12_kernelsu.ko
+lkm-aarch64-android17-6.18_kernelsu.ko
+lkm-x86_64-android12-5.10_kernelsu.ko
+lkm-x86_64-android13-5.10_kernelsu.ko
+lkm-x86_64-android13-5.15_kernelsu.ko
+lkm-x86_64-android14-5.15_kernelsu.ko
+lkm-x86_64-android14-6.1_kernelsu.ko
+lkm-x86_64-android15-6.6_kernelsu.ko
+lkm-x86_64-android16-6.12_kernelsu.ko
+lkm-x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in tiann/KernelSU v3.3.0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.707s)
+== modules: [
+  {
+    "name": "devicelab probe",
+    "web": "true",
+    "id": "devicelab_probe",
+    "remove": "false",
+    "versionCode": "1",
+    "enabled": "true",
+    "mount": "false",
+    "author": "p0g-stack",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "update": "false",
+    "action": "false",
+    "version": "1"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+== home text: text="LKM" text="Working [Jailbreak mode]" text="Version: 32601-2" text="Manager version" text="v3.3.0 (32601-2)" text="Kernel version" text="6.6.50-android15-8-g8adecb593e9b-ab12525588" text="Device model" text="Google sdk_gphone64_x86_64" text="Fingerprint" text="google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys" text="Enforcing" text="KernelSU" text="Home" text="Superuser" text="1" text="Module" text="Settings" 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+WebUI-X-v438-release-official.apk
+WebUI-X-v438-release-spoofed.apk
+== downloaded MMRLApp/WebUI-X-Portable v438 WebUI-X-v438-release-official.apk
+Success
+== installed com.dergoogler.mmrl.wx uid=10210     versionName=v438-release
+== activities: com.dergoogler.mmrl.wx/.ui.activity.CrashHandlerActivity com.dergoogler.mmrl.wx/.ui.activity.MainActivity com.dergoogler.mmrl.wx/.ui.activity.modconf.ModConfActivity com.dergoogler.mmrl.wx/.ui.activity.webui.KsuWebUIActivity com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity com.dergoogler.mmrl.wx/.util.NonRootService com.dergoogler.mmrl.wx/androidx.core.content.FileProvider com.dergoogler.mmrl.wx/androidx.profileinstaller.ProfileInstallReceiver com.dergoogler.mmrl.wx/androidx.startup.InitializationProvider com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxy com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.RescheduleReceiver com.dergoogler.mmrl.wx/androidx.work.impl.diagnostics.DiagnosticsReceiver 
+ui: tapped 'Superuser' at 120,584
+ui: tapped 160,152
+ui: tapped 'com.dergoogler.mmrl.wx' at 160,130
+[12,230][308,290] Superuser
+[243,236][292,284] 
+[12,302][308,358] App Profile | Default
+[12,26][60,74] 
+[260,26][308,74] Settings
+ui: tapped switch 1 ('', was checked=false)
+== ksud feature list: Available Features: ================================================================================ [ENABLED (1)] su_compat (ID=0)     SU Compatibility Mode - allows authorized apps to gain root via traditional 'su' command  [ENABLED (1)] kernel_umount (ID=1)     Kernel Umount - controls whether kernel automatically unmounts modules when not needed  [DISABLED] sulog (ID=2)     SU Log - streams kernel sulog events to userspace and persists them to disk  [DISABLED] adb_root (ID=3)     ADB Root - Enable adbd root  [DISABLED] selinux_hide (ID=4)     SELinux Hide - sanitize /sys/fs/selinux access results for app UIDs  [DISABLED] webview_zygote_umount (ID=5)     WebView Zygote Umount - unmount modules from WebView zygote and its isolated children  
+== su_compat: Feature: su_compat (0) Description: SU Compatibility Mode - allows authorized apps to gain root via traditional 'su' command Value: 1 Status: enabled 
+== root grant: ui; su as app uid 10210: su: failed to exec /system/bin/su: No such file or directory
+ui: tapped 'KernelSU' at 160,265
+[40,165][280,221] Magisk
+[40,309][280,389] KernelSU Next
+[40,405][280,461] APatch
+[40,477][280,557] SukiSU Ultra
+[40,573][280,629] Non-Root
+[40,644][280,692] Continue with KernelSU
+ui: tapped 'Continue with KernelSU' at 160,668
+[16,104][304,330] devicelab probe | 1 (1) by p0g-stack | Updated on 1 October 2026 | Observation module for devicelab. Its WebUI page is d
+[32,274][90,322] 
+[153,274][288,322] Add Shortcut
+[220,32][268,80] 
+[268,32][316,80] 
+[164,796][320,876] Settings
+ui: no node with 'Continue with KernelSU'
+ui: no node with 'Next'
+ui: no node with 'Continue'
+ui: no node with 'Grant'
+ui: no node with 'Allow'
+ui: no node with 'Get started'
+ui: no node with 'Done'
+ui: no node with 'OK'
+ui: no node with 'Finish'
+[16,104][304,330] devicelab probe | 1 (1) by p0g-stack | Updated on 1 October 2026 | Observation module for devicelab. Its WebUI page is d
+[32,274][90,322] 
+[153,274][288,322] Add Shortcut
+[220,32][268,80] 
+[268,32][316,80] 
+[164,796][320,876] Settings
+ui: no node with 'Continue with KernelSU'
+ui: no node with 'Next'
+ui: no node with 'Continue'
+ui: no node with 'Grant'
+ui: no node with 'Allow'
+ui: no node with 'Get started'
+ui: no node with 'Done'
+ui: no node with 'OK'
+ui: no node with 'Finish'
+[16,104][304,330] devicelab probe | 1 (1) by p0g-stack | Updated on 1 October 2026 | Observation module for devicelab. Its WebUI page is d
+[32,274][90,322] 
+[153,274][288,322] Add Shortcut
+[220,32][268,80] 
+[268,32][316,80] 
+[164,796][320,876] Settings
+== WebUI X platform after onboarding: preferences.pb 
+== devtools sockets: @webview_devtools_remote_1665 
+inputs/modules/flutter_webui_counter-0.1.4.zip: 1 file pushed, 0 skipped. 280.6 MB/s (21434743 bytes in 0.073s)
+== install flutter_webui_counter-0.1.4.zip
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.8.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.2.woff2
+   creating: webroot/fonts/notosansmath/
+   creating: webroot/fonts/notosansmath/v15/
+  inflating: webroot/fonts/notosansmath/v15/7Aump_cpkSecTWaHRlH2hyV5UHkD-V048PW0.woff2
+   creating: webroot/fonts/roboto/
+   creating: webroot/fonts/roboto/v32/
+  inflating: webroot/fonts/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2
+  inflating: webroot/.last_build_id
+  inflating: webroot/config.json
+  inflating: webroot/flutter_webui.js
+  inflating: customize.sh
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 282.8 MB/s (6582359 bytes in 0.022s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+inputs/modules/demo-v0.1.0.zip: 1 file pushed, 0 skipped. 285.0 MB/s (24297061 bytes in 0.081s)
+== install demo-v0.1.0.zip
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/pkg/.gitignore
+  inflating: webroot/pkg/demo_native.js
+  inflating: webroot/pkg/demo_native_bg.wasm
+  inflating: webroot/pkg/package.json
+  inflating: webroot/version.json
+  inflating: webroot/workers/demo_service.web.g.dart.js
+  inflating: webroot/workers/hello_service.web.g.dart.js
+- Done
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (62s): [
+  {
+    "author": "p0g-stack",
+    "enabled": "true",
+    "update": "false",
+    "id": "devicelab_probe",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "versionCode": "1",
+    "remove": "false",
+    "version": "1",
+    "name": "devicelab probe",
+    "mount": "false",
+    "action": "false",
+    "web": "true"
+  },
+  {
+    "mount": "false",
+    "versionCode": "5",
+    "version": "0.1.4",
+    "name": "flutter-webui Counter",
+    "enabled": "true",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "update": "false",
+    "author": "p0g-stack",
+    "remove": "false",
+    "id": "flutter_webui_counter",
+    "web": "true",
+    "action": "false"
+  },
+  {
+    "web": "true",
+    "action": "false",
+    "versionCode": "1",
+    "author": "Yuv",
+    "description": "A new Flutter project.",
+    "version": "v1.0.0",
+    "id": "counter",
+    "enabled": "true",
+    "name": "Counter",
+    "update": "false",
+    "remove": "false",
+    "mount": "false"
+  },
+  {
+    "action": "false",
+    "name": "Demo",
+    "version": "v0.1.0",
+    "description": "The demo GUI. Flutter on top of the core.",
+    "web": "true",
+    "versionCode": "1",
+    "enabled": "true",
+    "update": "false",
+    "mount": "false",
+    "author": "",
+    "remove": "false",
+    "id": "demo"
+  }
+]
+total 48
+drwxrwxrwx 6 root root 4096 2026-10-01 09:18 .
+drwx------ 6 root root 4096 2026-10-01 09:18 ..
+drwxr-xr-x 3 root root 4096 2026-10-01 09:18 counter
+drwxr-xr-x 5 root root 4096 2026-10-01 09:18 demo
+drwxr-xr-x 3 root root 4096 2026-10-01 09:13 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-10-01 09:18 flutter_webui_counter
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 53.4 MB/s (7843260 bytes in 0.140s)
+Starting: Intent { cmp=com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity
+
+
+
+
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"socket": "webview_devtools_remote_9183", "type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "devicelab probe"}]}
+{"check":"globals","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9183","value":{"ua":"WebUI X/438 (Linux; Android 15; sdk_gphone64_x86_64; KernelSU/32601)","origin":"https://mui.kernelsu.org","href":"https://mui.kernelsu.org/index.html","globals":["$DeFile","$DeFileInputStream","$DeFileOutputStream","$devicelab_probe","$intent","$packageManager","$userManager","ksu","webui"],"ksu":["exec","execBool","fullScreen","mmrl","moduleInfo","spawn","toast","exec","execBool","fullScreen","mmrl","moduleInfo","spawn","toast"]}}}
+{"check":"ksu-exec","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9183","value":{"code":0,"out":"uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0\nu:r:ksu:s0\u0000","err":""}}}
+{"check":"ws-loopback","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9183","value":{"got":["{\"origin\":\"https://mui.kernelsu.org\",\"peerUid\":10210,\"remote\":\"127.0.0.1:46080\",\"serverUid\":0,\"t\":1790846381502,\"uidSource\":\"/proc/net/tcp\"}","hi"],"ms":154}}}
+{"check":"fetch-loopback","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9183","value":{"origin":"https://mui.kernelsu.org","peerUid":10210,"remote":"127.0.0.1:46096","serverUid":0,"t":1790846382266,"uidSource":"/proc/net/tcp"}}}
+{"check":"webview-uid","result":["webview_zygote 1053 webview_zygote", "u0_a210      10210 com.dergoogler.mmrl.wx", "root             0 com.dergoogler.mmrl.wx:root:0", "root             0 com.dergoogler.mmrl.wx:root:0", "u0_a151      10151 com.google.android.webview:webview_service", "u0_i9000     99000 com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0"]}
+{"check":"while-home-heartbeat","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9183","value":{"now":16677,"vis":"hidden"}}}
+{"check":"lifecycle","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9183","value":{"events":[{"type":"pageshow","t":2452,"vis":"visible"},{"type":"visibilitychange","t":10308,"vis":"hidden"}],"gaps":[],"slow":{"heldMs":3001,"sentAt":1790846386170,"resolvedAt":1790846386177,"vis":"hidden"}}}}
+{"check":"dev-url","result":{"error":"no page target","sockets":["webview_devtools_remote_9183"],"targets":[{"socket":"webview_devtools_remote_9183","port":9300,"description":"{\"attached\":true,\"empty\":false,\"height\":640,\"never_attached\":false,\"screenX\":0,\"screenY\":0,\"visible\":false,\"width\":320}","devtoolsFrontendUrl":"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/B47E7D4E5E3FC3E043D309E56EA09C71","id":"B47E7D4E5E3FC3E043D309E56EA09C71","title":"devicelab probe","type":"page","url":"https://mui.kernelsu.org/index.html","webSocketDebuggerUrl":"ws://127.0.0.1:9300/devtools/page/B47E7D4E5E3FC3E043D309E56EA09C71"}]}}
+Starting: Intent { cmp=com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity
+
+
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Flutter Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10162","value":{"href":"https://mui.kernelsu.org/index.html","title":"Flutter Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":739,"load":4204},"paint":{"first-paint":2840,"first-contentful-paint":9176},"glassAt":"present","firstFrame":null,"insets":"24px","vv":[320,640,1]}}}
+{"check":"java-exceptions","result":["10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): java.lang.NoSuchMethodException: com.dergoogler.mmrl.hybridwebui.interfaces.prebuilt.FileChooserInterface.<init> [class com.dergoogler.mmrl.webui.interfaces.WXOptions]", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat java.lang.Class.getConstructor0(Class.java:3395)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat java.lang.Class.getDeclaredConstructor(Class.java:3077)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.ext.JavaScriptInterfaceExtKt.createNewWX(JavaScriptInterfaceExt.kt:16)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.webui.view.WebUIView.addJavascriptInterface(WebUIView.kt:267)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.wx.ui.activity.webui.WebUIActivity.init$lambda$4$lambda$3$lambda$2(WebUIActivity.kt:219)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.wx.ui.activity.webui.WebUIActivity.$r8$lambda$_nZAC8A9f41jkM28VFfiLo2SZbA(Unknown Source:0)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.wx.ui.activity.webui.WebUIActivity$$ExternalSyntheticLambda2.invoke(D8$$SyntheticClass:0)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.hybridwebui.HybridWebUI.setupDependencies(HybridWebUI.kt:106)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.hybridwebui.HybridWebUI.onAttachedToWindow(HybridWebUI.kt:77)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.View.dispatchAttachedToWindow(View.java:22860)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3492)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:20:13.485 10162 10162 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "--", "10-01 09:20:14.111  7607  9283 W TapAndPay: java.lang.NullPointerException: NfcAdapter is null", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat android.nfc.cardemulation.CardEmulation.getInstance(CardEmulation.java:170)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat dhwn.<init>(:com.google.android.gms@242335041@24.23.35 (190800-646585959):15)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat com.google.android.gms.tapandpay.hce.task.TapAndPayAidRegistrationTaskOperation.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):50)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat com.google.android.gms.tapandpay.gcmtask.TapAndPayGcmTaskChimeraService.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):32)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat bpjj.call(:com.google.android.gms@242335041@24.23.35 (190800-646585959):32)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat java.util.concurrent.FutureTask.run(FutureTask.java:264)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat angs.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):50)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat angs.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):76)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat anmg.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):8)", "10-01 09:20:14.111  7607  9283 W TapAndPay: \tat java.lang.Thread.run(Thread.java:1012)"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-01 09:20:13.245 10284 10305 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-01 09:20:14.288 10284 10305 I chromium: [INFO:viewport_data.cc(133)] E2E_Used ViewportFitCover", "10-01 09:20:14.635 10162 10162 I chromium: [INFO:CONSOLE(53)] \"Injecting <script> tag. Using callback.\", source:  (53)"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10162","value":{"firstFrameMs":1345,"now":15057,"flutter":true,"resizes":[],"paint":{"first-paint":922,"first-contentful-paint":2967},"calls":[[211,"at-preload","ksu:undefined webui:undefined"],[232,"ksu-defined"],[243,"wrap-failed","exec"],[247,"wrap-failed","spawn"],[247,"wrap-failed","moduleInfo"],[247,"wrap-failed","fullScreen"],[249,"wrap-failed","toast"]],"resources":[["/internal/insets.css",181,250,"link",0],["/flutter_webui.css",182,281,"link",0],["/flutter_webui.js",183,284,"script",0],["/flutter_bootstrap.js",183,284,"script",0],["/internal/assets/ext/require.js",183,250,"script",0],["/canvaskit/chromium/canvaskit.wasm",348,582,"fetch",0],["/canvaskit/chromium/canvaskit.js",349,382,"other",0],["/main.dart.js",350,435,"script",0],["/assets/FontManifest.json",885,959,"fetch",0],["/favicon.ico",940,982,"other",0],["/assets/fonts/MaterialIcons-Regular.otf",961,1047,"fetch",0],["/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",966,1023,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",967,1025,"fetch",0]],"marks":[["flutter_webui:register",1062],["flutter_webui:registered",1092],["flutter_webui:first-frame",1345]],"measures":[],"fonts":[]}}}
+{"check":"root-start","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10162","value":{"code":0,"out":"","err":"","ms":184}}}
+{"check":"session","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10162","value":{"status":200,"ms":60,"protocol":1,"version":"0.1.0","port":44995,"pid":10432,"tokenLen":43}}}
+{"check":"ws-hello","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10162","value":{"first":"{\"op\":\"hello\",\"protocol\":1,\"version\":\"0.1.0\",\"pid\":10432,\"boot\":\"3e9b4d61-3e5f-4405-946a-6536cba3ebb7\",\"uid\":0,\"moduleDir\":\"/data/adb/modules/flutter_webui_counter\"}"}}}
+{"check":"channel-process","result":"USER           UID LABEL                            PID NAME                       \nroot             0 u:r:ksu:s0                     10432 ld-linux-x86-64.so.2\nexe=/data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/ld-linux-x86-64.so.2\n/data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/ld-linux-x86-64.so.2 --library-path /data/adb/modules/flutter_webui_counter/flutter_webui/x86_64 /data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/dartaotruntime /data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/flutter_webui_counter \narm64-v8a\nroot\nx86_64\n/data/adb/modules/flutter_webui_counter/flutter_webui/arm64-v8a:\ndartaotruntime\nflutter_webui_root.aot\nld-linux-aarch64.so.1\nlibc.so.6\nlibdl.so.2\nlibm.so.6\nlibpthread.so.0\n\n/data/adb/modules/flutter_webui_counter/flutter_webui/x86_64:\ndartaotruntime\nflutter_webui_root.aot\nld-linux-x86-64.so.2\nlibc.so.6\nlibdl.so.2\nlibm.so.6\nlibpthread.so.0"}
+{"check":"root-log","result":"2026-10-01T09:20:48.925686 listening on 127.0.0.1:44995"}
+{"check":"session-mode","result":"total 44\ndrwx--x--x 3 root root 4096 2026-10-01 09:20 .\ndrwxr-xr-x 7 root root 4096 2026-10-01 09:20 ..\n-rw------- 1 root root    0 2026-10-01 09:20 lock\ndrwx------ 2 root root 4096 2026-10-01 09:20 proc\n-rw------- 1 root root   56 2026-10-01 09:20 root.log\n-rw-r--r-- 1 root root  197 2026-10-01 09:20 session.json"}
+{"check":"home-resume","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10162","value":{"events":[["visibilitychange","hidden",17270],["visibilitychange","visible",24443]],"ticks":13,"vis":"visible","hasFocus":false}}}
+{"check":"before-back","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10162","value":{"historyLength":1,"historyState":"{\"flutter\":true}","href":"https://mui.kernelsu.org/index.html","typeofWebui":"object","typeofWebuiExit":"function","typeofKsuExit":"undefined","webuiKeys":["exit","getAdditionalConfig","getApplication","getCurrentApplication","getCurrentRootManager","isDebug","openFile","setRefreshing","setRefreshingEnabled","startActivity"],"wrapped":"not writable"}}}
+{"check":"back-events","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10162","value":{"bk":[["message","{\"type\":\"WX_ON_BACK\"}",28320]],"vis":"visible","historyLength":1,"historyState":"{\"flutter\":true}"}}}
+{"check":"back-console","result":[]}
+{"check":"back-at-root","result":"topResumedActivity=ActivityRecord{8fa89e u0 com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity t14}"}
+{"check":"manual-exit","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10162","value":"webui.exit"}}
+{"check":"after-manual-exit","result":"topResumedActivity=ActivityRecord{d8678c u0 com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity t18}"}
+Starting: Intent { cmp=com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity
+
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Flutter Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10670","value":{"href":"https://mui.kernelsu.org/index.html","title":"Flutter Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":228,"load":943},"paint":{"first-paint":2685,"first-contentful-paint":2685},"glassAt":"present","firstFrame":null,"insets":"24px","vv":[320,640,1]}}}
+{"check":"java-exceptions","result":["10-01 09:21:10.094  7848  7895 W PackageManager: android.content.res.Resources$NotFoundException: String resource ID #0x7f130786", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat android.content.res.Resources.getText(Resources.java:466)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat android.app.ApplicationPackageManager.getText(ApplicationPackageManager.java:2405)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat android.appwidget.AppWidgetProviderInfo.loadDescription(AppWidgetProviderInfo.java:484)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat com.android.launcher3.model.WidgetItem.<init>(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:4)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat com.android.launcher3.model.WidgetsModel.update(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:72)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat com.android.launcher3.p0.execute(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:16)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat com.android.launcher3.LauncherModel.a(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:27)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat com.android.launcher3.t0.run(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:12)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat android.os.Handler.handleCallback(Handler.java:959)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat android.os.Handler.dispatchMessage(Handler.java:100)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat android.os.Looper.loopOnce(Looper.java:232)", "10-01 09:21:10.094  7848  7895 W PackageManager: \tat android.os.Looper.loop(Looper.java:317)", "--", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): java.lang.NoSuchMethodException: com.dergoogler.mmrl.hybridwebui.interfaces.prebuilt.FileChooserInterface.<init> [class com.dergoogler.mmrl.webui.interfaces.WXOptions]", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat java.lang.Class.getConstructor0(Class.java:3395)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat java.lang.Class.getDeclaredConstructor(Class.java:3077)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.ext.JavaScriptInterfaceExtKt.createNewWX(JavaScriptInterfaceExt.kt:16)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.webui.view.WebUIView.addJavascriptInterface(WebUIView.kt:267)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.wx.ui.activity.webui.WebUIActivity.init$lambda$4$lambda$3$lambda$2(WebUIActivity.kt:219)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.wx.ui.activity.webui.WebUIActivity.$r8$lambda$_nZAC8A9f41jkM28VFfiLo2SZbA(Unknown Source:0)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.wx.ui.activity.webui.WebUIActivity$$ExternalSyntheticLambda2.invoke(D8$$SyntheticClass:0)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.hybridwebui.HybridWebUI.setupDependencies(HybridWebUI.kt:106)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.hybridwebui.HybridWebUI.onAttachedToWindow(HybridWebUI.kt:77)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.View.dispatchAttachedToWindow(View.java:22860)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3492)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:21:13.418 10670 10670 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-01 09:21:09.045  9187 10593 W chromium: [WARNING:ev_root_ca_metadata.cc(119)] Not implemented", "10-01 09:21:12.850 10670 10781 I chromium: [1001/092112.845643:INFO:variations_seed_loader.cc(66)] Failed to open file for reading.: No such file or directory (2)", "10-01 09:21:13.241 10786 10810 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-01 09:21:13.787 10670 10670 I chromium: [INFO:CONSOLE(53)] \"Injecting <script> tag. Using callback.\", source:  (53)"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10670","value":{"firstFrameMs":758,"now":15033,"flutter":true,"resizes":[],"paint":{"first-paint":1510,"first-contentful-paint":1510},"calls":[[119,"at-preload","ksu:undefined webui:undefined"],[147,"ksu-defined"],[151,"wrap-failed","exec"],[152,"wrap-failed","spawn"],[153,"wrap-failed","moduleInfo"],[154,"wrap-failed","fullScreen"],[155,"wrap-failed","toast"]],"resources":[["/flutter_bootstrap.js",105,158,"script",0],["/internal/assets/ext/require.js",106,157,"script",0],["/canvaskit/chromium/canvaskit.wasm",202,387,"fetch",0],["/canvaskit/chromium/canvaskit.js",202,245,"other",0],["/main.dart.js",203,285,"script",0],["/assets/FontManifest.json",610,638,"fetch",0],["/favicon.png",627,648,"other",0],["/assets/fonts/MaterialIcons-Regular.otf",642,665,"fetch",0],["/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",642,659,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",642,664,"fetch",0],["/favicon.png",1510,1582,"other",0]],"marks":[],"measures":[],"fonts":[]}}}
+Starting: Intent { cmp=com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity
+
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":{"href":"https://mui.kernelsu.org/index.html","title":"Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":537,"load":2228},"paint":{"first-paint":1590},"glassAt":"present","firstFrame":null,"insets":"24px","vv":[320,640,1]}}}
+{"check":"java-exceptions","result":["10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat java.lang.Class.getConstructor0(Class.java:3395)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat java.lang.Class.getDeclaredConstructor(Class.java:3077)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.ext.JavaScriptInterfaceExtKt.createNewWX(JavaScriptInterfaceExt.kt:16)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.webui.view.WebUIView.addJavascriptInterface(WebUIView.kt:267)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.wx.ui.activity.webui.WebUIActivity.init$lambda$4$lambda$3$lambda$2(WebUIActivity.kt:219)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.wx.ui.activity.webui.WebUIActivity.$r8$lambda$_nZAC8A9f41jkM28VFfiLo2SZbA(Unknown Source:0)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.wx.ui.activity.webui.WebUIActivity$$ExternalSyntheticLambda2.invoke(D8$$SyntheticClass:0)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.hybridwebui.HybridWebUI.setupDependencies(HybridWebUI.kt:106)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat com.dergoogler.mmrl.hybridwebui.HybridWebUI.onAttachedToWindow(HybridWebUI.kt:77)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.View.dispatchAttachedToWindow(View.java:22860)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3492)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "10-01 09:21:50.541 10906 10906 E JavaScriptInterfaceImplementation.createNewWX(...): \tat android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3499)", "--", "10-01 09:21:53.375 10906 11057 W System.err: org.json.JSONException: Value at 0 is null.", "10-01 09:21:53.375 10906 11057 W System.err: \tat org.json.JSONArray.get(JSONArray.java:291)", "10-01 09:21:53.375 10906 11057 W System.err: \tat org.json.JSONArray.getJSONObject(JSONArray.java:523)", "10-01 09:21:53.375 10906 11057 W System.err: \tat com.dergoogler.mmrl.wx.ui.activity.webui.interfaces.KernelSUInterface.moduleInfo(KernelSUInterface.kt:241)", "10-01 09:21:53.375 10906 11057 W System.err: \tat android.os.MessageQueue.nativePollOnce(Native Method)", "10-01 09:21:53.375 10906 11057 W System.err: \tat android.os.MessageQueue.next(MessageQueue.java:346)", "10-01 09:21:53.375 10906 11057 W System.err: \tat android.os.Looper.loopOnce(Looper.java:189)", "10-01 09:21:53.375 10906 11057 W System.err: \tat android.os.Looper.loop(Looper.java:317)", "10-01 09:21:53.375 10906 11057 W System.err: \tat android.os.HandlerThread.run(HandlerThread.java:85)", "--", "10-01 09:22:08.142  9187 10598 E cr_media: java.lang.IllegalArgumentException: {}: BAD_VALUE", "10-01 09:22:08.142  9187 10598 E cr_media: cdm err: 0, oem err: 0, ctx: 0", "10-01 09:22:08.142  9187 10598 E cr_media: ============================== Beginning of DRM Plugin Log ==============================", "10-01 09:22:08.142  9187 10598 E cr_media:   10-01 09:14:03.489 I [cdm_engine.cpp(1092):IsSecurityLevelSupported] level = L1", "10-01 09:22:08.142  9187 10598 E cr_media:   10-01 09:14:03.492 I [file_utils.cpp(38):Exists] stat failed: ENOENT", "10-01 09:22:08.142  9187 10598 E cr_media:   10-01 09:14:03.492 I [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {\"soc_vendor\":\"L3_33100\",\"soc_model\":\"X86 64 bit\",\"ta_ver\":\"18.1.0+Feb 20 2024_20:28:28_\",\"uses_opk\":false,\"tee_os\":\"none\",\"tee_os_ver\":\"0.0.0\",\"form_factor\":\"L3\",\"implementer\":\"Widevine\",\"fused\":false}", "10-01 09:22:08.142  9187 10598 E cr_media:   10-01 09:14:03.495 I [(0):] Level3 Library 33100 Feb 20 2024 20:28:28", "10-01 09:22:08.142  9187 10598 E cr_media:   10-01 09:14:03.531 I [file_utils.cpp(38):Exists] stat failed: ENOENT", "10-01 09:22:08.142  9187 10598 E cr_media:   10-01 09:14:03.533 I [file_utils.cpp(38):Exists] stat failed: ENOENT", "10-01 09:22:08.142  9187 10598 E cr_media:   10-01 09:14:03.547 I [file_utils.cpp(38):Exists] stat failed: ENOENT", "10-01 09:22:08.142  9187 10598 E cr_media:   10-01 09:14:03.548 I [oemcrypto_adapter_dynamic.cpp(841):Initialize] L3 Initialized. Trying L1.", "10-01 09:22:08.142  9187 10598 E cr_media:   10-01 09:14:03.549 I [file_utils.cpp(38):Exists] stat failed: ENOENT", "10-01 09:22:08.142  9187 10598 E cr_media:   10-01 09:14:03.549 I [file_utils.cpp(38):Exists] stat failed: ENOENT"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-01 09:21:49.885 10906 11007 I chromium: [1001/092149.882386:INFO:variations_seed_loader.cc(66)] Failed to open file for reading.: No such file or directory (2)", "10-01 09:21:50.377 11011 11037 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-01 09:21:51.136 11011 11037 I chromium: [INFO:viewport_data.cc(133)] E2E_Used ViewportFitCover", "10-01 09:21:51.363 10906 10906 I chromium: [INFO:CONSOLE(53)] \"Injecting <script> tag. Using callback.\", source:  (53)", "10-01 09:21:53.417 10906 10906 I chromium: [INFO:CONSOLE(7239)] \"Uncaught (in promise) Error: Error: Java exception was raised during method invocation", "10-01 09:21:53.417 10906 10906 I chromium: ", "10-01 09:21:53.417 10906 10906 I chromium: Dart stack trace:", "10-01 09:21:53.417 10906 10906 I chromium: Error: Java exception was raised during method invocation", "10-01 09:21:53.417 10906 10906 I chromium:     at Object.Ag (https://mui.kernelsu.org/main.dart.js:26228:18)", "10-01 09:21:53.417 10906 10906 I chromium:     at a6S.Z5 (https://mui.kernelsu.org/main.dart.js:89702:27)", "10-01 09:21:53.417 10906 10906 I chromium:     at Object.ak2 (https://mui.kernelsu.org/main.dart.js:26061:25)", "10-01 09:21:53.417 10906 10906 I chromium:     at https://mui.kernelsu.org/main.dart.js:98693:22", "10-01 09:21:53.417 10906 10906 I chromium:     at a.<computed> [as J2] (https://mui.kernelsu.org/main.dart.js:24:36)", "10-01 09:21:53.417 10906 10906 I chromium:     at Object.aYj (https://mui.kernelsu.org/main.dart.js:28185:34)", "10-01 09:21:53.417 10906 10906 I chromium:     at axy.$0 (https://mui.kernelsu.org/main.dart.js:92453:15)", "10-01 09:21:53.417 10906 10906 I chromium:     at https://mui.kernelsu.org/main.dart.js:44011:12", "10-01 09:21:53.417 10906 10906 I chromium:     at awR.a (https://mui.kernelsu.org/main.dart.js:5156:63)", "10-01 09:21:53.417 10906 10906 I chromium:     at awR.$2 (https://mui.kernelsu.org/main.dart.js:39464:14)\", source: https://mui.kernelsu.org/main.dart.js (7239)", "10-01 09:22:08.148  9187 10598 W chromium: [WARNING:media_drm_origin_id_manager.cc(328)] Failed to provision origin ID"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":{"firstFrameMs":null,"now":33052,"flutter":true,"paint":{"first-paint":1590},"resources":[["/internal/insets.css",229,266,"link",0],["/flutter_webui.css",230,302,"link",0],["/flutter_webui.js",233,296,"script",0],["/flutter_bootstrap.js",233,302,"script",0],["/internal/assets/ext/require.js",233,280,"script",0],["/canvaskit/chromium/canvaskit.wasm",461,700,"fetch",0],["/canvaskit/chromium/canvaskit.js",465,552,"other",0],["/main.dart.js",473,636,"script",0],["/assets/FontManifest.json",2171,2233,"fetch",0],["/assets/fonts/MaterialIcons-Regular.otf",2242,2306,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",2243,2298,"fetch",0],["/favicon.ico",2243,2260,"other",0]],"marks":[],"measures":[],"fonts":[]}}}
+{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":"semantics on"}
+{"check":"home","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":[]}}
+{"check":"tap-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":"no Places"}}
+{"check":"places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":[]}}
+{"check":"tap-strategy","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":"no Strategy"}}
+{"check":"strategy","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":[]}}
+{"check":"tap-lifecycle","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":"no Lifecycle"}}
+{"check":"tap-root-process","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":"no root process"}}
+{"check":"tap-start","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":"no Start"}}
+{"check":"lifecycle-running","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":[]}}
+{"check":"lifecycle-after-home","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10906","value":[]}}
+{"check":"root-process","result":""}
