@@ -1,5 +1,8 @@
-# KernelSU-family manager on an AVD (late-loaded x86_64 LKM), the probe
-# module's WebUI opened in the manager, and the WebUI host checks run in it.
+# KernelSU-family manager on an AVD (x86_64 LKM loaded by `ksud late-load`,
+# KernelSU's jailbreak mode), then per host (matrix): the probe module's WebUI
+# opened in that host and the WebUI host checks run in it, plus each
+# lab-inputs module opened. Hosts: kernelsu (the manager itself), webuix
+# (WebUI X Portable, root through KernelSU's su).
 name: avd-ksu
 on:
   workflow_dispatch:
@@ -17,10 +20,15 @@ jobs:
   ksu:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        host: [kernelsu, webuix]
     env:
       LAB_OUT: ${{ github.workspace }}/out
       GH_TOKEN: ${{ github.token }}
       FLAVOR: ${{ inputs.flavor || 'kernelsu' }}
+      HOST: ${{ matrix.host }}
       MODULES: ${{ inputs.modules || 'flutter_webui_counter-0.1.0.zip counter-v1.0.0.zip' }}
     steps:
       - uses: actions/checkout@v4
@@ -39,6 +47,9 @@ jobs:
           set -o pipefail; PATH=$ANDROID_HOME/platform-tools:$PATH platforms/avd/up.sh "${{ inputs.api || '35' }}" google_apis x86_64 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Manager
         run: managers/ksu.sh "$FLAVOR" "${{ inputs.tag }}" 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: WebUI X Portable
+        if: matrix.host == 'webuix'
+        run: managers/webuix.sh 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Install modules
         if: env.MODULES != ''
         run: |
@@ -47,14 +58,15 @@ jobs:
           managers/install_modules.sh "${zips[@]}" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: WebUI checks
         run: |
-          case $FLAVOR in
-            kernelsu) PKG=me.weishu.kernelsu;; next) PKG=com.rifsxd.ksunext;;
+          case $HOST in
+            webuix) PKG=com.dergoogler.mmrl.wx;;
+            *) case $FLAVOR in kernelsu) PKG=me.weishu.kernelsu;; next) PKG=com.rifsxd.ksunext;; esac;;
           esac
-          checks/webui_host.sh "$FLAVOR" "$PKG" 2>&1 | tee -a "$LAB_OUT/job.log"
+          checks/webui_host.sh "$HOST" "$PKG" 2>&1 | tee -a "$LAB_OUT/job.log"
           for m in $MODULES; do
             id=$(unzip -p "inputs/modules/$m" module.prop | sed -n 's/^id=//p' | tr -d '\r')
             name=$(unzip -p "inputs/modules/$m" module.prop | sed -n 's/^name=//p' | tr -d '\r')
-            MODULE=$id checks/open_module.sh "$FLAVOR-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
+            MODULE=$id checks/open_module.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
           done
       - name: Result
         if: always()
@@ -62,4 +74,4 @@ jobs:
       - name: Publish to lab-results
         if: always()
         env: { GH_TOKEN: "${{ github.token }}" }
-        run: tools/publish.sh "${{ github.workflow }}-${{ github.job }}"
+        run: tools/publish.sh "${{ github.workflow }}-${{ matrix.host }}"

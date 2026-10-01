@@ -18,13 +18,15 @@ case $PKG in
 esac
 adb logcat -c
 adb shell am force-stop "$PKG"
+# A first-launch notification prompt sits on top of the manager UI otherwise.
+adb shell pm grant "$PKG" android.permission.POST_NOTIFICATIONS 2>/dev/null
 if [ -n "$ACT" ]; then
-  adb shell am start -W -n "$ACT" -e id "$ID" -e name "$NAME" -e MOD_ID "$ID" 2>&1 | tr -d '\r' | grep -E 'Status|Activity|Error|Warning'
+  adb shell am start -W -n "$ACT" -e id "'$ID'" -e name "'$NAME'" 2>&1 | tr -d '\r' | grep -E 'Status|Activity|Error|Warning'
   if wait_page 8; then adb exec-out screencap -p >"$O-intent.png"; echo "opened: intent"; exit 0; fi
 fi
 adb exec-out screencap -p >"$O-intent.png"
-adb logcat -d 2>/dev/null | grep -i -E 'webui|AndroidRuntime|FATAL|ActivityTaskManager|ksu' | tail -60 >"$O-intent-logcat.txt"
-echo "intent path: no page; logcat tail:"; tail -8 "$O-intent-logcat.txt"
+adb logcat -d 2>/dev/null | grep -v -E 'nativeloader|WindowManager' | tail -1500 >"$O-intent-logcat.txt"
+echo "intent path: no page; manager log:"; grep -E " $(adb shell pidof "$PKG" | tr -d '\r' | awk '{print $1}') " "$O-intent-logcat.txt" | tail -25
 # Manager UI path.
 adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 4
 $UI tap Module || $UI tap Modules; sleep 3
@@ -32,5 +34,5 @@ $UI dump "$O-modules.xml"; adb exec-out screencap -p >"$O-modules.png"
 for want in WebUI "Web UI" Open; do $UI tap "$want" && break; done || $UI tap "$NAME"
 if wait_page 10; then adb exec-out screencap -p >"$O-ui.png"; echo "opened: ui"; exit 0; fi
 $UI dump "$O-after.xml"; adb exec-out screencap -p >"$O-after.png"
-adb logcat -d 2>/dev/null | grep -i -E 'webui|AndroidRuntime|FATAL|ActivityTaskManager|ksu' | tail -60 >"$O-ui-logcat.txt"
+adb logcat -d 2>/dev/null | grep -v -E 'nativeloader|WindowManager' | tail -1500 >"$O-ui-logcat.txt"
 echo "opened: none"; exit 1
