@@ -3,7 +3,8 @@
 # grant it root through KernelSU, and record its first screens and
 # activities. Usage: webuix.sh [tag]     needs gh (GH_TOKEN) and adb.
 set -uo pipefail
-TAG=${1:-}; REPO=MMRLApp/WebUI-X-Portable; PKG=com.dergoogler.mmrl.wx; KSU=me.weishu.kernelsu
+TAG=${1:-}; REPO=MMRLApp/WebUI-X-Portable; PKG=com.dergoogler.mmrl.wx
+case ${FLAVOR:-kernelsu} in next) KSU=com.rifsxd.ksunext;; *) KSU=me.weishu.kernelsu;; esac
 OUT=${LAB_OUT:-$PWD/out}; mkdir -p "$OUT"; D=$(mktemp -d)
 HERE=$(cd "$(dirname "$0")/.." && pwd); UI="python3 $HERE/managers/ui.py"
 log() { echo "== $*"; }
@@ -24,9 +25,18 @@ granted=no
 adb shell am force-stop $KSU; adb shell monkey -p $KSU -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 4
 UI_EXACT=1 UI_WAIT=30 $UI tap Superuser; sleep 8
 adb exec-out screencap -p >"$OUT/webuix-ksu-superuser.png"
-# The Superuser list exposes no nodes either: search, tap the first row.
-$UI tapxy 160 152; sleep 3; $UI type "WebUI X"; sleep 4
-if $UI tap "$PKG"; then
+# The list may expose its rows directly; if not, search (retyping when the
+# field took focus too late) and tap the row.
+found=no
+if UI_WAIT=8 $UI tap "$PKG"; then found=yes; else
+  $UI tapxy 160 152; sleep 3
+  for _ in 1 2 3; do
+    $UI type "WebUI"; sleep 4
+    UI_WAIT=4 $UI tap "$PKG" && { found=yes; break; }
+    UI_EXACT=1 UI_WAIT=2 $UI tap Clean; sleep 2
+  done
+fi
+if [ $found = yes ]; then
   sleep 3; $UI dump "$OUT/webuix-ksu-profile.xml"; adb exec-out screencap -p >"$OUT/webuix-ksu-profile.png"
   # The App Profile screen: its first switch is Superuser.
   $UI switch 1 && sleep 2 && granted=ui

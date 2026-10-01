@@ -44,4 +44,4 @@ Results so far: `observations/avd-35-x86_64/managers-2026-10-01.md`.
 
 ## TODO
 
-- WebUI X on KernelSU Next (`flavor=next`): WebUI X gets no root grant, so its leg never opens (`su: failed to exec /system/bin/su`). The KernelSU flavor grants WX through KernelSU's su; Next needs the same (its allowlist or su path) before the WX leg means anything there.
+- WebUI X root grant: the Superuser-tab grant was flaky (search typing raced focus; 18:28 KernelSU run got none) and always drove KernelSU even in `flavor=next`. 2026-10-01 fix: tap the row directly, retry the search, use the flavor's manager. Unverified until Actions runs again.
