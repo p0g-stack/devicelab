@@ -1,0 +1,27 @@
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1790836175.563578    3875 config_utils.cpp:67] Non-vsoc user, using instance id 1
+cvd(3875)  I 10-01 06:29:36  3875  3875 main.cc:137] version: 1.57.0 | VCS: 9bb9c72329cedcb436bb75afc05c24d73fbcdf5d
+SetFlagDefaultsFromConfig: No flag defaults to override.
+--gpu_mode=drm_virgl was requested but the prerequisites were not detected so the device may not function correctly. Please consider switching to --gpu_mode=auto or --gpu_mode=guest_swiftshader.
+assemble_cvd failed: 
+2. assemble_cvd.cc:736 | AssembleCvdMain | Failed to create config
+1. assemble_cvd.cc:515 | InitFilesystemAndCreateConfig | 
+ | cuttlefish/host/commands/assemble_cvd/create_dynamic_disk_files.cc:162
+ v Result<void> cuttlefish::CreateDynamicDiskFiles(const FetcherConfigs &, const CuttlefishConfig &, AndroidBuilds &, const BootImageFlag &, const SystemImageDirFlag &)
+Not enough space remaining in fs containing "/var/tmp/cvd/1001/1790836176071481/artifacts/0/userdata.img", wanted 8545759232, got 8486912000
+Subprocess 3898 was interrupted by a signal 'Aborted' (6)
+assemble_cvd returned -1
+cvd(3875)  I 10-01 06:29:37  3875  3875 start.cpp:568] Device launch failed, cleaning up
+6. main.cc:161 | CvdMain | 
+5. cvd.cpp:93 | HandleCvdCommand | 
+4. cvd.cpp:78 | HandleCommand | 
+3. create.cpp:377 | Handle | 
+2. create.cpp:138 | StartGroup | 
+1. start.cpp:574 | LaunchDevice | 
+ | cuttlefish/host/commands/cvd/cli/utils.cpp:71
+ v Result<void> cuttlefish::CheckProcessExitedNormally(siginfo_t, int)
+Exited with code '255'
+
+    If the error above is unclear, please copy the text and `cvd version` output into an issue at:
+        http://go/cuttlefish-bug
+
