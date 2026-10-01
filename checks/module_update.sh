@@ -39,8 +39,14 @@ rec offered "$( (echo "${W:-no}"; $UI dump) 2>&1 | js)"
 if [ -n "$W" ] && UI_EXACT=1 $UI tap "$W"; then
   sleep 5; shot tapped
   # Next opens the card's sheet or a confirm dialog; KernelSU a confirm dialog.
-  for b in Update UPDATE Install INSTALL Confirm CONFIRM OK Yes; do UI_EXACT=1 UI_WAIT=3 $UI tap "$b" && { sleep 3; shot confirmed; break; }; done
-  for i in $(seq 1 24); do sleep 5; UI_WAIT=1 $UI has Reboot && break; UI_WAIT=1 $UI has REBOOT && break; UI_WAIT=1 $UI has Failed && break; done
+  # Next: the badge expands the card (Update button), that opens a Changelog
+  # dialog (Cancel / Update). So keep confirming until a flash screen shows.
+  flashing() { for w in Reboot REBOOT "Soft restart" "Save logs" Failed; do UI_WAIT=1 $UI has "$w" && return 0; done; return 1; }
+  for n in 1 2 3; do
+    flashing && break
+    for b in Update UPDATE Install INSTALL Confirm CONFIRM OK Yes; do UI_EXACT=1 UI_WAIT=3 $UI tap "$b" && { sleep 4; shot confirmed-$n; break; }; done
+  done
+  for i in $(seq 1 24); do flashing && break; sleep 5; done
   shot flashed
   rec flash-screen "$($UI dump 2>&1 | js)"
 fi
