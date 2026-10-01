@@ -33,12 +33,27 @@ fi
 ls "$CF_HOME" | tee "$OUT/cf-images.txt"
 grep -h -m1 ro.build.fingerprint "$CF_HOME"/*.prop 2>/dev/null || true
 
-log "launching"
+# drm_virgl: virglrenderer in crosvm renders guest GL through the host's EGL
+# (llvmpipe on a GPU-less runner), giving the guest /dev/dri/renderD128.
+GPU=${CF_GPU:-drm_virgl}
+[ "$GPU" = drm_virgl ] && sudo apt-get install -y -qq libegl1 libgles2 libgl1-mesa-dri mesa-libgallium >/dev/null 2>&1
+launch() {
+  log "launching (gpu_mode=$1)"
+  asme "$CF_HOME/bin/launch_cvd" --daemon --report_anonymous_usage_stats=n \
+    --cpus "${CF_CPUS:-2}" --memory_mb "${CF_MEM:-4096}" --gpu_mode="$1" ${CF_EXTRA:-} \
+    >"$OUT/launch_cvd-$1.log" 2>&1
+}
 t0=$SECONDS
-asme "$CF_HOME/bin/launch_cvd" --daemon --report_anonymous_usage_stats=n \
-  --cpus "${CF_CPUS:-2}" --memory_mb "${CF_MEM:-4096}" --gpu_mode="${CF_GPU:-drm_virgl}" \
-  ${CF_EXTRA:-} \
-  >"$OUT/launch_cvd.log" 2>&1 || { tail -60 "$OUT/launch_cvd.log"; exit 1; }
+if ! launch "$GPU"; then
+  grep -h -E "errors:|prerequisites|BOOT_FAILED" "$OUT/launch_cvd-$GPU.log" "$CF_HOME"/cuttlefish_runtime/launcher.log 2>/dev/null | tail -8
+  cp "$CF_HOME"/cuttlefish_runtime/launcher.log "$OUT/launcher-$GPU.log" 2>/dev/null
+  asme cvd reset -y >/dev/null 2>&1 || asme "$CF_HOME/bin/stop_cvd" >/dev/null 2>&1 || true
+  [ "$GPU" = guest_swiftshader ] && exit 1
+  log "gpu_mode=$GPU failed; falling back to guest_swiftshader (no render node in the guest)"
+  GPU=guest_swiftshader; t0=$SECONDS
+  launch "$GPU" || { tail -40 "$OUT/launch_cvd-$GPU.log"; exit 1; }
+fi
+echo "$GPU" > "$OUT/cf-gpu-mode.txt"
 ADB=$CF_HOME/bin/adb; [ -x "$ADB" ] || ADB=adb
 $ADB connect 0.0.0.0:6520 >/dev/null 2>&1 || true
 timeout 600 $ADB -s 0.0.0.0:6520 wait-for-device

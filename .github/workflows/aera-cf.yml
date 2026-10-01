@@ -41,33 +41,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         with: { name: counter-bundle, path: counter/build/flutter_assets }
 
-  kit:
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build dependencies
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq ninja-build pkg-config flex bison glslang-tools libdrm-dev libexpat1-dev \
-            libzstd-dev zlib1g-dev libelf-dev libclang-dev python3-pip >/dev/null
-          pip3 install -q --user --break-system-packages 'meson>=1.4' mako pyyaml packaging
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-      - uses: dtolnay/rust-toolchain@stable
-      - uses: actions/cache@v4
-        with:
-          path: ${{ runner.temp }}/kitx64/work/mesa
-          key: mesa-x64-${{ hashFiles('aera/kit/build-x64.sh') }}
-      - name: x86_64 kit + static simulator
-        run: aera/kit/build-x64.sh "$RUNNER_TEMP/kitx64"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: kit-x64
-          path: |
-            ${{ runner.temp }}/kitx64/kit
-            ${{ runner.temp }}/kitx64/aera-host-sim
 
   recovery:
-    needs: [bundle, kit]
+    needs: [bundle]
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     env:
@@ -89,8 +65,17 @@ jobs:
         run: aera/cuttlefish/shot.sh "$LAB_OUT/android.png"
       - name: Stock recovery
         run: set -o pipefail; aera/cuttlefish/recovery.sh stock-recovery 2>&1 | tee -a "$LAB_OUT/job.log"
-      - uses: actions/download-artifact@v4
-        with: { name: kit-x64, path: "${{ runner.temp }}/kitx64" }
+      - name: flutter-aera x64 kit + static sim (release kit-3.47.5, re-downloaded every run)
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/kitx64/kit"; cd "$RUNNER_TEMP/kitx64"
+          gh release view kit-3.47.5 -R p0g-stack/flutter-aera --json assets --jq '.assets[] | "\(.name) \(.updatedAt)"' | tee "$LAB_OUT/kit-release.txt"
+          gh release download kit-3.47.5 -R p0g-stack/flutter-aera --clobber -p 'flutter-aera-kit-linux-x64-*' -p 'aera-host-sim-linux-x64*'
+          sha256sum -c ./*.sha256 2>&1 | tee -a "$LAB_OUT/kit-release.txt" || true
+          tar -C kit -xJf flutter-aera-kit-linux-x64-*.tar.xz
+          sim=$(ls aera-host-sim-linux-x64* | grep -v sha256 | head -1); mv "$sim" aera-host-sim; chmod +x aera-host-sim
+          file aera-host-sim kit/usr/bin/* | tee -a "$LAB_OUT/kit-release.txt"
       - uses: actions/download-artifact@v4
         with: { name: counter-bundle, path: "${{ runner.temp }}/payload/usr/share/flutter/flutter_assets" }
       - name: Counter through the kit in recovery (simulated host, frames to PNG)
