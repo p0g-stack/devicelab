@@ -24,7 +24,7 @@ for (const [i, s] of [...new Set(sockets)].entries()) {
   const port = 9300 + i;
   adb('forward', `tcp:${port}`, `localabstract:${s}`);
   try {
-    const list = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
+    const list = await (await fetch(`http://127.0.0.1:${port}/json/list`, { signal: AbortSignal.timeout(5000) })).json();
     for (const t of list) targets.push({ socket: s, port, ...t });
   } catch (e) { targets.push({ socket: s, port, error: String(e) }); }
 }

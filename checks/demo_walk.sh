@@ -12,7 +12,7 @@ ev() { $WV eval "$1" 2>&1 | tail -1; }
 shot() { timeout 20 adb exec-out screencap -p >"$OUT/$LABEL-walk-$1.png"; }
 # Helpers on window: enable semantics, list labels, tap by label prefix.
 HELP='window.__w = window.__w || {
-  on() { const p = document.querySelector("flt-semantics-placeholder"); if (p) p.click(); },
+  on() { const p = document.querySelector("flt-semantics-placeholder"); if (!p) return; const r = p.getBoundingClientRect(), o = {bubbles: true, cancelable: true, clientX: r.x + r.width / 2, clientY: r.y + r.height / 2, pointerType: "touch", isPrimary: true}; for (const t of ["pointerdown", "pointerup"]) p.dispatchEvent(new PointerEvent(t, o)); p.dispatchEvent(new MouseEvent("click", o)); },
   nodes() { return [...document.querySelectorAll("flt-semantics")].filter(e => !e.querySelector("flt-semantics")) },
   text() { return [...document.querySelectorAll("flt-semantics")].map(e => (e.getAttribute("aria-label") || [...e.childNodes].filter(n => n.nodeType === 3 || n.tagName === "SPAN").map(n => n.textContent).join("")).trim()).filter(Boolean) },
   find(l) { const all = [...document.querySelectorAll("flt-semantics")]; const lab = e => (e.getAttribute("aria-label") || e.textContent || "").trim(); return all.find(e => lab(e) === l) || all.filter(e => lab(e).startsWith(l)).sort((a, b) => lab(a).length - lab(b).length)[0] },
