@@ -37,7 +37,9 @@ else
   for e in /product/app/*; do n=${e##*/}; mkdir $T/$n; mount --bind $e $T/$n 2>>$L; done
   mkdir $T/WebuiTermuxApi; mount --bind "$MODDIR/system/product/app/WebuiTermuxApi" $T/WebuiTermuxApi 2>>$L
   chcon u:object_r:system_file:s0 $T/*
-  mount --bind $T /product/app 2>>$L && echo "magic mount ok" >>$L || echo "magic mount failed: $?" >>$L
+  # rbind: a plain bind carries only the tmpfs, not the binds inside it
+  # (that emptied every product app and crash-looped system_server).
+  mount -o rbind $T /product/app 2>>$L && echo "magic mount ok" >>$L || echo "magic mount failed: $?" >>$L
 fi
 S
   cat >"$D/service.sh" <<'S'
@@ -52,7 +54,8 @@ S
 fi
 
 : >"$J"
-rec mount "$(adb shell "cat /data/local/tmp/app-plane-mount.log 2>&1; ls -laZ /product/app/WebuiTermuxApi/ 2>&1; grep -E 'product|modules|app_plane' /proc/mounts | head -12" | tr -d '\r' | js)"
+for i in $(seq 60); do [ "$(adb shell getprop sys.boot_completed | tr -d '\r')" = 1 ] && break; sleep 2; done
+rec mount "$(adb shell "cat /data/local/tmp/app-plane-mount.log 2>&1; ls -laZ /product/app/WebuiTermuxApi/ 2>&1; ls /product/app | head -5; grep -E 'product|modules|app_plane' /proc/mounts | grep -v '/dev/app_plane_app/' | head -8; grep -c ' /product/app/' /proc/mounts" | tr -d '\r' | js)"
 rec package "$(adb shell "pm path $PKG; dumpsys package $PKG | grep -E 'codePath|flags=|privateFlags|versionName|userId' | head -8" | tr -d '\r' | js)"
 UID_=$(adb shell "stat -c %u /data/data/$PKG 2>/dev/null" | tr -d '\r')
 # adb-root listener (u:r:su) next to the module's one.
