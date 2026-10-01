@@ -1,0 +1,73 @@
+[cf] installing cuttlefish host packages
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ii  cuttlefish-base 1.57.0       amd64        Cuttlefish Android Virtual Device companion package
+[cf] fetching aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug
+cvd(3840)  I 10-01 06:25:58  3840  3840 main.cc:137] version: 1.57.0 | VCS: 9bb9c72329cedcb436bb75afc05c24d73fbcdf5d
+By using this Android Virtual Device, you agree to Google Terms of Service (https://policies.google.com/terms). The Google Privacy Policy (https://policies.google.com/privacy) describes how Google handles information generated as you use Google services.
+cvd(3840)  I 10-01 06:25:59  3840  3840 fetch_cvd.cc:495] Starting fetch to "/mnt/cf"
+cvd(3840)  I 10-01 06:25:59  3840  3843 host_package.cc:43] Downloading host package for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(3840)  I 10-01 06:25:59  3840  3840 fetch_cvd.cc:206] Downloading image zip for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(3840)  I 10-01 06:26:31  3840  3840 fetch_cvd.cc:511] Completed target fetch to '/mnt/cf' (1 out of 1)
+cvd(3840)  I 10-01 06:26:31  3840  3840 fetch_cvd.cc:520] Completed all fetches
+android-info.txt
+bin
+boot.img
+chromeos
+com.android.i18n
+cuttlefish_example_custom.img
+etc
+fastboot-info.txt
+fetch.log
+fetcher_config.json
+framework
+init_boot.img
+lib64
+metrics
+misc_info.txt
+nativetest64
+otatools
+super.img
+test_suites
+userdata.img
+usr
+vbmeta.img
+vbmeta_system.img
+vbmeta_system_dlkm.img
+vbmeta_vendor_dlkm.img
+vendor_boot.img
+[cf] launching
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1790835993.361701    3865 config_utils.cpp:67] Non-vsoc user, using instance id 1
+cvd(3865)  I 10-01 06:26:33  3865  3865 main.cc:137] version: 1.57.0 | VCS: 9bb9c72329cedcb436bb75afc05c24d73fbcdf5d
+SetFlagDefaultsFromConfig: No flag defaults to override.
+assemble_cvd failed: 
+2. assemble_cvd.cc:736 | AssembleCvdMain | Failed to create config
+1. assemble_cvd.cc:515 | InitFilesystemAndCreateConfig | 
+ | cuttlefish/host/commands/assemble_cvd/create_dynamic_disk_files.cc:162
+ v Result<void> cuttlefish::CreateDynamicDiskFiles(const FetcherConfigs &, const CuttlefishConfig &, AndroidBuilds &, const BootImageFlag &, const SystemImageDirFlag &)
+Not enough space remaining in fs containing "/var/tmp/cvd/1001/1790835993368550/artifacts/0/userdata.img", wanted 8545759232, got 8487182336
+Subprocess 3888 was interrupted by a signal 'Aborted' (6)
+assemble_cvd returned -1
+cvd(3865)  I 10-01 06:26:34  3865  3865 start.cpp:568] Device launch failed, cleaning up
+6. main.cc:161 | CvdMain | 
+5. cvd.cpp:93 | HandleCvdCommand | 
+4. cvd.cpp:78 | HandleCommand | 
+3. create.cpp:377 | Handle | 
+2. create.cpp:138 | StartGroup | 
+1. start.cpp:574 | LaunchDevice | 
+ | cuttlefish/host/commands/cvd/cli/utils.cpp:71
+ v Result<void> cuttlefish::CheckProcessExitedNormally(siginfo_t, int)
+Exited with code '255'
+
+    If the error above is unclear, please copy the text and `cvd version` output into an issue at:
+        http://go/cuttlefish-bug
+
