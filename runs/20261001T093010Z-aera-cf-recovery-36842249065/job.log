@@ -1,0 +1,235 @@
+[cf] installing cuttlefish host packages
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ii  cuttlefish-base 1.57.0       amd64        Cuttlefish Android Virtual Device companion package
+[cf] fetching aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug
+cvd(3880)  I 10-01 09:24:12  3880  3880 main.cc:137] version: 1.57.0 | VCS: 9bb9c72329cedcb436bb75afc05c24d73fbcdf5d
+By using this Android Virtual Device, you agree to Google Terms of Service (https://policies.google.com/terms). The Google Privacy Policy (https://policies.google.com/privacy) describes how Google handles information generated as you use Google services.
+cvd(3880)  I 10-01 09:24:13  3880  3880 fetch_cvd.cc:495] Starting fetch to "/mnt/cf"
+cvd(3880)  I 10-01 09:24:13  3880  3883 host_package.cc:43] Downloading host package for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(3880)  I 10-01 09:24:14  3880  3880 fetch_cvd.cc:206] Downloading image zip for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(3880)  I 10-01 09:24:47  3880  3880 fetch_cvd.cc:511] Completed target fetch to '/mnt/cf' (1 out of 1)
+cvd(3880)  I 10-01 09:24:47  3880  3880 fetch_cvd.cc:520] Completed all fetches
+android-info.txt
+bin
+boot.img
+chromeos
+com.android.i18n
+cuttlefish_example_custom.img
+etc
+fastboot-info.txt
+fetch.log
+fetcher_config.json
+framework
+init_boot.img
+lib64
+metrics
+misc_info.txt
+nativetest64
+otatools
+super.img
+test_suites
+userdata.img
+usr
+vbmeta.img
+vbmeta_system.img
+vbmeta_system_dlkm.img
+vbmeta_vendor_dlkm.img
+vendor_boot.img
+[cf] launching (gpu_mode=gfxstream_guest_angle_host_swiftshader)
+[cf] booted in 102s: generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys
+[cf] state recovery after 9s
+[cf] recovery adb uid 0
+/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf: 1 file pushed, 0 skipped. 82.6 MB/s (759720 bytes in 0.009s)
+/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf: 1 file pushed, 0 skipped. 130.1 MB/s (708920 bytes in 0.005s)
+[cf] /twres/fonts absent in stock recovery: pushed host DejaVu as a stand-in
+[cf] facts: 1112 lines -> /home/runner/work/devicelab/devicelab/out/stock-recovery-facts.txt
+[cf] screenshot failed:
+Exited with code '1'
+
+    If the error above is unclear, please copy the text and `cvd version` output into an issue at:
+        http://go/cuttlefish-bug
+
+app 11 members, kit 25 members
+/home/runner/work/devicelab/devicelab/out/counter-1.0.0-x64.aerap: 36 members, 139.5 MB expanded, 26.6 MB xz
+/home/runner/work/devicelab/devicelab/out/counter-default/payload.tgz: 1 file pushed, 0 skipped. 315.6 MB/s (44846945 bytes in 0.136s)
+/home/runner/work/_temp/kitx64/aera-host-sim: 1 file pushed, 0 skipped. 151.8 MB/s (1431136 bytes in 0.009s)
+[sim] pushed in 2s; 133M	/tmp/aera-lab/root
+[sim] exit 0 after 11s (switches: none; env: none)
+sim: handshake done, 1080x2400 x3 slots
+sim: first frame after 2189 ms
+sim:   4000 ms Snap("start")
+sim: wrote /tmp/aera-lab/out/start.png
+sim:   4500 ms Tap(980, 2250)
+sim:   5000 ms Tap(980, 2250)
+sim:   5500 ms Tap(980, 2250)
+sim:   8000 ms Snap("after")
+sim: wrote /tmp/aera-lab/out/after.png
+sim: 12 frames
+sim: wrote /tmp/aera-lab/out/last.png
+sim: embedder exited with exit status: 0
+total 496
+drwxr-xr-x 3 runner runner   4096 Oct  1 09:28 .
+drwxr-xr-x 3 runner runner   4096 Oct  1 09:28 ..
+-rw-r--r-- 1 runner runner 163422 Oct  1 09:28 after.png
+-rw-r--r-- 1 runner runner 163422 Oct  1 09:28 last.png
+drwxr-xr-x 6 runner runner   4096 Oct  1 09:28 plugin-data
+-rw-r--r-- 1 runner runner 164487 Oct  1 09:28 start.png
+aera-plugin: virtio-gpu capsets 0x208
+aera-flutter: Vulkan on Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+aera-flutter: Vulkan renderer Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+/home/runner/work/devicelab/devicelab/out/counter-impeller/payload.tgz: 1 file pushed, 0 skipped. 146.8 MB/s (44846945 bytes in 0.291s)
+/home/runner/work/_temp/kitx64/aera-host-sim: 1 file pushed, 0 skipped. 161.4 MB/s (1431136 bytes in 0.008s)
+[sim] pushed in 2s; 133M	/tmp/aera-lab/root
+[sim] exit 0 after 13s (switches: --enable-impeller; env: none)
+sim: handshake done, 1080x2400 x3 slots
+sim: first frame after 3879 ms
+sim:   4000 ms Snap("start")
+sim: wrote /tmp/aera-lab/out/start.png
+sim:   4500 ms Tap(980, 2250)
+sim:   5000 ms Tap(980, 2250)
+sim:   5500 ms Tap(980, 2250)
+sim:   8000 ms Snap("after")
+sim: wrote /tmp/aera-lab/out/after.png
+sim: 11 frames
+sim: wrote /tmp/aera-lab/out/last.png
+sim: embedder exited with exit status: 0
+total 504
+drwxr-xr-x 3 runner runner   4096 Oct  1 09:29 .
+drwxr-xr-x 3 runner runner   4096 Oct  1 09:29 ..
+-rw-r--r-- 1 runner runner 166534 Oct  1 09:29 after.png
+-rw-r--r-- 1 runner runner 166534 Oct  1 09:29 last.png
+drwxr-xr-x 6 runner runner   4096 Oct  1 09:29 plugin-data
+-rw-r--r-- 1 runner runner 167195 Oct  1 09:29 start.png
+aera-plugin: virtio-gpu capsets 0x208
+aera-flutter: engine switches ["--enable-impeller"]
+aera-flutter: Vulkan on Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+[IMPORTANT:flutter/shell/platform/embedder/embedder_surface_vulkan_impeller.cc(85)] Using the Impeller rendering backend (Vulkan).
+aera-flutter: Vulkan renderer Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+/home/runner/work/devicelab/devicelab/out/counter-gl-zink/payload.tgz: 1 file pushed, 0 skipped. 165.8 MB/s (44846945 bytes in 0.258s)
+/home/runner/work/_temp/kitx64/aera-host-sim: 1 file pushed, 0 skipped. 148.0 MB/s (1431136 bytes in 0.009s)
+[sim] pushed in 2s; 133M	/tmp/aera-lab/root
+[sim] exit 0 after 11s (switches: --gl; env: VK_LOADER_DEBUG=error,warn,driver
+LIBGL_DEBUG=verbose
+MESA_LOG_LEVEL=debug
+EGL_LOG_LEVEL=debug)
+sim: handshake done, 1080x2400 x3 slots
+sim: first frame after 1869 ms
+sim:   4000 ms Snap("start")
+sim: wrote /tmp/aera-lab/out/start.png
+sim:   4500 ms Tap(980, 2250)
+sim:   5000 ms Tap(980, 2250)
+sim:   5500 ms Tap(980, 2250)
+sim:   8000 ms Snap("after")
+sim: wrote /tmp/aera-lab/out/after.png
+sim: 47 frames
+sim: wrote /tmp/aera-lab/out/last.png
+sim: embedder exited with exit status: 0
+total 496
+drwxr-xr-x 3 runner runner   4096 Oct  1 09:29 .
+drwxr-xr-x 3 runner runner   4096 Oct  1 09:29 ..
+-rw-r--r-- 1 runner runner 163715 Oct  1 09:29 after.png
+-rw-r--r-- 1 runner runner 163715 Oct  1 09:29 last.png
+drwxr-xr-x 6 runner runner   4096 Oct  1 09:29 plugin-data
+-rw-r--r-- 1 runner runner 164374 Oct  1 09:29 start.png
+aera-plugin: virtio-gpu capsets 0x208
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:            Found ICD manifest file /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json, version 1.0.1
+DEBUG | DRIVER:    Searching for ICD drivers named ../../../lib/libvulkan_gfxstream.so
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:            Found ICD manifest file /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json, version 1.0.1
+DEBUG | DRIVER:    Searching for ICD drivers named ../../../lib/libvulkan_gfxstream.so
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:            Found ICD manifest file /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json, version 1.0.1
+DEBUG | DRIVER:    Searching for ICD drivers named ../../../lib/libvulkan_gfxstream.so
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:            Found ICD manifest file /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json, version 1.0.1
+DEBUG | DRIVER:    Searching for ICD drivers named ../../../lib/libvulkan_gfxstream.so
+MESA-EGL: debug: Falling back to surfaceless zink without DRM.
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+/home/runner/work/devicelab/devicelab/out/counter-gl-zink-sw/payload.tgz: 1 file pushed, 0 skipped. 143.0 MB/s (44846945 bytes in 0.299s)
+/home/runner/work/_temp/kitx64/aera-host-sim: 1 file pushed, 0 skipped. 139.4 MB/s (1431136 bytes in 0.010s)
+[sim] pushed in 1s; 133M	/tmp/aera-lab/root
+[sim] exit 0 after 11s (switches: --gl; env: D3D_ALWAYS_SOFTWARE=1
+VK_LOADER_DEBUG=error,warn,driver
+LIBGL_DEBUG=verbose
+MESA_LOG_LEVEL=debug
+EGL_LOG_LEVEL=debug)
+sim: handshake done, 1080x2400 x3 slots
+sim: first frame after 1905 ms
+sim:   4000 ms Snap("start")
+sim: wrote /tmp/aera-lab/out/start.png
+sim:   4500 ms Tap(980, 2250)
+sim:   5000 ms Tap(980, 2250)
+sim:   5500 ms Tap(980, 2250)
+sim:   8000 ms Snap("after")
+sim: wrote /tmp/aera-lab/out/after.png
+sim: 51 frames
+sim: wrote /tmp/aera-lab/out/last.png
+sim: embedder exited with exit status: 0
+total 496
+drwxr-xr-x 3 runner runner   4096 Oct  1 09:29 .
+drwxr-xr-x 3 runner runner   4096 Oct  1 09:29 ..
+-rw-r--r-- 1 runner runner 163715 Oct  1 09:29 after.png
+-rw-r--r-- 1 runner runner 163715 Oct  1 09:29 last.png
+drwxr-xr-x 6 runner runner   4096 Oct  1 09:29 plugin-data
+-rw-r--r-- 1 runner runner 164374 Oct  1 09:29 start.png
+aera-plugin: virtio-gpu capsets 0x208
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:            Found ICD manifest file /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json, version 1.0.1
+DEBUG | DRIVER:    Searching for ICD drivers named ../../../lib/libvulkan_gfxstream.so
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:            Found ICD manifest file /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json, version 1.0.1
+DEBUG | DRIVER:    Searching for ICD drivers named ../../../lib/libvulkan_gfxstream.so
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:            Found ICD manifest file /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json, version 1.0.1
+DEBUG | DRIVER:    Searching for ICD drivers named ../../../lib/libvulkan_gfxstream.so
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:                  /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json
+DRIVER:            Found ICD manifest file /tmp/aera-lab/root/usr/share/vulkan/icd.d/gfxstream_vk_icd.json, version 1.0.1
+DEBUG | DRIVER:    Searching for ICD drivers named ../../../lib/libvulkan_gfxstream.so
+MESA: error: ZINK: CPU device requested but none found!
+MESA: error: ZINK: failed to choose pdev
+MESA-EGL: debug: Falling back to surfaceless zink without DRM.
+/home/runner/work/devicelab/devicelab/out/counter-softpipe/payload.tgz: 1 file pushed, 0 skipped. 177.5 MB/s (44846945 bytes in 0.241s)
+/home/runner/work/_temp/kitx64/aera-host-sim: 1 file pushed, 0 skipped. 151.6 MB/s (1431136 bytes in 0.009s)
+[sim] pushed in 1s; 133M	/tmp/aera-lab/root
+[sim] exit 0 after 12s (switches: none; env: none)
+sim: handshake done, 1080x2400 x3 slots
+sim: first frame after 2054 ms
+sim:   4000 ms Snap("start")
+sim: wrote /tmp/aera-lab/out/start.png
+sim:   4500 ms Tap(980, 2250)
+sim:   5000 ms Tap(980, 2250)
+sim:   5500 ms Tap(980, 2250)
+sim:   8000 ms Snap("after")
+sim: wrote /tmp/aera-lab/out/after.png
+sim: 12 frames
+sim: wrote /tmp/aera-lab/out/last.png
+sim: embedder exited with exit status: 0
+total 496
+drwxr-xr-x 3 runner runner   4096 Oct  1 09:30 .
+drwxr-xr-x 3 runner runner   4096 Oct  1 09:30 ..
+-rw-r--r-- 1 runner runner 163422 Oct  1 09:30 after.png
+-rw-r--r-- 1 runner runner 163422 Oct  1 09:30 last.png
+drwxr-xr-x 6 runner runner   4096 Oct  1 09:30 plugin-data
+-rw-r--r-- 1 runner runner 164487 Oct  1 09:30 start.png
+aera-plugin: virtio-gpu capsets 0x208
+aera-flutter: Vulkan on Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+aera-flutter: Vulkan renderer Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
