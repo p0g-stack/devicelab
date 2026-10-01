@@ -9,7 +9,7 @@ on:
       build_id: { default: "" }
   push:
     branches: [main]
-    paths: [".github/workflows/aera-cf.yml", "aera/cuttlefish/**", "aera/kit/**"]
+    paths: [".github/workflows/aera-cf.yml", "aera/cuttlefish/**", "aera/kit/**", "aera/tools/**"]
 permissions:
   contents: write
 concurrency: { group: aera-cf, cancel-in-progress: false }
@@ -28,22 +28,8 @@ jobs:
     runs-on: ubuntu-24.04-arm
     steps:
       - run: ls -l /dev/kvm || true; nproc; grep -m3 -i 'model\|features' /proc/cpuinfo; uname -a; dmesg 2>/dev/null | grep -i kvm | head || sudo dmesg | grep -i kvm | head
-  bundle:
-    runs-on: ubuntu-24.04
-    steps:
-      - name: Counter app bundle (debug kernel, architecture independent)
-        run: |
-          curl -fsSL https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.47.5-stable.tar.xz | tar -C "$RUNNER_TEMP" -xJ
-          export PATH=$RUNNER_TEMP/flutter/bin:$PATH
-          flutter --disable-analytics >/dev/null
-          flutter create --no-pub --project-name counter counter
-          cd counter && flutter pub get && flutter build bundle --debug
-      - uses: actions/upload-artifact@v4
-        with: { name: counter-bundle, path: counter/build/flutter_assets }
-
 
   recovery:
-    needs: [bundle]
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     env:
@@ -76,18 +62,23 @@ jobs:
           tar -C kit -xJf flutter-aera-kit-linux-x64-*.tar.xz
           sim=$(ls aera-host-sim-linux-x64* | grep -v sha256 | head -1); mv "$sim" aera-host-sim; chmod +x aera-host-sim
           file aera-host-sim kit/usr/bin/* | tee -a "$LAB_OUT/kit-release.txt"
-      - uses: actions/download-artifact@v4
-        with: { name: counter-bundle, path: "${{ runner.temp }}/payload/usr/share/flutter/flutter_assets" }
+      - name: Counter .aerap from flutter_p0g, retargeted to the x64 kit (lab-inputs aera/)
+        run: |
+          set -euo pipefail
+          git fetch -q --depth 1 origin lab-inputs && git archive FETCH_HEAD aera | tar -x -C "$RUNNER_TEMP"
+          (cd "$RUNNER_TEMP/aera" && sha256sum -c counter-1.0.0.aerap.sha256)
+          aera/tools/aerap.py retarget "$RUNNER_TEMP/aera/counter-1.0.0.aerap" "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 | tee -a "$LAB_OUT/job.log"
+          aera/tools/aerap.py unpack "$LAB_OUT/counter-1.0.0-x64.aerap" "$RUNNER_TEMP/counter-x64"
       - name: Counter through the kit in recovery (simulated host, frames to PNG)
         run: |
           set -o pipefail
-          cp -a "$RUNNER_TEMP/kitx64/kit/." "$RUNNER_TEMP/payload/"; rm -f "$RUNNER_TEMP/payload/kit.json"
-          aera/cuttlefish/run-sim.sh counter-sim "$RUNNER_TEMP/payload" "$RUNNER_TEMP/kitx64/aera-host-sim" \
+          aera/cuttlefish/run-sim.sh counter-sim "$RUNNER_TEMP/counter-x64/root" "$RUNNER_TEMP/kitx64/aera-host-sim" \
             --until 9000 --snap start@4000 --tap 980,2250@4500 --tap 980,2250@5000 --tap 980,2250@5500 --snap after@8000 \
             2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Logs
         if: always()
         run: |
+          rm -f "$LAB_OUT"/*.aerap
           cp "$CF_HOME"/cuttlefish_runtime/{kernel.log,launcher.log,logcat} "$LAB_OUT"/ 2>/dev/null || true
           tail -30 "$LAB_OUT"/kernel.log 2>/dev/null || true
       - name: Publish to lab-results

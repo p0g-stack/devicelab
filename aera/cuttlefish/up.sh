@@ -22,7 +22,10 @@ if ! command -v cvd >/dev/null; then
 fi
 dpkg -l cuttlefish-base | tail -1 | tee "$OUT/cf-host.txt"
 # sudo -u re-reads the group database, so the new groups apply without a re-login.
-asme() { sudo -u "$USER" -H env HOME="$CF_HOME" PATH="$PATH" "$@"; }
+# EGL_PLATFORM=surfaceless: the runner has no display, so Mesa's default EGL
+# display (used by Cuttlefish's graphics check and virglrenderer) must not
+# look for X11/Wayland.
+asme() { sudo -u "$USER" -H env HOME="$CF_HOME" PATH="$PATH" EGL_PLATFORM=surfaceless "$@"; }
 
 if [ ! -x "$CF_HOME/bin/launch_cvd" ]; then
   spec=$BUILD; [ -n "$BID" ] && spec="$BID/${BUILD#*/}"
@@ -33,6 +36,8 @@ fi
 ls "$CF_HOME" | tee "$OUT/cf-images.txt"
 grep -h -m1 ro.build.fingerprint "$CF_HOME"/*.prop 2>/dev/null || true
 
+# crosvm's sandboxed device processes die on the runner ("failed to create
+# a PCI root hub ... Connection reset by peer"), hence --enable_sandbox=false.
 # drm_virgl: virglrenderer in crosvm renders guest GL through the host's EGL
 # (llvmpipe on a GPU-less runner), giving the guest /dev/dri/renderD128.
 GPU=${CF_GPU:-drm_virgl}
@@ -40,7 +45,7 @@ GPU=${CF_GPU:-drm_virgl}
 launch() {
   log "launching (gpu_mode=$1)"
   asme "$CF_HOME/bin/launch_cvd" --daemon --report_anonymous_usage_stats=n \
-    --cpus "${CF_CPUS:-2}" --memory_mb "${CF_MEM:-4096}" --gpu_mode="$1" ${CF_EXTRA:-} \
+    --cpus "${CF_CPUS:-2}" --memory_mb "${CF_MEM:-4096}" --gpu_mode="$1" ${CF_EXTRA---enable_sandbox=false} \
     >"$OUT/launch_cvd-$1.log" 2>&1
 }
 t0=$SECONDS
