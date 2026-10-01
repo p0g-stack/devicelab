@@ -58,3 +58,6 @@ adb shell input keyevent KEYCODE_BACK; sleep 3
 rec back-1 "$(text)"; rec back-1-top "$(top)"; shot back-1
 adb shell input keyevent KEYCODE_BACK; sleep 3
 rec back-2-top "$(top)"; shot back-2
+# Hosts without an exit method (KernelSU Next) unwind history first: one more.
+adb shell input keyevent KEYCODE_BACK; sleep 3
+rec back-3-top "$(top)"; shot back-3
