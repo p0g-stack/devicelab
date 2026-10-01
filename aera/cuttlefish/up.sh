@@ -3,7 +3,7 @@
 # (GitHub's ubuntu-24.04 runners have both).
 # Usage: up.sh [branch/target] [build_id]
 #   defaults: aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug, latest
-# Leaves: $CF_HOME (images + runtime), adb on 0.0.0.0:6520, VNC on :6444.
+# Leaves: $CF_HOME (images + runtime), adb on 0.0.0.0:6520; frames via shot.sh.
 set -euo pipefail
 BUILD=${1:-aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug}
 BID=${2:-}
@@ -37,7 +37,7 @@ log "launching"
 t0=$SECONDS
 asme "$CF_HOME/bin/launch_cvd" --daemon --report_anonymous_usage_stats=n \
   --cpus 4 --memory_mb 6144 --gpu_mode=guest_swiftshader \
-  --start_webrtc=false --start_vnc_server=true ${CF_EXTRA:-} \
+  ${CF_EXTRA:-} \
   >"$OUT/launch_cvd.log" 2>&1 || { tail -60 "$OUT/launch_cvd.log"; exit 1; }
 ADB=$CF_HOME/bin/adb; [ -x "$ADB" ] || ADB=adb
 $ADB connect 0.0.0.0:6520 >/dev/null 2>&1 || true

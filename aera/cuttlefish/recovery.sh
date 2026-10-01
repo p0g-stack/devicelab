@@ -32,6 +32,4 @@ for c in 'id' 'uname -a' 'getprop ro.build.fingerprint' 'getprop ro.bootmode' 'c
   printf '\n$ %s\n' "$c" >>"$f"; timeout 20 $ADB -s $S shell "$c" >>"$f" 2>&1
 done
 echo "[cf] facts: $(wc -l <"$f") lines -> $f"
-command -v vncdo >/dev/null || pip3 install -q --user --break-system-packages vncdotool >/dev/null 2>&1
-PATH=$HOME/.local/bin:$PATH timeout 60 vncdo -s 127.0.0.1::6444 capture "$OUT/$LABEL.png" \
-  && echo "[cf] frame -> $OUT/$LABEL.png" || echo "[cf] vnc capture failed"
+aera_dir=$(cd "$(dirname "$0")" && pwd); "$aera_dir/shot.sh" "$OUT/$LABEL.png"

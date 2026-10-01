@@ -14,6 +14,10 @@ permissions:
   contents: write
 concurrency: { group: aera-cf, cancel-in-progress: false }
 jobs:
+  arm-kvm:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - run: ls -l /dev/kvm || true; nproc; grep -m3 -i 'model\|features' /proc/cpuinfo; uname -a; dmesg 2>/dev/null | grep -i kvm | head || sudo dmesg | grep -i kvm | head
   bundle:
     runs-on: ubuntu-24.04
     steps:
@@ -70,9 +74,7 @@ jobs:
       - name: Boot Cuttlefish
         run: set -o pipefail; aera/cuttlefish/up.sh "${{ inputs.build }}" "${{ inputs.build_id }}" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Android frame
-        run: |
-          pip3 install -q --user --break-system-packages vncdotool
-          timeout 60 ~/.local/bin/vncdo -s 127.0.0.1::6444 capture "$LAB_OUT/android.png" || true
+        run: aera/cuttlefish/shot.sh "$LAB_OUT/android.png"
       - name: Stock recovery
         run: set -o pipefail; aera/cuttlefish/recovery.sh stock-recovery 2>&1 | tee -a "$LAB_OUT/job.log"
       - uses: actions/download-artifact@v4
