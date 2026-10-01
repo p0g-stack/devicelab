@@ -9,6 +9,8 @@ on:
       build_id: { default: "" }
       aera_release: { default: "latest", description: "devicelab release with ramdisk-recovery.img (aera-cf-x86_64-*), latest, or none" }
       aera_taps: { default: "", description: "launcher taps 'x,y x,y' in AERA screen pixels, used when the image has no RPC plugin open (patch 0008)" }
+  release:
+    types: [published]
   push:
     branches: [main]
     paths: [".github/workflows/aera-cf.yml", "aera/cuttlefish/**", "aera/kit/**", "aera/tools/**"]
@@ -77,7 +79,7 @@ jobs:
         id: aera
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
-          tag="${{ inputs.aera_release || 'latest' }}"
+          tag="${{ github.event.release.tag_name || inputs.aera_release || 'latest' }}"
           [ "$tag" = none ] && exit 0
           if [ "$tag" = latest ]; then
             tag=$(gh release list -R "$GITHUB_REPOSITORY" --limit 50 --json tagName,createdAt \
