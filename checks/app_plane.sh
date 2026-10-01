@@ -38,9 +38,16 @@ adb push "$SOCKPROBE" /data/local/tmp/sockprobe >/dev/null
 adb shell "chmod 755 /data/local/tmp/sockprobe; (nohup /data/local/tmp/sockprobe -t 300 wx_su_out wx_su_in >/data/local/tmp/sockprobe-su.log 2>&1 &)"
 sleep 1
 adb logcat -c
+# Extras as termux-api-package's exec_am_broadcast_v2 sends them (what
+# webui-packages' Dart port sends): the listening process's pid/uid/starttime.
 for side in ksu su; do
-  adb shell am broadcast -f 0x01000020 -n $PKG/com.termux.api.TermuxApiReceiver \
-    --es socket_output wx_${side}_out --es socket_input wx_${side}_in --es api_method BatteryStatus 2>&1 | tr -d '\r' | tee "$OUT/app-plane-broadcast-$side.txt"
+  case $side in ksu) log=sockprobe-module;; su) log=sockprobe-su;; esac
+  P=$(adb shell "pgrep -f 'sockprobe.*wx_${side}_out' | head -1" | tr -d '\r')
+  ST=$(adb shell "cut -d' ' -f22 /proc/$P/stat 2>/dev/null" | tr -d '\r')
+  adb shell am broadcast --user 0 -f 0x01000020 -n $PKG/com.termux.api.TermuxApiReceiver \
+    --es socket_output wx_${side}_out --es socket_input wx_${side}_in \
+    --ei api_server_pid "${P:-0}" --ei api_server_uid 0 --ei api_server_starttime "${ST:-0}" \
+    --es api_method BatteryStatus 2>&1 | tr -d '\r' | tee "$OUT/app-plane-broadcast-$side.txt"
   sleep 8
 done
 rec broadcast "$(cat "$OUT"/app-plane-broadcast-*.txt | js)"
@@ -48,4 +55,7 @@ rec app-process "$(adb shell "ps -A -o USER,UID,LABEL,NAME | grep -i termux" | t
 rec listener-module "$(adb shell cat /data/local/tmp/sockprobe-module.log 2>&1 | tr -d '\r' | js)"
 rec listener-su "$(adb shell cat /data/local/tmp/sockprobe-su.log 2>&1 | tr -d '\r' | js)"
 rec avc "$(adb shell "dmesg | grep -i 'avc' | grep -i -E 'termux|$PKG|connectto|unix_stream' | tail -15; logcat -d | grep -i -E 'avc:.*(connectto|unix_stream)|TermuxApi|termux' | tail -25" | tr -d '\r' | js)"
+# restorecon in the app's data dir: a file written by root gets the app's MLS categories?
+adb shell "mkdir -p /data/data/$PKG/files/devicelab; echo x >/data/data/$PKG/files/devicelab/probe.txt; chown -R $UID_:$UID_ /data/data/$PKG/files/devicelab; restorecon -R /data/data/$PKG/files/devicelab"
+rec restorecon "$(adb shell "ls -Zd /data/data/$PKG /data/data/$PKG/files/devicelab/probe.txt" | tr -d '\r' | js)"
 echo "app uid: $UID_"
