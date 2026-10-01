@@ -1,0 +1,476 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 60s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; KernelSU-Next/KernelSU-Next v3.4.0
+total 28968
+drwx------  2 runner runner     4096 Oct  1 11:48 .
+drwxrwxrwt 16 root   root       4096 Oct  1 11:48 ..
+-rw-r--r--  1 runner runner 11859167 Oct  1 11:48 KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+-rw-r--r--  1 runner runner 11857955 Oct  1 11:48 KernelSU_Next_v3.4.0_33294-release.apk
+-rw-r--r--  1 runner runner  5583488 Oct  1 11:48 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   342200 Oct  1 11:48 x86_64-android15-6.6_kernelsu.ko
+adb: failed to install /tmp/tmp.vmV7Kjjk7G/KernelSU_Next_v3.4.0_33294-release.apk: Error: Unable to open file: /tmp/tmp.vmV7Kjjk7G/KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+Consider using a file under /data/local/tmp/
+Error: Can't open file: /tmp/tmp.vmV7Kjjk7G/KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+
+Exception occurred while executing 'install':
+java.lang.IllegalArgumentException: Error: Can't open file: /tmp/tmp.vmV7Kjjk7G/KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+	at com.android.server.pm.PackageManagerShellCommand.setParamsSize(PackageManagerShellCommand.java:687)
+	at com.android.server.pm.PackageManagerShellCommand.doRunInstall(PackageManagerShellCommand.java:1615)
+	at com.android.server.pm.PackageManagerShellCommand.runInstall(PackageManagerShellCommand.java:1561)
+	at com.android.server.pm.PackageManagerShellCommand.onCommand(PackageManagerShellCommand.java:245)
+	at com.android.modules.utils.BasicShellCommandHandler.exec(BasicShellCommandHandler.java:97)
+	at android.os.ShellCommand.exec(ShellCommand.java:38)
+	at com.android.server.pm.PackageManagerService$IPackageManagerImpl.onShellCommand(PackageManagerService.java:6561)
+	at android.os.Binder.shellCommand(Binder.java:1230)
+	at android.os.Binder.onTransact(Binder.java:1043)
+	at android.content.pm.IPackageManager$Stub.onTransact(IPackageManager.java:4620)
+	at com.android.server.pm.PackageManagerService$IPackageManagerImpl.onTransact(PackageManagerService.java:6545)
+	at android.os.Binder.execTransactInternal(Binder.java:1505)
+	at android.os.Binder.execTransact(Binder.java:1444)
+
+/tmp/tmp.vmV7Kjjk7G/x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 5.3 MB/s (342200 bytes in 0.061s)
+/tmp/tmp.vmV7Kjjk7G/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 61.4 MB/s (5583488 bytes in 0.087s)
+== ksud: ksud 3.4.0 (uapi: 4)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              258048  0 
+== lsmod: kernelsu              258048  0 
+aarch64-android12-5.10_kernelsu.ko
+aarch64-android13-5.10_kernelsu.ko
+aarch64-android13-5.15_kernelsu.ko
+aarch64-android14-5.15_kernelsu.ko
+aarch64-android14-6.1_kernelsu.ko
+aarch64-android15-6.6_kernelsu.ko
+aarch64-android16-6.12_kernelsu.ko
+aarch64-android17-6.18_kernelsu.ko
+KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+KernelSU_Next_v3.4.0_33294-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-unknown-linux-musl
+x86_64-android12-5.10_kernelsu.ko
+x86_64-android13-5.10_kernelsu.ko
+x86_64-android13-5.15_kernelsu.ko
+x86_64-android14-5.15_kernelsu.ko
+x86_64-android14-6.1_kernelsu.ko
+x86_64-android15-6.6_kernelsu.ko
+x86_64-android16-6.12_kernelsu.ko
+x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in KernelSU-Next/KernelSU-Next v3.4.0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.047s)
+== modules: /system/bin/sh: /data/adb/ksud: inaccessible or not found
+stat: '/data/data/com.rifsxd.ksunext': No such file or directory
+chown: Need 2 arguments (see "chown --help")
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+SELinux:	Could not look up information for package com.rifsxd.ksunext, cannot restorecon /data/data/com.rifsxd.ksunext/shared_prefs.
+SELinux: Could not set context for /data/data/com.rifsxd.ksunext/shared_prefs:  No such file or directory
+restorecon: restorecon failed: /data/data/com.rifsxd.ksunext/shared_prefs
+== home text: text="Thu, Oct 1" text="Phone" text="Messages" text="Gmail" text="Chrome" text="Camera" 
+== manager activities: 
+inputs/modules/flutter_webui_counter-0.1.5.zip: 1 file pushed, 0 skipped. 120.3 MB/s (21434766 bytes in 0.170s)
+== install flutter_webui_counter-0.1.5.zip
+/system/bin/sh: /data/adb/ksud: inaccessible or not found
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 106.1 MB/s (6582359 bytes in 0.059s)
+== install counter-v1.0.0.zip
+/system/bin/sh: /data/adb/ksud: inaccessible or not found
+inputs/modules/demo-v0.1.0.zip: 1 file pushed, 0 skipped. 102.2 MB/s (24315691 bytes in 0.227s)
+== install demo-v0.1.0.zip
+/system/bin/sh: /data/adb/ksud: inaccessible or not found
+/home/runner/work/devicelab/devicelab/app_plane.zip: 1 file pushed, 0 skipped. 93.9 MB/s (4528307 bytes in 0.046s)
+== install app_plane.zip
+/system/bin/sh: /data/adb/ksud: inaccessible or not found
+== soft-reboot: /system/bin/sh: /data/adb/ksud: inaccessible or not found
+== after soft-reboot (25s): /system/bin/sh: /data/adb/ksud: inaccessible or not found
+total 24
+drwxrwxrwx 3 root root 4096 2026-10-01 11:48 .
+drwx------ 3 root root 4096 2026-10-01 11:48 ..
+drwxr-xr-x 3 root root 4096 2026-10-01 11:48 devicelab_probe
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 38.8 MB/s (7843260 bytes in 0.193s)
+Failure [package not found]
+Starting: Intent { cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras) }
+Error type 3
+Error: Activity class {com.rifsxd.ksunext/com.rifsxd.ksunext.ui.webui.WebUIActivity} does not exist.
+
+
+
+
+
+
+
+
+intent path: no page; manager log:
+10-01 11:50:11.795  3419  3562 I Bugle   : BroadcastReceiverAsyncWorkTracker: Acknowledging broadcast of buoi@62bfe25
+10-01 11:50:11.825  1730  2809 I PeopleGalProvider: Gal directories started.
+10-01 11:50:11.836  1730  2809 I PeopleGalProvider: Method 1 completed.
+10-01 11:50:11.837  1730  2809 I PeopleGalProvider: Method 1 finished successfully.
+10-01 11:50:11.852   601   633 W system_server: Long monitor contention with owner RoleControllerService (1152) at int android.content.res.AssetManager.getResourceIdentifier(java.lang.String, java.lang.String, java.lang.String)(AssetManager.java:879) waiters=1 in java.lang.CharSequence android.content.res.AssetManager.getResourceText(int) for 417ms
+10-01 11:50:11.885  1299  1326 D PackageUpdatedTask: Package updated: mOp=UPDATE packages=[com.google.android.gms]
+10-01 11:50:11.910   601   633 W MagnificationConnectionManager: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+10-01 11:50:11.912   601   601 W IPCThreadState: Sending oneway calls to frozen process.
+10-01 11:50:11.912   601   601 W IPCThreadState: Sending oneway calls to frozen process.
+10-01 11:50:11.913   601   633 I CredentialManager: CredentialManagerServiceImpl constructed for: com.google.android.gms/.auth.api.credentials.credman.service.PasswordAndPasskeyService
+10-01 11:50:11.913   601   633 I CredentialManager: newServiceInfoLocked, mInfo null, com.google.android.gms/com.google.android.gms.auth.api.credentials.credman.service.PasswordAndPasskeyService
+10-01 11:50:11.923  1549  1549 I AiAiEcho: AppFetcherImpl onPackageChanged com.google.android.gms.
+10-01 11:50:11.994   601   948 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 11:50:12.001   601   948 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 11:50:12.002   601   948 D InetDiagMessage: Destroyed live tcp sockets for uids={20136} in 339ms
+10-01 11:50:12.012  1299  1326 W AllAppsList: updatePromiseInstallInfo: no Activities matched updated package, removing all apps from package=com.google.android.gms
+10-01 11:50:12.052  1549  2245 I AiAiEcho: AppIndexer Package:[com.google.android.gms] UserProfile:[0] Enabled:[true].
+10-01 11:50:12.056  1549  2245 I AiAiEcho: AppFetcherImplV2 updateApps package:[com.google.android.gms], userId:[0], reason:[package is updated.].
+10-01 11:50:12.065  1351  2487 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.clearcut.uploader.QosUploaderService started execution. cause:5 exec_start_elapsed_seconds: 181 [CONTEXT service_id=218 ]
+10-01 11:50:12.071  1351  2487 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.droidguard.DroidGuardGcmTaskService started execution. cause:7 exec_start_elapsed_seconds: 183 [CONTEXT service_id=218 ]
+10-01 11:50:12.273   601   722 I RescueParty: Starting to observe: [android, com.google.android.healthconnect.controller], updated namespace: health_fitness
+10-01 11:50:12.281   601   992 D ShortcutService: Saving package item com.google.android.gms to /data/system_ce/0/shortcut_service/packages/com.google.android.gms.xml
+10-01 11:50:12.537     0     0 I logd    : logdr: UID=0 GID=0 PID=4216 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
+10-01 11:50:12.351  1351  3993 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.droidguard.DroidGuardGcmTaskService finished executing. cause:7 result: 1 elapsed_millis: 1262 uptime_millis: 1262 exec_start_elapsed_seconds: 183 [CONTEXT service_id=218 ]
+10-01 11:50:12.410   601   633 W system_server: Long monitor contention with owner binder:601_E (1375) at android.util.Pair com.android.server.am.ProcessList.getNumForegroundServices()(ProcessList.java:5630) waiters=0 in void com.android.server.am.ContentProviderHelper.handleProviderRemoval(com.android.server.am.ContentProviderConnection, boolean, boolean) for 128ms
+ui: no node with 'Module'
+ui: no node with 'Modules'
+ui: tapped 160,152
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+[116,530][204,578] Got it
+ui: no node with 'Open'
+
+
+
+
+
+
+
+
+
+
+
+
+[116,530][204,578] Got it
+opened: none
+{"check":"targets","result":[]}
+{"check":"globals","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ksu-exec","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ws-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"fetch-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"webview-uid","result":["webview_zygote 1053 webview_zygote"]}
+{"check":"while-home-heartbeat","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"lifecycle","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"dev-url","result":{"error":"no page target","sockets":[],"targets":[]}}
+Failure [package not found]
+Starting: Intent { cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras) }
+Error type 3
+Error: Activity class {com.rifsxd.ksunext/com.rifsxd.ksunext.ui.webui.WebUIActivity} does not exist.
+
+
+
+
+
+
+
+
+intent path: no page; manager log:
+10-01 11:53:08.638   601  1374 W ActivityManager: Invalid packageName: com.rifsxd.ksunext
+10-01 11:53:08.692   601  1374 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras)} with LAUNCH_MULTIPLE from uid 0 result code=-92
+10-01 11:53:10.194  3419  3419 W JobService: onNetworkChanged() not implemented in androidx.work.impl.background.systemjob.SystemJobService. Must override in a subclass.
+10-01 11:53:10.217  3779  3826 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix="RcsEngineImpl[DUAL_REG]:[fc089bb3-21d9]>Handler" thread_id=62 ]
+10-01 11:53:10.219  3779  3812 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=54 ]
+10-01 11:53:10.222  1351  1982 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl
+10-01 11:53:10.223  1351  1982 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1
+10-01 11:53:10.225   601  1374 D OomAdjuster: Not killing cached processes
+10-01 11:53:15.072  1853  1853 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-01 11:53:16.157   601   613 I system_server: Background concurrent mark compact GC freed 22MB AllocSpace bytes, 60(1272KB) LOS objects, 48% free, 25MB/49MB, paused 700us,1.953ms total 184.223ms
+10-01 11:53:16.161   601   614 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+10-01 11:53:16.199  3419  3419 W JobService: onNetworkChanged() not implemented in androidx.work.impl.background.systemjob.SystemJobService. Must override in a subclass.
+10-01 11:53:16.210  1351  1982 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl
+10-01 11:53:16.210  1351  1982 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1
+10-01 11:53:16.219  3779  3812 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=54 ]
+10-01 11:53:16.220   601   615 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk' with 1 weak references
+10-01 11:53:16.221  3779  3826 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix="RcsEngineImpl[DUAL_REG]:[fc089bb3-21d9]>Handler" thread_id=62 ]
+10-01 11:53:17.442  5201  5201 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+10-01 11:53:17.442  5201  5201 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-01 11:53:17.463   166   166 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-01 11:53:17.463  5201  5202 I Gralloc4: mapper 4.x is not supported
+10-01 11:53:17.650     0     0 I servicemanager: Caller(pid=5201,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+ui: no node with 'Module'
+ui: no node with 'Modules'
+ui: tapped 160,152
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+[116,530][204,578] Got it
+ui: no node with 'Open'
+
+
+
+
+
+
+
+
+
+
+
+
+[116,530][204,578] Got it
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"java-exceptions","result":["10-01 11:55:03.788  5673  5673 D app_process: I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt75l.dat", "--", "10-01 11:55:07.405  1351  2003 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 11:55:07.405  1351  2003 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 11:55:07.406  3779  3812 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=54 ]", "10-01 11:55:07.407  3779  3826 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix=\"RcsEngineImpl[DUAL_REG]:[fc089bb3-21d9]>Handler\" thread_id=62 ]", "10-01 11:55:09.332  5705  5705 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<", "10-01 11:55:09.336  5705  5705 I AndroidRuntime: Using default boot image", "10-01 11:55:09.336  5705  5705 I AndroidRuntime: Leaving lock profiling enabled", "10-01 11:55:09.340  5705  5705 I app_process: Core platform API reporting enabled, enforcing=false", "10-01 11:55:09.340  5705  5705 I app_process: Using CollectorTypeCMC GC.", "10-01 11:55:09.404  5705  5705 D app_process: u_setTimeZoneFilesDirectory(\"/apex/com.android.tzdata/etc/tz/versioned/8/icu\") succeeded. ", "10-01 11:55:09.404  5705  5705 D app_process: I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt75l.dat", "--", "10-01 11:55:28.489  1351  2003 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 11:55:28.489  1351  2003 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 11:55:28.495  3779  3826 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix=\"RcsEngineImpl[DUAL_REG]:[fc089bb3-21d9]>Handler\" thread_id=62 ]", "10-01 11:55:28.497  3779  3812 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=54 ]", "10-01 11:55:28.499   601  2972 D OomAdjuster: Not killing cached processes", "10-01 11:55:29.501   601   633 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 11:55:29.501   601   633 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 11:55:30.024  5803  5803 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<", "10-01 11:55:30.028  5803  5803 I AndroidRuntime: Using default boot image", "10-01 11:55:30.028  5803  5803 I AndroidRuntime: Leaving lock profiling enabled", "10-01 11:55:30.030  5803  5803 I app_process: Core platform API reporting enabled, enforcing=false", "10-01 11:55:30.031  5803  5803 I app_process: Using CollectorTypeCMC GC.", "--", "10-01 11:55:31.487  1351  2003 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 11:55:31.487  1351  2003 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 11:55:33.048   601   633 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 11:55:33.048   601   633 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 11:55:34.070   601   633 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 11:55:34.510   601   633 D OomAdjuster: Not killing cached processes", "10-01 11:55:36.593   601   633 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 11:55:36.597   601   633 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 11:55:37.609   601   633 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 11:55:38.174  1853  1853 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS ", "10-01 11:55:40.137   601   633 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 11:55:40.137   601   633 W IPCThreadState: Sending oneway calls to frozen process.", "10-01 11:55:41.161   601   633 W IPCThreadState: Sending oneway calls to frozen process."]}
+{"check":"console-errors","result":[]}
+{"check":"first-frame-warm","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"root-start","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"session","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ws-hello","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"channel-process","result":""}
+{"check":"root-log","result":"tail: /data/adb/modules/flutter_webui_counter/webroot/.run/root.log: No such file or directory"}
+{"check":"session-mode","result":"ls: /data/adb/modules/flutter_webui_counter/webroot/.run/: No such file or directory"}
+{"check":"home-resume","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"before-back","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"back-events","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"back-console","result":[]}
+{"check":"back-at-root","result":"topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}"}
+Failure [package not found]
+Starting: Intent { cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras) }
+Error type 3
+Error: Activity class {com.rifsxd.ksunext/com.rifsxd.ksunext.ui.webui.WebUIActivity} does not exist.
+
+
+
+
+
+
+
+
+intent path: no page; manager log:
+10-01 11:56:18.223   601  1689 W ActivityManager: Invalid packageName: com.rifsxd.ksunext
+10-01 11:56:18.282   601  1689 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras)} with LAUNCH_MULTIPLE from uid 0 result code=-92
+10-01 11:56:19.590   601  1689 D OomAdjuster: Not killing cached processes
+10-01 11:56:19.640   601  1689 W ActivityManager: Unable to start service Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService } U=0: not found
+10-01 11:56:19.641   601  1689 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@740ff30
+10-01 11:56:19.862     0     0 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+10-01 11:56:26.046  1853  1853 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-01 11:56:26.335   601  2453 D WifiNl80211Manager: Scan result ready event
+10-01 11:56:26.335   601  2453 D WifiNative: Scan result ready event
+10-01 11:56:26.343   601   939 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]
+10-01 11:56:26.985  6009  6009 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+10-01 11:56:26.986  6009  6009 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-01 11:56:27.184     0     0 I servicemanager: Caller(pid=6009,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+10-01 11:56:26.999   166   166 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-01 11:56:26.999  6009  6010 I Gralloc4: mapper 4.x is not supported
+ui: no node with 'Module'
+ui: no node with 'Modules'
+ui: tapped 160,152
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+[11,25][309,91] Thu, Oct 1 | Thu, Oct 1
+[11,49][68,64] Thu, Oct 1 | Thu, Oct 1
+[10,465][62,524] Phone | Phone
+[72,465][124,524] Messages | Messages
+[134,465][186,524] Gmail | Predicted app: Gmail
+[196,465][248,524] Chrome | Chrome
+[258,465][310,524] Camera | Camera
+[12,535][308,598] Google search | Google app | Voice search | Google Lens
+[16,542][64,590] Google app
+[208,535][256,598] Voice search
+[256,535][304,598] Google Lens
+ui: no node with 'Open'
+
+
+
+
+
+
+
+
+
+
+
+
+[11,25][309,91] Thu, Oct 1 | Thu, Oct 1
+[11,49][68,64] Thu, Oct 1 | Thu, Oct 1
+[10,465][62,524] Phone | Phone
+[72,465][124,524] Messages | Messages
+[134,465][186,524] Gmail | Predicted app: Gmail
+[196,465][248,524] Chrome | Chrome
+[258,465][310,524] Camera | Camera
+[12,535][308,598] Google search | Google app | Voice search | Google Lens
+[16,542][64,590] Google app
+[208,535][256,598] Voice search
+[256,535][304,598] Google Lens
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"java-exceptions","result":["10-01 11:58:44.711  1351  3473 W GLSUser : \tat java.util.concurrent.FutureTask.run(FutureTask.java:264)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat angs.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):50)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat angs.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):76)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)", "--", "10-01 11:58:44.711  1351  3473 W GLSUser : Caused by: bpcw: Parse Proto Exception with response code 400", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat bpdw.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):80)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat bpgb.e(:com.google.android.gms@242335041@24.23.35 (190800-646585959):17)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat bpgp.onSucceeded(:com.google.android.gms@242335041@24.23.35 (190800-646585959):7)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat m.mw.onSucceeded(:com.google.android.gms.dynamite_cronetdynamite@242335041@24.23.35 (190800-0):3)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat m.lt.run(:com.google.android.gms.dynamite_cronetdynamite@242335041@24.23.35 (190800-0):25)", "10-01 11:58:44.711  1351  3473 W GLSUser : \t... 6 more", "10-01 11:58:44.711  1351  3473 W GLSUser : Caused by: fkhe: Protocol message contained an invalid tag (zero).", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat fkea.k(:com.google.android.gms@242335041@24.23.35 (190800-646585959):39)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat fkid.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):309)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat fkid.i(:com.google.android.gms@242335041@24.23.35 (190800-646585959):8)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat fkgi.fe(:com.google.android.gms@242335041@24.23.35 (190800-646585959):25)", "10-01 11:58:44.711  1351  3473 W GLSUser : \tat fkgc.g(:com.google.android.gms@242335041@24.23.35 (190800-646585959):3)", "--", "10-01 11:58:49.876  1351  1982 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 11:58:49.876  1351  1982 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 11:58:50.174  1853  1853 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS ", "10-01 11:58:50.527  1029  1029 D ZenModeController: Added callback class com.android.systemui.qs.tiles.DndTile$3", "10-01 11:58:50.528  1029  1029 D ZenModeController: Removed callback class com.android.systemui.qs.tiles.DndTile$3", "10-01 11:58:51.321  1029  1118 D ControlsListingControllerImpl: Subscribing callback, service count: 0", "10-01 11:58:51.322  1029  1118 D ControlsListingControllerImpl: Unsubscribing callback", "10-01 11:58:52.743  1029  1118 I QuickAccessWalletTile: QAW service is unavailable, recreating the wallet client.", "10-01 11:58:52.871  3419  3419 W JobService: onNetworkChanged() not implemented in androidx.work.impl.background.systemjob.SystemJobService. Must override in a subclass.", "10-01 11:58:52.878  1351  1982 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 11:58:52.878  1351  1982 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 11:58:52.878  3779  3812 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=54 ]", "10-01 11:58:52.879  3779  3826 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix=\"RcsEngineImpl[DUAL_REG]:[fc089bb3-21d9]>Handler\" thread_id=62 ]", "10-01 11:58:53.386  6617  6617 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<", "10-01 11:58:53.390  6617  6617 I AndroidRuntime: Using default boot image", "10-01 11:58:53.390  6617  6617 I AndroidRuntime: Leaving lock profiling enabled", "10-01 11:58:53.392  6617  6617 I app_process: Core platform API reporting enabled, enforcing=false", "10-01 11:58:53.392  6617  6617 I app_process: Using CollectorTypeCMC GC.", "10-01 11:58:53.458  6617  6617 D app_process: u_setTimeZoneFilesDirectory(\"/apex/com.android.tzdata/etc/tz/versioned/8/icu\") succeeded. ", "10-01 11:58:53.458  6617  6617 D app_process: I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt75l.dat"]}
+{"check":"console-errors","result":[]}
+{"check":"first-frame-warm","result":{"error":"no page target","sockets":[],"targets":[]}}
+Failure [package not found]
+Starting: Intent { cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras) }
+Error type 3
+Error: Activity class {com.rifsxd.ksunext/com.rifsxd.ksunext.ui.webui.WebUIActivity} does not exist.
+
+
+
+
+
+
+
+
+intent path: no page; manager log:
+10-01 11:59:12.433   601   617 W ActivityManager: Invalid packageName: com.rifsxd.ksunext
+10-01 11:59:12.500   601   617 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras)} with LAUNCH_MULTIPLE from uid 0 result code=-92
+10-01 11:59:12.964  1450  1899 I PhenotypeProcessReaper: Memory state is: 200
+10-01 11:59:14.239  1853  1853 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+10-01 11:59:17.440   601   721 D ActivityManager: freezing 3031 com.google.android.gms.unstable
+10-01 11:59:17.441   601   721 D ActivityManager: freezing 1730 com.google.android.gms
+10-01 11:59:17.443   601   721 D ActivityManager: freezing 3440 com.google.android.gms.ui
+10-01 11:59:19.861     0     0 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+10-01 11:59:21.212  6711  6711 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+10-01 11:59:21.212  6711  6711 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-01 11:59:21.226   166   166 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-01 11:59:21.226  6711  6712 I Gralloc4: mapper 4.x is not supported
+10-01 11:59:21.414     0     0 I servicemanager: Caller(pid=6711,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+ui: no node with 'Module'
+ui: no node with 'Modules'
+ui: tapped 160,152
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+[11,25][309,91] Thu, Oct 1 | Thu, Oct 1
+[11,49][68,64] Thu, Oct 1 | Thu, Oct 1
+[10,465][62,524] Phone | Phone
+[72,465][124,524] Messages | Messages
+[134,465][186,524] Gmail | Predicted app: Gmail
+[196,465][248,524] Chrome | Chrome
+[258,465][310,524] Camera | Camera
+[12,535][308,598] Google search | Google app | Voice search | Google Lens
+[16,542][64,590] Google app
+[208,535][256,598] Voice search
+[256,535][304,598] Google Lens
+ui: no node with 'Open'
+
+
+
+
+
+
+
+
+
+
+
+
+[11,25][309,91] Thu, Oct 1 | Thu, Oct 1
+[11,49][68,64] Thu, Oct 1 | Thu, Oct 1
+[10,465][62,524] Phone | Phone
+[72,465][124,524] Messages | Messages
+[134,465][186,524] Gmail | Predicted app: Gmail
+[196,465][248,524] Chrome | Chrome
+[258,465][310,524] Camera | Camera
+[12,535][308,598] Google search | Google app | Voice search | Google Lens
+[16,542][64,590] Google app
+[208,535][256,598] Voice search
+[256,535][304,598] Google Lens
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"java-exceptions","result":["10-01 12:00:32.667  1351  5100 W GLSUser : \tat m.mw.onSucceeded(:com.google.android.gms.dynamite_cronetdynamite@242335041@24.23.35 (190800-0):3)", "10-01 12:00:32.667  1351  5100 W GLSUser : \tat m.lt.run(:com.google.android.gms.dynamite_cronetdynamite@242335041@24.23.35 (190800-0):25)", "10-01 12:00:32.667  1351  5100 W GLSUser : \t... 6 more", "10-01 12:00:32.667  1351  5100 W GLSUser : Caused by: fkhe: Protocol message contained an invalid tag (zero).", "10-01 12:00:32.667  1351  5100 W GLSUser : \tat fkea.k(:com.google.android.gms@242335041@24.23.35 (190800-646585959):39)", "10-01 12:00:32.667  1351  5100 W GLSUser : \tat fkid.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):309)", "10-01 12:00:32.667  1351  5100 W GLSUser : \tat fkid.i(:com.google.android.gms@242335041@24.23.35 (190800-646585959):8)", "10-01 12:00:32.667  1351  5100 W GLSUser : \tat fkgi.fe(:com.google.android.gms@242335041@24.23.35 (190800-646585959):25)", "10-01 12:00:32.667  1351  5100 W GLSUser : \tat fkgc.g(:com.google.android.gms@242335041@24.23.35 (190800-646585959):3)", "--", "10-01 12:00:32.699  1351  7019 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed", "10-01 12:00:32.699  1351  7019 W Conscrypt: \tat com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):204)", "10-01 12:00:32.700  1351  7019 W Conscrypt: \tat com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):4)", "10-01 12:00:33.196  1351  7019 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed", "10-01 12:00:33.196  1351  7019 W Conscrypt: \tat com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):204)", "10-01 12:00:33.197  1351  7019 W Conscrypt: \tat com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@242335041@24.23.35 (190800-646585959):4)", "10-01 12:00:33.237  1351  5100 W GlsClientGrpc: Voilatile gRPC failure INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header. [CONTEXT service_id=6 ]", "10-01 12:00:33.237  1351  5100 W GlsClientGrpc: gbzz: INVALID_ARGUMENT: Application credential header not valid. Please fix the client to pass a valid application credential header.", "10-01 12:00:33.237  1351  5100 W GlsClientGrpc: \tat gbzy.h(:com.google.android.gms@242335041@24.23.35 (190800-646585959):3)", "10-01 12:00:33.237  1351  5100 W GlsClientGrpc: \tat anbi.u(:com.google.android.gms@242335041@24.23.35 (190800-646585959):29)", "10-01 12:00:33.237  1351  5100 W GlsClientGrpc: \tat anbi.g(:com.google.android.gms@242335041@24.23.35 (190800-646585959):97)", "10-01 12:00:33.237  1351  5100 W GlsClientGrpc: \tat efkz.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):39)", "10-01 12:00:33.237  1351  5100 W GlsClientGrpc: \tat efkr.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):274)", "10-01 12:00:33.237  1351  5100 W GlsClientGrpc: \tat ehaz.call(:com.google.android.gms@242335041@24.23.35 (190800-646585959):1026)", "10-01 12:00:33.237  1351  5100 W GlsClientGrpc: \tat java.util.concurrent.FutureTask.run(FutureTask.java:264)", "10-01 12:00:33.237  1351  5100 W GlsClientGrpc: \tat angs.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):50)", "--", "10-01 12:00:33.243  1351  2605 W AlarmManager: java.lang.IllegalArgumentException: alarm \"NetworkLocationLocator\" has short window length", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat boaw.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):52)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat ehbk.f(:com.google.android.gms@242335041@24.23.35 (190800-646585959):119)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat egxu.q(:com.google.android.gms@242335041@24.23.35 (190800-646585959):107)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat egxu.e(:com.google.android.gms@242335041@24.23.35 (190800-646585959):27)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat egxq.apply(:com.google.android.gms@242335041@24.23.35 (190800-646585959):19)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat etvw.d(:com.google.android.gms@242335041@24.23.35 (190800-646585959):3)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat etvx.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):42)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat android.os.Handler.handleCallback(Handler.java:959)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat android.os.Handler.dispatchMessage(Handler.java:100)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat bphk.nR(:com.google.android.gms@242335041@24.23.35 (190800-646585959):1)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat bphk.dispatchMessage(:com.google.android.gms@242335041@24.23.35 (190800-646585959):138)", "10-01 12:00:33.243  1351  2605 W AlarmManager: \tat android.os.Looper.loopOnce(Looper.java:232)"]}
+{"check":"console-errors","result":[]}
+{"check":"first-frame-warm","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"error":"no page target","sockets":[],"targets":[]}
+{"check":"home","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"home-device","result":"12:02:09 up 15 min,  0 users,  load average: 0.38, 1.44, 2.37\nTasks: 308 total,   1 running, 307 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5644968K used,   427200K free,   292444K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146340K cached\n400%cpu   4%user   0%nice   4%sys 393%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n   27 root         20   0    0    0    0 I  3.5   0.0   0:06.04 [kworker/1:0-virtio_vsock]\n 7395 root         20   0  10G 4.8M 3.9M R  0.0   0.0   0:00.03 top -b -n1 -m 12\n 7392 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.14 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.34 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.81 com.google.android.apps.messaging:rcs\n 3440 u0_a143      20   0  15G 180M 132M S  0.0   3.0   0:00.75 com.google.android.gms.ui\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4574520 kB\nSwapFree:        4317320 kB"}
+{"check":"tap-places","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-places-device","result":"12:02:10 up 15 min,  0 users,  load average: 0.38, 1.44, 2.37\nTasks: 308 total,   2 running, 306 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5643104K used,   429064K free,   292444K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146340K cached\n400%cpu   0%user   0%nice  11%sys 389%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7411 root         20   0  10G 5.0M 4.1M R  3.7   0.0   0:00.03 top -b -n1 -m 12\n 3202 root         20   0    0    0    0 I  3.7   0.0   0:00.73 [kworker/2:3-virtio_vsock]\n  456 system       -3  -8  11G  36M  20M S  3.7   0.6   0:28.82 surfaceflinger\n  401 system       20   0  10G 6.7M 5.7M S  3.7   0.1   0:05.55 android.hardware.sensors-service.multihal\n   27 root         20   0    0    0    0 R  3.7   0.0   0:06.07 [kworker/1:0+virtio_vsock]\n   15 root         20   0    0    0    0 S  3.7   0.0   0:00.38 [ksoftirqd/0]\n 7408 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.01 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.14 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.34 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4577136 kB\nSwapFree:        4317320 kB"}
+{"check":"places","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"places-device","result":"12:02:22 up 15 min,  0 users,  load average: 0.32, 1.40, 2.34\nTasks: 308 total,   1 running, 307 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5644616K used,   427552K free,   292472K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146340K cached\n400%cpu   4%user   0%nice   0%sys 392%idle   0%iow   0%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7424 root         20   0  10G 5.0M 4.1M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n 7421 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.16 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.34 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.81 com.google.android.apps.messaging:rcs\n 3440 u0_a143      20   0  15G 180M 132M S  0.0   3.0   0:00.75 com.google.android.gms.ui\n 3433 u0_a129      20   0  31G 139M  93M S  0.0   2.3   0:00.92 com.google.android.apps.safetyhub\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4575636 kB\nSwapFree:        4317320 kB"}
+{"check":"places-scroll-1","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"places-scroll-1-device","result":"12:02:27 up 15 min,  0 users,  load average: 0.29, 1.37, 2.33\nTasks: 308 total,   1 running, 307 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5649672K used,   422496K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146436K cached\n400%cpu   4%user   0%nice   4%sys 389%idle   0%iow   0%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7451 root         20   0  10G 4.8M 3.9M R  0.0   0.0   0:00.03 top -b -n1 -m 12\n 7448 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.17 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.36 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.81 com.google.android.apps.messaging:rcs\n 3440 u0_a143      20   0  15G 180M 132M S  0.0   3.0   0:00.75 com.google.android.gms.ui\n 3433 u0_a129      20   0  31G 139M  93M S  0.0   2.3   0:00.92 com.google.android.apps.safetyhub\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4571132 kB\nSwapFree:        4317320 kB"}
+{"check":"places-scroll-2","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"places-scroll-2-device","result":"12:02:30 up 15 min,  0 users,  load average: 0.43, 1.38, 2.33\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5661796K used,   410372K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146488K cached\n400%cpu   4%user   0%nice   4%sys 393%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7473 root         20   0  10G 4.6M 3.8M R  3.7   0.0   0:00.02 top -b -n1 -m 12\n  411 system       -3   0  10G  15M  10M S  3.7   0.2   0:12.07 android.hardware.graphics.composer3-service.ranchu\n  401 system       20   0  10G 6.7M 5.7M S  3.7   0.1   0:05.81 android.hardware.sensors-service.multihal\n   27 root         20   0    0    0    0 I  3.7   0.0   0:06.49 [kworker/1:0-virtio_vsock]\n 7470 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.17 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-events]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.36 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4559260 kB\nSwapFree:        4317320 kB"}
+{"check":"places-scroll-3","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"places-scroll-3-device","result":"12:02:33 up 15 min,  0 users,  load average: 0.39, 1.36, 2.31\nTasks: 309 total,   3 running, 306 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5659780K used,   412388K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146500K cached\n400%cpu   0%user   0%nice   4%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7494 root         20   0  10G 4.9M 4.1M R  3.7   0.0   0:00.03 top -b -n1 -m 12\n  456 system       -3  -8  11G  36M  20M S  3.7   0.6   0:29.99 surfaceflinger\n  401 system       20   0  10G 6.7M 5.7M S  3.7   0.1   0:05.87 android.hardware.sensors-service.multihal\n   27 root         20   0    0    0    0 R  3.7   0.0   0:06.58 [kworker/1:0+virtio_vsock]\n 7491 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.18 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-events]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.37 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4561008 kB\nSwapFree:        4317320 kB"}
+{"check":"tap-strategy","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-strategy-device","result":"12:02:34 up 15 min,  0 users,  load average: 0.39, 1.36, 2.31\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5653344K used,   418824K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146500K cached\n400%cpu  11%user   0%nice  15%sys 359%idle   0%iow   0%irq   0%sirq  15%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n  601 system       18  -2  17G 370M 237M S 14.8   6.2   1:23.97 system_server\n 7510 root         20   0  10G 4.8M 3.9M R  7.4   0.0   0:00.02 top -b -n1 -m 12\n 5560 root         20   0    0    0    0 I  3.7   0.0   0:00.37 [kworker/0:0-events]\n 1351 u0_a143      20   0  15G 279M 179M S  3.7   4.7   0:37.30 com.google.android.gms.persistent\n   27 root         20   0    0    0    0 I  3.7   0.0   0:06.64 [kworker/1:0-virtio_vsock]\n 7507 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.19 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4567200 kB\nSwapFree:        4317320 kB"}
+{"check":"strategy","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"strategy-device","result":"12:02:45 up 15 min,  0 users,  load average: 0.33, 1.31, 2.29\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5656276K used,   415892K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146504K cached\n400%cpu   0%user   0%nice   4%sys 392%idle   0%iow   0%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7522 root         20   0  10G 4.9M 4.0M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n  411 system       -3   0  10G  15M  10M S  3.8   0.2   0:12.30 android.hardware.graphics.composer3-service.ranchu\n   27 root         20   0    0    0    0 I  3.8   0.0   0:06.81 [kworker/1:0-virtio_vsock]\n 7519 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.20 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.38 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4563000 kB\nSwapFree:        4317320 kB"}
+{"check":"tap-strategy-root","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-strategy-root-device","result":"12:02:45 up 15 min,  0 users,  load average: 0.33, 1.31, 2.29\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5641548K used,   430620K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146504K cached\n400%cpu   0%user   0%nice   7%sys 389%idle   0%iow   0%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7538 root         20   0  10G 4.9M 4.0M R  7.4   0.0   0:00.02 top -b -n1 -m 12\n  401 system       20   0  10G 6.7M 5.7M S  3.7   0.1   0:06.03 android.hardware.sensors-service.multihal\n   27 root         20   0    0    0    0 I  3.7   0.0   0:06.85 [kworker/1:0-virtio_vsock]\n   16 root         -2   0    0    0    0 I  3.7   0.0   0:00.91 [rcu_preempt]\n 7535 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.21 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.38 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4577512 kB\nSwapFree:        4317320 kB"}
+{"check":"strategy-root","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"strategy-root-device","result":"12:02:52 up 15 min,  0 users,  load average: 0.31, 1.29, 2.27\nTasks: 309 total,   2 running, 307 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5645220K used,   426948K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146504K cached\n400%cpu   0%user   0%nice   4%sys 392%idle   0%iow   0%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7550 root         20   0  10G 4.8M 3.9M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n  456 system       -3  -8  11G  36M  20M S  3.8   0.6   0:30.08 surfaceflinger\n   70 root         20   0    0    0    0 R  3.8   0.0   0:03.32 [kworker/3:1+virtio_vsock]\n   27 root         20   0    0    0    0 I  3.8   0.0   0:06.97 [kworker/1:0-virtio_vsock]\n 7547 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.21 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.38 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4574820 kB\nSwapFree:        4317320 kB"}
+{"check":"strategy-root-scroll-1","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"strategy-root-scroll-1-device","result":"12:02:55 up 15 min,  0 users,  load average: 0.36, 1.29, 2.27\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5646348K used,   425820K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146524K cached\n400%cpu   0%user   0%nice   7%sys 389%idle   0%iow   0%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7571 root         20   0  10G 5.1M 4.2M R  3.7   0.0   0:00.02 top -b -n1 -m 12\n  456 system       -3  -8  11G  36M  20M S  3.7   0.6   0:30.18 surfaceflinger\n  401 system       20   0  10G 6.7M 5.7M S  3.7   0.1   0:06.16 android.hardware.sensors-service.multihal\n   27 root         20   0    0    0    0 I  3.7   0.0   0:07.07 [kworker/1:0-virtio_vsock]\n 7568 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.23 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.40 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4573440 kB\nSwapFree:        4317320 kB"}
+{"check":"strategy-root-scroll-2","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"strategy-root-scroll-2-device","result":"12:02:58 up 15 min,  0 users,  load average: 0.33, 1.27, 2.26\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5660292K used,   411876K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146548K cached\n400%cpu   0%user   0%nice   4%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7592 root         20   0  10G 4.8M 3.9M R  3.7   0.0   0:00.02 top -b -n1 -m 12\n   27 root         20   0    0    0    0 I  3.7   0.0   0:07.16 [kworker/1:0-virtio_vsock]\n 7589 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.23 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.42 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.81 com.google.android.apps.messaging:rcs\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4559260 kB\nSwapFree:        4317320 kB"}
+{"check":"tap-rust","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-rust-device","result":"12:02:59 up 15 min,  0 users,  load average: 0.33, 1.27, 2.26\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5661340K used,   410828K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146548K cached\n400%cpu   4%user   0%nice   7%sys 389%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7608 root         20   0  10G 5.0M 4.1M R  7.4   0.0   0:00.02 top -b -n1 -m 12\n  401 system       20   0  10G 6.7M 5.7M S  3.7   0.1   0:06.22 android.hardware.sensors-service.multihal\n   27 root         20   0    0    0    0 I  3.7   0.0   0:07.20 [kworker/1:0-virtio_vsock]\n 7605 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.23 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.43 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4558212 kB\nSwapFree:        4317320 kB"}
+{"check":"rust","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"rust-device","result":"12:03:10 up 16 min,  0 users,  load average: 0.28, 1.22, 2.23\nTasks: 309 total,   2 running, 307 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5666260K used,   405908K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146560K cached\n400%cpu   4%user   0%nice   4%sys 388%idle   0%iow   0%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7620 root         20   0  10G 4.7M 3.8M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n   70 root         20   0    0    0    0 I  3.8   0.0   0:03.38 [kworker/3:1-virtio_vsock]\n 7617 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.24 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.44 [kworker/0:0-events]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.81 com.google.android.apps.messaging:rcs\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4554032 kB\nSwapFree:        4317320 kB"}
+{"check":"tap-rust-run","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-rust-run-device","result":"12:03:10 up 16 min,  0 users,  load average: 0.28, 1.22, 2.23\nTasks: 309 total,   2 running, 307 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5655492K used,   416676K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146560K cached\n400%cpu   0%user   0%nice   4%sys 393%idle   0%iow   0%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7636 root         20   0  10G 4.8M 3.9M R  3.7   0.0   0:00.02 top -b -n1 -m 12\n 7633 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.24 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.44 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.81 com.google.android.apps.messaging:rcs\n 3440 u0_a143      20   0  15G 180M 132M S  0.0   3.0   0:00.75 com.google.android.gms.ui\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4563800 kB\nSwapFree:        4317320 kB"}
+{"check":"rust-ran","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"rust-ran-device","result":"12:03:31 up 16 min,  0 users,  load average: 0.20, 1.14, 2.18\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5654960K used,   417208K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146560K cached\n400%cpu   0%user   0%nice   4%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7650 root         20   0  10G 5.0M 4.1M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n  411 system       -3   0  10G  15M  10M S  3.8   0.2   0:12.85 android.hardware.graphics.composer3-service.ranchu\n   75 root         20   0    0    0    0 I  3.8   0.0   0:01.34 [kworker/u8:2-events_unbound]\n   27 root         20   0    0    0    0 I  3.8   0.0   0:07.75 [kworker/1:0-virtio_vsock]\n 7647 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.25 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.48 [kworker/0:0-events]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nMemAvailable:    4565340 kB\nSwapFree:        4317320 kB"}
+{"check":"tap-lifecycle","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-lifecycle-device","result":"12:03:32 up 16 min,  0 users,  load average: 0.20, 1.14, 2.18\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5659132K used,   413036K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146560K cached\n400%cpu   7%user   0%nice   7%sys 381%idle   0%iow   0%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 1351 u0_a143      20   0  15G 280M 179M S 11.1   4.7   0:37.35 com.google.android.gms.persistent\n 7666 root         20   0  10G 4.8M 3.9M R  3.7   0.0   0:00.03 top -b -n1 -m 12\n  601 system       18  -2  17G 375M 237M S  3.7   6.3   1:24.82 system_server\n   27 root         20   0    0    0    0 I  3.7   0.0   0:07.78 [kworker/1:0-virtio_vsock]\n 7663 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.25 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.48 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4561696 kB\nSwapFree:        4317320 kB"}
+{"check":"tap-root-process","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-root-process-device","result":"12:03:36 up 16 min,  0 users,  load average: 0.18, 1.12, 2.17\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5662436K used,   409732K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146576K cached\n400%cpu   0%user   0%nice   8%sys 388%idle   0%iow   0%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7679 root         20   0  10G 4.8M 4.0M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n   27 root         20   0    0    0    0 I  3.8   0.0   0:07.88 [kworker/1:0-virtio_vsock]\n 7676 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.25 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.49 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.83 com.google.android.apps.messaging:rcs\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4557628 kB\nSwapFree:        4317320 kB"}
+{"check":"tap-start","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-start-device","result":"12:03:40 up 16 min,  0 users,  load average: 0.17, 1.11, 2.16\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5655872K used,   416296K free,   292488K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146576K cached\n400%cpu   0%user   0%nice   4%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7691 root         20   0  10G 4.7M 3.8M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n 7688 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.25 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.51 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.83 com.google.android.apps.messaging:rcs\n 3440 u0_a143      20   0  15G 180M 132M S  0.0   3.0   0:00.75 com.google.android.gms.ui\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4563932 kB\nSwapFree:        4317320 kB"}
+{"check":"lifecycle-running","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"lifecycle-running-device","result":"12:03:48 up 16 min,  0 users,  load average: 0.14, 1.07, 2.13\nTasks: 309 total,   2 running, 307 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5669984K used,   402184K free,   292520K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146604K cached\n400%cpu   0%user   0%nice   8%sys 392%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n  401 system       20   0  10G 6.7M 5.7M S  7.6   0.1   0:06.78 android.hardware.sensors-service.multihal\n 7704 root         20   0  10G 4.9M 4.0M R  3.8   0.0   0:00.00 top -b -n1 -m 12\n 7701 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.25 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.51 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.83 com.google.android.apps.messaging:rcs\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4551140 kB\nSwapFree:        4317320 kB"}
+{"check":"lifecycle-after-home","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"lifecycle-after-home-device","result":"12:04:00 up 16 min,  0 users,  load average: 0.12, 1.03, 2.11\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5668140K used,   404028K free,   292528K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4146652K cached\n400%cpu   0%user   0%nice   4%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7742 root         20   0  10G 4.9M 4.1M R  3.7   0.0   0:00.02 top -b -n1 -m 12\n  456 system       -3  -8  11G  36M  20M S  3.7   0.6   0:31.06 surfaceflinger\n 7739 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.25 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:2-kdmflush/254:46]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.54 [kworker/0:0-virtio_vsock]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.83 com.google.android.apps.messaging:rcs\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4551992 kB\nSwapFree:        4317320 kB"}
+{"check":"root-process","result":""}
+/home/runner/work/devicelab/devicelab/out/sockprobe: 1 file pushed, 0 skipped. 80.9 MB/s (3501149 bytes in 0.041s)
+{"check":"block-devices","result":"dm-0\ndm-1\ndm-11\ndm-13\ndm-14\ndm-16\ndm-17\ndm-18\ntotal 0\ndrwxr-xr-x 2 root root u:object_r:block_device:s0                140 2026-10-01 11:47 by-name\nbrw------- 1 root root u:object_r:dm_device:s0              254,   0 2026-10-01 11:47 dm-0\nbrw------- 1 root root u:object_r:dm_device:s0              254,   1 2026-10-01 11:47 dm-1\nbrw------- 1 root root u:object_r:dm_device:s0              254,  11 2026-10-01 11:47 dm-11\nbrw------- 1 root root u:object_r:dm_device:s0              254,  13 2026-10-01 11:47 dm-13\nbrw------- 1 root root u:object_r:dm_device:s0              254,  14 2026-10-01 11:47 dm-14\nbrw------- 1 root root u:object_r:dm_device:s0              254,  16 2026-10-01 11:47 dm-16\nbrw------- 1 root root u:object_r:dm_device:s0              254,  17 2026-10-01 11:47 dm-17\nbrw------- 1 root root u:object_r:dm_device:s0              254,  18 2026-10-01 11:47 dm-18\nbrw------- 1 root root u:object_r:dm_device:s0              254,  19 2026-10-01 11:47 dm-19\nbrw------- 1 root root u:object_r:dm_device:s0              254,   2 2026-10-01 11:47 dm-2\n-- su:\n0000000  \\0\n-- ksu:\n{\"error\":\"write /proc/thread-self/attr/current: operation not permitted\",\"op\":\"setcon\"}\n-- avc:"}
+{"check":"back-1","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"back-1-device","result":"12:04:04 up 16 min,  0 users,  load average: 0.11, 1.02, 2.10\nTasks: 309 total,   1 running, 308 sleeping,   0 stopped,   0 zombie\n  Mem:  6072168K total,  5676608K used,   395560K free,   292552K buffers\n Swap:  4554120K total,   236800K used,  4317320K free,  4150072K cached\n400%cpu   0%user   0%nice   4%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n 7794 root         20   0  10G 4.9M 4.1M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n 7791 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n 7465 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/0:2-virtio_vsock]\n 6649 root         20   0    0    0    0 I  0.0   0.0   0:00.25 [kworker/u8:3-events_unbound]\n 6407 root         20   0    0    0    0 I  0.0   0.0   0:00.02 [kworker/1:2-virtio_vsock]\n 5560 root         20   0    0    0    0 I  0.0   0.0   0:00.54 [kworker/0:0-events]\n 5024 root         20   0    0    0    0 I  0.0   0.0   0:00.10 [kworker/1:1-virtio_vsock]\n 4094 root         20   0 1.1G 5.1M 4.3M S  0.0   0.0   0:00.01 labserver\n 4002 u0_a140      20   0  15G 118M  71M S  0.0   1.9   0:00.24 com.google.android.settings.intelligence\n 3827 u0_a203      20   0  15G 110M  58M S  0.0   1.8   0:00.21 com.google.android.ext.services\n 3779 u0_a133      20   0  15G 167M 108M S  0.0   2.8   0:00.83 com.google.android.apps.messaging:rcs\n 3440 u0_a143      20   0  15G 180M 132M S  0.0   3.0   0:00.75 com.google.android.gms.ui\n      topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\nFailed to write while dumping service activity: Broken pipe\nMemAvailable:    4548148 kB\nSwapFree:        4317320 kB"}
+{"check":"back-1-top","result":"topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}"}
+{"check":"back-2-top","result":"topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}"}
+{"check":"mount","result":"cat: /data/local/tmp/app-plane-mount.log: No such file or directory\nls: /product/app/WebuiTermuxApi/: No such file or directory\nCalendarGooglePrebuilt\nCamera2\nChrome\nChrome-Stub\nDrive\n/dev/block/dm-3 /product ext4 ro,seclabel,relatime 0 0\n0"}
+{"check":"package","result":""}
+/home/runner/work/devicelab/devicelab/out/sockprobe: 1 file pushed, 0 skipped. 155.8 MB/s (3501149 bytes in 0.021s)
+Broadcasting: Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }
+Broadcast completed: result=0
+Broadcasting: Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }
+Broadcast completed: result=0
+{"check":"broadcast","result":"Broadcasting: Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }\nBroadcast completed: result=0\nBroadcasting: Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }\nBroadcast completed: result=0"}
+{"check":"app-process","result":""}
+{"check":"listener-module","result":"cat: /data/local/tmp/sockprobe-module.log: No such file or directory"}
+{"check":"listener-su","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"wx_su_out\",\"wx_su_in\"],\"uid\":0}"}
+{"check":"avc","result":"10-01 12:04:10.362   601  2584 I ActivityManager: Broadcasting: Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }\n10-01 12:04:10.366   601  2584 I ActivityManager: Enqueued broadcast Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }: 0\n10-01 12:04:18.440   601   619 I ActivityManager: Broadcasting: Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }\n10-01 12:04:18.441   601   619 I ActivityManager: Enqueued broadcast Intent { flg=0x1400020 cmp=com.webui.termux.api/com.termux.api.TermuxApiReceiver (has extras) }: 0"}
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+SELinux:	Could not look up information for package com.webui.termux.api, cannot restorecon /data/data/com.webui.termux.api/files/devicelab.
+SELinux: Could not set context for /data/data/com.webui.termux.api/files/devicelab:  No such file or directory
+restorecon: restorecon failed: /data/data/com.webui.termux.api/files/devicelab
+{"check":"restorecon","result":"u:object_r:system_data_file:s0 /data/data/com.webui.termux.api\nu:object_r:system_data_file:s0 /data/data/com.webui.termux.api/files/devicelab/probe.txt"}
+{"check":"app-read","result":"u:object_r:system_data_file:s0 chcon.txt\nu:object_r:system_data_file:s0 probe.txt\ninvalid value \"-as-ctx\" for flag -as-uid: parse error\nUsage of /data/local/tmp/sockprobe:\n  -as-ctx string\n    \twith -as-uid: SELinux context to switch to (setcon)\n  -as-uid int\n    \tdo the r:/w: ops in the arguments as this uid (and gid) (default -1)\n  -reply string\n    \ttext written to each connection, then its write side closed (EOF)\n  -t int\n    \texit after this many seconds (default 300)"}
+Failed to write while dumping service activity: Broken pipe
+{"check":"share-text","result":"topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\n{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_text_out\",\"sh_text_in\"],\"uid\":0}"}
+Failed to write while dumping service activity: Broken pipe
+{"check":"share-file","result":"topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\n{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_file_out\",\"sh_file_in\"],\"uid\":0}"}
+Error: No UID for com.webui.termux.api in user 0
+Failed to write while dumping service activity: Broken pipe
+{"check":"share-text-saw","result":"topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\n{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_text-saw_out\",\"sh_text-saw_in\"],\"uid\":0}"}
+Failed to write while dumping service activity: Broken pipe
+{"check":"share-file-saw","result":"topResumedActivity=ActivityRecord{8c90d62 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t7}\n{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_file-saw_out\",\"sh_file-saw_in\"],\"uid\":0}"}
+app uid: 
