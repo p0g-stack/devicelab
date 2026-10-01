@@ -47,3 +47,9 @@ rec root-process "$(adb shell "ps -A -o USER,UID,LABEL,PID,NAME | grep -E 'demo|
 [ -n "${SOCKPROBE:-}" ] && adb push "$SOCKPROBE" /data/local/tmp/sockprobe >/dev/null && adb shell chmod 755 /data/local/tmp/sockprobe
 B=$(adb shell "ls /sys/class/block | head -1" | tr -d '\r')
 rec block-devices "$(adb shell "ls /sys/class/block | head -8; ls -lZ /dev/block | head -12; echo '-- su:'; head -c1 /dev/block/$B | od -c | head -1; echo '-- ksu:'; /data/local/tmp/sockprobe -as-uid 0 -as-ctx u:r:ksu:s0 /system/bin/sh -c 'cat /proc/self/attr/current; echo; for n in \$(ls /sys/class/block | head -4); do f=/dev/block/\$n; [ -e \$f ] || f=/dev/\$n; printf \"%s: \" \$f; head -c1 \$f >/dev/null && echo ok; done' 2>&1; echo '-- avc:'; dmesg | grep avc | grep -E 'blk_file|block_device' | tail -8" | tr -d '\r' | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))')"
+# Back: to the root route, then at the root route the WebUI should close.
+top() { adb shell dumpsys activity activities | grep -m1 topResumedActivity | tr -d '\r' | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))'; }
+adb shell input keyevent KEYCODE_BACK; sleep 3
+rec back-1 "$(text)"; rec back-1-top "$(top)"; shot back-1
+adb shell input keyevent KEYCODE_BACK; sleep 3
+rec back-2-top "$(top)"; shot back-2

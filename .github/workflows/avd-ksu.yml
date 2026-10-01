@@ -10,6 +10,7 @@ on:
       flavor: { default: kernelsu, description: "kernelsu | next" }
       tag: { default: "", description: "release tag, empty = latest" }
       api: { default: "35" }
+      label: { default: "", description: "extra name for the lab-results run, e.g. demo-0.9" }
       modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo-v0.1.0.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
     branches: [main]
@@ -86,4 +87,4 @@ jobs:
       - name: Publish to lab-results
         if: always()
         env: { GH_TOKEN: "${{ github.token }}" }
-        run: tools/publish.sh "${{ github.workflow }}-${{ matrix.host }}"
+        run: tools/publish.sh "${{ github.workflow }}-${{ matrix.host }}${{ inputs.label && format('-{0}', inputs.label) || '' }}"
