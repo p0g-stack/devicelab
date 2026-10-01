@@ -41,6 +41,15 @@ if [ -z "$Z" ]; then
   echo "== metamodule zip url: $U"
   [ -n "$U" ] && mkdir -p "$D/rel" && curl -fsSL -A "Mozilla/5.0 devicelab" "$U" -o "$D/rel/$ID.zip" && Z=$D/rel/$ID.zip
 fi
+# Last resort: KernelSU's own releases from the weeks it built meta-overlayfs
+# in-tree (3630d67 2025-11-17 .. 3e8b4a7 2025-11-21), and the module repo org.
+if [ -z "$Z" ]; then
+  echo "== metamodule org repos: $(gh api 'orgs/KernelSU-Modules-Repo/repos?per_page=100&sort=pushed' --jq '.[].name' 2>&1 | grep -i meta | tr '\n' ' ')"
+  for t in v3.0.0 v3.1.0 v3.2.0; do
+    gh release download -R tiann/KernelSU "$t" -D "$D/rel" -p 'meta-overlayfs*.zip' >/dev/null 2>&1 && { echo "== metamodule from tiann/KernelSU release $t"; break; }
+  done
+  Z=$(ls "$D"/rel/*.zip 2>/dev/null | head -1)
+fi
 [ -n "$Z" ] || { echo "== metamodule: no zip found for $REPO"; exit 1; }
 echo "== metamodule zip: $(basename "$Z") sha256 $(sha256sum "$Z" | cut -c1-64)"
 echo "== metamodule module.prop: $(unzip -p "$Z" module.prop | tr -d '\r' | tr '\n' ' ')"
