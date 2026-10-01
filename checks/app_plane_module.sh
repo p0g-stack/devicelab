@@ -71,7 +71,9 @@ ext_paste() { # paste Android's clipboard into Settings search and read it back
   adb shell input keycombination 113 29; adb shell input keyevent KEYCODE_DEL; adb shell input keycombination 113 50; sleep 2
   $UI dump "$O-ext-paste.xml" >/dev/null 2>&1; grep -o 'text="[^"]*"' "$O-ext-paste.xml" | head -5 | tr '\n' ' '
 }
-back_to_page() { "$HERE/managers/back_to_app.sh" >/dev/null 2>&1; sleep 4; }
+back_to_page() { # leave Settings by Back (its task returns to the WebUI's); Recents if not
+  for _ in 1 2 3; do top | grep -q -i webui && break; adb shell input keyevent KEYCODE_BACK; sleep 2; done
+  top | grep -q -i webui || "$HERE/managers/back_to_app.sh" >/dev/null 2>&1; sleep 4; }
 LISTEN='window.__msgs = []; addEventListener("message", e => __msgs.push([Math.round(performance.now()), typeof e.data === "string" ? e.data : JSON.stringify(e.data)])); document.addEventListener("visibilitychange", () => __msgs.push([Math.round(performance.now()), "visibility " + document.visibilityState])); "listening"'
 if has_btn Paste; then
   ext_copy "lab-clip-$$"; back_to_page
