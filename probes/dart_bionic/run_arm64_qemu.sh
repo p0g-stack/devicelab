@@ -70,9 +70,21 @@ L=/data/adb/devicelab; TP=/data/data/com.termux/files/usr
 run sh-works "echo bionic sh ok; /system/bin/toybox uname -m; ls -l /system/bin/env"
 run aot-host-snapshot-termux-runtime "PATH=/system/bin $L/dartaotruntime $L/probe-arm64.aot"
 run termux-compile-exe "cd $L && PATH=$TP/bin:/system/bin HOME=$L TMPDIR=$L $TP/lib/dart-sdk/bin/dart compile exe probe.dart -o probe-bionic"
+sudo chmod 755 "$R$L/probe-bionic" 2>/dev/null
 sudo mv "$R/data/data/com.termux" "$R/data/data/com.termux.off"
-run bionic-exe-no-termux "PATH=/system/bin TMPDIR=$L $L/probe-bionic"
-ls -l "$R$L" | tee "$OUT/sizes-arm64.txt"
+run bionic-exe-no-termux "PATH=/system/bin $L/probe-bionic"
+# glibc-loader route on arm64: stock Linux arm64 dartaotruntime + Ubuntu
+# arm64 glibc, snapshot from the same stock SDK.
+curl -sSfLo "$W/rt-linux-arm64" "https://storage.googleapis.com/dart-archive/channels/stable/release/$TVER/sdk/dartaotruntime_linux_arm64"
+GL=$(curl -sSfL http://ports.ubuntu.com/ubuntu-ports/dists/noble-updates/main/binary-arm64/Packages.gz | gunzip | awk '/^Package: libc6$/{p=1} p&&/^Filename:/{print $2; exit}')
+curl -sSfLo "$W/libc6.deb" "http://ports.ubuntu.com/ubuntu-ports/$GL" && dpkg-deb -x "$W/libc6.deb" "$W/libc6"
+sudo mkdir -p "$R$L/glibc"
+sudo cp "$W/rt-linux-arm64" "$R$L/glibc/dartaotruntime-linux"; sudo chmod 755 "$R$L/glibc/dartaotruntime-linux"
+for l in ld-linux-aarch64.so.1 libc.so.6 libm.so.6 libdl.so.2 libpthread.so.0; do sudo cp -L "$(find "$W/libc6" -name "$l" | head -1)" "$R$L/glibc/"; done
+run glibc-loader-linux-runtime-aot "PATH=/system/bin TMPDIR=$L $L/glibc/ld-linux-aarch64.so.1 --library-path $L/glibc $L/glibc/dartaotruntime-linux $L/probe-arm64.aot"
+# Termux bionic exe again, with TMPDIR set (its default is Termux's prefix).
+run bionic-exe-tmpdir "PATH=/system/bin TMPDIR=$L $L/probe-bionic"
+ls -lR "$R$L" | tee "$OUT/sizes-arm64.txt"
 python3 - "$RES" "$OUT/dart-bionic-arm64.json" "$API" "$TVER" <<'PY'
 import json, sys, datetime
 rows = [json.loads(l) for l in open(sys.argv[1])]

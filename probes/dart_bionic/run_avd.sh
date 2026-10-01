@@ -63,8 +63,9 @@ dev termux-compile-exe "cd /data/local/tmp/lab && $TENV $TP/lib/dart-sdk/bin/dar
 $ADB pull /data/local/tmp/lab/probe-bionic "$W/probe-bionic" >/dev/null 2>&1 &&
   readelf -lhd "$W/probe-bionic" >"$OUT/readelf-bionic.txt" 2>&1
 dev termux-run-in-place "$TENV /data/local/tmp/lab/probe-bionic"
-$ADB shell "cp /data/local/tmp/lab/probe-bionic $LAB/ && chmod 755 $LAB/probe-bionic && mv /data/data/com.termux /data/data/com.termux.off"
+$ADB shell "chmod 755 /data/local/tmp/lab/probe-bionic; cp /data/local/tmp/lab/probe-bionic $LAB/ && chmod 755 $LAB/probe-bionic && mv /data/data/com.termux /data/data/com.termux.off"
 dev bionic-module-path-no-termux "env -i PATH=/system/bin $LAB/probe-bionic"
+dev bionic-module-path-tmpdir "env -i PATH=/system/bin TMPDIR=$LAB $LAB/probe-bionic"
 # 3. AOT route: snapshot compiled on the host by the Linux SDK of the same
 #    version, run by Termux's bionic dartaotruntime copied out of the package.
 TVER=$(awk '$1=="dart"{print $2}' "$OUT/termux-packages.txt" | sed 's/-.*//')
