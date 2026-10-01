@@ -84,6 +84,12 @@ for l in ld-linux-aarch64.so.1 libc.so.6 libm.so.6 libdl.so.2 libpthread.so.0; d
 run glibc-loader-linux-runtime-aot "PATH=/system/bin TMPDIR=$L $L/glibc/ld-linux-aarch64.so.1 --library-path $L/glibc $L/glibc/dartaotruntime-linux $L/probe-arm64.aot"
 # Termux bionic exe again, with TMPDIR set (its default is Termux's prefix).
 run bionic-exe-tmpdir "PATH=/system/bin TMPDIR=$L $L/probe-bionic"
+# flutter_p0g arm64 kit, when one is given: KIT=<kit.tar.gz>.
+if [ -n "${KIT:-}" ]; then
+  "$HERE/kit_snapshot.sh" "$KIT" "$W/kit" | tee "$OUT/kit-build-arm64.txt"
+  sudo mkdir -p "$R$L/kit"; sudo cp "$W/kit/dartaotruntime" "$W/kit/probe.aot" "$R$L/kit/"; sudo chmod 755 "$R$L/kit/dartaotruntime"
+  run kit-runtime "PATH=/system/bin TMPDIR=$L $L/kit/dartaotruntime $L/kit/probe.aot"
+fi
 ls -lR "$R$L" | tee "$OUT/sizes-arm64.txt"
 python3 - "$RES" "$OUT/dart-bionic-arm64.json" "$API" "$TVER" <<'PY'
 import json, sys, datetime

@@ -1,0 +1,46 @@
+# flutter_p0g's dart-android kits (on the lab-inputs branch under kits/) run
+# as root: x86_64 on the AVD, arm64 against the arm64 image under qemu-user.
+name: kit-probe
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  x86_64:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      LAB_OUT: ${{ github.workspace }}/out
+    steps:
+      - uses: actions/checkout@v4
+      - name: KVM and inputs
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+          mkdir -p "$LAB_OUT" inputs && git fetch -q --depth 1 origin lab-inputs && git archive FETCH_HEAD kits | tar -x -C inputs && ls -l inputs/kits
+      - name: Boot AVD
+        run: |
+          echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
+          set -o pipefail; PATH=$ANDROID_HOME/platform-tools:$PATH platforms/avd/up.sh 35 google_apis x86_64 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: Probe
+        run: probes/dart_bionic/run_kit_avd.sh "$(ls inputs/kits/*x86_64*.tar.gz | head -1)" 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: Publish to lab-results
+        if: always()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: tools/publish.sh "${{ github.workflow }}-${{ github.job }}"
+  arm64:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      LAB_OUT: ${{ github.workspace }}/out
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          sudo apt-get install -y -qq qemu-user-static binfmt-support >/dev/null
+          mkdir -p "$LAB_OUT" inputs && git fetch -q --depth 1 origin lab-inputs && git archive FETCH_HEAD kits | tar -x -C inputs
+      - name: Probe
+        run: KIT=$(ls inputs/kits/*arm64*.tar.gz | head -1) probes/dart_bionic/run_arm64_qemu.sh 35 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: Publish to lab-results
+        if: always()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: tools/publish.sh "${{ github.workflow }}-${{ github.job }}"
