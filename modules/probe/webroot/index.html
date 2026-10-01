@@ -1,0 +1,19 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>devicelab probe</title>
+<body style="font: 16px sans-serif; padding: 16px">
+<h1>devicelab probe</h1>
+<pre id="out"></pre>
+<script>
+  // Everything is observed from outside over DevTools; the page only records
+  // lifecycle events so a driver can read them back from window.__lab.
+  window.__lab = { t0: performance.now(), events: [] };
+  const rec = (type, extra) => window.__lab.events.push({ type, t: Math.round(performance.now()), vis: document.visibilityState, ...extra });
+  for (const t of ['visibilitychange', 'pagehide', 'pageshow', 'freeze', 'resume', 'blur', 'focus'])
+    (t === 'visibilitychange' || t === 'freeze' || t === 'resume' ? document : window).addEventListener(t, () => rec(t));
+  // Heartbeat: gaps show when timers were paused.
+  setInterval(() => { window.__lab.last = Math.round(performance.now()); }, 250);
+  document.getElementById('out').textContent =
+    'globals: ' + ['ksu', '$devicelab_probe', 'webui', 'mmrl'].filter((g) => g in window).join(', ');
+</script>

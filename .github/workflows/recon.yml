@@ -15,20 +15,43 @@ jobs:
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           mkdir -p out
-          for r in tiann/KernelSU KernelSU-Next/KernelSU-Next SukiSU-Ultra/SukiSU-Ultra bmax121/APatch MMRL-App/MMRL MMRL-App/WebUI-X-Portable 5ec1cff/KsuWebUIStandalone backslashxx/KsuWebUIStandalone; do
+          for r in tiann/KernelSU KernelSU-Next/KernelSU-Next SukiSU-Ultra/SukiSU-Ultra bmax121/APatch 5ec1cff/KsuWebUIStandalone; do
             echo "### $r" | tee -a out/recon.txt
             gh api "repos/$r/releases?per_page=2" --jq '.[] | "\(.tag_name) \(.published_at)\n" + ([.assets[].name] | join("\n"))' 2>&1 | tee -a out/recon.txt
             gh api "repos/$r/contents/.github/workflows" --jq '.[].name' 2>/dev/null | tr '\n' ' ' | tee -a out/recon.txt; echo | tee -a out/recon.txt
           done
+      - name: Find WebUI X / MMRL repos
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          for q in "MMRL in:name" "WebUI-X in:name" "KsuWebUIStandalone in:name"; do
+            echo "### search $q" | tee -a out/recon.txt
+            gh api -X GET search/repositories -f q="$q" -f sort=stars -f per_page=6 --jq '.items[] | "\(.full_name) \(.stargazers_count)"' | tee -a out/recon.txt
+          done
+          for r in DerGoogler/MMRL MMRL-App/mmrl; do
+            echo "### $r" | tee -a out/recon.txt
+            gh api "repos/$r/releases?per_page=1" --jq '.[] | "\(.tag_name) \(.published_at)\n" + ([.assets[].name] | join("\n"))' 2>&1 | tee -a out/recon.txt
+          done
       - name: AVD kernels
         run: |
-          for api in 34 35 36; do
+          for api in 34 35 36 Baklava; do
             img="system-images;android-$api;google_apis;x86_64"
-            yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "$img" >/dev/null 2>&1 || { echo "$api: no image"; continue; }
+            "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "$img" < <(yes) >/dev/null 2>&1 || { echo "$api: no image"; continue; }
             d="$ANDROID_HOME/system-images/android-$api/google_apis/x86_64"
             echo "### api $api: $(ls "$d" | tr '\n' ' ')" | tee -a out/recon.txt
-            k="$d/kernel-ranchu"; [ -f "$k" ] || k=$(ls "$d"/kernel* | head -1)
-            (strings "$k" | grep -m1 'Linux version' || (zcat -f "$k" 2>/dev/null | strings | grep -m1 'Linux version')) | tee -a out/recon.txt
+            sudo apt-get install -y -qq linux-tools-common >/dev/null 2>&1 || true
+            python3 - "$d/kernel-ranchu" <<'PY' | tee -a out/recon.txt
+          import sys, gzip, lzma, zlib, re
+          b = open(sys.argv[1], 'rb').read()
+          for magic, dec in ((b'\x1f\x8b\x08', lambda x: zlib.decompressobj(31).decompress(x)), (b'\xfd7zXZ', lzma.decompress)):
+              i = b.find(magic)
+              while i != -1:
+                  try:
+                      m = re.search(rb'Linux version [^\n\x00]+', dec(b[i:])); 
+                      if m: print(m.group().decode(errors='replace')); sys.exit()
+                  except Exception: pass
+                  i = b.find(magic, i + 1)
+          m = re.search(rb'Linux version [^\n\x00]+', b); print(m.group().decode() if m else 'version string not found')
+          PY
             (cat "$d/source.properties"; grep -h -m3 'ro.build' "$d"/build.prop 2>/dev/null) | tee -a out/recon.txt
           done
       - uses: actions/upload-artifact@v4

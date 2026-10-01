@@ -65,6 +65,19 @@ $ADB pull /data/local/tmp/lab/probe-bionic "$W/probe-bionic" >/dev/null 2>&1 &&
 dev termux-run-in-place "$TENV /data/local/tmp/lab/probe-bionic"
 $ADB shell "cp /data/local/tmp/lab/probe-bionic $LAB/ && chmod 755 $LAB/probe-bionic && mv /data/data/com.termux /data/data/com.termux.off"
 dev bionic-module-path-no-termux "env -i PATH=/system/bin $LAB/probe-bionic"
+# 3. AOT route: snapshot compiled on the host by the Linux SDK of the same
+#    version, run by Termux's bionic dartaotruntime copied out of the package.
+TVER=$(awk '$1=="dart"{print $2}' "$OUT/termux-packages.txt" | sed 's/-.*//')
+HSDK=$W/host-sdk
+curl -sSfLo "$W/sdk.zip" "https://storage.googleapis.com/dart-archive/channels/stable/release/$TVER/sdk/dartsdk-linux-x64-release.zip" &&
+  unzip -q "$W/sdk.zip" -d "$HSDK"
+"$HSDK/dart-sdk/bin/dart" compile aot-snapshot "$HERE/bin/probe.dart" -o "$W/probe.aot" >/dev/null
+RT=$(find "$W/termux" -name dartaotruntime -type f | head -1)
+echo "termux dart $TVER, runtime $RT"
+readelf -lhd "$RT" >"$OUT/readelf-termux-dartaotruntime.txt" 2>&1
+$ADB push "$RT" "$W/probe.aot" $LAB/ >/dev/null; $ADB shell chmod 755 $LAB/dartaotruntime
+dev aot-host-snapshot-termux-runtime "env -i PATH=/system/bin $LAB/dartaotruntime $LAB/probe.aot"
+ls -l "$W"/probe-* "$W/probe.aot" "$RT" | awk '{print $5, $NF}' >"$OUT/sizes.txt"; cat "$OUT/sizes.txt"
 dev bionic-cold-start-x5 "for i in 1 2 3 4 5; do env -i $LAB/probe-bionic >/dev/null; done"
 dev selinux-context "id; cat /proc/self/attr/current; getenforce"
 

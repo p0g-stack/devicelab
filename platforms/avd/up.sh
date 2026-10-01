@@ -7,7 +7,7 @@ API=${1:-35}; TAG=${2:-google_apis}; ABI=${3:-x86_64}
 IMG="system-images;android-$API;$TAG;$ABI"
 SDK=${ANDROID_HOME:?}
 BIN=$SDK/cmdline-tools/latest/bin
-yes | "$BIN/sdkmanager" --install emulator platform-tools "$IMG" >/dev/null
+"$BIN/sdkmanager" --install emulator platform-tools "$IMG" < <(yes) >/dev/null
 echo no | "$BIN/avdmanager" create avd -f -n lab -k "$IMG" -d pixel_6 >/dev/null
 "$SDK/emulator/emulator" -avd lab -no-window -no-audio -no-boot-anim -no-snapshot \
   -gpu swiftshader_indirect -memory 4096 -cores 4 -writable-system \
