@@ -1,0 +1,278 @@
+init.svc.recovery=running
+$ getprop | grep -E "aera|ro.boot.mode|bootmode|sys.usb"
+[aera.crash_counter]: [0]
+[aera.postinit.status]: [1]
+[aera.product.partition]: [0]
+[aera.rom.sdk]: [29]
+[aera.super.block_device]: [/dev/block/by-name/super]
+[aera.super.mount_point]: [/super]
+[aera.super.partition]: [true]
+[persist.sys.usb.config]: [adb]
+[ro.aera.boot]: [1]
+[ro.aera.boot.header.version]: [4]
+[ro.aera.build]: [aera]
+[ro.aera.build.status]: [Unofficial]
+[ro.aera.crypto_enabled]: [0]
+[ro.aera.home]: [/sdcard/AERA]
+[ro.aera.kernel]: [6.12.74-android16-6-g3ec022196c4e-ab15076761]
+[ro.aera.release.channel]: [Nightly]
+[ro.aera.release.version]: [R1.0]
+[ro.aera.sar]: [0]
+[ro.aera.settings]: [/data/recovery/AERA]
+[ro.aera.status]: [Unofficial]
+[ro.aera.substitute_permissions]: [1]
+[ro.aera.type]: [Unofficial]
+[ro.aera.vanilla]: [1]
+[ro.aera.variant]: [default]
+[ro.board.platform]: [aera_cf]
+[ro.boot.modem_simulator_ports]: [9600]
+[ro.bootimage.build.date.utc_aera]: [1790875638]
+[ro.bootmode]: [unknown]
+[ro.build.aera_codebase]: [2026-10-01 (e54e216)]
+[ro.build.aera_id]: [b682978b-f909-4a52-ae61-ad93a5b83a15]
+[ro.build.date.utc_aera]: [1790875638]
+[ro.build.description]: [aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys]
+[ro.build.display.id]: [aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys]
+[ro.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.build.flavor]: [aera_aera-eng]
+[ro.build.product]: [aera_cf]
+[ro.odm.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.product.board]: [aera_cf]
+[ro.product.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.product.device]: [aera_cf]
+[ro.product.name]: [aera_aera]
+[ro.product.odm.device]: [aera_cf]
+[ro.product.odm.name]: [aera_aera]
+[ro.product.product.device]: [aera_cf]
+[ro.product.product.name]: [aera_aera]
+[ro.product.system.device]: [aera_cf]
+[ro.product.system.name]: [aera_aera]
+[ro.product.system_ext.device]: [aera_cf]
+[ro.product.system_ext.name]: [aera_aera]
+[ro.product.vendor.device]: [aera_cf]
+[ro.product.vendor.name]: [aera_aera]
+[ro.system.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.system_ext.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[sys.usb.config]: [mtp,adb]
+[sys.usb.config.aera_fastbootd]: [0]
+[sys.usb.config.aera_soft_switch]: [0]
+[sys.usb.configfs]: [0]
+[sys.usb.state]: [mtp,adb]
+
+$ ps -A -o PID,PPID,S,NAME,ARGS | grep -vE " \[|ps -A"
+  PID  PPID S NAME                        ARGS                       
+    1     0 S init                        init second_stage
+   75     1 S init                        init subcontext u:r:vendor_init:s0 16
+   76     1 S ueventd                     ueventd
+   81     1 S logd                        logd
+   82     1 S hwservicemanager            hwservicemanager
+   83     1 S servicemanager              servicemanager
+   87     1 S vndservicemanager           vndservicemanager /dev/vndbinder
+   88     1 S charger                     charger
+   90     1 S recovery                    recovery
+  190     1 S adbd                        adbd --root_seclabel=u:r:su:s0 --device_banner=recovery
+
+$ ls -la /tmp
+total 448
+drwxrwxr-x  3 root shell    180 2026-10-01 19:49 .
+drwxr-xr-x 35 root root    1480 2026-10-01 19:49 ..
+-rw-------  1 root root       2 2026-10-01 19:49 aera-audio-volume
+-rw-rw-rw-  1 root root     135 2026-10-01 19:49 aera-live.cfg
+-rw-rw-rw-  1 root root  133839 2026-10-01 19:49 dmesg.log
+-rw-rw-rw-  1 root root  285696 2026-10-01 19:49 logcat.log
+drwxr-xr-x  3 root root      60 2026-10-01 19:49 misc
+-rw-rw-rw-  1 root root   27883 2026-10-01 19:49 recovery.log
+prwSrwS---  1 root root       0 2026-10-01 19:49 twadbfifo
+
+$ ls -la /dev/dri /dev/graphics /sys/class/drm 2>&1
+ls: /dev/graphics: No such file or directory
+/dev/dri:
+total 0
+drwxr-xr-x  2 root root           80 2026-10-01 19:49 .
+drwxr-xr-x 19 root root         2940 2026-10-01 19:49 ..
+crw-rw-rw-  1 root graphics 226,   0 2026-10-01 19:49 card0
+crw-rw-rw-  1 root graphics 226, 128 2026-10-01 19:49 renderD128
+
+/sys/class/drm:
+total 0
+drwxr-xr-x  2 root root    0 2026-10-01 19:50 .
+drwxr-xr-x 76 root root    0 2026-10-01 19:49 ..
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-1 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-1
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-10 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-10
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-11 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-11
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-12 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-12
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-13 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-13
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-14 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-14
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-15 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-15
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-16 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-16
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-2 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-2
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-3 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-3
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-4 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-4
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-5 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-5
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-6 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-6
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-7 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-7
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-8 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-8
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 card0-Virtual-9 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-9
+lrwxrwxrwx  1 root root    0 2026-10-01 19:50 renderD128 -> ../../devices/pci0000:00/0000:00:02.0/drm/renderD128
+-r--r--r--  1 root root 4096 2026-10-01 19:50 version
+
+$ cat /sys/class/drm/card0-*/modes /sys/class/drm/card0-*/status 2>&1
+720x1348
+720x1348
+1920x1200
+1856x1160
+1680x1050
+1600x1000
+1440x900
+1400x875
+1280x800
+800x500
+connected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+
+$ rm -f /tmp/aeraui.png; touch /tmp/aeraui-capture; sleep 3; ls -la /tmp/aeraui-capture /tmp/aeraui.png 2>&1
+ls: /tmp/aeraui-capture: No such file or directory
+-rw-rw-rw- 1 root root 227688 2026-10-01 19:50 /tmp/aeraui.png
+
+$ getprop init.svc.logd; pidof logd; logcat -d -t 5 2>&1 | tail -5
+running
+81
+10-01 19:50:23.577    90   113 W recovery: Using fake battery capacity 100.
+10-01 19:50:23.577    90   113 I recovery: GetBatteryInfo() reporting charging 1, capacity 100
+10-01 19:50:24.577    90   113 I recovery: charge_status UNKNOWN, charging 1, capacity -2147483648
+10-01 19:50:24.577    90   113 W recovery: Using fake battery capacity 100.
+10-01 19:50:24.577    90   113 I recovery: GetBatteryInfo() reporting charging 1, capacity 100
+
+$ grep -c "Atomic commit failed" /tmp/recovery.log; grep -E "SDE topology|Atomic Commit" /tmp/recovery.log | head -5
+0
+no SDE topology: 1 layer mixer, plane 32
+Atomic Commit succeedUsing drm graphics.
+
+$ mountpoint -q /sys/kernel/debug || mount -t debugfs debugfs /sys/kernel/debug; cat /sys/kernel/debug/dri/0/state 2>&1 | head -60
+plane[32]: plane-0
+	crtc=crtc-0
+	fb=145
+		allocated by = recovery
+		refcount=2
+		format=XR24 little-endian (0x34325258)
+		modifier=0x0
+		size=720x1348
+		layers:
+			size[0]=720x1348
+			pitch[0]=2880
+			offset[0]=0
+			obj[0]:
+				name=0
+				refcount=3
+				start=00100000
+				size=3883008
+				imported=no
+				pages_use_count=2
+				vmap_use_count=0
+				vaddr=0000000000000000
+	crtc-pos=720x1348+0+0
+	src-pos=720.000000x1348.000000+0.000000+0.000000
+	rotation=1
+	normalized-zpos=0
+	color-encoding=ITU-R BT.601 YCbCr
+	color-range=YCbCr limited range
+	color_mgmt_changed=0
+plane[33]: plane-1
+	crtc=(null)
+	fb=0
+	crtc-pos=0x0+0+0
+	src-pos=0.000000x0.000000+0.000000+0.000000
+	rotation=1
+	normalized-zpos=0
+	color-encoding=ITU-R BT.601 YCbCr
+	color-range=YCbCr limited range
+	color_mgmt_changed=0
+plane[39]: plane-2
+	crtc=(null)
+	fb=0
+	crtc-pos=0x0+0+0
+	src-pos=0.000000x0.000000+0.000000+0.000000
+	rotation=1
+	normalized-zpos=0
+	color-encoding=ITU-R BT.601 YCbCr
+	color-range=YCbCr limited range
+	color_mgmt_changed=0
+plane[40]: plane-3
+	crtc=(null)
+	fb=0
+	crtc-pos=0x0+0+0
+	src-pos=0.000000x0.000000+0.000000+0.000000
+	rotation=1
+	normalized-zpos=0
+	color-encoding=ITU-R BT.601 YCbCr
+	color-range=YCbCr limited range
+	color_mgmt_changed=0
+plane[46]: plane-4
+	crtc=(null)
+
+$ ls -la /system/etc/task_profiles* /system/etc/cgroups.json 2>&1
+-rw-r--r-- 1 root root   905 1970-01-01 01:00 /system/etc/cgroups.json
+-rw-r--r-- 1 root root 14502 1970-01-01 01:00 /system/etc/task_profiles.json
+
+/system/etc/task_profiles:
+total 0
+drwxr-xr-x 2 root root  40 1970-01-01 01:00 .
+drwxr-xr-x 9 root root 440 2026-10-01 19:49 ..
+
+$ dmesg | grep -iE "drm|virtio_gpu|recovery|aera|CANNOT|avc" | tail -40
+[    6.008424] type=1400 audit(1790876992.755:367): avc:  denied  { ioctl } for  comm="recovery" path="/dev/dri/card0" dev="tmpfs" ino=837 ioctlcmd=0x64bc scontext=u:r:recovery:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+[    6.011162] type=1300 audit(1790876992.755:367): arch=c000003e syscall=16 success=yes exit=0 a0=7 a1=c03864bc a2=77d1192dd220 a3=2 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    6.012413] type=1327 audit(1790876992.755:367): proctitle="/system/bin/recovery"
+[    6.013059] type=1400 audit(1790876992.771:368): avc:  denied  { getattr } for  comm="recovery" path="/data/recovery/log.gz" dev="rootfs" ino=732 scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=file permissive=1
+[    6.014035] type=1300 audit(1790876992.771:368): arch=c000003e syscall=262 success=yes exit=0 a0=ffffff9c a1=7fff536898d1 a2=7fff53689a70 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    6.015770] type=1327 audit(1790876992.771:368): proctitle="/system/bin/recovery"
+[    6.018795] type=1400 audit(1790876992.771:369): avc:  denied  { read } for  comm="recovery" name="log.gz" dev="rootfs" ino=732 scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=file permissive=1
+[    6.028930] type=1400 audit(1790876992.771:369): avc:  denied  { open } for  comm="recovery" path="/data/recovery/log.gz" dev="rootfs" ino=732 scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=file permissive=1
+[    6.042631] type=1300 audit(1790876992.771:369): arch=c000003e syscall=257 success=yes exit=15 a0=ffffff9c a1=7fff536898b1 a2=80000 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    6.044804] type=1327 audit(1790876992.771:369): proctitle="/system/bin/recovery"
+[    6.045499] type=1400 audit(1790876992.795:370): avc:  denied  { write } for  comm="recovery" name="log.gz" dev="rootfs" ino=732 scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=file permissive=1
+[    6.050349] type=1300 audit(1790876992.795:370): arch=c000003e syscall=257 success=yes exit=19 a0=ffffff9c a1=7fff53689c51 a2=241 a3=1b6 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    6.052726] type=1327 audit(1790876992.795:370): proctitle="/system/bin/recovery"
+[    6.053429] type=1400 audit(1790876992.795:371): avc:  denied  { setattr } for  comm="recovery" name="log.gz" dev="rootfs" ino=732 scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=file permissive=1
+[    6.055587] type=1300 audit(1790876992.795:371): arch=c000003e syscall=260 success=yes exit=0 a0=ffffff9c a1=7fff53689d31 a2=3e8 a3=3e8 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    6.057852] type=1327 audit(1790876992.795:371): proctitle="/system/bin/recovery"
+[    6.061117] type=1400 audit(1790876992.795:372): avc:  denied  { fsetid } for  comm="recovery" capability=4  scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=capability permissive=1
+[    6.064467] type=1300 audit(1790876992.795:372): arch=c000003e syscall=268 success=yes exit=0 a0=ffffff9c a1=7fff53689d31 a2=180 a3=3e8 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    6.068021] type=1327 audit(1790876992.795:372): proctitle="/system/bin/recovery"
+[    6.068737] type=1400 audit(1790876992.795:373): avc:  denied  { write } for  comm="recovery" name="bin" dev="rootfs" ino=235 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1
+[    6.070770] type=1400 audit(1790876992.795:373): avc:  denied  { add_name } for  comm="recovery" name="aerain" scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1
+[    6.071689] type=1400 audit(1790876992.795:373): avc:  denied  { create } for  comm="recovery" name="aerain" scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[    6.073023] type=1300 audit(1790876992.795:373): arch=c000003e syscall=259 success=yes exit=0 a0=ffffff9c a1=644ba8fd9fc5 a2=11b0 a3=0 items=2 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    6.079474] type=1327 audit(1790876992.795:373): proctitle="/system/bin/recovery"
+[    6.080425] type=1400 audit(1790876992.795:374): avc:  denied  { read } for  comm="recovery" name="aerain" dev="rootfs" ino=741 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[    6.082314] type=1400 audit(1790876992.795:374): avc:  denied  { open } for  comm="recovery" path="/system/bin/aerain" dev="rootfs" ino=741 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[    6.084322] type=1300 audit(1790876992.795:374): arch=c000003e syscall=257 success=yes exit=15 a0=ffffff9c a1=644ba8fd9fc5 a2=80800 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    6.086731] type=1327 audit(1790876992.795:374): proctitle="/system/bin/recovery"
+[    6.087403] type=1400 audit(1790876992.807:375): avc:  denied  { create } for  comm="recovery" name="twadbfifo" scontext=u:r:recovery:s0 tcontext=u:object_r:tmpfs:s0 tclass=fifo_file permissive=1
+[    6.088338] type=1300 audit(1790876992.807:375): arch=c000003e syscall=259 success=yes exit=0 a0=ffffff9c a1=644ba8fd775a a2=1db0 a3=0 items=2 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    6.094116] type=1327 audit(1790876992.807:375): proctitle="/system/bin/recovery"
+[    6.095431] type=1400 audit(1790876992.807:376): avc:  denied  { read } for  comm="recovery" name="twadbfifo" dev="tmpfs" ino=9 scontext=u:r:recovery:s0 tcontext=u:object_r:tmpfs:s0 tclass=fifo_file permissive=1
+[    6.096790] type=1400 audit(1790876992.807:376): avc:  denied  { open } for  comm="recovery" path="/tmp/twadbfifo" dev="tmpfs" ino=9 scontext=u:r:recovery:s0 tcontext=u:object_r:tmpfs:s0 tclass=fifo_file permissive=1
+[    6.098624] type=1300 audit(1790876992.807:376): arch=c000003e syscall=257 success=yes exit=19 a0=ffffff9c a1=644ba8fd775a a2=800 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    6.100544] type=1327 audit(1790876992.807:376): proctitle="/system/bin/recovery"
+[    6.102841] type=1400 audit(1790876992.823:377): avc:  denied  { ioctl } for  comm="pigz" path="/data/recovery/log.gz" dev="rootfs" ino=732 ioctlcmd=0x5401 scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=file permissive=1
+[    6.104844] type=1300 audit(1790876992.823:377): arch=c000003e syscall=16 success=no exit=-22 a0=1 a1=5401 a2=7fff9a66d280 a3=9000 items=0 ppid=90 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="pigz" exe="/system/bin/pigz" subj=u:r:recovery:s0 key=(null)
+[   35.202787] type=1400 audit(1790877021.967:378): avc:  denied  { unlink } for  comm="recovery" name="aeraui-capture" dev="tmpfs" ino=10 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+[   35.206927] type=1300 audit(1790877021.967:378): arch=c000003e syscall=263 success=yes exit=0 a0=ffffff9c a1=644ba8fdf510 a2=0 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   35.208927] type=1327 audit(1790877021.967:378): proctitle="/system/bin/recovery"
+

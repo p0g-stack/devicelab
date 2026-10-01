@@ -1,0 +1,60 @@
+[   63.829268] type=1320 audit(1790877050.583:406): 
+[   63.830138] servicemanager: getDeviceHalManifest: -2 VINTF parse error: Cannot read /vendor/manifest.xml: No such file or directory
+[   63.830798] servicemanager: getFrameworkHalManifest: Reading VINTF information.
+[   63.831139] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[   63.832560] servicemanager: getFrameworkHalManifest: status from fetching VINTF information: -2
+[   63.833510] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[   63.834045] servicemanager: NULL VINTF MANIFEST!: device
+[   63.834270] servicemanager: NULL VINTF MANIFEST!: framework
+[   63.834505] servicemanager: getDeviceHalManifest: Reading VINTF information.
+[   63.834939] servicemanager: getDeviceHalManifest: status from fetching VINTF information: -2
+[   63.835451] servicemanager: getDeviceHalManifest: -2 VINTF parse error: Cannot read /vendor/manifest.xml: No such file or directory
+[   63.835923] servicemanager: getFrameworkHalManifest: Reading VINTF information.
+[   63.836325] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[   63.836816] servicemanager: getFrameworkHalManifest: status from fetching VINTF information: -2
+[   63.837310] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[   63.837736] servicemanager: NULL VINTF MANIFEST!: device
+[   63.838036] servicemanager: NULL VINTF MANIFEST!: framework
+[   63.838279] servicemanager: getDeviceHalManifest: Reading VINTF information.
+[   63.838633] servicemanager: getDeviceHalManifest: status from fetching VINTF information: -2
+[   63.838956] servicemanager: getDeviceHalManifest: -2 VINTF parse error: Cannot read /vendor/manifest.xml: No such file or directory
+[   63.839371] servicemanager: getFrameworkHalManifest: Reading VINTF information.
+[   63.839650] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[   63.840079] servicemanager: getFrameworkHalManifest: status from fetching VINTF information: -2
+[   63.840409] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[   63.842447] servicemanager: NULL VINTF MANIFEST!: device
+[   63.842586] servicemanager: NULL VINTF MANIFEST!: framework
+[   63.842702] servicemanager: Caller(pid=90,uid=0,sid=u:r:recovery:s0) Could not find android.hardware.health.IHealth/default in the VINTF manifest. No alternative instances declared in VINTF.
+[   64.286642] type=1400 audit(1790877051.051:407): avc:  denied  { name_bind } for  comm="recovery" src=8088 scontext=u:r:recovery:s0 tcontext=u:object_r:port:s0 tclass=tcp_socket permissive=1
+[   64.290114] type=1300 audit(1790877051.051:407): arch=c000003e syscall=49 success=yes exit=0 a0=18 a1=77d115f427d0 a2=10 a3=77d115f427c4 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   64.291592] type=1327 audit(1790877051.051:407): proctitle="/system/bin/recovery"
+[   64.291776] type=1320 audit(1790877051.051:407): 
+[   64.292411] type=1400 audit(1790877051.051:408): avc:  denied  { write } for  comm="recovery" name="bin" dev="rootfs" ino=235 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1
+[   64.293503] type=1400 audit(1790877051.051:409): avc:  denied  { accept } for  comm="recovery" lport=8088 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   64.293821] type=1400 audit(1790877051.051:408): avc:  denied  { remove_name } for  comm="recovery" name="aerain" dev="rootfs" ino=746 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1
+[   64.295042] type=1300 audit(1790877051.051:408): arch=c000003e syscall=263 success=yes exit=0 a0=ffffff9c a1=644ba8fd9fc5 a2=0 a3=18000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   64.299522] type=1327 audit(1790877051.051:408): proctitle="/system/bin/recovery"
+[   64.299856] type=1320 audit(1790877051.051:408): 
+[   64.300117] type=1400 audit(1790877051.051:410): avc:  denied  { add_name } for  comm="recovery" name="aerain" scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1
+[   64.300783] type=1300 audit(1790877051.051:410): arch=c000003e syscall=259 success=yes exit=0 a0=ffffff9c a1=644ba8fd9fc5 a2=11b0 a3=0 items=2 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   64.302888] type=1307 audit(1790877051.051:410): cwd="/"
+[   64.303102] type=1302 audit(1790877051.051:410): item=0 name=(null) inode=235 dev=00:02 mode=040751 ouid=0 ogid=0 rdev=00:00 obj=u:object_r:rootfs:s0 nametype=PARENT cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+[   64.303769] type=1302 audit(1790877051.051:410): item=1 name=(null) inode=759 dev=00:02 mode=010660 ouid=0 ogid=0 rdev=00:00 obj=u:object_r:rootfs:s0 nametype=CREATE cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+[   64.304390] type=1327 audit(1790877051.051:410): proctitle="/system/bin/recovery"
+[   64.304628] type=1320 audit(1790877051.051:410): 
+[   64.312771] type=1300 audit(1790877051.051:409): arch=c000003e syscall=288 success=yes exit=15 a0=18 a1=0 a2=0 a3=80000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   64.315477] type=1327 audit(1790877051.051:409): proctitle="/system/bin/recovery"
+[   64.315870] type=1320 audit(1790877051.051:409): 
+[   64.316543] type=1400 audit(1790877051.079:411): avc:  denied  { read } for  comm="recovery" laddr=127.0.0.1 lport=8088 faddr=127.0.0.1 fport=40567 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   64.317556] type=1300 audit(1790877051.079:411): arch=c000003e syscall=45 success=yes exit=88 a0=f a1=77d115f41ad0 a2=1000 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   64.318823] type=1327 audit(1790877051.079:411): proctitle="/system/bin/recovery"
+[   64.319213] type=1320 audit(1790877051.079:411): 
+[   64.437402] type=1400 audit(1790877051.199:412): avc:  denied  { write } for  comm="recovery" laddr=127.0.0.1 lport=8088 faddr=127.0.0.1 fport=40567 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   64.440395] type=1300 audit(1790877051.199:412): arch=c000003e syscall=44 success=yes exit=188 a0=f a1=77d1a9e03f90 a2=bc a3=4000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   64.441791] type=1327 audit(1790877051.199:412): proctitle="/system/bin/recovery"
+[   64.442230] type=1320 audit(1790877051.199:412): 
+[   64.442659] type=1400 audit(1790877051.199:413): avc:  denied  { shutdown } for  comm="recovery" laddr=127.0.0.1 lport=8088 faddr=127.0.0.1 fport=40567 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   64.443567] type=1300 audit(1790877051.199:413): arch=c000003e syscall=48 success=yes exit=0 a0=f a1=2 a2=f a3=4000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   64.444848] type=1327 audit(1790877051.199:413): proctitle="/system/bin/recovery"
+[   64.445287] type=1320 audit(1790877051.199:413): 
+[   70.064518] logd: logdr: UID=0 GID=0 PID=484 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
