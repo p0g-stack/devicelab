@@ -7,7 +7,9 @@
 set -uo pipefail
 LABEL=$1; OUT=${LAB_OUT:-$PWD/out}; HERE=$(cd "$(dirname "$0")/.." && pwd)
 WV="node $HERE/driver/webview.mjs"; J=$OUT/$LABEL-walk.jsonl; : >"$J"
-rec() { echo "{\"check\":\"$1\",\"result\":$2}" | tee -a "$J"; }
+rec() { echo "{\"check\":\"$1\",\"result\":${2:-null}}" | tee -a "$J"
+  # A step that got no answer: record what the device is doing.
+  case "$2" in ""|*'"error"'*) echo "{\"check\":\"$1-device\",\"result\":$(timeout 25 adb shell 'uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E "MemAvailable|SwapFree" /proc/meminfo' 2>&1 | tr -d '\r' | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))')}" | tee -a "$J";; esac; }
 ev() { $WV eval "$1" 2>&1 | tail -1; }
 shot() { timeout 20 adb exec-out screencap -p >"$OUT/$LABEL-walk-$1.png"; }
 # Helpers on window: enable semantics, list labels, tap by label prefix.

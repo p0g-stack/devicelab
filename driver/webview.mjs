@@ -9,8 +9,11 @@
 // Needs the app's WebView debugging on (setWebContentsDebuggingEnabled).
 import { execFileSync } from 'node:child_process';
 
-const adb = (...a) => execFileSync(process.env.ADB ?? 'adb', a, { encoding: 'utf8' });
+// adb itself can hang when the device is starved; a sync call would also
+// block the --timeout-s timer, so it carries its own limit.
+const adb = (...a) => execFileSync(process.env.ADB ?? 'adb', a, { encoding: 'utf8', timeout: 20000 });
 const [cmd, expr] = process.argv.slice(2);
+for (const ev of ['uncaughtException', 'unhandledRejection']) process.on(ev, (e) => { console.log(JSON.stringify({ error: String(e?.message ?? e).slice(0, 300) })); process.exit(3); });
 const opt = (n, d) => (process.argv.includes(n) ? process.argv[process.argv.indexOf(n) + 1] : d);
 const match = opt('--match', '');
 // A promise that never settles (a bridge callback that never comes, a hung
