@@ -33,26 +33,26 @@ init: Service 'recovery' (pid 89) exited with status 1
 - Upstream fix: move `libincfs.so` out of the FBE block in
   `prebuilt/Android.mk` (or add it next to `libandroidfw`).
 
-## D2. Recovery waits forever for a declared AIDL health service
+## D2. Battery status thread asks servicemanager every second (was: "waits forever")
 
 ```
-servicemanager: Caller(pid=88,uid=0,sid=u:r:recovery:s0) Could not find android.hardware.health.IHealth/default in the VINTF manifest. No alternative instances declared in VINTF.
+servicemanager: Caller(pid=89,uid=0,sid=u:r:recovery:s0) Could not find android.hardware.health.IHealth/default in the VINTF manifest. No alternative instances declared in VINTF.
 ```
-(once a second for the whole run; nothing draws, adb stays `offline`)
+(637 times in 640 s of run `runs/20261001T160857Z-aera-cf-recovery-36886400049`,
+each with eight lines of `NULL VINTF MANIFEST` around it)
 
-- Repro: run `runs/20261001T154019Z-aera-cf-recovery-36874193791`
-  (image b540be3). devicelab had overlaid AERA onto Cuttlefish's stock
-  ramdisk, which declares a health HAL whose Android 17 binary then exits 1
-  next to AERA's Android 16 libraries (`init: Service 'vendor.health-cuttlefish' (pid 89) exited with status 1`).
-- Cause (from the source, not yet confirmed on the device):
-  `recovery_utils/battery_utils.cpp` `GetBatteryInfo()` calls
-  `AServiceManager_waitForService()` with no timeout once
-  `AServiceManager_isDeclared()` says yes, and the recovery (pid 88) keeps
-  asking servicemanager for `IHealth/default` once a second, never reaching
-  the HIDL fallback or "assuming defaults". With no UI up, adbd stays
-  offline too. Which manifest declared it is still to be checked.
-- Workaround: devicelab no longer carries stock /system or /vendor files
-  into AERA's ramdisk (boot-aera.sh), so nothing declares the AIDL service.
-- Upstream fix: use `AServiceManager_getService`/a bounded wait and fall
-  through to HIDL and then defaults, so a broken health HAL costs a battery
-  reading, not the whole recovery.
+- First read as a hang (run `runs/20261001T154019Z-aera-cf-recovery-36874193791`);
+  it is not: the recovery keeps running. The hang-looking part was adb (D-cf1).
+- Cause: twrp.cpp's status thread calls `GetBatteryInfo()` every second and
+  each call looks the AIDL health HAL up again (`AServiceManager_isDeclared`),
+  so a device without one floods the kernel log.
+- Upstream fix: look the health HAL up once and cache the result (patch
+  0012's bounded wait also helps a declared-but-dead HAL).
+
+## D-cf1 (devicelab, not AERA). adbd stops at `sys.usb.config=none`
+
+AERA (TWRP) sets `sys.usb.config` to `none` at start; init.rc stops adbd,
+and devicelab's device tree sets `AERA_EXCLUDE_DEFAULT_USB_INIT`, so no USB
+rc starts it again. Cuttlefish's adb is vsock-only, so adb stays `offline`.
+boot-aera.sh appends `on property:sys.usb.config=* start adbd` to the
+carried `init.recovery.cutf_cvm.rc`.
