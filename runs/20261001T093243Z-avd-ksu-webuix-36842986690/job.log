@@ -1,0 +1,87 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 61s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.0
+total 16428
+drwx------  2 runner runner     4096 Oct  1 09:31 .
+drwxrwxrwt 16 root   root       4096 Oct  1 09:31 ..
+-rw-r--r--  1 runner runner 10777987 Oct  1 09:31 KernelSU_v3.3.0_32601-release.apk
+-rw-r--r--  1 runner runner  5713312 Oct  1 09:31 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   318824 Oct  1 09:31 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu)
+/tmp/tmp.niZVpjtaP0/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 3.0 MB/s (318824 bytes in 0.102s)
+/tmp/tmp.niZVpjtaP0/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 71.1 MB/s (5713312 bytes in 0.077s)
+== ksud: ksud 3.3.0 (uapi: 2)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              159744  0 
+== lsmod: kernelsu              159744  1 
+KernelSU_v3.3.0_32601-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-pc-windows-gnu.exe
+ksud-x86_64-unknown-linux-musl
+ksuinit-aarch64
+ksuinit-x86_64
+lkm-aarch64-android12-5.10_kernelsu.ko
+lkm-aarch64-android13-5.10_kernelsu.ko
+lkm-aarch64-android13-5.15_kernelsu.ko
+lkm-aarch64-android14-5.15_kernelsu.ko
+lkm-aarch64-android14-6.1_kernelsu.ko
+lkm-aarch64-android15-6.6_kernelsu.ko
+lkm-aarch64-android16-6.12_kernelsu.ko
+lkm-aarch64-android17-6.18_kernelsu.ko
+lkm-x86_64-android12-5.10_kernelsu.ko
+lkm-x86_64-android13-5.10_kernelsu.ko
+lkm-x86_64-android13-5.15_kernelsu.ko
+lkm-x86_64-android14-5.15_kernelsu.ko
+lkm-x86_64-android14-6.1_kernelsu.ko
+lkm-x86_64-android15-6.6_kernelsu.ko
+lkm-x86_64-android16-6.12_kernelsu.ko
+lkm-x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in tiann/KernelSU v3.3.0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.047s)
+== modules: [
+  {
+    "remove": "false",
+    "name": "devicelab probe",
+    "mount": "false",
+    "enabled": "true",
+    "version": "1",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "id": "devicelab_probe",
+    "web": "true",
+    "versionCode": "1",
+    "action": "false",
+    "update": "false",
+    "author": "p0g-stack"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+ERROR: null root node returned by UiTestAutomationBridge.
+cat: /data/local/tmp/ui.xml: No such file or directory
+== home text: 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+WebUI-X-v438-release-official.apk
+WebUI-X-v438-release-spoofed.apk
+== downloaded MMRLApp/WebUI-X-Portable v438 WebUI-X-v438-release-official.apk
+Success
+== installed com.dergoogler.mmrl.wx uid=10210     versionName=v438-release
+== activities: com.dergoogler.mmrl.wx/.ui.activity.CrashHandlerActivity com.dergoogler.mmrl.wx/.ui.activity.MainActivity com.dergoogler.mmrl.wx/.ui.activity.modconf.ModConfActivity com.dergoogler.mmrl.wx/.ui.activity.webui.KsuWebUIActivity com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity com.dergoogler.mmrl.wx/.util.NonRootService com.dergoogler.mmrl.wx/androidx.core.content.FileProvider com.dergoogler.mmrl.wx/androidx.profileinstaller.ProfileInstallReceiver com.dergoogler.mmrl.wx/androidx.startup.InitializationProvider com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxy com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.RescheduleReceiver com.dergoogler.mmrl.wx/androidx.work.impl.diagnostics.DiagnosticsReceiver 
+ui: tapped 'Superuser' at 120,584
