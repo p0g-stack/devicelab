@@ -39,10 +39,10 @@ rm -rf "$OUT/.pkg"; mkdir -p "$OUT/.pkg"; unzip -q "$PKG" -d "$OUT/.pkg"
 a shell "mkdir -p /tmp/aera/plugins/$id && chmod 700 /tmp/aera /tmp/aera/plugins"
 a push "$OUT/.pkg/plugin.json" "$OUT/.pkg/runtime.xz" "/tmp/aera/plugins/$id/" >/dev/null
 
-r=$(rpc '{"v":1,"id":"rotate-mirror","op":"mirror","args":{"action":"start","port":8090}}')
+r=$(rpc '{"v":1,"id":"rotate-mirror","op":"mirror","args":{"action":"start","port":8088}}')
 RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1)
 [ -n "$RCODE" ] || { log "AERA Remote did not start: $r"; exit 0; }
-a forward tcp:18090 tcp:8090 >/dev/null; REMOTE=http://127.0.0.1:18090
+a forward tcp:18088 tcp:8088 >/dev/null; REMOTE=http://127.0.0.1:18088
 sleep 2
 a shell 'pkill -f aera-flutter; sleep 2'
 log "open: $(rpc '{"v":1,"id":"rotate","op":"plugin","args":{"action":"open","id":"'"$id"'"}}' | tr '\n' ' ')"

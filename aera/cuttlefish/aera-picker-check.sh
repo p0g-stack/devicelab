@@ -35,10 +35,10 @@ a push "$OUT/.pkg/plugin.json" "$OUT/.pkg/runtime.xz" "/tmp/aera/plugins/$id/" >
 a shell 'mkdir -p /sdcard/lab-pick && echo a > /sdcard/lab-pick/a.txt && echo b > /sdcard/lab-pick/b.txt'
 log "installed $id"
 
-r=$(rpc '{"v":1,"id":"picker-mirror","op":"mirror","args":{"action":"start","port":8089}}')
+r=$(rpc '{"v":1,"id":"picker-mirror","op":"mirror","args":{"action":"start","port":8088}}')
 RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1)
 [ -n "$RCODE" ] || { log "AERA Remote did not start: $r"; exit 0; }
-a forward tcp:18089 tcp:8089 >/dev/null; REMOTE=http://127.0.0.1:18089
+a forward tcp:18088 tcp:8088 >/dev/null; REMOTE=http://127.0.0.1:18088
 sleep 2  # minuitwrp picks the new input device up within 2 s
 a shell 'pkill -f aera-flutter; sleep 2'
 log "open: $(rpc '{"v":1,"id":"picker","op":"plugin","args":{"action":"open","id":"'"$id"'"}}' | tr '\n' ' ')"

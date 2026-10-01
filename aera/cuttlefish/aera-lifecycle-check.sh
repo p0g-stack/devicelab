@@ -47,10 +47,10 @@ a shell "mkdir -p /tmp/aera/plugins/$id && chmod 700 /tmp/aera /tmp/aera/plugins
 a push "$OUT/.pkg/plugin.json" "$OUT/.pkg/runtime.xz" "/tmp/aera/plugins/$id/" >/dev/null
 log "installed $id"
 
-r=$(rpc '{"v":1,"id":"lifecycle-mirror","op":"mirror","args":{"action":"start","port":8091}}')
+r=$(rpc '{"v":1,"id":"lifecycle-mirror","op":"mirror","args":{"action":"start","port":8088}}')
 RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1)
 [ -n "$RCODE" ] || { log "AERA Remote did not start: $r"; exit 0; }
-a forward tcp:18091 tcp:8091 >/dev/null; REMOTE=http://127.0.0.1:18091
+a forward tcp:18088 tcp:8088 >/dev/null; REMOTE=http://127.0.0.1:18088
 sleep 2
 a shell 'pkill -f aera-flutter; sleep 2'
 open_; sleep "${APP_WAIT:-25}"; shot 1-open
