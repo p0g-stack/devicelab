@@ -10,7 +10,7 @@ on:
       flavor: { default: kernelsu, description: "kernelsu | next" }
       tag: { default: "", description: "release tag, empty = latest" }
       api: { default: "35" }
-      modules: { default: "flutter_webui_counter-0.1.3.zip counter-v1.0.0.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
+      modules: { default: "flutter_webui_counter-0.1.3.zip counter-v1.0.0.zip demo-v0.1.0.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
     branches: [main]
     paths: [".github/workflows/avd-ksu.yml", "managers/**", "checks/**", "driver/**", "modules/**", "tools/labserver/**", "tools/sockprobe/**"]
@@ -29,7 +29,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       FLAVOR: ${{ inputs.flavor || 'kernelsu' }}
       HOST: ${{ matrix.host }}
-      MODULES: ${{ inputs.modules || 'flutter_webui_counter-0.1.3.zip counter-v1.0.0.zip' }}
+      MODULES: ${{ inputs.modules || 'flutter_webui_counter-0.1.3.zip counter-v1.0.0.zip demo-v0.1.0.zip' }}
     steps:
       - uses: actions/checkout@v4
       - name: KVM
@@ -74,6 +74,7 @@ jobs:
             name=$(unzip -p "inputs/modules/$m" module.prop | sed -n 's/^name=//p' | tr -d '\r')
             MODULE=$id checks/open_module.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
             if [ "$id" = flutter_webui_counter ]; then checks/flutter_webui.sh "$HOST-$id" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
+            if [ "$id" = demo ]; then checks/demo_walk.sh "$HOST-$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
           done
       - name: App plane
         if: always() && matrix.host == 'kernelsu'
