@@ -49,6 +49,61 @@ each with eight lines of `NULL VINTF MANIFEST` around it)
 - Upstream fix: look the health HAL up once and cache the result (patch
   0012's bounded wait also helps a declared-but-dead HAL).
 
+## D3. Nothing reaches the screen on a DRM driver without Qualcomm SDE
+
+```
+display mode: 720x1348 @ 60 Hz (720x1348)
+setting DRM_FORMAT_XRGB8888 and GGL_PIXEL_FORMAT_BGRA_8888
+Could not find obj_id = 32
+Could not find obj_id = 39
+Atomic Commit failed, rc = -22
+Using drm graphics.
+Atomic commit failed ret=-22
+```
+(`aera-recovery.log` in run `runs/20261001T171434Z-aera-cf-recovery-36894820751`; the last line 349 times, once per flip)
+
+- AERA itself draws: its own capture (`/tmp/aeraui-capture`) shows the home
+  screen and the counter (`aera-counter/01-home.png`, `03-app.png`), but the
+  scanout never gets a frame, so the real screen stays black.
+- Cause: minuitwrp's DRM backend assumes Qualcomm SDE. Without a connector
+  `mode_properties` topology it still uses `DEFAULT_NUM_LMS` (2) layer
+  mixers, and it takes the first two entries of `drmModeGetPlaneResources()`
+  whatever their type or CRTC. virtio-gpu lists a primary and a cursor plane
+  per CRTC (16 outputs on Cuttlefish), so half the screen goes to a cursor
+  plane and every atomic commit is EINVAL. Any non-QCOM device has the same
+  shape.
+- Upstream fix (draft): without a topology, one layer mixer on the CRTC's own
+  primary plane (by `possible_crtcs` and plane `type`); SDE devices unchanged.
+  `/mnt/project-files/devicelab-aera/patches-draft/0013-*`, syntax-checked,
+  applies after 0001-0012; not yet built.
+
+## D4. logd aborts every few seconds: no task_profiles.json in the ramdisk
+
+```
+logd: libprocessgroup: Failed to read task profiles from /etc/task_profiles.json
+logd: libprocessgroup: Failed to find SCHED_SP_BACKGROUND task profile
+logd: failed to set background scheduling policy: No such file or directory
+init: Service 'logd' (pid 856) received signal 6
+```
+(job log of run `runs/20261001T171434Z-aera-cf-recovery-36894820751`, Logs step; 59 aborts in `kernel.log`)
+
+- Cause: `task_profiles.json` is a required module only under
+  `TW_INCLUDE_CRYPTO`, and even then nothing copies it into the recovery
+  root (the `cp` in `prebuilt/Android.mk` is commented out). The ramdisk has
+  an empty `/system/etc/task_profiles/` directory instead.
+- Effect: no logcat in recovery, init restarts logd forever.
+- Upstream fix (draft): require it on every build and copy it to
+  `/system/etc/task_profiles.json`. `patches-draft/0014-*`; not yet built.
+
+## Lab gaps (devicelab, not AERA yet)
+
+- Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
+  not reach the counter: three taps on its + leave 0 (`aera-counter/06-after.png`).
+  Not yet known whether minuitwrp ignores the device or the injected events.
+- `flutter_p0g run --aera` gets the VM service URL and then `flutter attach`
+  says `Target file "lib/main.dart" not found.` though it runs in a fresh
+  `flutter create` app (`flutter_p0g-run.log`). Reported to flutter_p0g.
+
 ## D-cf1 (devicelab, not AERA). adbd stops at `sys.usb.config=none`
 
 AERA (TWRP) sets `sys.usb.config` to `none` at start; init.rc stops adbd,
