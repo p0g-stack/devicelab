@@ -23,11 +23,22 @@ if [ "${1:-}" = build ]; then
   # post-fs-data, the way a metamodule (or Magisk) would.
   cat >"$D/post-fs-data.sh" <<'S'
 #!/system/bin/sh
-MODDIR=${0%/*}
+# Overlay first; when that fails (it did on the AVD, exit 255), Magisk's
+# "magic mount": a tmpfs holding bind mounts of every original entry plus
+# ours, bound over /product/app.
+MODDIR=${0%/*}; L=/data/local/tmp/app-plane-mount.log
 chcon -R u:object_r:system_file:s0 "$MODDIR/system"
-mount -t overlay overlay -o "lowerdir=$MODDIR/system/product/app:/product/app" /product/app \
-  && echo "overlay ok" >/data/local/tmp/app-plane-mount.log \
-  || echo "overlay failed: $?" >/data/local/tmp/app-plane-mount.log
+if mount -t overlay overlay -o "lowerdir=$MODDIR/system/product/app:/product/app" /product/app 2>>$L; then
+  echo "overlay ok" >>$L
+else
+  echo "overlay failed: $?" >>$L
+  T=/dev/app_plane_app; mkdir -p $T
+  mount -t tmpfs -o mode=755 tmpfs $T 2>>$L && chcon u:object_r:system_file:s0 $T
+  for e in /product/app/*; do n=${e##*/}; mkdir $T/$n; mount --bind $e $T/$n 2>>$L; done
+  mkdir $T/WebuiTermuxApi; mount --bind "$MODDIR/system/product/app/WebuiTermuxApi" $T/WebuiTermuxApi 2>>$L
+  chcon u:object_r:system_file:s0 $T/*
+  mount --bind $T /product/app 2>>$L && echo "magic mount ok" >>$L || echo "magic mount failed: $?" >>$L
+fi
 S
   cat >"$D/service.sh" <<'S'
 #!/system/bin/sh
@@ -41,7 +52,7 @@ S
 fi
 
 : >"$J"
-rec mount "$(adb shell "cat /data/local/tmp/app-plane-mount.log 2>&1; ls -laZ /product/app/WebuiTermuxApi/ 2>&1; grep -E 'product|modules' /proc/mounts | head -5" | tr -d '\r' | js)"
+rec mount "$(adb shell "cat /data/local/tmp/app-plane-mount.log 2>&1; ls -laZ /product/app/WebuiTermuxApi/ 2>&1; grep -E 'product|modules|app_plane' /proc/mounts | head -12" | tr -d '\r' | js)"
 rec package "$(adb shell "pm path $PKG; dumpsys package $PKG | grep -E 'codePath|flags=|privateFlags|versionName|userId' | head -8" | tr -d '\r' | js)"
 UID_=$(adb shell "stat -c %u /data/data/$PKG 2>/dev/null" | tr -d '\r')
 # adb-root listener (u:r:su) next to the module's one.
