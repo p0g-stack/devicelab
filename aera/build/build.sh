@@ -103,6 +103,8 @@ ls "$p"/AERA*.zip "$p"/AERA*.img 2>/dev/null | while read -r f; do cp "$f" "$out
   echo "android_manifest $MANIFEST_REV"
   echo "bootable/recovery $(git -C bootable/recovery rev-parse HEAD)"
   echo "patches $(cd "$PATCHES" 2>/dev/null && find . -name '*.patch' | sort | xargs -r sha256sum | sha256sum | cut -c1-16)"
+  echo "patch-source $(cat "$PATCHES"/*/*/SOURCE "$PATCHES"/*/SOURCE 2>/dev/null | head -1)"
+  (cd "$PATCHES" 2>/dev/null && find . -name '*.patch' | sort | sed 's#^\./#patch #')
   echo "devicelab $(git -C "$here" rev-parse HEAD 2>/dev/null)"
   echo "built $(date -u +%FT%TZ) on $(hostname)"
 } > "$out/BUILD-INFO"
