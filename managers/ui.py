@@ -6,6 +6,12 @@
                                whose text (or content-desc) contains <text>
   ui.py has <text>             exit 0 if some node's text or desc contains <text>
   ui.py switch [n]             tap the n-th (default 1st) checkable node (a switch)
+  ui.py tapxy <x> <y>          tap a point given on a 320x640 reference screen (scaled)
+  ui.py type <text>            type text into the focused field
+  ui.py scroll                 swipe up one page
+UI_EXACT=1 makes tap/has match whole text only (so "Next" won't hit "KernelSU Next").
+Compose lists in some managers (KernelSU 3.3.0's Module and Superuser tabs)
+expose no nodes to uiautomator; those are driven by search box + tapxy.
 tap and has keep re-dumping for up to UI_WAIT seconds (default 12) until the
 node shows up, and dismiss "isn't responding" dialogs with Wait on the way
 (the emulator renders slowly; a dump taken too early has an empty list).
@@ -36,8 +42,19 @@ def walk(root):
     parent = {c: p for p in root.iter() for c in p}
     return parent
 
+def size():
+    m = re.search(r"(\d+)x(\d+)", adb("shell", "wm", "size").splitlines()[-1])
+    return int(m.group(1)), int(m.group(2))
+
 def main():
     cmd = sys.argv[1]
+    if cmd == "tapxy":
+        w, h = size(); x, y = int(sys.argv[2]) * w // 320, int(sys.argv[3]) * h // 640
+        adb("shell", "input", "tap", str(x), str(y)); print(f"ui: tapped {x},{y}"); return 0
+    if cmd == "type":
+        adb("shell", "input", "text", sys.argv[2].replace(" ", "%s")); return 0
+    if cmd == "scroll":
+        w, h = size(); adb("shell", "input", "swipe", str(w // 2), str(h * 3 // 4), str(w // 2), str(h // 4), "300"); return 0
     root = dump(sys.argv[2] if cmd == "dump" and len(sys.argv) > 2 else None)
     if cmd == "dump":
         for n in root.iter("node"):
@@ -52,8 +69,12 @@ def main():
         n = sw[k - 1]; adb("shell", "input", "tap", *map(str, center(n)))
         print(f"ui: tapped switch {k} ({label(n)[:60]!r}, was checked={n.get('checked')})"); return 0
     want = sys.argv[2]
-    find = lambda r, w: next((n for n in r.iter("node") if w == (n.get("text") or "") or w == (n.get("content-desc") or "")), None) \
-        or next((n for n in r.iter("node") if w in (n.get("text") or "") or w in (n.get("content-desc") or "")), None)
+    exact = os.environ.get("UI_EXACT") == "1"
+    def find(r, w):
+        n = next((n for n in r.iter("node") if w == (n.get("text") or "") or w == (n.get("content-desc") or "")), None)
+        if n is None and not exact:
+            n = next((n for n in r.iter("node") if w in (n.get("text") or "") or w in (n.get("content-desc") or "")), None)
+        return n
     end = time.time() + float(os.environ.get("UI_WAIT", "12"))
     while True:
         hit = find(root, want)

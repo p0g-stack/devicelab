@@ -27,12 +27,21 @@ fi
 adb exec-out screencap -p >"$O-intent.png"
 adb logcat -d 2>/dev/null | grep -v -E 'nativeloader|WindowManager' | tail -1500 >"$O-intent-logcat.txt"
 echo "intent path: no page; manager log:"; grep -E " $(adb shell pidof "$PKG" | tr -d '\r' | awk '{print $1}') " "$O-intent-logcat.txt" | tail -25
-# Manager UI path.
-adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 4
-$UI tap Module || $UI tap Modules; sleep 3
-$UI dump "$O-modules.xml"; adb exec-out screencap -p >"$O-modules.png"
-for want in WebUI "Web UI" Open; do $UI tap "$want" && break; done || $UI tap "$NAME"
-if wait_page 10; then adb exec-out screencap -p >"$O-ui.png"; echo "opened: ui"; exit 0; fi
+# Manager UI path. KernelSU 3.3.0's module list exposes no uiautomator nodes,
+# so: Module tab, type the name into the search box, tap the first card's
+# Open button (positions on the 320x640 reference screen).
+adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 5
+UI_EXACT=1 UI_WAIT=30 $UI tap Module || $UI tap Modules; sleep 6
+adb exec-out screencap -p >"$O-modules.png"
+$UI tapxy 160 152; sleep 1; $UI type "$NAME"; sleep 1; sleep 3
+adb exec-out screencap -p >"$O-search.png"
+$UI tapxy 68 306
+if wait_page 12; then
+  adb exec-out screencap -p >"$O-ui.png"
+  # How the manager itself starts its WebUI (compare with the intent path).
+  adb shell dumpsys activity activities | grep -E -A4 'Hist.*WebUI|intent=.*WebUI' | head -20 | tr -d '\r' | tee "$O-ui-intent.txt"
+  echo "opened: ui"; exit 0
+fi
 $UI dump "$O-after.xml"; adb exec-out screencap -p >"$O-after.png"
 adb logcat -d 2>/dev/null | grep -v -E 'nativeloader|WindowManager' | tail -1500 >"$O-ui-logcat.txt"
 echo "opened: none"; exit 1

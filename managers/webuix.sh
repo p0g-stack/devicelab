@@ -22,9 +22,11 @@ log "activities: $(adb shell dumpsys package $PKG | grep -o "$PKG/[A-Za-z0-9_.]*
 adb shell /data/adb/ksud profile --help >"$OUT/ksud-profile-help.txt" 2>&1
 granted=no
 adb shell am force-stop $KSU; adb shell monkey -p $KSU -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 4
-$UI tap Superuser; sleep 3; $UI dump "$OUT/webuix-ksu-superuser.xml" >/dev/null
+UI_EXACT=1 UI_WAIT=30 $UI tap Superuser; sleep 8
 adb exec-out screencap -p >"$OUT/webuix-ksu-superuser.png"
-if $UI tap "$PKG"; then
+# The Superuser list exposes no nodes either: search, tap the first row.
+$UI tapxy 160 152; sleep 1; $UI type "WebUI X"; sleep 3
+if $UI tapxy 160 218; then
   sleep 3; $UI dump "$OUT/webuix-ksu-profile.xml"; adb exec-out screencap -p >"$OUT/webuix-ksu-profile.png"
   # The App Profile screen: its first switch is Superuser.
   $UI switch 1 && sleep 2 && granted=ui
@@ -36,11 +38,16 @@ adb shell input keyevent KEYCODE_HOME
 # First launch: walk through any onboarding, keep what it shows.
 adb shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 6
 # Onboarding (v438): "Select your Platform" list, then Next / Continue.
-$UI tap KernelSU && sleep 1
-for i in 1 2 3 4; do
+export UI_EXACT=1
+UI_WAIT=20 $UI tap KernelSU && sleep 1
+for i in 1 2 3 4 5; do
   adb exec-out screencap -p >"$OUT/webuix-start-$i.png"; $UI dump "$OUT/webuix-start-$i.xml" | head -20
-  UI_WAIT=3 $UI tap Grant || UI_WAIT=1 $UI tap Allow || UI_WAIT=1 $UI tap Continue || UI_WAIT=1 $UI tap Next || UI_WAIT=1 $UI tap "Get started" || UI_WAIT=1 $UI tap OK || UI_WAIT=1 $UI tap Done || break
-  sleep 3
+  hit=no
+  for b in Next Continue Grant Allow "Get started" Done OK Finish; do UI_WAIT=1 $UI tap "$b" && { hit=yes; break; }; done
+  [ $hit = yes ] || { $UI scroll; sleep 2; }
+  sleep 2
+  UI_WAIT=2 $UI has "Select your Platform" || [ $i -lt 3 ] || break
 done
+unset UI_EXACT
 log "WebUI X platform after onboarding: $(adb shell "ls /data/data/$PKG/files/datastore/ 2>/dev/null; strings /data/data/$PKG/files/datastore/*.pb 2>/dev/null | head -20" | tr -d '\r' | tr '\n' ' ')"
 log "devtools sockets: $(adb shell cat /proc/net/unix | grep -o '@[a-z_]*devtools_remote[0-9_]*' | tr '\n' ' ')"
