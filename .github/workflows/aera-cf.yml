@@ -23,6 +23,7 @@ jobs:
     env:
       LAB_OUT: ${{ github.workspace }}/out
       CF_HOME: /mnt/cf
+      P0G_TOKEN: ${{ secrets.P0G_READ_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - name: KVM and disk
@@ -95,6 +96,27 @@ jobs:
         run: |
           set -o pipefail
           aera/cuttlefish/aera-open.sh aera-counter "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 | tee -a "$LAB_OUT/job.log"
+      # flutter_p0g is private: needs a devicelab secret P0G_READ_TOKEN that can read it.
+      - name: flutter_p0g checkout
+        id: p0g
+        if: steps.aera.outputs.tag != '' && env.P0G_TOKEN != ''
+        run: |
+          git clone -q --depth 1 "https://x-access-token:$P0G_TOKEN@github.com/p0g-stack/flutter_p0g" "$RUNNER_TEMP/flutter_p0g"
+          echo "rev=$(git -C "$RUNNER_TEMP/flutter_p0g" rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+      - uses: subosito/flutter-action@v2
+        if: steps.p0g.outputs.rev != ''
+        with: { flutter-version: 3.47.5, channel: stable }
+      - name: flutter_p0g install --ram --open (same package, against the same AERA)
+        if: steps.p0g.outputs.rev != ''
+        run: |
+          set -o pipefail
+          export PATH=$CF_HOME/bin:$PATH
+          cd "$RUNNER_TEMP/flutter_p0g" && flutter pub get >/dev/null
+          echo "flutter_p0g ${{ steps.p0g.outputs.rev }}" | tee "$LAB_OUT/flutter_p0g-install.log"
+          dart run bin/flutter_p0g.dart devices 2>&1 | tee -a "$LAB_OUT/flutter_p0g-install.log" || true
+          dart run bin/flutter_p0g.dart install -d 0.0.0.0:6520 --ram --open "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 | tee -a "$LAB_OUT/flutter_p0g-install.log" || true
+          adb -s 0.0.0.0:6520 shell 'ls -la /tmp/aera/plugins /tmp/aera/plugins/counter' 2>&1 | tee -a "$LAB_OUT/flutter_p0g-install.log"
+          sleep 20; cd "$GITHUB_WORKSPACE" && aera/cuttlefish/aera-shot.sh flutter_p0g-opened || true
       - name: Logs
         if: always()
         run: |
