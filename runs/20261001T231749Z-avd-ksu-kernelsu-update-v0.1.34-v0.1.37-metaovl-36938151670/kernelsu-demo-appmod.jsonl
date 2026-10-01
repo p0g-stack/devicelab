@@ -1,0 +1,54 @@
+{"check":"app","result":"ls: /product/app/WebuiApi_demo/: No such file or directory"}
+{"check":"mounts","result":"ls: /data/adb/metamodule: No such file or directory\ntmpfs /product/app tmpfs rw,seclabel,relatime,mode=755 0 0\nCalendarGooglePrebuilt Camera2 Chrome Chrome-Stub Drive GoogleContacts GoogleTTS LatinIMEGooglePrebuilt LicenseChecker Maps MarkupGoogle_v2 ModuleMetadataGoogle NexusWallpapersStubPrebuilt2018 Photos PixelThemesStub PrebuiltDeskClockGoogle PrebuiltGmail PrebuiltGoogleAdservicesTvp PrebuiltGoogleTelemetryTvp SoundPickerPrebuilt TrichromeLibrary TrichromeLibrary-Stub WebViewGoogle WebViewGoogle-Stub WebuiTermuxApi YouTube YouTubeMusicPrebuilt talkback"}
+{"check":"app-label","result":"No activities found"}
+{"check":"module-config","result":"manage module configuration\n\nUsage: ksud module config [OPTIONS] <COMMAND>\n\nCommands:\n  get     Get a config value\n  set     Set a config value\n  list    List all config entries\n  delete  Delete a config entry\n  clear   Clear all config entries\n  help    Print this message or the help of the given subcommand(s)\n\n-- files:\ntotal 32\ndrwxr-xr-x 2 root root 4096 2026-10-01 23:05 .\ndrwxr-xr-x 3 root root 4096 2026-10-01 23:00 ..\n-rw-r--r-- 1 root root   36 2026-10-01 23:00 persist.config\n-rw------- 1 root root  284 2026-10-01 23:05 tmp.config\n== /data/adb/ksu/module_configs/demo/persist.config\nMUSK\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u000f\u0000\u0000\u0000webui.installed\u0001\u0000\u0000\u00001\n== /data/adb/ksu/module_configs/demo/tmp.config\nMUSK\u0001\u0000\u0000\u0000\u0002\u0000\u0000\u0000\n\u0000\u0000\u0000webui.boot$\u0000\u0000\u0000cfc53b98-8976-43ce-932e-a4fcb0c5042b\u0000\u0000\u0000webui.session\udcc5\u0000\u0000\u0000{\"protocol\":1,\"version\":\"0.2.0\",\"port\":44801,\"token\":\"ArdBj7CR-rk4ud5wZOqwk1i_LYlTgrcXZjPT8Ok4hfA\",\"pid\":10068,\"boot\":\"cfc53b98-8976-43ce-932e-a4fcb0c5042b\",\"started\":\"2026-10-01T23:05:28.366904Z\"}\n-- ksud get:\n1\nwebui.installed=1\nwebui.boot=cfc53b98-8976-43ce-932e-a4fcb0c5042b\nwebui.session={\"protocol\":1,\"version\":\"0.2.0\",\"port\":44801,\"token\":\"ArdBj7CR-rk4ud5wZOqwk1i_LYlTgrcXZjPT8Ok4hfA\",\"pid\":10068,\"boot\":\"cfc53b98-8976-43ce-932e-a4fcb0c5042b\",\"started\":\"2026-10-01T23:05:28.366904Z\"}"}
+{"check":"module-dirs","result":"/data/adb/demo:\ntotal 24\ndrwx------ 3 root root 4096 2026-10-01 23:05 .\ndrwx------ 6 root root 4096 2026-10-01 23:05 ..\ndrwx------ 2 root root 4096 2026-10-01 23:05 tmp\n\n/data/adb/demo/tmp:\ntotal 16\ndrwx------ 2 root root 4096 2026-10-01 23:05 .\ndrwx------ 3 root root 4096 2026-10-01 23:05 .."}
+{"check":"open","result":"opened: intent-token"}
+{"check":"tap-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11871","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"tap-plugins","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11871","value":"tapped Plugins at 267,536 size 53x80 role tab tappable"}}
+{"check":"plugins","result":The app calls share_plus and permission_handler as on any platform. Running in a WebUI host, so their *_webui packages answer.
+share_plus
+On WebUI: share_plus_webui: Android's share sheet, opened by the module's own app
+Share text
+permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: denied}
+{"check":"tap-share","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11871","value":"tapped Share text at 24,258 size 112x48 role button tappable"}}
+{"check":"share-top","result":"com.google.android.gm/.welcome.WelcomeTourActivity"}
+{"check":"app-process","result":""}
+{"check":"share-log","result":"10-01 23:11:29.098 11871 11871 I chromium: [INFO:CONSOLE(28291)] \"2026-10-01T23:11:29.096 INFO ui.plugins: share: unavailable\", source: https://mui.kernelsu.org/main.dart.js (28291)\n10-01 23:11:29.901  6048  6238 D ShortcutService: Package com.google.android.gm has 1 manifest shortcut(s), and 1 share target(s)\n10-01 23:11:30.244  6048  6238 D ShortcutService: Package com.google.android.gm has 1 manifest shortcut(s), and 1 share target(s)\n10-01 23:11:31.248  6048  6238 D ShortcutService: Package com.google.android.gm has 1 manifest shortcut(s), and 1 share target(s)\n10-01 23:11:37.342 12418 12418 W app_process: ClassLoaderContext shared library size mismatch. Expected=2, found=0 (PCL[]{PCL[/system/framework/android.test.base.jar*724373495]#PCL[/system/framework/android.test.mock.jar*1452759902]} | PCL[])"}
+{"check":"share-result","result":share_plus
+On WebUI: share_plus_webui: Android's share sheet, opened by the module's own app
+Share result: unavailable}
+{"check":"cam-deny-1-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11871","value":"tapped Request camera at 24,470 size 150x48 role button tappable"}}
+{"check":"cam-deny-1-top","result":"me.weishu.kernelsu/.ui.webui.WebUIActivity"}
+{"check":"cam-deny-1-dialog","result":"Back Back\nShare text\nRequest camera\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-deny-1-press","result":"ui: no node with 'Don'"}
+{"check":"cam-deny-1-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: permanentlyDenied}
+{"check":"cam-deny-1-perm","result":""}
+{"check":"cam-deny-2-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11871","value":"tapped Request camera at 24,470 size 150x48 role button tappable"}}
+{"check":"cam-deny-2-top","result":"me.weishu.kernelsu/.ui.webui.WebUIActivity"}
+{"check":"cam-deny-2-dialog","result":"Back Back\nShare text\nRequest camera\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-deny-2-press","result":"ui: no node with 'Don'"}
+{"check":"cam-deny-2-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: permanentlyDenied}
+{"check":"cam-deny-2-perm","result":""}
+{"check":"cam-after-deny-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11871","value":"tapped Request camera at 24,470 size 150x48 role button tappable"}}
+{"check":"cam-after-deny-top","result":"me.weishu.kernelsu/.ui.webui.WebUIActivity"}
+{"check":"cam-after-deny-dialog","result":"Back Back\nShare text\nRequest camera\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-after-deny-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: permanentlyDenied}
+{"check":"cam-after-deny-perm","result":""}
+{"check":"cam-grant-tap","result":{"error":"no page target","sockets":["webview_devtools_remote_11871"],"targets":[]}}
+{"check":"cam-grant-top","result":"com.google.android.apps.nexuslauncher/.NexusLauncherActivity"}
+{"check":"cam-grant-dialog","result":"Thu, Oct 1 | Thu, Oct 1\nThu, Oct 1 | Thu, Oct 1\nPhone | Phone\nMessages | Messages\nKernelSU | Predicted app: KernelSU\nChrome | Chrome\nCamera | Camera\nGoogle search | Google app | Voice search | Google Lens\nGoogle app\nVoice search\nGoogle Lens"}
+{"check":"cam-grant-press","result":"ui: no node with 'While using the app'"}
+{"check":"cam-grant-status","result":null}
+{"check":"cam-grant-perm","result":""}
+{"check":"clipboard","result":"no Paste button on page 6"}
+{"check":"file-pick","result":"no Pick a file button on page 6"}
+{"check":"app-settings","result":"Thu, Oct 1 | Thu, Oct 1\nThu, Oct 1 | Thu, Oct 1\nPhone | Phone\nMessages | Messages\nKernelSU | Predicted app: KernelSU\nChrome | Chrome\nCamera | Camera\nGoogle search | Google app | Voice search | Google Lens\nGoogle app\nVoice search\nGoogle Lens"}
