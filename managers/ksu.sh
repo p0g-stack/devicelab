@@ -45,6 +45,18 @@ if ! adb shell "lsmod | grep -q kernelsu"; then
 fi
 log "lsmod: $(adb shell lsmod | grep -i kernelsu | tr -d '\r')"
 
+# KernelSU 2+ leaves mounting a module's system/ to a "metamodule". Without
+# one, modules install with mount=true but nothing appears under /product
+# (seen in run 36829886877). Install the release's metamodule if it ships one.
+gh release view -R "$REPO" "$TAG" --json assets -q '.assets[].name' | tee "$OUT/ksu-release-assets.txt"
+META=$(grep -i -E '^meta.*\.zip$' "$OUT/ksu-release-assets.txt" | head -1)
+if [ -n "$META" ]; then
+  gh release download -R "$REPO" "$TAG" -D "$D" -p "$META" && adb push "$D/$META" /data/local/tmp/meta.zip >/dev/null
+  log "metamodule $META: $(adb shell /data/adb/ksud module install /data/local/tmp/meta.zip 2>&1 | tail -3 | tr -d '\r' | tr '\n' ' ')"
+else
+  log "no metamodule asset in $REPO $TAG"
+fi
+
 # Probe module, as if installed and rebooted (WebUI needs only the dir).
 adb shell "mkdir -p /data/adb/modules/devicelab_probe" 
 adb push "$HERE/modules/probe/." /data/adb/modules/devicelab_probe/ >/dev/null
