@@ -58,8 +58,8 @@ $ADB shell "rm -rf /data/data/com.termux; mkdir -p /data/data/com.termux/files"
 $ADB push "$W/termux/data/data/com.termux/files/usr" /data/data/com.termux/files/ >/dev/null
 $ADB shell "chmod -R 755 $TP/bin $TP/lib; find $TP -path '*dart-sdk/bin/*' -type f -exec chmod 755 {} +"
 TENV="env -i PATH=$TP/bin:/system/bin HOME=/data/local/tmp/lab TMPDIR=/data/local/tmp/lab PREFIX=$TP"
-dev termux-dart-version "$TENV dart --version"
-dev termux-compile-exe "cd /data/local/tmp/lab && $TENV dart compile exe probe.dart -o probe-bionic"
+dev termux-dart-version "$TENV $TP/lib/dart-sdk/bin/dart --version"
+dev termux-compile-exe "cd /data/local/tmp/lab && $TENV $TP/lib/dart-sdk/bin/dart compile exe probe.dart -o probe-bionic"
 $ADB pull /data/local/tmp/lab/probe-bionic "$W/probe-bionic" >/dev/null 2>&1 &&
   readelf -lhd "$W/probe-bionic" >"$OUT/readelf-bionic.txt" 2>&1
 dev termux-run-in-place "$TENV /data/local/tmp/lab/probe-bionic"

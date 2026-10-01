@@ -26,11 +26,23 @@ adb push "$D"/ksud-x86_64-linux-android /data/adb/ksud >/dev/null
 adb shell chmod 755 /data/adb/ksud
 log "ksud: $(adb shell /data/adb/ksud -V 2>&1 | tr -d '\r')"
 adb shell /data/adb/ksud --help >"$OUT/ksud-help.txt" 2>&1
-log "insmod: $(adb shell insmod /data/local/tmp/kernelsu.ko 2>&1 | tr -d '\r'; echo rc=$?)"
-adb shell "dmesg | grep -i -E 'kernelsu|ksu' | tail -30" | tee "$OUT/ksu-dmesg.txt"
-for stage in post-fs-data services boot-completed; do
-  log "ksud $stage: $(adb shell /data/adb/ksud $stage 2>&1 | tail -3 | tr -d '\r'; echo rc=$?)"
+for c in late-load insmod boot-info; do adb shell /data/adb/ksud $c --help >>"$OUT/ksud-help.txt" 2>&1; done
+# Plain insmod can't resolve the SELinux internals the LKM uses (they are not
+# exported); ksud loads it with kallsyms access. late-load = load + run the
+# late-load stage scripts, the supported no-boot-patch path.
+adb shell cp /data/local/tmp/kernelsu.ko /data/adb/kernelsu.ko
+for try in "late-load /data/adb/kernelsu.ko" "late-load" "insmod /data/adb/kernelsu.ko"; do
+  log "ksud $try: $(adb shell /data/adb/ksud $try 2>&1 | tail -5 | tr -d '\r'; echo rc=$?)"
+  adb shell "dmesg | grep -i kernelsu | grep -v 'Unknown symbol' | tail -5"
+  adb shell "lsmod 2>/dev/null | grep -i kernelsu" && break
 done
+adb shell "dmesg | grep -i -E 'kernelsu|ksu' | tail -40" >"$OUT/ksu-dmesg.txt"
+if ! adb shell "lsmod | grep -q kernelsu"; then
+  for stage in post-fs-data services boot-completed; do
+    log "ksud $stage: $(adb shell /data/adb/ksud $stage 2>&1 | tail -3 | tr -d '\r'; echo rc=$?)"
+  done
+fi
+log "lsmod: $(adb shell lsmod | grep -i kernelsu | tr -d '\r')"
 
 # Probe module, as if installed and rebooted (WebUI needs only the dir).
 adb shell "mkdir -p /data/adb/modules/devicelab_probe" 

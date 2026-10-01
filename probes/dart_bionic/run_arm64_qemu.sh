@@ -67,11 +67,11 @@ PY
   echo "== $1 exit $rc"; head -c 500 "$W/o"; echo; head -c 500 "$W/e"; echo
 }
 L=/data/adb/devicelab; TP=/data/data/com.termux/files/usr
-run sh-works "echo bionic sh ok; /system/bin/toybox uname -m"
-run aot-host-snapshot-termux-runtime "env -i PATH=/system/bin $L/dartaotruntime $L/probe-arm64.aot"
-run termux-compile-exe "cd $L && env -i PATH=$TP/bin:/system/bin HOME=$L TMPDIR=$L $TP/bin/dart compile exe probe.dart -o probe-bionic"
+run sh-works "echo bionic sh ok; /system/bin/toybox uname -m; ls -l /system/bin/env"
+run aot-host-snapshot-termux-runtime "PATH=/system/bin $L/dartaotruntime $L/probe-arm64.aot"
+run termux-compile-exe "cd $L && PATH=$TP/bin:/system/bin HOME=$L TMPDIR=$L $TP/lib/dart-sdk/bin/dart compile exe probe.dart -o probe-bionic"
 sudo mv "$R/data/data/com.termux" "$R/data/data/com.termux.off"
-run bionic-exe-no-termux "env -i PATH=/system/bin $L/probe-bionic"
+run bionic-exe-no-termux "PATH=/system/bin TMPDIR=$L $L/probe-bionic"
 ls -l "$R$L" | tee "$OUT/sizes-arm64.txt"
 python3 - "$RES" "$OUT/dart-bionic-arm64.json" "$API" "$TVER" <<'PY'
 import json, sys, datetime
