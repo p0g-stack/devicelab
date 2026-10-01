@@ -1,0 +1,90 @@
+ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF64
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              DYN (Shared object file)
+  Machine:                           AArch64
+  Version:                           0x1
+  Entry point address:               0x26e000
+  Start of program headers:          64 (bytes into file)
+  Start of section headers:          5682592 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               64 (bytes)
+  Size of program headers:           56 (bytes)
+  Number of program headers:         11
+  Size of section headers:           64 (bytes)
+  Number of section headers:         28
+  Section header string table index: 27
+
+Program Headers:
+  Type           Offset             VirtAddr           PhysAddr
+                 FileSiz            MemSiz              Flags  Align
+  PHDR           0x0000000000000040 0x0000000000000040 0x0000000000000040
+                 0x0000000000000268 0x0000000000000268  R      0x8
+  INTERP         0x00000000000002a8 0x00000000000002a8 0x00000000000002a8
+                 0x0000000000000015 0x0000000000000015  R      0x1
+      [Requesting program interpreter: /system/bin/linker64]
+  LOAD           0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x000000000025dffc 0x000000000025dffc  R      0x10000
+  LOAD           0x000000000025e000 0x000000000026e000 0x000000000026e000
+                 0x00000000002e2270 0x00000000002e2270  R E    0x10000
+  LOAD           0x0000000000540270 0x0000000000560270 0x0000000000560270
+                 0x000000000002aa30 0x000000000002ad90  RW     0x10000
+  LOAD           0x000000000056aca0 0x000000000059aca0 0x000000000059aca0
+                 0x0000000000000710 0x0000000000006f78  RW     0x10000
+  DYNAMIC        0x0000000000569338 0x0000000000589338 0x0000000000589338
+                 0x00000000000001a0 0x00000000000001a0  RW     0x8
+  GNU_RELRO      0x0000000000540270 0x0000000000560270 0x0000000000560270
+                 0x000000000002aa30 0x000000000002ad90  R      0x1
+  GNU_EH_FRAME   0x00000000001d67b0 0x00000000001d67b0 0x00000000001d67b0
+                 0x0000000000013c04 0x0000000000013c04  R      0x4
+  GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
+                 0x0000000000000000 0x0000000000000000  RW     0x0
+  NOTE           0x00000000000002c0 0x00000000000002c0 0x00000000000002c0
+                 0x00000000000000bc 0x00000000000000bc  R      0x4
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .interp 
+   02     .interp .note.android.ident .note.gnu.build-id .dynsym .gnu.version .gnu.version_r .gnu.hash .dynstr .rela.dyn .rela.plt .rodata .gcc_except_table .eh_frame_hdr .eh_frame 
+   03     .text __lcxx_override .plt 
+   04     .data.rel.ro .init_array .dynamic .got .got.plt .relro_padding 
+   05     .data .bss 
+   06     .dynamic 
+   07     .data.rel.ro .init_array .dynamic .got .got.plt .relro_padding 
+   08     .eh_frame_hdr 
+   09     
+   10     .note.android.ident .note.gnu.build-id 
+
+Dynamic section at offset 0x569338 contains 26 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libdl.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [liblog.so]
+ 0x000000000000001e (FLAGS)              BIND_NOW
+ 0x000000006ffffffb (FLAGS_1)            Flags: NOW
+ 0x0000000000000015 (DEBUG)              0x0
+ 0x0000000000000007 (RELA)               0x6f00
+ 0x0000000000000008 (RELASZ)             375768 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x000000006ffffff9 (RELACOUNT)          15629
+ 0x0000000000000017 (JMPREL)             0x62ad8
+ 0x0000000000000002 (PLTRELSZ)           6048 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x58a4a8
+ 0x0000000000000014 (PLTREL)             RELA
+ 0x0000000000000006 (SYMTAB)             0x380
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000005 (STRTAB)             0x47cc
+ 0x000000000000000a (STRSZ)              10034 (bytes)
+ 0x000000006ffffef5 (GNU_HASH)           0x3f90
+ 0x0000000000000019 (INIT_ARRAY)         0x589210
+ 0x000000000000001b (INIT_ARRAYSZ)       296 (bytes)
+ 0x000000006ffffff0 (VERSYM)             0x3a88
+ 0x000000006ffffffe (VERNEED)            0x3f20
+ 0x000000006fffffff (VERNEEDNUM)         3
+ 0x0000000000000000 (NULL)               0x0
