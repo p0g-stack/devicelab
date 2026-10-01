@@ -25,6 +25,12 @@ text() { ev "$HELP" >/dev/null; ev 'new Promise(r => { __w.on(); setTimeout(() =
 
 ev "$HELP" >/dev/null; ev '__w.on(); "semantics on"'; sleep 2
 rec home "$(text)"; shot home
+# Manager colours: dynamic_color_webui reads /internal/colors.css (teal
+# fallback when the host does not serve it).
+rec colors-css "$(ev 'fetch("/internal/colors.css").then(async r => ({status: r.status, type: r.headers.get("content-type"), body: (await r.text()).slice(0, 1500)})).catch(e => ({error: String(e)}))')"
+# Rust wasm should load on the first Rust call, not at startup.
+WASM='({wasm: performance.getEntriesByType("resource").filter(e => /\.wasm/.test(e.name)).map(e => ({name: e.name.split("/").slice(-2).join("/"), start: Math.round(e.startTime), dur: Math.round(e.duration)})), marks: performance.getEntriesByType("mark").map(e => ({name: e.name, t: Math.round(e.startTime)})), measures: performance.getEntriesByType("measure").map(e => ({name: e.name, t: Math.round(e.startTime), dur: Math.round(e.duration)})), now: Math.round(performance.now())})'
+rec wasm-at-home "$(ev "$WASM")"
 rec tap-places "$(step Places)"; sleep 12
 rec places "$(text)"; shot places
 # The root process place is further down: scroll and read again.
@@ -38,6 +44,10 @@ rec tap-rust "$(step Rust)"; sleep 10
 rec rust "$(text)"; shot rust
 rec tap-rust-run "$(step 'Run in every place')"; sleep 20
 rec rust-ran "$(text)"; shot rust-ran
+rec wasm-after-rust "$(ev "$WASM")"
+# A second run: the one-off load should be gone.
+rec tap-rust-run-2 "$(step 'Run in every place')"; sleep 15
+rec rust-ran-2 "$(text)"; shot rust-ran-2
 rec tap-lifecycle "$(step Lifecycle)"; sleep 4
 rec tap-root-process "$(step 'root process')"; sleep 3
 rec tap-start "$(step Start)"; sleep 8
