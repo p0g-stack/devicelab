@@ -81,9 +81,10 @@ if ! echo "$rpc" | grep -q "Opening $id"; then
   for t in ${AERA_TAPS:-}; do tap "${t%,*}" "${t#*,}" launcher; done
 fi
 sleep "${APP_WAIT:-20}"; shot opened
-# Counter's + (bottom right, 16dp margin) unless APP_TAPS says otherwise.
+# Counter's + (bottom right, 16dp margin) unless APP_TAPS says otherwise: the first
+# is a raw diagnostic tap, then one inside the edge zone check (D5), two in it.
 read -r W H < <(python3 -c "import struct,sys;d=open(sys.argv[1],'rb').read(24);print(*struct.unpack('>II',d[16:24]))" "$(ls "$OUT"/*.png | tail -1)" 2>/dev/null || echo "720 1280")
-set -- ${APP_TAPS:-$((W - 100)),$((H - 70)) $((W - 100)),$((H - 70)) $((W - 100)),$((H - 70))}
+set -- ${APP_TAPS:-$((W - 100)),$((H - 70)) $((W - 100)),$((H - 70)) $((W - 40)),$((H - 70)) $((W - 40)),$((H - 70))}
 # One raw evdev tap first (recorded with getevent), then AERA Remote.
 TAP_WAIT=1 tap "${1%,*}" "${1#*,}" raw; shift
 remote_start
