@@ -41,3 +41,9 @@ adb shell input keyevent KEYCODE_HOME; sleep 5
 "$HERE/managers/back_to_app.sh"; sleep 4
 rec lifecycle-after-home "$(text)"; shot lifecycle-after-home
 rec root-process "$(adb shell "ps -A -o USER,UID,LABEL,PID,NAME | grep -E 'demo|dartaot'" | tr -d '\r' | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))')"
+# block_devices=false in the root process place: an SELinux deny or a Dart
+# open failure? The same probes as adb root (u:r:su) and as uid 0 in
+# u:r:ksu:s0, the root launcher's domain (via sockprobe -as-ctx).
+[ -n "${SOCKPROBE:-}" ] && adb push "$SOCKPROBE" /data/local/tmp/sockprobe >/dev/null && adb shell chmod 755 /data/local/tmp/sockprobe
+B=$(adb shell "ls /sys/class/block | head -1" | tr -d '\r')
+rec block-devices "$(adb shell "ls /sys/class/block | head -8; ls -lZ /dev/block | head -12; echo '-- su:'; head -c1 /dev/block/$B | od -c | head -1; echo '-- ksu:'; /data/local/tmp/sockprobe -as-uid 0 -as-ctx u:r:ksu:s0 /system/bin/sh -c 'cat /proc/self/attr/current; echo; for n in \$(ls /sys/class/block | head -4); do f=/dev/block/\$n; [ -e \$f ] || f=/dev/\$n; printf \"%s: \" \$f; head -c1 \$f >/dev/null && echo ok; done' 2>&1; echo '-- avc:'; dmesg | grep avc | grep -E 'blk_file|block_device' | tail -8" | tr -d '\r' | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))')"
