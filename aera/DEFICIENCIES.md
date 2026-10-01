@@ -100,6 +100,26 @@ init: Service 'logd' (pid 856) received signal 6
 - FIXED on image e54e216 (run `runs/20261001T175801Z-aera-cf-recovery-36899838494`): `init.svc.logd=running`, logcat
   works in recovery.
 
+## D5. The Back-gesture edge swallows taps on a Host API 3 plugin's edge controls
+
+`PixelPluginHandlePointer` (patch 0006, `aeraui/scenes/pixel_plugin_scene.cpp`)
+ignores every touch that STARTS within `max(72, width / 20)` px of a side
+edge, so it can serve as AERA's Back swipe. On a 720 px screen that is
+x < 72 or x >= 648. A stock Flutter FloatingActionButton (56 dp, 16 dp
+margin, 1.75 px/dp) spans x 594-692, so taps on its right half never reach
+the app; any edge-aligned control (icon buttons in an AppBar, sliders,
+drawers' edge swipe) loses its outer part too.
+
+- Repro: counter .aerap open in AERA, tap at 650,1278 (inside the +): the
+  count stays 0 (run `runs/20261001T171434Z-aera-cf-recovery-36894820751`,
+  `aera-counter/06-after.png`).
+- Suggested upstream fix: decide on movement, not on the down point. Send
+  TOUCH_DOWN at once; only if the contact then moves inward past a slop
+  (e.g. 16 dp) mostly horizontally, cancel it in the plugin (TOUCH_UP or a
+  cancel kind) and treat it as Back. Or narrow the zone to a few dp as
+  Android's gesture nav does, with the plugin able to opt out (Android's
+  systemGestureExclusionRects).
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
@@ -108,8 +128,8 @@ init: Service 'logd' (pid 856) received signal 6
   (protocol B, BTN_TOUCH, ABS_X/Y). AERA's own UI does act on them: in run
   `runs/20261001T181707Z-aera-cf-recovery-36903585783` the open answered
   late, the counter was not up yet, and the same tap at 650,1278 selected
-  the Wipe tab (`aera-counter/03-raw.png`). So touches stop between AERA's
-  pixel-plugin scene (patch 0006) and the plugin. Under investigation.
+  the Wipe tab (`aera-counter/03-raw.png`). The counter missed them
+  because of D5 (the lab tapped at x=650); taps now go to x=W-100.
 - `flutter_p0g run --aera`: the attach error was this workflow's
   `flutter create -q` (no such flag). With that fixed (a8b887d), the second
   `plugin open` once printed nothing until the 300 s timeout; on the next

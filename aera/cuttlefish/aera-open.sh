@@ -83,7 +83,7 @@ fi
 sleep "${APP_WAIT:-20}"; shot opened
 # Counter's + (bottom right, 16dp margin) unless APP_TAPS says otherwise.
 read -r W H < <(python3 -c "import struct,sys;d=open(sys.argv[1],'rb').read(24);print(*struct.unpack('>II',d[16:24]))" "$(ls "$OUT"/*.png | tail -1)" 2>/dev/null || echo "720 1280")
-set -- ${APP_TAPS:-$((W - 70)),$((H - 70)) $((W - 70)),$((H - 70)) $((W - 70)),$((H - 70))}
+set -- ${APP_TAPS:-$((W - 100)),$((H - 70)) $((W - 100)),$((H - 70)) $((W - 100)),$((H - 70))}
 # One raw evdev tap first (recorded with getevent), then AERA Remote.
 TAP_WAIT=1 tap "${1%,*}" "${1#*,}" raw; shift
 remote_start
