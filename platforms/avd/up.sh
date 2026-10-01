@@ -25,5 +25,10 @@ until [ "$("$ADB" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 
   (( SECONDS - t0 > 600 )) && fail "boot timeout"
   sleep 3
 done
-"$ADB" root >/dev/null; sleep 2; "$ADB" wait-for-device
+# adb root restarts adbd, so the first call often reports "closed".
+for _ in 1 2 3 4 5; do
+  "$ADB" root >/dev/null 2>&1 || true; sleep 3; timeout 60 "$ADB" wait-for-device
+  [ "$("$ADB" shell id -u | tr -d '\r')" = 0 ] && break
+done
+[ "$("$ADB" shell id -u | tr -d '\r')" = 0 ] || fail "adb root failed"
 echo "booted in $((SECONDS - t0))s: $("$ADB" shell getprop ro.build.fingerprint | tr -d '\r')"

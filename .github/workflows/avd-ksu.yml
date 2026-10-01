@@ -10,6 +10,8 @@ on:
   push:
     branches: [main]
     paths: [".github/workflows/avd-ksu.yml", "managers/**", "checks/**", "driver/**", "modules/**", "tools/labserver/**"]
+permissions:
+  contents: write
 jobs:
   ksu:
     runs-on: ubuntu-24.04
@@ -32,20 +34,19 @@ jobs:
       - name: Boot AVD
         run: |
           echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
-          PATH=$ANDROID_HOME/platform-tools:$PATH platforms/avd/up.sh "${{ inputs.api || '35' }}" google_apis x86_64
+          set -o pipefail; PATH=$ANDROID_HOME/platform-tools:$PATH platforms/avd/up.sh "${{ inputs.api || '35' }}" google_apis x86_64 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Manager
-        run: managers/ksu.sh "$FLAVOR" "${{ inputs.tag }}"
+        run: managers/ksu.sh "$FLAVOR" "${{ inputs.tag }}" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: WebUI checks
         run: |
           case $FLAVOR in
             kernelsu) PKG=me.weishu.kernelsu;; next) PKG=com.rifsxd.ksunext;;
           esac
-          checks/webui_host.sh "$FLAVOR" -n "$PKG/.ui.webui.WebUIActivity" -e id devicelab_probe -e name devicelab
+          checks/webui_host.sh "$FLAVOR" -n "$PKG/.ui.webui.WebUIActivity" -e id devicelab_probe -e name devicelab 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Result
         if: always()
         run: cat "$LAB_OUT"/*.json 2>/dev/null; tail -50 "$LAB_OUT"/emulator.log 2>/dev/null | tail -5 || true
-      - uses: actions/upload-artifact@v4
+      - name: Publish to lab-results
         if: always()
-        with:
-          name: ksu-${{ env.FLAVOR }}
-          path: out/
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: tools/publish.sh "${{ github.workflow }}-${{ github.job }}"

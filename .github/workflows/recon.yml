@@ -7,10 +7,15 @@ on:
   push:
     branches: [main]
     paths: [".github/workflows/recon.yml"]
+permissions:
+  contents: write
 jobs:
   recon:
     runs-on: ubuntu-24.04
+    env:
+      LAB_OUT: ${{ github.workspace }}/out
     steps:
+      - uses: actions/checkout@v4
       - name: Release assets and workflows
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
@@ -54,5 +59,7 @@ jobs:
           PY
             (cat "$d/source.properties"; grep -h -m3 'ro.build' "$d"/build.prop 2>/dev/null) | tee -a out/recon.txt
           done
-      - uses: actions/upload-artifact@v4
-        with: { name: recon, path: out/ }
+      - name: Publish to lab-results
+        if: always()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: tools/publish.sh "${{ github.workflow }}-${{ github.job }}"

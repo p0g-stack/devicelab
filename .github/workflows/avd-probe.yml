@@ -11,6 +11,8 @@ on:
   push:
     branches: [main]
     paths: [".github/workflows/avd-probe.yml", "platforms/avd/**", "probes/dart_bionic/**"]
+permissions:
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-24.04
@@ -30,15 +32,16 @@ jobs:
       - name: Boot AVD
         run: |
           echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
-          platforms/avd/up.sh "${{ inputs.api || '35' }}" "${{ inputs.tag || 'google_apis' }}" x86_64
+          set -o pipefail; platforms/avd/up.sh "${{ inputs.api || '35' }}" "${{ inputs.tag || 'google_apis' }}" x86_64 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Probe
-        run: probes/${{ inputs.probe || 'dart_bionic' }}/run_avd.sh
+        run: probes/${{ inputs.probe || 'dart_bionic' }}/run_avd.sh 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Result
         if: always()
         run: cat "$LAB_OUT"/*.json || true
-      - uses: actions/upload-artifact@v4
+      - name: Publish to lab-results
         if: always()
-        with: { name: observations, path: out/ }
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: tools/publish.sh "${{ github.workflow }}-${{ github.job }}"
   arm64-qemu:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
@@ -48,12 +51,11 @@ jobs:
       - uses: actions/checkout@v4
       - run: sudo apt-get install -y -qq qemu-user-static binfmt-support erofs-utils >/dev/null && ls /proc/sys/fs/binfmt_misc/ | grep -i aarch64
       - name: Probe
-        run: probes/dart_bionic/run_arm64_qemu.sh 35
+        run: mkdir -p "$LAB_OUT" && probes/dart_bionic/run_arm64_qemu.sh 35 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Result
         if: always()
         run: cat "$LAB_OUT"/*.json || true
-      - uses: actions/upload-artifact@v4
+      - name: Publish to lab-results
         if: always()
-        with:
-          name: observations-arm64
-          path: out/
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: tools/publish.sh "${{ github.workflow }}-${{ github.job }}"
