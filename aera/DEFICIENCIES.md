@@ -44,11 +44,13 @@ servicemanager: Caller(pid=88,uid=0,sid=u:r:recovery:s0) Could not find android.
   (image b540be3). devicelab had overlaid AERA onto Cuttlefish's stock
   ramdisk, which declares a health HAL whose Android 17 binary then exits 1
   next to AERA's Android 16 libraries (`init: Service 'vendor.health-cuttlefish' (pid 89) exited with status 1`).
-- Cause: `recovery_utils/battery_utils.cpp` `GetBatteryInfo()` calls
-  `AServiceManager_waitForService()` with no timeout whenever the service is
-  declared, so a declared-but-dead health HAL hangs recovery startup (and
-  adbd, since the UI never comes up). The HIDL fallback and the
-  "assuming defaults" path are never reached.
+- Cause (from the source, not yet confirmed on the device):
+  `recovery_utils/battery_utils.cpp` `GetBatteryInfo()` calls
+  `AServiceManager_waitForService()` with no timeout once
+  `AServiceManager_isDeclared()` says yes, and the recovery (pid 88) keeps
+  asking servicemanager for `IHealth/default` once a second, never reaching
+  the HIDL fallback or "assuming defaults". With no UI up, adbd stays
+  offline too. Which manifest declared it is still to be checked.
 - Workaround: devicelab no longer carries stock /system or /vendor files
   into AERA's ramdisk (boot-aera.sh), so nothing declares the AIDL service.
 - Upstream fix: use `AServiceManager_getService`/a bounded wait and fall
