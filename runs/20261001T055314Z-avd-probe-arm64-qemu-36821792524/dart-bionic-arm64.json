@@ -1,0 +1,41 @@
+{
+ "probe": "dart_bionic",
+ "date": "2026-10-01",
+ "platform": "qemu-user chroot of AVD android-35 google_apis arm64-v8a system.img",
+ "cannotShow": "kernel, SELinux, real CPU timing",
+ "termuxDart": "3.13.5",
+ "results": [
+  {
+   "name": "sh-works",
+   "cmd": "echo bionic sh ok; /system/bin/toybox uname -m",
+   "exit": 0,
+   "ms": 618,
+   "stdout": "bionic sh ok\naarch64",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\""
+  },
+  {
+   "name": "aot-host-snapshot-termux-runtime",
+   "cmd": "env -i PATH=/system/bin /data/adb/devicelab/dartaotruntime /data/adb/devicelab/probe-arm64.aot",
+   "exit": 127,
+   "ms": 104,
+   "stdout": "",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\n/system/bin/sh: env: inaccessible or not found"
+  },
+  {
+   "name": "termux-compile-exe",
+   "cmd": "cd /data/adb/devicelab && env -i PATH=/data/data/com.termux/files/usr/bin:/system/bin HOME=/data/adb/devicelab TMPDIR=/data/adb/devicelab /data/data/com.termux/files/usr/bin/dart compile exe probe.dart -o probe-bionic",
+   "exit": 127,
+   "ms": 108,
+   "stdout": "",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\n/system/bin/sh: env: inaccessible or not found"
+  },
+  {
+   "name": "bionic-exe-no-termux",
+   "cmd": "env -i PATH=/system/bin /data/adb/devicelab/probe-bionic",
+   "exit": 127,
+   "ms": 115,
+   "stdout": "",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\n/system/bin/sh: env: inaccessible or not found"
+  }
+ ]
+}
