@@ -96,7 +96,7 @@ jobs:
             if [ "$id" = flutter_webui_counter ]; then checks/flutter_webui.sh "$HOST-$id" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ]; then checks/demo_walk.sh "$HOST-$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ]; then checks/theme.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
-            if [ "$id" = demo ]; then UNINSTALL=$([ -n "${{ inputs.demo_tag }}" ] && echo 0 || echo 1) checks/app_plane_module.sh "$HOST-$id" "$PKG" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
+            if [ "$id" = demo ]; then UNINSTALL=$([ -n "${{ inputs.demo_tag }}" ] && echo 0 || echo 1) NAME="$name" checks/app_plane_module.sh "$HOST-$id" "$PKG" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ] && [ -n "${{ inputs.demo_tag }}" ] && [ "$HOST" = kernelsu ]; then checks/module_update.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
           done
       - name: App plane

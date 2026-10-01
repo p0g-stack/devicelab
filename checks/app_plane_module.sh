@@ -4,7 +4,7 @@
 # its module config, and the demo's page 6 calls through it: share sheet, the
 # camera permission dialog (deny, deny again = permanent, grant). With
 # UNINSTALL=1 last: uninstall + soft-reboot, then what is left.
-# Usage: app_plane_module.sh <label> <host pkg> [module id]  (demo already opened)
+# Usage: [NAME=<module name>] app_plane_module.sh <label> <host pkg> [module id]
 #   -> $LAB_OUT/<label>-appmod.jsonl, <label>-appmod-*.png/xml
 set -uo pipefail
 LABEL=$1; HPKG=$2; ID=${3:-demo}; APP=com.webui.api.$ID
@@ -22,11 +22,13 @@ page_text() { text | python3 -c 'import json,sys; v=json.loads(sys.stdin.read())
 
 rec app "$(sh_ "pm path $APP; ls -laZ /product/app/WebuiApi_$ID/ 2>&1; dumpsys package $APP | grep -E 'codePath|versionName|userId|pkgFlags|privateFlags|signatures|requested permissions' -A0 | head -10; dumpsys package $APP | grep -A12 'requested permissions:' | head -13")"
 rec app-label "$(sh_ "cmd package query-activities --brief -a android.intent.action.MAIN -p $APP 2>&1 | head -5; dumpsys package $APP | grep -m3 -i -E 'label|nonLocalizedLabel'")"
-rec module-config "$(sh_ "/data/adb/ksud module config --help 2>&1 | head -12; echo '-- files:'; ls -la /data/adb/ksu/module_configs/$ID/ 2>&1; for f in /data/adb/ksu/module_configs/$ID/*; do echo \"== \$f\"; head -c 400 \$f; echo; done; echo '-- ksud get:'; /data/adb/ksud module config get $ID webui.installed 2>&1; /data/adb/ksud module config list $ID 2>&1 | head")"
+rec module-config "$(sh_ "/data/adb/ksud module config --help 2>&1 | head -12; echo '-- files:'; ls -la /data/adb/ksu/module_configs/$ID/ 2>&1; for f in /data/adb/ksu/module_configs/$ID/*; do echo \"== \$f\"; head -c 400 \$f; echo; done; echo '-- ksud get:'; KSU_MODULE=$ID /data/adb/ksud module config get webui.installed 2>&1; KSU_MODULE=$ID /data/adb/ksud module config list 2>&1 | head")"
 rec module-dirs "$(sh_ "ls -la /data/adb/$ID /data/adb/$ID/tmp 2>&1 | head -20")"
 
-# Page 6 (Plugins).
+# Page 6 (Plugins): open the module fresh, Places from home, then the nav bar.
+rec open "\"$("$HERE/managers/open_webui.sh" "$LABEL-appmod" "$HPKG" "$ID" "${NAME:-$ID}" 2>&1 | tail -1)\""; sleep 8
 ev "$HELP" >/dev/null; ev '__w.on(); "semantics on"' >/dev/null; sleep 2
+rec tap-places "$(step Places)"; sleep 6
 rec tap-plugins "$(step Plugins)"; sleep 6
 rec plugins "$(page_text Camera Share share_plus permission)"; shot plugins
 
