@@ -87,7 +87,9 @@ sleep "${APP_WAIT:-20}"; shot opened
 # recorded with getevent.
 read -r W H < <(python3 -c "import struct,sys;d=open(sys.argv[1],'rb').read(24);print(*struct.unpack('>II',d[16:24]))" "$(ls "$OUT"/*.png | tail -1)" 2>/dev/null || echo "720 1280")
 n_tap=0
-for t in ${APP_TAPS:-$((W - 100)),$((H - 70)) $((W - 100)),$((H - 70)) $((W - 40)),$((H - 70)) $((W - 40)),$((H - 70))}; do
+# Each tap a few px apart: the kernel drops ABS values equal to the last ones,
+# so a repeat at the same pixel arrives without a position.
+for t in ${APP_TAPS:-$((W - 100)),$((H - 70)) $((W - 110)),$((H - 62)) $((W - 40)),$((H - 70)) $((W - 46)),$((H - 62))}; do
   n_tap=$((n_tap + 1)); [ $n_tap -gt 1 ] && GETEVENT=0
   TAP_WAIT=1 tap "${t%,*}" "${t#*,}" app
 done

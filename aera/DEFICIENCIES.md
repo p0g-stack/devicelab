@@ -144,6 +144,30 @@ plugin and of aerain only at 22:30:38, when the mirror request arrived.
 - Upstream fix (draft): treat POLLHUP like POLLIN.
   `/mnt/project-files/devicelab-aera/patches-draft/0016-*`, applies after
   0015; not yet built.
+- FIXED by 0016 on image 29c34fe (run `runs/20261001T212049Z-aera-cf-recovery-36926456381`): the open answered at once,
+  the following `op mirror` got its own answer, and the counter was up
+  before the taps.
+
+## D7. AERA Remote loses the first touch after it starts
+
+```
+getevent -lt during the first POST /api/input/touch down+up:
+add device 7: /dev/input/event6  name: "AERA Remote Input"
+/dev/input/event6: EV_ABS ABS_MT_TRACKING_ID ffffffff
+/dev/input/event6: EV_KEY BTN_TOUCH UP
+/dev/input/event6: EV_SYN SYN_REPORT 00000000
+```
+(run `runs/20261001T212049Z-aera-cf-recovery-36926456381`, `aera-counter/getevent-remote.txt`; the down never shows)
+
+- Cause: `aera_remote/input.cpp` creates its uinput device lazily on the
+  first `Touch()`/`Key()` and writes the DOWN right after `UI_DEV_CREATE`,
+  before any reader (minuitwrp, getevent) has opened the new node; only
+  the UP arrives. The remote viewer's first tap does nothing, and a lost
+  DOWN with later moves can be read as a swipe (earlier run: two remote
+  taps opened the Quick Settings shade).
+- Suggested upstream fix: create the device when AERA Remote starts (and
+  destroy it on stop), or wait for the node to appear and settle (~100 ms)
+  after `UI_DEV_CREATE` before the first event.
 
 ## Lab gaps (devicelab, not AERA yet)
 
@@ -155,6 +179,12 @@ plugin and of aerain only at 22:30:38, when the mirror request arrived.
   late, the counter was not up yet, and the same tap at 650,1278 selected
   the Wipe tab (`aera-counter/03-raw.png`). The counter missed them
   because of D5 (the lab tapped at x=650); taps now go to x=W-100.
+- D5 retest on image 29c34fe (0015): 4 raw taps gave 2 counts. The counting
+  ones were the first inside tap (620) and the first edge-zone tap (680), so
+  0015 works; the misses were exact repeats of the previous tap's pixel, whose
+  ABS values the kernel drops as duplicates, so the contact had no position.
+  Taps now vary by a few px. (A real panel always jitters; minuitwrp could
+  still keep the slot's last position for a contact without one.)
 - Raw taps work: on image 722b33f (run `runs/20261001T201700Z-aera-cf-recovery-36918690305`) one raw tap at 620,1278 took
   the count to 1 (`aera-counter/03-raw.png`).
 - AERA Remote's touch API (`op mirror`, POST /api/input/touch through its
