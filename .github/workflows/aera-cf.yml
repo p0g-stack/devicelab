@@ -1,0 +1,46 @@
+# AERA on Cuttlefish (aera/README.md). Step 1: boot x86_64 Cuttlefish and
+# its stock recovery, record what a plugin host sees there.
+name: aera-cf
+on:
+  workflow_dispatch:
+    inputs:
+      build: { default: "aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug" }
+      build_id: { default: "" }
+  push:
+    branches: [main]
+    paths: [".github/workflows/aera-cf.yml", "aera/**"]
+permissions:
+  contents: write
+concurrency: { group: aera-cf, cancel-in-progress: true }
+jobs:
+  recovery:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      LAB_OUT: ${{ github.workspace }}/out
+      CF_HOME: /mnt/cf
+    steps:
+      - uses: actions/checkout@v4
+      - name: KVM and disk
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+          sudo mkdir -p "$CF_HOME" && sudo chown "$USER" "$CF_HOME"
+          mkdir -p "$LAB_OUT"; df -h / /mnt; nproc; free -g
+      - name: Boot Cuttlefish
+        run: set -o pipefail; aera/cuttlefish/up.sh "${{ inputs.build }}" "${{ inputs.build_id }}" 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: Android frame
+        run: |
+          pip3 install -q --user --break-system-packages vncdotool
+          timeout 60 ~/.local/bin/vncdo -s 127.0.0.1::6444 capture "$LAB_OUT/android.png" || true
+      - name: Stock recovery
+        run: set -o pipefail; aera/cuttlefish/recovery.sh stock-recovery 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: Logs
+        if: always()
+        run: |
+          cp "$CF_HOME"/cuttlefish_runtime/{kernel.log,launcher.log,logcat} "$LAB_OUT"/ 2>/dev/null || true
+          tail -30 "$LAB_OUT"/kernel.log 2>/dev/null || true
+      - name: Publish to lab-results
+        if: always()
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: tools/publish.sh "${{ github.workflow }}-${{ github.job }}"
