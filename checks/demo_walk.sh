@@ -15,7 +15,7 @@ HELP='window.__w = window.__w || {
   on() { const p = document.querySelector("flt-semantics-placeholder"); if (!p) return; const r = p.getBoundingClientRect(), o = {bubbles: true, cancelable: true, clientX: r.x + r.width / 2, clientY: r.y + r.height / 2, pointerType: "touch", isPrimary: true}; for (const t of ["pointerdown", "pointerup"]) p.dispatchEvent(new PointerEvent(t, o)); p.dispatchEvent(new MouseEvent("click", o)); },
   nodes() { return [...document.querySelectorAll("flt-semantics")].filter(e => !e.querySelector("flt-semantics")) },
   text() { return [...document.querySelectorAll("flt-semantics")].map(e => (e.getAttribute("aria-label") || [...e.childNodes].filter(n => n.nodeType === 3 || n.tagName === "SPAN").map(n => n.textContent).join("")).trim()).filter(Boolean) },
-  find(l) { const all = [...document.querySelectorAll("flt-semantics")]; const lab = e => (e.getAttribute("aria-label") || e.textContent || "").trim(); return all.find(e => lab(e) === l) || all.filter(e => lab(e).startsWith(l)).sort((a, b) => lab(a).length - lab(b).length)[0] },
+  find(l) { const lab = e => (e.getAttribute("aria-label") || e.textContent || "").trim(); const vis = e => { const r = e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && r.bottom > 0 && r.top < innerHeight }; const all = [...document.querySelectorAll("flt-semantics")].filter(vis); return all.find(e => lab(e) === l) || all.filter(e => lab(e).startsWith(l)).sort((a, b) => lab(a).length - lab(b).length)[0] },
   tap(l) { const e = this.find(l); if (!e) return "no " + l; const r = e.getBoundingClientRect(); e.click(); return "tapped " + l + " at " + Math.round(r.x) + "," + Math.round(r.y) }
 }; "ok"'
 step() { ev "$HELP" >/dev/null; ev "new Promise(r => { __w.on(); setTimeout(() => r(__w.tap($(python3 -c 'import json,sys; print(json.dumps(sys.argv[1]))' "$1"))), 600) })"; }
@@ -25,8 +25,12 @@ ev "$HELP" >/dev/null; ev '__w.on(); "semantics on"'; sleep 2
 rec home "$(text)"; shot home
 rec tap-places "$(step Places)"; sleep 12
 rec places "$(text)"; shot places
+# The root process place is further down: scroll and read again.
+for n in 1 2 3; do adb shell input swipe 160 480 160 180 400; sleep 2; rec places-scroll-$n "$(text)"; shot places-scroll-$n; done
 rec tap-strategy "$(step Strategy)"; sleep 10
 rec strategy "$(text)"; shot strategy
+rec tap-rust "$(step Rust)"; sleep 10
+rec rust "$(text)"; shot rust
 rec tap-lifecycle "$(step Lifecycle)"; sleep 4
 rec tap-root-process "$(step 'root process')"; sleep 3
 rec tap-start "$(step Start)"; sleep 6
