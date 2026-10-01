@@ -16,7 +16,7 @@ if [ "$1" = "$FDEVICE" -o "$AERA_BUILD_DEVICE" = "$FDEVICE" -o -z "$AERA_BUILD_D
 	export AERA_DELETE_AROMAFM=1
 	export AERA_VANILLA_BUILD=1
 	export AERA_PRODUCT_PREFIX=AERA
-	export AERA_BUILD_TYPE=Lab
+	export AERA_BUILD_TYPE=Nightly  # aera_build.mk allows Alpha|Beta|Nightly|Stable
 	export AERA_SETTINGS_ROOT_DIRECTORY=/data/recovery
 	export AERA_MISCELLANEOUS_ROOT_DIRECTORY=/sdcard
 	unset AERA_MAINTAINER_PATCH_VERSION

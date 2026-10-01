@@ -37,6 +37,10 @@ TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 AERA_THEME := portrait_hdpi
 AERA_FRAMERATE := 60
 AERA_NO_SCREEN_BLANK := true
+# Required by aera_build.mk; Cuttlefish has no backlight, and minuitwrp skips
+# the write when the path does not open.
+AERA_MAX_BRIGHTNESS := 255
+AERA_BRIGHTNESS_PATH := /sys/class/backlight/cf/brightness
 AERA_EXCLUDE_APEX := true
 AERA_USE_TOOLBOX := true
 TARGET_USES_LOGD := true

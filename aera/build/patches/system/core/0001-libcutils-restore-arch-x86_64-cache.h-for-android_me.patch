@@ -1,0 +1,45 @@
+From ab351935cbcc37d7ea7b08fe17f551d42c01967d Mon Sep 17 00:00:00 2001
+From: aera-lab <aera-lab@localhost>
+Date: Thu, 1 Oct 2026 07:36:54 +0000
+Subject: [PATCH] libcutils: restore arch-x86_64/cache.h for
+ android_memset{16,32}.S
+
+AOSP dropped libcutils/arch-x86_64 after Android 13; this tree keeps the
+x86_64 memset sources but not the header they include. Taken verbatim from
+platform/system/core android-13.0.0_r1.
+---
+ libcutils/arch-x86_64/cache.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+ create mode 100644 libcutils/arch-x86_64/cache.h
+
+diff --git a/libcutils/arch-x86_64/cache.h b/libcutils/arch-x86_64/cache.h
+new file mode 100644
+index 0000000..f144309
+--- /dev/null
++++ b/libcutils/arch-x86_64/cache.h
+@@ -0,0 +1,22 @@
++/*
++ * Copyright (C) 2014 The Android Open Source Project
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *      http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++
++/* Values are optimized for Silvermont */
++#define SHARED_CACHE_SIZE	(1024*1024)			/* Silvermont L2 Cache */
++#define DATA_CACHE_SIZE		(24*1024)			/* Silvermont L1 Data Cache */
++
++#define SHARED_CACHE_SIZE_HALF	(SHARED_CACHE_SIZE / 2)
++#define DATA_CACHE_SIZE_HALF	(DATA_CACHE_SIZE / 2)
+-- 
+2.43.0
+
