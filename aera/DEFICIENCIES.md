@@ -168,6 +168,12 @@ add device 7: /dev/input/event6  name: "AERA Remote Input"
 - Suggested upstream fix: create the device when AERA Remote starts (and
   destroy it on stop), or wait for the node to appear and settle (~100 ms)
   after `UI_DEV_CREATE` before the first event.
+- FIXED by 0017 on image e986e97 (run `runs/20261001T214146Z-aera-cf-recovery-36928925615`): getevent shows the remote
+  tap's DOWN with its position, and the tap counts (`aera-counter/07-remote.png`).
+- Same run, D5 confirmed: both edge-zone taps (680,1278 and 674,1286) counted;
+  the counter reached 4 from 4 raw + 1 remote taps. The miss was again the
+  second raw tap (610,1286), not an exact repeat this time: every raw tap is
+  now recorded with getevent to see why.
 
 ## Lab gaps (devicelab, not AERA yet)
 

@@ -7,6 +7,7 @@ on:
     inputs:
       build: { default: "aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug" }
       build_id: { default: "" }
+      pick_taps: { default: "", description: "aera-picker-check.sh PICK_TAPS (name:x,y ...)" }
       aera_release: { default: "latest", description: "devicelab release with ramdisk-recovery.img (aera-cf-x86_64-*), latest, or none" }
       aera_taps: { default: "", description: "launcher taps 'x,y x,y' in AERA screen pixels, used when the image has no RPC plugin open (patch 0008)" }
   release:
@@ -151,6 +152,17 @@ jobs:
           { flutter_p0g create --platforms=aera . && flutter_p0g precache --aera --aera-mode=debug && flutter_p0g build aera --debug; } 2>&1 | tail -20 | tee "$LAB_OUT/settings-probe-build.log"
           "$GITHUB_WORKSPACE/aera/tools/aerap.py" retarget build/aera/*.aerap "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/settings-probe-x64.aerap" || exit 0
           cd "$GITHUB_WORKSPACE" && aera/cuttlefish/aera-settings-check.sh "$LAB_OUT/settings-probe-x64.aerap"
+      - name: AERA file picker in an app (flutter-aera 0018/0019, stock file_selector)
+        if: steps.p0g.outputs.rev != ''
+        timeout-minutes: 25
+        run: |
+          export PATH=$CF_HOME/bin:$PATH:$HOME/.pub-cache/bin
+          cd "$RUNNER_TEMP" && flutter create --project-name picker_probe picker-probe >/dev/null && cd picker-probe
+          cp "$GITHUB_WORKSPACE/aera/apps/picker_probe/lib/main.dart" lib/main.dart && rm -rf test
+          flutter pub add file_selector 2>&1 | tail -2
+          { flutter_p0g create --platforms=aera . && flutter_p0g build aera --debug; } 2>&1 | tail -20 | tee "$LAB_OUT/picker-probe-build.log"
+          "$GITHUB_WORKSPACE/aera/tools/aerap.py" retarget build/aera/*.aerap "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/picker-probe-x64.aerap" || exit 0
+          cd "$GITHUB_WORKSPACE" && PICK_TAPS="${{ inputs.pick_taps }}" aera/cuttlefish/aera-picker-check.sh "$LAB_OUT/picker-probe-x64.aerap"
       - name: Logs
         if: always()
         run: |
