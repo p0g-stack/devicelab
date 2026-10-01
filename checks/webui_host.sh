@@ -30,6 +30,15 @@ adb shell input keyevent KEYCODE_HOME; sleep 6
 rec while-home-heartbeat "$(ev '({last: window.__lab.last, now: Math.round(performance.now()), vis: document.visibilityState})')"
 "$HERE/managers/back_to_app.sh"; sleep 3
 rec lifecycle "$(ev '({events: window.__lab.events, gaps: window.__lab.gaps, slow: window.__slowDone ?? "pending"})')"
+# Dev URL: navigate the host's WebView to the probe page served by a dev
+# server on the runner (adb reverse), then see whether the bridge is still
+# there and still runs commands.
+(cd "$HERE/modules/probe/webroot" && exec python3 -m http.server 8090 --bind 127.0.0.1 >/dev/null 2>&1) & DEV=$!
+adb reverse tcp:8090 tcp:8090 >/dev/null; sleep 1
+ev 'location.href = "http://127.0.0.1:8090/index.html"; "navigating"' >/dev/null; sleep 5
+rec dev-url "$($WV eval 'new Promise(r => { const g = {href: location.href, ksu: typeof ksu, webui: typeof webui, globals: Object.keys(window).filter(k => /ksu|webui|\$/i.test(k))}; if (typeof ksu !== "object") return r(g); window.__dcb = (code, out, err) => r({...g, exec: {code, out, err}}); try { ksu.exec("id", "{}", "__dcb") } catch (e) { r({...g, execError: String(e)}) } setTimeout(() => r({...g, exec: "timeout"}), 8000) })' --match 127.0.0.1 2>&1 | tail -1)"
+adb exec-out screencap -p >"$OUT/$LABEL-dev-url.png"
+kill $DEV 2>/dev/null; adb reverse --remove tcp:8090 >/dev/null 2>&1
 adb shell cat /data/local/tmp/labserver.log >"$OUT/$LABEL-labserver.log"
 python3 - "$J" "$OUT/$LABEL-webui.json" "$LABEL" <<'PY'
 import json, sys, subprocess, datetime
