@@ -163,6 +163,10 @@ jobs:
           { flutter_p0g create --platforms=aera . && flutter_p0g build aera --debug; } 2>&1 | tail -20 | tee "$LAB_OUT/picker-probe-build.log"
           "$GITHUB_WORKSPACE/aera/tools/aerap.py" retarget build/aera/*.aerap "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/picker-probe-x64.aerap" || exit 0
           cd "$GITHUB_WORKSPACE" && PICK_TAPS="${{ inputs.pick_taps }}" aera/cuttlefish/aera-picker-check.sh "$LAB_OUT/picker-probe-x64.aerap"
+      - name: Rotate AERA with the counter running (flutter-aera 0020)
+        if: steps.aera.outputs.tag != ''
+        timeout-minutes: 10
+        run: aera/cuttlefish/aera-rotate-check.sh "$LAB_OUT/counter-1.0.0-x64.aerap" || true
       - name: Logs
         if: always()
         run: |
