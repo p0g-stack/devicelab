@@ -1,0 +1,60 @@
+[   63.350126] servicemanager: NULL VINTF MANIFEST!: device
+[   63.350274] servicemanager: NULL VINTF MANIFEST!: framework
+[   63.350408] servicemanager: getDeviceHalManifest: Reading VINTF information.
+[   63.350591] servicemanager: getDeviceHalManifest: status from fetching VINTF information: -2
+[   63.350810] servicemanager: getDeviceHalManifest: -2 VINTF parse error: Cannot read /vendor/manifest.xml: No such file or directory
+[   63.351142] servicemanager: getFrameworkHalManifest: Reading VINTF information.
+[   63.351375] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[   63.351799] servicemanager: getFrameworkHalManifest: status from fetching VINTF information: -2
+[   63.352157] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[   63.352578] servicemanager: NULL VINTF MANIFEST!: device
+[   63.352729] servicemanager: NULL VINTF MANIFEST!: framework
+[   63.352889] servicemanager: getDeviceHalManifest: Reading VINTF information.
+[   63.353158] servicemanager: getDeviceHalManifest: status from fetching VINTF information: -2
+[   63.353439] servicemanager: getDeviceHalManifest: -2 VINTF parse error: Cannot read /vendor/manifest.xml: No such file or directory
+[   63.353893] servicemanager: getFrameworkHalManifest: Reading VINTF information.
+[   63.354108] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[   63.354491] servicemanager: getFrameworkHalManifest: status from fetching VINTF information: -2
+[   63.354784] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[   63.355166] servicemanager: NULL VINTF MANIFEST!: device
+[   63.355340] servicemanager: NULL VINTF MANIFEST!: framework
+[   63.355492] servicemanager: Caller(pid=89,uid=0,sid=u:r:recovery:s0) Could not find android.hardware.health.IHealth/default in the VINTF manifest. No alternative instances declared in VINTF.
+[   63.544923] init: Untracked pid 443 exited with status 124
+[   63.545120] init: Untracked pid 443 did not have an associated service entry and will not be reaped
+[   67.224664] init: Untracked pid 464 exited with status 124
+[   67.224931] init: Untracked pid 464 did not have an associated service entry and will not be reaped
+[   70.908736] init: Untracked pid 487 exited with status 124
+[   70.908959] init: Untracked pid 487 did not have an associated service entry and will not be reaped
+[   72.846462] type=1400 audit(1790896467.788:672): avc:  denied  { name_bind } for  comm="recovery" src=8088 scontext=u:r:recovery:s0 tcontext=u:object_r:port:s0 tclass=tcp_socket permissive=1
+[   72.846683] input: AERA Remote Input as /devices/virtual/input/input6
+[   72.846937] type=1300 audit(1790896467.788:672): arch=c000003e syscall=49 success=yes exit=0 a0=18 a1=74df59ba07d0 a2=10 a3=74df59ba07c4 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   72.848538] type=1327 audit(1790896467.788:672): proctitle="/system/bin/recovery"
+[   72.848811] type=1320 audit(1790896467.788:672): 
+[   72.848989] type=1400 audit(1790896467.788:673): avc:  denied  { write } for  comm="recovery" name="uinput" dev="tmpfs" ino=866 scontext=u:r:recovery:s0 tcontext=u:object_r:uhid_device:s0 tclass=chr_file permissive=1
+[   72.849461] type=1400 audit(1790896467.788:673): avc:  denied  { open } for  comm="recovery" path="/dev/uinput" dev="tmpfs" ino=866 scontext=u:r:recovery:s0 tcontext=u:object_r:uhid_device:s0 tclass=chr_file permissive=1
+[   72.850126] type=1300 audit(1790896467.788:673): arch=c000003e syscall=257 success=yes exit=25 a0=ffffff9c a1=62e47d206b55 a2=80801 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   72.850949] type=1327 audit(1790896467.788:673): proctitle="/system/bin/recovery"
+[   72.851262] type=1320 audit(1790896467.788:673): 
+[   72.851450] type=1400 audit(1790896467.788:674): avc:  denied  { ioctl } for  comm="recovery" path="/dev/uinput" dev="tmpfs" ino=866 ioctlcmd=0x5564 scontext=u:r:recovery:s0 tcontext=u:object_r:uhid_device:s0 tclass=chr_file permissive=1
+[   72.852148] type=1300 audit(1790896467.788:674): arch=c000003e syscall=16 success=yes exit=0 a0=19 a1=40045564 a2=0 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   72.852796] type=1327 audit(1790896467.788:674): proctitle="/system/bin/recovery"
+[   72.853123] type=1320 audit(1790896467.788:674): 
+[   72.853297] type=1400 audit(1790896467.788:675): avc:  denied  { accept } for  comm="recovery" lport=8088 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   74.867986] type=1300 audit(1790896467.788:675): arch=c000003e syscall=288 success=yes exit=26 a0=18 a1=0 a2=0 a3=80000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   74.869384] type=1327 audit(1790896467.788:675): proctitle="/system/bin/recovery"
+[   74.869768] type=1320 audit(1790896467.788:675): 
+[   74.870341] type=1400 audit(1790896469.812:676): avc:  denied  { read } for  comm="recovery" laddr=127.0.0.1 lport=8088 faddr=127.0.0.1 fport=52369 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   74.872362] type=1300 audit(1790896469.812:676): arch=c000003e syscall=45 success=yes exit=111 a0=1a a1=74df59b9fad0 a2=1000 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   74.873090] type=1327 audit(1790896469.812:676): proctitle="/system/bin/recovery"
+[   74.873308] type=1320 audit(1790896469.812:676): 
+[   74.873484] type=1400 audit(1790896469.812:677): avc:  denied  { write } for  comm="recovery" laddr=127.0.0.1 lport=8088 faddr=127.0.0.1 fport=52369 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   74.874127] type=1300 audit(1790896469.812:677): arch=c000003e syscall=44 success=yes exit=178 a0=1a a1=74e0de409270 a2=b2 a3=4000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   74.877923] type=1327 audit(1790896469.812:677): proctitle="/system/bin/recovery"
+[   74.879818] type=1320 audit(1790896469.812:677): 
+[   74.880231] type=1400 audit(1790896469.812:678): avc:  denied  { shutdown } for  comm="recovery" laddr=127.0.0.1 lport=8088 faddr=127.0.0.1 fport=52369 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   74.880963] type=1300 audit(1790896469.812:678): arch=c000003e syscall=48 success=yes exit=0 a0=1a a1=2 a2=16 a3=4000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   74.881777] type=1327 audit(1790896469.812:678): proctitle="/system/bin/recovery"
+[   74.882021] type=1320 audit(1790896469.812:678): 
+[   79.000808] init: Untracked pid 518 exited with status 124
+[   79.001040] init: Untracked pid 518 did not have an associated service entry and will not be reaped
+[   82.586427] logd: logdr: UID=0 GID=0 PID=550 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
