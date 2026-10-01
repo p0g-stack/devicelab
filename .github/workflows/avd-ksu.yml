@@ -11,7 +11,7 @@ on:
       tag: { default: "", description: "release tag, empty = latest" }
       api: { default: "35" }
       label: { default: "", description: "extra name for the lab-results run, e.g. demo-0.9" }
-      modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo-v0.1.0.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
+      modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
     branches: [main]
     paths: [".github/workflows/avd-ksu.yml", "managers/**", "checks/**", "driver/**", "modules/**", "tools/labserver/**", "tools/sockprobe/**"]
@@ -30,7 +30,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       FLAVOR: ${{ inputs.flavor || 'kernelsu' }}
       HOST: ${{ matrix.host }}
-      MODULES: ${{ inputs.modules || 'flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo-v0.1.0.zip' }}
+      MODULES: ${{ inputs.modules || 'flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip' }}
     steps:
       - uses: actions/checkout@v4
       - name: KVM
@@ -59,7 +59,7 @@ jobs:
           git fetch -q --depth 1 origin lab-inputs && mkdir -p inputs && git archive FETCH_HEAD modules | tar -x -C inputs
           # The demo module comes from demo CI (its `module` branch), not lab-inputs.
           git clone -q --depth 1 -b module https://github.com/p0g-stack/demo "$RUNNER_TEMP/demo-module"
-          (cd "$RUNNER_TEMP/demo-module" && sha256sum -c SHA256SUMS && git log -1 --format='demo module: %s' && cp *.zip "$GITHUB_WORKSPACE/inputs/modules/") | tee -a "$LAB_OUT/inputs.txt"
+          (cd "$RUNNER_TEMP/demo-module" && sha256sum -c SHA256SUMS && git log -1 --format='demo module: %s' && z=$(ls demo-*.zip | head -1) && cp "$z" "$GITHUB_WORKSPACE/inputs/modules/demo.zip" && echo "demo zip: $z") | tee -a "$LAB_OUT/inputs.txt"
           sha256sum inputs/modules/*.zip | tee -a "$LAB_OUT/inputs.txt"
           zips=(); for m in $MODULES; do zips+=("inputs/modules/$m"); done
           if [ "$HOST" = kernelsu ]; then
