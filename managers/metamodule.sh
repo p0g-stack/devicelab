@@ -7,7 +7,7 @@
 set -uo pipefail
 ID=${1:-meta-overlayfs}; OUT=${LAB_OUT:-$PWD/out}; HERE=$(cd "$(dirname "$0")/.." && pwd)
 D=$(mktemp -d)
-curl -fsSL https://modules.kernelsu.org/modules.json -o "$D/index.json" || echo "== metamodule: module repo index unreachable"
+curl -sSL -A "Mozilla/5.0 devicelab" -w "%{http_code}" https://modules.kernelsu.org/modules.json -o "$D/index.json" | sed "s/^/== metamodule index http: /"
 python3 - "$D/index.json" "$ID" >"$D/entry.txt" <<'P'
 import json, sys
 try: d = json.load(open(sys.argv[1]))
@@ -22,6 +22,12 @@ echo "== metamodule index entry: $(cat "$D/entry.txt")"
 cp "$D/index.json" "$OUT/ksu-modules-index.json" 2>/dev/null
 # Repo: the index entry's url/source, else KernelSU-Modules-Repo/<id>.
 REPO=$(python3 -c 'import json,sys,re; s=open(sys.argv[1]).read(); m=re.search(r"github\.com/([\w.-]+/[\w.-]+)", s); print(m.group(1).removesuffix(".git") if m else "")' "$D/entry.txt")
+# Not in the index: search GitHub for the repo (KernelSU-Modules-Repo or tiann first).
+if [ -z "$REPO" ]; then
+  gh api "search/repositories?q=$ID+in:name&per_page=20" --jq '.items[]|"\(.full_name) \(.stargazers_count) \(.pushed_at)"' >"$D/search.txt" 2>&1
+  echo "== metamodule search: $(tr '\n' ';' <"$D/search.txt")"
+  REPO=$(grep -m1 -i -E '^(KernelSU-Modules-Repo|tiann)/' "$D/search.txt" | cut -d' ' -f1)
+fi
 REPO=${REPO:-KernelSU-Modules-Repo/$ID}
 gh release view -R "$REPO" --json tagName,publishedAt,assets --jq '"== metamodule release: '"$REPO"' \(.tagName) \(.publishedAt) \([.assets[].name]|join(" "))"' 2>&1
 gh release download -R "$REPO" -D "$D/rel" -p '*.zip' 2>&1 | tail -2
