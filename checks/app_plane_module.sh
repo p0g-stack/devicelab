@@ -59,6 +59,40 @@ adb shell input keyevent KEYCODE_BACK >/dev/null 2>&1; sleep 1
 reset_cam
 cam grant "While using the app"
 UI_WAIT=1 $UI has "Only this time" && { $UI tap "Only this time"; sleep 3; rec cam-grant-status-2 "$(page_text 'Camera:')"; }
+# Clipboard (clipboard_webui through the app's invisible read activity) and
+# file pick, when page 6 has the buttons ("Copy text", "Paste", "Pick a file").
+has_btn() { ev "$HELP" >/dev/null; ev "new Promise(r => { __w.on(); setTimeout(() => r(!!__w.find($(python3 -c 'import json,sys; print(json.dumps(sys.argv[1]))' "$1"))), 600) })" | grep -q '"value": *true'; }
+ext_copy() { # put $1 on Android's clipboard from another app (Settings search)
+  adb shell am start -a android.settings.APP_SEARCH_SETTINGS >/dev/null 2>&1 || adb shell am start -a android.settings.SETTINGS >/dev/null 2>&1; sleep 4
+  adb shell input text "$1"; sleep 1; adb shell input keycombination 113 29; adb shell input keycombination 113 31; sleep 1
+}
+ext_paste() { # paste Android's clipboard into Settings search and read it back
+  adb shell am start -a android.settings.APP_SEARCH_SETTINGS >/dev/null 2>&1 || adb shell am start -a android.settings.SETTINGS >/dev/null 2>&1; sleep 4
+  adb shell input keycombination 113 29; adb shell input keyevent KEYCODE_DEL; adb shell input keycombination 113 50; sleep 2
+  $UI dump "$O-ext-paste.xml" >/dev/null 2>&1; grep -o 'text="[^"]*"' "$O-ext-paste.xml" | head -5 | tr '\n' ' '
+}
+back_to_page() { "$HERE/managers/back_to_app.sh" >/dev/null 2>&1; sleep 4; }
+LISTEN='window.__msgs = []; addEventListener("message", e => __msgs.push([Math.round(performance.now()), typeof e.data === "string" ? e.data : JSON.stringify(e.data)])); document.addEventListener("visibilitychange", () => __msgs.push([Math.round(performance.now()), "visibility " + document.visibilityState])); "listening"'
+if has_btn Paste; then
+  ext_copy "lab-clip-$$"; back_to_page
+  rec clip-listen "$(ev "$LISTEN")"
+  rec clip-paste-tap "$(step Paste)"; sleep 8
+  rec clip-paste-top "\"$(top)\""; shot clip-paste
+  rec clip-pasted "$(page_text Pasted Paste clipboard)"
+  rec clip-blips "$(ev 'JSON.stringify(window.__msgs || [])')"
+  rec clip-process "$(sh_ "ps -A -o USER,LABEL,NAME | grep webui.api; dumpsys activity activities | grep -E 'webui.api' | head -4")"
+  rec clip-copy-tap "$(step 'Copy text')"; sleep 5
+  rec clip-copied "$(page_text Copied Copy clipboard)"
+  rec clip-ext-paste "$(ext_paste | js)"; back_to_page
+else rec clipboard '"no Paste button on page 6"'; fi
+if has_btn 'Pick a file'; then
+  adb shell "echo lab-pick >/sdcard/Download/lab-pick.txt; am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Download/lab-pick.txt" >/dev/null 2>&1
+  rec pick-tap "$(step 'Pick a file')"; sleep 6
+  rec pick-top "\"$(top)\""; shot pick
+  UI_WAIT=8 $UI tap lab-pick.txt >/dev/null 2>&1 || { UI_WAIT=3 $UI tap Downloads; sleep 3; UI_WAIT=8 $UI tap lab-pick.txt; } >/dev/null 2>&1; sleep 6
+  rec picked "$(page_text Picked pick file)"
+  rec pick-files "$(sh_ "ls -laZ /data/adb/$ID/tmp/ /data/adb/$ID/tmp/open-*/ 2>&1 | head -20")"
+else rec file-pick '"no Pick a file button on page 6"'; fi
 # App info page for the app (what openAppSettings opens; the demo page has no button for it).
 adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d "package:$APP" >/dev/null 2>&1; sleep 5
 rec app-settings "$(dialog | js)"; shot app-settings
