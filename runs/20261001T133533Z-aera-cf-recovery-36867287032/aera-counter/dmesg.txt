@@ -1,0 +1,60 @@
+[   62.553520] init: Sending signal 9 to service 'vendor.health-cuttlefish' (pid 388) process group...
+[   62.553824] libprocessgroup: Removed cgroup /dev/cg2_bpf/system/uid_1000/pid_388
+[   67.532395] init: starting service 'logd'...
+[   67.532823] init: Created socket '/dev/socket/logdr', mode 666, user 0, group 0
+[   67.533159] init: Created socket '/dev/socket/logdw', mode 222, user 0, group 0
+[   67.541055] libprocessgroup: Failed to find NormalIoPriority process profile
+[   67.541666] init: ... started service 'logd' has pid 409
+[   67.543532] init: starting service 'recovery'...
+[   67.543782] init: Created socket '/dev/socket/recovery', mode 422, user 1000, group 1000
+[   67.545381] libprocessgroup: Failed to find NormalIoPriority process profile
+[   67.549110] init: ... started service 'recovery' has pid 410
+[   67.549551] init: starting service 'vendor.health-cuttlefish'...
+[   67.550737] libprocessgroup: Failed to find NormalIoPriority process profile
+[   67.551783] init: Unable to set property 'ro.logd.kernel' from uid:0 gid:0 pid:409: Read-only property was already set
+[   67.552250] init: ... started service 'vendor.health-cuttlefish' has pid 411
+[   67.553039] logd: libprocessgroup: Failed to read task profiles from /etc/task_profiles.json
+[   67.553320] logd: libprocessgroup: Loading /etc/task_profiles.json for [409] failed
+[   67.553552] logd: libprocessgroup: Failed to find SCHED_SP_BACKGROUND task profile
+[   67.554433] logd: failed to set background scheduling policy: No such file or directory
+[   67.556030] audit: type=1701 audit(1790861613.827:40): auid=4294967295 uid=0 gid=0 ses=4294967295 subj=u:r:logd:s0 pid=409 comm="logd" exe="/system/bin/logd" sig=6 res=1
+[   67.556782] audit: audit_lost=69 audit_rate_limit=0 audit_backlog_limit=64
+[   67.557138] init: Service 'logd' (pid 409) received signal 6
+[   67.558399] init: Sending signal 9 to service 'logd' (pid 409) process group...
+[   67.558645] libprocessgroup: Removed cgroup /dev/cg2_bpf/system/uid_0/pid_409
+[   67.558935] audit: kauditd hold queue overflow
+[   67.559241] init: Service 'recovery' (pid 410) exited with status 1
+[   67.559449] init: Sending signal 9 to service 'recovery' (pid 410) process group...
+[   67.560247] libprocessgroup: Removed cgroup /dev/cg2_bpf/system/uid_0/pid_410
+[   67.560698] init: Service 'vendor.health-cuttlefish' (pid 411) exited with status 1
+[   67.560990] init: Sending signal 9 to service 'vendor.health-cuttlefish' (pid 411) process group...
+[   67.561440] libprocessgroup: Removed cgroup /dev/cg2_bpf/system/uid_1000/pid_411
+[   72.540075] init: starting service 'logd'...
+[   72.540607] init: Created socket '/dev/socket/logdr', mode 666, user 0, group 0
+[   72.540933] init: Created socket '/dev/socket/logdw', mode 222, user 0, group 0
+[   72.549100] libprocessgroup: Failed to find NormalIoPriority process profile
+[   72.549858] init: ... started service 'logd' has pid 435
+[   72.552318] init: starting service 'vendor.health-cuttlefish'...
+[   72.554024] libprocessgroup: Failed to find NormalIoPriority process profile
+[   72.557100] init: ... started service 'vendor.health-cuttlefish' has pid 436
+[   72.557904] init: starting service 'recovery'...
+[   72.558218] init: Created socket '/dev/socket/recovery', mode 422, user 1000, group 1000
+[   72.559224] init: Unable to set property 'ro.logd.kernel' from uid:0 gid:0 pid:435: Read-only property was already set
+[   72.560067] libprocessgroup: Failed to find NormalIoPriority process profile
+[   72.560541] logd: libprocessgroup: Failed to read task profiles from /etc/task_profiles.json
+[   72.561434] logd: libprocessgroup: Loading /etc/task_profiles.json for [435] failed
+[   72.561695] logd: libprocessgroup: Failed to find SCHED_SP_BACKGROUND task profile
+[   72.561970] logd: failed to set background scheduling policy: No such file or directory
+[   72.563488] init: ... started service 'recovery' has pid 437
+[   72.563706] init: Service 'vendor.health-cuttlefish' (pid 436) exited with status 1
+[   72.564013] init: Sending signal 9 to service 'vendor.health-cuttlefish' (pid 436) process group...
+[   72.565457] audit: type=1701 audit(1790861618.835:41): auid=4294967295 uid=0 gid=0 ses=4294967295 subj=u:r:logd:s0 pid=435 comm="logd" exe="/system/bin/logd" sig=6 res=1
+[   72.565838] audit: audit_lost=70 audit_rate_limit=0 audit_backlog_limit=64
+[   72.565999] audit: kauditd hold queue overflow
+[   72.566477] libprocessgroup: Removed cgroup /dev/cg2_bpf/system/uid_1000/pid_436
+[   72.566869] init: Service 'logd' (pid 435) received signal 6
+[   72.567517] init: Sending signal 9 to service 'logd' (pid 435) process group...
+[   72.567876] libprocessgroup: Removed cgroup /dev/cg2_bpf/system/uid_0/pid_435
+[   72.570082] init: Service 'recovery' (pid 437) exited with status 1
+[   72.570282] init: Sending signal 9 to service 'recovery' (pid 437) process group...
+[   72.570530] libprocessgroup: Removed cgroup /dev/cg2_bpf/system/uid_0/pid_437

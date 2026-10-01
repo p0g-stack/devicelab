@@ -1,0 +1,20 @@
+flutter_p0g 97ce307
+AERA_Cuttlefish_x86_64 (0.0.0.0:6520) • x86_64 • recovery (not AERA)
+AERA_Cuttlefish_x86_64 (127.0.0.1:6520) • x86_64 • recovery (not AERA)
+This recovery has no AERA RPC channel; is it AERA?
+Installed counter in AERA RAM (until reboot).
+/mnt/cf/bin/adb -s 0.0.0.0:6520 shell printf %s '{"v":1,"id":"flutter_p0g","op":"plugin","args":{"action":"open","id":"counter"}}' > /system/bin/aerain && cat /system/bin/aeraout failed:
+cat: /system/bin/aeraout: No such file or directory
+
+/tmp/aera/plugins:
+total 0
+drwx------ 3 root root 60 2026-10-01 13:35 .
+drwx------ 4 root root 80 2026-10-01 13:32 ..
+drwx------ 2 root root 80 2026-10-01 13:35 counter
+
+/tmp/aera/plugins/counter:
+total 25956
+drwx------ 2 root root       80 2026-10-01 13:35 .
+drwx------ 3 root root       60 2026-10-01 13:35 ..
+-r--r--r-- 1 root root      686 2026-10-01 13:35 plugin.json
+-r--r--r-- 1 root root 26571660 2026-10-01 13:35 runtime.xz
