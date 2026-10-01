@@ -55,7 +55,8 @@ tap() {  # tap X Y NAME (screen pixels of the captured frame)
   local x=$(( $1 * ${TX:-$W} / W )) y=$(( $2 * ${TY:-$H} / H ))
   python3 "$here/tools/touch.py" "$x" "$y" "$OUT/.ev" && a push "$OUT/.ev/down.ev" "$OUT/.ev/up.ev" /tmp/ >/dev/null
   # getevent shows whether the kernel passes the written events on to readers
-  a shell "(timeout 2 getevent -lt $TS > /tmp/lab-getevent.txt 2>&1 &); sleep 0.3; cat /tmp/down.ev > $TS; sleep 0.12; cat /tmp/up.ev > $TS; sleep 1.8; cat /tmp/lab-getevent.txt" >> "$OUT/getevent.txt" 2>&1
+  [ "${GETEVENT:-1}" = 1 ] && a shell "(timeout 2 getevent -lt $TS > /tmp/lab-getevent.txt 2>&1 &); sleep 0.3; cat /tmp/down.ev > $TS; sleep 0.12; cat /tmp/up.ev > $TS; sleep 1.8; cat /tmp/lab-getevent.txt" >> "$OUT/getevent.txt" 2>&1 \
+    || a shell "cat /tmp/down.ev > $TS; sleep 0.12; cat /tmp/up.ev > $TS"
   log "tap $1,$2 (panel $x,$y on $TS)"; sleep "${TAP_WAIT:-2}"; shot "${3:-tap}"
 }
 
@@ -81,15 +82,24 @@ if ! echo "$rpc" | grep -q "Opening $id"; then
   for t in ${AERA_TAPS:-}; do tap "${t%,*}" "${t#*,}" launcher; done
 fi
 sleep "${APP_WAIT:-20}"; shot opened
-# Counter's + (bottom right, 16dp margin) unless APP_TAPS says otherwise: the first
-# is a raw diagnostic tap, then one inside the edge zone check (D5), two in it.
+# Counter's + (bottom right, 16dp margin) unless APP_TAPS says otherwise: two
+# inside, two in the side-edge zone (D5). Raw evdev taps; the first is
+# recorded with getevent.
 read -r W H < <(python3 -c "import struct,sys;d=open(sys.argv[1],'rb').read(24);print(*struct.unpack('>II',d[16:24]))" "$(ls "$OUT"/*.png | tail -1)" 2>/dev/null || echo "720 1280")
-set -- ${APP_TAPS:-$((W - 100)),$((H - 70)) $((W - 100)),$((H - 70)) $((W - 40)),$((H - 70)) $((W - 40)),$((H - 70))}
-# One raw evdev tap first (recorded with getevent), then AERA Remote.
-TAP_WAIT=1 tap "${1%,*}" "${1#*,}" raw; shift
+n_tap=0
+for t in ${APP_TAPS:-$((W - 100)),$((H - 70)) $((W - 100)),$((H - 70)) $((W - 40)),$((H - 70)) $((W - 40)),$((H - 70))}; do
+  n_tap=$((n_tap + 1)); [ $n_tap -gt 1 ] && GETEVENT=0
+  TAP_WAIT=1 tap "${t%,*}" "${t#*,}" app
+done
+# AERA Remote (its uinput touch device): one tap on the +, with every input
+# device's events recorded, to see what the remote path sends.
 remote_start
-[ -n "$REMOTE" ] && curl -s -m 10 -H "x-aera-code: $RCODE" -o "$OUT/remote-screen.jpg" "$REMOTE/screen.jpg"
-for t in "$@"; do TAP_WAIT=1 tap "${t%,*}" "${t#*,}" app; done
+if [ -n "$REMOTE" ]; then
+  curl -s -m 10 -H "x-aera-code: $RCODE" -o "$OUT/remote-screen.jpg" "$REMOTE/screen.jpg"
+  a shell '(timeout 4 getevent -lt > /tmp/lab-getevent-remote.txt 2>&1 &)'; sleep 1
+  tap $((W - 100)) $((H - 70)) remote
+  a shell 'sleep 2; cat /tmp/lab-getevent-remote.txt' > "$OUT/getevent-remote.txt" 2>&1
+fi
 sleep 2; shot after
 a shell "ls -la $data; tail -40 $data/aera-flutter.log" > "$OUT/aera-flutter.log" 2>&1
 a shell 'logcat -d 2>/dev/null | grep -iE "aera|plugin" | tail -150' > "$OUT/logcat-aera.txt" 2>&1

@@ -130,6 +130,15 @@ drawers' edge swipe) loses its outer part too.
   late, the counter was not up yet, and the same tap at 650,1278 selected
   the Wipe tab (`aera-counter/03-raw.png`). The counter missed them
   because of D5 (the lab tapped at x=650); taps now go to x=W-100.
+- Raw taps work: on image 722b33f (run `runs/20261001T201700Z-aera-cf-recovery-36918690305`) one raw tap at 620,1278 took
+  the count to 1 (`aera-counter/03-raw.png`).
+- AERA Remote's touch API (`op mirror`, POST /api/input/touch through its
+  uinput device) did not: a tap on the + changed nothing and two taps at
+  680,1278 opened AERA's Quick Settings shade instead (`05-app.png`,
+  `07-after.png`). Its POSTs return an empty body. Possible AERA deficiency
+  (D6 candidate); next run records getevent on all devices for one remote tap.
+- Hot reload shows on screen: title `Reloaded on AERA` after `r`
+  (`flutter_p0g-reloaded.png`, `Reloaded 1 of 754 libraries in 620ms`).
 - `flutter_p0g run --aera`: the attach error was this workflow's
   `flutter create -q` (no such flag). With that fixed (a8b887d), the second
   `plugin open` once printed nothing until the 300 s timeout; on the next
