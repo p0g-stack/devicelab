@@ -4,14 +4,13 @@
 // app-plane APK) must connect back to. Static Go binary.
 //
 //	sockprobe [-t seconds] [-reply text] name...   (names without the leading @)
-//	sockprobe -as-uid N -as-ctx CONTEXT cmd args...  (run cmd as that uid and
-//	SELinux context, e.g. an app's, to see what the app itself could read)
+//	sockprobe -as-uid N -as-ctx CONTEXT r:path w:path...  (read/append as that
+//	uid and SELinux context, e.g. an app's, to see what the app itself could do)
 package main
 
 import (
 	"encoding/json"
 	"flag"
-	"fmt"
 	"net"
 	"os"
 	"runtime"
@@ -33,8 +32,8 @@ func peersec(fd int) string {
 func main() {
 	secs := flag.Int("t", 300, "exit after this many seconds")
 	reply := flag.String("reply", "", "text written to each connection, then its write side closed (EOF)")
-	asUID := flag.Int("as-uid", -1, "run the arguments as a command with this uid (and gid)")
-	asCtx := flag.String("as-ctx", "", "with -as-uid: SELinux context for the command")
+	asUID := flag.Int("as-uid", -1, "do the r:/w: ops in the arguments as this uid (and gid)")
+	asCtx := flag.String("as-ctx", "", "with -as-uid: SELinux context to switch to (setcon)")
 	flag.Parse()
 	if *asUID >= 0 {
 		runAs(*asUID, *asCtx, flag.Args())
@@ -83,13 +82,19 @@ func main() {
 	enc.Encode(map[string]any{"event": "exit"})
 }
 
-// runAs sets the exec context on this thread, drops to uid/gid, and execs.
-func runAs(uid int, ctx string, argv []string) {
+// runAs switches this thread to ctx (setcon, not exec: an app domain has no
+// entrypoint on toybox or sh) and to uid/gid, then performs each op on that
+// thread: "r:path" reads, "w:path" appends a line. One JSON line per op.
+func runAs(uid int, ctx string, ops []string) {
 	runtime.LockOSThread()
-	fail := func(what string, err error) { fmt.Fprintf(os.Stderr, "runas: %s: %v\n", what, err); os.Exit(111) }
+	enc := json.NewEncoder(os.Stdout)
+	fail := func(what string, err error) {
+		enc.Encode(map[string]any{"op": what, "error": err.Error()})
+		os.Exit(111)
+	}
 	if ctx != "" {
-		if err := os.WriteFile("/proc/thread-self/attr/exec", []byte(ctx), 0); err != nil {
-			fail("attr/exec", err)
+		if err := os.WriteFile("/proc/thread-self/attr/current", []byte(ctx), 0); err != nil {
+			fail("setcon", err)
 		}
 	}
 	if err := syscall.Setgroups([]int{uid}); err != nil {
@@ -101,5 +106,28 @@ func runAs(uid int, ctx string, argv []string) {
 	if err := syscall.Setuid(uid); err != nil {
 		fail("setuid", err)
 	}
-	fail("exec", syscall.Exec(argv[0], argv, os.Environ()))
+	cur, _ := os.ReadFile("/proc/thread-self/attr/current")
+	enc.Encode(map[string]any{"op": "as", "uid": os.Getuid(), "context": strings.TrimRight(string(cur), "\x00")})
+	for _, op := range ops {
+		kind, path, _ := strings.Cut(op, ":")
+		ev := map[string]any{"op": kind, "path": path}
+		switch kind {
+		case "r":
+			b, err := os.ReadFile(path)
+			ev["data"] = strings.TrimSpace(string(b))
+			if err != nil {
+				ev["error"] = err.Error()
+			}
+		case "w":
+			f, err := os.OpenFile(path, os.O_WRONLY|os.O_APPEND, 0)
+			if err == nil {
+				_, err = f.WriteString("w\n")
+				f.Close()
+			}
+			if err != nil {
+				ev["error"] = err.Error()
+			}
+		}
+		enc.Encode(ev)
+	}
 }

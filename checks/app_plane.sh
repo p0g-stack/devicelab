@@ -92,7 +92,7 @@ CTX=$(adb shell "stat -c %C /data/data/$PKG" | tr -d '\r')
 adb shell "echo chcon >$D/chcon.txt; chown $UID_:$UID_ $D/chcon.txt; chcon $CTX $D/chcon.txt; chcon $CTX $D"
 APPCTX=$(adb shell "ps -A -o LABEL,NAME | grep -m1 ' $PKG\$' | cut -d' ' -f1" | tr -d '\r')
 APPCTX=${APPCTX:-$(echo "$CTX" | sed 's/object_r:app_data_file/r:untrusted_app_27/')}
-rec app-read "$(adb shell "ls -Z $D; for f in probe.txt chcon.txt; do echo \"read \$f:\"; /data/local/tmp/sockprobe -as-uid $UID_ -as-ctx $APPCTX /system/bin/cat $D/\$f 2>&1; done; echo 'write:'; /data/local/tmp/sockprobe -as-uid $UID_ -as-ctx $APPCTX /system/bin/sh -c 'echo w >>$D/chcon.txt && echo ok; echo w >>$D/probe.txt && echo ok' 2>&1; dmesg | grep avc | grep -E 'chcon.txt|probe.txt|sockprobe' | tail -5" | tr -d '\r' | js)"
+rec app-read "$(adb shell "ls -Z $D; /data/local/tmp/sockprobe -as-uid $UID_ -as-ctx $APPCTX r:$D/probe.txt r:$D/chcon.txt w:$D/probe.txt w:$D/chcon.txt 2>&1; dmesg | grep avc | grep -E 'chcon.txt|probe.txt|sockprobe' | tail -6" | tr -d '\r' | js)"
 # Share end to end, as webui_app_plane runs it: text on stdin, then a file.
 share() { # <tag> <stdin text> <extras...>
   local tag=$1 in=$2; shift 2
@@ -109,4 +109,9 @@ share() { # <tag> <stdin text> <extras...>
 }
 share text "hello from devicelab" --es action send --es title devicelab
 share file "" --es action send --es file $D/chcon.txt --es content-type text/plain
+# Android 15 blocks the chooser as a background activity start (the app is a
+# broadcast receiver, not visible). Apps holding SYSTEM_ALERT_WINDOW are exempt.
+adb shell appops set $PKG SYSTEM_ALERT_WINDOW allow
+share text-saw "hello from devicelab" --es action send --es title devicelab
+share file-saw "" --es action send --es file $D/chcon.txt --es content-type text/plain
 echo "app uid: $UID_"
