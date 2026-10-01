@@ -83,4 +83,29 @@ rec avc "$(adb shell "dmesg | grep -i 'avc' | grep -i -E 'termux|$PKG|connectto|
 # restorecon in the app's data dir: a file written by root gets the app's MLS categories?
 adb shell "mkdir -p /data/data/$PKG/files/devicelab; echo x >/data/data/$PKG/files/devicelab/probe.txt; chown -R $UID_:$UID_ /data/data/$PKG/files/devicelab; restorecon -R /data/data/$PKG/files/devicelab"
 rec restorecon "$(adb shell "ls -Zd /data/data/$PKG /data/data/$PKG/files/devicelab/probe.txt" | tr -d '\r' | js)"
+# What the app itself can read and write: a file labelled as webui-packages'
+# writeAppFile does (the data dir's full context via chcon) next to the
+# restorecon'd one (s0, no categories), opened as the app's uid and context.
+D=/data/data/$PKG/files/devicelab
+CTX=$(adb shell "stat -c %C /data/data/$PKG" | tr -d '\r')
+adb shell "echo chcon >$D/chcon.txt; chown $UID_:$UID_ $D/chcon.txt; chcon $CTX $D/chcon.txt; chcon $CTX $D"
+APPCTX=$(adb shell "ps -A -o LABEL,NAME | grep -m1 ' $PKG\$' | cut -d' ' -f1" | tr -d '\r')
+APPCTX=${APPCTX:-$(echo "$CTX" | sed 's/object_r:app_data_file/r:untrusted_app_27/')}
+rec app-read "$(adb shell "ls -Z $D; for f in probe.txt chcon.txt; do echo \"read \$f:\"; /data/local/tmp/sockprobe -as-uid $UID_ -as-ctx $APPCTX /system/bin/cat $D/\$f 2>&1; done; echo 'write:'; /data/local/tmp/sockprobe -as-uid $UID_ -as-ctx $APPCTX /system/bin/sh -c 'echo w >>$D/chcon.txt && echo ok; echo w >>$D/probe.txt && echo ok' 2>&1; dmesg | grep avc | grep -E 'chcon.txt|probe.txt|sockprobe' | tail -5" | tr -d '\r' | js)"
+# Share end to end, as webui_app_plane runs it: text on stdin, then a file.
+share() { # <tag> <stdin text> <extras...>
+  local tag=$1 in=$2; shift 2
+  adb shell "(nohup /data/local/tmp/sockprobe -t 60 -reply '$in' sh_${tag}_out sh_${tag}_in >/data/local/tmp/sockprobe-share-$tag.log 2>&1 &)"; sleep 1
+  local P=$(adb shell "pgrep -f 'sockprobe.*sh_${tag}_out' | head -1" | tr -d '\r')
+  adb logcat -c
+  adb shell am broadcast --user 0 -f 0x01000020 -n $PKG/com.termux.api.TermuxApiReceiver \
+    --es socket_output sh_${tag}_out --es socket_input sh_${tag}_in --ei api_server_pid "${P:-0}" --ei api_server_uid 0 \
+    --ei api_server_starttime "$(adb shell "cut -d' ' -f22 /proc/$P/stat" | tr -d '\r')" --es api_method Share "$@" >/dev/null 2>&1
+  sleep 12
+  rec share-$tag "$(adb shell "dumpsys activity activities | grep -m1 -E 'topResumedActivity'; cat /data/local/tmp/sockprobe-share-$tag.log; logcat -d | grep -i -E 'termux|share|chooser|FileNotFound|denied|avc' | grep -v -E 'Broadcasting|Enqueued' | tail -12" | tr -d '\r' | js)"
+  timeout 20 adb exec-out screencap -p >"$OUT/app-plane-share-$tag.png"
+  adb shell input keyevent KEYCODE_BACK; sleep 2
+}
+share text "hello from devicelab" --es action send --es title devicelab
+share file "" --es action send --es file $D/chcon.txt --es content-type text/plain
 echo "app uid: $UID_"

@@ -4,13 +4,17 @@
 // app-plane APK) must connect back to. Static Go binary.
 //
 //	sockprobe [-t seconds] [-reply text] name...   (names without the leading @)
+//	sockprobe -as-uid N -as-ctx CONTEXT cmd args...  (run cmd as that uid and
+//	SELinux context, e.g. an app's, to see what the app itself could read)
 package main
 
 import (
 	"encoding/json"
 	"flag"
+	"fmt"
 	"net"
 	"os"
+	"runtime"
 	"strings"
 	"syscall"
 	"time"
@@ -28,8 +32,14 @@ func peersec(fd int) string {
 
 func main() {
 	secs := flag.Int("t", 300, "exit after this many seconds")
-	reply := flag.String("reply", "", "text written to each connection after reading")
+	reply := flag.String("reply", "", "text written to each connection, then its write side closed (EOF)")
+	asUID := flag.Int("as-uid", -1, "run the arguments as a command with this uid (and gid)")
+	asCtx := flag.String("as-ctx", "", "with -as-uid: SELinux context for the command")
 	flag.Parse()
+	if *asUID >= 0 {
+		runAs(*asUID, *asCtx, flag.Args())
+		return
+	}
 	enc := json.NewEncoder(os.Stdout)
 	self, _ := os.ReadFile("/proc/self/attr/current")
 	enc.Encode(map[string]any{"event": "start", "uid": os.Getuid(), "context": strings.TrimRight(string(self), "\x00"), "names": flag.Args()})
@@ -58,6 +68,7 @@ func main() {
 					}
 					if *reply != "" {
 						c.Write([]byte(*reply))
+						c.(*net.UnixConn).CloseWrite()
 					}
 					c.SetReadDeadline(time.Now().Add(10 * time.Second))
 					buf := make([]byte, 4096)
@@ -70,4 +81,25 @@ func main() {
 	}
 	time.Sleep(time.Duration(*secs) * time.Second)
 	enc.Encode(map[string]any{"event": "exit"})
+}
+
+// runAs sets the exec context on this thread, drops to uid/gid, and execs.
+func runAs(uid int, ctx string, argv []string) {
+	runtime.LockOSThread()
+	fail := func(what string, err error) { fmt.Fprintf(os.Stderr, "runas: %s: %v\n", what, err); os.Exit(111) }
+	if ctx != "" {
+		if err := os.WriteFile("/proc/thread-self/attr/exec", []byte(ctx), 0); err != nil {
+			fail("attr/exec", err)
+		}
+	}
+	if err := syscall.Setgroups([]int{uid}); err != nil {
+		fail("setgroups", err)
+	}
+	if err := syscall.Setgid(uid); err != nil {
+		fail("setgid", err)
+	}
+	if err := syscall.Setuid(uid); err != nil {
+		fail("setuid", err)
+	}
+	fail("exec", syscall.Exec(argv[0], argv, os.Environ()))
 }
