@@ -1,0 +1,99 @@
+yes: standard output: Broken pipe
+/usr/local/lib/android/sdk/system-images/android-35/google_apis/arm64-v8a/system.img: DOS/MBR boot sector; partition 1 : ID=0xee, start-CHS (0x0,0,2), end-CHS (0x1d9,21,60), startsector 1, 7600127 sectors, extended partition table (last)
+Main partition table begins at sector 2 and ends at sector 33
+First usable sector is 34, last usable sector is 7600094
+Partitions will be aligned on 2048-sector boundaries
+Total free space is 4029 sectors (2.0 MiB)
+
+Number  Start (sector)    End (sector)  Size       Code  Name
+   1            2048            4095   1024.0 KiB  8300  vbmeta
+   2            4096         7598079   3.6 GiB     8300  super
+/dev/loop0p1:  data DEVNAME=/dev/loop0p1 PARTLABEL=vbmeta PARTUUID=b2057a1e-5aaf-4024-a214-59c75b2d8221 
+/dev/loop0p2:  data DEVNAME=/dev/loop0p2 PARTLABEL=super PARTUUID=43403916-0e8d-47b4-9d92-dcbda5f9b267 
+system: 1 extents -> /tmp/tmp.j56uVWIOIs/system.img
+/tmp/tmp.j56uVWIOIs/system.img: Linux rev 1.0 ext2 filesystem data, UUID=07b55250-f576-5a1e-83a7-9e2aa080242c (extents) (large files) (huge files)
+acct
+adb_keys
+apex
+bin
+bootstrap-apex
+bugreports
+cache
+config
+d
+data
+hwasan libc.so libclang_rt.hwasan-aarch64-android.so libdl.so libdl_android.so libm.so 
+dart 3.13.5
+Generated: /tmp/tmp.j56uVWIOIs/probe-arm64.aot
+      [Requesting program interpreter: /system/bin/linker64]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libdl.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [liblog.so]
+== sh-works exit 127
+bionic sh ok
+aarch64
+
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+/system/bin/sh: ls: inaccessible or not found
+
+== aot-host-snapshot-termux-runtime exit 255
+
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+Snapshot not compatible with the current VM configuration: the snapshot requires 'product 
+== termux-compile-exe exit 0
+Generated: /data/adb/devicelab/probe-bionic
+
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.conf
+== bionic-exe-no-termux exit 255
+
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+Unhandled exception:
+OS Error: Invalid argument, errno = 22
+#0      _Platform.operatingSys
+
+gzip: stdout: Broken pipe
+curl: (23) Failure writing output to destination
+== glibc-loader-linux-runtime-aot exit 0
+{"os":"linux","osVersion":"Linux 6.17.0-1022-azure #22-Ubuntu SMP Mon Jul 27 17:24:03 UTC 2026","dart":"3.13.5 (stable) (Tue Sep 29 01:00:52 2026 -0700) on \"linux_arm64\"","executable":"/data/adb/devicelab/glibc/ld-linux-aarch64.so.1","pid":2656,"env":{"PATH":"/system/bin","TMPDIR":"/data/adb/devicelab","LD_LIBRARY_PATH":null,"ANDROID_ROOT":null,"HOME":"/root"},"selinux":{"ok":true,"value":"unconfined","ms":10},"status":{"ok":true,"value":["Uid:\t0\t0\t0\t0","Gid:\t0\t0\t0\t0"],"ms":1},"tempDir
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+
+== bionic-exe-tmpdir exit 255
+
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+WARNING: linker: Warning: failed to find generated linker configuration from "/linkerconfig/ld.config.txt"
+Unhandled exception:
+OS Error: Invalid argument, errno = 22
+#0      _Platform.operatingSys
+/tmp/tmp.j56uVWIOIs/root/data/adb/devicelab:
+total 14704
+-rwx------ 1 root root 5684384 Oct  1 06:07 dartaotruntime
+drwxr-xr-x 2 root root    4096 Oct  1 06:08 glibc
+-rw-r--r-- 1 root root 1827880 Oct  1 06:07 probe-arm64.aot
+-rwxr-xr-x 1 root root 7529464 Oct  1 06:08 probe-bionic
+-rw-r--r-- 1 root root    3889 Oct  1 06:07 probe.dart
+
+/tmp/tmp.j56uVWIOIs/root/data/adb/devicelab/glibc:
+total 7904
+-rwxr-xr-x 1 root root 5428184 Oct  1 06:08 dartaotruntime-linux
+-rwxr-xr-x 1 root root  203968 Oct  1 06:08 ld-linux-aarch64.so.1
+-rwxr-xr-x 1 root root 1722920 Oct  1 06:08 libc.so.6
+-rw-r--r-- 1 root root   67440 Oct  1 06:08 libdl.so.2
+-rw-r--r-- 1 root root  591800 Oct  1 06:08 libm.so.6
+-rw-r--r-- 1 root root   67440 Oct  1 06:08 libpthread.so.0
