@@ -1,0 +1,342 @@
+{
+ "probe": "dart_bionic",
+ "date": "2026-10-01",
+ "platform": "avd",
+ "abi": "x86_64",
+ "fingerprint": "google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+ "kernel": "6.6.50-android15-8-g8adecb593e9b-ab12525588",
+ "dartLinuxSdk": "Dart SDK version: 3.13.5 (stable) (Tue Sep 29 01:00:52 2026 -0700) on \"linux_x64\"",
+ "results": [
+  {
+   "name": "glibc-direct",
+   "cmd": "env -i PATH=/system/bin /data/adb/devicelab/probe-glibc",
+   "exit": 127,
+   "ms": 85,
+   "stdout": "",
+   "stderr": "env: exec /data/adb/devicelab/probe-glibc: No such file or directory"
+  },
+  {
+   "name": "glibc-via-loader",
+   "cmd": "env -i PATH=/system/bin /data/adb/devicelab/glibc/ld-linux-x86-64.so.2 --library-path /data/adb/devicelab/glibc /data/adb/devicelab/probe-glibc",
+   "exit": 255,
+   "ms": 234,
+   "stdout": "Usage: dartvm [<vm-flags>] <dart-script-file> [<script-arguments>]\n\nExecutes the Dart script <dart-script-file> with the given list of <script-arguments>.\n\nCommon VM flags:\n--help or -h\n  Display this message (add -v or --verbose for information about\n  all VM options).\n--packages=<path>\n  Where to find a package spec file.\n--define=<key>=<value> or -D<key>=<value>\n  Define an environment declaration. To specify multiple declarations,\n  use multiple instances of this option.\n--snapshot-kind=<snapshot_kind>\n--snapshot=<file_name>\n  These snapshot options are used to generate a snapshot of the loaded\n  Dart script:\n    <snapshot-kind> controls the kind of snapshot, it could be\n                    kernel(default) or app-jit\n    <file_name> specifies the file into which the snapshot is written\n--version\n  Print the SDK version.",
+   "stderr": ""
+  },
+  {
+   "name": "glibc-patched-interp",
+   "cmd": "env -i PATH=/system/bin /data/adb/devicelab/probe-glibc-patched",
+   "exit": 255,
+   "ms": 81,
+   "stdout": "Usage: dartvm [<vm-flags>] <dart-script-file> [<script-arguments>]\n\nExecutes the Dart script <dart-script-file> with the given list of <script-arguments>.\n\nCommon VM flags:\n--help or -h\n  Display this message (add -v or --verbose for information about\n  all VM options).\n--packages=<path>\n  Where to find a package spec file.\n--define=<key>=<value> or -D<key>=<value>\n  Define an environment declaration. To specify multiple declarations,\n  use multiple instances of this option.\n--snapshot-kind=<snapshot_kind>\n--snapshot=<file_name>\n  These snapshot options are used to generate a snapshot of the loaded\n  Dart script:\n    <snapshot-kind> controls the kind of snapshot, it could be\n                    kernel(default) or app-jit\n    <file_name> specifies the file into which the snapshot is written\n--version\n  Print the SDK version.",
+   "stderr": ""
+  },
+  {
+   "name": "termux-dart-version",
+   "cmd": "env -i PATH=/data/data/com.termux/files/usr/bin:/system/bin HOME=/data/local/tmp/lab TMPDIR=/data/local/tmp/lab PREFIX=/data/data/com.termux/files/usr /data/data/com.termux/files/usr/lib/dart-sdk/bin/dart --version",
+   "exit": 0,
+   "ms": 99,
+   "stdout": "Dart SDK version: 3.13.5 (stable) (Tue Sep 29 01:00:52 2026 -0700) on \"android_x64\"",
+   "stderr": ""
+  },
+  {
+   "name": "termux-compile-exe",
+   "cmd": "cd /data/local/tmp/lab && env -i PATH=/data/data/com.termux/files/usr/bin:/system/bin HOME=/data/local/tmp/lab TMPDIR=/data/local/tmp/lab PREFIX=/data/data/com.termux/files/usr /data/data/com.termux/files/usr/lib/dart-sdk/bin/dart compile exe probe.dart -o probe-bionic",
+   "exit": 0,
+   "ms": 12390,
+   "stdout": "Generated: /data/local/tmp/lab/probe-bionic",
+   "stderr": ""
+  },
+  {
+   "name": "termux-run-in-place",
+   "cmd": "env -i PATH=/data/data/com.termux/files/usr/bin:/system/bin HOME=/data/local/tmp/lab TMPDIR=/data/local/tmp/lab PREFIX=/data/data/com.termux/files/usr /data/local/tmp/lab/probe-bionic",
+   "exit": 126,
+   "ms": 63,
+   "stdout": "",
+   "stderr": "env: exec /data/local/tmp/lab/probe-bionic: Permission denied"
+  },
+  {
+   "name": "bionic-module-path-no-termux",
+   "cmd": "env -i PATH=/system/bin /data/adb/devicelab/probe-bionic",
+   "exit": 0,
+   "ms": 237,
+   "stdout": {
+    "os": "android",
+    "osVersion": "sdk_gphone64_x86_64-userdebug 15 AE3A.240806.043 12960925 dev-keys",
+    "dart": "3.13.5 (stable) (Tue Sep 29 01:00:52 2026 -0700) on \"android_x64\"",
+    "executable": "/data/adb/devicelab/probe-bionic",
+    "pid": 3812,
+    "env": {
+     "PATH": "/system/bin",
+     "TMPDIR": null,
+     "LD_LIBRARY_PATH": null,
+     "ANDROID_ROOT": null,
+     "HOME": null
+    },
+    "selinux": {
+     "ok": true,
+     "value": "u:r:su:s0\u0000",
+     "ms": 0
+    },
+    "status": {
+     "ok": true,
+     "value": [
+      "Uid:\t0\t0\t0\t0",
+      "Gid:\t0\t0\t0\t0"
+     ],
+     "ms": 0
+    },
+    "tempDir": {
+     "ok": false,
+     "error": "PathNotFoundException: Creation of temporary directory failed, path = '/data/data/com.termux/files/usr/tmp/probe' (OS Error: No such file or directory, errno = 2)",
+     "ms": 0
+    },
+    "processRun": {
+     "ok": true,
+     "value": {
+      "exit": 0,
+      "stdout": "uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:su:s0\ngoogle/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+      "stderr": ""
+     },
+     "ms": 43
+    },
+    "isolate": {
+     "ok": true,
+     "value": 499500,
+     "ms": 0
+    },
+    "dnsLocalhost": {
+     "ok": true,
+     "value": [
+      "127.0.0.1"
+     ],
+     "ms": 4
+    },
+    "dnsRemote": {
+     "ok": true,
+     "value": [
+      "199.36.158.100"
+     ],
+     "ms": 75
+    },
+    "loopbackWebSocket": {
+     "ok": true,
+     "value": {
+      "roundTrips": 100,
+      "p50Us": 141,
+      "maxUs": 3999,
+      "connectMs": 11
+     },
+     "ms": 46
+    },
+    "unixAbstract": {
+     "ok": true,
+     "value": "hello",
+     "ms": 2
+    },
+    "unixPath": {
+     "ok": false,
+     "error": "SocketException: Failed to create server socket (OS Error: No such file or directory, errno = 2), address = /data/data/com.termux/files/usr/tmp/devicelab-probe-3812.sock, port = 0",
+     "ms": 0
+    }
+   },
+   "stderr": ""
+  },
+  {
+   "name": "bionic-module-path-tmpdir",
+   "cmd": "env -i PATH=/system/bin TMPDIR=/data/adb/devicelab /data/adb/devicelab/probe-bionic",
+   "exit": 0,
+   "ms": 301,
+   "stdout": {
+    "os": "android",
+    "osVersion": "sdk_gphone64_x86_64-userdebug 15 AE3A.240806.043 12960925 dev-keys",
+    "dart": "3.13.5 (stable) (Tue Sep 29 01:00:52 2026 -0700) on \"android_x64\"",
+    "executable": "/data/adb/devicelab/probe-bionic",
+    "pid": 3860,
+    "env": {
+     "PATH": "/system/bin",
+     "TMPDIR": "/data/adb/devicelab",
+     "LD_LIBRARY_PATH": null,
+     "ANDROID_ROOT": null,
+     "HOME": null
+    },
+    "selinux": {
+     "ok": true,
+     "value": "u:r:su:s0\u0000",
+     "ms": 0
+    },
+    "status": {
+     "ok": true,
+     "value": [
+      "Uid:\t0\t0\t0\t0",
+      "Gid:\t0\t0\t0\t0"
+     ],
+     "ms": 0
+    },
+    "tempDir": {
+     "ok": true,
+     "value": "/data/adb/devicelab/probeUGVVAB",
+     "ms": 1
+    },
+    "processRun": {
+     "ok": true,
+     "value": {
+      "exit": 0,
+      "stdout": "uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:su:s0\ngoogle/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+      "stderr": ""
+     },
+     "ms": 64
+    },
+    "isolate": {
+     "ok": true,
+     "value": 499500,
+     "ms": 0
+    },
+    "dnsLocalhost": {
+     "ok": true,
+     "value": [
+      "127.0.0.1"
+     ],
+     "ms": 3
+    },
+    "dnsRemote": {
+     "ok": true,
+     "value": [
+      "199.36.158.100"
+     ],
+     "ms": 10
+    },
+    "loopbackWebSocket": {
+     "ok": true,
+     "value": {
+      "roundTrips": 100,
+      "p50Us": 192,
+      "maxUs": 12901,
+      "connectMs": 8
+     },
+     "ms": 84
+    },
+    "unixAbstract": {
+     "ok": true,
+     "value": "hello",
+     "ms": 3
+    },
+    "unixPath": {
+     "ok": true,
+     "value": "hello",
+     "ms": 0
+    }
+   },
+   "stderr": ""
+  },
+  {
+   "name": "aot-host-snapshot-termux-runtime",
+   "cmd": "env -i PATH=/system/bin /data/adb/devicelab/dartaotruntime /data/adb/devicelab/probe.aot",
+   "exit": 255,
+   "ms": 195,
+   "stdout": "",
+   "stderr": "Snapshot not compatible with the current VM configuration: the snapshot requires 'product no-asan no-msan no-tsan no-shared_data no-code_comments no-dwarf_stack_traces x64 linux no-compressed-pointers' but the VM has 'product no-asan no-msan no-tsan no-shared_data no-code_comments no-dwarf_stack_traces x64 android no-compressed-pointers'"
+  },
+  {
+   "name": "glibc-loader-linux-runtime-aot",
+   "cmd": "env -i PATH=/system/bin /data/adb/devicelab/glibc/ld-linux-x86-64.so.2 --library-path /data/adb/devicelab/glibc /data/adb/devicelab/glibc/dartaotruntime-linux /data/adb/devicelab/probe.aot",
+   "exit": 0,
+   "ms": 428,
+   "stdout": {
+    "os": "linux",
+    "osVersion": "Linux 6.6.50-android15-8-g8adecb593e9b-ab12525588 #1 SMP PREEMPT Fri Oct 18 23:59:20 UTC 2024",
+    "dart": "3.13.5 (stable) (Tue Sep 29 01:00:52 2026 -0700) on \"linux_x64\"",
+    "executable": "/data/adb/devicelab/glibc/ld-linux-x86-64.so.2",
+    "pid": 4119,
+    "env": {
+     "PATH": "/system/bin",
+     "TMPDIR": null,
+     "LD_LIBRARY_PATH": null,
+     "ANDROID_ROOT": null,
+     "HOME": null
+    },
+    "selinux": {
+     "ok": true,
+     "value": "u:r:su:s0\u0000",
+     "ms": 0
+    },
+    "status": {
+     "ok": true,
+     "value": [
+      "Uid:\t0\t0\t0\t0",
+      "Gid:\t0\t0\t0\t0"
+     ],
+     "ms": 0
+    },
+    "tempDir": {
+     "ok": true,
+     "value": "/tmp/probeCNWQWO",
+     "ms": 0
+    },
+    "processRun": {
+     "ok": true,
+     "value": {
+      "exit": 0,
+      "stdout": "uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:su:s0\ngoogle/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+      "stderr": ""
+     },
+     "ms": 103
+    },
+    "isolate": {
+     "ok": true,
+     "value": 499500,
+     "ms": 2
+    },
+    "dnsLocalhost": {
+     "ok": true,
+     "value": [
+      "127.0.0.1"
+     ],
+     "ms": 18
+    },
+    "dnsRemote": {
+     "ok": false,
+     "error": "SocketException: Failed host lookup: 'dart.dev' (OS Error: Temporary failure in name resolution, errno = -3)",
+     "ms": 0
+    },
+    "loopbackWebSocket": {
+     "ok": true,
+     "value": {
+      "roundTrips": 100,
+      "p50Us": 121,
+      "maxUs": 6659,
+      "connectMs": 8
+     },
+     "ms": 67
+    },
+    "unixAbstract": {
+     "ok": true,
+     "value": "hello",
+     "ms": 3
+    },
+    "unixPath": {
+     "ok": true,
+     "value": "hello",
+     "ms": 2
+    }
+   },
+   "stderr": ""
+  },
+  {
+   "name": "bionic-cold-start-x5",
+   "cmd": "for i in 1 2 3 4 5; do env -i /data/adb/devicelab/probe-bionic >/dev/null; done",
+   "exit": 0,
+   "ms": 2218,
+   "stdout": "",
+   "stderr": ""
+  },
+  {
+   "name": "selinux-context",
+   "cmd": "id; cat /proc/self/attr/current; getenforce",
+   "exit": 0,
+   "ms": 256,
+   "stdout": "uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:su:s0\nu:r:su:s0\u0000Enforcing",
+   "stderr": ""
+  }
+ ]
+}
