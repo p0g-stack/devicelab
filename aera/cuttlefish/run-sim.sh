@@ -18,11 +18,16 @@ t0=$SECONDS
 a push "$OUT/$LABEL/payload.tgz" "$D/" >/dev/null && a push "$SIM" "$D/aera-host-sim" >/dev/null
 a shell "cd $D/root && tar -xzf ../payload.tgz && chmod 755 ../aera-host-sim usr/bin/*" || exit 1
 rm "$OUT/$LABEL/payload.tgz"
+# SWITCHES: engine switches, one per line, read by the launcher from
+# $AERA_PLUGIN_DATA/engine-switches (the sim's OUT/plugin-data).
+a shell "mkdir -p $D/out/plugin-data"
+[ -n "${SWITCHES:-}" ] && printf '%s\n' "$SWITCHES" | a shell "cat > $D/out/plugin-data/engine-switches"
 echo "[sim] pushed in $((SECONDS - t0))s; $(a shell "du -sh $D/root" | tr -d '\r')"
 t0=$SECONDS
 a shell "cd $D && ./aera-host-sim --root $D/root --embedder $D/root/usr/bin/aera-plugin --out $D/out $*" \
   >"$OUT/$LABEL/sim.log" 2>&1; rc=$?
-echo "[sim] exit $rc after $((SECONDS - t0))s"; tail -25 "$OUT/$LABEL/sim.log"
+echo "[sim] exit $rc after $((SECONDS - t0))s (switches: ${SWITCHES:-none})"; tail -25 "$OUT/$LABEL/sim.log"
 a pull "$D/out" "$OUT/$LABEL/" >/dev/null 2>&1
 ls -la "$OUT/$LABEL/out" 2>/dev/null
+grep -h -iE "capset|renderer|impeller|vulkan|zink|fall" "$OUT/$LABEL/sim.log" "$OUT/$LABEL"/out/plugin-data/aera-flutter.log 2>/dev/null | head -20
 exit $rc
