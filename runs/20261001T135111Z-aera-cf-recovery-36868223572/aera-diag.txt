@@ -1,0 +1,310 @@
+$ getprop init.svc.recovery
+restarting
+
+$ getprop | grep -E "ro.build.version.(sdk|release)|ro.twrp|aera|ro.boot.mode|bootmode"
+[ro.board.platform]: [aera_cf]
+[ro.boot.modem_simulator_ports]: [9600]
+[ro.bootimage.build.date.utc_aera]: [1790859634]
+[ro.bootmode]: [unknown]
+[ro.build.aera_codebase]: [2026-10-01 (ba4d988)]
+[ro.build.aera_id]: [25eb556b-ab41-493a-99bf-0eeb8e193b7e]
+[ro.build.date.utc_aera]: [1790859634]
+[ro.build.description]: [aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys]
+[ro.build.display.id]: [aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys]
+[ro.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.build.flavor]: [aera_aera-eng]
+[ro.build.product]: [aera_cf]
+[ro.build.version.release]: [99.87.36]
+[ro.build.version.release_or_codename]: [99.87.36]
+[ro.build.version.release_or_preview_display]: [16]
+[ro.build.version.sdk]: [36]
+[ro.build.version.sdk_full]: [36.0]
+[ro.odm.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.product.board]: [aera_cf]
+[ro.product.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.product.device]: [aera_cf]
+[ro.product.name]: [aera_aera]
+[ro.product.odm.device]: [aera_cf]
+[ro.product.odm.name]: [aera_aera]
+[ro.product.product.device]: [aera_cf]
+[ro.product.product.name]: [aera_aera]
+[ro.product.system.device]: [aera_cf]
+[ro.product.system.name]: [aera_aera]
+[ro.product.system_ext.device]: [aera_cf]
+[ro.product.system_ext.name]: [aera_aera]
+[ro.product.vendor.device]: [aera_cf]
+[ro.product.vendor.name]: [aera_aera]
+[ro.system.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.system_ext.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+
+$ ls -la /tmp /tmp/recovery.log 2>&1
+ls: /tmp/recovery.log: No such file or directory
+total 0
+drwxrwxr-x  3 root shell   60 2026-10-01 13:47 .
+drwxr-xr-x 35 root root  1480 2026-10-01 13:47 ..
+drwxr-xr-x  3 root root    60 2026-10-01 13:47 misc
+
+$ tail -80 /tmp/recovery.log 2>&1
+tail: /tmp/recovery.log: No such file or directory
+
+$ grep -rn -A8 "service recovery" /init.rc /system/etc/init/hw/init.rc /*.rc 2>/dev/null | head -40
+/system/etc/init/hw/init.rc:130:service recovery /system/bin/recovery
+/system/etc/init/hw/init.rc-131-    socket recovery stream 422 system system
+/system/etc/init/hw/init.rc-132-    seclabel u:r:recovery:s0
+/system/etc/init/hw/init.rc-133-    user root
+/system/etc/init/hw/init.rc-134-
+/system/etc/init/hw/init.rc-135-service adbd /system/bin/adbd --root_seclabel=u:r:su:s0 --device_banner=recovery
+/system/etc/init/hw/init.rc-136-    disabled
+/system/etc/init/hw/init.rc-137-    socket adbd stream 660 system system
+/system/etc/init/hw/init.rc-138-    seclabel u:r:adbd:s0
+/init.recovery.service.rc:4:service recovery /system/bin/recovery
+/init.recovery.service.rc-5-    socket recovery stream 422 system system
+/init.recovery.service.rc-6-    seclabel u:r:recovery:s0
+/init.recovery.service.rc-7-    user root
+
+$ file /system/bin/recovery 2>&1; ls -la /system/bin/recovery
+/system/bin/recovery: ELF shared object, 64-bit LSB x86-64, dynamic (/system/bin/linker64), for Android 36, BuildID=1fbe7eb5fe28b8ebad9b4dfe5c72a4f8, stripped
+-rwxr-xr-x 1 root root 10341224 1970-01-01 00:00 /system/bin/recovery
+
+$ readelf -d /system/bin/recovery 2>/dev/null | grep NEEDED
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.boot@1.0.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.boot@1.1.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.boot@1.2.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.health@2.0.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.health@2.1.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.health-V3-ndk.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [android.hardware.health-translate-ndk.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libbinder.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libbinder_ndk.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libboot_control_client.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libfs_mgr.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libhardware.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libhidlbase.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [liblog.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [liblp.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [liblz4.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libprotobuf-cpp-lite.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libutils.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libz.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libcutils.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libstdc++.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libtar.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libblkid.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libminuitwrp.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libmtdutils.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libtwadbbu.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libjpeg.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libpng.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libbootloader_message.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libcrecovery.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libtwrpdigest.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc++.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libaosprecovery.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libcrypto.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libbase.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libandroidfw.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libziparchive.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libselinux.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libdl_android.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libft2.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libtwrpmtp-ffs.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libresetprop.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libm.so]
+ 0x0000000000000001 (NEEDED)             Shared library: [libdl.so]
+
+$ ls /system/lib64 | head -100; ls /system/lib64 | wc -l
+android.frameworks.stats@1.0.so
+android.hardware.boot-V1-ndk.so
+android.hardware.boot@1.0.so
+android.hardware.boot@1.1.so
+android.hardware.boot@1.2.so
+android.hardware.fastboot-V1-ndk.so
+android.hardware.fastboot@1.0.so
+android.hardware.fastboot@1.1.so
+android.hardware.health-V3-ndk.so
+android.hardware.health-V4-ndk.so
+android.hardware.health-V5-ndk.so
+android.hardware.health-translate-ndk.so
+android.hardware.health@1.0.so
+android.hardware.health@2.0.so
+android.hardware.health@2.1.so
+android.hardware.vibrator-V1-cpp.so
+android.hardware.vibrator-V1-ndk.so
+android.hardware.vibrator-V2-cpp.so
+android.hardware.vibrator-V2-ndk.so
+android.hardware.vibrator@1.0.so
+android.hardware.vibrator@1.1.so
+android.hardware.vibrator@1.2.so
+android.hidl.token@1.0.so
+hw
+ld-android.so
+libadb_crypto.so
+libadb_protos.so
+libadb_sysdeps.so
+libadb_tls_connection.so
+libadbconnection_server.so
+libadbd.so
+libadbd_auth.so
+libadbd_fs.so
+libadbd_services.so
+libandroid_runtime_lazy.so
+libandroidfw.so
+libandroidicu.so
+libaosprecovery.so
+libapexsupport.so
+libapp_processes_protos_lite.so
+libasyncio.so
+libbase.so
+libbinder.so
+libbinder_ndk.so
+libblkid.so
+libbmlutils.so
+libboot_control_client.so
+libbootloader_message.so
+libc++.so
+libc.so
+libcap.so
+libchrome.so
+libcrecovery.so
+libcrypto.so
+libcrypto_utils.so
+libcutils.so
+libcutils_sockets.so
+libdl.so
+libdl_android.so
+libevent.so
+libexfat_twrp.so
+libext2_blkid.so
+libext2_com_err.so
+libext2_e2p.so
+libext2_misc.so
+libext2_profile.so
+libext2_quota.so
+libext2_uuid.so
+libext2fs.so
+libext4_utils.so
+libfec.so
+libfec_rs.so
+libflashutils.so
+libfs_mgr.so
+libfscrypt.so
+libft2.so
+libfusesideload.so
+libgsi.so
+libhardware.so
+libhidl-gen-utils.so
+libhidlbase.so
+libhidltransport.so
+libicui18n.so
+libicuuc.so
+libjpeg.so
+libjsoncpp.so
+libkeyutils.so
+liblog.so
+liblogwrap.so
+liblp.so
+liblz4.so
+liblzma.so
+libm.so
+libmdnssd.so
+libminuitwrp.so
+libmmcutils.so
+libmtdutils.so
+libncurses.so
+libnetd_client.so
+libnl.so
+132
+
+$ ls -la /twres /twres/fonts 2>&1 | head -20
+/twres:
+total 0
+drwxr-xr-x  3 root root   60 2026-10-01 13:45 .
+drwxr-xr-x 35 root root 1480 2026-10-01 13:47 ..
+drwxr-xr-x  2 root root  220 2026-10-01 13:45 fonts
+
+/twres/fonts:
+total 6532
+drwxr-xr-x 2 root root     220 2026-10-01 13:45 .
+drwxr-xr-x 3 root root      60 2026-10-01 13:45 ..
+-rw-r--r-- 1 root root    4350 1970-01-01 00:00 Noto-OFL.txt
+-rw-r--r-- 1 root root  120800 1970-01-01 00:00 NotoNaskhArabicUI-Regular.ttf
+-rw-r--r-- 1 root root  246772 1970-01-01 00:00 NotoSansBengaliUI-VF.ttf
+-rw-r--r-- 1 root root  709712 1970-01-01 00:00 NotoSansCJKjp-Regular.ttf
+-rw-r--r-- 1 root root  247460 1970-01-01 00:00 NotoSansDevanagariUI-VF.ttf
+-rw-r--r-- 1 root root   66156 1970-01-01 00:00 NotoSansHebrew-Regular.ttf
+-rw-r--r-- 1 root root   22024 1970-01-01 00:00 NotoSansThaiUI-Regular.ttf
+-rw-r--r-- 1 root root   67908 1970-01-01 00:00 Roboto-Regular.ttf
+-rw-r--r-- 1 root root 5177387 1970-01-01 00:00 wqy-microhei.ttf
+
+$ ls -la /etc /system/etc/task_profiles.json /etc/task_profiles.json 2>&1 | head -20
+ls: /system/etc/task_profiles.json: No such file or directory
+ls: /etc/task_profiles.json: No such file or directory
+lrwxrwxrwx 1 root root 11 1970-01-01 00:00 /etc -> /system/etc
+
+$ stop recovery; sleep 1; cd /; (timeout 15 /system/bin/recovery; echo "exit $?") 2>&1 | tail -60
+linker: CANNOT LINK EXECUTABLE "/system/bin/recovery": library "libincfs.so" not found: needed by /system/lib64/libandroidfw.so in namespace (default)
+CANNOT LINK EXECUTABLE "/system/bin/recovery": library "libincfs.so" not found: needed by /system/lib64/libandroidfw.so in namespace (default)
+exit 1
+
+$ tail -60 /tmp/recovery.log 2>&1
+tail: /tmp/recovery.log: No such file or directory
+
+$ logcat -d 2>/dev/null | tail -80
+
+$ dmesg | grep -iE "recovery|aera|twrp|linker|CANNOT|avc" | tail -60
+[    3.012982] init: First stage mount skipped (recovery mode)
+[    3.014281] init: [libfstab] ReadFstabFromFileCommon(): failed to load fstab from : '/etc/recovery.fstab'
+[    3.028562] init: [libfstab] ReadFstabFromFileCommon(): failed to load fstab from : '/etc/recovery.fstab'
+[    3.134745] init: Setting product property ro.product.device to 'aera_cf' (from ro.product.product.device)
+[    3.135540] init: Setting product property ro.product.model to 'AERA Cuttlefish x86_64' (from ro.product.product.model)
+[    3.135912] init: Setting product property ro.product.name to 'aera_aera' (from ro.product.product.name)
+[    3.136322] init: Setting property 'ro.build.fingerprint' to 'p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys'
+[    3.149965] init: Added '/init.recovery.logd.rc' to import list
+[    3.150215] init: Added '/init.recovery.ldconfig.rc' to import list
+[    3.150530] init: Added '/init.recovery.mksh.rc' to import list
+[    3.150732] init: Added '/init.recovery.usb.rc' to import list
+[    3.151686] init: Added '/init.recovery.service.rc' to import list
+[    3.152730] init: Added '/init.recovery.cutf_cvm.rc' to import list
+[    3.153476] init: Parsing file /init.recovery.logd.rc...
+[    3.153940] init: Parsing file /init.recovery.ldconfig.rc...
+[    3.154910] init: Parsing file /init.recovery.mksh.rc...
+[    3.155126] init: Unable to read config file '/init.recovery.mksh.rc': open() failed: No such file or directory
+[    3.156041] init: Parsing file /init.recovery.usb.rc...
+[    3.156974] init: Unable to read config file '/init.recovery.usb.rc': open() failed: No such file or directory
+[    3.157314] init: Parsing file /init.recovery.service.rc...
+[    3.158196] init: /init.recovery.service.rc: 4: ignored duplicate definition of service 'recovery'
+[    3.159178] init: Parsing file /init.recovery.cutf_cvm.rc...
+[    3.159452] init: /init.recovery.cutf_cvm.rc: 1: ignored duplicate definition of service 'console'
+[    3.160409] init: Parsing file /system/etc/init/android.hardware.boot-service.default_recovery.rc...
+[    3.162387] init: Parsing file /system/etc/init/android.hardware.health-service.cuttlefish_recovery.rc...
+[    3.165088] init: Parsing file /system/etc/init/servicemanager.recovery.rc...
+[    3.165711] init: /system/etc/init/servicemanager.recovery.rc: 1: ignored duplicate definition of service 'servicemanager'
+[    3.182248] audit: type=1400 audit(1790862462.947:4): avc:  denied  { create } for  pid=1 comm="init" name="bootstrap" scontext=u:r:init:s0 tcontext=u:object_r:system_file:s0 tclass=dir permissive=1
+[    3.322477] init: processing action (init) from (/init.recovery.logd.rc:1)
+[    3.391524] SELinux: avc:  denied  { add } for pid=85 uid=0 name=manager scontext=u:r:recovery:s0 tcontext=u:object_r:service_manager_service:s0 tclass=service_manager permissive=1
+[    3.392674] init: processing action (fs) from (/init.recovery.ldconfig.rc:1)
+[    3.404104] SELinux: avc:  denied  { add } for pid=86 uid=0 name=manager scontext=u:r:recovery:s0 tcontext=u:object_r:service_manager_vndservice:s0 tclass=service_manager permissive=1
+[    3.409825] init: starting service 'recovery'...
+[    3.410363] init: Created socket '/dev/socket/recovery', mode 422, user 1000, group 1000
+[    3.415554] init: ... started service 'recovery' has pid 89
+[    3.435679] HealthLoop: failed to load BPF program /sys/fs/bpf/vendor/prog_filterPowerSupplyEvents_skfilter_power_supply: No such file or directory. This is expected in recovery mode and also for kernel versions before 5.10.
+[    3.444113] init: Service 'recovery' (pid 89) exited with status 1
+[    3.444965] init: Sending signal 9 to service 'recovery' (pid 89) process group...
+[    3.447664] init: processing action (ro.debuggable=1) from (/init.recovery.cutf_cvm.rc:10)
+[    8.414518] init: starting service 'recovery'...
+[    8.415152] init: Created socket '/dev/socket/recovery', mode 422, user 1000, group 1000
+[    8.417721] init: ... started service 'recovery' has pid 97
+[    8.428612] init: Service 'recovery' (pid 97) exited with status 1
+[    8.428808] init: Sending signal 9 to service 'recovery' (pid 97) process group...
+[    8.456251] init: Control message: Could not find 'mdnsd' for ctl.start from pid: 99 (/system/bin/adbd --root_seclabel=u:r:su:s0 --device_banner=recovery)
+[   13.345786] audit: type=1400 audit(1790862473.107:25): avc:  denied  { map } for  pid=112 comm="logd" path="/system/bin/logd" dev="rootfs" ino=365 scontext=u:r:logd:s0 tcontext=u:object_r:rootfs:s0 tclass=file permissive=1
+[   13.349635] audit: type=1400 audit(1790862473.107:25): avc:  denied  { read } for  pid=112 comm="logd" path="/system/bin/logd" dev="rootfs" ino=365 scontext=u:r:logd:s0 tcontext=u:object_r:rootfs:s0 tclass=file permissive=1
+[   13.352012] audit: type=1400 audit(1790862473.107:25): avc:  denied  { execute } for  pid=112 comm="logd" path="/system/bin/logd" dev="rootfs" ino=365 scontext=u:r:logd:s0 tcontext=u:object_r:rootfs:s0 tclass=file permissive=1
+[   13.417508] init: starting service 'recovery'...
+[   13.418240] init: Created socket '/dev/socket/recovery', mode 422, user 1000, group 1000
+[   13.420734] init: ... started service 'recovery' has pid 116
+[   13.430632] init: Service 'recovery' (pid 116) exited with status 1
+[   13.430905] init: Sending signal 9 to service 'recovery' (pid 116) process group...
+[   15.709181] init: Control message: Processed ctl.stop for 'recovery' from pid: 231 (stop recovery)
+
