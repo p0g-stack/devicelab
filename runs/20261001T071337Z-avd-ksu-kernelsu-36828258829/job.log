@@ -1,0 +1,295 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 60s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.0
+total 16428
+drwx------  2 runner runner     4096 Oct  1 07:07 .
+drwxrwxrwt 16 root   root       4096 Oct  1 07:07 ..
+-rw-r--r--  1 runner runner 10777987 Oct  1 07:07 KernelSU_v3.3.0_32601-release.apk
+-rw-r--r--  1 runner runner  5713312 Oct  1 07:07 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   318824 Oct  1 07:07 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu)
+/tmp/tmp.rFRJfOY7JN/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 8.5 MB/s (318824 bytes in 0.036s)
+/tmp/tmp.rFRJfOY7JN/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 71.6 MB/s (5713312 bytes in 0.076s)
+== ksud: ksud 3.3.0 (uapi: 2)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              159744  0 
+== lsmod: kernelsu              159744  1 
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.051s)
+== modules: [
+  {
+    "web": "true",
+    "name": "devicelab probe",
+    "enabled": "true",
+    "author": "p0g-stack",
+    "action": "false",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "versionCode": "1",
+    "remove": "false",
+    "update": "false",
+    "mount": "false",
+    "id": "devicelab_probe",
+    "version": "1"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+ERROR: null root node returned by UiTestAutomationBridge.
+cat: /data/local/tmp/ui.xml: No such file or directory
+== home text: 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+inputs/modules/flutter_webui_counter-0.1.0.zip: 1 file pushed, 0 skipped. 118.4 MB/s (18352725 bytes in 0.148s)
+== install flutter_webui_counter-0.1.0.zip
+  inflating: webroot/assets/NOTICES
+  inflating: webroot/assets/AssetManifest.bin
+  inflating: webroot/assets/FontManifest.json
+  inflating: webroot/assets/AssetManifest.bin.json
+  inflating: webroot/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+  inflating: webroot/assets/fonts/MaterialIcons-Regular.otf
+  inflating: webroot/assets/fonts/fallback/Roboto-Regular.ttf
+  inflating: webroot/assets/shaders/stretch_effect.frag
+  inflating: webroot/assets/shaders/ink_sparkle.frag
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-192.png
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 65.3 MB/s (6582359 bytes in 0.096s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (62s): [
+  {
+    "mount": "false",
+    "id": "devicelab_probe",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "enabled": "true",
+    "author": "p0g-stack",
+    "web": "true",
+    "versionCode": "1",
+    "action": "false",
+    "update": "false",
+    "name": "devicelab probe",
+    "version": "1",
+    "remove": "false"
+  },
+  {
+    "version": "0.1.0",
+    "web": "true",
+    "versionCode": "1",
+    "author": "p0g-stack",
+    "remove": "false",
+    "enabled": "true",
+    "action": "false",
+    "mount": "false",
+    "name": "flutter-webui Counter",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "update": "false",
+    "id": "flutter_webui_counter"
+  },
+  {
+    "name": "Counter",
+    "remove": "false",
+    "action": "false",
+    "enabled": "true",
+    "version": "v1.0.0",
+    "update": "false",
+    "author": "Yuv",
+    "id": "counter",
+    "web": "true",
+    "mount": "false",
+    "description": "A new Flutter project.",
+    "versionCode": "1"
+  }
+]
+total 40
+drwxrwxrwx 5 root root 4096 2026-10-01 07:08 .
+drwx------ 5 root root 4096 2026-10-01 07:08 ..
+drwxr-xr-x 3 root root 4096 2026-10-01 07:08 counter
+drwxr-xr-x 3 root root 4096 2026-10-01 07:07 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-10-01 07:08 flutter_webui_counter
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 68.5 MB/s (7843260 bytes in 0.109s)
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+
+
+
+
+
+
+
+
+intent path: no page; manager log:
+ui: dismissed ANR dialog
+ui: tapped 'Module' at 200,584
+ui: tapped 160,152
+ui: tapped 68,306
+
+
+
+
+
+
+
+
+
+
+
+
+[0,0][320,640] robedevicelab p | search | Clean | Cancel
+[12,40][235,88] robedevicelab p | search | Clean
+[185,40][233,88] Clean
+[251,40][304,88] Cancel
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"globals","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ksu-exec","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ws-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"fetch-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"webview-uid","result":["webview_zygote 1053 webview_zygote", "u0_a209      10209 me.weishu.kernelsu"]}
+{"check":"while-home-heartbeat","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"lifecycle","result":{"error":"no page target","sockets":[],"targets":[]}}
+cat: /data/local/tmp/labserver.log: No such file or directory
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+
+
+
+
+
+
+
+
+intent path: no page; manager log:
+ui: tapped 'Module' at 200,584
+ui: tapped 160,152
+ui: tapped 68,306
+
+
+
+
+
+
+
+
+
+
+
+
+[0,0][320,640] terflutter-webui Coun | search | Clean | Cancel
+[12,40][235,88] terflutter-webui Coun | search | Clean
+[185,40][233,88] Clean
+[251,40][304,88] Cancel
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"console-errors","result":[]}
+{"check":"first-frame","result":{"error":"no page target","sockets":[],"targets":[]}}
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+
+
+
+
+
+
+
+
+intent path: no page; manager log:
+10-01 07:12:35.011  8474  8474 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+10-01 07:12:35.153  8474  8474 V GraphicsEnvironment: Currently set values for:
+10-01 07:12:35.154  8474  8474 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-01 07:12:35.154  8474  8474 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-01 07:12:35.154  8474  8474 V GraphicsEnvironment: Global.Settings values are invalid: number of packages: 0, number of values: 0
+10-01 07:12:35.154  8474  8474 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-01 07:12:35.176  8474  8474 W weishu.kernelsu: Unsupported class loader
+10-01 07:12:35.240  8474  8474 W weishu.kernelsu: Unsupported class loader
+10-01 07:12:35.240  8474  8474 W weishu.kernelsu: Unsupported class loader
+10-01 07:12:35.394  8474  8474 W HWUI    : Unknown dataspace 0
+10-01 07:12:35.478  8474  8494 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-01 07:12:35.479  8474  8494 I EGL_emulation: Opening libGLESv2_emulation.so
+10-01 07:12:35.526  8474  8494 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 07:12:35.607  8474  8494 I Gralloc4: mapper 4.x is not supported
+10-01 07:12:36.088  8474  8482 I HWUI    : Davey! duration=858ms; Flags=1, FrameTimelineVsyncId=31808, IntendedVsync=380950623256, Vsync=381183956580, InputEventId=0, HandleInputStart=381197461150, AnimationStart=381197461492, PerformTraversalsStart=381198320641, DrawStart=381461710070, FrameDeadline=380967289922, FrameInterval=381197239407, FrameStartTime=16666666, SyncQueued=381491854902, SyncStart=381496298974, IssueDrawCommandsStart=381497554947, SwapBuffers=381542609659, FrameCompleted=381813098965, DequeueBufferDuration=2584, QueueBufferDuration=372916, GpuCompleted=381813036258, SwapBuffersCompleted=381813098965, DisplayPresentTime=0, CommandSubmissionCompleted=381542609659, 
+10-01 07:12:36.240  8474  8474 I Choreographer: Skipped 49 frames!  The application may be doing too much work on its main thread.
+10-01 07:12:37.205  8474  8474 I Choreographer: Skipped 43 frames!  The application may be doing too much work on its main thread.
+10-01 07:12:37.232  8474  8482 I HWUI    : Davey! duration=788ms; Flags=0, FrameTimelineVsyncId=32524, IntendedVsync=382183956540, Vsync=382183956540, InputEventId=0, HandleInputStart=382185000096, AnimationStart=382185000366, PerformTraversalsStart=382185268116, DrawStart=382185280349, FrameDeadline=382233956538, FrameInterval=382184999084, FrameStartTime=16666666, SyncQueued=382185446288, SyncStart=382214552412, IssueDrawCommandsStart=382214570546, SwapBuffers=382529265975, FrameCompleted=383001979002, DequeueBufferDuration=2414, QueueBufferDuration=141484, GpuCompleted=383001979002, SwapBuffersCompleted=382981280217, DisplayPresentTime=0, CommandSubmissionCompleted=382529265975, 
+10-01 07:12:37.294  8474  8482 I HWUI    : Davey! duration=784ms; Flags=0, FrameTimelineVsyncId=32546, IntendedVsync=382267289870, Vsync=382983956508, InputEventId=0, HandleInputStart=383018066577, AnimationStart=383018067799, PerformTraversalsStart=383033853360, DrawStart=383033882385, FrameDeadline=383050623172, FrameInterval=382991754726, FrameStartTime=16666666, SyncQueued=383034293923, SyncStart=383034782958, IssueDrawCommandsStart=383034798667, SwapBuffers=383042679106, FrameCompleted=383051807448, DequeueBufferDuration=2224, QueueBufferDuration=113502, GpuCompleted=383051807448, SwapBuffersCompleted=383045576753, DisplayPresentTime=0, CommandSubmissionCompleted=383042679106, 
+10-01 07:12:37.458  8474  8494 D EGL_emulation: app_time_stats: avg=171.16ms min=6.28ms max=780.02ms count=8
+10-01 07:12:37.847  8474  8474 D VRI[WebUIActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 07:12:37.953  8474  8474 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@85a6dd8
+10-01 07:12:38.252  8474  8492 I SuperUserRepository: load cost: 274
+10-01 07:12:38.254  8474  8505 W SuperUserRepository: KsuService disconnected
+10-01 07:12:40.507  8474  8537 D ProfileInstaller: Skipping profile installation for me.weishu.kernelsu
+ui: tapped 'Module' at 200,584
+ui: tapped 160,152
+ui: tapped 68,306
+
+
+
+
+
+
+
+
+
+
+
+
+[0,0][320,640] Counter | search | Clean | Cancel | Counter | Version: v1.0.0 | Author: Yuv | A new Flutter project. | Open | Open | Uni
+[12,40][235,88] Counter | search | Clean
+[185,40][233,88] Clean
+[251,40][304,88] Cancel
+[12,98][308,251] Counter | Version: v1.0.0 | Author: Yuv | A new Flutter project. | Open | Open | Uninstall
+[243,116][292,164] 
+[28,194][110,242] Open | Open
+[186,194][292,242] Uninstall
+[12,263][308,432] flutter-webui Counter | Version: 0.1.0 | Author: p0g-stack | Stock Flutter counter app on flutter-webui (devicelab bring
+[243,281][292,329] 
+[28,375][110,423] Open | Open
+[186,375][292,423] Uninstall
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"console-errors","result":[]}
+{"check":"first-frame","result":{"error":"no page target","sockets":[],"targets":[]}}
