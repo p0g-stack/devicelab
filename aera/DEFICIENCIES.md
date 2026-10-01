@@ -32,3 +32,25 @@ init: Service 'recovery' (pid 89) exited with status 1
   must carry it.
 - Upstream fix: move `libincfs.so` out of the FBE block in
   `prebuilt/Android.mk` (or add it next to `libandroidfw`).
+
+## D2. Recovery waits forever for a declared AIDL health service
+
+```
+servicemanager: Caller(pid=88,uid=0,sid=u:r:recovery:s0) Could not find android.hardware.health.IHealth/default in the VINTF manifest. No alternative instances declared in VINTF.
+```
+(once a second for the whole run; nothing draws, adb stays `offline`)
+
+- Repro: run `runs/20261001T154019Z-aera-cf-recovery-36874193791`
+  (image b540be3). devicelab had overlaid AERA onto Cuttlefish's stock
+  ramdisk, which declares a health HAL whose Android 17 binary then exits 1
+  next to AERA's Android 16 libraries (`init: Service 'vendor.health-cuttlefish' (pid 89) exited with status 1`).
+- Cause: `recovery_utils/battery_utils.cpp` `GetBatteryInfo()` calls
+  `AServiceManager_waitForService()` with no timeout whenever the service is
+  declared, so a declared-but-dead health HAL hangs recovery startup (and
+  adbd, since the UI never comes up). The HIDL fallback and the
+  "assuming defaults" path are never reached.
+- Workaround: devicelab no longer carries stock /system or /vendor files
+  into AERA's ramdisk (boot-aera.sh), so nothing declares the AIDL service.
+- Upstream fix: use `AServiceManager_getService`/a bounded wait and fall
+  through to HIDL and then defaults, so a broken health HAL costs a battery
+  reading, not the whole recovery.

@@ -52,13 +52,19 @@ mkdir -p "$w/stock" "$w/aera"
 (cd "$w/aera" && find . | sort) > "$OUT/aera-ramdisk-files.txt"
 log "stock fragment $(wc -l < "$OUT/stock-fragment-files.txt") entries, AERA ramdisk $(wc -l < "$OUT/aera-ramdisk-files.txt")"
 if [ -n "$overlay" ]; then
-  # Stock first (first-stage bits, modules, cutf rc files), AERA on top,
-  # except the first-stage ramdisk and the kernel modules, which stay stock.
-  mkdir -p "$w/new"; cp -a "$w/stock/." "$w/new/"
-  (cd "$w/aera" && find . -mindepth 1 \( -path ./first_stage_ramdisk -o -path ./lib/modules \) -prune -o -print) | while read -r f; do
-    if [ -d "$w/aera/$f" ] && [ ! -L "$w/aera/$f" ]; then mkdir -p "$w/new/$f"; else rm -rf "$w/new/$f"; cp -a "$w/aera/$f" "$w/new/$f"; fi
+  # AERA's tree, plus only what Cuttlefish's kernel and init need from the
+  # stock fragment: the first-stage ramdisk, the kernel modules and the
+  # root-level cutf files AERA lacks (init.recovery.cutf_cvm.rc, ueventd,
+  # fstab). Stock /system and /vendor stay out: Android 17 binaries next to
+  # AERA's Android 16 libraries crash, and a stock VINTF entry for a health
+  # service that cannot start makes AERA wait for it forever.
+  mkdir -p "$w/new"; cp -a "$w/aera/." "$w/new/"
+  for d in first_stage_ramdisk lib/modules; do
+    [ -e "$w/stock/$d" ] && { rm -rf "$w/new/$d"; mkdir -p "$(dirname "$w/new/$d")"; cp -a "$w/stock/$d" "$w/new/$d"; log "kept stock $d"; }
   done
-  log "replaced or added $(comm -12 "$OUT/stock-fragment-files.txt" "$OUT/aera-ramdisk-files.txt" | wc -l) shared and $(comm -13 "$OUT/stock-fragment-files.txt" "$OUT/aera-ramdisk-files.txt" | wc -l) AERA-only entries"
+  for f in "$w"/stock/*; do
+    [ -f "$f" ] && [ ! -L "$f" ] && [ ! -e "$w/new/$(basename "$f")" ] && cp -a "$f" "$w/new/" && log "carried $(basename "$f")"
+  done
   src=$w/new
 else
   for f in "$w"/stock/*.rc; do [ -f "$f" ] && [ ! -e "$w/aera/$(basename "$f")" ] && cp -a "$f" "$w/aera/" && log "carried $(basename "$f")"; done
