@@ -67,6 +67,7 @@ jobs:
           SWITCHES=--enable-impeller sim counter-impeller --gpu
           # Zink diagnostics: GL forced, Mesa/EGL debug logging.
           SWITCHES=--gl ENVIRONMENT=$'EGL_LOG_LEVEL=debug\nMESA_DEBUG=1\nMESA_LOG_LEVEL=debug' sim counter-gl-debug --gpu
+          SWITCHES=--gl ENVIRONMENT=$'D3D_ALWAYS_SOFTWARE=1\nVK_LOADER_DEBUG=error,warn,driver\nLIBGL_DEBUG=verbose\nMESA_LOG_LEVEL=debug\nEGL_LOG_LEVEL=debug' sim counter-gl-zink-sw --gpu
           # CPU reference: softpipe.
           sim counter-softpipe ""
       - name: AERA image (devicelab release from aera/build/publish.sh)
