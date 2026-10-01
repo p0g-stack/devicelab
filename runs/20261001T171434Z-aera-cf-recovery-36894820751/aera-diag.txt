@@ -1,0 +1,205 @@
+init.svc.recovery=running
+$ getprop | grep -E "aera|ro.boot.mode|bootmode|sys.usb"
+[aera.crash_counter]: [0]
+[aera.postinit.status]: [1]
+[aera.product.partition]: [0]
+[aera.rom.sdk]: [29]
+[aera.super.block_device]: [/dev/block/by-name/super]
+[aera.super.mount_point]: [/super]
+[aera.super.partition]: [true]
+[persist.sys.usb.config]: [adb]
+[ro.aera.boot]: [1]
+[ro.aera.boot.header.version]: [4]
+[ro.aera.build]: [aera]
+[ro.aera.build.status]: [Unofficial]
+[ro.aera.crypto_enabled]: [0]
+[ro.aera.home]: [/sdcard/AERA]
+[ro.aera.kernel]: [6.12.74-android16-6-g3ec022196c4e-ab15076761]
+[ro.aera.release.channel]: [Nightly]
+[ro.aera.release.version]: [R1.0]
+[ro.aera.sar]: [0]
+[ro.aera.settings]: [/data/recovery/AERA]
+[ro.aera.status]: [Unofficial]
+[ro.aera.substitute_permissions]: [1]
+[ro.aera.type]: [Unofficial]
+[ro.aera.vanilla]: [1]
+[ro.aera.variant]: [default]
+[ro.board.platform]: [aera_cf]
+[ro.boot.modem_simulator_ports]: [9600]
+[ro.bootimage.build.date.utc_aera]: [1790873859]
+[ro.bootmode]: [unknown]
+[ro.build.aera_codebase]: [2026-10-01 (428807e)]
+[ro.build.aera_id]: [e4c9c916-9195-4038-b55f-db2f391f4b25]
+[ro.build.date.utc_aera]: [1790873859]
+[ro.build.description]: [aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys]
+[ro.build.display.id]: [aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys]
+[ro.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.build.flavor]: [aera_aera-eng]
+[ro.build.product]: [aera_cf]
+[ro.odm.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.product.board]: [aera_cf]
+[ro.product.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.product.device]: [aera_cf]
+[ro.product.name]: [aera_aera]
+[ro.product.odm.device]: [aera_cf]
+[ro.product.odm.name]: [aera_aera]
+[ro.product.product.device]: [aera_cf]
+[ro.product.product.name]: [aera_aera]
+[ro.product.system.device]: [aera_cf]
+[ro.product.system.name]: [aera_aera]
+[ro.product.system_ext.device]: [aera_cf]
+[ro.product.system_ext.name]: [aera_aera]
+[ro.product.vendor.device]: [aera_cf]
+[ro.product.vendor.name]: [aera_aera]
+[ro.system.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.system_ext.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[sys.usb.config]: [mtp,adb]
+[sys.usb.config.aera_fastbootd]: [0]
+[sys.usb.config.aera_soft_switch]: [0]
+[sys.usb.configfs]: [0]
+[sys.usb.state]: [mtp,adb]
+
+$ ps -A -o PID,PPID,S,NAME,ARGS | grep -vE " \[|ps -A"
+  PID  PPID S NAME                        ARGS                       
+    1     0 S init                        init second_stage
+   75     1 S init                        init subcontext u:r:vendor_init:s0 16
+   76     1 S ueventd                     ueventd
+   82     1 S hwservicemanager            hwservicemanager
+   83     1 S servicemanager              servicemanager
+   84     1 S vndservicemanager           vndservicemanager /dev/vndbinder
+   85     1 S charger                     charger
+   88     1 S recovery                    recovery
+  186     1 R adbd                        adbd --root_seclabel=u:r:su:s0 --device_banner=recovery
+
+$ ls -la /tmp
+total 116
+drwxrwxr-x  3 root shell   180 2026-10-01 19:09 .
+drwxr-xr-x 35 root root   1480 2026-10-01 19:09 ..
+-rw-------  1 root root      2 2026-10-01 19:09 aera-audio-volume
+-rw-rw-rw-  1 root root    135 2026-10-01 19:09 aera-live.cfg
+-rw-rw-rw-  1 root root  64345 2026-10-01 19:09 dmesg.log
+-rw-rw-rw-  1 root root     72 2026-10-01 19:09 logcat.log
+drwxr-xr-x  3 root root     60 2026-10-01 19:09 misc
+-rw-rw-rw-  1 root root  37998 2026-10-01 19:10 recovery.log
+prwSrwS---  1 root root      0 2026-10-01 19:09 twadbfifo
+
+$ ls -la /dev/dri /dev/graphics /sys/class/drm 2>&1
+ls: /dev/graphics: No such file or directory
+/dev/dri:
+total 0
+drwxr-xr-x  2 root root           80 2026-10-01 19:09 .
+drwxr-xr-x 19 root root         2940 2026-10-01 19:09 ..
+crw-rw-rw-  1 root graphics 226,   0 2026-10-01 19:09 card0
+crw-rw-rw-  1 root graphics 226, 128 2026-10-01 19:09 renderD128
+
+/sys/class/drm:
+total 0
+drwxr-xr-x  2 root root    0 2026-10-01 19:09 .
+drwxr-xr-x 76 root root    0 2026-10-01 19:09 ..
+lrwxrwxrwx  1 root root    0 2026-10-01 19:10 card0 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-1 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-1
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-10 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-10
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-11 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-11
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-12 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-12
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-13 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-13
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-14 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-14
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-15 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-15
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-16 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-16
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-2 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-2
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-3 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-3
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-4 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-4
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-5 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-5
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-6 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-6
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-7 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-7
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-8 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-8
+lrwxrwxrwx  1 root root    0 2026-10-01 19:09 card0-Virtual-9 -> ../../devices/pci0000:00/0000:00:02.0/drm/card0/card0-Virtual-9
+lrwxrwxrwx  1 root root    0 2026-10-01 19:10 renderD128 -> ../../devices/pci0000:00/0000:00:02.0/drm/renderD128
+-r--r--r--  1 root root 4096 2026-10-01 19:10 version
+
+$ cat /sys/class/drm/card0-*/modes /sys/class/drm/card0-*/status 2>&1
+720x1348
+720x1348
+1920x1200
+1856x1160
+1680x1050
+1600x1000
+1440x900
+1400x875
+1280x800
+800x500
+connected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+disconnected
+
+$ rm -f /tmp/aeraui.png; touch /tmp/aeraui-capture; sleep 3; ls -la /tmp/aeraui-capture /tmp/aeraui.png 2>&1
+ls: /tmp/aeraui-capture: No such file or directory
+-rw-rw-rw- 1 root root 227328 2026-10-01 19:10 /tmp/aeraui.png
+
+$ timeout 3 /system/bin/logd 2>&1 | tail -5; echo "logd exit $?"
+libc: Unable to set property "ro.logd.kernel" to "true": PROP_ERROR_READ_ONLY_PROPERTY (0xb)
+libc: Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 335 (logd), pid 335 (logd)
+logd exit 0
+
+$ ls -la /system/etc/task_profiles* /system/etc/cgroups.json 2>&1
+-rw-r--r-- 1 root root 905 1970-01-01 01:00 /system/etc/cgroups.json
+
+/system/etc/task_profiles:
+total 0
+drwxr-xr-x 2 root root  40 1970-01-01 01:00 .
+drwxr-xr-x 9 root root 420 2026-10-01 19:09 ..
+
+$ dmesg | grep -iE "drm|virtio_gpu|recovery|aera|CANNOT|avc" | tail -40
+[    3.136283] init: Parsing file /init.recovery.logd.rc...
+[    3.136948] init: Parsing file /init.recovery.ldconfig.rc...
+[    3.137245] init: Parsing file /init.recovery.mksh.rc...
+[    3.137445] init: Unable to read config file '/init.recovery.mksh.rc': open() failed: No such file or directory
+[    3.138006] init: Parsing file /init.recovery.usb.rc...
+[    3.138754] init: Unable to read config file '/init.recovery.usb.rc': open() failed: No such file or directory
+[    3.139034] init: Parsing file /init.recovery.service.rc...
+[    3.140235] init: /init.recovery.service.rc: 4: ignored duplicate definition of service 'recovery'
+[    3.140504] init: Parsing file /init.recovery.cutf_cvm.rc...
+[    3.140772] init: /init.recovery.cutf_cvm.rc: 1: ignored duplicate definition of service 'console'
+[    3.162994] audit: type=1400 audit(1790874578.884:4): avc:  denied  { create } for  pid=1 comm="init" name="bootstrap" scontext=u:r:init:s0 tcontext=u:object_r:system_file:s0 tclass=dir permissive=1
+[    3.303822] init: processing action (init) from (/init.recovery.logd.rc:1)
+[    3.346247] init: processing action (fs) from (/init.recovery.ldconfig.rc:1)
+[    3.365688] init: starting service 'recovery'...
+[    3.366117] init: Created socket '/dev/socket/recovery', mode 422, user 1000, group 1000
+[    3.371440] SELinux: avc:  denied  { add } for pid=84 uid=0 name=manager scontext=u:r:recovery:s0 tcontext=u:object_r:service_manager_vndservice:s0 tclass=service_manager permissive=1
+[    3.373580] init: ... started service 'recovery' has pid 88
+[    3.391528] SELinux: avc:  denied  { add } for pid=83 uid=0 name=manager scontext=u:r:recovery:s0 tcontext=u:object_r:service_manager_service:s0 tclass=service_manager permissive=1
+[    3.405000] init: processing action (ro.debuggable=1) from (/init.recovery.cutf_cvm.rc:10)
+[    3.408515] HealthLoop: failed to load BPF program /sys/fs/bpf/vendor/prog_filterPowerSupplyEvents_skfilter_power_supply: No such file or directory. This is expected in recovery mode and also for kernel versions before 5.10.
+[    3.416664] init: processing action (sys.usb.config=*) from (/init.recovery.cutf_cvm.rc:14)
+[    3.625300] servicemanager: getDeviceHalManifest: -2 VINTF parse error: Cannot read /vendor/manifest.xml: No such file or directory
+[    3.625864] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[    3.628288] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[    3.630622] servicemanager: getDeviceHalManifest: -2 VINTF parse error: Cannot read /vendor/manifest.xml: No such file or directory
+[    3.631736] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[    3.633218] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[    3.636333] servicemanager: getDeviceHalManifest: -2 VINTF parse error: Cannot read /vendor/manifest.xml: No such file or directory
+[    3.637634] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[    3.639137] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[    3.640601] servicemanager: Caller(pid=88,uid=0,sid=u:r:recovery:s0) Could not find android.hardware.health.IHealth/default in the VINTF manifest. No alternative instances declared in VINTF.
+[    5.660846] init: processing action (sys.usb.config=*) from (/init.recovery.cutf_cvm.rc:14)
+[    5.662613] init: processing action (sys.usb.config=*) from (/init.recovery.cutf_cvm.rc:14)
+[    5.681252] init: Control message: Could not find 'mdnsd' for ctl.start from pid: 186 (/system/bin/adbd --root_seclabel=u:r:su:s0 --device_banner=recovery)
+[    5.701382] audit: type=1400 audit(1790874581.424:781): avc:  denied  { fsetid } for  pid=88 comm="recovery" capability=4  scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=capability permissive=1
+[    5.705247] audit: type=1300 audit(1790874581.424:781): arch=c000003e syscall=268 success=yes exit=0 a0=ffffff9c a1=7ffc381a5bd1 a2=180 a3=3e8 items=0 ppid=1 pid=88 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[    5.709901] audit: type=1327 audit(1790874581.424:781): proctitle="/system/bin/recovery"
+[   35.267199] audit: type=1400 audit(1790874610.984:796): avc:  denied  { unlink } for  pid=88 comm="recovery" name="aeraui-capture" dev="tmpfs" ino=10 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+[   35.269974] audit: type=1300 audit(1790874610.984:796): arch=c000003e syscall=263 success=yes exit=0 a0=ffffff9c a1=5556a6ddb510 a2=0 a3=0 items=0 ppid=1 pid=88 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   35.275511] audit: type=1327 audit(1790874610.984:796): proctitle="/system/bin/recovery"
+
