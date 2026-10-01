@@ -1,0 +1,60 @@
+[   62.484117] servicemanager: getFrameworkHalManifest: Reading VINTF information.
+[   62.484249] servicemanager: Cannot fetch /system/etc/vintf/manifest.xml: Cannot read /system/etc/vintf/manifest.xml: No such file or directory
+[   62.484425] servicemanager: getFrameworkHalManifest: status from fetching VINTF information: -2
+[   62.484543] servicemanager: getFrameworkHalManifest: -2 VINTF parse error: Cannot read /system/manifest.xml: No such file or directory
+[   62.484698] servicemanager: NULL VINTF MANIFEST!: device
+[   62.484777] servicemanager: NULL VINTF MANIFEST!: framework
+[   62.484854] servicemanager: Caller(pid=93,uid=0,sid=u:r:recovery:s0) Could not find android.hardware.health.IHealth/default in the VINTF manifest. No alternative instances declared in VINTF.
+[   66.657127] type=1400 audit(1790889435.071:559): avc:  denied  { name_bind } for  comm="recovery" src=8088 scontext=u:r:recovery:s0 tcontext=u:object_r:port:s0 tclass=tcp_socket permissive=1
+[   66.657535] type=1300 audit(1790889435.071:559): arch=c000003e syscall=49 success=yes exit=0 a0=18 a1=7bbc13ba77d0 a2=10 a3=7bbc13ba77c4 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   66.657965] type=1327 audit(1790889435.071:559): proctitle="/system/bin/recovery"
+[   66.658111] type=1320 audit(1790889435.071:559): 
+[   66.658383] type=1400 audit(1790889435.071:560): avc:  denied  { accept } for  comm="recovery" lport=8088 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   66.658715] type=1400 audit(1790889435.071:561): avc:  denied  { getattr } for  comm="recovery" path="/system/bin/aeraout" dev="rootfs" ino=747 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[   66.659064] type=1300 audit(1790889435.071:561): arch=c000003e syscall=5 success=yes exit=0 a0=12 a1=7bbc13ba74e0 a2=0 a3=b0000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   66.660104] type=1327 audit(1790889435.071:561): proctitle="/system/bin/recovery"
+[   66.660308] type=1320 audit(1790889435.071:561): 
+[   66.660627] type=1400 audit(1790889435.075:562): avc:  denied  { unlink } for  comm="recovery" name="aerain" dev="rootfs" ino=746 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[   66.661422] type=1300 audit(1790889435.075:562): arch=c000003e syscall=263 success=yes exit=0 a0=ffffff9c a1=5f3057319fc5 a2=0 a3=18000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   66.662060] type=1327 audit(1790889435.075:562): proctitle="/system/bin/recovery"
+[   66.662260] type=1320 audit(1790889435.075:562): 
+[   66.662747] type=1400 audit(1790889435.075:563): avc:  denied  { create } for  comm="recovery" name="aerain" scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[   66.663103] type=1300 audit(1790889435.075:563): arch=c000003e syscall=259 success=yes exit=0 a0=ffffff9c a1=5f3057319fc5 a2=11b0 a3=0 items=2 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   66.663855] type=1307 audit(1790889435.075:563): cwd="/"
+[   66.664009] type=1302 audit(1790889435.075:563): item=0 name=(null) inode=235 dev=00:02 mode=040751 ouid=0 ogid=0 rdev=00:00 obj=u:object_r:rootfs:s0 nametype=PARENT cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+[   66.664379] type=1302 audit(1790889435.075:563): item=1 name=(null) inode=759 dev=00:02 mode=010660 ouid=0 ogid=0 rdev=00:00 obj=u:object_r:rootfs:s0 nametype=CREATE cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+[   66.664817] type=1327 audit(1790889435.075:563): proctitle="/system/bin/recovery"
+[   66.664980] type=1320 audit(1790889435.075:563): 
+[   66.665116] type=1400 audit(1790889435.075:564): avc:  denied  { read } for  comm="recovery" name="aerain" dev="rootfs" ino=759 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[   66.665438] type=1400 audit(1790889435.075:564): avc:  denied  { open } for  comm="recovery" path="/system/bin/aerain" dev="rootfs" ino=759 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+[   66.665797] type=1300 audit(1790889435.075:564): arch=c000003e syscall=257 success=yes exit=18 a0=ffffff9c a1=5f3057319fc5 a2=80800 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   66.666224] type=1327 audit(1790889435.075:564): proctitle="/system/bin/recovery"
+[   66.666361] type=1320 audit(1790889435.075:564): 
+[   66.674179] type=1300 audit(1790889435.071:560): arch=c000003e syscall=288 success=yes exit=26 a0=18 a1=0 a2=0 a3=80000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   66.674747] type=1327 audit(1790889435.071:560): proctitle="/system/bin/recovery"
+[   66.674899] type=1320 audit(1790889435.071:560): 
+[   66.675028] type=1400 audit(1790889435.087:565): avc:  denied  { read } for  comm="recovery" laddr=127.0.0.1 lport=8088 faddr=127.0.0.1 fport=44961 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   66.675635] type=1300 audit(1790889435.087:565): arch=c000003e syscall=45 success=yes exit=111 a0=1a a1=7bbc13ba6ad0 a2=1000 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   66.676170] type=1327 audit(1790889435.087:565): proctitle="/system/bin/recovery"
+[   66.676349] type=1320 audit(1790889435.087:565): 
+[   66.676460] type=1400 audit(1790889435.091:566): avc:  denied  { write } for  comm="recovery" laddr=127.0.0.1 lport=8088 faddr=127.0.0.1 fport=44961 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   66.676950] type=1300 audit(1790889435.091:566): arch=c000003e syscall=44 success=yes exit=178 a0=1a a1=7bbe07805970 a2=b2 a3=4000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   66.677500] type=1327 audit(1790889435.091:566): proctitle="/system/bin/recovery"
+[   66.677694] type=1320 audit(1790889435.091:566): 
+[   66.677813] type=1400 audit(1790889435.091:567): avc:  denied  { shutdown } for  comm="recovery" laddr=127.0.0.1 lport=8088 faddr=127.0.0.1 fport=44961 scontext=u:r:recovery:s0 tcontext=u:r:recovery:s0 tclass=tcp_socket permissive=1
+[   66.678244] type=1300 audit(1790889435.091:567): arch=c000003e syscall=48 success=yes exit=0 a0=1a a1=2 a2=13 a3=4000 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   66.678841] type=1327 audit(1790889435.091:567): proctitle="/system/bin/recovery"
+[   66.679010] type=1320 audit(1790889435.091:567): 
+[   67.821693] type=1400 audit(1790889436.235:568): avc:  denied  { write } for  comm="recovery" name="uinput" dev="tmpfs" ino=857 scontext=u:r:recovery:s0 tcontext=u:object_r:uhid_device:s0 tclass=chr_file permissive=1
+[   67.821803] input: AERA Remote Input as /devices/virtual/input/input6
+[   67.822096] type=1400 audit(1790889436.235:568): avc:  denied  { open } for  comm="recovery" path="/dev/uinput" dev="tmpfs" ino=857 scontext=u:r:recovery:s0 tcontext=u:object_r:uhid_device:s0 tclass=chr_file permissive=1
+[   67.823035] type=1300 audit(1790889436.235:568): arch=c000003e syscall=257 success=yes exit=27 a0=ffffff9c a1=5f305730e277 a2=80801 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   67.823602] type=1327 audit(1790889436.235:568): proctitle="/system/bin/recovery"
+[   67.823782] type=1320 audit(1790889436.235:568): 
+[   67.823906] type=1400 audit(1790889436.235:569): avc:  denied  { ioctl } for  comm="recovery" path="/dev/uinput" dev="tmpfs" ino=857 ioctlcmd=0x5564 scontext=u:r:recovery:s0 tcontext=u:object_r:uhid_device:s0 tclass=chr_file permissive=1
+[   67.824289] type=1300 audit(1790889436.235:569): arch=c000003e syscall=16 success=yes exit=0 a0=1b a1=40045564 a2=0 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+[   67.824749] type=1327 audit(1790889436.235:569): proctitle="/system/bin/recovery"
+[   67.824855] type=1320 audit(1790889436.235:569): 
+[   70.843143] init: Untracked pid 495 exited with status 124
+[   70.843305] init: Untracked pid 495 did not have an associated service entry and will not be reaped
+[   74.484718] logd: logdr: UID=0 GID=0 PID=527 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
