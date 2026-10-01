@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Boot a headless AVD with adb root. Needs /dev/kvm and the Android SDK
+# (ANDROID_HOME), which GitHub's ubuntu runners have.
+# Usage: up.sh [api] [tag] [abi]   defaults: 35 google_apis x86_64
+set -euo pipefail
+API=${1:-35}; TAG=${2:-google_apis}; ABI=${3:-x86_64}
+IMG="system-images;android-$API;$TAG;$ABI"
+SDK=${ANDROID_HOME:?}
+BIN=$SDK/cmdline-tools/latest/bin
+yes | "$BIN/sdkmanager" --install emulator platform-tools "$IMG" >/dev/null
+echo no | "$BIN/avdmanager" create avd -f -n lab -k "$IMG" -d pixel_6 >/dev/null
+"$SDK/emulator/emulator" -avd lab -no-window -no-audio -no-boot-anim -no-snapshot \
+  -gpu swiftshader_indirect -memory 4096 -cores 4 -writable-system \
+  >"${LAB_OUT:-.}/emulator.log" 2>&1 &
+ADB=$SDK/platform-tools/adb
+"$ADB" wait-for-device
+t0=$SECONDS
+until [ "$("$ADB" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ]; do
+  (( SECONDS - t0 > 600 )) && { echo "boot timeout"; exit 1; }
+  sleep 3
+done
+"$ADB" root >/dev/null; sleep 2; "$ADB" wait-for-device
+echo "booted in $((SECONDS - t0))s: $("$ADB" shell getprop ro.build.fingerprint | tr -d '\r')"

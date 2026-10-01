@@ -1,0 +1,41 @@
+# The lab machine for Android: GitHub's ubuntu runners have KVM, the SDK and
+# open egress, which agent cloud sessions lack. Results land as an artifact
+# and are committed under observations/ by whoever reads them.
+name: avd-probe
+on:
+  workflow_dispatch:
+    inputs:
+      api: { default: "35" }
+      tag: { default: google_apis }
+      probe: { default: dart_bionic }
+  push:
+    branches: [main]
+    paths: [".github/workflows/avd-probe.yml", "platforms/avd/**", "probes/dart_bionic/**"]
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      LAB_OUT: ${{ github.workspace }}/out
+    steps:
+      - uses: actions/checkout@v4
+      - name: KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+          ls -l /dev/kvm; mkdir -p "$LAB_OUT"
+      - uses: dart-lang/setup-dart@v1
+        with: { sdk: 3.13.5 }
+      - run: sudo apt-get install -y -qq patchelf >/dev/null
+      - name: Boot AVD
+        run: |
+          echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
+          platforms/avd/up.sh "${{ inputs.api || '35' }}" "${{ inputs.tag || 'google_apis' }}" x86_64
+      - name: Probe
+        run: probes/${{ inputs.probe || 'dart_bionic' }}/run_avd.sh
+      - name: Result
+        if: always()
+        run: cat "$LAB_OUT"/*.json || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: observations, path: out/ }
