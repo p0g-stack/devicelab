@@ -120,6 +120,31 @@ drawers' edge swipe) loses its outer part too.
   Android's gesture nav does, with the plugin able to opt out (Android's
   systemGestureExclusionRects).
 
+## D6. An RPC request can wait until the next client writes (POLLHUP not handled)
+
+```
+rpc.txt of `op mirror` (sent after `plugin open` got no answer in 60 s):
+{"event":"log","id":"lab","text":"Opening counter\n"}
+{"code":0,"event":"result","id":"lab"}
+logcat: 22:28:36 recovery(94) opens /system/bin/aerain; next open of the
+plugin and of aerain only at 22:30:38, when the mirror request arrived.
+```
+(runs `runs/20261001T205150Z-aera-cf-recovery-36920805677` and
+`runs/20261001T181707Z-aera-cf-recovery-36903585783`; earlier the
+`flutter_p0g run --aera` open that printed nothing for 300 s)
+
+- Cause: `RunFrame` (aeraui/core/engine.cpp) polls the input FIFO for
+  POLLIN only. If a frame reads the request after the writer wrote but
+  before it closed, `HandleInput` buffers it and waits for EOF; after the
+  close the empty FIFO reports only POLLHUP, so nothing reads the EOF until
+  another client writes. That client's bytes are appended, the first
+  request runs, the second is lost and its client gets the first answer.
+- Effect: plugin opens and other RPC ops randomly stall for minutes; it
+  also broke the lab's AERA Remote start and taps landing on AERA's menu.
+- Upstream fix (draft): treat POLLHUP like POLLIN.
+  `/mnt/project-files/devicelab-aera/patches-draft/0016-*`, applies after
+  0015; not yet built.
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
