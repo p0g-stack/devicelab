@@ -1,0 +1,350 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 90s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.0
+total 16428
+drwx------  2 runner runner     4096 Oct  1 11:01 .
+drwxrwxrwt 16 root   root       4096 Oct  1 11:01 ..
+-rw-r--r--  1 runner runner 10777987 Oct  1 11:01 KernelSU_v3.3.0_32601-release.apk
+-rw-r--r--  1 runner runner  5713312 Oct  1 11:01 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   318824 Oct  1 11:01 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu)
+/tmp/tmp.TVDCt5BDul/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 5.6 MB/s (318824 bytes in 0.055s)
+/tmp/tmp.TVDCt5BDul/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 78.6 MB/s (5713312 bytes in 0.069s)
+== ksud: ksud 3.3.0 (uapi: 2)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              159744  0 
+== lsmod: kernelsu              159744  1 
+KernelSU_v3.3.0_32601-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-pc-windows-gnu.exe
+ksud-x86_64-unknown-linux-musl
+ksuinit-aarch64
+ksuinit-x86_64
+lkm-aarch64-android12-5.10_kernelsu.ko
+lkm-aarch64-android13-5.10_kernelsu.ko
+lkm-aarch64-android13-5.15_kernelsu.ko
+lkm-aarch64-android14-5.15_kernelsu.ko
+lkm-aarch64-android14-6.1_kernelsu.ko
+lkm-aarch64-android15-6.6_kernelsu.ko
+lkm-aarch64-android16-6.12_kernelsu.ko
+lkm-aarch64-android17-6.18_kernelsu.ko
+lkm-x86_64-android12-5.10_kernelsu.ko
+lkm-x86_64-android13-5.10_kernelsu.ko
+lkm-x86_64-android13-5.15_kernelsu.ko
+lkm-x86_64-android14-5.15_kernelsu.ko
+lkm-x86_64-android14-6.1_kernelsu.ko
+lkm-x86_64-android15-6.6_kernelsu.ko
+lkm-x86_64-android16-6.12_kernelsu.ko
+lkm-x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in tiann/KernelSU v3.3.0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.149s)
+== modules: [
+  {
+    "id": "devicelab_probe",
+    "update": "false",
+    "version": "1",
+    "name": "devicelab probe",
+    "mount": "false",
+    "author": "p0g-stack",
+    "web": "true",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "enabled": "true",
+    "versionCode": "1",
+    "remove": "false",
+    "action": "false"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+ERROR: null root node returned by UiTestAutomationBridge.
+cat: /data/local/tmp/ui.xml: No such file or directory
+== home text: 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+WebUI-X-v438-release-official.apk
+WebUI-X-v438-release-spoofed.apk
+== downloaded MMRLApp/WebUI-X-Portable v438 WebUI-X-v438-release-official.apk
+Success
+== installed com.dergoogler.mmrl.wx uid=10210     versionName=v438-release
+== activities: com.dergoogler.mmrl.wx/.ui.activity.CrashHandlerActivity com.dergoogler.mmrl.wx/.ui.activity.MainActivity com.dergoogler.mmrl.wx/.ui.activity.modconf.ModConfActivity com.dergoogler.mmrl.wx/.ui.activity.webui.KsuWebUIActivity com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity com.dergoogler.mmrl.wx/.util.NonRootService com.dergoogler.mmrl.wx/androidx.core.content.FileProvider com.dergoogler.mmrl.wx/androidx.profileinstaller.ProfileInstallReceiver com.dergoogler.mmrl.wx/androidx.startup.InitializationProvider com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxy com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.RescheduleReceiver com.dergoogler.mmrl.wx/androidx.work.impl.diagnostics.DiagnosticsReceiver 
+ui: tapped 'Superuser' at 120,584
+ui: tapped 160,152
+ui: tapped 'com.dergoogler.mmrl.wx' at 160,130
+[12,230][308,290] Superuser
+[243,236][292,284] 
+[12,302][308,358] App Profile | Default
+[12,26][60,74] 
+[260,26][308,74] Settings
+ui: tapped switch 1 ('', was checked=false)
+== ksud feature list: Available Features: ================================================================================ [ENABLED (1)] su_compat (ID=0)     SU Compatibility Mode - allows authorized apps to gain root via traditional 'su' command  [ENABLED (1)] kernel_umount (ID=1)     Kernel Umount - controls whether kernel automatically unmounts modules when not needed  [DISABLED] sulog (ID=2)     SU Log - streams kernel sulog events to userspace and persists them to disk  [DISABLED] adb_root (ID=3)     ADB Root - Enable adbd root  [DISABLED] selinux_hide (ID=4)     SELinux Hide - sanitize /sys/fs/selinux access results for app UIDs  [DISABLED] webview_zygote_umount (ID=5)     WebView Zygote Umount - unmount modules from WebView zygote and its isolated children  
+== su_compat: Feature: su_compat (0) Description: SU Compatibility Mode - allows authorized apps to gain root via traditional 'su' command Value: 1 Status: enabled 
+== root grant: ui; su as app uid 10210: su: failed to exec /system/bin/su: No such file or directory
+ui: tapped 'KernelSU' at 160,265
+[40,165][280,221] Magisk
+[40,309][280,389] KernelSU Next
+[40,405][280,461] APatch
+[40,477][280,557] SukiSU Ultra
+[40,573][280,629] Non-Root
+[40,644][280,692] Continue with KernelSU
+ui: tapped 'Continue with KernelSU' at 160,668
+[16,104][304,330] devicelab probe | 1 (1) by p0g-stack | Updated on 1 October 2026 | Observation module for devicelab. Its WebUI page is d
+[32,274][90,322] 
+[153,274][288,322] Add Shortcut
+[220,32][268,80] 
+[268,32][316,80] 
+[164,796][320,876] Settings
+ui: no node with 'Continue with KernelSU'
+ui: no node with 'Next'
+ui: no node with 'Continue'
+ui: no node with 'Grant'
+ui: no node with 'Allow'
+ui: no node with 'Get started'
+ui: no node with 'Done'
+ui: no node with 'OK'
+ui: no node with 'Finish'
+[16,104][304,330] devicelab probe | 1 (1) by p0g-stack | Updated on 1 October 2026 | Observation module for devicelab. Its WebUI page is d
+[32,274][90,322] 
+[153,274][288,322] Add Shortcut
+[220,32][268,80] 
+[268,32][316,80] 
+[164,796][320,876] Settings
+ui: no node with 'Continue with KernelSU'
+ui: no node with 'Next'
+ui: no node with 'Continue'
+ui: no node with 'Grant'
+ui: no node with 'Allow'
+ui: no node with 'Get started'
+ui: no node with 'Done'
+ui: no node with 'OK'
+ui: no node with 'Finish'
+[16,104][304,330] devicelab probe | 1 (1) by p0g-stack | Updated on 1 October 2026 | Observation module for devicelab. Its WebUI page is d
+[32,274][90,322] 
+[153,274][288,322] Add Shortcut
+[220,32][268,80] 
+[268,32][316,80] 
+[164,796][320,876] Settings
+== WebUI X platform after onboarding: preferences.pb 
+== devtools sockets: 
+inputs/modules/flutter_webui_counter-0.1.5.zip: 1 file pushed, 0 skipped. 186.4 MB/s (21434766 bytes in 0.110s)
+== install flutter_webui_counter-0.1.5.zip
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.8.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.2.woff2
+   creating: webroot/fonts/notosansmath/
+   creating: webroot/fonts/notosansmath/v15/
+  inflating: webroot/fonts/notosansmath/v15/7Aump_cpkSecTWaHRlH2hyV5UHkD-V048PW0.woff2
+   creating: webroot/fonts/roboto/
+   creating: webroot/fonts/roboto/v32/
+  inflating: webroot/fonts/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2
+  inflating: webroot/.last_build_id
+  inflating: webroot/config.json
+  inflating: webroot/flutter_webui.js
+  inflating: customize.sh
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 287.3 MB/s (6582359 bytes in 0.022s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+inputs/modules/demo-v0.1.0.zip: 1 file pushed, 0 skipped. 269.2 MB/s (24315064 bytes in 0.086s)
+== install demo-v0.1.0.zip
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/pkg/.gitignore
+  inflating: webroot/pkg/demo_native.js
+  inflating: webroot/pkg/demo_native_bg.wasm
+  inflating: webroot/pkg/package.json
+  inflating: webroot/version.json
+  inflating: webroot/workers/demo_service.web.g.dart.js
+  inflating: webroot/workers/hello_service.web.g.dart.js
+- Done
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (63s): [
+  {
+    "remove": "false",
+    "web": "true",
+    "action": "false",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "name": "devicelab probe",
+    "mount": "false",
+    "update": "false",
+    "id": "devicelab_probe",
+    "version": "1",
+    "enabled": "true",
+    "versionCode": "1",
+    "author": "p0g-stack"
+  },
+  {
+    "id": "flutter_webui_counter",
+    "versionCode": "6",
+    "update": "false",
+    "remove": "false",
+    "name": "flutter-webui Counter",
+    "web": "true",
+    "action": "false",
+    "version": "0.1.5",
+    "mount": "false",
+    "author": "p0g-stack",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "enabled": "true"
+  },
+  {
+    "update": "false",
+    "name": "Counter",
+    "versionCode": "1",
+    "id": "counter",
+    "remove": "false",
+    "web": "true",
+    "author": "Yuv",
+    "version": "v1.0.0",
+    "action": "false",
+    "mount": "false",
+    "enabled": "true",
+    "description": "A new Flutter project."
+  },
+  {
+    "enabled": "true",
+    "author": "",
+    "update": "false",
+    "mount": "false",
+    "version": "v0.1.0",
+    "description": "The demo GUI. Flutter on top of the core.",
+    "versionCode": "1",
+    "name": "Demo",
+    "action": "false",
+    "remove": "false",
+    "web": "true",
+    "id": "demo"
+  }
+]
+total 48
+drwxrwxrwx 6 root root 4096 2026-10-01 11:06 .
+drwx------ 6 root root 4096 2026-10-01 11:06 ..
+drwxr-xr-x 3 root root 4096 2026-10-01 11:06 counter
+drwxr-xr-x 5 root root 4096 2026-10-01 11:06 demo
+drwxr-xr-x 3 root root 4096 2026-10-01 11:01 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-10-01 11:06 flutter_webui_counter
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 91.9 MB/s (7843260 bytes in 0.081s)
+Starting: Intent { cmp=com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity
+
+
+
+
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"socket": "webview_devtools_remote_9114", "type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "devicelab probe"}]}
+{"check":"globals","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9114","value":{"ua":"WebUI X/438 (Linux; Android 15; sdk_gphone64_x86_64; KernelSU/32601)","origin":"https://mui.kernelsu.org","href":"https://mui.kernelsu.org/index.html","globals":["$DeFile","$DeFileInputStream","$DeFileOutputStream","$devicelab_probe","$intent","$packageManager","$userManager","ksu","webui"],"ksu":["exec","execBool","fullScreen","mmrl","moduleInfo","spawn","toast","exec","execBool","fullScreen","mmrl","moduleInfo","spawn","toast"]}}}
+{"check":"ksu-exec","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9114","value":{"code":0,"out":"uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0\nu:r:ksu:s0\u0000","err":""}}}
+{"check":"ws-loopback","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9114","value":{"got":["{\"origin\":\"https://mui.kernelsu.org\",\"peerUid\":10210,\"remote\":\"127.0.0.1:48100\",\"serverUid\":0,\"t\":1790852851375,\"uidSource\":\"/proc/net/tcp\"}","hi"],"ms":166}}}
+{"check":"fetch-loopback","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9114","value":{"origin":"https://mui.kernelsu.org","peerUid":10210,"remote":"127.0.0.1:48108","serverUid":0,"t":1790852852041,"uidSource":"/proc/net/tcp"}}}
+{"check":"webview-uid","result":["webview_zygote 1053 webview_zygote", "u0_a210      10210 com.dergoogler.mmrl.wx", "root             0 com.dergoogler.mmrl.wx:root:0", "root             0 com.dergoogler.mmrl.wx:root:0", "u0_a151      10151 com.google.android.webview:webview_service", "u0_i9000     99000 com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0", "u0_a151      10151 com.google.android.webview:webview_apk"]}
+{"check":"while-home-heartbeat","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9114","value":{"now":14520,"vis":"hidden"}}}
+{"check":"lifecycle","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9114","value":{"events":[{"type":"pageshow","t":416,"vis":"visible"},{"type":"visibilitychange","t":7825,"vis":"hidden"}],"gaps":[],"slow":{"heldMs":3001,"sentAt":1790852855820,"resolvedAt":1790852855836,"vis":"hidden"}}}}
+{"check":"dev-url","result":{"error":"no page target","sockets":["webview_devtools_remote_9114"],"targets":[{"socket":"webview_devtools_remote_9114","port":9300,"description":"{\"attached\":true,\"empty\":false,\"height\":640,\"never_attached\":false,\"screenX\":0,\"screenY\":0,\"visible\":false,\"width\":320}","devtoolsFrontendUrl":"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/CE52D59E705DAB57BD7C2A95E1CA9A50","id":"CE52D59E705DAB57BD7C2A95E1CA9A50","title":"devicelab probe","type":"page","url":"https://mui.kernelsu.org/index.html","webSocketDebuggerUrl":"ws://127.0.0.1:9300/devtools/page/CE52D59E705DAB57BD7C2A95E1CA9A50"}]}}
+Starting: Intent { cmp=com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity
+
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Flutter Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9875","value":{"href":"https://mui.kernelsu.org/index.html","title":"Flutter Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":395,"load":2736},"paint":{"first-paint":1814,"first-contentful-paint":6098},"glassAt":"present","firstFrame":null,"insets":"24px","vv":[320,640,1]}}}
+{"check":"java-exceptions","result":["10-01 11:08:07.054  8310  8375 E dqod    : \tat cyar.b(PG:11)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat dkqj.b(PG:13)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat dqra.run(PG:30)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat dqqd.execute(PG:1)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat dqod.o(PG:1)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat dqod.b(PG:41)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat dqrh.s(PG:9)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat dksz.l(PG:5)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat cyat.a(PG:138)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat bilp.a(PG:29)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat cwzc.r(PG:24)", "10-01 11:08:07.054  8310  8375 E dqod    : \tat cwws.a(PG:5)", "--", "10-01 11:08:10.988  8932  8974 E SliceManager: android.os.DeadObjectException: Transaction failed on small parcel; remote process probably died, but this could also be caused by running out of binder buffer space", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat android.os.BinderProxy.transactNative(Native Method)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat android.os.BinderProxy.transact(BinderProxy.java:586)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat android.content.ContentProviderProxy.call(ContentProviderNative.java:762)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat android.content.ContentProviderClient.call(ContentProviderClient.java:601)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat android.content.ContentProviderClient.call(ContentProviderClient.java:589)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat android.app.slice.SliceManager.getSliceDescendants(SliceManager.java:228)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat wi$$ExternalSyntheticApiModelOutline0.m(D8$$SyntheticClass:56)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat aov.b(PG:7)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat ekh.e(PG:47)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat ekh.d(PG:1)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat ekh.doInBackground(PG:3)", "10-01 11:08:10.988  8932  8974 E SliceManager: \tat android.os.AsyncTask$3.call(AsyncTask.java:394)", "--", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: java.lang.UnsupportedOperationException", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat java.util.AbstractList.add(AbstractList.java:155)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat java.util.AbstractList.add(AbstractList.java:113)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat java.util.AbstractCollection.addAll(AbstractCollection.java:336)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat ekh.e(PG:55)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat ekh.d(PG:1)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat ekh.doInBackground(PG:3)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat android.os.AsyncTask$3.call(AsyncTask.java:394)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat java.util.concurrent.FutureTask.run(FutureTask.java:264)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:305)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)", "10-01 11:08:11.100  8932  8974 E SliceIndexUpdateTask: \tat java.lang.Thread.run(Thread.java:1012)"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-01 11:07:59.276  9875  9969 E chromium: [1001/110759.276218:ERROR:variations_seed_loader.cc(37)] Seed missing signature.", "10-01 11:07:59.276  9875  9969 I chromium: [INFO:variations_seed_loader.cc(66)] Failed to open file for reading.: No such file or directory (2)", "10-01 11:07:59.613  9980 10004 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-01 11:07:59.613  9980 10004 W chromium: [WARNING:runtime_features.cc(730)] AttributionReportingCrossAppWeb cannot be enabled in this configuration. Use --enable-features=ConversionMeasurement,AttributionReportingCrossAppWeb in addition.", "10-01 11:08:00.368  9980 10004 I chromium: [INFO:viewport_data.cc(133)] E2E_Used ViewportFitCover", "10-01 11:08:00.501  9875  9875 I chromium: [INFO:CONSOLE(53)] \"Injecting <script> tag. Using callback.\", source:  (53)"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9875","value":{"firstFrameMs":1503,"now":15064,"flutter":true,"resizes":[],"paint":{"first-paint":1061,"first-contentful-paint":3107},"calls":[[205,"at-preload","ksu:undefined webui:undefined"],[220,"ksu-defined"],[234,"wrap-failed","exec"],[244,"wrap-failed","spawn"],[244,"wrap-failed","moduleInfo"],[245,"wrap-failed","fullScreen"],[245,"wrap-failed","toast"]],"resources":[["/internal/insets.css",185,248,"link",0],["/flutter_webui.css",189,280,"link",0],["/flutter_webui.js",189,293,"script",0],["/flutter_bootstrap.js",194,270,"script",0],["/internal/assets/ext/require.js",194,257,"script",0],["/canvaskit/chromium/canvaskit.wasm",375,643,"fetch",0],["/canvaskit/chromium/canvaskit.js",377,524,"other",0],["/main.dart.js",382,524,"script",0],["/assets/FontManifest.json",1034,1105,"fetch",0],["/favicon.ico",1111,1125,"other",0],["/assets/fonts/MaterialIcons-Regular.otf",1114,1169,"fetch",0],["/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",1119,1165,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",1120,1149,"fetch",0]],"marks":[["flutter_webui:register",1181],["flutter_webui:registered",1185],["flutter_webui:first-frame",1503]],"measures":[],"fonts":[]}}}
+{"check":"root-start","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9875","value":{"code":0,"out":"","err":"","ms":327}}}
+{"check":"session","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9875","value":{"status":200,"ms":96,"protocol":1,"version":"0.1.0","port":33417,"pid":10139,"tokenLen":43}}}
+{"check":"ws-hello","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9875","value":{"first":"{\"op\":\"hello\",\"protocol\":1,\"version\":\"0.1.0\",\"pid\":10139,\"boot\":\"7c335340-9174-4210-85eb-36e2d32a3d43\",\"uid\":0,\"moduleDir\":\"/data/adb/modules/flutter_webui_counter\"}"}}}
+{"check":"channel-process","result":"USER           UID LABEL                            PID NAME                       \nroot             0 u:r:ksu:s0                     10139 ld-linux-x86-64.so.2\nexe=/data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/ld-linux-x86-64.so.2\n/data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/ld-linux-x86-64.so.2 --library-path /data/adb/modules/flutter_webui_counter/flutter_webui/x86_64 /data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/dartaotruntime /data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/flutter_webui_counter \narm64-v8a\nroot\nx86_64\n/data/adb/modules/flutter_webui_counter/flutter_webui/arm64-v8a:\ndartaotruntime\nflutter_webui_root.aot\nld-linux-aarch64.so.1\nlibc.so.6\nlibdl.so.2\nlibm.so.6\nlibpthread.so.0\n\n/data/adb/modules/flutter_webui_counter/flutter_webui/x86_64:\ndartaotruntime\nflutter_webui_root.aot\nld-linux-x86-64.so.2\nlibc.so.6\nlibdl.so.2\nlibm.so.6\nlibpthread.so.0"}
+{"check":"root-log","result":"2026-10-01T11:08:34.337809 listening on 127.0.0.1:33417"}
+{"check":"session-mode","result":"total 44\ndrwx--x--x 3 root root 4096 2026-10-01 11:08 .\ndrwxr-xr-x 7 root root 4096 2026-10-01 11:08 ..\n-rw------- 1 root root    0 2026-10-01 11:08 lock\ndrwx------ 2 root root 4096 2026-10-01 11:08 proc\n-rw------- 1 root root   56 2026-10-01 11:08 root.log\n-rw-r--r-- 1 root root  197 2026-10-01 11:08 session.json"}
+{"check":"home-resume","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9875","value":{"events":[["visibilitychange","hidden",18530],["visibilitychange","visible",25720]],"ticks":13,"vis":"visible","hasFocus":false}}}
+{"check":"before-back","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_9875","value":{"historyLength":1,"historyState":"{\"flutter\":true}","href":"https://mui.kernelsu.org/index.html","typeofWebui":"object","typeofWebuiExit":"function","typeofKsuExit":"undefined","webuiKeys":["exit","getAdditionalConfig","getApplication","getCurrentApplication","getCurrentRootManager","isDebug","openFile","setRefreshing","setRefreshingEnabled","startActivity"],"wrapped":"not writable"}}}
+{"check":"back-events","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"back-console","result":["10-01 11:08:47.028  7079  9619 I ActivityManager: Killing 9980:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a210i1 (adj 0): isolated not needed", "10-01 11:08:47.457  7079  8286 I ActivityTaskManager: START u0 {cmp=com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity (has extras)} with LAUNCH_SINGLE_TOP from uid 10145 (BAL_ALLOW_VISIBLE_WINDOW) result code=0", "10-01 11:08:47.549  9011 10253 D MainContentCaptureSession: handleScheduleFlush(act:com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity [state=1 (WAITING_FOR_SERVER), disabled=false], reason=FORCE_FLUSH): not a timeout reason because mDirectServiceInterface is not ready yet", "10-01 11:08:47.575  7079  8286 D CoreBackPreview: Window{c7d330c u0 com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@c6720d1, mPriority=-1, mIsAnimationCallback=false}", "10-01 11:08:47.575  7079  8286 D CoreBackPreview: Window{c7d330c u0 com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@68ed736, mPriority=0, mIsAnimationCallback=true}", "10-01 11:08:47.982  9011 10241 W .android.chrome: Long monitor contention with owner CrAsyncTask #6 (10245) at boolean QU0.f(java.lang.String)(chromium-TrichromeChromeGoogle6432.aab-stable-636771938:61) waiters=0 in boolean QU0.f(java.lang.String) for 453ms", "10-01 11:08:48.690  7079  7098 I ActivityTaskManager: Displayed com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity for user 0: +1s298ms", "10-01 11:08:49.350 10271 10271 D nativeloader: Load /data/app/~~ZChwFe5H2koGFDAlIGNDow==/com.android.chrome-L3gln35Lj6xZuIy96M3gVg==/Chrome.apk!/lib/x86_64/libchromium_android_linker.so using ns clns-8 from class loader (caller=/data/app/~~ZChwFe5H2koGFDAlIGNDow==/com.android.chrome-L3gln35Lj6xZuIy96M3gVg==/Chrome.apk): ok", "10-01 11:08:49.457  7079  7115 I ActivityManager: Start proc 10291:com.android.chrome:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0ai0 for  {com.android.chrome/org.chromium.content.app.SandboxedProcessService0:0}", "10-01 11:08:49.513 10291 10291 I cr_SplitCompatApp: Launched version=124.0.6367.219 minSdkVersion=29 isBundle=true processName=com.android.chrome:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0 isIsolated=true", "10-01 11:08:49.523  9011  9011 I chromium: [INFO:chrome_browser_cloud_management_controller.cc(273)] Deferring CBCM Controller Initialization until it is unblocked.", "10-01 11:08:49.620  7079  7115 I ActivityManager: Start proc 10307:com.android.chrome:privileged_process0/u0a145 for service {com.android.chrome/org.chromium.content.app.PrivilegedProcessService0}", "10-01 11:08:49.854 10307 10322 D nativeloader: Load /data/app/~~ZChwFe5H2koGFDAlIGNDow==/com.android.chrome-L3gln35Lj6xZuIy96M3gVg==/Chrome.apk!/lib/x86_64/libchromium_android_linker.so using ns clns-8 from class loader (caller=/data/app/~~ZChwFe5H2koGFDAlIGNDow==/com.android.chrome-L3gln35Lj6xZuIy96M3gVg==/Chrome.apk): ok", "10-01 11:08:49.991  9011 10253 D MainContentCaptureSession: Destroying session (ctx=org.chromium.chrome.browser.document.ChromeLauncherActivity@fe13e47, id=312751091) with 0 event(s) for pkg:com.android.chrome [state=0 (UNKNOWN), disabled=false]", "10-01 11:08:50.022  9011 10253 D MainContentCaptureSession: Destroying session (ctx=org.chromium.chrome.browser.document.ChromeLauncherActivity@1789c0e, id=-983624803) with 0 event(s) for pkg:com.android.chrome [state=0 (UNKNOWN), disabled=false]"]}
+{"check":"back-at-root","result":"topResumedActivity=ActivityRecord{7d7aa80 u0 com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity t18}"}
+Starting: Intent { cmp=com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity
+
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Flutter Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10378","value":{"href":"https://mui.kernelsu.org/index.html","title":"Flutter Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":497,"load":1153},"paint":{"first-paint":2918,"first-contentful-paint":2918},"glassAt":"present","firstFrame":null,"insets":"24px","vv":[320,640,1]}}}
+{"check":"java-exceptions","result":["10-01 11:08:58.295  8310  8375 E dqod    : \tat dqra.run(PG:30)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqqd.execute(PG:1)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqod.o(PG:1)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqod.b(PG:41)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqrh.s(PG:9)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dksz.l(PG:5)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cyat.a(PG:138)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat bilp.a(PG:29)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cwzc.r(PG:24)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cwws.a(PG:5)", "--", "10-01 11:08:58.295  8310  8375 E dqod    : RuntimeException while executing runnable dqra{dkqj@8e52d7c} with executor MoreExecutors.directExecutor()", "10-01 11:08:58.295  8310  8375 E dqod    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String cwru.b' on a null object reference in method 'void cyar.b(java.lang.Object)'", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cyar.b(PG:11)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dkqj.b(PG:13)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqra.run(PG:30)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqqd.execute(PG:1)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqod.o(PG:1)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqod.b(PG:41)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqrh.s(PG:9)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dksz.l(PG:5)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cyat.a(PG:138)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat bilp.a(PG:29)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cwzc.r(PG:24)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cwws.a(PG:5)", "--", "10-01 11:08:58.295  8310  8375 E dqod    : RuntimeException while executing runnable dqra{dkqj@7b0565a} with executor MoreExecutors.directExecutor()", "10-01 11:08:58.295  8310  8375 E dqod    : java.lang.NullPointerException: Attempt to read from field 'java.lang.String cwru.b' on a null object reference in method 'void cyar.b(java.lang.Object)'", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cyar.b(PG:11)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dkqj.b(PG:13)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqra.run(PG:30)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqqd.execute(PG:1)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqod.o(PG:1)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqod.b(PG:41)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dqrh.s(PG:9)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat dksz.l(PG:5)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cyat.a(PG:138)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat bilp.a(PG:29)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cwzc.r(PG:24)", "10-01 11:08:58.295  8310  8375 E dqod    : \tat cwws.a(PG:5)"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-01 11:08:56.242 10378 10471 E chromium: [1001/110856.237490:ERROR:variations_seed_loader.cc(37)] Seed missing signature.", "10-01 11:08:56.242 10378 10471 I chromium: [1001/110856.242335:INFO:variations_seed_loader.cc(66)] Failed to open file for reading.: No such file or directory (2)", "10-01 11:08:56.870 10477 10495 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-01 11:08:56.871 10477 10495 W chromium: [WARNING:runtime_features.cc(730)] AttributionReportingCrossAppWeb cannot be enabled in this configuration. Use --enable-features=ConversionMeasurement,AttributionReportingCrossAppWeb in addition.", "10-01 11:08:57.891 10378 10378 I chromium: [INFO:CONSOLE(53)] \"Injecting <script> tag. Using callback.\", source:  (53)"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10378","value":{"firstFrameMs":691,"now":15057,"flutter":true,"resizes":[],"paint":{"first-paint":1438,"first-contentful-paint":1438},"calls":[[103,"at-preload","ksu:undefined webui:undefined"],[112,"ksu-defined"],[128,"wrap-failed","exec"],[129,"wrap-failed","spawn"],[129,"wrap-failed","moduleInfo"],[129,"wrap-failed","fullScreen"],[130,"wrap-failed","toast"]],"resources":[["/flutter_bootstrap.js",90,154,"script",0],["/internal/assets/ext/require.js",92,130,"script",0],["/canvaskit/chromium/canvaskit.wasm",198,348,"fetch",0],["/canvaskit/chromium/canvaskit.js",199,223,"other",0],["/main.dart.js",200,261,"script",0],["/assets/FontManifest.json",565,587,"fetch",0],["/favicon.png",575,599,"other",0],["/assets/fonts/MaterialIcons-Regular.otf",588,607,"fetch",0],["/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",588,606,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",589,607,"fetch",0],["/favicon.png",1437,1493,"other",0]],"marks":[],"measures":[],"fonts":[]}}}
+Starting: Intent { cmp=com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity
+
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":{"href":"https://mui.kernelsu.org/index.html","title":"Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":200,"load":2373},"paint":{"first-paint":1519,"first-contentful-paint":5609},"glassAt":"present","firstFrame":null,"insets":"24px","vv":[320,640,1]}}}
+{"check":"java-exceptions","result":["10-01 11:09:36.852  7535  8432 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 11:09:36.852  7535  8432 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 11:09:36.918 10603 10617 D EGL_emulation: app_time_stats: avg=15.98ms min=1.65ms max=253.44ms count=41", "10-01 11:09:38.062 10603 10617 D EGL_emulation: app_time_stats: avg=14.87ms min=2.76ms max=189.82ms count=42", "10-01 11:09:38.210  7079  7232 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14", "10-01 11:09:38.211  7079  7232 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14", "10-01 11:09:38.211  7079  7232 D InetDiagMessage: Destroyed live tcp sockets for uids={10151} in 3ms", "10-01 11:09:38.214  7079  7232 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14", "10-01 11:09:38.215  7079  7232 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14", "10-01 11:09:38.215  7079  7232 D InetDiagMessage: Destroyed live tcp sockets for uids={20151} in 4ms", "10-01 11:09:38.560 10603 10603 W ThreadPoolForeg: type=1400 audit(0.0:365): avc:  denied  { getattr } for  path=\"/data/adb\" dev=\"dm-46\" ino=319489 scontext=u:r:untrusted_app:s0:c210,c256,c512,c768 tcontext=u:object_r:adb_data_file:s0 tclass=dir permissive=0 app=com.dergoogler.mmrl.wx", "10-01 11:09:38.560 10603 10603 W ThreadPoolForeg: type=1400 audit(0.0:366): avc:  denied  { getattr } for  path=\"/data/adb\" dev=\"dm-46\" ino=319489 scontext=u:r:untrusted_app:s0:c210,c256,c512,c768 tcontext=u:object_r:adb_data_file:s0 tclass=dir permissive=0 app=com.dergoogler.mmrl.wx", "--", "10-01 11:09:42.796  7535  8547 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-01 11:09:42.796  7433  7525 E PhoneInterfaceManager: getCarrierPrivilegeStatusForUid: Invalid subId", "10-01 11:09:42.796  7535  8547 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-01 11:09:42.798  7858  8360 I BugleRcsEngine: RCS Configuration storage in Bugle is disabled by p/h flag, using ProvisioningEngineStateCacheUtil.getProvisioningConfigurationForGivenSimIfExist() [CONTEXT log_prefix=\"ProvisioningEngineDataRetriever\" thread_id=62 ]", "10-01 11:09:42.817 10603 10609 W l.process.webui: ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~-ibrwHpjPQGkW9d7VgjKnA==/com.google.android.webview-IaPFN0XjHvEA0cFCt1vnDQ==/WebViewGoogle.apk' with 2 weak references", "10-01 11:09:42.818 10603 10609 W System  : A resource failed to call close. ", "10-01 11:09:42.818 10603 10609 W System  : A resource failed to call close. ", "10-01 11:09:43.204  7079  7175 D ActivityManager: freezing 9444 com.google.android.webview:webview_service", "10-01 11:09:43.207  7079  7232 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14", "10-01 11:09:43.208  7079  7232 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14", "10-01 11:09:43.208  7079  7232 D InetDiagMessage: Destroyed live tcp sockets for uids={10151} in 2ms", "10-01 11:09:46.530  8003  8003 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.chromesync.service.firstparty.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }", "10-01 11:09:46.531  7079  8165 D OomAdjuster: Not killing cached processes", "--", "10-01 11:09:49.829  9011 10289 E cr_media: java.lang.IllegalArgumentException: {}: BAD_VALUE", "10-01 11:09:49.829  9011 10289 E cr_media: cdm err: 0, oem err: 0, ctx: 0", "10-01 11:09:49.829  9011 10289 E cr_media: ============================== Beginning of DRM Plugin Log ==============================", "10-01 11:09:49.829  9011 10289 E cr_media:   10-01 11:01:42.213 I [cdm_engine.cpp(1092):IsSecurityLevelSupported] level = L1", "10-01 11:09:49.829  9011 10289 E cr_media:   10-01 11:01:42.216 I [file_utils.cpp(38):Exists] stat failed: ENOENT", "10-01 11:09:49.829  9011 10289 E cr_media:   10-01 11:01:42.216 I [oemcrypto_adapter_dynamic.cpp(826):Initialize] Level 3 Build Info (v18): {\"soc_vendor\":\"L3_33100\",\"soc_model\":\"X86 64 bit\",\"ta_ver\":\"18.1.0+Feb 20 2024_20:28:28_\",\"uses_opk\":false,\"tee_os\":\"none\",\"tee_os_ver\":\"0.0.0\",\"form_factor\":\"L3\",\"implementer\":\"Widevine\",\"fused\":false}", "10-01 11:09:49.829  9011 10289 E cr_media:   10-01 11:01:42.217 I [(0):] Level3 Library 33100 Feb 20 2024 20:28:28", "10-01 11:09:49.829  9011 10289 E cr_media:   10-01 11:01:42.420 I [file_utils.cpp(38):Exists] stat failed: ENOENT", "10-01 11:09:49.829  9011 10289 E cr_media:   10-01 11:01:42.420 I [file_utils.cpp(38):Exists] stat failed: ENOENT", "10-01 11:09:49.829  9011 10289 E cr_media:   10-01 11:01:42.470 I [file_utils.cpp(38):Exists] stat failed: ENOENT", "10-01 11:09:49.829  9011 10289 E cr_media:   10-01 11:01:42.470 I [oemcrypto_adapter_dynamic.cpp(890):Level1Terminate] L1 Terminate not needed", "10-01 11:09:49.829  9011 10289 E cr_media:   10-01 11:01:42.470 W [oemcrypto_adapter_dynamic.cpp(1531):OEMCrypto_InitializeAndCheckKeybox] Keybox error: 25. Falling back to L3.", "10-01 11:09:49.829  9011 10289 E cr_media:   10-01 11:01:42.470 I [file_utils.cpp(38):Exists] stat failed: ENOENT"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-01 11:09:32.450 10603 10692 E chromium: [1001/110932.449886:ERROR:variations_seed_loader.cc(37)] Seed missing signature.", "10-01 11:09:32.450 10603 10692 I chromium: [1001/110932.450450:INFO:variations_seed_loader.cc(66)] Failed to open file for reading.: No such file or directory (2)", "10-01 11:09:32.849 10703 10727 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-01 11:09:32.850 10703 10727 W chromium: [WARNING:runtime_features.cc(730)] AttributionReportingCrossAppWeb cannot be enabled in this configuration. Use --enable-features=ConversionMeasurement,AttributionReportingCrossAppWeb in addition.", "10-01 11:09:33.261 10703 10727 I chromium: [INFO:viewport_data.cc(133)] E2E_Used ViewportFitCover", "10-01 11:09:33.354 10703 10727 I chromium: [INFO:viewport_data.cc(133)] E2E_Used ViewportFitCover", "10-01 11:09:33.501 10603 10603 I chromium: [INFO:CONSOLE(53)] \"Injecting <script> tag. Using callback.\", source:  (53)", "10-01 11:09:38.672 10603 10603 I chromium: [INFO:CONSOLE(53)] \"Warning: Buffers cannot be shared due to missing cross-origin headers. Please refer to https://fzyzcjy.github.io/flutter_rust_bridge/manual/miscellaneous/web-cross-origin for details.\", source:  (53)", "10-01 11:09:38.835 10603 10603 I chromium: [INFO:CONSOLE(53)] \"using deprecated parameters for the initialization function; pass a single object instead\", source:  (53)", "10-01 11:09:49.831  9011 10289 W chromium: [WARNING:media_drm_origin_id_manager.cc(328)] Failed to provision origin ID"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":{"firstFrameMs":1207,"now":15059,"flutter":true,"resizes":[],"paint":{"first-paint":772,"first-contentful-paint":2660},"calls":[[157,"at-preload","ksu:undefined webui:undefined"],[188,"ksu-defined"],[191,"wrap-failed","exec"],[191,"wrap-failed","spawn"],[193,"wrap-failed","moduleInfo"],[193,"wrap-failed","fullScreen"],[194,"wrap-failed","toast"]],"resources":[["/internal/insets.css",141,196,"link",0],["/flutter_webui.css",141,197,"link",0],["/flutter_webui.js",141,199,"script",0],["/flutter_bootstrap.js",141,216,"script",0],["/internal/assets/ext/require.js",142,197,"script",0],["/canvaskit/chromium/canvaskit.wasm",282,436,"fetch",0],["/canvaskit/chromium/canvaskit.js",284,326,"other",0],["/main.dart.js",285,386,"script",0],["/assets/FontManifest.json",726,824,"fetch",0],["/favicon.ico",743,824,"other",0],["/assets/fonts/MaterialIcons-Regular.otf",826,871,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",826,868,"fetch",0],["/pkg/demo_native.js",2642,2814,"script",0],["/pkg/demo_native_bg.wasm",2820,2846,"fetch",0]],"marks":[["flutter_webui:register",877],["flutter_webui:registered",889],["flutter_webui:first-frame",1207]],"measures":[],"fonts":[]}}}
+{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":"semantics on"}
+{"check":"home","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Squadron","Process","native","net","Say hello","Count to 5","SHA-256","Demo pages\nOne page per thing the stack promises.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Back\nBack","One service, DemoService, opened in every place this build knows. Each place probes its own facts from inside; the page never guesses from the platform it was built for.","200k","1M","3M","Count primes in every place","Restart places","inline (the caller)\nkind: inline\nstart 459 ms, first facts() round trip 28 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 579 ms, first facts() round trip 35 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"places-scroll-1","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Back\nBack","One service, DemoService, opened in every place this build knows. Each place probes its own facts from inside; the page never guesses from the platform it was built for.","200k","1M","3M","Count primes in every place","Restart places","inline (the caller)\nkind: inline\nstart 459 ms, first facts() round trip 28 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 579 ms, first facts() round trip 35 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"places-scroll-2","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Back\nBack","inline (the caller)\nkind: inline\nstart 459 ms, first facts() round trip 28 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 579 ms, first facts() round trip 35 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root process (the app CLI, serve mode)\nkind: process\nstart 862 ms, first facts() round trip 0 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"places-scroll-3","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Back\nBack","worker (isolate or Web Worker)\nkind: web_worker\nstart 579 ms, first facts() round trip 35 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root process (the app CLI, serve mode)\nkind: process\nstart 862 ms, first facts() round trip 0 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Reference: one call and one stream per place\nsquadron_process doc/benchmark.md, a 4-vCPU VM. Not measured here; devicelab measures devices.\nCall: isolate 31 µs, Web Worker (dart2js) 120 µs, process 247 µs, process from the page 401 µs.\n64 KiB stream: isolate 3643 MiB/s, Web Worker 631 MiB/s, process link about 110 MiB/s.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-strategy","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":"tapped Strategy at 53,536 size 53x80 role tab tappable"}}
+{"check":"strategy","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Back\nBack","Objective: list the device's partitions. Strategies in preference order: on the device as root, then from a host over USB. The first one the place's facts allow runs; nothing reads kIsWeb or Platform.","Place","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Facts from inline (the caller)\nSwitch a fact off to see the fallback. You can only take facts away.\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root","block_devices","usb.native","process.spawn","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-strategy-root","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":"tapped root process at 24,358 size 272x48 role checkbox tappable"}}
+{"check":"strategy-root","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Back\nBack","Objective: list the device's partitions. Strategies in preference order: on the device as root, then from a host over USB. The first one the place's facts allow runs; nothing reads kIsWeb or Platform.","Place","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Facts from root process (the app CLI, serve mode)\nSwitch a fact off to see the fallback. You can only take facts away.\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root","block_devices","usb.native","process.spawn","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-rust","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":"tapped Rust at 107,536 size 53x80 role tab tappable"}}
+{"check":"rust","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Back\nBack","The demo crate (rust/) counts the primes below 1000000 with the same loop as page 1's Dart. The service loads it in its own place through flutter_rust_bridge, so each place runs its own build.","Run in every place","inline (the caller)","Run here","worker (isolate or Web Worker)","Run here","root process (the app CLI, serve mode)","Run here","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-rust-run","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":"tapped Run in every place at 16,196 size 288x48 role button tappable"}}
+{"check":"rust-ran","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Back\nBack","The demo crate (rust/) counts the primes below 1000000 with the same loop as page 1's Dart. The service loads it in its own place through flutter_rust_bridge, so each place runs its own build.","Run in every place","inline (the caller)\nBuilt for: wasm32-unknown (single-threaded)\nLoad: 0 ms (the place loads it once, when it first checks its facts)\nRust 154 ms, Dart 1346 ms (same count: 78498)","Run here","worker (isolate or Web Worker)\nBuilt for: wasm32-unknown (single-threaded)\nLoad: 149 ms (the place loads it once, when it first checks its facts)\nRust 145 ms, Dart 250 ms (same count: 78498)","Run here","root process (the app CLI, serve mode)\nBuilt for: x86_64-android\nLoad: 0 ms (the place loads it once, when it first checks its facts)\nRust 204 ms, Dart 159 ms (same count: 78498)","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-lifecycle","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":"tapped Lifecycle at 160,536 size 53x80 role tab tappable"}}
+{"check":"tap-root-process","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":"tapped root process at 24,390 size 272x48 role checkbox tappable"}}
+{"check":"tap-start","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":"tapped Start at 24,462 size 97x48 role button tappable"}}
+{"check":"lifecycle-running","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Back\nBack","Start a five-minute task, then switch away (Home, another app or tab) and come back: hidden keeps going. Close the app instead and reopen it: closed stops, and this page says where the task was when it ended.","Task\ntick every 500 ms, stamped with the place's own clock\nrunning in process: tick 17/600, longest gap 513 ms, app resumed 3","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Stop","Lifecycle\n11:11:40  started in process","Facts from root process (the app CLI, serve mode)\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"lifecycle-after-home","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Back\nBack","Start a five-minute task, then switch away (Home, another app or tab) and come back: hidden keeps going. Close the app instead and reopen it: closed stops, and this page says where the task was when it ended.","Task\ntick every 500 ms, stamped with the place's own clock\nrunning in process: tick 42/600, longest gap 513 ms, app resumed 7","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Stop","Lifecycle\n11:11:57  away 7.0 s: the place produced 14 ticks (on schedule: 14); longest gap 513 ms\n11:11:57  inactive -> resumed\n11:11:57  hidden -> inactive\n11:11:50  inactive -> hidden\n11:11:50  resumed -> inactive\n11:11:40  started in process","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"root-process","result":"root             0 u:r:ksu:s0                     10845 dartaotruntime\nroot             0 u:r:ksu:s0                     10865 dartaotruntime"}
+/home/runner/work/devicelab/devicelab/out/sockprobe: 1 file pushed, 0 skipped. 69.8 MB/s (3501149 bytes in 0.048s)
+{"check":"block-devices","result":"dm-0\ndm-1\ndm-11\ndm-13\ndm-14\ndm-16\ndm-17\ndm-18\ntotal 0\ndrwxr-xr-x 2 root root u:object_r:block_device:s0                140 2026-10-01 10:59 by-name\nbrw------- 1 root root u:object_r:dm_device:s0              254,   0 2026-10-01 10:59 dm-0\nbrw------- 1 root root u:object_r:dm_device:s0              254,   1 2026-10-01 10:59 dm-1\nbrw------- 1 root root u:object_r:dm_device:s0              254,  11 2026-10-01 10:59 dm-11\nbrw------- 1 root root u:object_r:dm_device:s0              254,  13 2026-10-01 10:59 dm-13\nbrw------- 1 root root u:object_r:dm_device:s0              254,  14 2026-10-01 10:59 dm-14\nbrw------- 1 root root u:object_r:dm_device:s0              254,  16 2026-10-01 10:59 dm-16\nbrw------- 1 root root u:object_r:dm_device:s0              254,  17 2026-10-01 10:59 dm-17\nbrw------- 1 root root u:object_r:dm_device:s0              254,  18 2026-10-01 10:59 dm-18\nbrw------- 1 root root u:object_r:dm_device:s0              254,  19 2026-10-01 10:59 dm-19\nbrw------- 1 root root u:object_r:dm_device:s0              254,   2 2026-10-01 10:59 dm-2\n-- su:\n0000000  \\0\n-- ksu:\n{\"error\":\"write /proc/thread-self/attr/current: operation not permitted\",\"op\":\"setcon\"}\n-- avc:"}
+{"check":"back-1","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10603","value":["Squadron","Process","native","net","Say hello","Count to 5","SHA-256","Demo pages\nOne page per thing the stack promises.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"back-1-top","result":"topResumedActivity=ActivityRecord{d9eac9c u0 com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity t20}"}
+{"check":"back-2-top","result":"topResumedActivity=ActivityRecord{9158a27 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t13}"}
