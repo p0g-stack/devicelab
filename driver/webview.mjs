@@ -5,6 +5,7 @@
 // The expression may return a Promise; the resolved value is printed as JSON.
 //   --preload '<js>' [--wait-ms N]: install <js> to run before page scripts,
 //   reload, wait, then evaluate (e.g. to catch flutter-first-frame).
+//   --timeout-s N: give up (exit 2) when nothing came back after N s (60).
 // Needs the app's WebView debugging on (setWebContentsDebuggingEnabled).
 import { execFileSync } from 'node:child_process';
 
@@ -12,6 +13,10 @@ const adb = (...a) => execFileSync(process.env.ADB ?? 'adb', a, { encoding: 'utf
 const [cmd, expr] = process.argv.slice(2);
 const opt = (n, d) => (process.argv.includes(n) ? process.argv[process.argv.indexOf(n) + 1] : d);
 const match = opt('--match', '');
+// A promise that never settles (a bridge callback that never comes, a hung
+// renderer) must not hang the job: give up after --timeout-s (default 60).
+const limit = Number(opt('--timeout-s', 60)) * 1000 + Number(opt('--wait-ms', 0));
+setTimeout(() => { console.log(JSON.stringify({ error: `no reply after ${limit} ms` })); process.exit(2); }, limit).unref?.();
 
 const sockets = [...adb('shell', 'cat', '/proc/net/unix').matchAll(/@(\S*devtools_remote\S*)/g)].map((m) => m[1]);
 const targets = [];

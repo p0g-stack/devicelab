@@ -9,7 +9,7 @@ LABEL=$1; OUT=${LAB_OUT:-$PWD/out}; HERE=$(cd "$(dirname "$0")/.." && pwd)
 WV="node $HERE/driver/webview.mjs"; J=$OUT/$LABEL-walk.jsonl; : >"$J"
 rec() { echo "{\"check\":\"$1\",\"result\":$2}" | tee -a "$J"; }
 ev() { $WV eval "$1" 2>&1 | tail -1; }
-shot() { adb exec-out screencap -p >"$OUT/$LABEL-walk-$1.png"; }
+shot() { timeout 20 adb exec-out screencap -p >"$OUT/$LABEL-walk-$1.png"; }
 # Helpers on window: enable semantics, list labels, tap by label prefix.
 HELP='window.__w = window.__w || {
   on() { const p = document.querySelector("flt-semantics-placeholder"); if (p) p.click(); },

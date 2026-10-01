@@ -16,7 +16,7 @@ adb push "$LABSERVER" /data/local/tmp/labserver >/dev/null
 adb shell "chmod 755 /data/local/tmp/labserver; pkill -x labserver; (nohup /data/local/tmp/labserver >/data/local/tmp/labserver.log 2>&1 &)"
 "$HERE/managers/open_webui.sh" "$LABEL" "$PKG" "$ID" "$NAME"
 sleep 2
-adb exec-out screencap -p >"$OUT/$LABEL-webui.png"
+timeout 20 adb exec-out screencap -p >"$OUT/$LABEL-webui.png"
 rec targets "$($WV list | python3 -c 'import json,sys; print(json.dumps([{k:t.get(k) for k in ("socket","type","url","title")} for t in json.load(sys.stdin)]))')"
 rec globals "$(ev '({ua: navigator.userAgent, origin: location.origin, href: location.href, globals: Object.keys(window).filter(k => /ksu|webui|mmrl|\$/i.test(k)), ksu: typeof ksu === "object" ? Object.keys(Object.getPrototypeOf(ksu)).concat(Object.keys(ksu)).concat((()=>{const a=[]; for (const k in ksu) a.push(k); return a})()) : null})')"
 rec ksu-exec "$(ev 'new Promise(r => { window.__cb = (code, out, err) => r({code, out, err}); ksu.exec("id; cat /proc/self/attr/current", "{}", "__cb"); setTimeout(() => r("timeout"), 8000) })')"
@@ -37,7 +37,7 @@ rec lifecycle "$(ev '({events: window.__lab.events, gaps: window.__lab.gaps, slo
 adb reverse tcp:8090 tcp:8090 >/dev/null; sleep 1
 ev 'location.href = "http://127.0.0.1:8090/index.html"; "navigating"' >/dev/null; sleep 5
 rec dev-url "$($WV eval 'new Promise(r => { const g = {href: location.href, ksu: typeof ksu, webui: typeof webui, globals: Object.keys(window).filter(k => /ksu|webui|\$/i.test(k))}; if (typeof ksu !== "object") return r(g); window.__dcb = (code, out, err) => r({...g, exec: {code, out, err}}); try { ksu.exec("id", "{}", "__dcb") } catch (e) { r({...g, execError: String(e)}) } setTimeout(() => r({...g, exec: "timeout"}), 8000) })' --match 127.0.0.1 2>&1 | tail -1)"
-adb exec-out screencap -p >"$OUT/$LABEL-dev-url.png"
+timeout 20 adb exec-out screencap -p >"$OUT/$LABEL-dev-url.png"
 kill $DEV 2>/dev/null; adb reverse --remove tcp:8090 >/dev/null 2>&1
 adb shell cat /data/local/tmp/labserver.log >"$OUT/$LABEL-labserver.log"
 python3 - "$J" "$OUT/$LABEL-webui.json" "$LABEL" <<'PY'

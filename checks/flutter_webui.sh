@@ -25,11 +25,11 @@ ev 'window.__fwev = []; for (const t of ["visibilitychange", "pagehide", "pagesh
 adb shell input keyevent KEYCODE_HOME; sleep 5
 "$HERE/managers/back_to_app.sh"; sleep 3
 rec home-resume "$(ev '({events: window.__fwev, ticks: window.__fwtick, vis: document.visibilityState, hasFocus: document.hasFocus()})')"
-adb exec-out screencap -p >"$OUT/$LABEL-fw-resumed.png"
+timeout 20 adb exec-out screencap -p >"$OUT/$LABEL-fw-resumed.png"
 # Back at the root route: does the host close the WebUI? On WebUI X, does
 # WX_ON_BACK reach the page and does the page call webui.exit()?
 ev 'window.__bk = []; addEventListener("message", e => __bk.push(["message", String(e.data).slice(0, 120), Math.round(performance.now())])); if (window.webui && webui.exit) { const x = webui.exit.bind(webui); try { webui.exit = (...a) => { __bk.push(["webui.exit", Math.round(performance.now())]); return x(...a) } } catch (e) { __bk.push(["wrap-failed", String(e)]) } } "ok"' >/dev/null
 adb shell input keyevent KEYCODE_BACK; sleep 3
 rec back-events "$(ev '({bk: window.__bk, vis: document.visibilityState})')"
 rec back-at-root "$(adb shell dumpsys activity activities | grep -m1 -E 'topResumedActivity|mResumedActivity' | tr -d '\r' | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))')"
-adb exec-out screencap -p >"$OUT/$LABEL-fw-after-back.png"
+timeout 20 adb exec-out screencap -p >"$OUT/$LABEL-fw-after-back.png"
