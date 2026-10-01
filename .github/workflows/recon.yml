@@ -1,0 +1,35 @@
+# Looks up what the lab can download: manager and WebUI X release assets,
+# KernelSU build workflows, and the kernel each AVD image ships. Output is
+# the job log plus out/recon.txt.
+name: recon
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [".github/workflows/recon.yml"]
+jobs:
+  recon:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Release assets and workflows
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          mkdir -p out
+          for r in tiann/KernelSU KernelSU-Next/KernelSU-Next SukiSU-Ultra/SukiSU-Ultra bmax121/APatch MMRL-App/MMRL MMRL-App/WebUI-X-Portable 5ec1cff/KsuWebUIStandalone backslashxx/KsuWebUIStandalone; do
+            echo "### $r" | tee -a out/recon.txt
+            gh api "repos/$r/releases?per_page=2" --jq '.[] | "\(.tag_name) \(.published_at)\n" + ([.assets[].name] | join("\n"))' 2>&1 | tee -a out/recon.txt
+            gh api "repos/$r/contents/.github/workflows" --jq '.[].name' 2>/dev/null | tr '\n' ' ' | tee -a out/recon.txt; echo | tee -a out/recon.txt
+          done
+      - name: AVD kernels
+        run: |
+          for api in 34 35 36; do
+            img="system-images;android-$api;google_apis;x86_64"
+            yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --install "$img" >/dev/null 2>&1 || { echo "$api: no image"; continue; }
+            d="$ANDROID_HOME/system-images/android-$api/google_apis/x86_64"
+            echo "### api $api: $(ls "$d" | tr '\n' ' ')" | tee -a out/recon.txt
+            k="$d/kernel-ranchu"; [ -f "$k" ] || k=$(ls "$d"/kernel* | head -1)
+            (strings "$k" | grep -m1 'Linux version' || (zcat -f "$k" 2>/dev/null | strings | grep -m1 'Linux version')) | tee -a out/recon.txt
+            (cat "$d/source.properties"; grep -h -m3 'ro.build' "$d"/build.prop 2>/dev/null) | tee -a out/recon.txt
+          done
+      - uses: actions/upload-artifact@v4
+        with: { name: recon, path: out/ }
