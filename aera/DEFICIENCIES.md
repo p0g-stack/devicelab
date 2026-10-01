@@ -25,6 +25,10 @@ init: Service 'recovery' (pid 89) exited with status 1
   `RECOVERY_LIBRARY_SOURCE_FILES` only inside `ifeq ($(TW_INCLUDE_CRYPTO_FBE), true)`,
   but `libandroidfw.so`, which the recovery binary always links, needs it.
 - Workaround: device tree adds `libincfs` (BoardConfig.mk, from devicelab
-  next build); `cuttlefish/aera-fixlibs.sh` pushes Android's copy at run time.
+  6b0202e; needs a rebuild). Android 17's own copy does not stand in: it
+  needs a newer libc++ (`cannot locate symbol "_ZNSt3__113__hash_memoryEPKvm"
+  referenced by "/system/lib64/libincfs.so"`, run
+  `runs/20261001T140843Z-aera-cf-recovery-36872033282`), so the image itself
+  must carry it.
 - Upstream fix: move `libincfs.so` out of the FBE block in
   `prebuilt/Android.mk` (or add it next to `libandroidfw`).
