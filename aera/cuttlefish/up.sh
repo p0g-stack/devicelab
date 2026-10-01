@@ -38,9 +38,12 @@ grep -h -m1 ro.build.fingerprint "$CF_HOME"/*.prop 2>/dev/null || true
 
 # crosvm's sandboxed device processes die on the runner ("failed to create
 # a PCI root hub ... Connection reset by peer"), hence --enable_sandbox=false.
-# drm_virgl: virglrenderer in crosvm renders guest GL through the host's EGL
-# (llvmpipe on a GPU-less runner), giving the guest /dev/dri/renderD128.
-GPU=${CF_GPU:-drm_virgl}
+# GPU: gfxstream_guest_angle_host_swiftshader gives the guest a 3D
+# virtio-gpu (capsets 3 gfxstream-vulkan and 9, no virgl capset) rendered
+# on the host by SwiftShader; lavapipe and plain gfxstream boot too
+# (aera-gpu.yml). drm_virgl crashes crosvm on the GPU-less runner
+# (core dump right after launch), so it is not the default.
+GPU=${CF_GPU:-gfxstream_guest_angle_host_swiftshader}
 [ "$GPU" != guest_swiftshader ] && sudo apt-get install -y -qq libegl1 libgles2 libegl-dev libgles-dev libgl1-mesa-dri mesa-libgallium mesa-vulkan-drivers libvulkan1 >/dev/null 2>&1
 launch() {
   log "launching (gpu_mode=$1)"

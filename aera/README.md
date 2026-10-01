@@ -12,6 +12,15 @@ thread; scripts here do not touch `managers/` or `probes/`.
 | Host API 3 | flutter-aera's `aera-host-sim`, built static, run on the device | scanout and real touch: frames go to PNG, taps are scripted |
 | flutter-aera kit | flutter-aera's own x64 kit and static `aera-host-sim-linux-x64` from release kit-3.47.5, downloaded fresh each run (`kit/build-x64.sh` is a local fallback) | Zink/Turnip, the arm64 kit binary itself |
 
+GPU (`aera-gpu.yml`, 2026-10-01): the default is
+`--gpu_mode=gfxstream_guest_angle_host_swiftshader`. The guest gets
+`/dev/dri/renderD128` with 3D on (`+virgl +context_init +resource_blob`)
+but only gfxstream capsets: 3 (gfxstream Vulkan) and 9 (composer); plain
+`gfxstream` adds 8 (gfxstream GLES). No virgl capset, so a guest renders
+through Mesa's gfxstream Vulkan driver, not virgl. `host_lavapipe` and plain
+`gfxstream` boot too. `drm_virgl` crashes crosvm (core dump right after
+launch) on the GPU-less runner even with host EGL/GLES installed.
+
 No arm64 KVM: `ubuntu-24.04-arm` has no `/dev/kvm` (checked 2026-10-01), so
 arm64 Cuttlefish would be TCG emulation.
 
