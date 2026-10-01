@@ -115,3 +115,24 @@ adb shell appops set $PKG SYSTEM_ALERT_WINDOW allow
 share text-saw "hello from devicelab" --es action send --es title devicelab
 share file-saw "" --es action send --es file $D/chcon.txt --es content-type text/plain
 echo "app uid: $UID_"
+# Media scan (webui_app_plane AppPlane.scanMedia): files written as root into
+# Download, then indexed by each route. Written through /storage/emulated/0
+# (FUSE: MediaProvider sees the create itself) and through the lower
+# /data/media/0 (no FUSE: nothing tells MediaProvider) as controls.
+mq() { adb shell "content query --uri content://media/external/file --projection _id:_data:mime_type:owner_package_name --where \"_data LIKE '%/Download/dl-scan-%'\"" | tr -d '\r'; }
+adb shell "rm -f /data/media/0/Download/dl-scan-*; O=\$(stat -c %u:%g /data/media/0/Download); echo fuse >/storage/emulated/0/Download/dl-scan-fuse.txt; for n in none app bcast; do echo \$n >/data/media/0/Download/dl-scan-\$n.txt; chown \$O /data/media/0/Download/dl-scan-\$n.txt; done; restorecon /data/media/0/Download/dl-scan-*"
+sleep 3
+rec media-before "$( (adb shell "ls -lnZ /data/media/0/Download/ | grep dl-scan"; echo '-- mediastore:'; mq) | js)"
+adb shell "(nohup /data/local/tmp/sockprobe -t 60 -reply '' ms_out ms_in >/data/local/tmp/sockprobe-ms.log 2>&1 &)"; sleep 1
+P=$(adb shell "pgrep -f 'sockprobe.*ms_out' | head -1" | tr -d '\r')
+adb logcat -c
+adb shell am broadcast --user 0 -f 0x01000020 -n $PKG/com.termux.api.TermuxApiReceiver \
+  --es socket_output ms_out --es socket_input ms_in --ei api_server_pid "${P:-0}" --ei api_server_uid 0 \
+  --ei api_server_starttime "$(adb shell "cut -d' ' -f22 /proc/$P/stat" | tr -d '\r')" --es api_method MediaScanner \
+  --esa paths /storage/emulated/0/Download/dl-scan-app.txt >/dev/null 2>&1
+sleep 8
+rec media-scan-app "$( (adb shell "cat /data/local/tmp/sockprobe-ms.log; logcat -d | grep -i -E 'termux|mediascan|MediaProvider|denied|avc' | grep -v -E 'Broadcasting|Enqueued' | tail -10"; echo '-- mediastore:'; mq) | tr -d '\r' | js)"
+adb logcat -c
+adb shell am broadcast --user current -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///storage/emulated/0/Download/dl-scan-bcast.txt 2>&1 | tr -d '\r' >"$OUT/app-plane-media-bcast.txt"
+sleep 8
+rec media-scan-bcast "$( (cat "$OUT/app-plane-media-bcast.txt"; adb shell "logcat -d | grep -i -E 'mediascan|MediaProvider|SCAN_FILE' | tail -10"; echo '-- mediastore:'; mq) | tr -d '\r' | js)"
