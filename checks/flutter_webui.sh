@@ -28,8 +28,16 @@ rec home-resume "$(ev '({events: window.__fwev, ticks: window.__fwtick, vis: doc
 timeout 20 adb exec-out screencap -p >"$OUT/$LABEL-fw-resumed.png"
 # Back at the root route: does the host close the WebUI? On WebUI X, does
 # WX_ON_BACK reach the page and does the page call webui.exit()?
-ev 'window.__bk = []; addEventListener("message", e => __bk.push(["message", String(e.data).slice(0, 120), Math.round(performance.now())])); if (window.webui && webui.exit) { const x = webui.exit.bind(webui); try { webui.exit = (...a) => { __bk.push(["webui.exit", Math.round(performance.now())]); return x(...a) } } catch (e) { __bk.push(["wrap-failed", String(e)]) } } "ok"' >/dev/null
+top() { adb shell dumpsys activity activities | grep -m1 -E 'topResumedActivity|mResumedActivity' | tr -d '\r' | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))'; }
+rec before-back "$(ev 'window.__bk = []; const T = () => Math.round(performance.now()); addEventListener("message", e => __bk.push(["message", String(e.data).slice(0, 120), T()])); addEventListener("popstate", e => __bk.push(["popstate", JSON.stringify(e.state), history.length, T()])); addEventListener("error", e => __bk.push(["error", String(e.message), T()])); addEventListener("unhandledrejection", e => __bk.push(["unhandledrejection", String(e.reason).slice(0, 160), T()])); for (const k of ["log", "info", "warn", "error", "debug"]) { const o = console[k]; console[k] = (...a) => { __bk.push(["console." + k, a.map(String).join(" ").slice(0, 200), T()]); return o.apply(console, a) } } let wrapped = "no webui.exit"; if (window.webui && typeof webui.exit === "function") { const x = webui.exit; const w = (...a) => { __bk.push(["webui.exit", T()]); return x.apply(webui, a) }; try { webui.exit = w } catch (e) {} wrapped = webui.exit === w ? "wrapped" : "not writable" } ({historyLength: history.length, historyState: JSON.stringify(history.state), href: location.href, typeofWebui: typeof window.webui, typeofWebuiExit: typeof (window.webui && webui.exit), typeofKsuExit: typeof (window.ksu && ksu.exit), webuiKeys: window.webui ? Object.keys(window.webui).slice(0, 40) : null, wrapped})')"
+adb logcat -c
 adb shell input keyevent KEYCODE_BACK; sleep 3
-rec back-events "$(ev '({bk: window.__bk, vis: document.visibilityState})')"
-rec back-at-root "$(adb shell dumpsys activity activities | grep -m1 -E 'topResumedActivity|mResumedActivity' | tr -d '\r' | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))')"
+rec back-events "$(ev '({bk: window.__bk, vis: document.visibilityState, historyLength: history.length, historyState: JSON.stringify(history.state)})')"
+rec back-console "$(adb logcat -d | grep -E 'CONSOLE|chromium' | tail -30 | tr -d '\r' | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip().splitlines()))')"
+rec back-at-root "$(top)"
 timeout 20 adb exec-out screencap -p >"$OUT/$LABEL-fw-after-back.png"
+# Does the host's exit itself close the WebUI? Call it by hand.
+if grep -q WebUIActivity <<<"$(top)"; then
+  rec manual-exit "$(ev 'new Promise(r => { const f = window.webui && webui.exit ? "webui.exit" : window.ksu && ksu.exit ? "ksu.exit" : null; if (!f) return r("no exit"); setTimeout(() => { try { f === "webui.exit" ? webui.exit() : ksu.exit() } catch (e) { __bk.push(["exit threw", String(e)]) } }, 50); r(f) })' --timeout-s 10)"
+  sleep 3; rec after-manual-exit "$(top)"
+fi
