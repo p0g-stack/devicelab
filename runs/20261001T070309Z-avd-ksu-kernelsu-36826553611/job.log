@@ -1,0 +1,319 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.1.11.0 (build_id 15917651) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 61s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.0
+total 16428
+drwx------  2 runner runner     4096 Oct  1 06:49 .
+drwxrwxrwt 16 root   root       4096 Oct  1 06:49 ..
+-rw-r--r--  1 runner runner 10777987 Oct  1 06:49 KernelSU_v3.3.0_32601-release.apk
+-rw-r--r--  1 runner runner  5713312 Oct  1 06:49 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   318824 Oct  1 06:49 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu)
+/tmp/tmp.C3bBpRNUWJ/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 6.7 MB/s (318824 bytes in 0.045s)
+/tmp/tmp.C3bBpRNUWJ/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 113.0 MB/s (5713312 bytes in 0.048s)
+== ksud: ksud 3.3.0 (uapi: 2)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Loaded kernel module: /data/adb/kernelsu.ko
+rc=0
+kernelsu              159744  0 
+== lsmod: kernelsu              159744  0 
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.053s)
+== modules: [
+  {
+    "versionCode": "1",
+    "enabled": "true",
+    "version": "1",
+    "id": "devicelab_probe",
+    "update": "false",
+    "web": "true",
+    "remove": "false",
+    "author": "p0g-stack",
+    "action": "false",
+    "name": "devicelab probe",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "mount": "false"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+ERROR: null root node returned by UiTestAutomationBridge.
+cat: /data/local/tmp/ui.xml: No such file or directory
+== home text: 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+inputs/modules/flutter_webui_counter-0.1.0.zip: 1 file pushed, 0 skipped. 142.8 MB/s (18352725 bytes in 0.123s)
+== install flutter_webui_counter-0.1.0.zip
+  inflating: webroot/assets/NOTICES
+  inflating: webroot/assets/AssetManifest.bin
+  inflating: webroot/assets/FontManifest.json
+  inflating: webroot/assets/AssetManifest.bin.json
+  inflating: webroot/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+  inflating: webroot/assets/fonts/MaterialIcons-Regular.otf
+  inflating: webroot/assets/fonts/fallback/Roboto-Regular.ttf
+  inflating: webroot/assets/shaders/stretch_effect.frag
+  inflating: webroot/assets/shaders/ink_sparkle.frag
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-192.png
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 174.7 MB/s (6582359 bytes in 0.036s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (69s): [
+  {
+    "web": "true",
+    "versionCode": "1",
+    "action": "false",
+    "name": "devicelab probe",
+    "version": "1",
+    "remove": "false",
+    "enabled": "true",
+    "mount": "false",
+    "id": "devicelab_probe",
+    "author": "p0g-stack",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "update": "false"
+  },
+  {
+    "versionCode": "1",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "enabled": "true",
+    "remove": "false",
+    "id": "flutter_webui_counter",
+    "action": "false",
+    "mount": "false",
+    "version": "0.1.0",
+    "name": "flutter-webui Counter",
+    "web": "true",
+    "update": "false",
+    "author": "p0g-stack"
+  },
+  {
+    "id": "counter",
+    "update": "false",
+    "remove": "false",
+    "version": "v1.0.0",
+    "author": "Yuv",
+    "versionCode": "1",
+    "description": "A new Flutter project.",
+    "web": "true",
+    "action": "false",
+    "mount": "false",
+    "name": "Counter",
+    "enabled": "true"
+  }
+]
+total 40
+drwxrwxrwx 5 root root 4096 2026-10-01 06:50 .
+drwx------ 5 root root 4096 2026-10-01 06:49 ..
+drwxr-xr-x 3 root root 4096 2026-10-01 06:50 counter
+drwxr-xr-x 3 root root 4096 2026-10-01 06:49 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-10-01 06:49 flutter_webui_counter
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 52.9 MB/s (7843260 bytes in 0.141s)
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+
+
+
+
+
+
+
+
+intent path: no page; manager log:
+/home/runner/work/devicelab/devicelab/managers/ui.py:55: DeprecationWarning: Testing an element's truth value will raise an exception in future versions.  Use specific 'len(elem)' or 'elem is not None' test instead.
+  find = lambda r, w: next((n for n in r.iter("node") if w == (n.get("text") or "") or w == (n.get("content-desc") or "")), None) \
+/home/runner/work/devicelab/devicelab/managers/ui.py:55: DeprecationWarning: Testing an element's truth value will raise an exception in future versions.  Use specific 'len(elem)' or 'elem is not None' test instead.
+  find = lambda r, w: next((n for n in r.iter("node") if w == (n.get("text") or "") or w == (n.get("content-desc") or "")), None) \
+ui: dismissed ANR dialog
+ui: tapped 'Module' at 200,584
+[0,0][320,640] 
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+ui: no node with 'WebUI'
+ui: no node with 'Web UI'
+ui: no node with 'Open'
+ui: no node with 'devicelab probe'
+
+
+
+
+
+
+
+
+
+
+[0,0][320,640] 
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"globals","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ksu-exec","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ws-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"fetch-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"webview-uid","result":["webview_zygote 1053 webview_zygote", "u0_a209      10209 me.weishu.kernelsu"]}
+{"check":"while-home-heartbeat","result":{"error":"no page target","sockets":["webview_devtools_remote_5295"],"targets":[]}}
+{"check":"lifecycle","result":{"error":"no page target","sockets":["webview_devtools_remote_5295"],"targets":[]}}
+cat: /data/local/tmp/labserver.log: No such file or directory
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+
+
+
+
+
+
+
+
+intent path: no page; manager log:
+10-01 06:53:35.873  8238  8238 V GraphicsEnvironment: Currently set values for:
+10-01 06:53:35.873  8238  8238 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-01 06:53:35.873  8238  8238 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-01 06:53:35.873  8238  8238 V GraphicsEnvironment: Global.Settings values are invalid: number of packages: 0, number of values: 0
+10-01 06:53:35.874  8238  8238 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-01 06:53:35.935  8238  8238 W weishu.kernelsu: Unsupported class loader
+10-01 06:53:36.066  8238  8238 W weishu.kernelsu: Unsupported class loader
+10-01 06:53:36.066  8238  8238 W weishu.kernelsu: Unsupported class loader
+10-01 06:53:36.603  8238  8238 W HWUI    : Unknown dataspace 0
+10-01 06:53:36.810  8238  8263 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-01 06:53:36.811  8238  8263 I EGL_emulation: Opening libGLESv2_emulation.so
+10-01 06:53:36.880  8238  8263 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 06:53:36.981  8238  8263 I Gralloc4: mapper 4.x is not supported
+10-01 06:53:37.671  8238  8238 I Choreographer: Skipped 60 frames!  The application may be doing too much work on its main thread.
+10-01 06:53:37.677  8238  8246 I HWUI    : Davey! duration=1044ms; Flags=1, FrameTimelineVsyncId=23270, IntendedVsync=339414933729, Vsync=339464933727, InputEventId=0, HandleInputStart=339468506592, AnimationStart=339468507353, PerformTraversalsStart=339468507694, DrawStart=339888921977, FrameDeadline=339431600395, FrameInterval=339468502404, FrameStartTime=16666666, SyncQueued=339927052285, SyncStart=339928331287, IssueDrawCommandsStart=339930611196, SwapBuffers=339978447026, FrameCompleted=340460218062, DequeueBufferDuration=2756, QueueBufferDuration=284190, GpuCompleted=340460152901, SwapBuffersCompleted=340460218062, DisplayPresentTime=0, CommandSubmissionCompleted=339978447026, 
+10-01 06:53:38.689  8238  8263 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-01 06:53:38.690  8238  8263 I EGL_emulation: Opening libGLESv2_emulation.so
+10-01 06:53:38.738  8238  8263 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 06:53:38.840  8238  8238 D VRI[WebUIActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 06:53:39.472  8238  8247 I HWUI    : Davey! duration=721ms; Flags=0, FrameTimelineVsyncId=24142, IntendedVsync=341364933651, Vsync=341448266981, InputEventId=0, HandleInputStart=341457862889, AnimationStart=341457863490, PerformTraversalsStart=341458236134, DrawStart=341458262354, FrameDeadline=341514933645, FrameInterval=341457860915, FrameStartTime=16666666, SyncQueued=341458493524, SyncStart=341639530154, IssueDrawCommandsStart=341639571271, SwapBuffers=341669549387, FrameCompleted=342267207664, DequeueBufferDuration=19759427, QueueBufferDuration=145862, GpuCompleted=342267207664, SwapBuffersCompleted=342263706039, DisplayPresentTime=0, CommandSubmissionCompleted=341669549387, 
+10-01 06:53:39.501  8238  8238 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@4fbe16f
+10-01 06:53:39.514  8238  8238 I Choreographer: Skipped 50 frames!  The application may be doing too much work on its main thread.
+10-01 06:53:39.956  8238  8253 I SuperUserRepository: load cost: 432
+10-01 06:53:39.957  8238  8256 W SuperUserRepository: KsuService disconnected
+10-01 06:53:41.421  8238  8302 D ProfileInstaller: Skipping profile installation for me.weishu.kernelsu
+/home/runner/work/devicelab/devicelab/managers/ui.py:55: DeprecationWarning: Testing an element's truth value will raise an exception in future versions.  Use specific 'len(elem)' or 'elem is not None' test instead.
+  find = lambda r, w: next((n for n in r.iter("node") if w == (n.get("text") or "") or w == (n.get("content-desc") or "")), None) \
+ui: tapped 'Module' at 200,584
+[0,0][320,640] 
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+ui: no node with 'WebUI'
+ui: no node with 'Web UI'
+ui: no node with 'Open'
+ui: no node with 'flutter-webui Counter'
+
+
+
+
+
+
+
+
+
+
+[0,0][320,640] 
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":["webview_devtools_remote_5295"],"targets":[]}}
+{"check":"console-errors","result":[]}
+{"check":"first-frame","result":{"error":"no page target","sockets":["webview_devtools_remote_5295"],"targets":[]}}
+Starting: Intent { cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: me.weishu.kernelsu/.ui.webui.WebUIActivity
+
+
+
+
+
+
+
+
+intent path: no page; manager log:
+10-01 06:56:17.749  8986  8986 V GraphicsEnvironment: Currently set values for:
+10-01 06:56:17.749  8986  8986 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-01 06:56:17.750  8986  8986 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-01 06:56:17.750  8986  8986 V GraphicsEnvironment: Global.Settings values are invalid: number of packages: 0, number of values: 0
+10-01 06:56:17.750  8986  8986 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-01 06:56:17.798  8986  8986 W weishu.kernelsu: Unsupported class loader
+10-01 06:56:17.935  8986  8986 W weishu.kernelsu: Unsupported class loader
+10-01 06:56:17.935  8986  8986 W weishu.kernelsu: Unsupported class loader
+10-01 06:56:18.342  8986  8986 W HWUI    : Unknown dataspace 0
+10-01 06:56:18.453  8986  9013 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-01 06:56:18.453  8986  9013 I EGL_emulation: Opening libGLESv2_emulation.so
+10-01 06:56:18.530  8986  9013 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 06:56:18.647  8986  9013 I Gralloc4: mapper 4.x is not supported
+10-01 06:56:19.513  8986  9016 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(wmsSync-VRI[WebUIActivity]#0) as ready
+10-01 06:56:19.514  8986  9016 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(VRI[WebUIActivity]#1) as ready
+10-01 06:56:19.699  8986  8998 I HWUI    : Davey! duration=1318ms; Flags=1, FrameTimelineVsyncId=27016, IntendedVsync=501164927259, Vsync=501164927259, InputEventId=0, HandleInputStart=501169815148, AnimationStart=501169816291, PerformTraversalsStart=501169816471, DrawStart=501527475885, FrameDeadline=501181593925, FrameInterval=501169811883, FrameStartTime=16666666, SyncQueued=501616880361, SyncStart=501617245050, IssueDrawCommandsStart=501645967327, SwapBuffers=501987551049, FrameCompleted=502483389297, DequeueBufferDuration=2685, QueueBufferDuration=227624, GpuCompleted=502483389297, SwapBuffersCompleted=502468536992, DisplayPresentTime=0, CommandSubmissionCompleted=501987551049, 
+10-01 06:56:19.700  8986  8986 I Choreographer: Skipped 79 frames!  The application may be doing too much work on its main thread.
+10-01 06:56:20.470  8986  8986 I Choreographer: Skipped 35 frames!  The application may be doing too much work on its main thread.
+10-01 06:56:20.807  8986  9013 D EGL_emulation: app_time_stats: avg=220.91ms min=14.53ms max=585.54ms count=5
+10-01 06:56:20.811  8986  9033 I HWUI    : Davey! duration=912ms; Flags=0, FrameTimelineVsyncId=27561, IntendedVsync=502614927201, Vsync=502631593867, InputEventId=0, HandleInputStart=502637175912, AnimationStart=502637176302, PerformTraversalsStart=502637554888, DrawStart=502637580075, FrameDeadline=502681593865, FrameInterval=502637173748, FrameStartTime=16666666, SyncQueued=502637793763, SyncStart=502674390642, IssueDrawCommandsStart=502674415940, SwapBuffers=502781285376, FrameCompleted=503563666229, DequeueBufferDuration=2855, QueueBufferDuration=238185, GpuCompleted=503563666229, SwapBuffersCompleted=503259907936, DisplayPresentTime=0, CommandSubmissionCompleted=502781285376, 
+10-01 06:56:21.012  8986  8986 D VRI[WebUIActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 06:56:21.067  8986  8986 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@4fbe16f
+10-01 06:56:21.455  8986  9004 I SuperUserRepository: load cost: 578
+10-01 06:56:21.456  8986  9007 W SuperUserRepository: KsuService disconnected
+10-01 06:56:23.195  8986  9047 D ProfileInstaller: Skipping profile installation for me.weishu.kernelsu
+/home/runner/work/devicelab/devicelab/managers/ui.py:55: DeprecationWarning: Testing an element's truth value will raise an exception in future versions.  Use specific 'len(elem)' or 'elem is not None' test instead.
+  find = lambda r, w: next((n for n in r.iter("node") if w == (n.get("text") or "") or w == (n.get("content-desc") or "")), None) \
+ui: tapped 'Module' at 200,584
+[0,0][320,640] 
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+ui: no node with 'WebUI'
+ui: no node with 'Web UI'
+ui: no node with 'Open'
+ui: no node with 'Counter'
+
+
+
+
+
+
+
+
+
+
+[0,0][320,640] 
+[0,552][80,616] Home
+[80,552][160,616] Superuser
+[240,552][320,616] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":["webview_devtools_remote_5295"],"targets":[]}}
+{"check":"console-errors","result":[]}
+{"check":"first-frame","result":{"error":"no page target","sockets":["webview_devtools_remote_5295"],"targets":[]}}
