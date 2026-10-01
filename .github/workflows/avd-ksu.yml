@@ -1,0 +1,51 @@
+# KernelSU-family manager on an AVD (late-loaded x86_64 LKM), the probe
+# module's WebUI opened in the manager, and the WebUI host checks run in it.
+name: avd-ksu
+on:
+  workflow_dispatch:
+    inputs:
+      flavor: { default: kernelsu, description: "kernelsu | next" }
+      tag: { default: "", description: "release tag, empty = latest" }
+      api: { default: "35" }
+  push:
+    branches: [main]
+    paths: [".github/workflows/avd-ksu.yml", "managers/**", "checks/**", "driver/**", "modules/**", "tools/labserver/**"]
+jobs:
+  ksu:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      LAB_OUT: ${{ github.workspace }}/out
+      GH_TOKEN: ${{ github.token }}
+      FLAVOR: ${{ inputs.flavor || 'kernelsu' }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+          mkdir -p "$LAB_OUT"
+      - uses: actions/setup-go@v5
+        with: { go-version: "1.23", cache: false }
+      - name: Build labserver
+        run: cd tools/labserver && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o "$LAB_OUT/labserver" . && echo "LABSERVER=$LAB_OUT/labserver" >> "$GITHUB_ENV"
+      - name: Boot AVD
+        run: |
+          echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
+          PATH=$ANDROID_HOME/platform-tools:$PATH platforms/avd/up.sh "${{ inputs.api || '35' }}" google_apis x86_64
+      - name: Manager
+        run: managers/ksu.sh "$FLAVOR" "${{ inputs.tag }}"
+      - name: WebUI checks
+        run: |
+          case $FLAVOR in
+            kernelsu) PKG=me.weishu.kernelsu;; next) PKG=com.rifsxd.ksunext;;
+          esac
+          checks/webui_host.sh "$FLAVOR" -n "$PKG/.ui.webui.WebUIActivity" -e id devicelab_probe -e name devicelab
+      - name: Result
+        if: always()
+        run: cat "$LAB_OUT"/*.json 2>/dev/null; tail -50 "$LAB_OUT"/emulator.log 2>/dev/null | tail -5 || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ksu-${{ env.FLAVOR }}
+          path: out/

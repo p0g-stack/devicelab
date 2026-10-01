@@ -13,7 +13,13 @@
   for (const t of ['visibilitychange', 'pagehide', 'pageshow', 'freeze', 'resume', 'blur', 'focus'])
     (t === 'visibilitychange' || t === 'freeze' || t === 'resume' ? document : window).addEventListener(t, () => rec(t));
   // Heartbeat: gaps show when timers were paused.
-  setInterval(() => { window.__lab.last = Math.round(performance.now()); }, 250);
+  window.__lab.gaps = [];
+  let last = performance.now();
+  setInterval(() => {
+    const now = performance.now();
+    if (now - last > 1000) window.__lab.gaps.push({ from: Math.round(last), ms: Math.round(now - last), vis: document.visibilityState });
+    last = now;
+  }, 250);
   document.getElementById('out').textContent =
     'globals: ' + ['ksu', '$devicelab_probe', 'webui', 'mmrl'].filter((g) => g in window).join(', ');
 </script>
