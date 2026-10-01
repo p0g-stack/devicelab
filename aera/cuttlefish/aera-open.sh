@@ -35,6 +35,7 @@ remote_start() {
   local r; r=$(rpc '{"v":1,"id":"lab-mirror","op":"mirror","args":{"action":"start","port":'$RPORT'}}')
   echo "$r" >> "$OUT/rpc.txt"
   if echo "$r" | grep -q '"running":true'; then
+    sleep 2  # minuitwrp rescans /dev/input at most every 2 s (flutter-aera 0017)
     RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1)
     a forward tcp:1$RPORT tcp:$RPORT >/dev/null && REMOTE=http://127.0.0.1:1$RPORT
     curl -s -m 5 -H "x-aera-code: $RCODE" "$REMOTE/api/status" > "$OUT/remote-status.json" || true
