@@ -1,0 +1,639 @@
+--------- beginning of system
+10-01 20:08:05.078  5855  8335 I ActivityManager: Force stopping me.weishu.kernelsu appid=10209 user=0: from pid 8615
+10-01 20:08:05.080  5855  5875 D DisplayManagerService: Drop pending events for gone uid 10209
+10-01 20:08:05.081  5855  8335 I ActivityManager: Killing 8174:me.weishu.kernelsu/u0a209 (adj 0): stop me.weishu.kernelsu due to from pid 8615
+10-01 20:08:05.083  5855  8335 W ActivityTaskManager: Force removing ActivityRecord{eb4b9df u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t13 f}}: app died, no saved state
+--------- beginning of main
+10-01 20:08:05.083  8368  8368 I cr_ChildProcessService: Destroying ChildProcessService pid=8368
+10-01 20:08:05.084  8368  8368 I ocessService0:0: System.exit called, status: 0
+10-01 20:08:05.084  8368  8368 I AndroidRuntime: VM exiting with result code 0, cleanup skipped.
+10-01 20:08:05.085  5855  6010 W IPCThreadState: Sending oneway calls to frozen process.
+10-01 20:08:05.085  5855  6010 W IPCThreadState: Sending oneway calls to frozen process.
+10-01 20:08:05.086  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:05.087  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:05.087  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={10209} in 1ms
+10-01 20:08:05.088  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:05.089  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:05.089  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={20209} in 2ms
+10-01 20:08:05.091  5855  7253 I AppWidgetServiceImpl: startListening() 0
+10-01 20:08:05.091  5855  8335 I ActivityManager: Killing 8368:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a209i0 (adj 0): isolated not needed
+10-01 20:08:05.094  5779  5779 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+10-01 20:08:05.095  6552  6552 D NexusLauncherModelDelegate: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=6}
+10-01 20:08:05.097  5855  8335 W ProcessStats: Tracking association SourceState{7526502 system/1000 ImpFg #1911} whose proc state 5 is better than process ProcessState{79320d8 com.google.android.permissioncontroller/10197 pkg=com.google.android.permissioncontroller} proc state 14 (8 skipped)
+10-01 20:08:05.099  5855  8335 I AppsFilter: interaction: PackageSetting{7b60665 com.android.microdroid.empty_payload/10186} -> PackageSetting{54f097c me.weishu.kernelsu/10209} BLOCKED
+10-01 20:08:05.103  6552  6552 D BaseDepthController: setSurface:
+10-01 20:08:05.103  6552  6552 D BaseDepthController: 	mWaitingOnSurfaceValidity: false
+10-01 20:08:05.103  6552  6552 D BaseDepthController: 	mSurface: Surface(name=com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity)/@0xa9e8e64
+10-01 20:08:05.106  5778  5778 I netd    : tetherGetStats() -> {[]} <0.68ms>
+10-01 20:08:05.110  6146  6146 I Zygote  : Process 8368 exited cleanly (0)
+--------- beginning of kernel
+10-01 20:08:05.235     0     0 I binder  : undelivered transaction 493894, process died.
+10-01 20:08:05.119  6552  6552 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=10, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=com.google.android.apps.nexuslauncher/.NexusLauncherActivity }
+10-01 20:08:05.119  6552  6552 D StatsLog: LAUNCHER_ONRESUME
+10-01 20:08:05.121  5855  5878 W ActivityTaskManager: Unable to send transaction to client proc me.weishu.kernelsu: no app thread
+10-01 20:08:05.123  5855  6691 W AppSearchIcing: icing-search-engine.cc:321: Error: 5, Message: Document (com.google.android.googlequicksearchbox$OneSearchZeroStateGoogleSuggestions/default, zp) not found.
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: AppSearch 0-state cache not available, fallback to AGA
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: java.util.concurrent.CompletionException: java.util.NoSuchElementException: No value present
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:308)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:323)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:684)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:486)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2138)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at com.google.android.apps.nexuslauncher.allapps.E0.onResult(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:67)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1.lambda$onResult$0(go/retraceme 64eee9e9f568ff45978879ad2ff83146f2618ee8a88278736fbdf5fae931976e:144)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1.$r8$lambda$CEk3q8sDAQVhU3rQwVueB8FAj_M(go/retraceme 64eee9e9f568ff45978879ad2ff83146f2618ee8a88278736fbdf5fae931976e:1)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1$$ExternalSyntheticLambda0.run(go/retraceme 64eee9e9f568ff45978879ad2ff83146f2618ee8a88278736fbdf5fae931976e:22)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at android.os.Handler.handleCallback(Handler.java:959)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at android.os.Handler.dispatchMessage(Handler.java:100)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at android.os.Looper.loopOnce(Looper.java:232)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at android.os.Looper.loop(Looper.java:317)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: Caused by: java.util.NoSuchElementException: No value present
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at java.util.Optional.get(Optional.java:143)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	at com.google.android.apps.nexuslauncher.allapps.E0.onResult(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:28)
+10-01 20:08:05.124  6552  6983 D OneSearchSuggestProvider: 	... 8 more
+10-01 20:08:05.125  6552  6983 D OneSearchSuggestProvider: Created the binder channel successfully for end point service =com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService , mChannel=i1{delegate=f{logId=20, target=directaddress:///AndroidComponentAddress%5BIntent%20%7B%20act=grpc.io.action.BIND%20cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService%20%7D%5D}} , mOneSearchConnection=l2.Z@ce51540
+10-01 20:08:05.135  5855  6038 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_RESTARTED on user 0
+10-01 20:08:05.135  5855  6038 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10209 package me.weishu.kernelsu isStopped true
+10-01 20:08:05.135  6231  6231 D CarrierSvcBindHelper: onHandleForceStop: [me.weishu.kernelsu]
+10-01 20:08:05.140  5855  5875 D DisplayManagerService: Drop pending events for gone uid 99000
+10-01 20:08:05.266     0     0 I KernelSU: ksu fd released
+10-01 20:08:05.142  5855  7254 V ActivityManager: Got obituary of 8174:me.weishu.kernelsu
+10-01 20:08:05.144  5855  7255 I ImeTracker: me.weishu.kernelsu:7ac97205: onRequestHide at ORIGIN_SERVER reason HIDE_REMOVE_CLIENT fromUser false
+10-01 20:08:05.144  5855  7255 I ImeTracker: me.weishu.kernelsu:7ac97205: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-01 20:08:05.144  6552  6596 D QuickstepModelDelegate: notifyAppTargetEvent action=1 launchLocation=workspace/0/[-1,-1]/[1,1]
+10-01 20:08:05.147  6231  6231 D CarrierSvcBindHelper: No carrier app for: 0
+10-01 20:08:05.148  5855  7253 W ActivityManager: Unable to start service Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService } U=0: not found
+10-01 20:08:05.270     0     0 I binder  : undelivered transaction 493860, process died.
+10-01 20:08:05.278     0     0 I binder  : undelivered transaction 493864, process died.
+10-01 20:08:05.281     0     0 I init    : Untracked pid 8194 received signal 9
+10-01 20:08:05.153  5784  5784 I Zygote  : Process 8174 exited due to signal 9 (Killed)
+10-01 20:08:05.158  5855  6010 D ConnectivityService: releasing NetworkRequest [ REQUEST id=110, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10209 RequestorUid: 10209 RequestorPkg: me.weishu.kernelsu UnderlyingNetworks: Null] ] (release request)
+10-01 20:08:05.287     0     0 I init    : Untracked pid 8194 did not have an associated service entry and will not be reaped
+10-01 20:08:05.293     0     0 I init    : Untracked pid 8198 received signal 9
+10-01 20:08:05.295     0     0 I init    : Untracked pid 8198 did not have an associated service entry and will not be reaped
+10-01 20:08:05.170  5855  6072 W InputManager-JNI: Input channel object 'c0c8965 me.weishu.kernelsu/me.weishu.kernelsu.ui.webui.WebUIActivity (client)' was disposed without first being removed with the input manager!
+10-01 20:08:05.299     0     0 I init    : Untracked pid 8339 received signal 9
+10-01 20:08:05.174  5855  7255 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@348d580
+10-01 20:08:05.303     0     0 I init    : Untracked pid 8339 did not have an associated service entry and will not be reaped
+10-01 20:08:05.181  6092  6138 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-01 20:08:05.182  6092  6138 D RemoteTransitionHandler: Found filterPair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@90513b5, appThread = android.app.IApplicationThread$Stub$Proxy@628ba4a, debugName = QuickstepLaunchHome }}
+10-01 20:08:05.184  6656  6872 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-01 20:08:05.185  6656  6872 I AiAiEcho: EchoTargets: 
+10-01 20:08:05.185  6656  6872 I AiAiEcho: Filtered by AiAi flag check: 
+10-01 20:08:05.185  6656  6872 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-01 20:08:05.185  6656  6872 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+10-01 20:08:05.186  5855  5895 I libprocessgroup: Removed cgroup /sys/fs/cgroup/uid_10209/pid_8174
+10-01 20:08:05.186  6656  6872 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-01 20:08:05.190  6656  6872 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-01 20:08:05.191  5855  5895 I libprocessgroup: Removed cgroup /sys/fs/cgroup/uid_99000/pid_8368
+10-01 20:08:05.191  6092  6138 W Looper  : Slow dispatch took 40ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.Transitions$TransitionPlayerImpl$$ExternalSyntheticLambda0@66d70d2 m=0
+10-01 20:08:05.192  6092  6138 W Looper  : Slow delivery took 30ms wmshell.main h=android.os.Handler c=android.window.TaskOrganizer$1$$ExternalSyntheticLambda4@96535a3 m=0
+10-01 20:08:05.192  5855  5877 W ActivityManager: setHasOverlayUi called on unknown pid: 8174
+10-01 20:08:05.192  5855  7253 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:05.195  6552  6552 D SsBaseTemplateCard: No text view can be set up
+10-01 20:08:05.195  6552  6552 D SsBaseTemplateCard: Passed-in item info is null
+10-01 20:08:05.195  6552  6552 D SsBaseTemplateCard: Passed-in item info is null
+10-01 20:08:05.195  6552  6552 D SsBaseTemplateCard: Passed-in item info is null
+10-01 20:08:05.196  6552  6552 I SsBaseTemplateCard: Secondary card pane is null
+10-01 20:08:05.198  6552  8629 E OneSearchSuggestProvider: Unable to get suggestions from AGA
+10-01 20:08:05.198  6552  8629 E OneSearchSuggestProvider: io.grpc.StatusRuntimeException: UNIMPLEMENTED: bindService(Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService }) returned false
+10-01 20:08:05.198  6552  8629 E OneSearchSuggestProvider: 	at k3.e.a(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:77)
+10-01 20:08:05.198  6552  8629 E OneSearchSuggestProvider: 	at i3.l.b(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:43)
+10-01 20:08:05.198  6552  8629 E OneSearchSuggestProvider: 	at i3.l.a(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:27)
+10-01 20:08:05.198  6552  8629 E OneSearchSuggestProvider: 	at i3.z.run(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:7)
+10-01 20:08:05.198  6552  8629 E OneSearchSuggestProvider: 	at i3.m2.run(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:19)
+10-01 20:08:05.198  6552  8629 E OneSearchSuggestProvider: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-01 20:08:05.198  6552  8629 E OneSearchSuggestProvider: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-01 20:08:05.198  6552  8629 E OneSearchSuggestProvider: 	at java.lang.Thread.run(Thread.java:1012)
+10-01 20:08:05.198  6092  6204 D EGL_emulation: app_time_stats: avg=5179.18ms min=5179.18ms max=5179.18ms count=1
+10-01 20:08:05.222  6552  6552 D StateManager: createAtomicAnimation - fromState: Background, toState: Normal, partial trace:
+10-01 20:08:05.222  6552  6552 D StateManager: 	at com.android.quickstep.util.WorkspaceRevealAnim.prepareToAnimate(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:22)
+10-01 20:08:05.222  6552  6552 D StateManager: 	at com.android.quickstep.util.WorkspaceRevealAnim.<init>(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:11)
+10-01 20:08:05.222  6552  6552 D StateManager: 	at com.android.launcher3.QuickstepTransitionManager.createWallpaperOpenAnimations(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:735)
+10-01 20:08:05.223  6552  6785 D EGL_emulation: app_time_stats: avg=9397.03ms min=9397.03ms max=9397.03ms count=1
+10-01 20:08:05.224  6552  6552 D SearchTargetUtil: query= size=0
+10-01 20:08:05.232  5855  7253 W ActivityTaskManager: callingPackage for (uid=0, pid=8633) has no WPC
+10-01 20:08:05.232  5855  7253 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
+10-01 20:08:05.232  5855  7253 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE
+10-01 20:08:05.232  5855  7253 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+10-01 20:08:05.233  5855  7253 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10209, packageName = null, attributionTag = null, token = android.os.Binder@d72d242, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-01 20:08:05.233  5855  7253 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+10-01 20:08:05.234  5855  7253 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+10-01 20:08:05.237  6092  6138 W Looper  : Drained
+10-01 20:08:05.253  5855  7253 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras)} with LAUNCH_MULTIPLE from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=0
+10-01 20:08:05.255  5855  5970 I ImeTracker: com.google.android.apps.nexuslauncher:1388f969: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+10-01 20:08:05.262  5855  5970 I ImeTracker: com.google.android.apps.nexuslauncher:1388f969: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-01 20:08:05.264  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3157 
+10-01 20:08:05.265  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 0, locked = false
+10-01 20:08:05.265  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1986 onStartInput(EditorInfo{EditorInfo{packageName=com.google.android.apps.nexuslauncher, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+10-01 20:08:05.267  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 1, locked = false
+10-01 20:08:05.268  5855  5877 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10209, packageName = null, attributionTag = null, token = android.os.Binder@d72d242, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-01 20:08:05.270  6569  6569 I AndroidIME: InputBundleManager.loadActiveInputBundleId():450 loadActiveInputBundleId: und-Latn-x-password, password
+10-01 20:08:05.271  5855  7255 W PackageConfigPersister: App-specific configuration not found for packageName: com.google.android.apps.nexuslauncher and userId: 0
+10-01 20:08:05.287  6092  6175 D SplashScreenView: Build android.window.SplashScreenView{39cbcf6 V.E...... ......ID 0,0-0,0}
+10-01 20:08:05.287  6092  6175 D SplashScreenView: Icon: view: android.widget.ImageView{79398f7 V.ED..... ......I. 0,0-0,0 #1020504 android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@87d9364 size: 192
+10-01 20:08:05.287  6092  6175 D SplashScreenView: Branding: view: android.view.View{3b869cd G.ED..... ......I. 0,0-0,0 #1020503 android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+10-01 20:08:05.288  5784  5784 D Zygote  : Forked child process 8636
+10-01 20:08:05.289  5855  5894 I ActivityManager: Start proc 8636:me.weishu.kernelsu/u0a209 for next-top-activity {me.weishu.kernelsu/me.weishu.kernelsu.ui.webui.WebUIActivity}
+10-01 20:08:05.296  5855  5878 W ActivityTaskManager: Unable to send transaction to client proc me.weishu.kernelsu: no app thread
+10-01 20:08:05.299  5855  8334 D CoreBackPreview: Window{24f0cae u0 Splash Screen me.weishu.kernelsu}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@72de6e5, mPriority=0, mIsAnimationCallback=false}
+10-01 20:08:05.301  6552  6552 W SplitSelectStateCtor: Missing session instanceIds
+10-01 20:08:05.301  6552  6552 D StatsLog: LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+10-01 20:08:05.308   510   510 W IPCThreadState: Sending oneway calls to frozen process.
+10-01 20:08:05.310  5855  6072 I AppsFilter: interaction: PackageSetting{7b60665 com.android.microdroid.empty_payload/10186} -> PackageSetting{50345ba me.weishu.kernelsu/10209} BLOCKED
+10-01 20:08:05.315  5855  6038 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_UNSTOPPED on user 0
+10-01 20:08:05.315  5855  6038 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10209 package me.weishu.kernelsu isStopped false
+10-01 20:08:05.450     0     0 I KernelSU: handle_setresuid from 0 to 10209
+10-01 20:08:05.452     0     0 I KernelSU: install fd for manager: 10209
+10-01 20:08:05.454     0     0 I KernelSU: ksu fd installed: 3 for pid 8636
+10-01 20:08:05.333  8636  8636 I weishu.kernelsu: Using CollectorTypeCMC GC.
+10-01 20:08:05.334  8636  8636 W weishu.kernelsu: Unexpected CPU variant for x86: x86_64.
+10-01 20:08:05.334  8636  8636 W weishu.kernelsu: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+10-01 20:08:05.337  8636  8636 E weishu.kernelsu: Not starting debugger since process cannot load the jdwp agent.
+10-01 20:08:05.339  6552  6552 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=14, baseIntent=Intent { flg=0x10080000 cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity }
+10-01 20:08:05.368  5855  6072 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:05.369  8636  8636 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+10-01 20:08:05.369  8636  8636 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+10-01 20:08:05.390  8636  8636 V GraphicsEnvironment: Currently set values for:
+10-01 20:08:05.390  8636  8636 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+10-01 20:08:05.390  8636  8636 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+10-01 20:08:05.390  8636  8636 V GraphicsEnvironment: Global.Settings values are invalid: number of packages: 0, number of values: 0
+10-01 20:08:05.390  8636  8636 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+10-01 20:08:05.401  5855  6072 E IPCThreadState: Binder transaction failure. id: 494706, BR_*: 29189, error: -22 (Invalid argument)
+10-01 20:08:05.401  5855  6072 W ActivityManager: pid 5855 system sent binder code 7 with flags 1 to frozen apps and got error -32
+10-01 20:08:05.402  5855  6072 W Process : Unable to open /proc/8174/status
+10-01 20:08:05.514     0     0 I binder  : 6072:5855 cannot find target node
+10-01 20:08:05.519     0     0 I binder  : 5855:6072 transaction async to 0:0 failed 494706/29189/-22, size 64-0 line 3344
+10-01 20:08:05.424  8636  8636 W weishu.kernelsu: Unsupported class loader
+10-01 20:08:05.433  5855  7255 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:05.434  6092  6138 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-01 20:08:05.437  5855  6072 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:05.437  6092  6138 W Looper  : Slow dispatch took 73ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.RemoteTransitionHandler$1$$ExternalSyntheticLambda0@911ff00 m=0
+10-01 20:08:05.460  5779  5779 E BpTransactionCompletedListener: Failed to transact (-32)
+10-01 20:08:05.463  8636  8636 W weishu.kernelsu: Unsupported class loader
+10-01 20:08:05.463  8636  8636 W weishu.kernelsu: Unsupported class loader
+10-01 20:08:05.479  5855  6072 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ENABLE_FAKE_FOCUS
+10-01 20:08:05.484  6552  6552 I TopTaskTracker: onTaskRemoved: taskId=13
+10-01 20:08:05.484  6552  6552 I TopTaskTracker: onTaskRemoved: taskId=13
+10-01 20:08:05.614     0     0 W audit   : audit_lost=17 audit_rate_limit=5 audit_backlog_limit=64
+10-01 20:08:05.616     0     0 E audit   : rate limit exceeded
+10-01 20:08:05.494  8654  8654 I KernelSU: ksud::cli: command: Debug { command: Su { global_mnt: false } }
+10-01 20:08:05.480  8654  8654 W libksud.so: type=1400 audit(0.0:111): avc:  denied  { search } for  name="tests" dev="dm-46" ino=65540 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=me.weishu.kernelsu
+10-01 20:08:05.623     0     0 I KernelSU: ksu fd installed: 5 for pid 8654
+10-01 20:08:05.640     0     0 I KernelSU: [8654] install ksu fd: 5
+10-01 20:08:05.480  8654  8654 W libksud.so: type=1400 audit(0.0:112): avc:  denied  { search } for  name="tests" dev="dm-46" ino=65540 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=me.weishu.kernelsu
+10-01 20:08:05.646     0     0 I KernelSU: allow root for: 10209
+10-01 20:08:05.657     0     0 I KernelSU: ksu fd released
+10-01 20:08:05.480  8654  8654 W libksud.so: type=1400 audit(0.0:113): avc:  denied  { search } for  name="tests" dev="dm-46" ino=65540 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=me.weishu.kernelsu
+10-01 20:08:05.560  8658  8658 W libksud.so: type=1400 audit(0.0:115): avc:  denied  { search } for  name="tests" dev="dm-46" ino=65540 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=me.weishu.kernelsu
+10-01 20:08:05.591  8658  8658 I KernelSU: ksud::cli: command: Debug { command: Su { global_mnt: true } }
+10-01 20:08:05.719     0     0 I KernelSU: ksu fd installed: 5 for pid 8658
+10-01 20:08:05.723     0     0 I KernelSU: [8658] install ksu fd: 5
+10-01 20:08:05.727     0     0 I KernelSU: allow root for: 10209
+10-01 20:08:05.564  8658  8658 W libksud.so: type=1400 audit(0.0:116): avc:  denied  { search } for  name="tests" dev="dm-46" ino=65540 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=me.weishu.kernelsu
+10-01 20:08:05.564  8658  8658 W libksud.so: type=1400 audit(0.0:117): avc:  denied  { search } for  name="tests" dev="dm-46" ino=65540 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=me.weishu.kernelsu
+10-01 20:08:05.732     0     0 I KernelSU: ksu fd released
+10-01 20:08:05.564  8658  8658 W libksud.so: type=1400 audit(0.0:118): avc:  denied  { search } for  name="tests" dev="dm-46" ino=65540 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:shell_test_data_file:s0 tclass=dir permissive=0 app=me.weishu.kernelsu
+10-01 20:08:05.663  8636  8636 W HWUI    : Unknown dataspace 0
+10-01 20:08:05.701  5855  6072 D CoreBackPreview: Window{a17bce6 u0 me.weishu.kernelsu/me.weishu.kernelsu.ui.webui.WebUIActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@4c6ecd4, mPriority=0, mIsAnimationCallback=false}
+10-01 20:08:05.705  8636  8662 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-01 20:08:05.706  8636  8662 I EGL_emulation: Opening libGLESv2_emulation.so
+10-01 20:08:05.723  8636  8662 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 20:08:05.738  6552  6552 D VRI[NexusLauncherActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 20:08:05.741  5855  8334 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:05.743  6552  6552 D NexusLauncherModelDelegate: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=7}
+10-01 20:08:05.750  5855  6072 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:05.756  8661  8661 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 0 <<<<<<
+10-01 20:08:05.766  8661  8661 I AndroidRuntime: Using default boot image
+10-01 20:08:05.766  8661  8661 I AndroidRuntime: Leaving lock profiling enabled
+10-01 20:08:05.767   170   170 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-01 20:08:05.767  8636  8662 I Gralloc4: mapper 4.x is not supported
+10-01 20:08:05.880     0     0 I servicemanager: Caller(pid=8636,uid=10209,sid=u:r:untrusted_app:s0:c209,c256,c512,c768) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+10-01 20:08:05.773  8661  8661 I me.weishu.kernelsu:root:0: Core platform API reporting enabled, enforcing=false
+10-01 20:08:05.774  8661  8661 I me.weishu.kernelsu:root:0: Using CollectorTypeCMC GC.
+10-01 20:08:05.916  8661  8661 D me.weishu.kernelsu:root:0: u_setTimeZoneFilesDirectory("/apex/com.android.tzdata/etc/tz/versioned/8/icu") succeeded. 
+10-01 20:08:05.916  8661  8661 D me.weishu.kernelsu:root:0: I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt75l.dat
+10-01 20:08:05.921  8661  8661 W me.weishu.kernelsu:root:0: Unexpected CPU variant for x86: x86_64.
+10-01 20:08:05.921  8661  8661 W me.weishu.kernelsu:root:0: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+10-01 20:08:05.923  8661  8661 W ziparchive: Unable to open '/data/user_de/0/me.weishu.kernelsu/cache/main.dm': No such file or directory
+10-01 20:08:05.952  8661  8661 D AndroidRuntime: Calling main entry com.topjohnwu.superuser.internal.RootServerMain
+10-01 20:08:05.969  8661  8661 W OverlayConfig: partition_order.xml does not exist.
+10-01 20:08:06.028  5855  5874 I ActivityTaskManager: Displayed me.weishu.kernelsu/.ui.webui.WebUIActivity for user 0: +790ms
+10-01 20:08:06.036  6552  6552 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=10, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=com.google.android.apps.nexuslauncher/.NexusLauncherActivity }
+10-01 20:08:06.040  6552  6552 D VRI[NexusLauncherActivity]: visibilityChanged oldVisibility=false newVisibility=true
+10-01 20:08:06.045  6552  6552 D NexusLauncherModelDelegate: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=6}
+10-01 20:08:06.045  5779  5779 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+10-01 20:08:06.119  5855  7255 W ActivityManager: Unable to start service Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService } U=0: not found
+10-01 20:08:06.124  5855  7255 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@1d23c7a
+10-01 20:08:06.227  8681  8681 W idmap2  : failed to create idmap
+10-01 20:08:06.325  6552  6552 D StatsLog: LAUNCHER_ONRESUME
+10-01 20:08:06.326  5855  6691 W AppSearchIcing: icing-search-engine.cc:321: Error: 5, Message: Document (com.google.android.googlequicksearchbox$OneSearchZeroStateGoogleSuggestions/default, zp) not found.
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: AppSearch 0-state cache not available, fallback to AGA
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: java.util.concurrent.CompletionException: java.util.NoSuchElementException: No value present
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:308)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:323)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:684)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:486)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2138)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at com.google.android.apps.nexuslauncher.allapps.E0.onResult(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:67)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1.lambda$onResult$0(go/retraceme 64eee9e9f568ff45978879ad2ff83146f2618ee8a88278736fbdf5fae931976e:144)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1.$r8$lambda$CEk3q8sDAQVhU3rQwVueB8FAj_M(go/retraceme 64eee9e9f568ff45978879ad2ff83146f2618ee8a88278736fbdf5fae931976e:1)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1$$ExternalSyntheticLambda0.run(go/retraceme 64eee9e9f568ff45978879ad2ff83146f2618ee8a88278736fbdf5fae931976e:22)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at android.os.Handler.handleCallback(Handler.java:959)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at android.os.Handler.dispatchMessage(Handler.java:100)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at android.os.Looper.loopOnce(Looper.java:232)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at android.os.Looper.loop(Looper.java:317)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: Caused by: java.util.NoSuchElementException: No value present
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at java.util.Optional.get(Optional.java:143)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	at com.google.android.apps.nexuslauncher.allapps.E0.onResult(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:28)
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: 	... 8 more
+10-01 20:08:06.327  6552  6983 D OneSearchSuggestProvider: Established or reuse existing binder channel authority=com.google.android.googlequicksearchbox
+10-01 20:08:06.334  5855  6072 W ActivityTaskManager: takeTaskSnapshot: taskId=9 not found or not visible
+10-01 20:08:06.335  6326  7411 I FontLog : Received query Noto Color Emoji Compat, URI content://com.google.android.gms.fonts [CONTEXT service_id=132 ]
+10-01 20:08:06.335  6326  7411 I FontLog : Query [emojicompat-emoji-font] resolved to {Noto Color Emoji Compat, wdth 100.0, wght 400, ital 0.0, bestEffort false} [CONTEXT service_id=132 ]
+10-01 20:08:06.337  6552  8629 E OneSearchSuggestProvider: Unable to get suggestions from AGA
+10-01 20:08:06.337  6552  8629 E OneSearchSuggestProvider: io.grpc.StatusRuntimeException: UNIMPLEMENTED: bindService(Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService }) returned false
+10-01 20:08:06.337  6552  8629 E OneSearchSuggestProvider: 	at k3.e.a(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:77)
+10-01 20:08:06.337  6552  8629 E OneSearchSuggestProvider: 	at i3.l.b(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:43)
+10-01 20:08:06.337  6552  8629 E OneSearchSuggestProvider: 	at i3.l.a(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:27)
+10-01 20:08:06.337  6552  8629 E OneSearchSuggestProvider: 	at i3.z.run(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:7)
+10-01 20:08:06.337  6552  8629 E OneSearchSuggestProvider: 	at i3.m2.run(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:19)
+10-01 20:08:06.337  6552  8629 E OneSearchSuggestProvider: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-01 20:08:06.337  6552  8629 E OneSearchSuggestProvider: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-01 20:08:06.337  6552  8629 E OneSearchSuggestProvider: 	at java.lang.Thread.run(Thread.java:1012)
+10-01 20:08:06.337  6552  6552 D SearchTargetUtil: query= size=0
+10-01 20:08:06.338  6552  7302 E FrameEvents: addRelease: Did not find frame.
+10-01 20:08:06.338  6326  7411 I FontLog : Fetch {Noto Color Emoji Compat, wdth 100.0, wght 400, ital 0.0, bestEffort false} end status Status{statusCode=SUCCESS, resolution=null} [CONTEXT service_id=132 ]
+10-01 20:08:06.341  6552  6596 D QuickstepModelDelegate: notifyAppTargetEvent action=1 launchLocation=workspace/0/[-1,-1]/[1,1]
+10-01 20:08:06.351  6092  6138 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-01 20:08:06.356  6092  6138 D RemoteTransitionHandler: Found filterPair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@90513b5, appThread = android.app.IApplicationThread$Stub$Proxy@628ba4a, debugName = QuickstepLaunchHome }}
+10-01 20:08:06.357  8661  8677 I KsuService: getUserIds: [0]
+10-01 20:08:06.361  6552  6552 D StateManager: createAtomicAnimation - fromState: Background, toState: Normal, partial trace:
+10-01 20:08:06.361  6552  6552 D StateManager: 	at com.android.quickstep.util.WorkspaceRevealAnim.prepareToAnimate(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:22)
+10-01 20:08:06.361  6552  6552 D StateManager: 	at com.android.quickstep.util.WorkspaceRevealAnim.<init>(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:11)
+10-01 20:08:06.361  6552  6552 D StateManager: 	at com.android.launcher3.QuickstepTransitionManager.createWallpaperOpenAnimations(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:735)
+10-01 20:08:06.364  8661  8677 I KsuService: getInstalledPackagesAll: 0
+10-01 20:08:06.365  6326  6727 I FontLog : Pulling font file for id = 12, cache size = 10 [CONTEXT service_id=132 ]
+10-01 20:08:06.380  6326  7411 I FontLog : Pulling font file for id = 12, cache size = 10 [CONTEXT service_id=132 ]
+10-01 20:08:06.416  6656  6872 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-01 20:08:06.416  6656  6872 I AiAiEcho: EchoTargets: 
+10-01 20:08:06.416  6656  6872 I AiAiEcho: Filtered by AiAi flag check: 
+10-01 20:08:06.416  6656  6872 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-01 20:08:06.416  6656  6872 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+10-01 20:08:06.416  6656  6872 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-01 20:08:06.418  6656  6872 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-01 20:08:06.424  8661  8677 I KsuService: getPackages: 243
+10-01 20:08:06.453   510   574 W IPCThreadState: Sending oneway calls to frozen process.
+10-01 20:08:06.459  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=2
+10-01 20:08:06.459  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.468  6552  6785 D EGL_emulation: app_time_stats: avg=43.71ms min=2.82ms max=439.10ms count=27
+10-01 20:08:06.473  5855  7253 W system_server: Long monitor contention with owner android.anim (5878) at void com.android.server.wm.WindowSurfacePlacer$Traverser.run()(WindowSurfacePlacer.java:58) waiters=2 in void com.android.server.wm.ActivityTaskManagerService.setRunningRemoteTransitionDelegate(android.app.IApplicationThread) for 116ms
+10-01 20:08:06.479  5778  5778 I netd    : tetherGetStats() -> {[]} <0.65ms>
+10-01 20:08:06.489  6092  6138 W Looper  : Slow dispatch took 139ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.Transitions$TransitionPlayerImpl$$ExternalSyntheticLambda0@cca975c m=0
+10-01 20:08:06.490  6092  6174 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@2eed5c9
+10-01 20:08:06.491  5855  7254 W InputManager-JNI: Input channel object '24f0cae Splash Screen me.weishu.kernelsu (client)' was disposed without first being removed with the input manager!
+10-01 20:08:06.493  5855  6072 D CoreBackPreview: Window{24f0cae u0 Splash Screen me.weishu.kernelsu EXITING}: Setting back callback null
+10-01 20:08:06.498  5855  7253 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:06.503  6552  6552 D SsBaseTemplateCard: No text view can be set up
+10-01 20:08:06.503  6552  6552 D SsBaseTemplateCard: Passed-in item info is null
+10-01 20:08:06.503  6552  6552 D SsBaseTemplateCard: Passed-in item info is null
+10-01 20:08:06.503  6552  6552 D SsBaseTemplateCard: Passed-in item info is null
+10-01 20:08:06.503  6552  6552 I SsBaseTemplateCard: Secondary card pane is null
+10-01 20:08:06.523  6092  6204 D EGL_emulation: app_time_stats: avg=65.06ms min=5.21ms max=931.14ms count=18
+10-01 20:08:06.526  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=3
+10-01 20:08:06.526  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.544  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=4
+10-01 20:08:06.544  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.573  5855  5970 I ImeTracker: com.google.android.apps.nexuslauncher:a87bdc3c: onRequestHide at ORIGIN_SERVER reason HIDE_SAME_WINDOW_FOCUSED_WITHOUT_EDITOR fromUser false
+10-01 20:08:06.573  5855  5970 I ImeTracker: com.google.android.apps.nexuslauncher:a87bdc3c: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-01 20:08:06.580  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3157 
+10-01 20:08:06.594  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=5
+10-01 20:08:06.594  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.594  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 0, locked = false
+10-01 20:08:06.595  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1986 onStartInput(EditorInfo{EditorInfo{packageName=com.google.android.apps.nexuslauncher, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+10-01 20:08:06.605  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 1, locked = false
+10-01 20:08:06.605  6569  6569 I AndroidIME: InputBundleManager.loadActiveInputBundleId():450 loadActiveInputBundleId: und-Latn-x-password, password
+10-01 20:08:06.606  5855  7253 W PackageConfigPersister: App-specific configuration not found for packageName: com.google.android.apps.nexuslauncher and userId: 0
+10-01 20:08:06.625  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=6
+10-01 20:08:06.625  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.662  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=7
+10-01 20:08:06.662  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.676  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=8
+10-01 20:08:06.677  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.681  8636  8653 I SuperUserRepository: load cost: 330
+10-01 20:08:06.693  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=9
+10-01 20:08:06.693  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.694  8636  8656 W SuperUserRepository: KsuService disconnected
+10-01 20:08:06.702  8661  8661 I me.weishu.kernelsu:root:0: System.exit called, status: 0
+10-01 20:08:06.703  8661  8661 I AndroidRuntime: VM exiting with result code 0.
+10-01 20:08:06.708  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=10
+10-01 20:08:06.708  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.725  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=11
+10-01 20:08:06.725  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.737  8636  8636 D VRI[WebUIActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 20:08:06.742  5855  7253 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:06.742  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=12
+10-01 20:08:06.742  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:06.748  5855  7253 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:06.766  8636  8636 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@c87c70f
+10-01 20:08:06.767  5855  7253 D CoreBackPreview: Window{a17bce6 u0 me.weishu.kernelsu/me.weishu.kernelsu.ui.webui.WebUIActivity}: Setting back callback null
+10-01 20:08:06.768  5855  7253 W InputManager-JNI: Input channel object 'a17bce6 me.weishu.kernelsu/me.weishu.kernelsu.ui.webui.WebUIActivity (client)' was disposed without first being removed with the input manager!
+10-01 20:08:06.771  6552  6552 I TopTaskTracker: onTaskRemoved: taskId=14
+10-01 20:08:06.771  6552  6552 I TopTaskTracker: onTaskRemoved: taskId=14
+10-01 20:08:06.792  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=13
+10-01 20:08:06.792  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:07.587  6796  6796 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.cryptauth.cryptauthservice.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-01 20:08:07.664  5855  7253 W ActivityManager: Unable to start service Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService } U=0: not found
+10-01 20:08:07.664  5855  7253 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@61af7f6
+10-01 20:08:08.304  6796  6796 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.feedback.internal.IFeedbackService dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-01 20:08:08.741  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:08.742  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:08.742  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={10177} in 2ms
+10-01 20:08:08.743  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:08.743  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:08.743  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={20177} in 1ms
+10-01 20:08:08.760  6796  6796 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.ocr.service.internal.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsInternalApiService }
+10-01 20:08:08.761  5855  7253 D OomAdjuster: Not killing cached processes
+10-01 20:08:08.970  6796  6796 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.pay.service.BIND dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsApiService }
+10-01 20:08:09.245  5855  6708 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-01 20:08:09.899  5855  7253 W ActivityManager: Unable to start service Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService } U=0: not found
+10-01 20:08:09.900  5855  7253 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@3c1c664
+10-01 20:08:09.933  5855  5951 D ActivityManager: freezing 7100 com.google.android.gms.unstable
+10-01 20:08:10.174  6796  6796 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.audit.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.GmsBoundBrokerService }
+10-01 20:08:10.312  5778  5778 I netd    : tetherGetStats() -> {[]} <0.49ms>
+10-01 20:08:11.067  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:11.068  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:11.068  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={10209} in 2ms
+10-01 20:08:11.069  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:11.070  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:11.070  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={20209} in 2ms
+10-01 20:08:11.117  8636  8695 D ProfileInstaller: Skipping profile installation for me.weishu.kernelsu
+10-01 20:08:13.285  5778  5778 I netd    : tetherGetStats() -> {[]} <0.56ms>
+10-01 20:08:13.483  5855  6737 W ActivityManager: Unable to start service Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService } U=0: not found
+10-01 20:08:13.483  5855  6737 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@b8adc93
+10-01 20:08:13.750  5855  5951 D ActivityManager: freezing 7183 com.google.android.apps.wallpaper
+10-01 20:08:13.751  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:13.752  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:13.752  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={10177} in 1ms
+10-01 20:08:14.530  5855  6737 W ActivityTaskManager: callingPackage for (uid=0, pid=8707) has no WPC
+10-01 20:08:14.531  5855  6737 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_OVERRIDE
+10-01 20:08:14.531  5855  6737 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_USER_ASPECT_RATIO_FULLSCREEN_OVERRIDE
+10-01 20:08:14.531  5855  6737 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_ORIENTATION_OVERRIDE
+10-01 20:08:14.531  5855  6737 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10209, packageName = null, attributionTag = null, token = android.os.Binder@d72d242, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-01 20:08:14.531  5855  6737 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_RESIZEABLE_ACTIVITY_OVERRIDES
+10-01 20:08:14.532  5855  6737 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ALLOW_MIN_ASPECT_RATIO_OVERRIDE
+10-01 20:08:14.538  5855  6737 I ActivityTaskManager: START u0 {act=android.intent.action.VIEW dat=kernelsu://webui/... flg=0x10000000 cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity (has extras)} with LAUNCH_MULTIPLE from uid 0 (BAL_ALLOW_ALLOWLISTED_UID) result code=0
+10-01 20:08:14.539  5855  7253 D OomAdjuster: Not killing cached processes
+10-01 20:08:14.539  6552  6552 W SplitSelectStateCtor: Missing session instanceIds
+10-01 20:08:14.539  6552  6552 D StatsLog: LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+10-01 20:08:14.541   510   574 W IPCThreadState: Sending oneway calls to frozen process.
+10-01 20:08:14.542  6092  6175 D SplashScreenView: Build android.window.SplashScreenView{6e75219 V.E...... ......ID 0,0-0,0}
+10-01 20:08:14.542  6092  6175 D SplashScreenView: Icon: view: android.widget.ImageView{3d7c2de V.ED..... ......I. 0,0-0,0 #1020504 android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@5f1ccbf size: 192
+10-01 20:08:14.542  6092  6175 D SplashScreenView: Branding: view: android.view.View{f108f8c G.ED..... ......I. 0,0-0,0 #1020503 android:id/splashscreen_branding_view} drawable: null size w: 0 h: 0
+10-01 20:08:14.542  5855  7254 W OptProp : Cannot read opt property android.window.PROPERTY_COMPAT_ENABLE_FAKE_FOCUS
+10-01 20:08:14.551  6552  6552 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=15, baseIntent=Intent { act=android.intent.action.VIEW dat=kernelsu://webui/... flg=0x10080000 cmp=me.weishu.kernelsu/.ui.webui.WebUIActivity }
+10-01 20:08:14.559  5779  5779 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+10-01 20:08:14.559  5855  6072 D CoreBackPreview: Window{83c7c01 u0 Splash Screen me.weishu.kernelsu}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@1559094, mPriority=0, mIsAnimationCallback=false}
+10-01 20:08:14.572  5778  5778 I netd    : tetherGetStats() -> {[]} <0.36ms>
+10-01 20:08:14.594  5855  7255 D CoreBackPreview: Window{e956b32 u0 me.weishu.kernelsu/me.weishu.kernelsu.ui.webui.WebUIActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@3a53118, mPriority=0, mIsAnimationCallback=false}
+10-01 20:08:14.598  6092  6138 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-01 20:08:14.603  8636  8662 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+10-01 20:08:14.603  5855  6072 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:14.603  8636  8662 I EGL_emulation: Opening libGLESv2_emulation.so
+10-01 20:08:14.606  6552  6785 D EGL_emulation: app_time_stats: avg=636.09ms min=10.69ms max=7820.55ms count=13
+10-01 20:08:14.608  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=14
+10-01 20:08:14.609  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:14.619  8636  8662 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-01 20:08:14.625  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=15
+10-01 20:08:14.625  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:14.628  6092  6204 D EGL_emulation: app_time_stats: avg=1006.55ms min=4.14ms max=7958.67ms count=8
+10-01 20:08:14.642  6092  6103 W ndroid.systemui: Cleared Reference was only reachable from finalizer (only reported once)
+10-01 20:08:14.658  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=16
+10-01 20:08:14.658  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:14.675  6552  6785 D EGL_emulation: app_time_stats: avg=480.79ms min=4.17ms max=7825.66ms count=17
+10-01 20:08:14.713  6092  6103 I ndroid.systemui: Background concurrent mark compact GC freed 10MB AllocSpace bytes, 14(408KB) LOS objects, 49% free, 14MB/28MB, paused 1.056ms,8.166ms total 174.793ms
+10-01 20:08:14.721  5855  5876 I DropBoxManagerService: add tag=system_app_strictmode isTagEnabled=true flags=0x2
+10-01 20:08:14.868  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=17
+10-01 20:08:14.868  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:14.893  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=6 frameNumber=19 -> producedId=6 frameNumber=18
+10-01 20:08:14.893  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:14.897  5855  7255 W ActivityTaskManager: takeTaskSnapshot: taskId=9 not found or not visible
+10-01 20:08:14.924  6552  6552 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=10, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=com.google.android.apps.nexuslauncher/.NexusLauncherActivity }
+10-01 20:08:14.924  6552  6552 D VRI[NexusLauncherActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 20:08:14.924  6552  6552 D NexusLauncherModelDelegate: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=7}
+10-01 20:08:14.948  6552  6552 D VRI[NexusLauncherActivity]: visibilityChanged oldVisibility=false newVisibility=true
+10-01 20:08:14.954  6552  6552 D NexusLauncherModelDelegate: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=6}
+10-01 20:08:14.955  5855  6737 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:14.964  5855  7255 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:15.201  6552  6552 D StatsLog: LAUNCHER_ONRESUME
+10-01 20:08:15.206  6092  6138 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-01 20:08:15.206  6092  6138 D RemoteTransitionHandler: Found filterPair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@90513b5, appThread = android.app.IApplicationThread$Stub$Proxy@628ba4a, debugName = QuickstepLaunchHome }}
+10-01 20:08:15.213  5855  6691 W AppSearchIcing: icing-search-engine.cc:321: Error: 5, Message: Document (com.google.android.googlequicksearchbox$OneSearchZeroStateGoogleSuggestions/default, zp) not found.
+10-01 20:08:15.217  6552  7930 E FrameEvents: addRelease: Did not find frame.
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: AppSearch 0-state cache not available, fallback to AGA
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: java.util.concurrent.CompletionException: java.util.NoSuchElementException: No value present
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.encodeThrowable(CompletableFuture.java:308)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.completeThrowable(CompletableFuture.java:323)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture$UniAccept.tryFire(CompletableFuture.java:684)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:486)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2138)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at com.google.android.apps.nexuslauncher.allapps.E0.onResult(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:67)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1.lambda$onResult$0(go/retraceme 64eee9e9f568ff45978879ad2ff83146f2618ee8a88278736fbdf5fae931976e:144)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1.$r8$lambda$CEk3q8sDAQVhU3rQwVueB8FAj_M(go/retraceme 64eee9e9f568ff45978879ad2ff83146f2618ee8a88278736fbdf5fae931976e:1)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at android.app.appsearch.SearchSessionUtil$1$$ExternalSyntheticLambda0.run(go/retraceme 64eee9e9f568ff45978879ad2ff83146f2618ee8a88278736fbdf5fae931976e:22)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at android.os.Handler.handleCallback(Handler.java:959)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at android.os.Handler.dispatchMessage(Handler.java:100)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at android.os.Looper.loopOnce(Looper.java:232)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at android.os.Looper.loop(Looper.java:317)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at android.os.HandlerThread.run(HandlerThread.java:85)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: Caused by: java.util.NoSuchElementException: No value present
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at java.util.Optional.get(Optional.java:143)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	at com.google.android.apps.nexuslauncher.allapps.E0.onResult(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:28)
+10-01 20:08:15.220  6552  6983 D OneSearchSuggestProvider: 	... 8 more
+10-01 20:08:15.223  6552  6552 D StateManager: createAtomicAnimation - fromState: Background, toState: Normal, partial trace:
+10-01 20:08:15.223  6552  6552 D StateManager: 	at com.android.quickstep.util.WorkspaceRevealAnim.prepareToAnimate(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:22)
+10-01 20:08:15.223  6552  6552 D StateManager: 	at com.android.quickstep.util.WorkspaceRevealAnim.<init>(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:11)
+10-01 20:08:15.223  6552  6552 D StateManager: 	at com.android.launcher3.QuickstepTransitionManager.createWallpaperOpenAnimations(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:735)
+10-01 20:08:15.225  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=2
+10-01 20:08:15.225  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.233  6552  6983 D OneSearchSuggestProvider: Established or reuse existing binder channel authority=com.google.android.googlequicksearchbox
+10-01 20:08:15.236  6552  8629 E OneSearchSuggestProvider: Unable to get suggestions from AGA
+10-01 20:08:15.236  6552  8629 E OneSearchSuggestProvider: io.grpc.StatusRuntimeException: UNIMPLEMENTED: bindService(Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService }) returned false
+10-01 20:08:15.236  6552  8629 E OneSearchSuggestProvider: 	at k3.e.a(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:77)
+10-01 20:08:15.236  6552  8629 E OneSearchSuggestProvider: 	at i3.l.b(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:43)
+10-01 20:08:15.236  6552  8629 E OneSearchSuggestProvider: 	at i3.l.a(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:27)
+10-01 20:08:15.236  6552  8629 E OneSearchSuggestProvider: 	at i3.z.run(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:7)
+10-01 20:08:15.236  6552  8629 E OneSearchSuggestProvider: 	at i3.m2.run(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:19)
+10-01 20:08:15.236  6552  8629 E OneSearchSuggestProvider: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+10-01 20:08:15.236  6552  8629 E OneSearchSuggestProvider: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)
+10-01 20:08:15.236  6552  8629 E OneSearchSuggestProvider: 	at java.lang.Thread.run(Thread.java:1012)
+10-01 20:08:15.236  6552  6596 D QuickstepModelDelegate: notifyAppTargetEvent action=1 launchLocation=workspace/0/[-1,-1]/[1,1]
+10-01 20:08:15.237  5855  7253 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:15.238  5855  7253 W ActivityTaskManager: takeTaskSnapshot: taskId=9 not found or not visible
+10-01 20:08:15.240  6656  6872 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+10-01 20:08:15.240  6656  6872 I AiAiEcho: EchoTargets: 
+10-01 20:08:15.240  6656  6872 I AiAiEcho: Filtered by AiAi flag check: 
+10-01 20:08:15.240  6656  6872 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+10-01 20:08:15.240  6656  6872 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+10-01 20:08:15.240  6656  6872 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+10-01 20:08:15.241  6552  6552 D SearchTargetUtil: query= size=0
+10-01 20:08:15.244  6656  6872 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+10-01 20:08:15.259  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=3
+10-01 20:08:15.259  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.274  6552  6552 D SsBaseTemplateCard: No text view can be set up
+10-01 20:08:15.274  6552  6552 D SsBaseTemplateCard: Passed-in item info is null
+10-01 20:08:15.274  6552  6552 D SsBaseTemplateCard: Passed-in item info is null
+10-01 20:08:15.274  6552  6552 D SsBaseTemplateCard: Passed-in item info is null
+10-01 20:08:15.274  6552  6552 I SsBaseTemplateCard: Secondary card pane is null
+10-01 20:08:15.276  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=4
+10-01 20:08:15.276  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.281  5855  5970 I ImeTracker: com.google.android.apps.nexuslauncher:854f4ea1: onRequestHide at ORIGIN_SERVER reason HIDE_SAME_WINDOW_FOCUSED_WITHOUT_EDITOR fromUser false
+10-01 20:08:15.282  5855  5970 I ImeTracker: com.google.android.apps.nexuslauncher:854f4ea1: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-01 20:08:15.284  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.onFinishInput():3157 
+10-01 20:08:15.293  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 0, locked = false
+10-01 20:08:15.293  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1986 onStartInput(EditorInfo{EditorInfo{packageName=com.google.android.apps.nexuslauncher, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+10-01 20:08:15.293  6569  6569 I GoogleInputMethodService: GoogleInputMethodService.updateDeviceLockedStatus():2248 repeatCheckTimes = 1, locked = false
+10-01 20:08:15.293  6569  6569 I AndroidIME: InputBundleManager.loadActiveInputBundleId():450 loadActiveInputBundleId: und-Latn-x-password, password
+10-01 20:08:15.295  5855  7255 W PackageConfigPersister: App-specific configuration not found for packageName: com.google.android.apps.nexuslauncher and userId: 0
+10-01 20:08:15.310  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=5
+10-01 20:08:15.310  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.361  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=6
+10-01 20:08:15.361  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.378  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=7
+10-01 20:08:15.378  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.427  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=8
+10-01 20:08:15.427  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.442  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=9
+10-01 20:08:15.442  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.475  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=10
+10-01 20:08:15.475  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.511  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=11
+10-01 20:08:15.511  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.525  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=12
+10-01 20:08:15.525  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.544  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=13
+10-01 20:08:15.544  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.559  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=14
+10-01 20:08:15.559  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.591  8636  8636 D VRI[WebUIActivity]: visibilityChanged oldVisibility=true newVisibility=false
+10-01 20:08:15.592  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=15
+10-01 20:08:15.592  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.609   510   574 W IPCThreadState: Sending oneway calls to frozen process.
+10-01 20:08:15.612  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=16
+10-01 20:08:15.612  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:15.620  6092  6174 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@2fd1878
+10-01 20:08:15.620  5855  8334 D CoreBackPreview: Window{83c7c01 u0 Splash Screen me.weishu.kernelsu}: Setting back callback null
+10-01 20:08:15.620  5778  5778 I netd    : tetherGetStats() -> {[]} <0.62ms>
+10-01 20:08:15.623  5855  7255 W InputManager-JNI: Input channel object '83c7c01 Splash Screen me.weishu.kernelsu (client)' was disposed without first being removed with the input manager!
+10-01 20:08:15.625  5855  7255 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:15.626  5855  7253 W UserManagerService: Requested status bar icon for non-badged user 0
+10-01 20:08:15.639  8636  8636 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@a6aa8f9
+10-01 20:08:15.639  5855  8334 D CoreBackPreview: Window{e956b32 u0 me.weishu.kernelsu/me.weishu.kernelsu.ui.webui.WebUIActivity}: Setting back callback null
+10-01 20:08:15.640  5855  8334 W InputManager-JNI: Input channel object 'e956b32 me.weishu.kernelsu/me.weishu.kernelsu.ui.webui.WebUIActivity (client)' was disposed without first being removed with the input manager!
+10-01 20:08:15.653  6552  6552 I TopTaskTracker: onTaskRemoved: taskId=15
+10-01 20:08:15.653  6552  6552 I TopTaskTracker: onTaskRemoved: taskId=15
+10-01 20:08:15.676  5779  5779 E SurfaceFlinger: Out of order buffers detected for RequestedLayerState{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity#176 parentId=85} producedId=7 frameNumber=19 -> producedId=7 frameNumber=17
+10-01 20:08:15.676  5779  5779 D SurfaceFlinger: TransactionTraceWriter: file=/data/misc/wmtrace/out_of_order_buffers_transactions_trace.winscope already exists
+10-01 20:08:16.008  5855  5951 D ActivityManager: freezing 6386 com.google.android.permissioncontroller
+10-01 20:08:16.010  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:16.010  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:16.010  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={10197} in 1ms
+10-01 20:08:17.843  6656  7148 I IPCThreadState: oneway function results for code 2 on binder at 0x7c7871e64fd0 will be dropped but finished with status UNKNOWN_TRANSACTION
+10-01 20:08:17.868  5778  5778 I netd    : tetherGetStats() -> {[]} <0.47ms>
+10-01 20:08:18.038  5855  6708 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+10-01 20:08:19.406  6745  6745 W JobService: onNetworkChanged() not implemented in androidx.work.impl.background.systemjob.SystemJobService. Must override in a subclass.
+10-01 20:08:19.407  5855  6010 W IPCThreadState: Sending oneway calls to frozen process.
+10-01 20:08:19.408  5855  6010 W IPCThreadState: Sending oneway calls to frozen process.
+10-01 20:08:19.409  6692  7066 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix="RcsEngineImpl[DUAL_REG]:[004a39b9-1af2]>Handler" thread_id=64 ]
+10-01 20:08:19.410  6692  6865 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=55 ]
+10-01 20:08:19.410  6326  6727 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl
+10-01 20:08:19.410  6326  6727 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1
+10-01 20:08:19.577  6692  7038 I BugleRcsEngine: delay time out, reset attempts 2 and process SIM event [CONTEXT thread_id=62 ]
+10-01 20:08:19.579  6692  7038 I BugleRcsEngine: process intent: android.intent.action.SIM_STATE_CHANGED [CONTEXT log_prefix="(Sim)" thread_id=62 ]
+10-01 20:08:19.586  6692  7038 I BugleRcsEngine: Processing an intent [CONTEXT log_prefix="(Sim)" thread_id=62 ]
+10-01 20:08:19.587  6692  7038 I BugleRcsEngine: Ignoring duplicate SIM state: LOADED [CONTEXT log_prefix="(Sim)" thread_id=62 ]
+10-01 20:08:19.962  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:19.962  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:19.962  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={10209} in 1ms
+10-01 20:08:19.963  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:19.964  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:19.964  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={20209} in 1ms
+10-01 20:08:20.150  5855  8334 W ActivityManager: Unable to start service Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService } U=0: not found
+10-01 20:08:20.151  5855  8334 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@bbc52a8
+10-01 20:08:20.314  5855  8334 D OomAdjuster: Not killing cached processes
+10-01 20:08:22.850  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:22.851  5855  6010 D InetDiagMessage: Destroyed 2 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:22.851  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={10131} in 2ms
+10-01 20:08:22.852  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-01 20:08:22.852  5855  6010 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-01 20:08:22.852  5855  6010 D InetDiagMessage: Destroyed live tcp sockets for uids={20131} in 1ms
+10-01 20:08:23.288  6796  7993 D TrafficStats: tagSocket(84) with statsTag=0x30001803, statsUid=-1
+--------- beginning of crash
+10-01 20:08:23.426  8733  8733 F libc    : Fatal signal 11 (SIGSEGV), code 2 (SEGV_ACCERR), fault addr 0x7780166c97e4 in tid 8733 (grep), pid 8733 (grep)
+10-01 20:08:23.438  8738  8738 E crash_dump64: failed to get the guest state header for thread 8733: Bad address
+10-01 20:08:23.440  8738  8738 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdTombstoneProto
+10-01 20:08:23.440   231   231 I tombstoned: received crash request for pid 8733
+10-01 20:08:23.441  8738  8738 I crash_dump64: performing dump of process 8733 (target tid = 8733)
+10-01 20:08:23.577     0     0 I logd    : logdr: UID=0 GID=0 PID=8738 n tail=500 logMask=8 pid=8733 start=0ns deadline=0ns
+10-01 20:08:23.581     0     0 I logd    : logdr: UID=0 GID=0 PID=8738 n tail=500 logMask=1 pid=8733 start=0ns deadline=0ns
+10-01 20:08:23.457  8738  8738 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+10-01 20:08:23.457  8738  8738 F DEBUG   : Build fingerprint: 'google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys'
+10-01 20:08:23.457  8738  8738 F DEBUG   : Revision: '0'
+10-01 20:08:23.457  8738  8738 F DEBUG   : ABI: 'x86_64'
+10-01 20:08:23.457  8738  8738 F DEBUG   : Timestamp: 2026-10-01 20:08:23.441575130+0000
+10-01 20:08:23.457  8738  8738 F DEBUG   : Process uptime: 1s
+10-01 20:08:23.457  8738  8738 F DEBUG   : Cmdline: grep -rhoE [0-9a-f]{64} /data/data/me.weishu.kernelsu/shared_prefs /data/data/me.weishu.kernelsu/files /data/adb/ksu
+10-01 20:08:23.457  8738  8738 F DEBUG   : pid: 8733, tid: 8733, name: grep  >>> grep <<<
+10-01 20:08:23.457  8738  8738 F DEBUG   : uid: 0
+10-01 20:08:23.457  8738  8738 F DEBUG   : signal 11 (SIGSEGV), code 2 (SEGV_ACCERR), fault addr 0x00007780166c97e4
+10-01 20:08:23.457  8738  8738 F DEBUG   :     rax 000000001ffffff4  rbx 0000777fa66c4410  rcx 0000777ff66c97f0  rdx 00007781b88be2a6
+10-01 20:08:23.457  8738  8738 F DEBUG   :     r8  00000000ffffffa0  r9  0000777fc66c0950  r10 00000000ffffffa0  r11 000000000000ffa0
+10-01 20:08:23.457  8738  8738 F DEBUG   :     r12 0000000000000001  r13 00007780466ca6d0  r14 00007781b882ea9c  r15 0000000000000041
+10-01 20:08:23.457  8738  8738 F DEBUG   :     rdi 000000000000ffa0  rsi 00000000ffffffa0
+10-01 20:08:23.457  8738  8738 F DEBUG   :     rbp 0000000000000001  rsp 00007ffd88aae5d0  rip 00007781b88be30b
+10-01 20:08:23.457  8738  8738 F DEBUG   : 13 total frames
+10-01 20:08:23.457  8738  8738 F DEBUG   : backtrace:
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #00 pc 00000000000b830b  /apex/com.android.runtime/lib64/bionic/libc.so (mstep+427) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #01 pc 00000000000b7537  /apex/com.android.runtime/lib64/bionic/libc.so (mwalk+1415) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #02 pc 00000000000b697d  /apex/com.android.runtime/lib64/bionic/libc.so (regexec+2829) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #03 pc 000000000003897f  /system/bin/toybox (regexec0+61) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #04 pc 000000000004cf15  /system/bin/toybox (do_grep+991) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #05 pc 000000000004d835  /system/bin/toybox (do_grep_r+311) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #06 pc 00000000000358a8  /system/bin/toybox (dirtree_handle_callback.llvm.2910373161557995379+39) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #07 pc 000000000003581b  /system/bin/toybox (dirtree_recurse+430) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #08 pc 0000000000035913  /system/bin/toybox (dirtree_handle_callback.llvm.2910373161557995379+146) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #09 pc 000000000004cac1  /system/bin/toybox (grep_main+1618) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #10 pc 000000000003c7c1  /system/bin/toybox (toybox_main+633) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #11 pc 000000000003cd8d  /system/bin/toybox (main+94) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-01 20:08:23.457  8738  8738 F DEBUG   :       #12 pc 0000000000057c82  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+114) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+10-01 20:08:23.459  5855  6096 W NativeCrashListener: Couldn't find ProcessRecord for pid 8733
+10-01 20:08:23.460   231   231 E tombstoned: Tombstone written to: tombstone_00
+10-01 20:08:23.460  5855  5946 E NativeTombstoneManager: Tombstone's UID (0) not an app, ignoring
+10-01 20:08:23.462  5855  5946 I DropBoxManagerService: add tag=SYSTEM_TOMBSTONE_PROTO_WITH_HEADERS isTagEnabled=true flags=0x0
+10-01 20:08:23.589     0     0 I init    : Untracked pid 8738 exited with status 0
+10-01 20:08:23.590     0     0 I init    : Untracked pid 8738 did not have an associated service entry and will not be reaped
+10-01 20:08:23.594     0     0 I init    : Untracked pid 8740 exited with status 0
+10-01 20:08:23.470  5855  5946 E NativeTombstoneManager: Tombstone's UID (0) not an app, ignoring
+10-01 20:08:23.595     0     0 I init    : Untracked pid 8740 did not have an associated service entry and will not be reaped
+10-01 20:08:23.472  5855  5946 I BootReceiver: Copying /data/tombstones/tombstone_00 to DropBox (SYSTEM_TOMBSTONE)
+10-01 20:08:23.472  5855  5946 I DropBoxManagerService: add tag=SYSTEM_TOMBSTONE isTagEnabled=true flags=0x6
+10-01 20:08:23.551  8745  8745 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+10-01 20:08:23.552  8745  8745 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-01 20:08:23.563   170   170 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-01 20:08:23.687     0     0 I servicemanager: Caller(pid=8745,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+10-01 20:08:23.564  8745  8746 I Gralloc4: mapper 4.x is not supported
+10-01 20:08:23.586  5855  5866 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+10-01 20:08:23.589  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/talkback/talkback.apk' with 1 weak references
+10-01 20:08:23.590  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '/vendor/overlay/EmulatorTalkBackOverlay/EmulatorTalkBackOverlay.apk' with 1 weak references
+10-01 20:08:23.591  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/LatinIMEGooglePrebuilt/LatinIMEGooglePrebuilt.apk' with 1 weak references
+10-01 20:08:23.591  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /system/priv-app/InputDevices/InputDevices.apk' with 1 weak references
+10-01 20:08:23.592  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/GoogleTTS/GoogleTTS.apk' with 1 weak references
+10-01 20:08:23.592  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /system_ext/app/AccessibilityMenu/AccessibilityMenu.apk' with 1 weak references
+10-01 20:08:23.593  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '/product/overlay/AccessibilityMenu__sdk_gphone64_x86_64__auto_generated_rro_product.apk' with 1 weak references
+10-01 20:08:23.593  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/priv-app/PrebuiltGmsCore/PrebuiltGmsCore.apk' with 1 weak references
+10-01 20:08:23.593  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/PrebuiltGmail/PrebuiltGmail.apk' with 1 weak references
+10-01 20:08:23.594  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/Drive/Drive.apk' with 1 weak references
+10-01 20:08:23.594  5855  5867 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /product/app/CalendarGooglePrebuilt/CalendarGooglePrebuilt.apk' with 1 weak references
+10-01 20:08:23.595  5855  5876 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
