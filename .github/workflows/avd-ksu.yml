@@ -13,7 +13,7 @@ on:
       modules: { default: "flutter_webui_counter-0.1.1.zip counter-v1.0.0.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
     branches: [main]
-    paths: [".github/workflows/avd-ksu.yml", "managers/**", "checks/**", "driver/**", "modules/**", "tools/labserver/**"]
+    paths: [".github/workflows/avd-ksu.yml", "managers/**", "checks/**", "driver/**", "modules/**", "tools/labserver/**", "tools/sockprobe/**"]
 permissions:
   contents: write
 jobs:
@@ -40,7 +40,9 @@ jobs:
       - uses: actions/setup-go@v5
         with: { go-version: "1.23", cache: false }
       - name: Build labserver
-        run: cd tools/labserver && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o "$LAB_OUT/labserver" . && echo "LABSERVER=$LAB_OUT/labserver" >> "$GITHUB_ENV"
+        run: |
+          cd tools/labserver && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o "$LAB_OUT/labserver" . && echo "LABSERVER=$LAB_OUT/labserver" >> "$GITHUB_ENV"
+          cd ../sockprobe && CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o "$LAB_OUT/sockprobe" . && echo "SOCKPROBE=$LAB_OUT/sockprobe" >> "$GITHUB_ENV"
       - name: Boot AVD
         run: |
           echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
@@ -55,6 +57,10 @@ jobs:
         run: |
           git fetch -q --depth 1 origin lab-inputs && mkdir -p inputs && git archive FETCH_HEAD modules | tar -x -C inputs
           zips=(); for m in $MODULES; do zips+=("inputs/modules/$m"); done
+          if [ "$HOST" = kernelsu ]; then
+            gh release download -R p0g-stack/webui-termux-api webui-v0.53.0-webui.1 -D apk -p '*.apk' && ls apk
+            checks/app_plane.sh build "$(ls apk/*.apk | head -1)" "$SOCKPROBE" "$PWD/app_plane.zip" && zips+=("$PWD/app_plane.zip")
+          fi
           managers/install_modules.sh "${zips[@]}" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: WebUI checks
         run: |
@@ -68,6 +74,9 @@ jobs:
             name=$(unzip -p "inputs/modules/$m" module.prop | sed -n 's/^name=//p' | tr -d '\r')
             MODULE=$id checks/open_module.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
           done
+      - name: App plane
+        if: matrix.host == 'kernelsu'
+        run: checks/app_plane.sh run 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Result
         if: always()
         run: cat "$LAB_OUT"/*.json 2>/dev/null; tail -50 "$LAB_OUT"/emulator.log 2>/dev/null | tail -5 || true
