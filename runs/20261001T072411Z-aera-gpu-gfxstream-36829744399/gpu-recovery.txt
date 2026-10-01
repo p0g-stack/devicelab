@@ -1,0 +1,30 @@
+# gpu_mode gfxstream
+## ls -l /dev/dri
+total 0
+crw-rw-rw- 1 root graphics 226,   0 2026-10-01 07:23 card0
+crw-rw-rw- 1 root graphics 226, 128 2026-10-01 07:23 renderD128
+## dmesg | grep -iE "virtio.?gpu|virgl|drm|capset" | head -40
+[    1.218802] ACPI: bus type drm_connector registered
+[    1.385063] init: Loading module /lib/modules/virtio-gpu.ko with args ''
+[    1.388416] init: Loaded kernel module /lib/modules/virtio-gpu.ko
+[    1.561913] [drm] pci: virtio-gpu-pci detected at 0000:00:02.0
+[    1.562933] [drm] Host memory window: 0x200000000 +0x200000000
+[    1.563176] [drm] features: +virgl +edid +resource_blob +host_visible
+[    1.563177] [drm] features: +context_init
+[    1.565202] [drm] number of scanouts: 16
+[    1.565364] [drm] number of cap sets: 3
+[    1.566121] [drm] cap set 0: id 3, max-version 0, max-size 112
+[    1.566390] [drm] cap set 1: id 8, max-version 0, max-size 16
+[    1.566622] [drm] cap set 2: id 9, max-version 0, max-size 16
+[    1.567687] [drm] Initialized virtio_gpu 0.1.0 for 0000:00:02.0 on minor 0
+## cat /sys/kernel/debug/dri/*/virtio-gpu-features 2>&1
+cat: /sys/kernel/debug/dri/*/virtio-gpu-features: No such file or directory
+## cat /sys/kernel/debug/dri/*/name 2>&1
+cat: /sys/kernel/debug/dri/*/name: No such file or directory
+## getprop | grep -E "egl|vulkan|gfxstream|graphics|gralloc|hwui" | head -30
+[ro.boot.cpuvulkan.version]: [0]
+[ro.boot.hardware.egl]: [emulation]
+[ro.boot.hardware.gralloc]: [minigbm]
+[ro.boot.hardware.vulkan]: [ranchu]
+[ro.boot.vendor.apex.com.android.hardware.graphics.composer]: [com.android.hardware.graphics.composer.ranchu]
+[ro.hwui.use_vulkan]: []

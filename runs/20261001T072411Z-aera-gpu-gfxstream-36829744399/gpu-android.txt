@@ -1,0 +1,35 @@
+# gpu_mode gfxstream
+## ls -l /dev/dri
+total 0
+crw-rw-rw- 1 system graphics 226,   0 2026-10-01 07:22 card0
+crw-rw-rw- 1 system graphics 226, 128 2026-10-01 07:22 renderD128
+## dmesg | grep -iE "virtio.?gpu|virgl|drm|capset" | head -40
+[    8.162922] init: starting service 'vendor.drm-clearkey-service'...
+[    8.169535] init: ... started service 'vendor.drm-clearkey-service' has pid 625
+[    8.389032] servicemanager: Caller(pid=625,uid=1013,sid=u:r:hal_drm_clearkey_aidl:s0) Found android.hardware.drm.IDrmFactory/clearkey in device VINTF manifest.
+[    9.368777] init: processing action (drm.service.enabled=true) from (/system/etc/init/drmserver.rc:8)
+[    9.381256] init: starting service 'drm'...
+[    9.386516] init: ... started service 'drm' has pid 713
+[    9.557620] init: service 'drm' requested start, but it is already running (flags: 132, pid: 713, started 175ms ago)
+[   25.081846] init: service 'drm' requested start, but it is already running (flags: 132, pid: 713, started 15699ms ago)
+## cat /sys/kernel/debug/dri/*/virtio-gpu-features 2>&1
+cat: /sys/kernel/debug/dri/*/virtio-gpu-features: No such file or directory
+## cat /sys/kernel/debug/dri/*/name 2>&1
+cat: /sys/kernel/debug/dri/*/name: No such file or directory
+## getprop | grep -E "egl|vulkan|gfxstream|graphics|gralloc|hwui" | head -30
+[debug.hwui.skia_tracing_enabled]: [false]
+[debug.hwui.skia_use_perfetto_track_events]: [false]
+[init.svc.vendor.graphics.allocator]: [running]
+[init.svc_debug_pid.vendor.graphics.allocator]: [667]
+[ro.boot.cpuvulkan.version]: [0]
+[ro.boot.hardware.egl]: [emulation]
+[ro.boot.hardware.gralloc]: [minigbm]
+[ro.boot.hardware.vulkan]: [ranchu]
+[ro.boot.vendor.apex.com.android.hardware.graphics.composer]: [com.android.hardware.graphics.composer.ranchu]
+[ro.boottime.vendor.graphics.allocator]: [8833343930]
+[ro.cpuvulkan.version]: [0]
+[ro.hardware.egl]: [emulation]
+[ro.hardware.gralloc]: [minigbm]
+[ro.hardware.vulkan]: [ranchu]
+[ro.hwui.use_vulkan]: []
+[ro.vulkan.apex]: [com.google.cf.vulkan]

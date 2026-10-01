@@ -1,0 +1,206 @@
+[    0.000000] Linux version 5.10.161 (builder@buildhost) (x86_64-openwrt-linux-musl-gcc (OpenWrt GCC 11.2.0 r20028-43d71ad93e) 11.2.0, GNU ld (GNU Binutils) 2.37) #0 SMP Tue Jan 3 00:24:21 2023
+[    0.000000] Command line: panic=-1 earlycon=uart8250,io,0x3f8 "root=/dev/vda1" wan_broadcast=192.168.94.3 wan_gateway=192.168.94.1 wan_ipaddr=192.168.94.2 bridged_wifi_tap=false webrtc_device_id=cvd_1-1-1
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x020: 'AVX-512 opmask'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x040: 'AVX-512 Hi256'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x080: 'AVX-512 ZMM_Hi256'
+[    0.000000] x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+[    0.000000] x86/fpu: xstate_offset[5]:  832, xstate_sizes[5]:   64
+[    0.000000] x86/fpu: xstate_offset[6]:  896, xstate_sizes[6]:  512
+[    0.000000] x86/fpu: xstate_offset[7]: 1408, xstate_sizes[7]: 1024
+[    0.000000] x86/fpu: Enabled xstate features 0xe7, context size is 2432 bytes, using 'compacted' format.
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009ffff] usable
+[    0.000000] BIOS-e820: [mem 0x00000000000a0000-0x00000000000fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000000fffffff] usable
+[    0.000000] BIOS-e820: [mem 0x00000000f4000000-0x00000000f7ffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000feffc000-0x00000000feffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000100000000-0x0000000107ffffff] reserved
+[    0.000000] earlycon: uart8250 at I/O port 0x3f8 (options '')
+[    0.000000] printk: bootconsole [uart8250] enabled
+[    0.000000] NX (Execute Disable) protection: active
+[    0.000000] extended physical RAM map:
+[    0.000000] reserve setup_data: [mem 0x0000000000000000-0x00000000000207ff] usable
+[    0.000000] reserve setup_data: [mem 0x0000000000020800-0x000000000002090f] usable
+[    0.000000] reserve setup_data: [mem 0x0000000000020910-0x000000000009ffff] usable
+[    0.000000] reserve setup_data: [mem 0x00000000000a0000-0x00000000000fffff] reserved
+[    0.000000] reserve setup_data: [mem 0x0000000000100000-0x000000000fffffff] usable
+[    0.000000] reserve setup_data: [mem 0x00000000f4000000-0x00000000f7ffffff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000feffc000-0x00000000feffffff] reserved
+[    0.000000] reserve setup_data: [mem 0x0000000100000000-0x0000000107ffffff] reserved
+[    0.000000] SMBIOS 3.2.0 present.
+[    0.000000] DMI: ChromiumOS crosvm, BIOS 0 
+[    0.000000] Hypervisor detected: KVM
+[    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+[    0.000000] kvm-clock: cpu 0, msr 26c3001, primary cpu clock
+[    0.000001] kvm-clock: using sched offset of 973289572 cycles
+[    0.001734] clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+[    0.006753] tsc: Detected 2793.436 MHz processor
+[    0.008716] last_pfn = 0x10000 max_arch_pfn = 0x400000000
+[    0.010673] x86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WP  UC- WT  
+[    0.012923] found SMP MP-table at [mem 0x0009fff0-0x0009ffff]
+[    0.015135] Using GB pages for direct mapping
+[    0.016757] ACPI: Early table checksum verification disabled
+[    0.018481] ACPI: RSDP 0x00000000000E0000 000024 (v02 CROSVM)
+[    0.020738] ACPI: XSDT 0x00000000000E0600 00003C (v01 CROSVM CROSVMDT 00000001 CROS 00000000)
+[    0.023419] ACPI: FACP 0x00000000000E03C0 000114 (v06 CROSVM CROSVMDT 00000001 CROS 00000000)
+[    0.026066] ACPI: DSDT 0x00000000000E0080 00030C (v06 CROSVM CROSVMDT 00000001 CROS 00000000)
+[    0.028705] ACPI: FACS 0x00000000000E0040 000040
+[    0.030196] ACPI: APIC 0x00000000000E0500 000068 (v05 CROSVM CROSVMDT 00000001 CROS 00000000)
+[    0.032882] ACPI: MCFG 0x00000000000E0580 00003C (v01 CROSVM CROSVMDT 00000001 CROS 00000000)
+[    0.035471] ACPI: Reserving FACP table memory at [mem 0xe03c0-0xe04d3]
+[    0.037398] ACPI: Reserving DSDT table memory at [mem 0xe0080-0xe038b]
+[    0.039375] ACPI: Reserving FACS table memory at [mem 0xe0040-0xe007f]
+[    0.041324] ACPI: Reserving APIC table memory at [mem 0xe0500-0xe0567]
+[    0.043287] ACPI: Reserving MCFG table memory at [mem 0xe0580-0xe05bb]
+[    0.045438] Zone ranges:
+[    0.046199]   DMA      [mem 0x0000000000001000-0x0000000000ffffff]
+[    0.048040]   DMA32    [mem 0x0000000001000000-0x000000000fffffff]
+[    0.049897]   Normal   empty
+[    0.050762] Movable zone start for each node
+[    0.052039] Early memory node ranges
+[    0.053094]   node   0: [mem 0x0000000000001000-0x000000000009ffff]
+[    0.054968]   node   0: [mem 0x0000000000100000-0x000000000fffffff]
+[    0.056838] Initmem setup node 0 [mem 0x0000000000001000-0x000000000fffffff]
+[    0.059013] On node 0, zone DMA: 1 pages in unavailable ranges
+[    0.059641] On node 0, zone DMA: 96 pages in unavailable ranges
+[    0.075185] IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+[    0.077272] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 low level)
+[    0.079274] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 low level)
+[    0.081284] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 low level)
+[    0.083296] ACPI: INT_SRC_OVR (bus 0 bus_irq 12 global_irq 12 low level)
+[    0.085344] Using ACPI (MADT) for SMP configuration information
+[    0.087081] TSC deadline timer available
+[    0.088269] smpboot: Allowing 1 CPUs, 0 hotplug CPUs
+[    0.089768] kvm-guest: KVM setup pv remote TLB flush
+[    0.091280] kvm-guest: setup PV sched yield
+[    0.092572] [mem 0x10000000-0xf3ffffff] available for PCI devices
+[    0.094434] Booting paravirtualized kernel on KVM
+[    0.095847] clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.099007] setup_percpu: NR_CPUS:512 nr_cpumask_bits:512 nr_cpu_ids:1 nr_node_ids:1
+[    0.106469] percpu: Embedded 48 pages/cpu s157016 r8192 d31400 u2097152
+[    0.108575] kvm-guest: KVM setup async PF for cpu 0
+[    0.110038] kvm-guest: stealtime: cpu 0, msr f81c540
+[    0.111556] kvm-guest: PV spinlocks disabled, single CPU
+[    0.113126] Built 1 zonelists, mobility grouping on.  Total pages: 64391
+[    0.115139] Kernel command line: panic=-1 earlycon=uart8250,io,0x3f8 "root=/dev/vda1" wan_broadcast=192.168.94.3 wan_gateway=192.168.94.1 wan_ipaddr=192.168.94.2 bridged_wifi_tap=false webrtc_device_id=cvd_1-1-1
+[    0.121547] Dentry cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.124183] Inode-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.126564] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.129478] Memory: 232088K/261756K available (14338K kernel code, 1127K rwdata, 2080K rodata, 1460K init, 1396K bss, 29412K reserved, 0K cma-reserved)
+[    0.133185] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.135054] rcu: Hierarchical RCU implementation.
+[    0.136309] rcu: 	RCU restricting CPUs from NR_CPUS=512 to nr_cpu_ids=1.
+[    0.138041] 	Tracing variant of Tasks RCU enabled.
+[    0.139306] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+[    0.141312] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.143166] NR_IRQS: 33024, nr_irqs: 256, preallocated irqs: 16
+[    0.145259] Console: colour dummy device 80x25
+[    0.146416] printk: console [tty0] enabled
+[    0.147486] printk: bootconsole [uart8250] disabled
+Please press Enter to activate this console.
+[    0.000000] Linux version 5.10.161 (builder@buildhost) (x86_64-openwrt-linux-musl-gcc (OpenWrt GCC 11.2.0 r20028-43d71ad93e) 11.2.0, GNU ld (GNU Binutils) 2.37) #0 SMP Tue Jan 3 00:24:21 2023
+[    0.000000] Command line: panic=-1 earlycon=uart8250,io,0x3f8 "root=/dev/vda1" wan_broadcast=192.168.94.3 wan_gateway=192.168.94.1 wan_ipaddr=192.168.94.2 bridged_wifi_tap=false webrtc_device_id=cvd_1-1-1
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x002: 'SSE registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x004: 'AVX registers'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x020: 'AVX-512 opmask'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x040: 'AVX-512 Hi256'
+[    0.000000] x86/fpu: Supporting XSAVE feature 0x080: 'AVX-512 ZMM_Hi256'
+[    0.000000] x86/fpu: xstate_offset[2]:  576, xstate_sizes[2]:  256
+[    0.000000] x86/fpu: xstate_offset[5]:  832, xstate_sizes[5]:   64
+[    0.000000] x86/fpu: xstate_offset[6]:  896, xstate_sizes[6]:  512
+[    0.000000] x86/fpu: xstate_offset[7]: 1408, xstate_sizes[7]: 1024
+[    0.000000] x86/fpu: Enabled xstate features 0xe7, context size is 2432 bytes, using 'compacted' format.
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000] BIOS-e820: [mem 0x0000000000000000-0x000000000009ffff] usable
+[    0.000000] BIOS-e820: [mem 0x00000000000a0000-0x00000000000fffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000000100000-0x000000000fffffff] usable
+[    0.000000] BIOS-e820: [mem 0x00000000f4000000-0x00000000f7ffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x00000000feffc000-0x00000000feffffff] reserved
+[    0.000000] BIOS-e820: [mem 0x0000000100000000-0x0000000107ffffff] reserved
+[    0.000000] earlycon: uart8250 at I/O port 0x3f8 (options '')
+[    0.000000] printk: bootconsole [uart8250] enabled
+[    0.000000] NX (Execute Disable) protection: active
+[    0.000000] extended physical RAM map:
+[    0.000000] reserve setup_data: [mem 0x0000000000000000-0x00000000000207ff] usable
+[    0.000000] reserve setup_data: [mem 0x0000000000020800-0x000000000002090f] usable
+[    0.000000] reserve setup_data: [mem 0x0000000000020910-0x000000000009ffff] usable
+[    0.000000] reserve setup_data: [mem 0x00000000000a0000-0x00000000000fffff] reserved
+[    0.000000] reserve setup_data: [mem 0x0000000000100000-0x000000000fffffff] usable
+[    0.000000] reserve setup_data: [mem 0x00000000f4000000-0x00000000f7ffffff] reserved
+[    0.000000] reserve setup_data: [mem 0x00000000feffc000-0x00000000feffffff] reserved
+[    0.000000] reserve setup_data: [mem 0x0000000100000000-0x0000000107ffffff] reserved
+[    0.000000] SMBIOS 3.2.0 present.
+[    0.000000] DMI: ChromiumOS crosvm, BIOS 0 
+[    0.000000] Hypervisor detected: KVM
+[    0.000000] kvm-clock: Using msrs 4b564d01 and 4b564d00
+[    0.000000] kvm-clock: cpu 0, msr 26c3001, primary cpu clock
+[    0.000002] kvm-clock: using sched offset of 886695782 cycles
+[    0.003248] clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+[    0.013043] tsc: Detected 2793.436 MHz processor
+[    0.015900] last_pfn = 0x10000 max_arch_pfn = 0x400000000
+[    0.018006] x86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WP  UC- WT  
+[    0.020252] found SMP MP-table at [mem 0x0009fff0-0x0009ffff]
+[    0.023634] Using GB pages for direct mapping
+[    0.025625] ACPI: Early table checksum verification disabled
+[    0.027353] ACPI: RSDP 0x00000000000E0000 000024 (v02 CROSVM)
+[    0.029455] ACPI: XSDT 0x00000000000E0600 00003C (v01 CROSVM CROSVMDT 00000001 CROS 00000000)
+[    0.032551] ACPI: FACP 0x00000000000E03C0 000114 (v06 CROSVM CROSVMDT 00000001 CROS 00000000)
+[    0.039001] ACPI: DSDT 0x00000000000E0080 00030C (v06 CROSVM CROSVMDT 00000001 CROS 00000000)
+[    0.043315] ACPI: FACS 0x00000000000E0040 000040
+[    0.048019] ACPI: APIC 0x00000000000E0500 000068 (v05 CROSVM CROSVMDT 00000001 CROS 00000000)
+[    0.054077] ACPI: MCFG 0x00000000000E0580 00003C (v01 CROSVM CROSVMDT 00000001 CROS 00000000)
+[    0.058753] ACPI: Reserving FACP table memory at [mem 0xe03c0-0xe04d3]
+[    0.060870] ACPI: Reserving DSDT table memory at [mem 0xe0080-0xe038b]
+[    0.063025] ACPI: Reserving FACS table memory at [mem 0xe0040-0xe007f]
+[    0.065164] ACPI: Reserving APIC table memory at [mem 0xe0500-0xe0567]
+[    0.067337] ACPI: Reserving MCFG table memory at [mem 0xe0580-0xe05bb]
+[    0.069666] Zone ranges:
+[    0.070478]   DMA      [mem 0x0000000000001000-0x0000000000ffffff]
+[    0.072485]   DMA32    [mem 0x0000000001000000-0x000000000fffffff]
+[    0.074443]   Normal   empty
+[    0.075310] Movable zone start for each node
+[    0.076708] Early memory node ranges
+[    0.077823]   node   0: [mem 0x0000000000001000-0x000000000009ffff]
+[    0.079788]   node   0: [mem 0x0000000000100000-0x000000000fffffff]
+[    0.083367] Initmem setup node 0 [mem 0x0000000000001000-0x000000000fffffff]
+[    0.087420] On node 0, zone DMA: 1 pages in unavailable ranges
+[    0.088396] On node 0, zone DMA: 96 pages in unavailable ranges
+[    0.125810] IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+[    0.130925] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 low level)
+[    0.135594] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 low level)
+[    0.139440] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 low level)
+[    0.142768] ACPI: INT_SRC_OVR (bus 0 bus_irq 12 global_irq 12 low level)
+[    0.148891] Using ACPI (MADT) for SMP configuration information
+[    0.152344] TSC deadline timer available
+[    0.155804] smpboot: Allowing 1 CPUs, 0 hotplug CPUs
+[    0.158956] kvm-guest: KVM setup pv remote TLB flush
+[    0.161754] kvm-guest: setup PV sched yield
+[    0.164893] [mem 0x10000000-0xf3ffffff] available for PCI devices
+[    0.169033] Booting paravirtualized kernel on KVM
+[    0.172527] clocksource: refined-jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+[    0.176715] setup_percpu: NR_CPUS:512 nr_cpumask_bits:512 nr_cpu_ids:1 nr_node_ids:1
+[    0.192742] percpu: Embedded 48 pages/cpu s157016 r8192 d31400 u2097152
+[    0.196813] kvm-guest: KVM setup async PF for cpu 0
+[    0.199373] kvm-guest: stealtime: cpu 0, msr f81c540
+[    0.203120] kvm-guest: PV spinlocks disabled, single CPU
+[    0.206382] Built 1 zonelists, mobility grouping on.  Total pages: 64391
+[    0.210201] Kernel command line: panic=-1 earlycon=uart8250,io,0x3f8 "root=/dev/vda1" wan_broadcast=192.168.94.3 wan_gateway=192.168.94.1 wan_ipaddr=192.168.94.2 bridged_wifi_tap=false webrtc_device_id=cvd_1-1-1
+[    0.222400] Dentry cache hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.227766] Inode-cache hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.231978] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.238068] Memory: 232088K/261756K available (14338K kernel code, 1127K rwdata, 2080K rodata, 1460K init, 1396K bss, 29412K reserved, 0K cma-reserved)
+[    0.246559] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.249065] rcu: Hierarchical RCU implementation.
+[    0.252088] rcu: 	RCU restricting CPUs from NR_CPUS=512 to nr_cpu_ids=1.
+[    0.255992] 	Tracing variant of Tasks RCU enabled.
+[    0.257375] rcu: RCU calculated value of scheduler-enlistment delay is 10 jiffies.
+[    0.261784] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.265255] NR_IRQS: 33024, nr_irqs: 256, preallocated irqs: 16
+[    0.268971] Console: colour dummy device 80x25
+[    0.271439] printk: console [tty0] enabled
+[    0.273148] printk: bootconsole [uart8250] disabled
+Please press Enter to activate this console.
