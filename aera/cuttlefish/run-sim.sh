@@ -22,11 +22,13 @@ rm "$OUT/$LABEL/payload.tgz"
 # $AERA_PLUGIN_DATA/engine-switches (the sim's OUT/plugin-data).
 a shell "mkdir -p $D/out/plugin-data"
 [ -n "${SWITCHES:-}" ] && printf '%s\n' "$SWITCHES" | a shell "cat > $D/out/plugin-data/engine-switches"
+# ENVIRONMENT: KEY=VALUE lines for the launcher's $AERA_PLUGIN_DATA/environment.
+[ -n "${ENVIRONMENT:-}" ] && printf '%s\n' "$ENVIRONMENT" | a shell "cat > $D/out/plugin-data/environment"
 echo "[sim] pushed in $((SECONDS - t0))s; $(a shell "du -sh $D/root" | tr -d '\r')"
 t0=$SECONDS
 a shell "cd $D && ./aera-host-sim --root $D/root --embedder $D/root/usr/bin/aera-plugin --out $D/out $*" \
   >"$OUT/$LABEL/sim.log" 2>&1; rc=$?
-echo "[sim] exit $rc after $((SECONDS - t0))s (switches: ${SWITCHES:-none})"; tail -25 "$OUT/$LABEL/sim.log"
+echo "[sim] exit $rc after $((SECONDS - t0))s (switches: ${SWITCHES:-none}; env: ${ENVIRONMENT:-none})"; tail -25 "$OUT/$LABEL/sim.log"
 a pull "$D/out" "$OUT/$LABEL/" >/dev/null 2>&1
 ls -la "$OUT/$LABEL/out" 2>/dev/null
 grep -h -iE "capset|renderer|impeller|vulkan|zink|fall" "$OUT/$LABEL/sim.log" "$OUT/$LABEL"/out/plugin-data/aera-flutter.log 2>/dev/null | head -20
