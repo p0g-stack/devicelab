@@ -24,6 +24,9 @@ adb shell pm grant "$PKG" android.permission.POST_NOTIFICATIONS 2>/dev/null
 if [ -n "$ACT" ]; then
   adb shell am start -W -n "$ACT" -e id "'$ID'" -e name "'$NAME'" 2>&1 | tr -d '\r' | grep -E 'Status|Activity|Error|Warning'
   if wait_page 8; then adb exec-out screencap -p >"$O-intent.png"; echo "opened: intent"; exit 0; fi
+  # KernelSU Next starts its WebUI as dat=kernelsu://webui/<id> (seen in its own launch).
+  adb shell am start -W -a android.intent.action.VIEW -d "'kernelsu://webui/$ID'" -n "$ACT" -e id "'$ID'" -e name "'$NAME'" 2>&1 | tr -d '\r' | grep -E 'Status|Error'
+  if wait_page 8; then timeout 20 adb exec-out screencap -p >"$O-intent.png"; echo "opened: intent-uri"; exit 0; fi
   # KernelSU 3.3.0 starts its own WebUI as VIEW ksu://webui?id=<id>&token=<64 hex>
   # and closes the activity without a valid token. Look for the token in the
   # manager's data and retry with it.
