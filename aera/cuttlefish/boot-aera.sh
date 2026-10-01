@@ -65,6 +65,16 @@ if [ -n "$overlay" ]; then
   for f in "$w"/stock/*; do
     [ -f "$f" ] && [ ! -L "$f" ] && [ ! -e "$w/new/$(basename "$f")" ] && cp -a "$f" "$w/new/" && log "carried $(basename "$f")"
   done
+  # Cuttlefish's adb is vsock-only, but AERA (TWRP) switches
+  # sys.usb.config to none and then to an MTP config at start, and the
+  # device tree excludes the USB init that would restart adbd for it; keep
+  # adbd running whatever the USB config says (Cuttlefish-only).
+  cat >> "$w/new/init.recovery.cutf_cvm.rc" <<'RC'
+
+# devicelab boot-aera.sh: adbd stays up across AERA's USB config changes
+on property:sys.usb.config=*
+    start adbd
+RC
   src=$w/new
 else
   for f in "$w"/stock/*.rc; do [ -f "$f" ] && [ ! -e "$w/aera/$(basename "$f")" ] && cp -a "$f" "$w/aera/" && log "carried $(basename "$f")"; done
