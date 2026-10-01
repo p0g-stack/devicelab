@@ -81,6 +81,7 @@ jobs:
         run: |
           tag="${{ github.event.release.tag_name || inputs.aera_release || 'latest' }}"
           [ "$tag" = none ] && exit 0
+          case "$tag" in aera-cf-x86_64-*|latest) ;; *) tag=latest ;; esac
           if [ "$tag" = latest ]; then
             tag=$(gh release list -R "$GITHUB_REPOSITORY" --limit 50 --json tagName,createdAt \
               --jq '[.[] | select(.tagName | startswith("aera-cf-x86_64-"))] | sort_by(.createdAt) | last | .tagName // ""')
