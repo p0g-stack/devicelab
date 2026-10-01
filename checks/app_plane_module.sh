@@ -21,6 +21,7 @@ dialog() { $UI dump 2>/dev/null | cut -d' ' -f2- | head -12; }   # visible click
 page_text() { text | python3 -c 'import json,sys; v=json.loads(sys.stdin.read()); v=v.get("value",v) if isinstance(v,dict) else v; print("\n".join(x for x in v if any(k in x for k in sys.argv[1:])))' "$@" 2>&1; }
 
 rec app "$(sh_ "pm path $APP; ls -laZ /product/app/WebuiApi_$ID/ 2>&1; dumpsys package $APP | grep -E 'codePath|versionName|userId|pkgFlags|privateFlags|signatures|requested permissions' -A0 | head -10; dumpsys package $APP | grep -A12 'requested permissions:' | head -13")"
+rec mounts "$(sh_ "ls -la /data/adb/metamodule 2>&1; grep -E ' /product| /system ' /proc/mounts | grep -v -E '^/dev/block/dm' | head -12; ls /product/app | head -40 | tr '\\n' ' '")"
 rec app-label "$(sh_ "cmd package query-activities --brief -a android.intent.action.MAIN -p $APP 2>&1 | head -5; dumpsys package $APP | grep -m3 -i -E 'label|nonLocalizedLabel'")"
 rec module-config "$(sh_ "/data/adb/ksud module config --help 2>&1 | head -12; echo '-- files:'; ls -la /data/adb/ksu/module_configs/$ID/ 2>&1; for f in /data/adb/ksu/module_configs/$ID/*; do echo \"== \$f\"; head -c 400 \$f; echo; done; echo '-- ksud get:'; KSU_MODULE=$ID /data/adb/ksud module config get webui.installed 2>&1; KSU_MODULE=$ID /data/adb/ksud module config list 2>&1 | head")"
 rec module-dirs "$(sh_ "ls -la /data/adb/$ID /data/adb/$ID/tmp 2>&1 | head -20")"
@@ -36,6 +37,7 @@ rec plugins "$(page_text Camera Share share_plus permission)"; shot plugins
 adb logcat -c
 rec tap-share "$(step 'Share text')"; sleep 8
 rec share-top "\"$(top)\""; shot share
+rec app-process "$(sh_ "ps -A -o USER,UID,LABEL,PID,NAME | grep -E 'webui.api' ")"
 rec share-log "$(adb logcat -d | grep -i -E "$APP|chooser|share|BackgroundActivityStart|avc" | grep -v -E 'Enqueued|Broadcasting' | tail -12 | js)"
 adb shell input keyevent KEYCODE_BACK; sleep 4
 rec share-result "$(page_text 'Share result')"
