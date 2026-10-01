@@ -140,6 +140,17 @@ jobs:
           adb -s 0.0.0.0:6520 shell 'ls -la /system/bin/aerain /system/bin/aeraout; ps -A -o PID,S,WCHAN,NAME,ARGS | grep -vE " \\[|ps -A"; for p in $(pidof recovery); do ls -la /proc/$p/fd | grep -iE "aera|pipe"; done; tail -60 /tmp/recovery.log' \
             > "$LAB_OUT/flutter_p0g-run-state.txt" 2>&1 || true
           cd "$GITHUB_WORKSPACE" && aera/cuttlefish/aera-shot.sh flutter_p0g-reloaded || true
+      - name: AERA settings in an app (flutter-aera fadd7b1, 24-hour clock and dynamic_color accent)
+        if: steps.p0g.outputs.rev != ''
+        timeout-minutes: 25
+        run: |
+          export PATH=$CF_HOME/bin:$PATH:$HOME/.pub-cache/bin
+          cd "$RUNNER_TEMP" && flutter create --project-name settings_probe settings-probe >/dev/null && cd settings-probe
+          cp "$GITHUB_WORKSPACE/aera/apps/settings_probe/lib/main.dart" lib/main.dart && rm -rf test
+          flutter pub add dynamic_color 2>&1 | tail -2
+          { flutter_p0g create --platforms=aera . && flutter_p0g precache --aera --aera-mode=debug && flutter_p0g build aera --debug; } 2>&1 | tail -20 | tee "$LAB_OUT/settings-probe-build.log"
+          "$GITHUB_WORKSPACE/aera/tools/aerap.py" retarget build/aera/*.aerap "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/settings-probe-x64.aerap" || exit 0
+          cd "$GITHUB_WORKSPACE" && aera/cuttlefish/aera-settings-check.sh "$LAB_OUT/settings-probe-x64.aerap"
       - name: Logs
         if: always()
         run: |
