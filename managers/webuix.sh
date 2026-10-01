@@ -49,7 +49,7 @@ UI_WAIT=20 $UI tap KernelSU && sleep 1
 for i in 1 2 3 4 5; do
   adb exec-out screencap -p >"$OUT/webuix-start-$i.png"; $UI dump "$OUT/webuix-start-$i.xml" | head -20
   hit=no
-  for b in Next Continue Grant Allow "Get started" Done OK Finish; do UI_WAIT=1 $UI tap "$b" && { hit=yes; break; }; done
+  for b in "Continue with KernelSU" Next Continue Grant Allow "Get started" Done OK Finish; do UI_WAIT=1 $UI tap "$b" && { hit=yes; break; }; done
   [ $hit = yes ] || { $UI scroll; sleep 2; }
   sleep 2
   UI_WAIT=2 $UI has "Select your Platform" || [ $i -lt 3 ] || break
