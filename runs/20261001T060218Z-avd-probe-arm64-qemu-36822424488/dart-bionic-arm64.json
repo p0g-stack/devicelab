@@ -1,0 +1,41 @@
+{
+ "probe": "dart_bionic",
+ "date": "2026-10-01",
+ "platform": "qemu-user chroot of AVD android-35 google_apis arm64-v8a system.img",
+ "cannotShow": "kernel, SELinux, real CPU timing",
+ "termuxDart": "3.13.5",
+ "results": [
+  {
+   "name": "sh-works",
+   "cmd": "echo bionic sh ok; /system/bin/toybox uname -m; ls -l /system/bin/env",
+   "exit": 127,
+   "ms": 239,
+   "stdout": "bionic sh ok\naarch64",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\n/system/bin/sh: ls: inaccessible or not found"
+  },
+  {
+   "name": "aot-host-snapshot-termux-runtime",
+   "cmd": "PATH=/system/bin /data/adb/devicelab/dartaotruntime /data/adb/devicelab/probe-arm64.aot",
+   "exit": 255,
+   "ms": 256,
+   "stdout": "",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nSnapshot not compatible with the current VM configuration: the snapshot requires 'product no-asan no-msan no-tsan no-shared_data no-code_comments no-dwarf_stack_traces arm64 linux no-compressed-pointers' but the VM has 'product no-asan no-msan no-tsan no-shared_data no-code_comments no-dwarf_stack_traces arm64 android no-compressed-pointers'"
+  },
+  {
+   "name": "termux-compile-exe",
+   "cmd": "cd /data/adb/devicelab && PATH=/data/data/com.termux/files/usr/bin:/system/bin HOME=/data/adb/devicelab TMPDIR=/data/adb/devicelab /data/data/com.termux/files/usr/lib/dart-sdk/bin/dart compile exe probe.dart -o probe-bionic",
+   "exit": 0,
+   "ms": 68187,
+   "stdout": "Generated: /data/adb/devicelab/probe-bionic",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\""
+  },
+  {
+   "name": "bionic-exe-no-termux",
+   "cmd": "PATH=/system/bin TMPDIR=/data/adb/devicelab /data/adb/devicelab/probe-bionic",
+   "exit": 126,
+   "ms": 98,
+   "stdout": "",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\n/system/bin/sh: /data/adb/devicelab/probe-bionic: can't execute: Permission denied"
+  }
+ ]
+}
