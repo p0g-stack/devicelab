@@ -19,6 +19,9 @@ here=$(cd "$(dirname "$0")" && pwd)
 src=$(realpath -m "${1:-$HOME/aera-src}"); out=$(realpath -m "${2:-$PWD/aera-out}")
 MANIFEST_REV=${MANIFEST_REV:-250b38eed4b7bb663a945deb3c4f12e4ff2339dd}
 PATCHES=$(realpath -m "${AERA_PATCHES:-$here/patches}")
+# Devicelab-only fakes (Cuttlefish stand-ins, not upstream fixes), applied
+# after the series; AERA_PATCHES_CF= (empty) leaves them out.
+PATCHES_CF=$(realpath -m "${AERA_PATCHES_CF-$here/patches-cf}")
 JOBS=${JOBS:-$(nproc)}
 mkdir -p "$src" "$out"
 exec > >(tee -a "$out/build.log") 2>&1
@@ -66,18 +69,20 @@ if [ "${SKIP_SYNC:-0}" != 1 ]; then
   log "sync done in $((SECONDS - t0))s; $(du -sh --exclude=out . | cut -f1)"
 fi
 
-# Patches: reset each patched project to its pin first, so reruns are clean.
-if [ -d "$PATCHES" ]; then
-  (cd "$PATCHES" && find . -name '*.patch' -printf '%h\n' | sort -u) | while read -r d; do
-    d=${d#./}
-    git -C "$d" am --abort >/dev/null 2>&1 || true
-    pin=$(repo forall "$d" -c 'echo $REPO_RREV')   # the commit pins.xml names
-    git -C "$d" reset -q --hard "$pin"
-    git -C "$d" clean -qfd
-    git -C "$d" am -q --3way "$PATCHES/$d"/*.patch
-    log "patched $d: $(ls "$PATCHES/$d"/*.patch | wc -l) patch(es), now $(git -C "$d" log --oneline -1)"
+# Patches: reset each patched project to its pin first, so reruns are
+# clean; then the series, then the devicelab-only fakes.
+projects=$(for p in "$PATCHES" "$PATCHES_CF"; do [ -d "$p" ] && (cd "$p" && find . -name '*.patch' -printf '%h\n'); done | sed 's#^\./##' | sort -u)
+for d in $projects; do
+  git -C "$d" am --abort >/dev/null 2>&1 || true
+  pin=$(repo forall "$d" -c 'echo $REPO_RREV')   # the commit pins.xml names
+  git -C "$d" reset -q --hard "$pin"
+  git -C "$d" clean -qfd
+  for p in "$PATCHES" "$PATCHES_CF"; do
+    ls "$p/$d"/*.patch >/dev/null 2>&1 || continue
+    git -C "$d" am -q --3way "$p/$d"/*.patch
+    log "patched $d from ${p#$here/}: $(ls "$p/$d"/*.patch | wc -l) patch(es), now $(git -C "$d" log --oneline -1)"
   done
-fi
+done
 repo manifest -r -o "$out/manifest-pinned.xml" >/dev/null 2>&1 || log "WARNING: repo manifest -r failed (unsynced projects?)"
 
 rm -rf device/p0g/aera_cf && mkdir -p device/p0g && cp -r "$here/device" device/p0g/aera_cf
@@ -102,9 +107,10 @@ ls "$p"/AERA*.zip "$p"/AERA*.img 2>/dev/null | while read -r f; do cp "$f" "$out
 {
   echo "android_manifest $MANIFEST_REV"
   echo "bootable/recovery $(git -C bootable/recovery rev-parse HEAD)"
-  echo "patches $(cd "$PATCHES" 2>/dev/null && find . -name '*.patch' | sort | xargs -r sha256sum | sha256sum | cut -c1-16)"
+  echo "patches $( (cd "$PATCHES" 2>/dev/null && find . -name '*.patch' | sort | xargs -r sha256sum; cd "$PATCHES_CF" 2>/dev/null && find . -name '*.patch' | sort | xargs -r sha256sum) | sha256sum | cut -c1-16)"
   echo "patch-source $(cat "$PATCHES"/*/*/SOURCE "$PATCHES"/*/SOURCE 2>/dev/null | head -1)"
   (cd "$PATCHES" 2>/dev/null && find . -name '*.patch' | sort | sed 's#^\./#patch #')
+  (cd "$PATCHES_CF" 2>/dev/null && find . -name '*.patch' | sort | sed 's#^\./#fake #')
   echo "devicelab $(git -C "$here" rev-parse HEAD 2>/dev/null)"
   echo "built $(date -u +%FT%TZ) on $(hostname)"
 } > "$out/BUILD-INFO"
