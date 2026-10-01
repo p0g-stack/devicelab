@@ -15,20 +15,6 @@ permissions:
   contents: write
 concurrency: { group: aera-cf, cancel-in-progress: false }
 jobs:
-  aera-recon:
-    runs-on: ubuntu-24.04
-    env: { GH_TOKEN: "${{ github.token }}" }
-    steps:
-      - run: |
-          for r in android_bootable_recovery android_device_oneplus_dodge-AERA android_device_oneplus_infiniti-AERA android_manifest android_vendor_recovery; do
-            echo "### $r"; gh api "repos/AERA-Recovery/$r/releases?per_page=3" --jq '.[] | "\(.tag_name) \(.published_at)\n" + ([.assets[] | "  \(.name) \(.size) \(.browser_download_url)"] | join("\n"))' 2>&1 | head -20
-          done
-          curl -fsSL https://aera-recovery.com/ | grep -o 'href="[^"]*"' | sort -u | head -60 || true
-          for p in download downloads devices; do echo "### /$p"; curl -fsSL "https://aera-recovery.com/$p" | grep -o 'href="[^"]*"' | sort -u | head -40 || true; done
-  arm-kvm:
-    runs-on: ubuntu-24.04-arm
-    steps:
-      - run: ls -l /dev/kvm || true; nproc; grep -m3 -i 'model\|features' /proc/cpuinfo; uname -a; dmesg 2>/dev/null | grep -i kvm | head || sudo dmesg | grep -i kvm | head
 
   recovery:
     runs-on: ubuntu-24.04
@@ -67,7 +53,7 @@ jobs:
         run: |
           set -euo pipefail
           git fetch -q --depth 1 origin lab-inputs && git archive FETCH_HEAD aera | tar -x -C "$RUNNER_TEMP"
-          (cd "$RUNNER_TEMP/aera" && sha256sum -c counter-1.0.0.aerap.sha256)
+          (cd "$RUNNER_TEMP" && sha256sum -c aera/counter-1.0.0.aerap.sha256)
           aera/tools/aerap.py retarget "$RUNNER_TEMP/aera/counter-1.0.0.aerap" "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 | tee -a "$LAB_OUT/job.log"
           aera/tools/aerap.py unpack "$LAB_OUT/counter-1.0.0-x64.aerap" "$RUNNER_TEMP/counter-x64"
       - name: Counter through the kit in recovery (simulated host, frames to PNG)
