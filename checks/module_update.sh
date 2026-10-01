@@ -21,19 +21,29 @@ adb shell am force-stop "$PKG"
 adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 6
 UI_EXACT=1 UI_WAIT=30 $UI tap Module || UI_EXACT=1 $UI tap Modules; sleep 8
 shot modules
-# KernelSU 3.3.0's list exposes nodes only after a search.
-if ! UI_WAIT=3 $UI has Update; then
-  $UI tapxy 160 152; sleep 3; $UI type "$NAME"; sleep 4; shot search
+# KernelSU 3.3.0's list exposes nodes only after a search (typing races the
+# field focus: check and retype, as open_webui.sh does). Next shows an
+# UPDATE badge on the card; KernelSU an Update button.
+offer() { for w in Update UPDATE; do UI_EXACT=1 UI_WAIT=${1:-3} $UI has "$w" && { echo "$w"; return 0; }; done; return 1; }
+if ! offer 5 >/dev/null; then
+  $UI tapxy 160 152; sleep 3
+  for _ in 1 2 3; do
+    $UI type "$NAME"; sleep 3
+    UI_EXACT=1 UI_WAIT=3 $UI has "$NAME" && break
+    UI_EXACT=1 UI_WAIT=2 $UI tap Clean; sleep 2
+  done
+  shot search
 fi
-rec offered "$( (UI_WAIT=15 $UI has Update && echo yes || echo no; $UI dump) 2>&1 | js)"
-if UI_EXACT=1 UI_WAIT=5 $UI tap Update || UI_WAIT=5 $UI tap Update; then
+W=$(offer 10)
+rec offered "$( (echo "${W:-no}"; $UI dump) 2>&1 | js)"
+if [ -n "$W" ] && UI_EXACT=1 $UI tap "$W"; then
   sleep 5; shot tapped
-  # Confirmation dialogs vary by manager.
-  for b in Update Install Confirm OK Yes; do UI_EXACT=1 UI_WAIT=3 $UI tap "$b" && { sleep 3; break; }; done
-  for i in $(seq 1 18); do sleep 5; UI_WAIT=1 $UI has Reboot && break; UI_WAIT=1 $UI has Failed && break; done
+  # Next opens the card's sheet or a confirm dialog; KernelSU a confirm dialog.
+  for b in Update UPDATE Install INSTALL Confirm CONFIRM OK Yes; do UI_EXACT=1 UI_WAIT=3 $UI tap "$b" && { sleep 3; shot confirmed; break; }; done
+  for i in $(seq 1 24); do sleep 5; UI_WAIT=1 $UI has Reboot && break; UI_WAIT=1 $UI has REBOOT && break; UI_WAIT=1 $UI has Failed && break; done
   shot flashed
   rec flash-screen "$($UI dump 2>&1 | js)"
 fi
 rec after "$(props | js)"
-rec manager-log "$(adb logcat -d | grep -i -E 'update|download|flash|install|module' | grep -v -E 'PackageManager|ProfileInstaller|nativeloader' | tail -30 | js)"
+rec manager-log "$(adb logcat -d | grep -i -E 'update|download|flash|install|module' | grep -v -E 'PackageManager|ProfileInstaller|nativeloader|AiAiEcho|SsMediaDataProvider|Smartspace' | tail -30 | js)"
 adb shell input keyevent KEYCODE_BACK; adb shell am force-stop "$PKG"
