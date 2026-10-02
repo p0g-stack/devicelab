@@ -65,9 +65,15 @@ a shell 'logcat -d 2>/dev/null | grep -iE "rotat|landscape" | tail -10' | tr -d 
 xy=${SHADE_CLOSE:-588,108}; tap "${xy%,*}" "${xy#*,}"; log "(shade collapse chevron)"; sleep 3; shot 3b-after-chevron
 swipe 360 1250 360 200; log "(shade swiped up from above the bottom gesture zone)"; sleep 3
 sleep 5; shot 4-rotated
+# Run 36948750935: every frame after the toggle was the same portrait shade,
+# whatever was tapped. Is AERA still drawing (Remote's own JPEG, AERA's
+# touch lines), and does toggling back to portrait bring the screen back?
+curl -s -m 10 -H "x-aera-code: $RCODE" "$REMOTE/screen.jpg" -o "$OUT/4-remote-screen.jpg"; log "remote screen.jpg $(stat -c %s "$OUT/4-remote-screen.jpg" 2>/dev/null) bytes"
+swipe 360 10 360 900; sleep 2; xy=${ROTATE_TILE:-240,400}; tap "${xy%,*}" "${xy#*,}"; sleep 4; shot 5-toggled-back
 after=$(pids); log "after: $after"
 [ -n "$before" ] && [ "$(echo "$before" | head -1)" = "$(echo "$after" | head -1)" ] \
   && log "SAME PROCESS" || log "PROCESS CHANGED or gone"
+a shell 'logcat -d 2>/dev/null | grep -E "touch released|orientation|frame capture" | tail -25' | tr -d '\r' > "$OUT/logcat-rotate.txt"
 a shell 'cat /sys/class/drm/card0-*/modes 2>/dev/null | head -2; grep -iE "rotat|SURFACE|generation" /tmp/recovery.log | tail -20' > "$OUT/recovery-rotate.log" 2>&1
 a shell "tail -30 /sdcard/AERA/plugin-data/$id/aera-flutter.log 2>/dev/null" > "$OUT/aera-flutter.log" 2>&1
 rm -rf "$OUT/.pkg" "$OUT/.req.json"
