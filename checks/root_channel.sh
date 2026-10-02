@@ -65,5 +65,11 @@ try: v = json.loads(sys.stdin.read())
 except Exception: v = []
 v = v.get("value", v) if isinstance(v, dict) else v
 print(json.dumps([x for x in (v or []) if any(k in x.lower() for k in ("uid", "root", "hello", "channel"))][:12]))' 2>&1)"
+rec hello-tap "$(step 'Say hello')"; sleep 5
+rec hello "$(text | python3 -c 'import json,sys
+try: v = json.loads(sys.stdin.read())
+except Exception: v = []
+v = v.get("value", v) if isinstance(v, dict) else v
+print(json.dumps([x for x in (v or []) if any(k in x.lower() for k in ("uid", "hello", "root", "pid", "context"))][:12]))' 2>&1)"
 rec start-after-page "$(echo "$(start)" | js)"
 rec layout-end "$(layout)"
