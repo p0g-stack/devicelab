@@ -385,6 +385,19 @@ Rotation back kills AERA with SIGSEGV; init restarts it to Home.
   the first check), not the live screen; the check now also grabs it in
   portrait before rotating to tell a stale mirror from a landscape one.
 
+- Run `runs/20261002T051332Z-aera-cf-recovery-36965839509` (37c931a,
+  landscape taps): the counter's pixel surface is NOT shown in landscape.
+  With the shade closed AERA presents its own background and status bar only
+  (`4-rotated.png`, `4b-landscape-taps.png`), while the counter process stays
+  alive (pid 3934 throughout) and two landscape taps on its + land
+  (`touch released at 660,57 / 661,56`). AERA Remote's `screen.jpg` stays
+  the portrait shade from the moment of the toggle (portrait `1-remote-screen.jpg`
+  was live). The landscape shade itself is now laid out for landscape
+  (`4c-landscape-shade.png`), and its Rotation tile sits at landscape 432,345,
+  so the lab's tap (242,318, the Wi-Fi tile) did not rotate back; fixed in the
+  check (b9a432aa). Frame strip: project files
+  `devicelab-aera/aera-ui/d12-landscape-plugin-missing.png`.
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
