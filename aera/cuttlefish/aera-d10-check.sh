@@ -39,8 +39,9 @@ swipe_home() {
 }
 rec_pid() { a shell 'pidof recovery' 2>/dev/null | tr -d '\r'; }
 # Exception trace printed nothing in run 36949565316 (recovery's own SIGSEGV
-# handler re-raises), so let the running recovery dump core instead.
-arm_core() { a shell "echo /tmp/core.%e.%p > /proc/sys/kernel/core_pattern; ulimit -P \$(pidof recovery) -c unlimited 2>&1; ulimit -P \$(pidof recovery) -c" | tr -d '\r' | sed 's/^/[d10] core limit: /' | tee -a "$OUT/log.txt"; }
+# handler re-raises), so let the running recovery dump core instead (toybox's
+# ulimit -P; mksh's builtin has no -P).
+arm_core() { a shell "echo /tmp/core.%e.%p > /proc/sys/kernel/core_pattern; toybox ulimit -P \$(pidof recovery) -c unlimited 2>&1; toybox ulimit -P \$(pidof recovery) -c" | tr -d '\r' | sed 's/^/[d10] core limit: /' | tee -a "$OUT/log.txt"; }
 open_() { log "open $1: $(rpc '{"v":1,"id":"d10","op":"plugin","args":{"action":"open","id":"'"$1"'"}}' | tr '\n' ' ')"; }
 # After a case: did recovery survive? Keep the kernel's segfault lines.
 verdict() {

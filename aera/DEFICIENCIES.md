@@ -282,6 +282,30 @@ dir is in the ramdisk and does not survive a reboot.
   `AERA_PLUGIN_DATA=/tmp/aera/plugin-data/lifecycle-probe` and
   `AERA_PLUGIN_DATA_VOLATILE=1` (0022), and shows `VOLATILE: 1`.
 
+## D12. After rotating to landscape with a pixel plugin open the screen freezes; rotating back crashes AERA
+
+```
+run runs/20261002T023206Z-aera-cf-recovery-36953588555 (image b9f360d), aera-rotate/:
+04:31:39.476 D AERA UI : touch released at 240,400          <- Rotation tile
+04:31:39.481 I AERA UI : display orientation changed to landscape
+04:31:44.078 D AERA UI : touch released at 588,108          <- input still arrives...
+04:31:49.028 D AERA UI : touch released at 360,200
+kernel.log:
+[ 1303.591897] init: Service 'recovery' (pid 2498) received signal 11   <- after toggling back
+[ 1303.637204] init: Untracked pid 3742 received signal 9                <- the counter
+```
+Repro (`aera-rotate-check.sh`): open the counter, pull the Quick Settings
+shade down, tap Rotation (Landscape). From then on every frame is the same
+portrait shade (AERA's own capture and AERA Remote's `screen.jpg` alike,
+`4-rotated.png`, `4-remote-screen.jpg`) although touches keep arriving; the
+counter keeps running (same pid). Pulling the shade down again and tapping
+Rotation back kills AERA with SIGSEGV; init restarts it to Home.
+
+- The counter survives the rotation itself (0020's goal), but it never
+  redraws visibly because AERA stops presenting.
+- Next run: the same rotation and back with no plugin open (control), and
+  a recovery core with a gdb backtrace for each crash.
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do

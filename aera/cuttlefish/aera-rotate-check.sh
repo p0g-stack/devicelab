@@ -39,6 +39,8 @@ swipe() {  # swipe X1 Y1 X2 Y2
   for i in 1 2 3 4 5 6 7 8; do touch_ move $(( $1 + ($3 - $1) * i / 8 )) $(( $2 + ($4 - $2) * i / 8 )); sleep 0.03; done
   touch_ up "$3" "$4"; log "swipe $1,$2 -> $3,$4"
 }
+arm_core() { a shell "echo /tmp/core.%e.%p > /proc/sys/kernel/core_pattern; toybox ulimit -P \$(pidof recovery) -c unlimited 2>&1; toybox ulimit -P \$(pidof recovery) -c" | tr -d '\r' | sed 's/^/[rotate] core limit: /' | tee -a "$OUT/log.txt"; }
+cores() { local c; for c in $(a shell 'ls /tmp/core.* 2>/dev/null' | tr -d '\r'); do a pull "$c" "$OUT/$1-${c##*/}" >/dev/null 2>&1 && a shell "rm -f $c" && log "core $1-${c##*/}"; done; }
 pids() { a shell 'pidof ld-linux-x86-64.so.2 aera-flutter 2>/dev/null; ps -A -o PID,ETIME,ARGS | grep aera-flutter | grep -v grep' | tr -d '\r'; }
 
 id=$(unzip -p "$PKG" plugin.json | python3 -c 'import json,sys;print(json.load(sys.stdin)["id"])')
@@ -56,6 +58,7 @@ log "open: $(rpc '{"v":1,"id":"rotate","op":"plugin","args":{"action":"open","id
 sleep "${APP_WAIT:-25}"; shot 1-portrait
 before=$(pids); log "before: $before"
 
+arm_core; rp=$(a shell pidof recovery | tr -d '\r')
 swipe 360 10 360 900; sleep 2; shot 2-shade
 xy=${ROTATE_TILE:-240,400}; tap "${xy%,*}" "${xy#*,}"; sleep 3; shot 3-after-toggle
 # Close the shade with its collapse chevron (Back reached the counter, which
@@ -70,6 +73,17 @@ sleep 5; shot 4-rotated
 # touch lines), and does toggling back to portrait bring the screen back?
 curl -s -m 10 -H "x-aera-code: $RCODE" "$REMOTE/screen.jpg" -o "$OUT/4-remote-screen.jpg"; log "remote screen.jpg $(stat -c %s "$OUT/4-remote-screen.jpg" 2>/dev/null) bytes"
 swipe 360 10 360 900; sleep 2; xy=${ROTATE_TILE:-240,400}; tap "${xy%,*}" "${xy#*,}"; sleep 4; shot 5-toggled-back
+sleep 6; log "recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; cores counter
+# Control (run 36953588555: toggling back crashed AERA with the counter open):
+# the same rotation and back with no plugin running, on Home.
+if [ "$(a shell pidof recovery | tr -d '\r')" != "$rp" ]; then
+  sleep 5; r=$(rpc '{"v":1,"id":"rotate-mirror2","op":"mirror","args":{"action":"start","port":8088}}')
+  RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1); sleep 2
+fi
+a shell 'pkill -f aera-flutter'; sleep 2; arm_core; rp=$(a shell pidof recovery | tr -d '\r')
+swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; shot 6-home-landscape
+swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; shot 7-home-back
+sleep 4; log "no plugin: recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; cores home
 after=$(pids); log "after: $after"
 [ -n "$before" ] && [ "$(echo "$before" | head -1)" = "$(echo "$after" | head -1)" ] \
   && log "SAME PROCESS" || log "PROCESS CHANGED or gone"
