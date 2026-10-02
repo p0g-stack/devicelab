@@ -179,7 +179,17 @@ jobs:
       - name: D10, Recents card of a paused pixel plugin (exception trace, no-preview and Browser A/B)
         if: steps.p0g.outputs.rev != ''
         timeout-minutes: 15
-        run: '[ -f "$LAB_OUT/lifecycle-probe-x64.aerap" ] && aera/cuttlefish/aera-d10-check.sh "$LAB_OUT/lifecycle-probe-x64.aerap" || true'
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          [ -f "$LAB_OUT/lifecycle-probe-x64.aerap" ] || exit 0
+          aera/cuttlefish/aera-d10-check.sh "$LAB_OUT/lifecycle-probe-x64.aerap" || true
+          ls "$LAB_OUT"/aera-d10/*core.* >/dev/null 2>&1 || exit 0
+          sudo apt-get install -y -qq gdb >/dev/null 2>&1 || true
+          gh release download "${{ steps.aera.outputs.tag }}" -R "$GITHUB_REPOSITORY" -p recovery-unstripped.elf -D "$RUNNER_TEMP" --clobber || exit 0
+          for c in "$LAB_OUT"/aera-d10/*core.*; do
+            echo "== $c"; gdb -batch -nx -ex 'info registers rip' -ex 'bt 30' -ex 'info sharedlibrary' "$RUNNER_TEMP/recovery-unstripped.elf" "$c" 2>&1 | tail -60
+          done | tee "$LAB_OUT/aera-d10/backtrace.txt"
+          mv "$LAB_OUT"/aera-d10/*core.* "$RUNNER_TEMP"/ || true  # too big for lab-results
       - name: Where the second tap is lost (plugin vs AERA's own Files card)
         if: steps.p0g.outputs.rev != ''
         timeout-minutes: 10

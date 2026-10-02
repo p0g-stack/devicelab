@@ -4,7 +4,6 @@
 # record the segfault line (fault address, ip, mapping) for addr2line:
 #   A  probe left by the bottom-edge swipe (preview captured), Menu, card
 #   B  probe never left: Menu from inside it, card (no preview yet)
-#   C  AERA Browser (stock, x86_64 permitting) left the same way as A
 # Usage: aera-d10-check.sh PKG.aerap  ->  $LAB_OUT/aera-d10/
 # Env: RECENTS_CARD x,y of the first card (default 360,790)
 set -uo pipefail
@@ -39,6 +38,9 @@ swipe_home() {
   touch_ up 360 1040; log "edge swipe Home"
 }
 rec_pid() { a shell 'pidof recovery' 2>/dev/null | tr -d '\r'; }
+# Exception trace printed nothing in run 36949565316 (recovery's own SIGSEGV
+# handler re-raises), so let the running recovery dump core instead.
+arm_core() { a shell "echo /tmp/core.%e.%p > /proc/sys/kernel/core_pattern; ulimit -P \$(pidof recovery) -c unlimited 2>&1; ulimit -P \$(pidof recovery) -c" | tr -d '\r' | sed 's/^/[d10] core limit: /' | tee -a "$OUT/log.txt"; }
 open_() { log "open $1: $(rpc '{"v":1,"id":"d10","op":"plugin","args":{"action":"open","id":"'"$1"'"}}' | tr '\n' ' ')"; }
 # After a case: did recovery survive? Keep the kernel's segfault lines.
 verdict() {
@@ -49,6 +51,8 @@ verdict() {
   else
     log "$name: AERA RESTARTED (recovery pid $before -> $after)"
     a shell 'dmesg | grep -E "segfault|traps:|recovery\[|signal 11|Service .recovery" | tail -8' | tr -d '\r' | tee -a "$OUT/segfault.txt" | sed 's/^/[d10]   /' | tee -a "$OUT/log.txt"
+    a shell 'ls -l /tmp/core.* 2>&1' | tr -d '\r' | sed 's/^/[d10]   /' | tee -a "$OUT/log.txt"
+    for c in $(a shell 'ls /tmp/core.* 2>/dev/null' | tr -d '\r'); do a pull "$c" "$OUT/$name-${c##*/}" >/dev/null 2>&1 && a shell "rm -f $c"; done
     sleep 8; remote || true
   fi
 }
@@ -64,32 +68,22 @@ remote || exit 0
 card=${RECENTS_CARD:-360,790}
 
 log "== A: left by the edge swipe, reopened from its card"
-a shell 'pkill -f aera-flutter; sleep 2'; p=$(rec_pid)
+a shell 'pkill -f aera-flutter; sleep 2'; p=$(rec_pid); arm_core
 open_ "$id"; sleep "${APP_WAIT:-25}"; shot A1-app
 swipe_home; sleep 3; key menu; sleep 3; shot A2-recents
 tap "${card%,*}" "${card#*,}"; sleep 5; shot A3-after-card
 verdict "$p" A
 
 log "== B: never left, Menu from inside the app, its card"
-a shell 'pkill -f aera-flutter; sleep 2'; p=$(rec_pid)
+a shell 'pkill -f aera-flutter; sleep 2'; p=$(rec_pid); arm_core
 open_ "$id"; sleep "${APP_WAIT:-25}"; shot B1-app
 key menu; sleep 3; shot B2-recents
 tap "$(( ${card%,*} + 1 ))" "$(( ${card#*,} + 1 ))"; sleep 5; shot B3-after-card
 verdict "$p" B
 
-log "== C: AERA Browser, left by the edge swipe, reopened from its card"
-mkdir -p "$OUT/.browser"
-if curl -sSfL -m 300 -o "$OUT/.browser/b.aerap" https://github.com/AERA-Plugins/browser/releases/download/v1.5.2/AERA-Browser-1.5.2.aerap \
-   && (cd "$OUT/.browser" && unzip -q -o b.aerap plugin.json runtime.xz); then
-  install "$OUT/.browser" browser
-  a shell 'pkill -f aera-flutter; sleep 2'; p=$(rec_pid)
-  open_ browser; sleep 30; shot C1-browser
-  a shell 'ps -A -o PID,ARGS | grep -iE "browser|webkit" | grep -v grep' | tr -d '\r' > "$OUT/browser-ps.txt"
-  swipe_home; sleep 3; key menu; sleep 3; shot C2-recents
-  tap "${card%,*}" "${card#*,}"; sleep 5; shot C3-after-card
-  verdict "$p" C
-else log "C: could not fetch AERA Browser"; fi
+# C (AERA Browser) dropped: RPC plugin open refuses browser-runtime plugins
+# ("not an installed Host API 2 or 3 plugin", run 36949565316).
 
 a shell 'pkill -f aera-flutter; dmesg | grep -E "segfault|traps:" | tail -10' | tr -d '\r' > "$OUT/dmesg-segfault.txt"
-rm -rf "$OUT/.pkg" "$OUT/.browser" "$OUT/.req.json"
+rm -rf "$OUT/.pkg" "$OUT/.req.json"
 exit 0

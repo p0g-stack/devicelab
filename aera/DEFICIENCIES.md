@@ -258,8 +258,16 @@ SIGSEGV; init restarts it (and adbd), the plugin process is killed and
   Recents), not in the resume itself.
 - No backtrace: recovery has no crash_dump. flutter-aera's harness can
   reproduce it with the steps above.
+- A/B on image b9f360d (run `runs/20261002T015834Z-aera-cf-recovery-36949565316`,
+  `aera-d10/`): A (left by the edge swipe, preview captured) crashes; B (never
+  left: Menu from inside the app, then its card, no preview) crashes too, so
+  the animated launch with a preview is not required. The kernel's exception
+  trace printed no segfault line (recovery handles SIGSEGV itself); the check
+  now lets recovery dump core and runs gdb against `recovery-unstripped.elf`.
+  The stock comparison (AERA Browser) is not possible here: RPC `plugin open`
+  refuses browser-runtime plugins.
 
-## D11 (to confirm). A plugin's data dir counts as storage when /data is not mounted
+## D11. A plugin's data dir counts as storage when /data is not mounted
 
 On this Cuttlefish userdata `/data` does not mount (`I:Failed to mount
 '/data' (Invalid argument)`, `/data/media: No such file or directory`),
@@ -267,8 +275,12 @@ yet `/sdcard/AERA` exists (created by AERA at boot) and pixel plugins get
 `AERA_PLUGIN_DATA=/sdcard/AERA/plugin-data/<id>` without
 `AERA_PLUGIN_DATA_VOLATILE=1`. `DataDirectory()` checks only that
 `/sdcard/AERA` is a directory, so with storage unmounted the "storage" data
-dir is in the ramdisk and does not survive a reboot. The next run logs
-the mount table to confirm `/sdcard` is not storage here.
+dir is in the ramdisk and does not survive a reboot.
+
+- FIXED by flutter-aera 5b10e13 (0005) on image b9f360d (run
+  `runs/20261002T015834Z-aera-cf-recovery-36949565316`): the probe gets
+  `AERA_PLUGIN_DATA=/tmp/aera/plugin-data/lifecycle-probe` and
+  `AERA_PLUGIN_DATA_VOLATILE=1` (0022), and shows `VOLATILE: 1`.
 
 ## Lab gaps (devicelab, not AERA yet)
 
