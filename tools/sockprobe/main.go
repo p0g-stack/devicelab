@@ -5,7 +5,8 @@
 //
 //	sockprobe [-t seconds] [-reply text] name...   (names without the leading @)
 //	sockprobe -as-uid N -as-ctx CONTEXT r:path w:path...  (read/append as that
-//	uid and SELinux context, e.g. an app's, to see what the app itself could do)
+//	uid and SELinux context, e.g. an app's, to see what the app itself could do;
+//	hold:NAME:SECS connects to abstract @NAME and holds it SECS seconds)
 package main
 
 import (
@@ -14,6 +15,7 @@ import (
 	"net"
 	"os"
 	"runtime"
+	"strconv"
 	"strings"
 	"syscall"
 	"time"
@@ -118,6 +120,23 @@ func runAs(uid int, ctx string, ops []string) {
 			if err != nil {
 				ev["error"] = err.Error()
 			}
+		case "hold": // hold:NAME:SECONDS connect to abstract @NAME, keep it open, then close
+			name, secs, _ := strings.Cut(path, ":")
+			ev["path"] = "@" + name
+			c, err := net.Dial("unix", "@"+name)
+			if err != nil {
+				ev["error"] = err.Error()
+				break
+			}
+			ev["connected"] = time.Now().UTC().Format(time.RFC3339Nano)
+			enc.Encode(ev)
+			n := 10
+			if v, e := strconv.Atoi(secs); e == nil {
+				n = v
+			}
+			time.Sleep(time.Duration(n) * time.Second)
+			c.Close()
+			ev = map[string]any{"op": "released", "path": "@" + name, "at": time.Now().UTC().Format(time.RFC3339Nano)}
 		case "w":
 			f, err := os.OpenFile(path, os.O_WRONLY|os.O_APPEND, 0)
 			if err == nil {

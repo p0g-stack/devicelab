@@ -13,6 +13,7 @@ on:
       api: { default: "35" }
       label: { default: "", description: "extra name for the lab-results run, e.g. demo-0.9" }
       metamodule: { default: "", description: "KernelSU metamodule to install first, e.g. meta-overlayfs (empty = none)" }
+      hold_tag: { default: "", description: "webui-termux-api release tag (e.g. webui-v0.53.0-webui.8): run checks/hold_socket.sh with its APK" }
       demo_tag: { default: "", description: "demo release tag to install (e.g. v0.1.28) instead of the module branch; also runs the manager update check" }
       modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
@@ -107,6 +108,12 @@ jobs:
             if [ "$id" = demo ]; then UNINSTALL=$([ -n "${{ inputs.demo_tag }}" ] && echo 0 || echo 1) NAME="$name" checks/app_plane_module.sh "$HOST-$id" "$PKG" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ] && [ -n "${{ inputs.demo_tag }}" ] && [ "$HOST" = kernelsu ]; then checks/module_update.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
           done
+      - name: Hold socket
+        if: always() && inputs.hold_tag != ''
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          gh release download -R p0g-stack/webui-termux-api "${{ inputs.hold_tag }}" -D hold-apk -p '*.apk' && ls -la hold-apk
+          checks/hold_socket.sh "$HOST" "$(ls hold-apk/*.apk | head -1)" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: App plane
         if: always() && matrix.host == 'kernelsu' && inputs.metamodule == ''
         run: checks/app_plane.sh run 2>&1 | tee -a "$LAB_OUT/job.log"
