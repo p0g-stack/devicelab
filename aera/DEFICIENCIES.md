@@ -398,6 +398,16 @@ Rotation back kills AERA with SIGSEGV; init restarts it to Home.
   check (b9a432aa). Frame strip: project files
   `devicelab-aera/aera-ui/d12-landscape-plugin-missing.png`.
 
+- Run `runs/20261002T054506Z-aera-cf-recovery-36968103917` (37c931a, old
+  kit): rotating back from the landscape shade works: AERA logs
+  `orientation changed to portrait`, no crash (recovery pid 93), the counter
+  keeps its process (3961). The counter's log shows the landscape miss was the
+  embedder: `cannot follow SURFACE 1348x555; keeping Geometry { width: 720,
+  height: 1183 ... }` (fixed in flutter-aera bcd5e6e, needs a new kit).
+  After rotating back, the portrait shade keeps a different layout (wide
+  tiles cut off at the right, "Brightness" drawn over "Network"; compare
+  `2-shade.png` before rotating with `5-toggled-back.png`).
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do

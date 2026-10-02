@@ -82,9 +82,14 @@ sleep 6; log "recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; after
 [ -n "$before" ] && [ "$(echo "$before" | head -1)" = "$(echo "$after" | head -1)" ] && log "SAME PROCESS" || log "PROCESS CHANGED or gone"; cores counter
 # Control (run 36953588555: toggling back crashed AERA with the counter open):
 # the same rotation and back with no plugin running, on Home.
+# After rotating back the portrait shade keeps a different tile layout (run
+# 36968103917, 5-toggled-back.png: Rotation moved), so restart AERA for a
+# fresh portrait layout before the Home control.
+a shell 'pkill -f aera-flutter; setprop ctl.restart recovery'; sleep 15
+for _ in $(seq 20); do a shell true >/dev/null 2>&1 && break; sleep 2; done
 if [ "$(a shell pidof recovery | tr -d '\r')" != "$rp" ]; then
   sleep 5; r=$(rpc '{"v":1,"id":"rotate-mirror2","op":"mirror","args":{"action":"start","port":8088}}')
-  RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1); sleep 2
+  RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1); sleep 2; a forward tcp:18088 tcp:8088 >/dev/null
 fi
 a shell 'pkill -f aera-flutter'; sleep 2; arm_core; rp=$(a shell pidof recovery | tr -d '\r')
 xy=${ROTATE_TILE:-240,400}
