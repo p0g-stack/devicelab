@@ -70,7 +70,7 @@ convention, and are the GPU nodes labelled anywhere?
 
 | Tree | `recovery` domain permissive? | GPU node labels | Where set |
 |---|---|---|---|
-| AERA `system/sepolicy` ([AERA-Recovery/android_system_sepolicy](https://github.com/AERA-Recovery/android_system_sepolicy) `aera-16.0`, pinned `9641d92`) | **Yes, on every AERA recovery build** | No `/dev/dri/*` or `/dev/kgsl*` entry (only `/dev/pvrsrvkm` is `gpu_device`) | `private/twrp.te`: `recovery_only(\` permissive recovery; permissive init; permissive ueventd; ...')` |
+| AERA `system/sepolicy` ([AERA-Recovery/android_system_sepolicy](https://github.com/AERA-Recovery/android_system_sepolicy) `aera-16.0`, pinned `9641d92`) | **Yes, on every AERA recovery build** | No `/dev/dri/*` or `/dev/kgsl*` entry (only `/dev/pvrsrvkm` is `gpu_device`) | `private/twrp.te`: `recovery_only()` block with `permissive recovery;` (also `init`, `ueventd`, `adbd`, `logd`, `fastbootd`, `postinstall`) |
 | AERA `bootable/recovery` at `abf3316` | No policy of its own | none | (no `sepolicy/` dir, no `.te` files) |
 | infiniti `0d5f0b6` | Inherits yes | `device` (confirmed on hardware for `renderD128`, `kgsl-3d0`) | Tree ships no sepolicy, no `BOARD_*SEPOLICY*`; ueventd sets only mode/owner (`/dev/dri/* 0666 root graphics`, `/dev/kgsl-3d0 0666 system system`) |
 | dodge (OnePlus 13) `e27e8db` | Inherits yes | `device` (inferred: same tree shape) | Same as infiniti: no sepolicy; ueventd `/dev/dri/*`, `/dev/kgsl` modes only |
