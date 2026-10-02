@@ -1,0 +1,46 @@
+10-02 08:58:00.152     0     0 I         : SMBIOS 3.2.0 present.
+10-02 08:58:00.394     0     0 I CPU topo: Allowing 2 present CPUs plus 0 hotplug CPUs
+10-02 08:58:01.530     0     0 W amd_pstate: the _CPC object is not present in SBIOS or ACPI disabled
+10-02 08:58:04.236   174   174 I getprop : type=1400 audit(0.0:497): avc:  denied  { open } for  path="/dev/__properties__/u:object_r:surfaceflinger_display_prop:s0" dev="tmpfs" ino=292 scontext=u:r:recovery:s0 tcontext=u:object_r:surfaceflinger_display_prop:s0 tclass=file permissive=1
+10-02 08:58:04.256   174   174 I getprop : type=1400 audit(0.0:498): avc:  denied  { getattr } for  path="/dev/__properties__/u:object_r:surfaceflinger_display_prop:s0" dev="tmpfs" ino=292 scontext=u:r:recovery:s0 tcontext=u:object_r:surfaceflinger_display_prop:s0 tclass=file permissive=1
+10-02 08:58:04.256   174   174 I getprop : type=1400 audit(0.0:499): avc:  denied  { map } for  path="/dev/__properties__/u:object_r:surfaceflinger_display_prop:s0" dev="tmpfs" ino=292 scontext=u:r:recovery:s0 tcontext=u:object_r:surfaceflinger_display_prop:s0 tclass=file permissive=1
+10-02 08:58:37.468    92    92 I recovery: type=1400 audit(0.0:544): avc:  denied  { read } for  name="plugin.json" dev="tmpfs" ino=17 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 08:58:37.468    92    92 I recovery: type=1400 audit(0.0:544): avc:  denied  { open } for  path="/tmp/aera/plugins/counter/plugin.json" dev="tmpfs" ino=17 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 08:58:37.468    92    92 I recovery: type=1400 audit(0.0:545): avc:  denied  { getattr } for  path="/tmp/aera/plugins/counter/plugin.json" dev="tmpfs" ino=17 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 08:58:37.475    92   110 I AERA UI : CLI requested plugin counter
+10-02 08:58:37.476    92    92 I recovery: type=1400 audit(0.0:550): avc:  denied  { map } for  path="/tmp/aera/plugins/counter/runtime.xz" dev="tmpfs" ino=18 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 08:58:40.544   391   391 I aera-plugin: type=1400 audit(0.0:552): avc:  denied  { create } for  name="usr" scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1
+10-02 08:58:40.544   391   391 W aera-plugin: type=1300 audit(0.0:552): arch=c000003e syscall=83 success=yes exit=0 a0=7ffcda7e6630 a1=1ff a2=4 a3=1 items=2 ppid=92 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-pIbAxN/usr/bin/aera-plugin" subj=u:r:recovery:s0 key=(null)
+10-02 08:58:40.548   391   391 I aera-plugin: type=1400 audit(0.0:553): avc:  denied  { read write } for  name="renderD128" dev="tmpfs" ino=840 scontext=u:r:recovery:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+10-02 08:58:40.548   391   391 I aera-plugin: type=1400 audit(0.0:553): avc:  denied  { open } for  path="/dev/dri/renderD128" dev="tmpfs" ino=840 scontext=u:r:recovery:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+10-02 08:58:40.548   391   391 W aera-plugin: type=1300 audit(0.0:553): arch=c000003e syscall=257 success=yes exit=5 a0=ffffff9c a1=7b34f5f0c57f a2=80002 a3=0 items=0 ppid=92 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-pIbAxN/usr/bin/aera-plugin" subj=u:r:recovery:s0 key=(null)
+10-02 09:00:49.944    92   110 I AERA UI : CLI requested plugin counter
+10-02 09:01:18.855    92   110 I AERA UI : CLI requested plugin counter
+10-02 09:05:55.666    92   110 I AERA UI : CLI requested plugin settings-probe
+10-02 09:06:24.816    92   110 I AERA UI : CLI requested plugin settings-probe
+10-02 09:08:46.778    92   110 I AERA UI : CLI requested plugin picker-probe
+10-02 09:11:47.877    92   110 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:12:37.943    92   110 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:13:07.514    92   110 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:13:52.898    92   110 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:14:37.128    92   110 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:15:19.707    92   110 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:16:29.541    92   110 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:17:04.901    92   110 I AERA UI : Back held; leaving the pixel plugin
+10-02 09:17:10.152    92   110 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:17:16.819    92   110 I AERA UI : Back held; leaving the pixel plugin
+10-02 09:17:21.397    92   110 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:17:28.816  3458  3458 I recovery: type=1400 audit(0.0:612): avc:  denied  { read } for  name="plugin.json" dev="tmpfs" ino=804 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 09:17:28.816  3458  3458 I recovery: type=1400 audit(0.0:612): avc:  denied  { open } for  path="/tmp/aera/plugins/lifecycle-probe/plugin.json" dev="tmpfs" ino=804 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 09:17:28.816  3458  3458 I recovery: type=1400 audit(0.0:613): avc:  denied  { getattr } for  path="/tmp/aera/plugins/lifecycle-probe/plugin.json" dev="tmpfs" ino=804 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 09:17:38.230  3458  3464 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:17:38.228  3458  3458 I recovery: type=1400 audit(0.0:618): avc:  denied  { map } for  path="/tmp/aera/plugins/lifecycle-probe/runtime.xz" dev="tmpfs" ino=805 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 09:18:13.388  3458  3464 I AERA UI : Back held; leaving the pixel plugin
+10-02 09:18:18.615  3458  3464 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:18:25.256  3458  3464 I AERA UI : Back held; leaving the pixel plugin
+10-02 09:18:29.832  3458  3464 I AERA UI : CLI requested plugin lifecycle-probe
+10-02 09:18:49.989  3964  3970 I AERA UI : CLI requested plugin counter
+10-02 09:19:20.552  3964  3970 I AERA UI : display orientation changed to landscape
+10-02 09:19:45.504  3964  3970 I AERA UI : display orientation changed to portrait
+10-02 09:20:24.898  4241  4247 I AERA UI : display orientation changed to landscape
+10-02 09:20:36.280  4241  4247 I AERA UI : display orientation changed to portrait
