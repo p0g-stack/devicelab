@@ -101,9 +101,12 @@ p=$src/out/target/product/aera_cf
 
 # Results
 for f in ramdisk-recovery.img recovery.img; do [ -f "$p/$f" ] && cp "$p/$f" "$out/"; done
+# Unstripped recovery binary (same BuildID as the one in the ramdisk), for
+# addr2line on crashes: there is no crash_dump in recovery.
+[ -f "$p/symbols/recovery/root/system/bin/recovery" ] && cp "$p/symbols/recovery/root/system/bin/recovery" "$out/recovery-unstripped.elf"
 [ -d "$p/recovery/root" ] && tar -C "$p/recovery/root" -czf "$out/recovery-root.tgz" .
 ls "$p"/AERA*.zip "$p"/AERA*.img 2>/dev/null | while read -r f; do cp "$f" "$out/"; done
-(cd "$out" && sha256sum ./*.img ./*.tgz ./*.zip 2>/dev/null | sed 's# \./# #' > SHA256SUMS)
+(cd "$out" && sha256sum ./*.img ./*.tgz ./*.zip ./*.elf 2>/dev/null | sed 's# \./# #' > SHA256SUMS)
 {
   echo "android_manifest $MANIFEST_REV"
   echo "bootable/recovery $(git -C bootable/recovery rev-parse HEAD)"

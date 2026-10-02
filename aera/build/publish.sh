@@ -8,7 +8,7 @@ rec=$(awk '/^bootable\/recovery/ {print substr($2,1,7)}' "$out/BUILD-INFO")
 pat=$(awk '/^patches/ {print $2}' "$out/BUILD-INFO")
 tag="aera-cf-x86_64-$rec-${pat:-nopatch}"
 files=("$out/BUILD-INFO" "$out/SHA256SUMS")
-for f in "$out"/*.img "$out"/*.tgz; do [ -f "$f" ] && files+=("$f"); done
+for f in "$out"/*.img "$out"/*.tgz "$out"/*.elf; do [ -f "$f" ] && files+=("$f"); done
 gh release create "$tag" -R p0g-stack/devicelab --prerelease --title "AERA recovery for Cuttlefish x86_64 ($rec, patches $pat)" \
   --notes-file "$out/BUILD-INFO" "${files[@]}" \
   || gh release upload "$tag" -R p0g-stack/devicelab --clobber "${files[@]}"
