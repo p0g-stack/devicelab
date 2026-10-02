@@ -1,0 +1,75 @@
+{"check":"app","result":"ls: /product/app/WebuiApi_demo/: No such file or directory"}
+{"check":"mounts","result":"lrwxrwxrwx 1 root root 34 2026-10-01 23:59 /data/adb/metamodule -> /data/adb/modules/meta-myoverlayfs\nCalendarGooglePrebuilt Camera2 Chrome Chrome-Stub Drive GoogleContacts GoogleTTS LatinIMEGooglePrebuilt LicenseChecker Maps MarkupGoogle_v2 ModuleMetadataGoogle NexusWallpapersStubPrebuilt2018 Photos PixelThemesStub PrebuiltDeskClockGoogle PrebuiltGmail PrebuiltGoogleAdservicesTvp PrebuiltGoogleTelemetryTvp SoundPickerPrebuilt TrichromeLibrary TrichromeLibrary-Stub WebViewGoogle WebViewGoogle-Stub YouTube YouTubeMusicPrebuilt talkback"}
+{"check":"app-label","result":"No activities found"}
+{"check":"module-config","result":"manage module configuration\n\nUsage: ksud module config [OPTIONS] <COMMAND>\n\nCommands:\n  get     Get a config value\n  set     Set a config value\n  list    List all config entries\n  delete  Delete a config entry\n  clear   Clear all config entries\n  help    Print this message or the help of the given subcommand(s)\n\n-- files:\ntotal 32\ndrwxr-xr-x 2 root root 4096 2026-10-02 00:05 .\ndrwxr-xr-x 3 root root 4096 2026-10-01 23:59 ..\n-rw-r--r-- 1 root root   36 2026-10-01 23:59 persist.config\n-rw-r--r-- 1 root root   66 2026-10-02 00:05 tmp.config\n== /data/adb/ksu/module_configs/demo/persist.config\nMUSK\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u000f\u0000\u0000\u0000webui.installed\u0001\u0000\u0000\u00001\n== /data/adb/ksu/module_configs/demo/tmp.config\nMUSK\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\n\u0000\u0000\u0000webui.boot$\u0000\u0000\u00001d873194-bdb3-441c-9a18-4586c60202f2\n-- ksud get:\n1\nwebui.installed=1\nwebui.boot=1d873194-bdb3-441c-9a18-4586c60202f2"}
+{"check":"module-dirs","result":"/data/adb/demo:\ntotal 24\ndrwx------ 3 root root 4096 2026-10-02 00:03 .\ndrwx------ 7 root root 4096 2026-10-02 00:03 ..\ndrwx------ 2 root root 4096 2026-10-02 00:03 tmp\n\n/data/adb/demo/tmp:\ntotal 16\ndrwx------ 2 root root 4096 2026-10-02 00:03 .\ndrwx------ 3 root root 4096 2026-10-02 00:03 .."}
+{"check":"open","result":"opened: intent"}
+{"check":"tap-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"tap-plugins","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"tapped Plugins at 267,536 size 53x80 role tab tappable"}}
+{"check":"plugins","result":The app calls share_plus, permission_handler, the clipboard and file_selector as on any platform. Running in a WebUI host, so their *_webui packages answer.
+share_plus
+On WebUI: share_plus_webui: Android's share sheet, opened by the module's own app
+Share text
+permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: denied}
+{"check":"tap-share","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"tapped Share text at 24,278 size 112x48 role button tappable"}}
+{"check":"share-top","result":"com.google.android.gm/.welcome.WelcomeTourActivity"}
+{"check":"app-process","result":""}
+{"check":"share-log","result":"10-02 00:06:20.307 14460 14460 I chromium: [INFO:CONSOLE(53)] \"2026-10-02T00:06:20.305 INFO ui.plugins: share: unavailable\", source:  (53)\n10-02 00:06:21.000 10188 10375 D ShortcutService: Package com.google.android.gm has 1 manifest shortcut(s), and 1 share target(s)\n10-02 00:06:21.492 10188 10375 D ShortcutService: Package com.google.android.gm has 1 manifest shortcut(s), and 1 share target(s)\n10-02 00:06:22.705 10188 10375 D ShortcutService: Package com.google.android.gm has 1 manifest shortcut(s), and 1 share target(s)\n10-02 00:06:28.468 14960 14960 W app_process: ClassLoaderContext shared library size mismatch. Expected=2, found=0 (PCL[]{PCL[/system/framework/android.test.base.jar*724373495]#PCL[/system/framework/android.test.mock.jar*1452759902]} | PCL[])"}
+{"check":"share-result","result":share_plus
+On WebUI: share_plus_webui: Android's share sheet, opened by the module's own app
+Share result: unavailable}
+{"check":"cam-deny-1-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"tapped Request camera at 24,490 size 150x46 role button tappable"}}
+{"check":"cam-deny-1-top","result":"com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity"}
+{"check":"cam-deny-1-dialog","result":"Back Back\nShare text\nRequest camera\nCopy text\nPaste\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-deny-1-press","result":"ui: no node with 'Don'"}
+{"check":"cam-deny-1-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: denied}
+{"check":"cam-deny-1-perm","result":""}
+{"check":"cam-deny-2-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"tapped Request camera at 24,490 size 150x46 role button"}}
+{"check":"cam-deny-2-top","result":"com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity"}
+{"check":"cam-deny-2-dialog","result":"Back Back\nShare text\nRequest camera\nCopy text\nPaste\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-deny-2-press","result":"ui: no node with 'Don'"}
+{"check":"cam-deny-2-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: denied}
+{"check":"cam-deny-2-perm","result":""}
+{"check":"cam-after-deny-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"tapped Request camera at 24,490 size 150x46 role button"}}
+{"check":"cam-after-deny-top","result":"com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity"}
+{"check":"cam-after-deny-dialog","result":"Back Back\nShare text\nRequest camera\nCopy text\nPaste\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-after-deny-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: denied}
+{"check":"cam-after-deny-perm","result":""}
+{"check":"cam-grant-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"tapped Request camera at 24,490 size 150x46 role button"}}
+{"check":"cam-grant-top","result":"com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity"}
+{"check":"cam-grant-dialog","result":"Back Back\nShare text\nRequest camera\nCopy text\nPaste\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-grant-press","result":"ui: no node with 'While using the app'"}
+{"check":"cam-grant-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: denied}
+{"check":"cam-grant-perm","result":""}
+{"check":"clip-listen","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"listening"}}
+{"check":"clip-paste-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"tapped Paste at 139,80 size 84x42 role button"}}
+{"check":"clip-paste-top","result":"com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity"}
+{"check":"clip-pasted","result":Clipboard (flutter/services)
+On WebUI: clipboard_webui: Android's clipboard, through the module's own app
+Paste}
+{"check":"clip-blips","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"[]"}}
+{"check":"clip-process","result":""}
+{"check":"clip-copy-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"tapped Copy text at 24,80 size 107x42 role button"}}
+{"check":"clip-copied","result":Clipboard (flutter/services)
+On WebUI: clipboard_webui: Android's clipboard, through the module's own app
+Copy text}
+{"check":"clip-ext-paste","result":"text=\"\" text=\"\" text=\"\" text=\"\" text=\"\""}
+{"check":"pick-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_14460","value":"tapped Pick a file at 24,222 size 109x48 role button"}}
+{"check":"pick-top","result":"com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity"}
+{"check":"picked","result":file_selector
+On WebUI: file_selector_webui: the WebView's file chooser
+Pick a file}
+{"check":"pick-files","result":"ls: /data/adb/demo/tmp/open-*/: No such file or directory\ntotal 16\ndrwx------ 2 root root u:object_r:adb_data_file:s0  4096 2026-10-02 00:03 .\ndrwx------ 3 root root u:object_r:adb_data_file:s0  4096 2026-10-02 00:03 .."}
+{"check":"app-settings","result":"Back Back\nRequest camera\nCopy text\nPaste\nPick a file\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"uninstall","result":""}
+{"check":"after-uninstall","result":"ls: /data/adb/modules/demo: No such file or directory\nls: /data/adb/demo: No such file or directory\nls: /data/adb/ksu/module_configs/demo: No such file or directory\nls: /product/app/WebuiApi_demo: No such file or directory"}
