@@ -116,6 +116,10 @@ jobs:
         timeout-minutes: 10
         if: steps.aera.outputs.tag != ''
         run: aera/cuttlefish/aera-home-check.sh "$LAB_OUT/counter-1.0.0-x64.aerap" || true
+      - name: D5 A/B, edge-zone tap on the counter via Remote and raw evdev
+        timeout-minutes: 10
+        if: steps.aera.outputs.tag != ''
+        run: aera/cuttlefish/aera-d5-check.sh "$LAB_OUT/counter-1.0.0-x64.aerap" || true
       - name: flutter_p0g checkout
         id: p0g
         if: steps.aera.outputs.tag != ''
