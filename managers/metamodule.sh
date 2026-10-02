@@ -11,7 +11,8 @@ ARG=${1:-meta-overlayfs}; ID=${ARG##*/}; ID=${ID#search:}
 case $ARG in */*) REPO_GIVEN=$ARG;; esac; OUT=${LAB_OUT:-$PWD/out}; HERE=$(cd "$(dirname "$0")/.." && pwd)
 D=$(mktemp -d)
 pick() { # <repo>: latest release zip with metamodule=1 in module.prop -> $Z
-  rm -rf "$D/rel"; gh release download -R "$1" -D "$D/rel" -p '*.zip' >/dev/null 2>&1 || return 1
+  echo "== metamodule releases $1: $(gh release list -R "$1" -L 3 2>&1 | tr '\t\n' ' ;')"
+  rm -rf "$D/rel"; gh release download -R "$1" -D "$D/rel" -p '*.zip' 2>&1 | tail -1 | sed 's/^/== metamodule download: /'; ls "$D"/rel/*.zip >/dev/null 2>&1 || return 1
   for z in "$D"/rel/*.zip; do echo "== metamodule candidate $1 $(basename "$z"): $(unzip -p "$z" module.prop 2>/dev/null | tr -d '\r' | grep -E '^(id|version|versionCode|metamodule)=' | tr '\n' ' ')"; done
   for z in "$D"/rel/*.zip; do unzip -p "$z" module.prop 2>/dev/null | grep -q -E '^metamodule=(1|true)' && { Z=$z; REPO=$1; return 0; }; done; return 1; }
 Z=
