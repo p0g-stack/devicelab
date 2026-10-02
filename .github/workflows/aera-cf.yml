@@ -176,6 +176,10 @@ jobs:
           { flutter_p0g create --platforms=aera . && flutter_p0g build aera --debug; } 2>&1 | tail -20 | tee "$LAB_OUT/lifecycle-probe-build.log"
           "$GITHUB_WORKSPACE/aera/tools/aerap.py" retarget build/aera/*.aerap "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/lifecycle-probe-x64.aerap" || exit 0
           cd "$GITHUB_WORKSPACE" && RECENTS_CARD="${{ inputs.recents_card }}" aera/cuttlefish/aera-lifecycle-check.sh "$LAB_OUT/lifecycle-probe-x64.aerap"
+      - name: D10, Recents card of a paused pixel plugin (exception trace, no-preview and Browser A/B)
+        if: steps.p0g.outputs.rev != ''
+        timeout-minutes: 15
+        run: '[ -f "$LAB_OUT/lifecycle-probe-x64.aerap" ] && aera/cuttlefish/aera-d10-check.sh "$LAB_OUT/lifecycle-probe-x64.aerap" || true'
       - name: Where the second tap is lost (plugin vs AERA's own Files card)
         if: steps.p0g.outputs.rev != ''
         timeout-minutes: 10
