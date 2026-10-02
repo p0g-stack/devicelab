@@ -1,0 +1,35 @@
+init.svc.recovery=
+$ getprop | grep -E "aera|ro.boot.mode|bootmode|sys.usb"
+adb: device offline
+
+$ ps -A -o PID,PPID,S,NAME,ARGS | grep -vE " \[|ps -A"
+adb: device offline
+
+$ ls -la /tmp
+adb: device offline
+
+$ ls -la /dev/dri /dev/graphics /sys/class/drm 2>&1
+adb: device offline
+
+$ cat /sys/class/drm/card0-*/modes /sys/class/drm/card0-*/status 2>&1
+adb: device offline
+
+$ rm -f /tmp/aeraui.png; touch /tmp/aeraui-capture; sleep 3; ls -la /tmp/aeraui-capture /tmp/aeraui.png 2>&1
+adb: device offline
+
+$ getprop init.svc.logd; pidof logd; logcat -d -t 5 2>&1 | tail -5
+adb: device offline
+
+$ grep -c "Atomic commit failed" /tmp/recovery.log; grep -E "SDE topology|Atomic Commit" /tmp/recovery.log | head -5
+adb: device offline
+
+$ mountpoint -q /sys/kernel/debug || mount -t debugfs debugfs /sys/kernel/debug; cat /sys/kernel/debug/dri/0/state 2>&1 | head -60
+adb: device offline
+
+$ ls -la /system/etc/task_profiles* /system/etc/cgroups.json 2>&1
+adb: device offline
+
+$ dmesg | grep -iE "drm|virtio_gpu|recovery|aera|CANNOT|avc" | tail -40
+adb: device offline
+
+$ /system/bin/recovery (by hand, service not running)
