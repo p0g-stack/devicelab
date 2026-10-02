@@ -74,8 +74,10 @@ ltap 590 110; log "(landscape: shade chevron)"; sleep 3; shot 3b-after-chevron
 sleep 5; shot 4-rotated
 ltap 1290 660; sleep 1; ltap 1291 661; log "(landscape: counter + twice)"; sleep 3; shot 4b-landscape-taps
 curl -s -m 10 -H "x-aera-code: $RCODE" "$REMOTE/screen.jpg" -o "$OUT/4-remote-screen.jpg"; log "remote screen.jpg $(stat -c %s "$OUT/4-remote-screen.jpg" 2>/dev/null) bytes"
-# Back to portrait: shade down from the landscape top, Rotation tile.
-lswipe 674 10 674 600; sleep 2; shot 4c-landscape-shade; ltap 242 318; sleep 4; shot 5-toggled-back
+# Back to portrait: shade down from the landscape top, Rotation tile (the
+# landscape shade lays tiles out differently: Rotation at landscape 432,345
+# in run 36965839509's 4c-landscape-shade.png).
+lswipe 674 10 674 600; sleep 2; shot 4c-landscape-shade; ltap 432 345; sleep 4; shot 5-toggled-back
 sleep 6; log "recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; after=$(pids); log "counter pids: $before -> $after"
 [ -n "$before" ] && [ "$(echo "$before" | head -1)" = "$(echo "$after" | head -1)" ] && log "SAME PROCESS" || log "PROCESS CHANGED or gone"; cores counter
 # Control (run 36953588555: toggling back crashed AERA with the counter open):
@@ -87,10 +89,11 @@ fi
 a shell 'pkill -f aera-flutter'; sleep 2; arm_core; rp=$(a shell pidof recovery | tr -d '\r')
 xy=${ROTATE_TILE:-240,400}
 swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; ltap 590 110; sleep 3; shot 6-home-landscape
-lswipe 674 10 674 600; sleep 2; ltap 242 318; sleep 4; shot 7-home-back
+lswipe 674 10 674 600; sleep 2; ltap 432 345; sleep 4; shot 7-home-back
 sleep 4; log "no plugin: recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; cores home
 a shell 'logcat -d 2>/dev/null | grep -E "touch released|orientation|frame capture" | tail -25' | tr -d '\r' > "$OUT/logcat-rotate.txt"
 a shell 'cat /sys/class/drm/card0-*/modes 2>/dev/null | head -2; grep -iE "rotat|SURFACE|generation" /tmp/recovery.log | tail -20' > "$OUT/recovery-rotate.log" 2>&1
-a shell "tail -30 /sdcard/AERA/plugin-data/$id/aera-flutter.log 2>/dev/null" > "$OUT/aera-flutter.log" 2>&1
+a shell "tail -40 /sdcard/AERA/plugin-data/$id/aera-flutter.log /tmp/aera/plugin-data/$id/aera-flutter.log 2>/dev/null" > "$OUT/aera-flutter.log" 2>&1
+a shell 'logcat -d 2>/dev/null | grep -iE "surface|pixel|scene|orientation|present|plugin" | tail -60' | tr -d '\r' > "$OUT/logcat-surface.txt"
 rm -rf "$OUT/.pkg" "$OUT/.req.json"
 exit 0
