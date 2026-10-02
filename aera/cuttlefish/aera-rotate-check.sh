@@ -76,7 +76,7 @@ a shell 'logcat -d 2>/dev/null | grep -iE "rotat|landscape" | tail -10' | tr -d 
 # chevron 1196,54, Rotation tile 454,176).
 ltap() { tap "$2" "$(( 1347 - $1 ))"; }                       # landscape x y
 lswipe() { swipe "$2" "$(( 1347 - $1 ))" "$4" "$(( 1347 - $3 ))"; }
-ltap 654 56; log "(landscape: shade chevron)"; sleep 3; shot 3b-after-chevron
+ltap 654 56; sleep 1; ltap 1196 54; log "(landscape: shade chevron, left-third and full-width layouts; 0020 at flutter-aera 80f55ff relays the open shade out full width)"; sleep 3; shot 3b-after-chevron
 sleep 5; shot 4-rotated
 ltap 1282 654; sleep 1; ltap 1283 655; log "(landscape: counter + twice)"; sleep 3; shot 4b-landscape-taps
 curl -s -m 10 -H "x-aera-code: $RCODE" "$REMOTE/screen.jpg" -o "$OUT/4-remote-screen.jpg"; log "remote screen.jpg $(stat -c %s "$OUT/4-remote-screen.jpg" 2>/dev/null) bytes"
