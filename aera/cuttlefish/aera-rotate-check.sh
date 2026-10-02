@@ -61,7 +61,9 @@ before=$(pids); log "before: $before"
 curl -s -m 10 -H "x-aera-code: $RCODE" "$REMOTE/screen.jpg" -o "$OUT/1-remote-screen.jpg"; log "remote screen.jpg (portrait) $(stat -c %s "$OUT/1-remote-screen.jpg" 2>/dev/null) bytes"
 arm_core; rp=$(a shell pidof recovery | tr -d '\r')
 swipe 360 10 360 900; sleep 2; shot 2-shade
-xy=${ROTATE_TILE:-240,400}; tap "${xy%,*}" "${xy#*,}"; sleep 3; shot 3-after-toggle
+# Adaptive resolution (image 63bdf2a, run 37031339693): the shade is laid out
+# smaller, Rotation tile at panel 200,168 (was 240,400 at 1:1).
+xy=${ROTATE_TILE:-200,168}; tap "${xy%,*}" "${xy#*,}"; sleep 3; shot 3-after-toggle
 a shell 'logcat -d 2>/dev/null | grep -iE "rotat|landscape" | tail -10' | tr -d '\r' >> "$OUT/log.txt"
 # In landscape (0026) AERA maps the panel's touches like its frames: the
 # 1348x720 landscape picture is the 720x1348 panel turned a quarter left
@@ -95,7 +97,7 @@ if [ "$(a shell pidof recovery | tr -d '\r')" != "$rp" ]; then
   RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1); sleep 2; a forward tcp:18088 tcp:8088 >/dev/null
 fi
 a shell 'pkill -f aera-fl[u]tter'; sleep 2; arm_core; rp=$(a shell pidof recovery | tr -d '\r')
-xy=${ROTATE_TILE:-240,400}
+xy=${ROTATE_TILE:-200,168}
 swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; ltap 590 110; sleep 2; ltap 1226 108; sleep 3; shot 6-home-landscape
 lswipe 674 10 674 600; sleep 2; ltap 432 345; sleep 4; shot 7-home-back
 sleep 4; log "no plugin: recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; cores home
