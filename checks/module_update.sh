@@ -13,6 +13,7 @@ js() { python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))'
 rec() { echo "{\"check\":\"$1\",\"result\":$2}" | tee -a "$J"; }
 props() { adb shell "for d in /data/adb/modules/$ID /data/adb/modules_update/$ID; do echo \"-- \$d\"; grep -E '^(version|versionCode|updateJson)=' \$d/module.prop 2>&1; ls -la --time-style=+%T \$d/module.prop 2>/dev/null; done" | tr -d '\r'; }
 rec installed "$(props | js)"
+rec app-installed "$(adb shell "pm path com.webui.api.$ID; dumpsys package com.webui.api.$ID | grep -E 'versionCode|codePath|pkgFlags' | head -4" 2>&1 | tr -d '\r' | js)"
 U=$(adb shell "sed -n 's/^updateJson=//p' /data/adb/modules/$ID/module.prop" | tr -d '\r')
 rec update-json "$( (echo "$U"; [ -n "$U" ] && curl -fsSL "$U") 2>&1 | js)"
 shot() { timeout 20 adb exec-out screencap -p >"$O-$1.png"; $UI dump "$O-$1.xml" >/dev/null 2>&1; }
@@ -56,15 +57,16 @@ if [ -n "$W" ] && UI_EXACT=1 $UI tap "$W"; then
 fi
 rec after "$(props | js)"
 # Apply the staged update the way install_modules.sh does (soft restart), then
-# check Android took the new zip's app (same package, same signer, new version).
-APKDIR=$(adb shell "ls -d /data/adb/modules_update/$ID/system/product/app/WebuiApi_* 2>/dev/null | head -1" | tr -d '\r')
-if [ -n "$APKDIR" ]; then
-  APP=$(adb shell "dumpsys package packages | grep -o 'com.webui.api.[a-z0-9_.]*' | sort -u | head -1" | tr -d '\r')
-  rec app-before "$(adb shell "dumpsys package $APP | grep -E 'versionName|signatures|codePath|lastUpdateTime'" 2>&1 | tr -d '\r' | js)"
+# check Android's view of the app (same package and signer, new version; v0.1.42+
+# installs it as a user app from customize.sh instead of mounting system/product/app).
+APP=com.webui.api.$ID
+appinfo() { adb shell "pm path $APP; dumpsys package $APP | grep -E 'versionCode|versionName|signatures|codePath|lastUpdateTime|installerPackageName|pkgFlags' | head -12; ls -la /product/app/WebuiApi_$ID/ 2>&1 | head -3; grep /product/app /proc/mounts" 2>&1 | tr -d '\r'; }
+if adb shell "[ -d /data/adb/modules_update/$ID ]"; then
+  rec app-before "$(appinfo | js)"
   adb shell /data/adb/ksud soft-reboot >/dev/null 2>&1; sleep 5; timeout 120 adb wait-for-device; t0=$SECONDS
   until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ] && adb shell pidof system_server >/dev/null; do (( SECONDS - t0 > 300 )) && break; sleep 3; done; sleep 25
   rec applied "$(props | js)"
-  rec app-after "$( (adb shell "dumpsys package $APP | grep -E 'versionName|signatures|codePath|lastUpdateTime'; ls -la /product/app/WebuiApi_*/; grep /product/app /proc/mounts"; adb logcat -d | grep -i -E 'signature|INSTALL_FAILED|PackageManager.*webui' | tail -10) 2>&1 | tr -d '\r' | js)"
+  rec app-after "$( (appinfo; adb shell "cat /data/adb/modules/$ID/webui_app_plane/app-install.log 2>/dev/null"; adb logcat -d | grep -i -E 'signature|INSTALL_FAILED|PackageManager.*webui' | tail -10) 2>&1 | tr -d '\r' | js)"
 fi
 rec manager-log "$(adb logcat -d | grep -i -E 'update|download|flash|install|module' | grep -v -E 'PackageManager|ProfileInstaller|nativeloader|AiAiEcho|SsMediaDataProvider|Smartspace' | tail -30 | js)"
 adb shell input keyevent KEYCODE_BACK; adb shell am force-stop "$PKG"

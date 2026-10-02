@@ -21,6 +21,7 @@ dialog() { $UI dump 2>/dev/null | cut -d' ' -f2- | head -12; }   # visible click
 page_text() { text | python3 -c 'import json,sys; v=json.loads(sys.stdin.read()); v=v.get("value",v) if isinstance(v,dict) else v; print("\n".join(x for x in v if any(k in x for k in sys.argv[1:])))' "$@" 2>&1; }
 
 rec app "$(sh_ "pm path $APP; ls -laZ /product/app/WebuiApi_$ID/ 2>&1; dumpsys package $APP | grep -E 'codePath|versionName|userId|pkgFlags|privateFlags|signatures|requested permissions' -A0 | head -10; dumpsys package $APP | grep -A12 'requested permissions:' | head -13")"
+rec app-user "$(sh_ "pm list packages -3 $APP; pm list packages -s $APP | sed 's/^/system: /'; dumpsys package $APP | grep -E 'versionCode|installerPackageName|installInitiatingPackageName' | head -4; echo '-- install log:'; cat /data/adb/modules/$ID/webui_app_plane/app-install.log 2>&1 | tail -5")"
 rec mounts "$(sh_ "ls -la /data/adb/metamodule 2>&1; grep -E ' /product| /system ' /proc/mounts | grep -v -E '^/dev/block/dm' | head -12; ls /product/app | head -40 | tr '\\n' ' '")"
 rec app-label "$(sh_ "cmd package query-activities --brief -a android.intent.action.MAIN -p $APP 2>&1 | head -5; dumpsys package $APP | grep -m3 -i -E 'label|nonLocalizedLabel'")"
 rec metamodule-log "$(sh_ "M=\$(readlink /data/adb/metamodule); echo \"metamodule \$M\"; ls -la \$M 2>&1 | head -20; for f in \$(find \$M /data/adb/\${M##*/}* /data/adb/ksu/log /cache -maxdepth 3 \\( -name '*.log' -o -name '*.txt' \\) 2>/dev/null | head -8); do echo \"== \$f\"; tail -25 \$f; done; ls -la /data/adb/modules/$ID 2>&1 | head; echo '-- dmesg:'; dmesg | grep -i -E 'hybrid|magic|overlay|mountify|meta' | tail -15")"
@@ -32,6 +33,8 @@ rec open "\"$("$HERE/managers/open_webui.sh" "$LABEL-appmod" "$HPKG" "$ID" "${NA
 ev "$HELP" >/dev/null; ev '__w.on(); "semantics on"' >/dev/null; sleep 2
 rec tap-places "$(step Places)"; sleep 6
 rec tap-plugins "$(step Plugins)"; sleep 6
+fgs() { sh_ "dumpsys activity services $APP 2>&1 | grep -E 'ServiceRecord|isForeground|foregroundId' | head -6; echo '-- notification:'; dumpsys notification --noredact 2>&1 | grep -A4 \"pkg=$APP\" | head -12; echo '-- procs:'; ps -A -o USER,PID,NAME | grep -E 'webui.api|dartaotruntime'"; }
+rec fgs-open "$(fgs)"
 rec plugins "$(page_text Camera Share share_plus permission)"; shot plugins
 
 # Share: Android's chooser, started by the module's app.
@@ -39,6 +42,7 @@ adb logcat -c
 rec tap-share "$(step 'Share text')"; sleep 8
 rec share-top "\"$(top)\""; shot share
 rec app-process "$(sh_ "ps -A -o USER,UID,LABEL,PID,NAME | grep -E 'webui.api' ")"
+rec app-mounts "$(sh_ "p=\$(pidof $APP); [ -n \"\$p\" ] && { echo \"pid \$p\"; grep -c . /proc/\$p/mounts; grep -E '/product/app|/data/adb|mountify|KSU' /proc/\$p/mounts | head -6; } || echo 'app not running'")"
 rec share-log "$(adb logcat -d | grep -i -E "$APP|chooser|share|BackgroundActivityStart|avc" | grep -v -E 'Enqueued|Broadcasting' | tail -12 | js)"
 adb shell input keyevent KEYCODE_BACK; sleep 4
 rec share-result "$(page_text 'Share result')"
@@ -106,9 +110,16 @@ adb shell am start -a android.settings.APPLICATION_DETAILS_SETTINGS -d "package:
 rec app-settings "$(dialog | js)"; shot app-settings
 adb shell input keyevent KEYCODE_BACK; sleep 2
 
+# Foreground helper service: up while the WebUI's root channel is wound up, gone after its idle exit.
+adb shell input keyevent KEYCODE_HOME; sleep 50; rec fgs-home "$(fgs)"
+adb shell am force-stop "$HPKG"; sleep 45; rec fgs-closed "$(fgs)"
+# Reboot keeps the user app (soft-reboot here: the AVD has no KernelSU at real boot).
+adb shell /data/adb/ksud soft-reboot >/dev/null 2>&1; sleep 5; timeout 120 adb wait-for-device
+t0=$SECONDS; until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ]; do (( SECONDS - t0 > 300 )) && break; sleep 3; done; sleep 30
+rec after-reboot "$(sh_ "pm path $APP; dumpsys package $APP | grep -E 'versionCode|codePath' | head -2; echo '-- service.sh log:'; cat /data/adb/modules/$ID/webui_app_plane/app-install.log 2>&1 | tail -5")"
 if [ "${UNINSTALL:-0}" = 1 ]; then
   rec uninstall "$(sh_ "/data/adb/ksud module uninstall $ID 2>&1 | tail -3")"
   adb shell /data/adb/ksud soft-reboot >/dev/null 2>&1; sleep 5; timeout 120 adb wait-for-device
-  t0=$SECONDS; until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ]; do (( SECONDS - t0 > 300 )) && break; sleep 3; done; sleep 20
+  t0=$SECONDS; until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ]; do (( SECONDS - t0 > 300 )) && break; sleep 3; done; sleep 45  # uninstall.sh runs pm uninstall after boot_completed
   rec after-uninstall "$(sh_ "ls -d /data/adb/modules/$ID /data/adb/$ID /data/adb/ksu/module_configs/$ID /product/app/WebuiApi_$ID 2>&1; pm path $APP 2>&1; pm list packages $APP")"
 fi
