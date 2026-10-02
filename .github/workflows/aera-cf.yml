@@ -112,6 +112,10 @@ jobs:
         run: |
           set -o pipefail
           aera/cuttlefish/aera-open.sh aera-counter "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: Remote Home as the first key on a fresh AERA (D8 on the infiniti)
+        timeout-minutes: 10
+        if: steps.aera.outputs.tag != ''
+        run: aera/cuttlefish/aera-home-check.sh "$LAB_OUT/counter-1.0.0-x64.aerap" || true
       - name: flutter_p0g checkout
         id: p0g
         if: steps.aera.outputs.tag != ''
