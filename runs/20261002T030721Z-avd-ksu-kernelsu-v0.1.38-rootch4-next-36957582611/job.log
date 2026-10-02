@@ -1,0 +1,479 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 23s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; KernelSU-Next/KernelSU-Next v3.4.0
+total 28968
+drwx------  2 runner runner     4096 Oct  2 02:54 .
+drwxrwxrwt 16 root   root       4096 Oct  2 02:54 ..
+-rw-r--r--  1 runner runner 11859167 Oct  2 02:54 KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+-rw-r--r--  1 runner runner 11857955 Oct  2 02:54 KernelSU_Next_v3.4.0_33294-release.apk
+-rw-r--r--  1 runner runner  5583488 Oct  2 02:54 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   342200 Oct  2 02:54 x86_64-android15-6.6_kernelsu.ko
+== manager installed (com.rifsxd.ksunext, KernelSU_Next_v3.4.0_33294-release.apk)
+/tmp/tmp.fSbGGXo87U/x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 9.0 MB/s (342200 bytes in 0.036s)
+/tmp/tmp.fSbGGXo87U/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 255.5 MB/s (5583488 bytes in 0.021s)
+== ksud: ksud 3.4.0 (uapi: 4)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              258048  0 
+== lsmod: kernelsu              258048  0 
+== ls: /data/adb/ksu/bin: No such file or directory
+== total 356
+== drwx------  2 root   root     4096 2026-10-02 02:54 .
+== drwxrwx--x 51 system system   4096 2026-10-02 02:54 ..
+== -rw-rw-rw-  1 root   root   342200 2026-10-02 02:54 kernelsu.ko
+== restored /data/adb/ksud
+aarch64-android12-5.10_kernelsu.ko
+aarch64-android13-5.10_kernelsu.ko
+aarch64-android13-5.15_kernelsu.ko
+aarch64-android14-5.15_kernelsu.ko
+aarch64-android14-6.1_kernelsu.ko
+aarch64-android15-6.6_kernelsu.ko
+aarch64-android16-6.12_kernelsu.ko
+aarch64-android17-6.18_kernelsu.ko
+KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+KernelSU_Next_v3.4.0_33294-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-unknown-linux-musl
+x86_64-android12-5.10_kernelsu.ko
+x86_64-android13-5.10_kernelsu.ko
+x86_64-android13-5.15_kernelsu.ko
+x86_64-android14-5.15_kernelsu.ko
+x86_64-android14-6.1_kernelsu.ko
+x86_64-android15-6.6_kernelsu.ko
+x86_64-android16-6.12_kernelsu.ko
+x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in KernelSU-Next/KernelSU-Next v3.4.0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.043s)
+== modules: [
+  {
+    "id": "devicelab_probe",
+    "name": "devicelab probe",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "version": "1",
+    "update": "false",
+    "remove": "false",
+    "versionCode": "1",
+    "action": "false",
+    "mount": "false",
+    "web": "true",
+    "enabled": "true",
+    "author": "p0g-stack"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+== home text: text="Working" text="LKM (GKI2)" text="Jailbreak mode" text="Version: v3.4.0 (33294-4)" text="Custom" text="Superuser" text="0" text="Module" text="1" text="Manager version" text="v3.4.0 (33294-4)" text="Hook mode" text="Tracepoint" text="Metamodule status" text="Not installed" text="Having trouble?" text="Encountered a bug or have feedback?" text="KernelSU-Next" 
+== manager activities: com.rifsxd.ksunext/.FlashModule com.rifsxd.ksunext/.ui.MainActivity com.rifsxd.ksunext/androidx.core.content.FileProvider com.rifsxd.ksunext/androidx.profileinstaller.ProfileInstallReceiver com.rifsxd.ksunext/androidx.startup.InitializationProvider 
+== metamodule releases backslashxx/mountify: 204 Latest 204 2026-08-25T05:14:18Z;203  203 2026-06-25T15:03:16Z;202  202 2026-06-23T03:45:32Z;
+== metamodule candidate backslashxx/mountify mountify.zip: id=mountify version=v2.0.4 versionCode=204 metamodule=true 
+== metamodule repo (given): backslashxx/mountify
+== metamodule zip: mountify.zip sha256 dde361c444f6990b759890720487785402a391a61cf6530f960deb98e5ef864d
+== metamodule module.prop: id=mountify name=mountify version=v2.0.4 versionCode=204 author=xx, KOWX712 metamodule=true description=Globally mounted modules via OverlayFS. updateJson=https://raw.githubusercontent.com/backslashxx/mountify/master/update.json 
+/tmp/tmp.7Qio5yseqg/rel/mountify.zip: 1 file pushed, 0 skipped. 371.2 MB/s (554873 bytes in 0.001s)
+== install mountify.zip
+[H[J[|]
+[H[J[\]
+[H[J[+] mountify
+[+] SysReq test
+[+] CONFIG_OVERLAY_FS
+[+] overlay found in /proc/filesystems
+[+] CONFIG_TMPFS_XATTR
+[+] tmpfs extended attribute test passed
+[!] using fresh config.sh
+[+] moving modules.txt
+[+] moving whiteouts.txt
+[+] mountify will be installed in metamodule mode!
+- Done
+- Creating metamodule symlink
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (40s): [
+  {
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "id": "devicelab_probe",
+    "enabled": "true",
+    "versionCode": "1",
+    "mount": "false",
+    "update": "false",
+    "name": "devicelab probe",
+    "web": "true",
+    "version": "1",
+    "author": "p0g-stack",
+    "remove": "false",
+    "action": "false"
+  },
+  {
+    "remove": "false",
+    "mount": "false",
+    "version": "v2.0.4",
+    "author": "xx, KOWX712",
+    "metamodule": "true",
+    "id": "mountify",
+    "versionCode": "204",
+    "description": "mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted",
+    "updateJson": "https://raw.githubusercontent.com/backslashxx/mountify/master/update.json",
+    "enabled": "true",
+    "update": "false",
+    "web": "true",
+    "action": "true",
+    "name": "mountify"
+  }
+]
+total 32
+drwxrwxrwx 4 root root 4096 2026-10-02 02:55 .
+drwx------ 6 root root 4096 2026-10-02 02:55 ..
+drwxr-xr-x 3 root root 4096 2026-10-02 02:54 devicelab_probe
+drwxr-xr-x 5 root root 4096 2026-10-02 02:55 mountify
+== metamodule active: lrwxrwxrwx 1 root root 26 2026-10-02 02:55 /data/adb/metamodule -> /data/adb/modules/mountify id=mountify name=mountify version=v2.0.4 versionCode=204 author=xx, KOWX712 metamodule=true description=mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted updateJson=https://raw.githubusercontent.com/backslashxx/mountify/master/update.json 
+inputs/modules/flutter_webui_counter-0.1.5.zip: 1 file pushed, 0 skipped. 403.2 MB/s (21434766 bytes in 0.051s)
+== install flutter_webui_counter-0.1.5.zip
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.8.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.2.woff2
+   creating: webroot/fonts/notosansmath/
+   creating: webroot/fonts/notosansmath/v15/
+  inflating: webroot/fonts/notosansmath/v15/7Aump_cpkSecTWaHRlH2hyV5UHkD-V048PW0.woff2
+   creating: webroot/fonts/roboto/
+   creating: webroot/fonts/roboto/v32/
+  inflating: webroot/fonts/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2
+  inflating: webroot/.last_build_id
+  inflating: webroot/config.json
+  inflating: webroot/flutter_webui.js
+  inflating: customize.sh
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 495.4 MB/s (6582359 bytes in 0.013s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+inputs/modules/demo.zip: 1 file pushed, 0 skipped. 343.5 MB/s (28109334 bytes in 0.078s)
+== install demo.zip
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/pkg/.gitignore
+  inflating: webroot/pkg/demo_native.js
+  inflating: webroot/pkg/demo_native_bg.wasm
+  inflating: webroot/pkg/package.json
+  inflating: webroot/version.json
+  inflating: webroot/workers/demo_service.web.g.dart.js
+  inflating: webroot/workers/hello_service.web.g.dart.js
+  inflating: webui_app_plane/arm64-v8a/webui_termux_api.aot
+  inflating: webui_app_plane/termux-api
+  inflating: webui_app_plane/x86_64/webui_termux_api.aot
+- Done
+- Handle partition /product
+- Module installed successfully!
+/home/runner/work/devicelab/devicelab/envdump.zip: 1 file pushed, 0 skipped. 25.2 MB/s (1766 bytes in 0.000s)
+== install envdump.zip
+ devicelab envdump 
+ by p0g-stack 
+*******************
+**************************
+ Powered by KernelSU-Next 
+**************************
+Archive:  /data/local/tmp/m.zip
+  inflating: customize.sh
+- Extracting module files
+Archive:  /data/local/tmp/m.zip
+  inflating: module.prop
+  inflating: customize.sh
+- devicelab envdump: written /data/local/tmp/customize-env.txt
+- Done
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (40s): [
+  {
+    "remove": "false",
+    "mount": "false",
+    "version": "1",
+    "id": "devicelab_probe",
+    "enabled": "true",
+    "update": "false",
+    "action": "false",
+    "versionCode": "1",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "web": "true",
+    "name": "devicelab probe",
+    "author": "p0g-stack"
+  },
+  {
+    "enabled": "true",
+    "update": "false",
+    "mount": "false",
+    "versionCode": "204",
+    "version": "v2.0.4",
+    "name": "mountify",
+    "remove": "false",
+    "action": "true",
+    "web": "true",
+    "id": "mountify",
+    "description": "mode: auto 🤖 | fstype: tmpfs 🦾 | modules: demo  ",
+    "author": "xx, KOWX712",
+    "updateJson": "https://raw.githubusercontent.com/backslashxx/mountify/master/update.json",
+    "metamodule": "true"
+  },
+  {
+    "name": "flutter-webui Counter",
+    "versionCode": "6",
+    "update": "false",
+    "remove": "false",
+    "author": "p0g-stack",
+    "web": "true",
+    "action": "false",
+    "id": "flutter_webui_counter",
+    "version": "0.1.5",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "enabled": "true",
+    "mount": "false"
+  },
+  {
+    "description": "A new Flutter project.",
+    "name": "Counter",
+    "author": "Yuv",
+    "update": "false",
+    "action": "false",
+    "versionCode": "1",
+    "web": "true",
+    "remove": "false",
+    "enabled": "true",
+    "version": "v1.0.0",
+    "mount": "false",
+    "id": 
+total 64
+drwxrwxrwx 8 root root 4096 2026-10-02 02:56 .
+drwx------ 6 root root 4096 2026-10-02 02:55 ..
+drwxr-xr-x 3 root root 4096 2026-10-02 02:55 counter
+drwxr-xr-x 7 root root 4096 2026-10-02 02:56 demo
+drwxr-xr-x 2 root root 4096 2026-10-02 02:56 devicelab_envdump
+drwxr-xr-x 3 root root 4096 2026-10-02 02:54 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-10-02 02:55 flutter_webui_counter
+drwxr-xr-x 5 root root 4096 2026-10-02 02:56 mountify
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 266.1 MB/s (7843260 bytes in 0.028s)
+Starting: Intent { cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.rifsxd.ksunext/.ui.webui.WebUIActivity
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"socket": "webview_devtools_remote_10966", "type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "devicelab probe"}]}
+{"check":"globals","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10966","value":{"ua":"Mozilla/5.0 (Linux; Android 15; sdk_gphone64_x86_64 Build/AE3A.240806.043; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/124.0.6367.219 Mobile Safari/537.36","origin":"https://mui.kernelsu.org","href":"https://mui.kernelsu.org/index.html","globals":["ksu"],"ksu":["cacheAllPackageIcons","copyFile","createShortcut","enableInsets","exec","fileOutputStream","fullScreen","getPackagesIcons","getPackagesInfo","listFile","listPackages","moduleInfo","moveFile","readFile","removeFile","spawn","toast","writeFile","cacheAllPackageIcons","copyFile","createShortcut","enableInsets","exec","fileOutputStream","fullScreen","getPackagesIcons","getPackagesInfo","listFile","listPackages","moduleInfo","moveFile","readFile","removeFile","spawn","toast","writeFile"]}}}
+{"check":"ksu-exec","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10966","value":{"code":0,"out":"uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0\nu:r:ksu:s0\u0000","err":""}}}
+{"check":"ws-loopback","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10966","value":{"got":["{\"origin\":\"https://mui.kernelsu.org\",\"peerUid\":10209,\"remote\":\"127.0.0.1:57190\",\"serverUid\":0,\"t\":1790909819365,\"uidSource\":\"/proc/net/tcp\"}","hi"],"ms":15}}}
+{"check":"fetch-loopback","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10966","value":{"origin":"https://mui.kernelsu.org","peerUid":10209,"remote":"127.0.0.1:57198","serverUid":0,"t":1790909819476,"uidSource":"/proc/net/tcp"}}}
+{"check":"webview-uid","result":["webview_zygote 1053 webview_zygote", "u0_a209      10209 com.rifsxd.ksunext", "u0_a151      10151 com.google.android.webview:webview_service", "u0_i9000     99000 com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0", "u0_a151      10151 com.google.android.webview:webview_apk"]}
+{"check":"while-home-heartbeat","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10966","value":{"now":18370,"vis":"hidden"}}}
+{"check":"lifecycle","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10966","value":{"events":[{"type":"pageshow","t":233,"vis":"visible"},{"type":"visibilitychange","t":12712,"vis":"hidden"},{"type":"visibilitychange","t":20596,"vis":"visible"}],"gaps":[{"from":14926,"ms":1002,"vis":"hidden"},{"from":16926,"ms":1002,"vis":"hidden"}],"slow":{"heldMs":3000,"sentAt":1790909822619,"resolvedAt":1790909822621,"vis":"hidden"}}}}
+{"check":"dev-url","result":{"url":"http://127.0.0.1:8090/index.html","socket":"webview_devtools_remote_10966","value":{"href":"http://127.0.0.1:8090/index.html","ksu":"object","webui":"undefined","globals":["ksu"],"exec":{"code":0,"out":"uid=0(root) gid=0(root) groups=0(root) context=u:r:ksu:s0","err":""}}}}
+Starting: Intent { cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.rifsxd.ksunext/.ui.webui.WebUIActivity
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Flutter Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11263","value":{"href":"https://mui.kernelsu.org/index.html","title":"Flutter Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":316,"load":777},"paint":{"first-paint":1264,"first-contentful-paint":2146},"glassAt":"present","firstFrame":null,"insets":"24px","vv":[320,640,1]}}}
+{"check":"java-exceptions","result":["10-02 02:57:27.352  9694 11400 W PeoplePU: java.lang.IllegalArgumentException: Unknown component: ComponentInfo{com.google.android.syncadapters.contacts/com.google.android.syncadapters.contacts.ProxyGalProvider}", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat android.os.Parcel.createExceptionOrNull(Parcel.java:3246)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat android.os.Parcel.createException(Parcel.java:3226)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat android.os.Parcel.readException(Parcel.java:3209)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat android.os.Parcel.readException(Parcel.java:3151)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat android.content.pm.IPackageManager$Stub$Proxy.getComponentEnabledSetting(IPackageManager.java:6361)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat android.app.ApplicationPackageManager.getComponentEnabledSetting(ApplicationPackageManager.java:3191)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat cywf.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):4)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat cxyx.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):11)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat com.google.android.gms.people.api.init.PeopleModuleInitIntentOperation.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):93)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat ajjh.onHandleIntent(:com.google.android.gms@242335041@24.23.35 (190800-646585959):129)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@242335041@24.23.35 (190800-646585959):2)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat ajom.onHandleIntent(:com.google.android.gms@242335041@24.23.35 (190800-646585959):8)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat pkf.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):70)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat pke.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):152)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat emsz.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):21)", "10-02 02:57:27.352  9694 11400 W PeoplePU: \tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)", "--", "10-02 02:57:28.683  9199  9208 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-02 02:57:28.683  9199  9208 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-02 02:57:28.683  9582  9717 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=56 ]", "10-02 02:57:30.993  8749  9633 D ShortcutService: Getting shortcuts for launcher= com.google.android.asuser=0 pkg=com.google.android.gms", "10-02 02:57:32.080  8749  8900 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14", "10-02 02:57:32.081  8749  8900 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14", "10-02 02:57:32.081  8749  8900 D InetDiagMessage: Destroyed live tcp sockets for uids={10202} in 1ms", "10-02 02:57:32.081  8749  8900 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14", "10-02 02:57:32.082  8749  8900 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14", "10-02 02:57:32.082  8749  8900 D InetDiagMessage: Destroyed live tcp sockets for uids={20202} in 1ms", "10-02 02:57:32.300  8749  9633 D OomAdjuster: Not killing cached processes", "10-02 02:57:32.839  8749  8785 D ActivityManager: sync unfroze 10018 com.google.android.apps.wallpaper for 3", "10-02 02:57:32.847  8749  9633 D FileUtils: Rounded bytes from 6217900032 to 8000000000", "--", "10-02 02:57:34.691  9199  9208 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-02 02:57:34.691  9199  9208 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-02 02:57:35.083 11454 11454 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.", "10-02 02:57:35.083 11454 11454 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.", "10-02 02:57:35.090   166   166 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.", "10-02 02:57:35.090 11454 11455 I Gralloc4: mapper 4.x is not supported", "10-02 02:57:35.241     0     0 I servicemanager: Caller(pid=11454,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.", "10-02 02:57:35.499     0     0 I logd    : logdr: UID=0 GID=0 PID=11460 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-02 02:57:17.994 11263 11289 E chromium: [ERROR:variations_seed_loader.cc(37)] Seed missing signature.", "10-02 02:57:17.994 11263 11289 I chromium: [INFO:variations_seed_loader.cc(66)] Failed to open file for reading.: No such file or directory (2)", "10-02 02:57:18.046 11263 11296 W chromium: [WARNING:dns_config_service_android.cc(81)] Failed to read DnsConfig.", "10-02 02:57:18.194 11299 11328 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-02 02:57:18.194 11299 11328 W chromium: [WARNING:runtime_features.cc(730)] AttributionReportingCrossAppWeb cannot be enabled in this configuration. Use --enable-features=ConversionMeasurement,AttributionReportingCrossAppWeb in addition.", "10-02 02:57:18.434 11299 11328 I chromium: [INFO:viewport_data.cc(133)] E2E_Used ViewportFitCover", "10-02 02:57:18.546 11263 11263 I chromium: [INFO:CONSOLE(3)] \"Injecting <script> tag. Using callback.\", source: https://mui.kernelsu.org/flutter_bootstrap.js (3)"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11263","value":{"firstFrameMs":350,"now":15010,"flutter":true,"resizes":[],"paint":{"first-paint":732,"first-contentful-paint":732},"calls":[[49,"at-preload","ksu:undefined webui:undefined"],[52,"ksu-defined"],[54,"wrap-failed","exec"],[55,"wrap-failed","spawn"],[55,"wrap-failed","moduleInfo"],[55,"wrap-failed","fullScreen"],[55,"wrap-failed","toast"]],"resources":[["/internal/insets.css",39,58,"link",0],["/flutter_webui.css",39,69,"link",0],["/flutter_webui.js",39,63,"script",0],["/flutter_bootstrap.js",39,91,"script",0],["/canvaskit/chromium/canvaskit.wasm",115,161,"fetch",0],["/canvaskit/chromium/canvaskit.js",115,134,"other",0],["/main.dart.js",116,146,"script",0],["/assets/FontManifest.json",285,296,"fetch",0],["/favicon.ico",288,291,"other",0],["/assets/fonts/MaterialIcons-Regular.otf",297,306,"fetch",0],["/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",297,307,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",297,309,"fetch",0]],"marks":[["flutter_webui:register",311],["flutter_webui:registered",313],["flutter_webui:first-frame",350]],"measures":[],"fonts":[]}}}
+{"check":"root-start","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11263","value":{"code":0,"out":"","err":"","ms":102}}}
+{"check":"session","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11263","value":{"status":200,"ms":16,"protocol":1,"version":"0.1.0","port":36789,"pid":11504,"tokenLen":43}}}
+{"check":"ws-hello","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11263","value":{"first":"{\"op\":\"hello\",\"protocol\":1,\"version\":\"0.1.0\",\"pid\":11504,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"uid\":0,\"moduleDir\":\"/data/adb/modules/flutter_webui_counter\"}"}}}
+{"check":"channel-process","result":"USER           UID LABEL                            PID NAME                       \nroot             0 u:r:ksu:s0                     11504 ld-linux-x86-64.so.2\nexe=/data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/ld-linux-x86-64.so.2\n/data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/ld-linux-x86-64.so.2 --library-path /data/adb/modules/flutter_webui_counter/flutter_webui/x86_64 /data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/dartaotruntime /data/adb/modules/flutter_webui_counter/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/flutter_webui_counter \narm64-v8a\nroot\nx86_64\n/data/adb/modules/flutter_webui_counter/flutter_webui/arm64-v8a:\ndartaotruntime\nflutter_webui_root.aot\nld-linux-aarch64.so.1\nlibc.so.6\nlibdl.so.2\nlibm.so.6\nlibpthread.so.0\n\n/data/adb/modules/flutter_webui_counter/flutter_webui/x86_64:\ndartaotruntime\nflutter_webui_root.aot\nld-linux-x86-64.so.2\nlibc.so.6\nlibdl.so.2\nlibm.so.6\nlibpthread.so.0"}
+{"check":"root-log","result":"2026-10-02T02:57:50.916165 listening on 127.0.0.1:36789"}
+{"check":"session-mode","result":"total 44\ndrwx--x--x 3 root root 4096 2026-10-02 02:57 .\ndrwxr-xr-x 7 root root 4096 2026-10-02 02:57 ..\n-rw------- 1 root root    0 2026-10-02 02:57 lock\ndrwx------ 2 root root 4096 2026-10-02 02:57 proc\n-rw------- 1 root root   56 2026-10-02 02:57 root.log\n-rw-r--r-- 1 root root  197 2026-10-02 02:57 session.json"}
+{"check":"home-resume","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11263","value":{"events":[["visibilitychange","hidden",16259],["visibilitychange","visible",22935]],"ticks":20,"vis":"visible","hasFocus":false}}}
+{"check":"before-back","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11263","value":{"historyLength":2,"historyState":"{\"flutter\":true}","href":"https://mui.kernelsu.org/index.html","typeofWebui":"undefined","typeofWebuiExit":"undefined","typeofKsuExit":"undefined","webuiKeys":null,"wrapped":"no webui.exit"}}}
+{"check":"back-events","result":{"error":"no page target","sockets":["webview_devtools_remote_11263"],"targets":[]}}
+{"check":"back-console","result":["10-02 02:58:02.246 11263 11263 E chromium: [ERROR:aw_browser_terminator.cc(154)] Renderer process (11299) crash detected (code -1).", "10-02 02:58:02.249  8749  9633 I ActivityManager: Killing 11299:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a209i1 (adj 0): isolated not needed"]}
+{"check":"back-at-root","result":"topResumedActivity=ActivityRecord{93e1b32 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t9}"}
+Starting: Intent { cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.rifsxd.ksunext/.ui.webui.WebUIActivity
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Flutter Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11626","value":{"href":"https://mui.kernelsu.org/index.html","title":"Flutter Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":248,"load":657},"paint":{"first-paint":1511,"first-contentful-paint":1511},"glassAt":"present","firstFrame":null,"insets":null,"vv":[320,592,1]}}}
+{"check":"java-exceptions","result":["10-02 02:58:20.299  9199 11770 W TapAndPay: \tat angs.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):76)", "10-02 02:58:20.299  9199 11770 W TapAndPay: \tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)", "10-02 02:58:20.299  9199 11770 W TapAndPay: \tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)", "10-02 02:58:20.299  9199 11770 W TapAndPay: \tat anmg.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):8)", "10-02 02:58:20.299  9199 11770 W TapAndPay: \tat java.lang.Thread.run(Thread.java:1012)", "--", "10-02 02:58:20.459  9199  9868 W GLSUser : [AppCertManager] Exception while requesting key: ", "10-02 02:58:20.459  9199  9868 W GLSUser : java.util.concurrent.ExecutionException: bpcw: Parse Proto Exception with response code 400", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat etvr.s(:com.google.android.gms@242335041@24.23.35 (190800-646585959):21)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat etvr.get(:com.google.android.gms@242335041@24.23.35 (190800-646585959):10)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat yfw.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):477)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat yfu.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):31)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat yfp.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):1)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat yfs.a(:com.google.android.gms@242335041@24.23.35 (190800-646585959):58)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat uou.call(:com.google.android.gms@242335041@24.23.35 (190800-646585959):56)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat java.util.concurrent.FutureTask.run(FutureTask.java:264)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat angs.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):50)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat angs.run(:com.google.android.gms@242335041@24.23.35 (190800-646585959):76)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)", "--", "10-02 02:58:20.459  9199  9868 W GLSUser : Caused by: bpcw: Parse Proto Exception with response code 400", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat bpdw.b(:com.google.android.gms@242335041@24.23.35 (190800-646585959):80)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat bpgb.e(:com.google.android.gms@242335041@24.23.35 (190800-646585959):17)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat bpgp.onSucceeded(:com.google.android.gms@242335041@24.23.35 (190800-646585959):7)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat m.mw.onSucceeded(:com.google.android.gms.dynamite_cronetdynamite@242335041@24.23.35 (190800-0):3)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat m.lt.run(:com.google.android.gms.dynamite_cronetdynamite@242335041@24.23.35 (190800-0):25)", "10-02 02:58:20.459  9199  9868 W GLSUser : \t... 6 more", "10-02 02:58:20.459  9199  9868 W GLSUser : Caused by: fkhe: Protocol message contained an invalid tag (zero).", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat fkea.k(:com.google.android.gms@242335041@24.23.35 (190800-646585959):39)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat fkid.c(:com.google.android.gms@242335041@24.23.35 (190800-646585959):309)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat fkid.i(:com.google.android.gms@242335041@24.23.35 (190800-646585959):8)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat fkgi.fe(:com.google.android.gms@242335041@24.23.35 (190800-646585959):25)", "10-02 02:58:20.459  9199  9868 W GLSUser : \tat fkgc.g(:com.google.android.gms@242335041@24.23.35 (190800-646585959):3)", "--", "10-02 02:58:22.776  9199  9208 I ChimeraSrvcProxy: NullBinder for android.net.action.RECOMMEND_NETWORKS triggering remote TransactionTooLargeException due to Service without Chimera impl", "10-02 02:58:22.781  9199  9208 W .gms.persistent: Large reply transaction of 1056768 bytes, interface descriptor , code 1", "10-02 02:58:22.748 11626 11626 W ThreadPoolForeg: type=1400 audit(0.0:213): avc:  denied  { getattr } for  path=\"/data/adb\" dev=\"dm-46\" ino=319489 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:adb_data_file:s0 tclass=dir permissive=0 app=com.rifsxd.ksunext", "10-02 02:58:22.784  9582 10066 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix=\"RcsEngineImpl[DUAL_REG]:[06adb222-b014]>Handler\" thread_id=65 ]", "10-02 02:58:22.786  9582  9717 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=56 ]"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-02 02:58:05.552 11626 11652 E chromium: [1002/025805.551910:ERROR:variations_seed_loader.cc(37)] Seed missing signature.", "10-02 02:58:05.552 11626 11652 I chromium: [INFO:variations_seed_loader.cc(66)] Failed to open file for reading.: No such file or directory (2)", "10-02 02:58:05.608 11626 11657 W chromium: [WARNING:dns_config_service_android.cc(81)] Failed to read DnsConfig.", "10-02 02:58:05.712 11663 11680 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-02 02:58:05.712 11663 11680 W chromium: [WARNING:runtime_features.cc(730)] AttributionReportingCrossAppWeb cannot be enabled in this configuration. Use --enable-features=ConversionMeasurement,AttributionReportingCrossAppWeb in addition.", "10-02 02:58:06.019 11626 11626 I chromium: [INFO:CONSOLE(1)] \"Injecting <script> tag. Using callback.\", source: https://mui.kernelsu.org/flutter_bootstrap.js (1)"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11626","value":{"firstFrameMs":334,"now":15048,"flutter":true,"resizes":[],"paint":{"first-paint":754,"first-contentful-paint":754},"calls":[[26,"at-preload","ksu:undefined webui:undefined"],[29,"ksu-defined"],[38,"wrap-failed","exec"],[39,"wrap-failed","spawn"],[40,"wrap-failed","moduleInfo"],[41,"wrap-failed","fullScreen"],[42,"wrap-failed","toast"]],"resources":[["/flutter_bootstrap.js",20,43,"script",0],["/canvaskit/chromium/canvaskit.wasm",71,126,"fetch",0],["/canvaskit/chromium/canvaskit.js",72,109,"other",0],["/main.dart.js",72,126,"script",0],["/assets/FontManifest.json",268,278,"fetch",0],["/favicon.png",270,280,"other",0],["/assets/fonts/MaterialIcons-Regular.otf",279,289,"fetch",0],["/assets/packages/cupertino_icons/assets/CupertinoIcons.ttf",279,289,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",279,292,"fetch",0],["/favicon.png",750,775,"other",0]],"marks":[],"measures":[],"fonts":[]}}}
+Starting: Intent { cmp=com.rifsxd.ksunext/.ui.webui.WebUIActivity (has extras) }
+Status: ok
+Activity: com.rifsxd.ksunext/.ui.webui.WebUIActivity
+https://mui.kernelsu.org/index.html
+opened: intent
+{"check":"targets","result":[{"type": "page", "url": "https://mui.kernelsu.org/index.html", "title": "Demo"}]}
+{"check":"page","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":{"href":"https://mui.kernelsu.org/index.html","title":"Demo","ready":"complete","flutter":true,"glass":true,"nav":{"dcl":273,"load":719},"paint":{"first-paint":1193,"first-contentful-paint":2028},"glassAt":"present","firstFrame":null,"insets":"24px","vv":[320,640,1]}}}
+{"check":"java-exceptions","result":["10-02 02:58:38.260  9416 11841 E OneSearchSuggestProvider: io.grpc.StatusRuntimeException: UNIMPLEMENTED: bindService(Intent { act=grpc.io.action.BIND cmp=com.google.android.googlequicksearchbox/com.google.android.apps.search.googleapp.search.suggest.plugins.onesearch.server.OneSearchSuggestService }) returned false", "10-02 02:58:38.260  9416 11841 E OneSearchSuggestProvider: \tat k3.e.a(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:77)", "10-02 02:58:38.260  9416 11841 E OneSearchSuggestProvider: \tat i3.l.b(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:43)", "10-02 02:58:38.260  9416 11841 E OneSearchSuggestProvider: \tat i3.l.a(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:27)", "10-02 02:58:38.260  9416 11841 E OneSearchSuggestProvider: \tat i3.z.run(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:7)", "10-02 02:58:38.260  9416 11841 E OneSearchSuggestProvider: \tat i3.m2.run(go/retraceme 31f9979659277bb965985aff1272c33e3c3c9e755b77166d20a2465454178f2c:19)", "10-02 02:58:38.260  9416 11841 E OneSearchSuggestProvider: \tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)", "10-02 02:58:38.260  9416 11841 E OneSearchSuggestProvider: \tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:644)", "10-02 02:58:38.260  9416 11841 E OneSearchSuggestProvider: \tat java.lang.Thread.run(Thread.java:1012)", "10-02 02:58:38.260  9527  9771 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])", "10-02 02:58:38.261  9416  9416 D SsBaseTemplateCard: No text view can be set up", "10-02 02:58:38.261  9416  9416 D SsBaseTemplateCard: Passed-in item info is null", "10-02 02:58:38.261  9416  9416 D SsBaseTemplateCard: Passed-in item info is null", "--", "10-02 02:58:38.493  8749 11844 W WindowManager: Exception thrown during dispatchAppVisibility Window{9e86515 u0 com.rifsxd.ksunext/com.rifsxd.ksunext.ui.webui.WebUIActivity EXITING}", "10-02 02:58:38.493  8749 11844 W WindowManager: android.os.DeadObjectException", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat android.os.BinderProxy.transactNative(Native Method)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat android.os.BinderProxy.transact(BinderProxy.java:586)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat android.view.IWindow$Stub$Proxy.dispatchAppVisibility(IWindow.java:553)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat com.android.server.wm.WindowState.sendAppVisibilityToClients(WindowState.java:3253)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat com.android.server.wm.WindowContainer.sendAppVisibilityToClients(WindowContainer.java:1289)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat com.android.server.wm.WindowToken.setClientVisible(WindowToken.java:403)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat com.android.server.wm.ActivityRecord.setClientVisible(ActivityRecord.java:7166)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat com.android.server.wm.ActivityRecord.postApplyAnimation(ActivityRecord.java:5881)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat com.android.server.wm.ActivityRecord.commitVisibility(ActivityRecord.java:5823)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat com.android.server.wm.Transition.finishTransition(Transition.java:1286)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat com.android.server.wm.TransitionController.finishTransition(TransitionController.java:937)", "10-02 02:58:38.493  8749 11844 W WindowManager: \tat com.android.server.wm.WindowOrganizerController.finishTransition(WindowOrganizerController.java:494)", "--", "10-02 02:58:39.497 11852 11885 E SuFilePathHandler: java.io.FileNotFoundException: No such file or directory: /data/adb/modules/demo/webroot/favicon.ico", "10-02 02:58:39.497 11852 11885 E SuFilePathHandler: \tat r8.f.a(r8-map-id-711a9e1fe37a5a3d329dda399a83172f9d848bb8ab697f7cabb76790b2f728d1:147)", "10-02 02:58:39.497 11852 11885 E SuFilePathHandler: \tat p8.i.shouldInterceptRequest(r8-map-id-711a9e1fe37a5a3d329dda399a83172f9d848bb8ab697f7cabb76790b2f728d1:2520)", "10-02 02:58:39.492 11852 11852 W ThreadPoolForeg: type=1400 audit(0.0:266): avc:  denied  { getattr } for  path=\"/data/adb\" dev=\"dm-46\" ino=319489 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:adb_data_file:s0 tclass=dir permissive=0 app=com.rifsxd.ksunext", "10-02 02:58:39.492 11852 11852 W ThreadPoolForeg: type=1400 audit(0.0:265): avc:  denied  { getattr } for  path=\"/data/adb\" dev=\"dm-46\" ino=319489 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:adb_data_file:s0 tclass=dir permissive=0 app=com.rifsxd.ksunext", "10-02 02:58:39.492 11852 11852 W ThreadPoolForeg: type=1400 audit(0.0:264): avc:  denied  { getattr } for  path=\"/data/adb\" dev=\"dm-46\" ino=319489 scontext=u:r:untrusted_app:s0:c209,c256,c512,c768 tcontext=u:object_r:adb_data_file:s0 tclass=dir permissive=0 app=com.rifsxd.ksunext", "10-02 02:58:40.013 11852 11866 D EGL_emulation: app_time_stats: avg=211.83ms min=16.51ms max=981.52ms count=5", "10-02 02:58:40.264 11977 11977 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.", "10-02 02:58:40.264 11977 11977 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.", "10-02 02:58:40.276   166   166 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.", "10-02 02:58:40.276 11977 11978 I Gralloc4: mapper 4.x is not supported"]}
+{"check":"console-errors","result":["--------- beginning of main", "10-02 02:58:38.585 11852 11879 E chromium: [1002/025838.585743:ERROR:variations_seed_loader.cc(37)] Seed missing signature.", "10-02 02:58:38.586 11852 11879 I chromium: [1002/025838.586115:INFO:variations_seed_loader.cc(66)] Failed to open file for reading.: No such file or directory (2)", "10-02 02:58:38.627 11852 11894 W chromium: [WARNING:dns_config_service_android.cc(81)] Failed to read DnsConfig.", "10-02 02:58:38.793 11882 11917 W chromium: [WARNING:runtime_features.cc(694)] SharedStorage for M118+ cannot be enabled in this configuration. Use --enable-features=SharedStorageAPI,SharedStorageAPIM118 in addition.", "10-02 02:58:38.794 11882 11917 W chromium: [WARNING:runtime_features.cc(730)] AttributionReportingCrossAppWeb cannot be enabled in this configuration. Use --enable-features=ConversionMeasurement,AttributionReportingCrossAppWeb in addition.", "10-02 02:58:39.008 11882 11917 I chromium: [INFO:viewport_data.cc(133)] E2E_Used ViewportFitCover", "10-02 02:58:39.084 11852 11852 I chromium: [INFO:CONSOLE(3)] \"Injecting <script> tag. Using callback.\", source: https://mui.kernelsu.org/flutter_bootstrap.js (3)"]}
+{"check":"first-frame-warm","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":{"firstFrameMs":421,"now":15050,"flutter":true,"resizes":[],"paint":{"first-paint":898,"first-contentful-paint":898},"calls":[[24,"at-preload","ksu:undefined webui:undefined"],[29,"ksu-defined"],[34,"wrap-failed","exec"],[36,"wrap-failed","spawn"],[36,"wrap-failed","moduleInfo"],[37,"wrap-failed","fullScreen"],[37,"wrap-failed","toast"]],"resources":[["/internal/insets.css",17,37,"link",0],["/internal/colors.css",17,27,"link",0],["/flutter_webui.css",17,37,"link",0],["/flutter_webui.js",22,47,"script",0],["/flutter_bootstrap.js",22,50,"script",0],["/canvaskit/chromium/canvaskit.wasm",79,121,"fetch",0],["/canvaskit/chromium/canvaskit.js",79,95,"other",0],["/main.dart.js",80,139,"script",0],["/assets/FontManifest.json",300,318,"fetch",0],["/favicon.ico",307,312,"other",0],["/assets/fonts/MaterialIcons-Regular.otf",319,328,"fetch",0],["/assets/fonts/fallback/Roboto-Regular.ttf",319,329,"fetch",0],["/internal/colors.css",339,891,"fetch",0],["/pkg/demo_native.js",892,931,"fetch",0]],"marks":[["flutter_webui:register",332],["flutter_webui:registered",333],["flutter_webui:register",335],["flutter_webui:registered",335],["flutter_webui:first-frame",421]],"measures":[],"fonts":[]}}}
+{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":"semantics on"}
+{"check":"home","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Squadron","Process","native","net","Say hello","Count to 5","SHA-256","Demo pages\nOne page per thing the stack promises.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"colors-css","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":{"status":200,"type":"text/css","body":":root {\n  --primary: #495D92;\n  --onPrimary: #FFFFFF;\n  --primaryContainer: #DAE2FF;\n  --onPrimaryContainer: #001849;\n  --inversePrimary: #B2C5FF;\n  --secondary: #585E71;\n  --onSecondary: #FFFFFF;\n  --secondaryContainer: #DDE2F9;\n  --onSecondaryContainer: #151B2C;\n  --tertiary: #735471;\n  --onTertiary: #FFFFFF;\n  --tertiaryContainer: #FED6F9;\n  --onTertiaryContainer: #2B122B;\n  --background: #FAF8FF;\n  --onBackground: #1A1B21;\n  --surface: #FAF8FF;\n  --tonalSurface: #F1F0F9;\n  --onSurface: #1A1B21;\n  --surfaceVariant: #E1E2EC;\n  --onSurfaceVariant: #45464F;\n  --surfaceTint: #495D92;\n  --inverseSurface: #121318;\n  --inverseOnSurface: #E3E2E9;\n  --error: #B3261E;\n  --onError: #FFFFFF;\n  --errorContainer: #F9DEDC;\n  --onErrorContainer: #410E0B;\n  --outline: #757780;\n  --outlineVariant: #C5C6D0;\n  --scrim: #000000;\n  --surfaceBright: #FAF8FF;\n  --surfaceDim: #DAD9E0;\n  --surfaceContainer: #EEEDF4;\n  --surfaceContainerHigh: #E8E7EF;\n  --surfaceContainerHighest: #E3E2E9;\n  --surfaceContainerLow: #F4F3FA;\n  --surfaceContainerLowest: #FFFFFF;\n  --filledTonalButtonContentColor: #001849;\n  --filledTonalButtonContainerColor: #DDE2F9;\n  --filledTonalButtonDisabledContentColor: #45464F;\n  --filledTonalButtonDisabledContainerColor: #E1E2EC;\n  --filledCardContentColor: #001849;\n  --filledCardContainerColor: #DAE2FF;\n  --filledCardDisabledContentColor: #45464F;\n  --filledCardDisabledContainerColor: #E1E2EC;\n}\n"}}}
+{"check":"wasm-at-home","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":{"wasm":[{"name":"chromium/canvaskit.wasm","start":79,"dur":42}],"marks":[{"name":"flutter_webui:register","t":332},{"name":"flutter_webui:registered","t":333},{"name":"flutter_webui:register","t":335},{"name":"flutter_webui:registered","t":335},{"name":"flutter_webui:first-frame","t":421}],"measures":[],"now":18476}}}
+{"check":"tap-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","One service, DemoService, opened in every place this build knows. Each place probes its own facts from inside; the page never guesses from the platform it was built for.","200k","1M","3M","Count primes in every place","Restart places","inline (the caller)\nkind: inline\nstart 342 ms, first facts() round trip 71 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 197 ms, first facts() round trip 54 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"places-scroll-1","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","200k","1M","3M","Count primes in every place","Restart places","inline (the caller)\nkind: inline\nstart 342 ms, first facts() round trip 71 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 197 ms, first facts() round trip 54 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root process (the app CLI, serve mode)\nkind: process\nstart 253 ms, first facts() round trip 0 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"places-scroll-2","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","inline (the caller)\nkind: inline\nstart 342 ms, first facts() round trip 71 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 197 ms, first facts() round trip 54 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root process (the app CLI, serve mode)\nkind: process\nstart 253 ms, first facts() round trip 0 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"places-scroll-3","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","worker (isolate or Web Worker)\nkind: web_worker\nstart 197 ms, first facts() round trip 54 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root process (the app CLI, serve mode)\nkind: process\nstart 253 ms, first facts() round trip 0 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Reference: one call and one stream per place\nsquadron_process doc/benchmark.md, a 4-vCPU VM. Not measured here; devicelab measures devices.\nCall: isolate 31 µs, Web Worker (dart2js) 120 µs, process 247 µs, process from the page 401 µs.\n64 KiB stream: isolate 3643 MiB/s, Web Worker 631 MiB/s, process link about 110 MiB/s.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-strategy","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":"tapped Strategy at 53,536 size 53x80 role tab tappable"}}
+{"check":"strategy","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","Objective: list the device's partitions. Strategies in preference order: on the device as root, then from a host over USB. The first one the place's facts allow runs; nothing reads kIsWeb or Platform.","Place","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Facts from inline (the caller)\nSwitch a fact off to see the fallback. You can only take facts away.\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root","block_devices","usb.native","process.spawn","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-strategy-root","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":"tapped root process at 24,358 size 272x48 role checkbox tappable"}}
+{"check":"strategy-root","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","Objective: list the device's partitions. Strategies in preference order: on the device as root, then from a host over USB. The first one the place's facts allow runs; nothing reads kIsWeb or Platform.","Place","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Facts from root process (the app CLI, serve mode)\nSwitch a fact off to see the fallback. You can only take facts away.\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root","block_devices","usb.native","process.spawn","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"strategy-root-scroll-1","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","Place","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Facts from root process (the app CLI, serve mode)\nSwitch a fact off to see the fallback. You can only take facts away.\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","root","block_devices","usb.native","process.spawn","Chosen: on device (/proc/partitions as root)\non_device chosen","on device (/proc/partitions as root)\nneeds root + block_devices: has them","from host (fastboot getvar all)\nneeds usb.native + process.spawn: has them","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"strategy-root-scroll-2","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","Facts from root process (the app CLI, serve mode)\nSwitch a fact off to see the fallback. You can only take facts away.\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","usb.native","process.spawn","Chosen: on device (/proc/partitions as root)\non_device chosen","on device (/proc/partitions as root)\nneeds root + block_devices: has them","from host (fastboot getvar all)\nneeds usb.native + process.spawn: has them","Run on_device in process","Log\nEvery run: objective, strategy, place and the facts it saw.\nNothing has run yet.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-rust","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":"tapped Rust at 107,536 size 53x80 role tab tappable"}}
+{"check":"rust","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","The demo crate (rust/) counts the primes below 1000000 with the same loop as page 1's Dart. The service loads it in its own place through flutter_rust_bridge, so each place runs its own build.","Run in every place","inline (the caller)","Run here","worker (isolate or Web Worker)","Run here","root process (the app CLI, serve mode)","Run here","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-rust-run","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":"tapped Run in every place at 16,196 size 288x48 role button tappable"}}
+{"check":"rust-ran","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","The demo crate (rust/) counts the primes below 1000000 with the same loop as page 1's Dart. The service loads it in its own place through flutter_rust_bridge, so each place runs its own build.","Run in every place","inline (the caller)\nBuilt for: wasm32-unknown (single-threaded)\nLoad: 84 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 126 ms, Dart 813 ms (same count: 78498)","Run here","worker (isolate or Web Worker)\nBuilt for: wasm32-unknown (single-threaded)\nLoad: 46 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 157 ms, Dart 219 ms (same count: 78498)","Run here","root process (the app CLI, serve mode)\nBuilt for: x86_64-android\nLoad: 0 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 124 ms, Dart 132 ms (same count: 78498)","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"wasm-after-rust","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":{"wasm":[{"name":"chromium/canvaskit.wasm","start":79,"dur":42},{"name":"pkg/demo_native_bg.wasm","start":81059,"dur":28}],"marks":[{"name":"flutter_webui:register","t":332},{"name":"flutter_webui:registered","t":333},{"name":"flutter_webui:register","t":335},{"name":"flutter_webui:registered","t":335},{"name":"flutter_webui:first-frame","t":421}],"measures":[],"now":102017}}}
+{"check":"tap-rust-run-2","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":"tapped Run in every place at 16,196 size 288x48 role button tappable"}}
+{"check":"rust-ran-2","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","The demo crate (rust/) counts the primes below 1000000 with the same loop as page 1's Dart. The service loads it in its own place through flutter_rust_bridge, so each place runs its own build.","Run in every place","inline (the caller)\nBuilt for: wasm32-unknown (single-threaded)\nLoad: 0 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 123 ms, Dart 819 ms (same count: 78498)","Run here","worker (isolate or Web Worker)\nBuilt for: wasm32-unknown (single-threaded)\nLoad: 0 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 134 ms, Dart 201 ms (same count: 78498)","Run here","root process (the app CLI, serve mode)\nBuilt for: x86_64-android\nLoad: 0 ms (once per place, on its first Rust call; on the web that fetches and instantiates the wasm)\nRust 120 ms, Dart 131 ms (same count: 78498)","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"tap-lifecycle","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":"tapped Lifecycle at 160,536 size 53x80 role tab tappable"}}
+{"check":"tap-root-process","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":"tapped root process at 24,390 size 272x48 role checkbox tappable"}}
+{"check":"tap-start","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":"tapped Start at 24,462 size 97x48 role button tappable"}}
+{"check":"lifecycle-running","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","Start a five-minute task, then switch away (Home, another app or tab) and come back: hidden keeps going. Close the app instead and reopen it: closed stops, and this page says where the task was when it ended.","Task\ntick every 500 ms, stamped with the place's own clock\nrunning in process: tick 17/600, longest gap 502 ms, app resumed 3","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Stop","Lifecycle\n03:01:05  started in process","Facts from root process (the app CLI, serve mode)\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"lifecycle-after-home","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Back\nBack","Start a five-minute task, then switch away (Home, another app or tab) and come back: hidden keeps going. Close the app instead and reopen it: closed stops, and this page says where the task was when it ended.","Task\ntick every 500 ms, stamped with the place's own clock\nrunning in process: tick 41/600, longest gap 506 ms, app resumed 7","inline (the caller)","worker (isolate or Web Worker)","root process (the app CLI, serve mode)","Stop","Lifecycle\n03:01:21  away 6.7 s: the place produced 13 ticks (on schedule: 13); longest gap 502 ms\n03:01:21  inactive -> resumed\n03:01:21  hidden -> inactive\n03:01:14  inactive -> hidden\n03:01:14  resumed -> inactive\n03:01:05  started in process","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"root-process","result":"root             0 u:r:ksu:s0                     12065 dartaotruntime\nu0_a210      10210 u:r:untrusted_app_27:s0:c210,c256,c512,c768 12116 com.webui.api.demo\nroot             0 u:r:ksu:s0                     12118 dartaotruntime"}
+/home/runner/work/devicelab/devicelab/out/sockprobe: 1 file pushed, 0 skipped. 281.2 MB/s (3501149 bytes in 0.012s)
+{"check":"block-devices","result":"dm-0\ndm-1\ndm-11\ndm-13\ndm-14\ndm-16\ndm-17\ndm-18\ntotal 0\ndrwxr-xr-x 2 root root u:object_r:block_device:s0                140 2026-10-02 02:54 by-name\nbrw------- 1 root root u:object_r:dm_device:s0              254,   0 2026-10-02 02:53 dm-0\nbrw------- 1 root root u:object_r:dm_device:s0              254,   1 2026-10-02 02:54 dm-1\nbrw------- 1 root root u:object_r:dm_device:s0              254,  11 2026-10-02 02:54 dm-11\nbrw------- 1 root root u:object_r:dm_device:s0              254,  13 2026-10-02 02:54 dm-13\nbrw------- 1 root root u:object_r:dm_device:s0              254,  14 2026-10-02 02:54 dm-14\nbrw------- 1 root root u:object_r:dm_device:s0              254,  16 2026-10-02 02:54 dm-16\nbrw------- 1 root root u:object_r:dm_device:s0              254,  17 2026-10-02 02:54 dm-17\nbrw------- 1 root root u:object_r:dm_device:s0              254,  18 2026-10-02 02:54 dm-18\nbrw------- 1 root root u:object_r:dm_device:s0              254,  19 2026-10-02 02:54 dm-19\nbrw------- 1 root root u:object_r:dm_device:s0              254,   2 2026-10-02 02:54 dm-2\n-- su:\n0000000  \\0\n-- ksu:\n{\"error\":\"write /proc/thread-self/attr/current: operation not permitted\",\"op\":\"setcon\"}\n-- avc:"}
+{"check":"back-1","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11852","value":["Squadron","Process","native","net","Say hello","Count to 5","SHA-256","Demo pages\nOne page per thing the stack promises.","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"back-1-top","result":"topResumedActivity=ActivityRecord{a66caae u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t13}"}
+{"check":"back-2-top","result":"topResumedActivity=ActivityRecord{a66caae u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t13}"}
+{"check":"back-3-top","result":"topResumedActivity=ActivityRecord{93e1b32 u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t9}"}
+{"check":"sys-dark","night":"yes","color_mode":"","opened":"opened: intent","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_12579","value":{"dark":true,"primary":"#B2C5FF","background":"#121318","cssBytes":1417}}}
+{"check":"sys-light","night":"no","color_mode":"","opened":"opened: intent","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_12773","value":{"dark":false,"primary":"#495D92","background":"#FAF8FF","cssBytes":1417}}}
+/home/runner/work/devicelab/devicelab/out/sockprobe: 1 file pushed, 0 skipped. 266.5 MB/s (3501149 bytes in 0.013s)
+{"check":"ksud-version","result":"ksud 3.4.0 (uapi: 4)\nmanage module configuration\n\nUsage: ksud module config [OPTIONS] <COMMAND>"}
+{"check":"root-script","result":"-rwxr-xr-x 1 root root 1921 2026-10-02 02:56 /data/adb/modules/demo/flutter_webui/root\n#!/system/bin/sh\n# flutter-webui root channel launcher. Lives at <moddir>/flutter_webui/root.\n# Usage: sh root start    find or start the channel; prints its session as one\n#                         JSON line (port, token), or exits non-zero\n#        sh root serve    run the channel (started detached by `start`)\n# Needs `ksud module config` (KernelSU or KernelSU Next v3.0.0+).\n# SPDX-License-Identifier: LGPL-3.0-or-later WITH LGPL-3.0-linking-exception\n\ndir=${0%/*}\ncase \"$dir\" in /*) ;; *) dir=$(cd \"$dir\" && pwd) ;; esac\nmoddir=${dir%/*}\nid=${moddir##*/}\nrun=$dir/run\n\ncase \"$(uname -m)\" in\n  aarch64 | arm64) abi=arm64-v8a ;;\n  x86_64) abi=x86_64 ;;\n  *) echo \"flutter_webui: unsupported CPU $(uname -m)\" >&2; exit 1 ;;\nesac\n\n# Root shells can start with an empty environment, and the Dart VM needs a\n# writable TMPDIR: the module's temporary directory, which `start` empties on\n# the first start of each boot.\nexport TMPDIR=\"${FLUTTER_WEBUI_DATA:-/data/adb/$id}/tmp\"\n(umask 077 && mkdir -p \"$TMPDIR\" \"$run\")\n\nchannel() {\n  rt=$dir/$abi\n  # A linux (glibc) runtime ships its loader and libraries next to it; an\n  # Android-built runtime runs directly."}
+{"check":"layout-before","result":"total 48\ndrwxr-xr-x 5 root root 4096 2026-10-02 02:59 .\ndrwxr-xr-x 8 root root 4096 2026-10-02 02:59 ..\ndrwxr-xr-x 2 root root 4096 2026-10-02 02:56 arm64-v8a\n-rwxr-xr-x 1 root root 1921 2026-10-02 02:56 root\ndrwx------ 3 root root 4096 2026-10-02 02:59 run\ndrwxr-xr-x 2 root root 4096 2026-10-02 02:56 x86_64\n-- run:\n700 root:root /data/adb/modules/demo/flutter_webui/run\n/data/adb/modules/demo/flutter_webui/run:\ntotal 44\ndrwx------ 3 root root 4096 2026-10-02 02:59 .\ndrwxr-xr-x 5 root root 4096 2026-10-02 02:59 ..\n-rw------- 1 root root    6 2026-10-02 02:59 lock\ndrwx------ 2 root root 4096 2026-10-02 03:01 proc\n-rw------- 1 root root   97 2026-10-02 03:02 root.log\n-rw------- 1 root root    0 2026-10-02 02:59 start.lock\n\n/data/adb/modules/demo/flutter_webui/run/proc:\ntotal 40\ndrwx------ 2 root root 4096 2026-10-02 03:01 .\ndrwx------ 3 root root 4096 2026-10-02 02:59 ..\n-rw------- 1 root root   36 2026-10-02 02:59 .boot\n-rw------- 1 root root    2 2026-10-02 03:01 1790909956069790-0.exit\n-rw------- 1 root root  215 2026-10-02 02:59 1790909956069790-0.log\n-- webroot/.run:\nls: /data/adb/modules/demo/webroot/.run: No such file or directory"}
+{"check":"config-before","result":"webui.session=Error: Key 'webui.session' not found\nwebui.boot=0403a369-d3e4-4e6d-92ed-d4b86b0cb387\n-- list:\nwebui.boot=0403a369-d3e4-4e6d-92ed-d4b86b0cb387\nwebui.installed=1"}
+{"check":"config-after-boot","result":"webui.session=Error: Key 'webui.session' not found\nwebui.boot=Error: Key 'webui.boot' not found\n-- list:\nwebui.installed=1"}
+{"check":"tmp-after-boot","result":"total 24\ndrwx------ 2 root root 4096 2026-10-02 03:02 .\ndrwx------ 3 root root 4096 2026-10-02 02:59 ..\n-rw-rw-rw- 1 root root    4 2026-10-02 03:02 lab-marker"}
+{"check":"start-1","result":"# via adb root (0 u:r:su:s0)\n{\"protocol\":1,\"version\":\"0.2.0\",\"port\":34967,\"token\":\"Z-gyX39JJz5mU6AEGo9KBOM19LsYD3UOliJxkArWZC4\",\"pid\":15351,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:47.983062Z\"}\nexit=0"}
+{"check":"tmp-after-start-1","result":"total 16\ndrwx------ 2 root root 4096 2026-10-02 03:02 .\ndrwx------ 3 root root 4096 2026-10-02 02:59 .."}
+{"check":"config-after-start-1","result":"webui.session={\"protocol\":1,\"version\":\"0.2.0\",\"port\":34967,\"token\":\"Z-gyX39JJz5mU6AEGo9KBOM19LsYD3UOliJxkArWZC4\",\"pid\":15351,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:47.983062Z\"}\nwebui.boot=0403a369-d3e4-4e6d-92ed-d4b86b0cb387\n-- list:\nwebui.installed=1\nwebui.boot=0403a369-d3e4-4e6d-92ed-d4b86b0cb387\nwebui.session={\"protocol\":1,\"version\":\"0.2.0\",\"port\":34967,\"token\":\"Z-gyX39JJz5mU6AEGo9KBOM19LsYD3UOliJxkArWZC4\",\"pid\":15351,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:47.983062Z\"}"}
+{"check":"layout-after-start-1","result":"total 48\ndrwxr-xr-x 5 root root 4096 2026-10-02 02:59 .\ndrwxr-xr-x 8 root root 4096 2026-10-02 02:59 ..\ndrwxr-xr-x 2 root root 4096 2026-10-02 02:56 arm64-v8a\n-rwxr-xr-x 1 root root 1921 2026-10-02 02:56 root\ndrwx------ 3 root root 4096 2026-10-02 02:59 run\ndrwxr-xr-x 2 root root 4096 2026-10-02 02:56 x86_64\n-- run:\n700 root:root /data/adb/modules/demo/flutter_webui/run\n/data/adb/modules/demo/flutter_webui/run:\ntotal 44\ndrwx------ 3 root root 4096 2026-10-02 02:59 .\ndrwxr-xr-x 5 root root 4096 2026-10-02 02:59 ..\n-rw------- 1 root root    6 2026-10-02 03:02 lock\ndrwx------ 2 root root 4096 2026-10-02 03:01 proc\n-rw------- 1 root root   56 2026-10-02 03:02 root.log\n-rw------- 1 root root    0 2026-10-02 02:59 start.lock\n\n/data/adb/modules/demo/flutter_webui/run/proc:\ntotal 40\ndrwx------ 2 root root 4096 2026-10-02 03:01 .\ndrwx------ 3 root root 4096 2026-10-02 02:59 ..\n-rw------- 1 root root   36 2026-10-02 02:59 .boot\n-rw------- 1 root root    2 2026-10-02 03:01 1790909956069790-0.exit\n-rw------- 1 root root  215 2026-10-02 02:59 1790909956069790-0.log\n-- webroot/.run:\nls: /data/adb/modules/demo/webroot/.run: No such file or directory"}
+{"check":"start-2","result":"# via adb root (0 u:r:su:s0)\n{\"protocol\":1,\"version\":\"0.2.0\",\"port\":34967,\"token\":\"Z-gyX39JJz5mU6AEGo9KBOM19LsYD3UOliJxkArWZC4\",\"pid\":15351,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:47.983062Z\"}\nexit=0"}
+{"check":"same-pid","result":{"first":"15351","second":"15351","same":true}}
+{"check":"delete-session","result":"exit=0"}
+{"check":"start-3","result":"# via adb root (0 u:r:su:s0)\n{\"protocol\":1,\"version\":\"0.2.0\",\"port\":38975,\"token\":\"LA0PpTNfeB05f4AWO8JCwpL_CbOFM7eYsk59AvqIa-A\",\"pid\":15447,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:48.386977Z\"}\nexit=0"}
+{"check":"replaced","result":{"old":"15351","new":"15447","new_pid":true,"old_alive":"no"}}
+{"check":"procs","result":"root         15447     1 u:r:su:s0                      dartaotruntime              dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --run-dir /data/adb/modules/demo/flutter_webui/run --temp-dir /data/adb/demo/tmp --announce"}
+{"check":"root-log","result":"2026-10-02T03:02:48.391882 listening on 127.0.0.1:38975"}
+{"check":"config-end","result":"webui.session={\"protocol\":1,\"version\":\"0.2.0\",\"port\":38975,\"token\":\"LA0PpTNfeB05f4AWO8JCwpL_CbOFM7eYsk59AvqIa-A\",\"pid\":15447,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:48.386977Z\"}\nwebui.boot=0403a369-d3e4-4e6d-92ed-d4b86b0cb387\n-- list:\nwebui.boot=0403a369-d3e4-4e6d-92ed-d4b86b0cb387\nwebui.installed=1\nwebui.session={\"protocol\":1,\"version\":\"0.2.0\",\"port\":38975,\"token\":\"LA0PpTNfeB05f4AWO8JCwpL_CbOFM7eYsk59AvqIa-A\",\"pid\":15447,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:48.386977Z\"}"}
+{"check":"open","result":"opened: intent"}
+{"check":"page-uid","result":["Say hello"]}
+{"check":"hello-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15500","value":"tapped Say hello at 32,364 size 105x48 role button tappable"}}
+{"check":"hello","result":["Say hello"]}
+{"check":"page-session","result":"{\"protocol\":1,\"version\":\"0.2.0\",\"port\":38975,\"token\":\"LA0PpTNfeB05f4AWO8JCwpL_CbOFM7eYsk59AvqIa-A\",\"pid\":15447,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:48.386977Z\"}"}
+{"check":"page-hello","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15500","value":"{\"op\":\"hello\",\"protocol\":1,\"version\":\"0.2.0\",\"pid\":15447,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"uid\":0,\"moduleDir\":\"/data/adb/modules/demo\"}"}}
+{"check":"channel-process","result":"grep: bad regex '^\\S+ +15447 ': trailing backslash (\\)"}
+{"check":"start-after-page","result":"# via adb root (0 u:r:su:s0)\n{\"protocol\":1,\"version\":\"0.2.0\",\"port\":38975,\"token\":\"LA0PpTNfeB05f4AWO8JCwpL_CbOFM7eYsk59AvqIa-A\",\"pid\":15447,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:48.386977Z\"}\nexit=0"}
+{"check":"layout-end","result":"total 48\ndrwxr-xr-x 5 root root 4096 2026-10-02 02:59 .\ndrwxr-xr-x 8 root root 4096 2026-10-02 02:59 ..\ndrwxr-xr-x 2 root root 4096 2026-10-02 02:56 arm64-v8a\n-rwxr-xr-x 1 root root 1921 2026-10-02 02:56 root\ndrwx------ 3 root root 4096 2026-10-02 02:59 run\ndrwxr-xr-x 2 root root 4096 2026-10-02 02:56 x86_64\n-- run:\n700 root:root /data/adb/modules/demo/flutter_webui/run\n/data/adb/modules/demo/flutter_webui/run:\ntotal 44\ndrwx------ 3 root root 4096 2026-10-02 02:59 .\ndrwxr-xr-x 5 root root 4096 2026-10-02 02:59 ..\n-rw------- 1 root root    6 2026-10-02 03:02 lock\ndrwx------ 2 root root 4096 2026-10-02 03:01 proc\n-rw------- 1 root root   56 2026-10-02 03:02 root.log\n-rw------- 1 root root    0 2026-10-02 02:59 start.lock\n\n/data/adb/modules/demo/flutter_webui/run/proc:\ntotal 40\ndrwx------ 2 root root 4096 2026-10-02 03:01 .\ndrwx------ 3 root root 4096 2026-10-02 02:59 ..\n-rw------- 1 root root   36 2026-10-02 02:59 .boot\n-rw------- 1 root root    2 2026-10-02 03:01 1790909956069790-0.exit\n-rw------- 1 root root  215 2026-10-02 02:59 1790909956069790-0.log\n-- webroot/.run:\nls: /data/adb/modules/demo/webroot/.run: No such file or directory"}
+{"check":"app","result":"package:/product/app/WebuiApi_demo/WebuiApi_demo.apk\ntotal 3708\ndrwxr-xr-x 1 root root u:object_r:system_file:s0       60 2026-10-02 02:56 .\ndrwxr-xr-x 1 root root u:object_r:system_file:s0       60 2026-10-02 02:56 ..\n-rw-r--r-- 1 root root u:object_r:system_file:s0  3792939 2026-10-02 02:56 WebuiApi_demo.apk\n    codePath=/product/app/WebuiApi_demo\n    versionName=0.53.0-webui.6\n    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE PRODUCT PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]\n    signatures=PackageSignatures{9beb1da version:2, signatures:[33fe4edd], past signatures:[]}\n    pkgFlags=[ SYSTEM HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]\n    requested permissions:\n    requested permissions:\n      android.permission.WRITE_SETTINGS\n      android.permission.POST_NOTIFICATIONS\n      android.permission.ACCESS_FINE_LOCATION\n      android.permission.MANAGE_EXTERNAL_STORAGE\n      android.permission.SYSTEM_ALERT_WINDOW\n      android.permission.NFC\n      android.permission.BODY_SENSORS\n      android.permission.READ_MEDIA_VISUAL_USER_SELECTED\n      android.permission.RECEIVE_BOOT_COMPLETED\n      android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS\n      android.permission.INTERNET\n      android.permission.TRANSMIT_IR"}
+{"check":"mounts","result":"lrwxrwxrwx 1 root root 26 2026-10-02 02:55 /data/adb/metamodule -> /data/adb/modules/mountify\noverlay /product/app overlay ro,seclabel,relatime,lowerdir=/mnt/vendor/mountify/product/app:/product/app,redirect_dir=on 0 0\noverlay /product/app overlay ro,seclabel,relatime,lowerdir=/mnt/vendor/mountify/product/app:/product/app,redirect_dir=on 0 0\nCalendarGooglePrebuilt Camera2 Chrome Chrome-Stub Drive GoogleContacts GoogleTTS LatinIMEGooglePrebuilt LicenseChecker Maps MarkupGoogle_v2 ModuleMetadataGoogle NexusWallpapersStubPrebuilt2018 Photos PixelThemesStub PrebuiltDeskClockGoogle PrebuiltGmail PrebuiltGoogleAdservicesTvp PrebuiltGoogleTelemetryTvp SoundPickerPrebuilt TrichromeLibrary TrichromeLibrary-Stub WebViewGoogle WebViewGoogle-Stub WebuiApi_demo YouTube YouTubeMusicPrebuilt talkback"}
+{"check":"app-label","result":"2 activities found:\n  Activity #0:\n    priority=0 preferredOrder=0 match=0x108000 specificIndex=-1 isDefault=true\n    com.webui.api.demo/com.termux.api.apis.NfcAPI$NfcActivity\n  Activity #1:"}
+{"check":"module-config","result":"manage module configuration\n\nUsage: ksud module config [OPTIONS] <COMMAND>\n\nCommands:\n  get     Get a config value\n  set     Set a config value\n  list    List all config entries\n  delete  Delete a config entry\n  clear   Clear all config entries\n  help    Print this message or the help of the given subcommand(s)\n\n-- files:\ntotal 32\ndrwxr-xr-x 2 root root 4096 2026-10-02 03:02 .\ndrwxr-xr-x 3 root root 4096 2026-10-02 02:56 ..\n-rw-r--r-- 1 root root   36 2026-10-02 02:56 persist.config\n-rw-rw-rw- 1 root root  284 2026-10-02 03:02 tmp.config\n== /data/adb/ksu/module_configs/demo/persist.config\nMUSK\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u000f\u0000\u0000\u0000webui.installed\u0001\u0000\u0000\u00001\n== /data/adb/ksu/module_configs/demo/tmp.config\nMUSK\u0001\u0000\u0000\u0000\u0002\u0000\u0000\u0000\u0000\u0000\u0000webui.session\udcc5\u0000\u0000\u0000{\"protocol\":1,\"version\":\"0.2.0\",\"port\":38975,\"token\":\"LA0PpTNfeB05f4AWO8JCwpL_CbOFM7eYsk59AvqIa-A\",\"pid\":15447,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:48.386977Z\"}\n\u0000\u0000\u0000webui.boot$\u0000\u0000\u00000403a369-d3e4-4e6d-92ed-d4b86b0cb387\n-- ksud get:\n1\nwebui.boot=0403a369-d3e4-4e6d-92ed-d4b86b0cb387\nwebui.session={\"protocol\":1,\"version\":\"0.2.0\",\"port\":38975,\"token\":\"LA0PpTNfeB05f4AWO8JCwpL_CbOFM7eYsk59AvqIa-A\",\"pid\":15447,\"boot\":\"0403a369-d3e4-4e6d-92ed-d4b86b0cb387\",\"started\":\"2026-10-02T03:02:48.386977Z\"}\nwebui.installed=1"}
+{"check":"module-dirs","result":"/data/adb/demo:\ntotal 24\ndrwx------ 3 root root 4096 2026-10-02 02:59 .\ndrwx------ 7 root root 4096 2026-10-02 02:59 ..\ndrwx------ 2 root root 4096 2026-10-02 03:02 tmp\n\n/data/adb/demo/tmp:\ntotal 16\ndrwx------ 2 root root 4096 2026-10-02 03:02 .\ndrwx------ 3 root root 4096 2026-10-02 02:59 .."}
+{"check":"open","result":"opened: intent"}
+{"check":"tap-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"tap-plugins","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"tapped Plugins at 267,536 size 53x80 role tab tappable"}}
+{"check":"plugins","result":The app calls share_plus, permission_handler, the clipboard and file_selector as on any platform. Running in a WebUI host, so their *_webui packages answer.
+share_plus
+On WebUI: share_plus_webui: Android's share sheet, opened by the module's own app
+Share text
+permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: denied}
+{"check":"tap-share","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"tapped Share text at 24,278 size 112x48 role button tappable"}}
+{"check":"share-top","result":"com.android.intentresolver/.ChooserActivityLauncher"}
+{"check":"app-process","result":"u0_a210      10210 u:r:untrusted_app_27:s0:c210,c256,c512,c768 15987 com.webui.api.demo"}
+{"check":"share-log","result":"10-02 03:03:41.307 16111 16111 I ResolverListAdapter: Add DisplayResolveInfo component: ComponentInfo{com.google.android.apps.messaging/com.google.android.apps.messaging.ui.conversationlist.ShareIntentActivity}, intent component: ComponentInfo{com.google.android.apps.messaging/com.google.android.apps.messaging.ui.conversationlist.ShareIntentActivity}\n10-02 03:03:41.315 13195 13421 D CoreBackPreview: Window{ae5d40 u0 com.android.intentresolver/com.android.intentresolver.ChooserActivityLauncher}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@1f8d5be, mPriority=0, mIsAnimationCallback=false}\n10-02 03:03:41.707 16111 16111 D ChooserActivity: onListRebuilt(listAdapter.userHandle=UserHandle{0}, rebuildComplete=true)\n10-02 03:03:41.708 16111 16111 D ChooserActivity: app target loading time 460 ms\n10-02 03:03:41.713 13195 13214 I ActivityTaskManager: Displayed com.android.intentresolver/.ChooserActivityLauncher for user 0: +642ms\n10-02 03:03:41.713 13195 13214 V WindowManager: Sent Transition (#8) createdAt=10-02 03:03:41.070 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=19 displayId=0 isRunning=true baseIntent=Intent { act=android.intent.action.CHOOSER flg=0x10800000 cmp=com.android.intentresolver/.ChooserActivityLauncher } baseActivity=ComponentInfo{com.android.intentresolver/com.android.intentresolver.ChooserActivity} topActivity=ComponentInfo{com.android.intentresolver/com.android.intentresolver.ChooserActivity} origActivity=ComponentInfo{com.android.intentresolver/com.android.intentresolver.ChooserActivityLauncher} realActivity=ComponentInfo{com.android.intentresolver/com.android.intentresolver.ChooserActivity} numActivities=1 lastActiveTime=584752 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{767de96 Task{7a20d44 #19 type=standard A=10107:com.android.intentresolver}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{b0faa17 com.android.intentresolver.ChooserActivityLauncher} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=true appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=320 topActivityLetterboxHeight=640 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 8 }\n10-02 03:03:41.726 16111 16111 D ChooserActivity: onShortcutsLoaded for user: UserHandle{0}\n10-02 03:03:41.727 16111 16111 D ChooserActivity: stat to first shortcut time: 439 ms\n10-02 03:03:41.735 16111 16111 D ChooserActivity: onAppTargetsLoaded(listAdapter.userHandle=UserHandle{0})\n10-02 03:03:49.216 16160 16160 W app_process: ClassLoaderContext shared library size mismatch. Expected=2, found=0 (PCL[]{PCL[/system/framework/android.test.base.jar*724373495]#PCL[/system/framework/android.test.mock.jar*1452759902]} | PCL[])\n10-02 03:03:50.243 16160 16160 I AccessibilityNodeInfoDumper: Skipping invisible child: android.view.accessibility.AccessibilityNodeInfo@ce61; boundsInParent: Rect(0, 0 - 0, 0); boundsInScreen: Rect(160, 366 - 160, 366); boundsInWindow: Rect(160, 366 - 160, 366); packageName: com.android.intentresolver; className: androidx.recyclerview.widget.RecyclerView; text: null; error: null; maxTextLength: -1; stateDescription: null; contentDescription: null; tooltipText: null; containerTitle: null; viewIdResName: android:id/chooser_action_row; uniqueId: null; checkable: false; checked: false; focusable: true; focused: false; selected: false; clickable: false; longClickable: false; contextClickable: false; enabled: true; password: false; scrollable: false; granularScrollingSupported: false; importantForAccessibility: true; visible: false; actions: [AccessibilityAction: ACTION_FOCUS - null, AccessibilityAction: ACTION_SELECT - null, AccessibilityAction: ACTION_CLEAR_SELECTION - null, AccessibilityAction: ACTION_ACCESSIBILITY_FOCUS - null, AccessibilityAction: ACTION_SHOW_ON_SCREEN - null]; isTextSelectable: false\n10-02 03:03:51.109 13195 13287 D ActivityManager: freezing 15987 com.webui.api.demo"}
+{"check":"share-result","result":share_plus
+On WebUI: share_plus_webui: Android's share sheet, opened by the module's own app
+Share result: unavailable}
+{"check":"cam-deny-1-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"tapped Request camera at 24,490 size 150x46 role button tappable"}}
+{"check":"cam-deny-1-top","result":"com.google.android.permissioncontroller/com.android.permissioncontroller.permission.ui.GrantPermissionsActivity"}
+{"check":"cam-deny-1-dialog","result":"Allow Demo to take pictures and record video? | While using the app | Only this time | Don\u2019t allow\nAllow Demo to take pictures and record video? | While using the app | Only this time | Don\u2019t allow\nWhile using the app\nOnly this time\nDon\u2019t allow"}
+{"check":"cam-deny-1-press","result":"ui: tapped 'Don' at 160,453"}
+{"check":"cam-deny-1-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: denied}
+{"check":"cam-deny-1-perm","result":"android.permission.CAMERA\n      android.permission.SET_WALLPAPER\n--\n        android.permission.CAMERA: granted=false, flags=[ USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]"}
+{"check":"cam-deny-2-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"tapped Request camera at 24,490 size 150x46 role button tappable"}}
+{"check":"cam-deny-2-top","result":"com.google.android.permissioncontroller/com.android.permissioncontroller.permission.ui.GrantPermissionsActivity"}
+{"check":"cam-deny-2-dialog","result":"Allow Demo to take pictures and record video? | While using the app | Only this time | Don\u2019t allow\nAllow Demo to take pictures and record video? | While using the app | Only this time | Don\u2019t allow\nWhile using the app\nOnly this time\nDon\u2019t allow"}
+{"check":"cam-deny-2-press","result":"ui: tapped 'Don' at 160,453"}
+{"check":"cam-deny-2-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: permanentlyDenied}
+{"check":"cam-deny-2-perm","result":"android.permission.CAMERA\n      android.permission.SET_WALLPAPER\n--\n        android.permission.CAMERA: granted=false, flags=[ USER_SET|USER_FIXED|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]"}
+{"check":"cam-after-deny-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"tapped Request camera at 24,490 size 150x46 role button tappable"}}
+{"check":"cam-after-deny-top","result":"com.rifsxd.ksunext/.ui.webui.WebUIActivity"}
+{"check":"cam-after-deny-dialog","result":"Back Back\nShare text\nRequest camera\nCopy text\nPaste\nPlaces\nStrategy\nRust\nLifecycle\nShell\nPlugins"}
+{"check":"cam-after-deny-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: permanentlyDenied}
+{"check":"cam-after-deny-perm","result":"android.permission.CAMERA\n      android.permission.SET_WALLPAPER\n--\n        android.permission.CAMERA: granted=false, flags=[ USER_SET|USER_FIXED|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]"}
+{"check":"cam-grant-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"tapped Request camera at 24,490 size 150x46 role button tappable"}}
+{"check":"cam-grant-top","result":"com.google.android.permissioncontroller/com.android.permissioncontroller.permission.ui.GrantPermissionsActivity"}
+{"check":"cam-grant-dialog","result":"Allow Demo to take pictures and record video? | While using the app | Only this time | Don\u2019t allow\nAllow Demo to take pictures and record video? | While using the app | Only this time | Don\u2019t allow\nWhile using the app\nOnly this time\nDon\u2019t allow"}
+{"check":"cam-grant-press","result":"ui: tapped 'While using the app' at 160,333"}
+{"check":"cam-grant-status","result":permission_handler
+On WebUI: permission_handler_webui: Android's own permission dialog, for the module's own app
+Camera: granted}
+{"check":"cam-grant-perm","result":"android.permission.CAMERA\n      android.permission.SET_WALLPAPER\n--\n        android.permission.CAMERA: granted=true, flags=[ USER_SET|USER_SENSITIVE_WHEN_GRANTED|USER_SENSITIVE_WHEN_DENIED]"}
+{"check":"clip-listen","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"listening"}}
+{"check":"clip-paste-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"tapped Paste at 139,80 size 84x42 role button tappable"}}
+{"check":"clip-paste-top","result":"com.rifsxd.ksunext/.ui.webui.WebUIActivity"}
+{"check":"clip-pasted","result":Clipboard (flutter/services)
+On WebUI: clipboard_webui: Android's clipboard, through the module's own app
+Pasted: lab-clip-7739
+Paste}
+{"check":"clip-blips","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"[]"}}
+{"check":"clip-process","result":"u0_a210      u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo"}
+{"check":"clip-copy-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"tapped Copy text at 24,80 size 107x42 role button tappable"}}
+{"check":"clip-copied","result":Clipboard (flutter/services)
+On WebUI: clipboard_webui: Android's clipboard, through the module's own app
+Copy: copied
+Pasted: lab-clip-7739
+Copy text}
+{"check":"clip-ext-paste","result":"text=\"\" text=\"\" text=\"\" text=\"\" text=\"\""}
+{"check":"pick-tap","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_15801","value":"tapped Pick a file at 24,222 size 109x48 role button tappable"}}
+{"check":"pick-top","result":"com.google.android.documentsui/com.android.documentsui.picker.PickActivity"}
+{"check":"picked","result":file_selector
+On WebUI: file_selector_webui: the WebView's file chooser
+Picked: /data/adb/demo/tmp/open-hmtov9p21k-0/lab-pick.txt
+Pick a file}
+{"check":"pick-files","result":"/data/adb/demo/tmp:\ntotal 24\ndrwx------ 3 root root u:object_r:adb_data_file:s0  4096 2026-10-02 03:06 .\ndrwx------ 3 root root u:object_r:adb_data_file:s0  4096 2026-10-02 02:59 ..\ndrwx------ 2 root root u:object_r:adb_data_file:s0  4096 2026-10-02 03:06 open-hmtov9p21k-0\n\n/data/adb/demo/tmp/open-hmtov9p21k-0:\ntotal 24\ndrwx------ 2 root root u:object_r:adb_data_file:s0  4096 2026-10-02 03:06 .\ndrwx------ 3 root root u:object_r:adb_data_file:s0  4096 2026-10-02 03:06 ..\n-rw------- 1 root root u:object_r:adb_data_file:s0     9 2026-10-02 03:06 lab-pick.txt"}
+{"check":"app-settings","result":"Archive\nDisable\nForce stop\nNotifications | Off\nPermissions | Camera\nStorage & cache | 115 kB used in internal storage\nNavigate up\nOpen"}
+{"check":"uninstall","result":""}
+{"check":"after-uninstall","result":"ls: /data/adb/modules/demo: No such file or directory\nls: /data/adb/demo: No such file or directory\nls: /data/adb/ksu/module_configs/demo: No such file or directory\n/product/app/WebuiApi_demo\npackage:/product/app/WebuiApi_demo/WebuiApi_demo.apk\npackage:com.webui.api.demo"}
