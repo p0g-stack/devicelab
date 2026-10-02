@@ -54,12 +54,52 @@ drm graphics.`). Findings file: project files `real-device-infiniti-2026-10-02.m
   avc: denied { getattr } for comm="aera-plugin" path="/dev/kgsl-3d0"
     scontext=u:r:recovery:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
   ```
-  Both nodes carry the generic `device` label. A build with an enforcing
-  recovery domain loses the GPU plugin path. Fix direction: label the nodes
-  (e.g. `gpu_device`) in the tree's file_contexts and allow `recovery` to
-  open them; flutter-aera is deciding the fix. Cuttlefish never shows this
-  (virtio-gpu, different nodes).
+  Both nodes carry the generic `device` label. This is the same on every
+  AERA build, Cuttlefish included, because the permissive `recovery` domain
+  comes from AERA's shared sepolicy; see "SELinux across trees" below. It is
+  a note, not an infiniti bug.
 - **Audio:** `AERA audio: init service aera-oplus-charger did not start`,
   `stock AGM backend failed to start`; a plugin asking for `audio-output`
   would be silent here.
 
+
+## SELinux across trees (2026-10-02)
+
+Question: is the permissive `recovery` domain an infiniti choice or an AERA
+convention, and are the GPU nodes labelled anywhere?
+
+| Tree | `recovery` domain permissive? | GPU node labels | Where set |
+|---|---|---|---|
+| AERA `system/sepolicy` ([AERA-Recovery/android_system_sepolicy](https://github.com/AERA-Recovery/android_system_sepolicy) `aera-16.0`, pinned `9641d92`) | **Yes, on every AERA recovery build** | No `/dev/dri/*` or `/dev/kgsl*` entry (only `/dev/pvrsrvkm` is `gpu_device`) | `private/twrp.te`: `recovery_only(\` permissive recovery; permissive init; permissive ueventd; ...')` |
+| AERA `bootable/recovery` at `abf3316` | No policy of its own | none | (no `sepolicy/` dir, no `.te` files) |
+| infiniti `0d5f0b6` | Inherits yes | `device` (confirmed on hardware for `renderD128`, `kgsl-3d0`) | Tree ships no sepolicy, no `BOARD_*SEPOLICY*`; ueventd sets only mode/owner (`/dev/dri/* 0666 root graphics`, `/dev/kgsl-3d0 0666 system system`) |
+| dodge (OnePlus 13) `e27e8db` | Inherits yes | `device` (inferred: same tree shape) | Same as infiniti: no sepolicy; ueventd `/dev/dri/*`, `/dev/kgsl` modes only |
+| Our Cuttlefish `aera/build/device` | Inherits yes | `device`, confirmed: AERA's own `recovery` binary gets `ioctl`/`map` on `/dev/dri/card0` and the plugin `open`/`map` on `/dev/dri/renderD128`, all `tcontext=u:object_r:device:s0 ... permissive=1` (lab run 36929322912 `kernel.log`) | No sepolicy in our tree |
+| TWRP upstream ([TeamWin/android_system_sepolicy](https://github.com/TeamWin/android_system_sepolicy) `android-14.1`, `0a6792e`) | Yes | none | Same `private/twrp.te` `recovery_only(permissive recovery ...)`; AERA's file is TWRP's (commit by bigbiff) |
+| Stock AOSP `system/sepolicy` | No | n/a | `recovery.te` declares no permissive |
+
+How it is gated: `recovery_only()` expands when the policy is built with
+`target_recovery=true` (the `recovery_sepolicy.conf` module), whatever the
+build variant. A `user` lunch would not produce an enforcing recovery
+either: soong's `sepolicy-analyze permissive` check fails the build with
+"permissive domains not allowed in user builds" (`build/soong/policy.go`),
+so every AERA recovery that builds is permissive. infiniti and our
+Cuttlefish build `-eng`; on infiniti the kernel cmdline has no
+`androidboot.selinux=permissive` (PC worker), so `getenforce` says Enforcing
+while the `recovery`, `init`, `ueventd`, `adbd` domains stay permissive.
+
+The manifest lists only two AERA-Recovery device trees (infiniti, dodge); the
+org listing is not reachable from the lab, so any other tree is unchecked.
+Neither checked tree runs recovery enforcing, and none could without
+changing the shared sepolicy.
+
+**Conclusion: permissive by design, AERA-wide (TWRP heritage). The GPU
+finding is a note, not a bug.** The pixel plugin depends on the permissive
+domain exactly as much as AERA's own UI does (its DRM ioctls on
+`/dev/dri/card0` and the GPU renderer's opens are denied the same way), and
+the RPC FIFOs, netlink and VM-service file are denied too. Making the plugin
+path survive an enforcing recovery would mean, in AERA's sepolicy fork (not
+the device trees, not `bootable/recovery`): `/dev/dri/*` and
+`/dev/kgsl-3d0` labelled `gpu_device` in `file_contexts`, an
+`allow recovery gpu_device:chr_file rw_file_perms` in `twrp.te`, and the
+other denials above; only worth doing if AERA ever drops the permissive line.
