@@ -441,7 +441,7 @@ Rotation back kills AERA with SIGSEGV; init restarts it to Home.
   The landscape shade overlaps text: "Brightness" over the Network button,
   "10%" over "Check updates" (`shade-landscape-overlap.png`, run 36978191707).
 
-## D13. With adaptive resolution, opening a paused pixel plugin from its Recents card hangs AERA
+## D13. With adaptive resolution, opening a paused pixel plugin from its Recents card hangs AERA (FIXED)
 
 Image c102212 (devicelab c660add: `AERA_UI_ADAPTIVE_RESOLUTION := true`,
 `AERA_SCREEN_H := 2022`, `AERA_STATUS_H := 124`; patches as 3f593bb), run
@@ -457,6 +457,17 @@ project files `devicelab-aera/aera-ui/d13-adaptive-recents-hang.png`.
 On 3f593bb (same patches, no adaptive) the same steps pass (D10 FIXED).
 The lifecycle check now detects the hang, saves each thread's wchan and
 state, sends SIGABRT for a core and symbolizes it.
+
+- Thread trace (run `runs/20261002T102742Z-aera-cf-recovery-36992633877`,
+  project files `devicelab-aera/backtraces/d13-c102212.txt`): the UI thread
+  runs (state R) in `lv_draw_dispatch_layer` (lv_draw.c:293) from
+  `draw_buf_flush` (lv_refr.c:1383) under `aeraui::Engine::Impl::RunFrame`.
+  Cause (flutter-aera): a transform layer over LVGL's 4 MiB layer budget is
+  never allocated, so the dispatch loop spins. Fixed by LVGL L0003
+  (flutter-aera 83a2fbc, devicelab 0af7a99).
+- FIXED on image 63bdf2a (run `runs/20261002T163452Z-aera-cf-recovery-37031339693`):
+  lifecycle card reopen same process with its count; D10 A and B survive and
+  return the same plugin pid; Back on/off and same-pixel taps pass.
 
 ## Lab gaps (devicelab, not AERA yet)
 
