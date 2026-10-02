@@ -1,0 +1,30 @@
+[d10] installed lifecycle-probe
+[d10] exception-trace=1
+[d10] == A: left by the edge swipe, reopened from its card
+[d10] core limit: /system/bin/sh: ulimit: -P: unknown option
+[d10] core limit: /system/bin/sh: ulimit: usage: ulimit [-acdefHilmnpqrSstvx] [value]
+[d10] open lifecycle-probe: {"event":"log","id":"d10","text":"Opening lifecycle-probe\n"} {"code":0,"event":"result","id":"d10"} 
+[d10] frame A1-app.png
+[d10] edge swipe Home
+[d10] key menu
+[d10] frame A2-recents.png
+[d10] tap 360,790
+[d10] frame A3-after-card.png
+[d10] A: AERA RESTARTED (recovery pid 1692 -> 2362)
+[d10]   [  867.780282] init: Service 'recovery' (pid 92) received signal 11
+[d10]   [  979.744375] init: Service 'recovery' (pid 1692) received signal 11
+[d10]   ls: /tmp/core.*: No such file or directory
+[d10] == B: never left, Menu from inside the app, its card
+[d10] core limit: /system/bin/sh: ulimit: -P: unknown option
+[d10] core limit: /system/bin/sh: ulimit: usage: ulimit [-acdefHilmnpqrSstvx] [value]
+[d10] open lifecycle-probe: {"event":"log","id":"d10","text":"Opening lifecycle-probe\n"} {"code":0,"event":"result","id":"d10"} 
+[d10] frame B1-app.png
+[d10] key menu
+[d10] frame B2-recents.png
+[d10] tap 361,791
+[d10] frame B3-after-card.png
+[d10] B: AERA RESTARTED (recovery pid 2362 -> 2498)
+[d10]   [  867.780282] init: Service 'recovery' (pid 92) received signal 11
+[d10]   [  979.744375] init: Service 'recovery' (pid 1692) received signal 11
+[d10]   [ 1027.914136] init: Service 'recovery' (pid 2362) received signal 11
+[d10]   ls: /tmp/core.*: No such file or directory
