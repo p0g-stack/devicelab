@@ -71,7 +71,9 @@ a shell 'logcat -d 2>/dev/null | grep -iE "rotat|landscape" | tail -10' | tr -d 
 # ly,1347-lx. Portrait taps after the toggle missed (shade stayed open; the
 # swipe from the right edge was a Back that quit the counter).
 # Adaptive resolution (image 63bdf2a, run 37035088399): the landscape shade
-# fills the left third; chevron 654,56, Rotation tile 226,200, counter + 1282,654.
+# fills the left third right after the toggle (chevron 654,56, counter +
+# 1282,654); pulled down again in landscape it is full width (run 37038735387:
+# chevron 1196,54, Rotation tile 454,176).
 ltap() { tap "$2" "$(( 1347 - $1 ))"; }                       # landscape x y
 lswipe() { swipe "$2" "$(( 1347 - $1 ))" "$4" "$(( 1347 - $3 ))"; }
 ltap 654 56; log "(landscape: shade chevron)"; sleep 3; shot 3b-after-chevron
@@ -81,7 +83,7 @@ curl -s -m 10 -H "x-aera-code: $RCODE" "$REMOTE/screen.jpg" -o "$OUT/4-remote-sc
 # Back to portrait: shade down from the landscape top, Rotation tile (the
 # landscape shade lays tiles out differently: Rotation at landscape 432,345
 # in run 36965839509's 4c-landscape-shade.png).
-lswipe 674 10 674 600; sleep 2; shot 4c-landscape-shade; ltap 226 200; sleep 4; shot 5-toggled-back
+lswipe 674 10 674 600; sleep 2; shot 4c-landscape-shade; ltap 454 176; sleep 4; shot 5-toggled-back
 sleep 6; log "recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; after=$(pids); log "counter pids: $before -> $after"
 [ -n "$before" ] && [ "$(echo "$before" | head -1)" = "$(echo "$after" | head -1)" ] && log "SAME PROCESS" || log "PROCESS CHANGED or gone"; cores counter
 # Control (run 36953588555: toggling back crashed AERA with the counter open):
@@ -100,8 +102,8 @@ if [ "$(a shell pidof recovery | tr -d '\r')" != "$rp" ]; then
 fi
 a shell 'pkill -f aera-fl[u]tter'; sleep 2; arm_core; rp=$(a shell pidof recovery | tr -d '\r')
 xy=${ROTATE_TILE:-200,168}
-swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; ltap 654 56; sleep 3; shot 6-home-landscape
-lswipe 674 10 674 600; sleep 2; ltap 226 200; sleep 4; shot 7-home-back
+swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; ltap 654 56; sleep 2; ltap 1196 54; sleep 3; shot 6-home-landscape
+lswipe 674 10 674 600; sleep 2; ltap 454 176; sleep 4; shot 7-home-back
 sleep 4; log "no plugin: recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; cores home
 a shell 'logcat -d 2>/dev/null | grep -E "touch released|orientation|frame capture" | tail -25' | tr -d '\r' > "$OUT/logcat-rotate.txt"
 a shell 'cat /sys/class/drm/card0-*/modes 2>/dev/null | head -2; grep -iE "rotat|SURFACE|generation" /tmp/recovery.log | tail -20' > "$OUT/recovery-rotate.log" 2>&1
