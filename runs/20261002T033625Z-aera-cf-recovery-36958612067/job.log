@@ -1,0 +1,248 @@
+[cf] installing cuttlefish host packages
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ii  cuttlefish-base 1.57.0       amd64        Cuttlefish Android Virtual Device companion package
+[cf] fetching aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug
+cvd(4002)  I 10-02 03:08:39  4002  4002 main.cc:137] version: 1.57.0 | VCS: 9bb9c72329cedcb436bb75afc05c24d73fbcdf5d
+By using this Android Virtual Device, you agree to Google Terms of Service (https://policies.google.com/terms). The Google Privacy Policy (https://policies.google.com/privacy) describes how Google handles information generated as you use Google services.
+cvd(4002)  I 10-02 03:08:40  4002  4002 fetch_cvd.cc:495] Starting fetch to "/mnt/cf"
+cvd(4002)  I 10-02 03:08:40  4002  4006 host_package.cc:43] Downloading host package for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(4002)  I 10-02 03:08:40  4002  4002 fetch_cvd.cc:206] Downloading image zip for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(4002)  I 10-02 03:09:09  4002  4002 fetch_cvd.cc:511] Completed target fetch to '/mnt/cf' (1 out of 1)
+cvd(4002)  I 10-02 03:09:09  4002  4002 fetch_cvd.cc:520] Completed all fetches
+android-info.txt
+bin
+boot.img
+chromeos
+com.android.i18n
+cuttlefish_example_custom.img
+etc
+fastboot-info.txt
+fetch.log
+fetcher_config.json
+framework
+init_boot.img
+lib64
+metrics
+misc_info.txt
+nativetest64
+otatools
+super.img
+test_suites
+userdata.img
+usr
+vbmeta.img
+vbmeta_system.img
+vbmeta_system_dlkm.img
+vbmeta_vendor_dlkm.img
+vendor_boot.img
+[cf] launching (gpu_mode=gfxstream_guest_angle_host_swiftshader)
+[cf] booted in 56s: generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys
+[cf] state recovery after 6s
+[cf] recovery adb uid 0
+/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf: 1 file pushed, 0 skipped. 170.0 MB/s (759720 bytes in 0.004s)
+/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf: 1 file pushed, 0 skipped. 135.9 MB/s (708920 bytes in 0.005s)
+[cf] /twres/fonts absent in stock recovery: pushed host DejaVu as a stand-in
+[cf] facts: 1112 lines -> /home/runner/work/devicelab/devicelab/out/stock-recovery-facts.txt
+[cf] screenshot failed:
+Exited with code '1'
+
+    If the error above is unclear, please copy the text and `cvd version` output into an issue at:
+        http://go/cuttlefish-bug
+
+app 11 members, kit 29 members
+/home/runner/work/devicelab/devicelab/out/counter-1.0.0-x64.aerap: 40 members, 140.6 MB expanded, 26.9 MB xz
+/home/runner/work/devicelab/devicelab/out/counter-default/payload.tgz: 1 file pushed, 0 skipped. 637.4 MB/s (45314286 bytes in 0.068s)
+/home/runner/work/_temp/kitx64/aera-host-sim: 1 file pushed, 0 skipped. 189.6 MB/s (1415264 bytes in 0.007s)
+[sim] pushed in 1s; 134M	/tmp/aera-lab/root
+[sim] exit 0 after 11s (switches: none; env: none)
+sim: handshake done, 1080x2400 x3 slots
+sim: first frame after 1191 ms
+sim:   4000 ms Snap("start")
+sim: wrote /tmp/aera-lab/out/start.png
+sim:   4500 ms Tap(980, 2250)
+sim:   5000 ms Tap(980, 2250)
+sim:   5500 ms Tap(980, 2250)
+sim:   8000 ms Snap("after")
+sim: wrote /tmp/aera-lab/out/after.png
+sim: 22 frames
+sim: wrote /tmp/aera-lab/out/last.png
+sim: embedder exited with exit status: 0
+total 496
+drwxr-xr-x 3 runner runner   4096 Oct  2 03:11 .
+drwxr-xr-x 3 runner runner   4096 Oct  2 03:11 ..
+-rw-r--r-- 1 runner runner 163422 Oct  2 03:11 after.png
+-rw-r--r-- 1 runner runner 163422 Oct  2 03:11 last.png
+drwxr-xr-x 6 runner runner   4096 Oct  2 03:11 plugin-data
+-rw-r--r-- 1 runner runner 164487 Oct  2 03:11 start.png
+aera-plugin: virtio-gpu capsets 0x208
+aera-flutter: Vulkan on Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+aera-flutter: Vulkan renderer Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+/home/runner/work/devicelab/devicelab/out/counter-impeller/payload.tgz: 1 file pushed, 0 skipped. 286.3 MB/s (45314286 bytes in 0.151s)
+/home/runner/work/_temp/kitx64/aera-host-sim: 1 file pushed, 0 skipped. 187.2 MB/s (1415264 bytes in 0.007s)
+[sim] pushed in 1s; 134M	/tmp/aera-lab/root
+[sim] exit 0 after 11s (switches: --enable-impeller; env: none)
+sim: handshake done, 1080x2400 x3 slots
+sim: first frame after 1621 ms
+sim:   4000 ms Snap("start")
+sim: wrote /tmp/aera-lab/out/start.png
+sim:   4500 ms Tap(980, 2250)
+sim:   5000 ms Tap(980, 2250)
+sim:   5500 ms Tap(980, 2250)
+sim:   8000 ms Snap("after")
+sim: wrote /tmp/aera-lab/out/after.png
+sim: 18 frames
+sim: wrote /tmp/aera-lab/out/last.png
+sim: embedder exited with exit status: 0
+total 504
+drwxr-xr-x 3 runner runner   4096 Oct  2 03:12 .
+drwxr-xr-x 3 runner runner   4096 Oct  2 03:12 ..
+-rw-r--r-- 1 runner runner 166674 Oct  2 03:12 after.png
+-rw-r--r-- 1 runner runner 166674 Oct  2 03:12 last.png
+drwxr-xr-x 6 runner runner   4096 Oct  2 03:12 plugin-data
+-rw-r--r-- 1 runner runner 167335 Oct  2 03:12 start.png
+aera-plugin: virtio-gpu capsets 0x208
+aera-flutter: engine switches ["--enable-impeller"]
+aera-flutter: Vulkan on Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+[IMPORTANT:flutter/shell/platform/embedder/embedder_surface_vulkan_impeller.cc(85)] Using the Impeller rendering backend (Vulkan).
+aera-flutter: Vulkan renderer Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+/home/runner/work/devicelab/devicelab/out/counter-softpipe/payload.tgz: 1 file pushed, 0 skipped. 282.4 MB/s (45314286 bytes in 0.153s)
+/home/runner/work/_temp/kitx64/aera-host-sim: 1 file pushed, 0 skipped. 236.8 MB/s (1415264 bytes in 0.006s)
+[sim] pushed in 1s; 134M	/tmp/aera-lab/root
+[sim] exit 0 after 10s (switches: none; env: none)
+sim: handshake done, 1080x2400 x3 slots
+sim: first frame after 1188 ms
+sim:   4000 ms Snap("start")
+sim: wrote /tmp/aera-lab/out/start.png
+sim:   4500 ms Tap(980, 2250)
+sim:   5000 ms Tap(980, 2250)
+sim:   5500 ms Tap(980, 2250)
+sim:   8000 ms Snap("after")
+sim: wrote /tmp/aera-lab/out/after.png
+sim: 22 frames
+sim: wrote /tmp/aera-lab/out/last.png
+sim: embedder exited with exit status: 0
+total 496
+drwxr-xr-x 3 runner runner   4096 Oct  2 03:12 .
+drwxr-xr-x 3 runner runner   4096 Oct  2 03:12 ..
+-rw-r--r-- 1 runner runner 163422 Oct  2 03:12 after.png
+-rw-r--r-- 1 runner runner 163422 Oct  2 03:12 last.png
+drwxr-xr-x 6 runner runner   4096 Oct  2 03:12 plugin-data
+-rw-r--r-- 1 runner runner 164487 Oct  2 03:12 start.png
+aera-plugin: virtio-gpu capsets 0x208
+aera-flutter: Vulkan on Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+aera-flutter: Vulkan renderer Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))
+5:ramdisk load address: 0x11000000
+6:vendor ramdisk total size: 19034404
+9:product name: 
+13:vendor ramdisk table size: 108
+14:vendor ramdisk table: [
+15:    vendor_ramdisk00: {
+18:        type: 0x1
+19:        name: 
+29:--header_version 4 --pagesize 0x00000800 --base 0x00000000 --kernel_offset 0x10008000 --ramdisk_offset 0x11000000 --tags_offset 0x10000100 --dtb_offset 0x0000000011f00000 --vendor_cmdline printk.devkmsg=on audit=1 panic=-1 8250.nr_uarts=1 binder.impl=rust cma=0 firmware_class.path=/vendor/etc/ loop.max_part=7 init=/init bootconfig --board  --dtb /tmp/tmp.4LILSHbUhE/vb/dtb --vendor_bootconfig /tmp/tmp.4LILSHbUhE/vb/bootconfig --ramdisk_type 1 --ramdisk_name  --vendor_ramdisk_fragment /tmp/tmp.4LILSHbUhE/vb/vendor_ramdisk00 
+[aera-boot] no RECOVERY fragment: overlaying AERA onto the platform fragment /tmp/tmp.4LILSHbUhE/vb/vendor_ramdisk00
+[aera-boot] stock fragment 522 entries, AERA ramdisk 653
+[aera-boot] kept stock first_stage_ramdisk
+[aera-boot] kept stock lib/modules
+[aera-boot] carried init.recovery.cutf_cvm.rc
+[aera-boot] carried ueventd.cutf_cvm.rc
+[aera-boot] vendor_boot-aera.img: 33826816 bytes
+[aera-boot] Android up (782 system libs saved); rebooting into AERA
+[cf] state recovery after 9s
+[cf] recovery adb uid 0
+[cf] facts: 1126 lines -> /home/runner/work/devicelab/devicelab/out/aera-recovery-facts.txt
+[cf] screenshot failed:
+Exited with code '1'
+
+    If the error above is unclear, please copy the text and `cvd version` output into an issue at:
+        http://go/cuttlefish-bug
+
+53:setting DRM_FORMAT_XRGB8888 and GGL_PIXEL_FORMAT_BGRA_8888
+54:setting DRM_FORMAT_XRGB8888 and GGL_PIXEL_FORMAT_BGRA_8888
+55:no SDE topology: 1 layer mixer, plane 32
+57:Atomic Commit succeedUsing drm graphics.
+91:ro.boot.vendor.apex.com.android.hardware.graphics.composer=com.android.hardware.graphics.composer.ranchu
+101:ro.boot.vbmeta.invalidate_on_error=yes
+111:ro.boot.hardware.hwcomposer.display_finder_mode=drm
+413:ro.minui.pixel_format=RGBX_8888
+414:ro.minui.overscan_percent=0
+460:DEBUG: AERA: error - I cannot find the system build.prop
+514:I:Process ended with no errors.
+703:E:[MTP] could not open MTP driver, errno: 2
+$ rm -f /tmp/aeraui.png; touch /tmp/aeraui-capture; sleep 3; ls -la /tmp/aeraui-capture /tmp/aeraui.png 2>&1
+ls: /tmp/aeraui-capture: No such file or directory
+-rw-rw-rw- 1 root root 227532 2026-10-02 05:15 /tmp/aeraui.png
+
+$ getprop init.svc.logd; pidof logd; logcat -d -t 5 2>&1 | tail -5
+running
+80
+10-02 05:15:09.925    91   117 W recovery: Using fake battery capacity 100.
+--
+$ grep -c "Atomic commit failed" /tmp/recovery.log; grep -E "SDE topology|Atomic Commit" /tmp/recovery.log | head -5
+0
+no SDE topology: 1 layer mixer, plane 32
+Atomic Commit succeedUsing drm graphics.
+--
+[   32.768439] type=1400 audit(1790910908.123:467): avc:  denied  { unlink } for  comm="recovery" name="aeraui-capture" dev="tmpfs" ino=10 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+[   32.769065] type=1300 audit(1790910908.123:467): arch=c000003e syscall=263 success=yes exit=0 a0=ffffff9c a1=60d3a89cfe20 a2=0 a3=0 items=0 ppid=1 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="recovery" exe="/system/bin/recovery" subj=u:r:recovery:s0 key=(null)
+$ mountpoint -q /sys/kernel/debug || mount -t debugfs debugfs /sys/kernel/debug; cat /sys/kernel/debug/dri/0/state 2>&1 | head -60
+plane[32]: plane-0
+	crtc=crtc-0
+	fb=145
+		allocated by = recovery
+		refcount=2
+		format=XR24 little-endian (0x34325258)
+		modifier=0x0
+		size=720x1348
+		layers:
+			size[0]=720x1348
+			pitch[0]=2880
+			offset[0]=0
+			obj[0]:
+				name=0
+[aera] uid 0; touch /dev/input/event2 max 720x1348
+   91 recovery                    recovery
+  193 [recovery]                  [recovery]
+  194 adbd                        adbd --root_seclabel=u:r:su:s0 --device_banner=recovery
+[aera] frame 01-home.png
+/home/runner/work/devicelab/devicelab/out/aera-counter/.pkg/plugin.json: 1 file pushed, 0 skipped. 6.7 MB/s (686 bytes in 0.000s)
+/home/runner/work/devicelab/devicelab/out/aera-counter/.pkg/runtime.xz: 1 file pushed, 0 skipped. 405.0 MB/s (26943644 bytes in 0.063s)
+2 files pushed, 0 skipped. 152.6 MB/s (26944330 bytes in 0.168s)
+[aera] installed counter (26943644 bytes payload), data /sdcard/AERA/plugin-data/counter, switches: none
+/home/runner/work/devicelab/devicelab/out/aera-counter/.req.json: 1 file pushed, 0 skipped. 0.7 MB/s (73 bytes in 0.000s)
+[aera] rpc: {"event":"log","id":"lab","text":"Opening counter\n"} {"code":0,"event":"result","id":"lab"} 
+[aera] frame 02-opened.png
+/home/runner/work/devicelab/devicelab/out/aera-counter/.ev/down.ev: 1 file pushed, 0 skipped. 2.4 MB/s (192 bytes in 0.000s)
+/home/runner/work/devicelab/devicelab/out/aera-counter/.ev/up.ev: 1 file pushed, 0 skipped. 3.2 MB/s (96 bytes in 0.000s)
+2 files pushed, 0 skipped. 0.0 MB/s (288 bytes in 0.084s)
+[aera] tap 620,1278 (panel 620,1278 on /dev/input/event2)
+[aera] frame 03-app.png
+/home/runner/work/devicelab/devicelab/out/aera-counter/.ev/down.ev: 1 file pushed, 0 skipped. 1.7 MB/s (192 bytes in 0.000s)
+/home/runner/work/devicelab/devicelab/out/aera-counter/.ev/up.ev: 1 file pushed, 0 skipped. 3.2 MB/s (96 bytes in 0.000s)
+2 files pushed, 0 skipped. 0.0 MB/s (288 bytes in 0.124s)
+[aera] tap 610,1286 (panel 610,1286 on /dev/input/event2)
+[aera] frame 04-app.png
+/home/runner/work/devicelab/devicelab/out/aera-counter/.ev/down.ev: 1 file pushed, 0 skipped. 1.9 MB/s (192 bytes in 0.000s)
+/home/runner/work/devicelab/devicelab/out/aera-counter/.ev/up.ev: 1 file pushed, 0 skipped. 3.3 MB/s (96 bytes in 0.000s)
+2 files pushed, 0 skipped. 0.0 MB/s (288 bytes in 0.084s)
+[aera] tap 680,1278 (panel 680,1278 on /dev/input/event2)
+[aera] frame 05-app.png
+/home/runner/work/devicelab/devicelab/out/aera-counter/.ev/down.ev: 1 file pushed, 0 skipped. 2.5 MB/s (192 bytes in 0.000s)
+/home/runner/work/devicelab/devicelab/out/aera-counter/.ev/up.ev: 1 file pushed, 0 skipped. 3.6 MB/s (96 bytes in 0.000s)
+2 files pushed, 0 skipped. 0.0 MB/s (288 bytes in 0.085s)
+[aera] tap 674,1286 (panel 674,1286 on /dev/input/event2)
+[aera] frame 06-app.png
+/home/runner/work/devicelab/devicelab/out/aera-counter/.req.json: 1 file pushed, 0 skipped. 1.2 MB/s (78 bytes in 0.000s)
+[aera] AERA Remote up: {"height":1348,"input":true,"stream":true,"width":720}
+[aera] tap 620,1278 via AERA Remote:  
+[aera] frame 07-remote.png
+[aera] frame 08-after.png

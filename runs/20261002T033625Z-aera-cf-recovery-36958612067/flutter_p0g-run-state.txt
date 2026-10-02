@@ -1,0 +1,78 @@
+prw-rw---- 1 root root 0 2026-10-02 05:17 /system/bin/aerain
+prw-rw-rw- 1 root root 0 2026-10-02 05:17 /system/bin/aeraout
+  PID S WCHAN  NAME                        ARGS                       
+    1 S do_epoll_wait init                 init second_stage
+   74 S do_sys_poll init                   init subcontext u:r:vendor_init:s0 16
+   75 S do_sys_poll ueventd                ueventd
+   80 S __x64_sys_rt_sigsuspend logd       logd
+   81 S hrtimer_nanosleep hwservicemanager hwservicemanager
+   82 S do_epoll_wait servicemanager       servicemanager
+   83 S do_epoll_wait vndservicemanager    vndservicemanager /dev/vndbinder
+   88 S do_epoll_wait charger              charger
+   91 S futex_wait_queue recovery          recovery
+  194 S do_epoll_wait adbd                 adbd --root_seclabel=u:r:su:s0 --device_banner=recovery
+  712 S do_sys_poll ld-linux-x86-64.so.2   ld-linux-x86-64.so.2 --library-path /tmp/aera-p2-FYME7J/usr/lib /tmp/aera-p2-FYME7J/usr/bin/aera-flutter --vulkan --aera-host-api=3
+l-wx------ 1 root root 64 2026-10-02 05:14 17 -> pipe:[743]
+lr-x------ 1 root root 64 2026-10-02 05:14 19 -> /system/bin/aeracancel
+lrwx------ 1 root root 64 2026-10-02 05:14 23 -> /memfd:aera-plugin-surface (deleted)
+lr-x------ 1 root root 64 2026-10-02 05:14 9 -> /system/bin/aerain
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+* Storage is not encrypted
+* Platform:   aera_cf
+* Device:     aera_cf (aera_cf)
+* Dynamic:    yes
+* Boot slot:  _a
+* Virtual_AB: no
+* Kernel:     6.12.74-android16-6-g3ec022196c4e-ab15076761
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+* No ROM.
+--------------------------
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:ROM Status: Is not installed
+I:Themes version mismatch (old='0'; new='2.0')
+I:Mount: Unable to find partition for path '/persist'
+I:Can't probe device /dev/block/vda9
+I:Failed to mount '/data' (Invalid argument)
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:InfoManager saving '/data/recovery/AERA/.aera'
+I:Saved settings file values to '/data/recovery/AERA/.aera'
+I:Starting MTP
+I:Cannot find file /sys/class/android_usb/android0/idVendor
+I:Cannot find file /sys/class/android_usb/android0/idProduct
+I:[MTP] Starting MTP
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+MTP Enabled
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Starting Adb Backup FIFO
+E:[MTP] could not open MTP driver, errno: 2
+I:Reloading input devices
