@@ -71,10 +71,10 @@ try: v = json.loads(sys.stdin.read())
 except Exception: v = []
 v = v.get("value", v) if isinstance(v, dict) else v
 print(json.dumps([x for x in (v or []) if any(k in x.lower() for k in ("uid", "hello", "root", "pid", "context"))][:12]))' 2>&1)"
-# The hello frame the page gets: connect from the page itself (manager origin) to
-# the session the config holds now, read the first frame. Plus that channel's context.
-SESS=; for _ in 1 2 3 4; do  # the page may still be replacing a channel the lab started from another context
-  SESS=$(adb shell "KSU_MODULE=$ID $KSUD module config get webui.session" 2>/dev/null | tr -d '\r'); case "$SESS" in '{'*) break;; esac; sleep 8; done
+# The hello frame the page gets: connect from the page itself (manager origin)
+# and read the first frame. Plus that channel's context.
+# An idle channel exits after 30 s (idleExit), so start one right before connecting.
+SESS=$(start | grep '^{' | head -1)
 rec page-session "$(echo "$SESS" | js)"
 PORT=$(echo "$SESS" | python3 -c 'import json,sys; print(json.loads(sys.stdin.read()).get("port",""))' 2>/dev/null)
 TOK=$(echo "$SESS" | python3 -c 'import json,sys; print(json.loads(sys.stdin.read()).get("token",""))' 2>/dev/null)
