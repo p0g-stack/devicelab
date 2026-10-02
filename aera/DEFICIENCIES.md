@@ -431,6 +431,16 @@ Rotation back kills AERA with SIGSEGV; init restarts it to Home.
   round now really runs with gestures off (run 36975433377: recovery pid
   92 -> 3458) and passes. Strip: `devicelab-aera/aera-ui/d12-landscape-counter-bcd5e6e.png`.
 
+- Home in landscape on a freshly started AERA, no plugin (run
+  `runs/20261002T085212Z-aera-cf-recovery-36983895051`, project files
+  `devicelab-aera/aera-ui/home-landscape-nav.png`): it reproduces. The
+  translucent bottom bar covers the lower part of the Files and Plugin
+  Manager cards (portrait overlays the scrolled list the same way, so the
+  overlay itself is the design), but in landscape the bar runs past both
+  screen edges: "Home" and "Menu" are cut off at the left and right.
+  The landscape shade overlaps text: "Brightness" over the Network button,
+  "10%" over "Check updates" (`shade-landscape-overlap.png`, run 36978191707).
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
