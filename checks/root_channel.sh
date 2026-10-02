@@ -19,7 +19,9 @@ sh_() { adb shell "$1" 2>&1 | tr -d '\r' | js; }
 MOD=/data/adb/modules/$ID; FW=$MOD/flutter_webui; KSUD=/data/adb/ksud
 cfg() { adb shell "for k in webui.session webui.boot; do printf '%s=' \$k; KSU_MODULE=$ID $KSUD module config get \$k 2>&1; done; echo '-- list:'; KSU_MODULE=$ID $KSUD module config list 2>&1 | head -12" | tr -d '\r'; }
 # As the manager runs module shell: uid 0 in u:r:ksu:s0 (sockprobe), else adb root.
-asroot() { adb shell "if [ -x /data/local/tmp/sockprobe ]; then /data/local/tmp/sockprobe -as-uid 0 -as-ctx u:r:ksu:s0 /system/bin/sh -c '$1'; else /system/bin/sh -c '$1'; fi" 2>&1 | tr -d '\r'; }
+asroot() { # sockprobe's setcon can be refused after a soft-reboot: fall back to adb root (u:r:su:s0)
+  local o; o=$(adb shell "[ -x /data/local/tmp/sockprobe ] && /data/local/tmp/sockprobe -as-uid 0 -as-ctx u:r:ksu:s0 /system/bin/sh -c '$1'" 2>&1 | tr -d '\r')
+  case "$o" in ''|*'"op":"setcon"'*) echo "# via adb root ($(adb shell 'id -u; cat /proc/self/attr/current' 2>&1 | tr -d '\r\0' | tr '\n' ' '))"; adb shell "/system/bin/sh -c '$1'" 2>&1 | tr -d '\r';; *) echo "# via ksu context"; echo "$o";; esac; }
 start() { asroot "cd /; sh $FW/root start; echo exit=\$?"; }
 pid_of() { python3 -c 'import json,re,sys
 for l in sys.stdin:
