@@ -38,6 +38,9 @@ swipe_home() {
   touch_ up 360 1040; log "edge swipe Home"
 }
 rec_pid() { a shell 'pidof recovery' 2>/dev/null | tr -d '\r'; }
+apppids() { a shell 'for p in /proc/[0-9]*; do grep -qa "aera-host-ap[i]" $p/cmdline 2>/dev/null && echo ${p#/proc/}; done' | tr -d '\r' | sort -n | tr '\n' ' '; }
+# Whether the card brought back the plugin's own process (0021 scene reuse).
+apps() { local after; after=$(apppids); log "$1: plugin pids $2-> ${after:-none}$([ -n "$2" ] && [ "$2" = "$after" ] && echo ' SAME PROCESS')"; }
 # Exception trace printed nothing in run 36949565316 (recovery's own SIGSEGV
 # handler re-raises), so let the running recovery dump core instead (toybox's
 # ulimit -P; mksh's builtin has no -P).
@@ -70,17 +73,17 @@ card=${RECENTS_CARD:-360,790}
 
 log "== A: left by the edge swipe, reopened from its card"
 a shell 'pkill -f aera-flutter; sleep 2'; p=$(rec_pid); arm_core
-open_ "$id"; sleep "${APP_WAIT:-25}"; shot A1-app
+open_ "$id"; sleep "${APP_WAIT:-25}"; shot A1-app; ap=$(apppids)
 swipe_home; sleep 3; key menu; sleep 3; shot A2-recents
 tap "${card%,*}" "${card#*,}"; sleep 5; shot A3-after-card
-verdict "$p" A
+verdict "$p" A; apps A "$ap"
 
 log "== B: never left, Menu from inside the app, its card"
 a shell 'pkill -f aera-flutter; sleep 2'; p=$(rec_pid); arm_core
-open_ "$id"; sleep "${APP_WAIT:-25}"; shot B1-app
+open_ "$id"; sleep "${APP_WAIT:-25}"; shot B1-app; ap=$(apppids)
 key menu; sleep 3; shot B2-recents
 tap "$(( ${card%,*} + 1 ))" "$(( ${card#*,} + 1 ))"; sleep 5; shot B3-after-card
-verdict "$p" B
+verdict "$p" B; apps B "$ap"
 
 # C (AERA Browser) dropped: RPC plugin open refuses browser-runtime plugins
 # ("not an installed Host API 2 or 3 plugin", run 36949565316).
