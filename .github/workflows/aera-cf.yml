@@ -56,6 +56,9 @@ jobs:
           tar -C kit -xJf flutter-aera-kit-linux-x64-*.tar.xz
           sim=$(ls aera-host-sim-linux-x64* | grep -v sha256 | head -1); mv "$sim" aera-host-sim; chmod +x aera-host-sim
           file aera-host-sim kit/usr/bin/* | tee -a "$LAB_OUT/kit-release.txt"
+          # Which flutter-aera commit built the kit (kit.json), and the kit run that published it.
+          find kit -maxdepth 3 -name kit.json -exec sh -c 'echo "== $1"; cat "$1"' _ {} \; | tee -a "$LAB_OUT/kit-release.txt" || true
+          gh run list -R p0g-stack/flutter-aera -L 5 --json databaseId,workflowName,status,conclusion,headSha,createdAt 2>&1 | tee -a "$LAB_OUT/kit-release.txt" || true
       - name: Counter .aerap from flutter_p0g, retargeted to the x64 kit (lab-inputs aera/)
         run: |
           set -euo pipefail
