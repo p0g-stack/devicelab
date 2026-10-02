@@ -1,0 +1,357 @@
+aera-plugin: virtio-gpu capsets 0x208
+instance version 1.3.275
+instance extension "VK_KHR_external_fence_capabilities"
+instance extension "VK_KHR_external_memory_capabilities"
+instance extension "VK_KHR_external_semaphore_capabilities"
+instance extension "VK_KHR_get_physical_device_properties2"
+instance extension "VK_KHR_surface"
+instance extension "VK_EXT_debug_utils"
+instance extension "VK_EXT_debug_report"
+instance extension "VK_KHR_portability_enumeration"
+instance extension "VK_LUNARG_direct_driver_loading"
+
+device "Virtio-GPU GFXStream (SwiftShader Device (LLVM 16.0.0))" type VIRTUAL_GPU api 1.3.0 driver 0x6802002 vendor 0x1ae0 id 0xc0de
+device extension "VK_KHR_bind_memory2"
+device extension "VK_KHR_copy_commands2"
+device extension "VK_KHR_create_renderpass2"
+device extension "VK_KHR_dedicated_allocation"
+device extension "VK_KHR_depth_stencil_resolve"
+device extension "VK_KHR_descriptor_update_template"
+device extension "VK_KHR_device_group"
+device extension "VK_KHR_driver_properties"
+device extension "VK_KHR_dynamic_rendering"
+device extension "VK_KHR_external_fence"
+device extension "VK_KHR_external_fence_fd"
+device extension "VK_KHR_external_memory"
+device extension "VK_KHR_external_memory_fd"
+device extension "VK_KHR_external_semaphore"
+device extension "VK_KHR_external_semaphore_fd"
+device extension "VK_KHR_format_feature_flags2"
+device extension "VK_KHR_get_memory_requirements2"
+device extension "VK_KHR_image_format_list"
+device extension "VK_KHR_imageless_framebuffer"
+device extension "VK_KHR_maintenance1"
+device extension "VK_KHR_maintenance2"
+device extension "VK_KHR_maintenance3"
+device extension "VK_KHR_maintenance4"
+device extension "VK_KHR_multiview"
+device extension "VK_KHR_relaxed_block_layout"
+device extension "VK_KHR_sampler_mirror_clamp_to_edge"
+device extension "VK_KHR_sampler_ycbcr_conversion"
+device extension "VK_KHR_separate_depth_stencil_layouts"
+device extension "VK_KHR_shader_float_controls"
+device extension "VK_KHR_shader_integer_dot_product"
+device extension "VK_KHR_shader_non_semantic_info"
+device extension "VK_KHR_shader_subgroup_extended_types"
+device extension "VK_KHR_shader_terminate_invocation"
+device extension "VK_KHR_spirv_1_4"
+device extension "VK_KHR_storage_buffer_storage_class"
+device extension "VK_KHR_swapchain"
+device extension "VK_KHR_synchronization2"
+device extension "VK_KHR_timeline_semaphore"
+device extension "VK_KHR_uniform_buffer_standard_layout"
+device extension "VK_KHR_vulkan_memory_model"
+device extension "VK_KHR_zero_initialize_workgroup_memory"
+device extension "VK_EXT_4444_formats"
+device extension "VK_EXT_blend_operation_advanced"
+device extension "VK_EXT_custom_border_color"
+device extension "VK_EXT_depth_clip_enable"
+device extension "VK_EXT_descriptor_indexing"
+device extension "VK_EXT_device_memory_report"
+device extension "VK_EXT_extended_dynamic_state"
+device extension "VK_EXT_extended_dynamic_state2"
+device extension "VK_EXT_external_memory_dma_buf"
+device extension "VK_EXT_host_query_reset"
+device extension "VK_EXT_image_drm_format_modifier"
+device extension "VK_EXT_image_robustness"
+device extension "VK_EXT_index_type_uint8"
+device extension "VK_EXT_inline_uniform_block"
+device extension "VK_EXT_line_rasterization"
+device extension "VK_EXT_load_store_op_none"
+device extension "VK_EXT_pipeline_creation_cache_control"
+device extension "VK_EXT_pipeline_creation_feedback"
+device extension "VK_EXT_primitive_topology_list_restart"
+device extension "VK_EXT_private_data"
+device extension "VK_EXT_provoking_vertex"
+device extension "VK_EXT_queue_family_foreign"
+device extension "VK_EXT_scalar_block_layout"
+device extension "VK_EXT_separate_stencil_usage"
+device extension "VK_EXT_shader_demote_to_helper_invocation"
+device extension "VK_EXT_shader_stencil_export"
+device extension "VK_EXT_subgroup_size_control"
+device extension "VK_EXT_tooling_info"
+queue family 0: GRAPHICS | COMPUTE | TRANSFER x1
+features PhysicalDeviceFeatures {
+    robust_buffer_access: 1,
+    full_draw_index_uint32: 1,
+    image_cube_array: 1,
+    independent_blend: 1,
+    geometry_shader: 0,
+    tessellation_shader: 0,
+    sample_rate_shading: 1,
+    dual_src_blend: 0,
+    logic_op: 0,
+    multi_draw_indirect: 1,
+    draw_indirect_first_instance: 1,
+    depth_clamp: 1,
+    depth_bias_clamp: 1,
+    fill_mode_non_solid: 1,
+    depth_bounds: 1,
+    wide_lines: 0,
+    large_points: 1,
+    alpha_to_one: 0,
+    multi_viewport: 0,
+    sampler_anisotropy: 1,
+    texture_compression_etc2: 1,
+    texture_compression_astc_ldr: 1,
+    texture_compression_bc: 1,
+    occlusion_query_precise: 1,
+    pipeline_statistics_query: 0,
+    vertex_pipeline_stores_and_atomics: 1,
+    fragment_stores_and_atomics: 1,
+    shader_tessellation_and_geometry_point_size: 0,
+    shader_image_gather_extended: 0,
+    shader_storage_image_extended_formats: 1,
+    shader_storage_image_multisample: 1,
+    shader_storage_image_read_without_format: 0,
+    shader_storage_image_write_without_format: 1,
+    shader_uniform_buffer_array_dynamic_indexing: 1,
+    shader_sampled_image_array_dynamic_indexing: 1,
+    shader_storage_buffer_array_dynamic_indexing: 1,
+    shader_storage_image_array_dynamic_indexing: 1,
+    shader_clip_distance: 1,
+    shader_cull_distance: 1,
+    shader_float64: 0,
+    shader_int64: 0,
+    shader_int16: 0,
+    shader_resource_residency: 0,
+    shader_resource_min_lod: 0,
+    sparse_binding: 0,
+    sparse_residency_buffer: 0,
+    sparse_residency_image2_d: 0,
+    sparse_residency_image3_d: 0,
+    sparse_residency2_samples: 0,
+    sparse_residency4_samples: 0,
+    sparse_residency8_samples: 0,
+    sparse_residency16_samples: 0,
+    sparse_residency_aliased: 0,
+    variable_multisample_rate: 1,
+    inherited_queries: 0,
+}
+vulkan 1.1 features PhysicalDeviceVulkan11Features {
+    s_type: PHYSICAL_DEVICE_VULKAN_1_1_FEATURES,
+    p_next: 0x0000000000000000,
+    storage_buffer16_bit_access: 0,
+    uniform_and_storage_buffer16_bit_access: 0,
+    storage_push_constant16: 0,
+    storage_input_output16: 0,
+    multiview: 1,
+    multiview_geometry_shader: 0,
+    multiview_tessellation_shader: 0,
+    variable_pointers_storage_buffer: 0,
+    variable_pointers: 0,
+    protected_memory: 0,
+    sampler_ycbcr_conversion: 1,
+    shader_draw_parameters: 0,
+    _marker: PhantomData<&()>,
+}
+vulkan 1.2 features PhysicalDeviceVulkan12Features {
+    s_type: PHYSICAL_DEVICE_VULKAN_1_2_FEATURES,
+    p_next: 0x00007ffeb15edeb0,
+    sampler_mirror_clamp_to_edge: 1,
+    draw_indirect_count: 0,
+    storage_buffer8_bit_access: 0,
+    uniform_and_storage_buffer8_bit_access: 0,
+    storage_push_constant8: 0,
+    shader_buffer_int64_atomics: 0,
+    shader_shared_int64_atomics: 0,
+    shader_float16: 0,
+    shader_int8: 0,
+    descriptor_indexing: 1,
+    shader_input_attachment_array_dynamic_indexing: 0,
+    shader_uniform_texel_buffer_array_dynamic_indexing: 1,
+    shader_storage_texel_buffer_array_dynamic_indexing: 1,
+    shader_uniform_buffer_array_non_uniform_indexing: 1,
+    shader_sampled_image_array_non_uniform_indexing: 1,
+    shader_storage_buffer_array_non_uniform_indexing: 1,
+    shader_storage_image_array_non_uniform_indexing: 1,
+    shader_input_attachment_array_non_uniform_indexing: 0,
+    shader_uniform_texel_buffer_array_non_uniform_indexing: 1,
+    shader_storage_texel_buffer_array_non_uniform_indexing: 1,
+    descriptor_binding_uniform_buffer_update_after_bind: 0,
+    descriptor_binding_sampled_image_update_after_bind: 1,
+    descriptor_binding_storage_image_update_after_bind: 1,
+    descriptor_binding_storage_buffer_update_after_bind: 1,
+    descriptor_binding_uniform_texel_buffer_update_after_bind: 1,
+    descriptor_binding_storage_texel_buffer_update_after_bind: 1,
+    descriptor_binding_update_unused_while_pending: 1,
+    descriptor_binding_partially_bound: 1,
+    descriptor_binding_variable_descriptor_count: 1,
+    runtime_descriptor_array: 1,
+    sampler_filter_minmax: 0,
+    scalar_block_layout: 1,
+    imageless_framebuffer: 1,
+    uniform_buffer_standard_layout: 1,
+    shader_subgroup_extended_types: 1,
+    separate_depth_stencil_layouts: 1,
+    host_query_reset: 1,
+    timeline_semaphore: 1,
+    buffer_device_address: 1,
+    buffer_device_address_capture_replay: 0,
+    buffer_device_address_multi_device: 0,
+    vulkan_memory_model: 1,
+    vulkan_memory_model_device_scope: 1,
+    vulkan_memory_model_availability_visibility_chains: 1,
+    shader_output_viewport_index: 0,
+    shader_output_layer: 0,
+    subgroup_broadcast_dynamic_id: 1,
+    _marker: PhantomData<&()>,
+}
+vulkan 1.3 features PhysicalDeviceVulkan13Features {
+    s_type: PHYSICAL_DEVICE_VULKAN_1_3_FEATURES,
+    p_next: 0x00007ffeb15ed270,
+    robust_image_access: 1,
+    inline_uniform_block: 0,
+    descriptor_binding_inline_uniform_block_update_after_bind: 1,
+    pipeline_creation_cache_control: 1,
+    private_data: 1,
+    shader_demote_to_helper_invocation: 1,
+    shader_terminate_invocation: 1,
+    subgroup_size_control: 1,
+    compute_full_subgroups: 1,
+    synchronization2: 1,
+    texture_compression_astc_hdr: 0,
+    shader_zero_initialize_workgroup_memory: 1,
+    dynamic_rendering: 1,
+    shader_integer_dot_product: 1,
+    maintenance4: 1,
+    _marker: PhantomData<&()>,
+}
+limits PhysicalDeviceLimits {
+    max_image_dimension1_d: 16384,
+    max_image_dimension2_d: 16384,
+    max_image_dimension3_d: 2048,
+    max_image_dimension_cube: 16384,
+    max_image_array_layers: 2048,
+    max_texel_buffer_elements: 65536,
+    max_uniform_buffer_range: 65536,
+    max_storage_buffer_range: 1073741824,
+    max_push_constants_size: 128,
+    max_memory_allocation_count: 4096,
+    max_sampler_allocation_count: 4000,
+    buffer_image_granularity: 4096,
+    sparse_address_space_size: 0,
+    max_bound_descriptor_sets: 4,
+    max_per_stage_descriptor_samplers: 64,
+    max_per_stage_descriptor_uniform_buffers: 15,
+    max_per_stage_descriptor_storage_buffers: 30,
+    max_per_stage_descriptor_sampled_images: 200,
+    max_per_stage_descriptor_storage_images: 16,
+    max_per_stage_descriptor_input_attachments: 8,
+    max_per_stage_resources: 200,
+    max_descriptor_set_samplers: 576,
+    max_descriptor_set_uniform_buffers: 90,
+    max_descriptor_set_uniform_buffers_dynamic: 8,
+    max_descriptor_set_storage_buffers: 96,
+    max_descriptor_set_storage_buffers_dynamic: 4,
+    max_descriptor_set_sampled_images: 1800,
+    max_descriptor_set_storage_images: 144,
+    max_descriptor_set_input_attachments: 8,
+    max_vertex_input_attributes: 16,
+    max_vertex_input_bindings: 16,
+    max_vertex_input_attribute_offset: 2047,
+    max_vertex_input_binding_stride: 2048,
+    max_vertex_output_components: 128,
+    max_tessellation_generation_level: 0,
+    max_tessellation_patch_size: 0,
+    max_tessellation_control_per_vertex_input_components: 0,
+    max_tessellation_control_per_vertex_output_components: 0,
+    max_tessellation_control_per_patch_output_components: 0,
+    max_tessellation_control_total_output_components: 0,
+    max_tessellation_evaluation_input_components: 0,
+    max_tessellation_evaluation_output_components: 0,
+    max_geometry_shader_invocations: 0,
+    max_geometry_input_components: 0,
+    max_geometry_output_components: 0,
+    max_geometry_output_vertices: 0,
+    max_geometry_total_output_components: 0,
+    max_fragment_input_components: 128,
+    max_fragment_output_attachments: 8,
+    max_fragment_dual_src_attachments: 1,
+    max_fragment_combined_output_resources: 28,
+    max_compute_shared_memory_size: 32768,
+    max_compute_work_group_count: [
+        65535,
+        65535,
+        65535,
+    ],
+    max_compute_work_group_invocations: 256,
+    max_compute_work_group_size: [
+        256,
+        256,
+        64,
+    ],
+    sub_pixel_precision_bits: 8,
+    sub_texel_precision_bits: 8,
+    mipmap_precision_bits: 6,
+    max_draw_indexed_index_value: 4294967295,
+    max_draw_indirect_count: 4294967295,
+    max_sampler_lod_bias: 15.0,
+    max_sampler_anisotropy: 16.0,
+    max_viewports: 16,
+    max_viewport_dimensions: [
+        8192,
+        8192,
+    ],
+    viewport_bounds_range: [
+        -16384.0,
+        16383.0,
+    ],
+    viewport_sub_pixel_bits: 0,
+    min_memory_map_alignment: 64,
+    min_texel_buffer_offset_alignment: 256,
+    min_uniform_buffer_offset_alignment: 256,
+    min_storage_buffer_offset_alignment: 256,
+    min_texel_offset: -8,
+    max_texel_offset: 7,
+    min_texel_gather_offset: -8,
+    max_texel_gather_offset: 7,
+    min_interpolation_offset: -0.5,
+    max_interpolation_offset: 0.5,
+    sub_pixel_interpolation_offset_bits: 4,
+    max_framebuffer_width: 8192,
+    max_framebuffer_height: 8192,
+    max_framebuffer_layers: 256,
+    framebuffer_color_sample_counts: TYPE_1 | TYPE_4,
+    framebuffer_depth_sample_counts: TYPE_1 | TYPE_4,
+    framebuffer_stencil_sample_counts: TYPE_1 | TYPE_4,
+    framebuffer_no_attachments_sample_counts: TYPE_1 | TYPE_4,
+    max_color_attachments: 8,
+    sampled_image_color_sample_counts: TYPE_1 | TYPE_4,
+    sampled_image_integer_sample_counts: TYPE_1 | TYPE_4,
+    sampled_image_depth_sample_counts: TYPE_1 | TYPE_4,
+    sampled_image_stencil_sample_counts: TYPE_1 | TYPE_4,
+    storage_image_sample_counts: TYPE_1 | TYPE_4,
+    max_sample_mask_words: 1,
+    timestamp_compute_and_graphics: 1,
+    timestamp_period: 1.0,
+    max_clip_distances: 8,
+    max_cull_distances: 8,
+    max_combined_clip_and_cull_distances: 16,
+    discrete_queue_priorities: 2,
+    point_size_range: [
+        1.0,
+        1023.0,
+    ],
+    line_width_range: [
+        1.0,
+        1.0,
+    ],
+    point_size_granularity: 0.0,
+    line_width_granularity: 0.0,
+    strict_lines: 1,
+    standard_sample_locations: 1,
+    optimal_buffer_copy_offset_alignment: 64,
+    optimal_buffer_copy_row_pitch_alignment: 64,
+    non_coherent_atom_size: 256,
+}
