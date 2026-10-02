@@ -75,7 +75,9 @@ drm graphics.`). Findings file: project files `real-device-infiniti-2026-10-02.m
   picks V11, V10 alone picks V10). Left as is: the recovery VINTF fragment
   still declares charger version 10; servicemanager matches AIDL services by
   name and instance, so a V11 service should register, but a hardware run
-  settles it. Upstream candidate for the AERA-Recovery tree.
+  settles it. Yuv (2026-10-02): a device-tree issue for the tree's owner to
+  fix upstream; our patch is a local workaround only, with no upstream PR from
+  us and no Infiniti rebuild queued for it.
 
 
 ## SELinux across trees (2026-10-02)
