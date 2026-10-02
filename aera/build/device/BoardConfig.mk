@@ -36,6 +36,13 @@ BOOT_SECURITY_PATCH := $(PLATFORM_SECURITY_PATCH)
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 AERA_THEME := portrait_hdpi
 AERA_FRAMERATE := 60
+# AERA lays pages out on a 1440x3168 design canvas; without adaptive
+# resolution it is drawn 1:1 on this 720-wide panel and overflows (landscape
+# Home bar cut at both edges, shade text overlaps). Screen height in 1080-wide
+# units: 1348*1080/720 = 2022 (logical 1440x2696); status bar at AERA's default.
+AERA_UI_ADAPTIVE_RESOLUTION := true
+AERA_SCREEN_H := 2022
+AERA_STATUS_H := 124
 AERA_NO_SCREEN_BLANK := true
 # Required by aera_build.mk; Cuttlefish has no backlight, and minuitwrp skips
 # the write when the path does not open.
