@@ -303,8 +303,18 @@ Rotation back kills AERA with SIGSEGV; init restarts it to Home.
 
 - The counter survives the rotation itself (0020's goal), but it never
   redraws visibly because AERA stops presenting.
-- Next run: the same rotation and back with no plugin open (control), and
-  a recovery core with a gdb backtrace for each crash.
+- Control without a plugin (run `runs/20261002T030347Z-aera-cf-recovery-36956217173`):
+  after the restart AERA shows Home and no longer reacts on screen to the
+  shade swipe or the Rotation tile (`6-home-landscape.png`,
+  `7-home-back.png` are identical Home frames), and it crashes again
+  (recovery pid 3868 -> 3971). So the crash does not need a plugin: it is
+  AERA's own rotation on this display (gfxstream/SwiftShader, DRM primary
+  plane from 0013).
+- Cores are captured (`toybox ulimit -P`); gdb could not relocate the PIE
+  without the device's linker, so `symbolize-cores.sh` now takes the load
+  base from the core's NT_FILE note (`aera/tools/core_maps.py`) and loads
+  `recovery-unstripped.elf` at it. D10's rip 0x6109d1602054 and D12's rip
+  0x5a07bf139fcc are symbolized in the next run.
 
 ## Lab gaps (devicelab, not AERA yet)
 
