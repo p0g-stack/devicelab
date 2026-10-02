@@ -73,12 +73,13 @@ v = v.get("value", v) if isinstance(v, dict) else v
 print(json.dumps([x for x in (v or []) if any(k in x.lower() for k in ("uid", "hello", "root", "pid", "context"))][:12]))' 2>&1)"
 # The hello frame the page gets: connect from the page itself (manager origin) to
 # the session the config holds now, read the first frame. Plus that channel's context.
-SESS=$(adb shell "KSU_MODULE=$ID $KSUD module config get webui.session" 2>/dev/null | tr -d '\r')
+SESS=; for _ in 1 2 3 4; do  # the page may still be replacing a channel the lab started from another context
+  SESS=$(adb shell "KSU_MODULE=$ID $KSUD module config get webui.session" 2>/dev/null | tr -d '\r'); case "$SESS" in '{'*) break;; esac; sleep 8; done
 rec page-session "$(echo "$SESS" | js)"
 PORT=$(echo "$SESS" | python3 -c 'import json,sys; print(json.loads(sys.stdin.read()).get("port",""))' 2>/dev/null)
 TOK=$(echo "$SESS" | python3 -c 'import json,sys; print(json.loads(sys.stdin.read()).get("token",""))' 2>/dev/null)
 SPID=$(echo "$SESS" | python3 -c 'import json,sys; print(json.loads(sys.stdin.read()).get("pid",""))' 2>/dev/null)
 rec page-hello "$(ev "new Promise(r => { let w; try { w = new WebSocket('ws://127.0.0.1:$PORT/v1?token=$TOK') } catch (e) { return r('throw ' + e) } w.onmessage = e => { r(String(e.data)); w.close() }; w.onerror = () => r('error'); setTimeout(() => r('timeout'), 6000) })")"
-rec channel-process "$(sh_ "ps -A -o USER,PID,PPID,LABEL,NAME | grep -E '^\S+ +$SPID ' ")"
+rec channel-process "$(adb shell ps -A -o USER,PID,PPID,LABEL,NAME 2>&1 | tr -d '\r' | awk -v p="$SPID" '$2 == p' | js)"
 rec start-after-page "$(echo "$(start)" | js)"
 rec layout-end "$(layout)"
