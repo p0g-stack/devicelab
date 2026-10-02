@@ -1,0 +1,73 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Fri, 2 Oct 2026 22:04:13 +0000
+Subject: [PATCH] infiniti: start whichever stock charger HAL version the ODM
+ ships
+
+aera-oplus-charger pointed at vendor.oplus.hardware.charger-V10-service.
+Newer OnePlus 15 firmware ships -V11- instead, so ctl.start failed with
+ENOENT, aera-audio-bootstrap stopped at the required charger service and
+the AGM audio backend never came up.
+
+aera-audio-bootstrap now links the highest-numbered
+vendor.oplus.hardware.charger-V*-service found in the stock ODM to
+/vendor/bin/aera-oplus-charger, which the init service starts. V10
+devices keep working.
+---
+ recovery/root/init.recovery.qcom.rc           |  4 +++-
+ recovery/root/system/bin/aera-audio-bootstrap | 24 +++++++++++++++++++
+ 2 files changed, 27 insertions(+), 1 deletion(-)
+
+diff --git a/recovery/root/init.recovery.qcom.rc b/recovery/root/init.recovery.qcom.rc
+index 4c2be39..8604591 100644
+--- a/recovery/root/init.recovery.qcom.rc
++++ b/recovery/root/init.recovery.qcom.rc
+@@ -75,7 +75,9 @@ service aera-audioadsprpcd /vendor/bin/aera-audioadsprpcd audiopd adsp
+     group media
+     setenv LD_LIBRARY_PATH /vendor/aera-audio-abi:/vendor/aera-stock-lib64:/vendor/lib64:/system/lib64
+ 
+-service aera-oplus-charger /mnt/aera-stock/odm/bin/hw/vendor.oplus.hardware.charger-V10-service
++# aera-audio-bootstrap links this to the stock ODM charger HAL, whose file name
++# carries its AIDL version (-V10- or -V11- depending on the installed firmware).
++service aera-oplus-charger /vendor/bin/aera-oplus-charger
+     class hal
+     disabled
+     seclabel u:r:recovery:s0
+diff --git a/recovery/root/system/bin/aera-audio-bootstrap b/recovery/root/system/bin/aera-audio-bootstrap
+index a2df412..7ddee16 100755
+--- a/recovery/root/system/bin/aera-audio-bootstrap
++++ b/recovery/root/system/bin/aera-audio-bootstrap
+@@ -251,6 +251,30 @@ start_adsp() {
+ # These must precede the SPF/machine probe. In particular audioadsprpcd
+ # creates Qualcomm's audiopd and its APM endpoint. Running it through init
+ # also gives it the stock SELinux domain instead of recovery/su.
++# The stock charger HAL's file name carries its AIDL version, which changes
++# with the installed firmware (-V10- on earlier OnePlus 15 builds, -V11- on
++# newer ones). Link the newest one the ODM ships to the fixed path the init
++# service starts.
++charger_bin=""
++charger_ver=0
++for candidate in "${odm_root}"/bin/hw/vendor.oplus.hardware.charger-V*-service; do
++    [ -x "${candidate}" ] || continue
++    version="${candidate##*-V}"
++    version="${version%-service}"
++    case "${version}" in
++        ''|*[!0-9]*) continue ;;
++    esac
++    if [ "${version}" -gt "${charger_ver}" ]; then
++        charger_ver="${version}"
++        charger_bin="${candidate}"
++    fi
++done
++[ -n "${charger_bin}" ] || \
++    fail "the stock ODM has no vendor.oplus.hardware.charger-V*-service"
++ln -sf "${charger_bin}" /vendor/bin/aera-oplus-charger || \
++    fail "could not link the stock charger HAL"
++echo "AERA audio: using stock charger HAL ${charger_bin##*/}" >&2
++
+ start_init_service aera-oplus-charger required
+ start_init_service aera-pd-mapper required
+ start_init_service aera-dspservice required
+-- 
+2.43.0
+

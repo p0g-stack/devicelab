@@ -72,9 +72,13 @@ fi
 # Patches: reset each patched project to its pin first, so reruns are
 # clean; then the series, then the devicelab-only fakes.
 projects=$(for p in "$PATCHES" "$PATCHES_CF"; do [ -d "$p" ] && (cd "$p" && find . -name '*.patch' -printf '%h\n'); done | sed 's#^\./##' | sort -u)
+# Device-tree patches (patches/device/<vendor>/<device>/) apply only when that
+# tree is in the checkout, from the build machine's local manifest.
 for d in $projects; do
+  git -C "$d" rev-parse --git-dir >/dev/null 2>&1 || { log "skip patches for $d: not in this tree"; continue; }
   git -C "$d" am --abort >/dev/null 2>&1 || true
-  pin=$(repo forall "$d" -c 'echo $REPO_RREV')   # the commit pins.xml names
+  pin=$(repo forall "$d" -c 'echo $REPO_LREV' 2>/dev/null || true)   # the commit pins.xml or the local manifest names
+  [ -n "$pin" ] || { log "ERROR: $d is not a repo project, cannot reset it to its pin"; exit 1; }
   git -C "$d" reset -q --hard "$pin"
   git -C "$d" clean -qfd
   for p in "$PATCHES" "$PATCHES_CF"; do

@@ -58,9 +58,24 @@ drm graphics.`). Findings file: project files `real-device-infiniti-2026-10-02.m
   AERA build, Cuttlefish included, because the permissive `recovery` domain
   comes from AERA's shared sepolicy; see "SELinux across trees" below. It is
   a note, not an infiniti bug.
-- **Audio:** `AERA audio: init service aera-oplus-charger did not start`,
-  `stock AGM backend failed to start`; a plugin asking for `audio-output`
-  would be silent here.
+- **Audio: dead because the tree pins the charger HAL's version, not
+  because of the audio bridge.** The tree's `init.recovery.qcom.rc` starts
+  `aera-oplus-charger` from
+  `/mnt/aera-stock/odm/bin/hw/vendor.oplus.hardware.charger-V10-service`, but
+  Yuv's firmware ships `...charger-V11-service`. init logs
+  `Could not ctl.start for 'aera-oplus-charger' ... No such file or directory`,
+  `aera-audio-bootstrap` stops at that required service (`AERA audio: init
+  service aera-oplus-charger did not start`), the AGM backend never starts
+  and `init.svc.aera-audio-bootstrap` is stopped. The bridge theory is ruled
+  out: the bridge never got as far as running. Draft fix
+  `aera/build/patches/device/oneplus/infiniti/0001-*.patch`: the bootstrap
+  links the highest `vendor.oplus.hardware.charger-V*-service` the stock ODM
+  ships to `/vendor/bin/aera-oplus-charger`, which the init service now
+  starts, so V10 devices keep working. Resolver checked in a sandbox (V9+V10+V11
+  picks V11, V10 alone picks V10). Left as is: the recovery VINTF fragment
+  still declares charger version 10; servicemanager matches AIDL services by
+  name and instance, so a V11 service should register, but a hardware run
+  settles it. Upstream candidate for the AERA-Recovery tree.
 
 
 ## SELinux across trees (2026-10-02)
