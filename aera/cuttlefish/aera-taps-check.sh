@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Where is the second tap lost? Three Remote taps on the lifecycle probe's +
+# D9 check (flutter-aera 0025): three Remote taps on the same pixel of the
+# lifecycle probe's +
 # (centre of the surface, far from the side-edge zones), then three taps on
 # AERA's own Files card (Back between them). Records, for every tap, the
 # kernel events (getevent), AERA's touch log lines and the probe's POINTER
@@ -45,10 +46,13 @@ a shell 'getevent -lt' >> "$OUT/getevent.txt" 2>&1 & GE=$!
 sleep 1
 log "open: $(rpc '{"v":1,"id":"taps","op":"plugin","args":{"action":"open","id":"'"$id"'"}}' | tr '\n' ' ')"
 sleep "${APP_WAIT:-25}"; shot 0-app
-for n in 1 2 3; do tap "app-$n" $(( 360 - n * 6 )) $(( 1000 + n * 7 )); sleep 2; shot "app-$n"; done
+# Same pixel every time: D9's verification (flutter-aera 0025). TAP_SHIFT=1
+# moves each press a few pixels instead.
+sx=0; [ "${TAP_SHIFT:-0}" = 1 ] && sx=1
+for n in 1 2 3; do tap "app-$n" $(( 354 - sx * n * 6 )) $(( 1007 + sx * n * 7 )); sleep 2; shot "app-$n"; done
 key home; sleep 3; shot home
 xy=${FILES_CARD:-378,660}
-for n in 1 2 3; do tap "files-$n" $(( ${xy%,*} - n * 5 )) $(( ${xy#*,} + n * 5 )); sleep 3; shot "files-$n"; key back; sleep 3; done
+for n in 1 2 3; do tap "files-$n" $(( ${xy%,*} - sx * n * 5 )) $(( ${xy#*,} + sx * n * 5 )); sleep 3; shot "files-$n"; key back; sleep 3; done
 kill $GE 2>/dev/null; wait $GE 2>/dev/null
 # minuitwrp closes and reopens every input device when /dev/input changed
 # (events.cpp ev_get, "Reloading input devices"); show when that happened.

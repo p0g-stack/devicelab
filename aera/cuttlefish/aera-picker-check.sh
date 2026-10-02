@@ -25,10 +25,11 @@ rpc() {
 post() { curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" -d "$2" "$REMOTE$1"; }
 # D9: minuitwrp zeroes a contact's position on release and the kernel drops
 # a coordinate equal to the slot's last one, so a press at the same x (or y)
-# as the previous contact reaches AERA at 0. Every press here shifts by 1 px
-# from the last one until flutter-aera's fix lands.
+# as the previous contact reaches AERA at 0. Fixed by flutter-aera 0025; with
+# PRESS_SHIFT=1 every press shifts by 1 px from the last one (fallback for
+# images without 0025).
 J=0
-tap() { J=$((1 - J)); post /api/input/touch "{\"action\":\"down\",\"x\":$(( $1 + J )),\"y\":$(( $2 + J ))}" >/dev/null; sleep 0.1
+tap() { [ "${PRESS_SHIFT:-0}" = 1 ] && J=$((1 - J)); post /api/input/touch "{\"action\":\"down\",\"x\":$(( $1 + J )),\"y\":$(( $2 + J ))}" >/dev/null; sleep 0.1
         post /api/input/touch "{\"action\":\"up\",\"x\":$1,\"y\":$2}" >/dev/null; log "tap $1,$2"; }
 back() { post /api/input/key '{"key":"back"}' >/dev/null; log "back"; }
 

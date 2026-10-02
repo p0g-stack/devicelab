@@ -9,6 +9,7 @@ on:
       build_id: { default: "" }
       pick_taps: { default: "", description: "aera-picker-check.sh PICK_TAPS (name:x,y ...)" }
       recents_card: { default: "", description: "aera-lifecycle-check.sh RECENTS_CARD x,y of the app card in Recents" }
+      press_shift: { default: "0", description: "1 = checks shift every press by 1 px (D9 fallback for images without flutter-aera 0025)" }
       aera_release: { default: "latest", description: "devicelab release with ramdisk-recovery.img (aera-cf-x86_64-*), latest, or none" }
       aera_taps: { default: "", description: "launcher taps 'x,y x,y' in AERA screen pixels, used when the image has no RPC plugin open (patch 0008)" }
   release:
@@ -25,6 +26,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     env:
+      PRESS_SHIFT: ${{ inputs.press_shift || '0' }}
       LAB_OUT: ${{ github.workspace }}/out
       CF_HOME: /mnt/cf
     steps:
