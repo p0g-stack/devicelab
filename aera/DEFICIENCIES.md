@@ -487,6 +487,22 @@ Landscape tap positions for the lab: shade right after the toggle fills the
 left third (chevron 654,56); pulled down again in landscape it is full width
 (chevron 1196,54, Rotation 454,176); counter + 1282,654.
 
+## D14. After a rotation with a pixel plugin open, the open shade keeps the old width (FIXED)
+
+Seen on 63bdf2a (run `runs/20261002T181342Z-aera-cf-recovery-37042552665`):
+after rotating back, the portrait shade kept the landscape width (tiles cut
+at the right). Cause (flutter-aera): stock rotation rebuilds the scene with
+ShowHome(), which 0020 skips while a pixel plugin runs. Fixed by amending
+0020 (flutter-aera 80f55ff: the status bar rebuilds an open shade when its
+screen changes size). Verified on image cbabeb5 (devicelab 47fe97c, run
+`runs/20261002T185707Z-aera-cf-recovery-37047120978`, project files
+`devicelab-aera/aera-ui/d14-shade-rotation-cbabeb5.png`): rotating from the
+shade with the counter open, the shade stays open and is laid out afresh in
+both directions with all five tiles visible (Wi-Fi, Rotation, Flashlight,
+Reboot, Recorder); the counter keeps its count (2 after the landscape taps,
+2 back in portrait), same process, no crash. D10 A/B and the lifecycle
+reopen still pass.
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
