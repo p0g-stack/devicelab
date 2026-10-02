@@ -469,6 +469,24 @@ state, sends SIGABRT for a core and symbolizes it.
   lifecycle card reopen same process with its count; D10 A and B survive and
   return the same plugin pid; Back on/off and same-pixel taps pass.
 
+## Adaptive resolution on Cuttlefish (image 63bdf2a, devicelab 0af7a99)
+
+Runs `runs/20261002T170714Z-aera-cf-recovery-37035088399`,
+`runs/20261002T174045Z-aera-cf-recovery-37038735387`,
+`runs/20261002T181342Z-aera-cf-recovery-37042552665` (project files
+`devicelab-aera/aera-ui/adaptive-*-63bdf2a.png`): rotation on the scaled path
+works end to end. The counter is drawn in landscape (`surface now 1348x658`),
+two landscape taps take it 0 -> 2, Remote's screen.jpg matches, rotating
+back gives `surface now 720x1286` with the count kept, same process, no
+crash; Home without a plugin rotates both ways. The landscape Home bottom
+bar is centred and the shade text no longer overlaps (both were the 1:1
+1440-wide design on a 720-wide panel). One leftover: after rotating back the
+portrait shade keeps a wider layout (Flashlight and Preferences cut at the
+right edge, `adaptive-rotate-back-63bdf2a.png` frame 3) until AERA restarts.
+Landscape tap positions for the lab: shade right after the toggle fills the
+left third (chevron 654,56); pulled down again in landscape it is full width
+(chevron 1196,54, Rotation 454,176); counter + 1282,654.
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
