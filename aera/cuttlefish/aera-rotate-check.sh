@@ -58,22 +58,26 @@ log "open: $(rpc '{"v":1,"id":"rotate","op":"plugin","args":{"action":"open","id
 sleep "${APP_WAIT:-25}"; shot 1-portrait
 before=$(pids); log "before: $before"
 
+curl -s -m 10 -H "x-aera-code: $RCODE" "$REMOTE/screen.jpg" -o "$OUT/1-remote-screen.jpg"; log "remote screen.jpg (portrait) $(stat -c %s "$OUT/1-remote-screen.jpg" 2>/dev/null) bytes"
 arm_core; rp=$(a shell pidof recovery | tr -d '\r')
 swipe 360 10 360 900; sleep 2; shot 2-shade
 xy=${ROTATE_TILE:-240,400}; tap "${xy%,*}" "${xy#*,}"; sleep 3; shot 3-after-toggle
-# Close the shade with its collapse chevron (Back reached the counter, which
-# quit, in run 36940214987), then its handle swiped up (the chevron tap did
-# not close it in run 36944590907). The chevron is at portrait 588,108.
 a shell 'logcat -d 2>/dev/null | grep -iE "rotat|landscape" | tail -10' | tr -d '\r' >> "$OUT/log.txt"
-xy=${SHADE_CLOSE:-588,108}; tap "${xy%,*}" "${xy#*,}"; log "(shade collapse chevron)"; sleep 3; shot 3b-after-chevron
-swipe 360 1250 360 200; log "(shade swiped up from above the bottom gesture zone)"; sleep 3
+# In landscape (0026) AERA maps the panel's touches like its frames: the
+# 1348x720 landscape picture is the 720x1348 panel turned a quarter left
+# (title reads bottom to top, run 36962574911), so landscape lx,ly is panel
+# ly,1347-lx. Portrait taps after the toggle missed (shade stayed open; the
+# swipe from the right edge was a Back that quit the counter).
+ltap() { tap "$2" "$(( 1347 - $1 ))"; }                       # landscape x y
+lswipe() { swipe "$2" "$(( 1347 - $1 ))" "$4" "$(( 1347 - $3 ))"; }
+ltap 590 110; log "(landscape: shade chevron)"; sleep 3; shot 3b-after-chevron
 sleep 5; shot 4-rotated
-# Run 36948750935: every frame after the toggle was the same portrait shade,
-# whatever was tapped. Is AERA still drawing (Remote's own JPEG, AERA's
-# touch lines), and does toggling back to portrait bring the screen back?
+ltap 1290 660; sleep 1; ltap 1291 661; log "(landscape: counter + twice)"; sleep 3; shot 4b-landscape-taps
 curl -s -m 10 -H "x-aera-code: $RCODE" "$REMOTE/screen.jpg" -o "$OUT/4-remote-screen.jpg"; log "remote screen.jpg $(stat -c %s "$OUT/4-remote-screen.jpg" 2>/dev/null) bytes"
-swipe 360 10 360 900; sleep 2; xy=${ROTATE_TILE:-240,400}; tap "${xy%,*}" "${xy#*,}"; sleep 4; shot 5-toggled-back
-sleep 6; log "recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; cores counter
+# Back to portrait: shade down from the landscape top, Rotation tile.
+lswipe 674 10 674 600; sleep 2; shot 4c-landscape-shade; ltap 242 318; sleep 4; shot 5-toggled-back
+sleep 6; log "recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; after=$(pids); log "counter pids: $before -> $after"
+[ -n "$before" ] && [ "$(echo "$before" | head -1)" = "$(echo "$after" | head -1)" ] && log "SAME PROCESS" || log "PROCESS CHANGED or gone"; cores counter
 # Control (run 36953588555: toggling back crashed AERA with the counter open):
 # the same rotation and back with no plugin running, on Home.
 if [ "$(a shell pidof recovery | tr -d '\r')" != "$rp" ]; then
@@ -81,12 +85,10 @@ if [ "$(a shell pidof recovery | tr -d '\r')" != "$rp" ]; then
   RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1); sleep 2
 fi
 a shell 'pkill -f aera-flutter'; sleep 2; arm_core; rp=$(a shell pidof recovery | tr -d '\r')
-swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; shot 6-home-landscape
-swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; shot 7-home-back
+xy=${ROTATE_TILE:-240,400}
+swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; ltap 590 110; sleep 3; shot 6-home-landscape
+lswipe 674 10 674 600; sleep 2; ltap 242 318; sleep 4; shot 7-home-back
 sleep 4; log "no plugin: recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; cores home
-after=$(pids); log "after: $after"
-[ -n "$before" ] && [ "$(echo "$before" | head -1)" = "$(echo "$after" | head -1)" ] \
-  && log "SAME PROCESS" || log "PROCESS CHANGED or gone"
 a shell 'logcat -d 2>/dev/null | grep -E "touch released|orientation|frame capture" | tail -25' | tr -d '\r' > "$OUT/logcat-rotate.txt"
 a shell 'cat /sys/class/drm/card0-*/modes 2>/dev/null | head -2; grep -iE "rotat|SURFACE|generation" /tmp/recovery.log | tail -20' > "$OUT/recovery-rotate.log" 2>&1
 a shell "tail -30 /sdcard/AERA/plugin-data/$id/aera-flutter.log 2>/dev/null" > "$OUT/aera-flutter.log" 2>&1

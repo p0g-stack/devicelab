@@ -234,7 +234,7 @@ arrived intact and all three app taps counted (`aera-taps/`).
   all three count; three same-pixel taps on Files arrive as `378,660`.
   The 1 px shift is now the `press_shift` fallback, off by default.
 
-## D10. Opening a paused pixel plugin from its Recents card crashes AERA
+## D10. Opening a paused pixel plugin from its Recents card crashes AERA (FIXED)
 
 ```
 kernel.log, run runs/20261002T005722Z-aera-cf-recovery-36944590907 (image 98d86c4, 0001-0025):
@@ -293,6 +293,15 @@ SIGSEGV; init restarts it (and adbd), the plugin process is killed and
   B a label. Not yet confirmed whether 1d2dc5a's 0021 change (no second
   scene in case B) avoids that draw.
 
+- Image a494966 (flutter-aera 1d2dc5a, run `runs/20261002T040921Z-aera-cf-recovery-36959151892`):
+  A and B still crash at the same LVGL frames; 0021's scene reuse alone does
+  not avoid the draw.
+- FIXED by flutter-aera 03f9780 (LVGL series L0001 blend clips to the layer
+  buffer, L0002 `LV_DRAW_TRANSFORM_USE_MATRIX 0`; devicelab 0b6614dc) on image
+  37c931a (run `runs/20261002T044110Z-aera-cf-recovery-36962574911`, `aera-d10/`):
+  A and B both survive (recovery pid 91 throughout) and the card brings back
+  the plugin's own process (A 2259 -> 2259, B 2542 -> 2542).
+
 ## D11. A plugin's data dir counts as storage when /data is not mounted
 
 On this Cuttlefish userdata `/data` does not mount (`I:Failed to mount
@@ -308,7 +317,7 @@ dir is in the ramdisk and does not survive a reboot.
   `AERA_PLUGIN_DATA=/tmp/aera/plugin-data/lifecycle-probe` and
   `AERA_PLUGIN_DATA_VOLATILE=1` (0022), and shows `VOLATILE: 1`.
 
-## D12. After rotating to landscape with a pixel plugin open the screen freezes; rotating back crashes AERA
+## D12. After rotating to landscape with a pixel plugin open the screen freezes; rotating back crashes AERA (freeze FIXED, rotate back to verify)
 
 ```
 run runs/20261002T023206Z-aera-cf-recovery-36953588555 (image b9f360d), aera-rotate/:
@@ -358,6 +367,23 @@ Rotation back kills AERA with SIGSEGV; init restarts it to Home.
   buffer; the landscape freeze may be the same mismatch before it faults.
   One fix site for D10 and D12 is AERA's rotation/transform setup, plus a
   NULL guard in `lv_draw_sw_blend` as a backstop.
+
+- Image 37c931a (03f9780: 0026 landscape on the SW renderer + LVGL series;
+  run `runs/20261002T044110Z-aera-cf-recovery-36962574911`, `aera-rotate/`):
+  no crash, and AERA now presents landscape live (the 1348x720 picture is
+  turned a quarter left on the panel; Home's clock moves 06:40 -> 06:41 in
+  `6-home-landscape.png` / `7-home-back.png`). Rotating back was not
+  exercised: the lab kept tapping portrait coordinates, which AERA maps to
+  landscape (shade stayed open; a swipe from the right edge became Back and
+  quit the counter). The check now taps in landscape coordinates
+  (lx,ly -> panel ly,1347-lx), taps the counter twice in landscape, and
+  toggles back from the landscape shade.
+- Seen in landscape, to confirm on the next run: Home's bottom navigation
+  (Home/Files/Backup/Wipe/Menu) is drawn across the app cards, and the
+  shade's tiles keep their portrait width with clipped labels.
+- AERA Remote's `screen.jpg` at 06:40 was a 06:20 frame (counter at 4 from
+  the first check), not the live screen; the check now also grabs it in
+  portrait before rotating to tell a stale mirror from a landscape one.
 
 ## Lab gaps (devicelab, not AERA yet)
 
