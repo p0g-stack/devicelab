@@ -317,7 +317,7 @@ dir is in the ramdisk and does not survive a reboot.
   `AERA_PLUGIN_DATA=/tmp/aera/plugin-data/lifecycle-probe` and
   `AERA_PLUGIN_DATA_VOLATILE=1` (0022), and shows `VOLATILE: 1`.
 
-## D12. After rotating to landscape with a pixel plugin open the screen freezes; rotating back crashes AERA (freeze FIXED, rotate back to verify)
+## D12. After rotating to landscape with a pixel plugin open the screen freezes; rotating back crashes AERA (FIXED)
 
 ```
 run runs/20261002T023206Z-aera-cf-recovery-36953588555 (image b9f360d), aera-rotate/:
@@ -420,6 +420,16 @@ Rotation back kills AERA with SIGSEGV; init restarts it to Home.
   the Back and lifecycle checks; the Back check's gestures-off round may not
   have run with gestures off). All checks now use `aera-fl[u]tter` and log
   the recovery pid around each restart.
+
+- FIXED end to end on image 3f593bb with the kit from flutter-aera bcd5e6e
+  (kit.json `flutter_aera_commit` bcd5e6e; run
+  `runs/20261002T075225Z-aera-cf-recovery-36976258100`): the counter is
+  drawn in landscape, two landscape taps take it 0 -> 2, Remote's
+  `screen.jpg` shows the same landscape frame, rotating back shows it in
+  portrait at 2 in the same process, no crash. Embedder log: `surface now
+  1348x555`, `surface now 720x1183` (no "cannot follow"). Gestures-off Back
+  round now really runs with gestures off (run 36975433377: recovery pid
+  92 -> 3458) and passes. Strip: `devicelab-aera/aera-ui/d12-landscape-counter-bcd5e6e.png`.
 
 ## Lab gaps (devicelab, not AERA yet)
 
