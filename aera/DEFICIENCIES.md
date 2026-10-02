@@ -10,6 +10,25 @@ it confirms or contradicts an entry there.
 Image: devicelab release `aera-cf-x86_64-ba4d988-06f0a135fd4de661`
 (bootable/recovery ba4d988 = abf3316 + patches 0001-0010, built 2026-10-01).
 
+## On hardware: infiniti (OnePlus 15), 2026-10-02
+
+First hardware run: image `aera-infiniti-arm64-040070f-b413b91c42e5fd41`,
+`Flutter-Demo-0.1.42.aerap` (Host API 3, pixel-surface + gpu-acceleration)
+ran on the Adreno GPU via DRM atomic commit at 21:47Z, driven from Yuv's PC.
+Findings file: project files `real-device-infiniti-2026-10-02.md`.
+
+| # | Cuttlefish | infiniti |
+|---|---|---|
+| D1 libincfs link | reproduced, fixed by 0010 | not reproduced (no `CANNOT LINK` in recovery.log) |
+| D2 servicemanager polling | reproduced, fixed by 0012 | not reproduced (`servicemanager.ready=true`) |
+| D3 no SDE, nothing on screen | reproduced, fixed by 0013 | not applicable: real SDE, `Atomic Commit succeed. Using drm graphics.` |
+| D4 logd abort loop | reproduced, fixed by 0014 | not reproduced (`init.svc.logd=running`) |
+| D11 data dir when /data unmounted | reproduced, fixed in 0005 | not applicable: `/data` mounted |
+| D5-D9, D10, D12-D14 | fixed/verified on Cuttlefish | not yet checked on hardware (need gestures, rotation, Recents) |
+
+So 0010-0014 are Cuttlefish-motivated, as sorted. Hardware-only items
+(SELinux labels for the GPU nodes, audio backends) are in `DEVICE-TREES.md`.
+
 ## D1. Recovery binary cannot link: libincfs.so not packed
 
 ```

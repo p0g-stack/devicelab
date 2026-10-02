@@ -38,3 +38,28 @@ What this means for our Cuttlefish-motivated patches:
 Yuv's note (2026-10-02): typical device trees can be late to add hardware
 rendering, so the software-renderer fixes stay worth keeping for trees that
 have not got there yet. infiniti already has it.
+
+### First run on hardware (2026-10-02)
+
+Image `aera-infiniti-arm64-040070f-b413b91c42e5fd41`, `Flutter-Demo-0.1.42.aerap`
+ran on the Adreno GPU (shader cache filled, `Atomic Commit succeed. Using
+drm graphics.`). Findings file: project files `real-device-infiniti-2026-10-02.md`.
+
+- **SELinux: the GPU works only because the `recovery` domain is
+  permissive.** `getenforce` says Enforcing, but the plugin's opens of the GPU
+  nodes are logged with `permissive=1`:
+  ```
+  avc: denied { open } for comm="aera-plugin" path="/dev/dri/renderD128"
+    scontext=u:r:recovery:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+  avc: denied { getattr } for comm="aera-plugin" path="/dev/kgsl-3d0"
+    scontext=u:r:recovery:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+  ```
+  Both nodes carry the generic `device` label. A build with an enforcing
+  recovery domain loses the GPU plugin path. Fix direction: label the nodes
+  (e.g. `gpu_device`) in the tree's file_contexts and allow `recovery` to
+  open them; flutter-aera is deciding the fix. Cuttlefish never shows this
+  (virtio-gpu, different nodes).
+- **Audio:** `AERA audio: init service aera-oplus-charger did not start`,
+  `stock AGM backend failed to start`; a plugin asking for `audio-output`
+  would be silent here.
+
