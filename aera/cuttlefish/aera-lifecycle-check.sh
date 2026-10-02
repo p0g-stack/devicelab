@@ -25,8 +25,13 @@ rpc() {
   echo "$1" > "$OUT/.req.json"; a push "$OUT/.req.json" /tmp/lab-req.json >/dev/null
   a shell '[ -p /system/bin/aerain ] && { timeout 60 cat /system/bin/aeraout & sleep 0.3; cat /tmp/lab-req.json > /system/bin/aerain; wait; }' 2>&1 | tr -d '\r'
 }
-touch_() { curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" \
-  -d "{\"action\":\"$1\",\"x\":$2,\"y\":$3}" "$REMOTE/api/input/touch" >/dev/null; }
+# D9: minuitwrp zeroes a contact's position on release and the kernel drops
+# a coordinate equal to the slot's last one, so a press at the same x (or y)
+# as the previous contact reaches AERA at 0. Every press here shifts by 1 px
+# from the last one until flutter-aera's fix lands.
+J=0
+touch_() { [ "$1" = down ] && J=$((1 - J)); curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" \
+  -d "{\"action\":\"$1\",\"x\":$(( $2 + J )),\"y\":$(( $3 + J ))}" "$REMOTE/api/input/touch" >/dev/null; }
 tap() { touch_ down "$1" "$2"; sleep 0.1; touch_ up "$1" "$2"; log "tap $1,$2"; }
 key() { log "key $1: $(curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" -d "{\"key\":\"$1\"}" "$REMOTE/api/input/key")"; }
 # What reached AERA (its "touch released" debug lines) and the app (POINTER lines).
@@ -71,7 +76,7 @@ log "env (storage): $(appenv | tr '\n' ' ')"
 
 # Data directory in RAM: no /sdcard/AERA at launch.
 # A file named /sdcard/AERA keeps AERA from recreating the folder before the launch.
-a shell 'pkill -f aera-flutter; sleep 2; mv /sdcard/AERA /sdcard/AERA.lab && touch /sdcard/AERA'
+log "move /sdcard/AERA: $(a shell 'pkill -f aera-flutter; sleep 2; ls -ld /sdcard; mount | grep -E " /sdcard| /data| /storage"; mv /sdcard/AERA /sdcard/AERA.lab 2>&1 && touch /sdcard/AERA 2>&1; echo rc=$?' | tr -d '\r' | tr '\n' ' ')"
 log "storage before RAM launch: $(a shell 'ls -ld /sdcard/AERA /sdcard/AERA.lab /data/media/0/AERA 2>&1' | tr -d '\r' | tr '\n' ' ')"
 open_; sleep "${APP_WAIT:-25}"; shot 6-ram-data
 log "env (RAM): $(appenv | tr '\n' ' ')"

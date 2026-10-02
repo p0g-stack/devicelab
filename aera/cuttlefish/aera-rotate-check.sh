@@ -5,6 +5,7 @@
 # redraws in the new orientation. Input through AERA Remote (needs 0017).
 # Usage: aera-rotate-check.sh PKG.aerap  ->  $LAB_OUT/aera-rotate/
 # Env: ROTATE_TILE  x,y of the Rotation tile in the open shade (portrait)
+#      SHADE_CLOSE  x,y of the shade's collapse chevron (portrait)
 set -uo pipefail
 PKG=$1
 OUT=${LAB_OUT:-$PWD/out}/aera-rotate; mkdir -p "$OUT"
@@ -24,8 +25,13 @@ rpc() {
   echo "$1" > "$OUT/.req.json"; a push "$OUT/.req.json" /tmp/lab-req.json >/dev/null
   a shell '[ -p /system/bin/aerain ] && { timeout 60 cat /system/bin/aeraout & sleep 0.3; cat /tmp/lab-req.json > /system/bin/aerain; wait; }' 2>&1 | tr -d '\r'
 }
-touch_() { curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" \
-  -d "{\"action\":\"$1\",\"x\":$2,\"y\":$3}" "$REMOTE/api/input/touch" >/dev/null; }
+# D9: minuitwrp zeroes a contact's position on release and the kernel drops
+# a coordinate equal to the slot's last one, so a press at the same x (or y)
+# as the previous contact reaches AERA at 0. Every press here shifts by 1 px
+# from the last one until flutter-aera's fix lands.
+J=0
+touch_() { [ "$1" = down ] && J=$((1 - J)); curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" \
+  -d "{\"action\":\"$1\",\"x\":$(( $2 + J )),\"y\":$(( $3 + J ))}" "$REMOTE/api/input/touch" >/dev/null; }
 tap() { touch_ down "$1" "$2"; sleep 0.1; touch_ up "$1" "$2"; log "tap $1,$2"; }
 swipe() {  # swipe X1 Y1 X2 Y2
   local i; touch_ down "$1" "$2"
@@ -51,9 +57,10 @@ before=$(pids); log "before: $before"
 
 swipe 360 10 360 900; sleep 2; shot 2-shade
 xy=${ROTATE_TILE:-240,400}; tap "${xy%,*}" "${xy#*,}"; sleep 3; shot 3-after-toggle
-# Close the shade with Back (in run 36934450186 it stayed open over the app).
+# Close the shade with its collapse chevron (Back reached the counter, which
+# quit, in run 36940214987). The chevron is at portrait 588,108.
 a shell 'logcat -d 2>/dev/null | grep -iE "rotat|landscape" | tail -10' | tr -d '\r' >> "$OUT/log.txt"
-curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" -d '{"key":"back"}' "$REMOTE/api/input/key" >/dev/null; log "back (close the shade)"; sleep 3
+xy=${SHADE_CLOSE:-588,108}; tap "${xy%,*}" "${xy#*,}"; log "(shade collapse chevron)"; sleep 3
 sleep 5; shot 4-rotated
 after=$(pids); log "after: $after"
 [ -n "$before" ] && [ "$(echo "$before" | head -1)" = "$(echo "$after" | head -1)" ] \

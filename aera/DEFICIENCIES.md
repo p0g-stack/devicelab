@@ -194,6 +194,42 @@ bottom-edge swipe.
 - The lab's lifecycle check (`aera-lifecycle-check.sh`) uses the swipe
   for that reason.
 
+## D9. A press at the same x or y as the previous contact reaches AERA at 0
+
+```
+logcat, run runs/20261001T235916Z-aera-cf-recovery-36940214987 (picker probe, Remote taps at x=360):
+D AERA UI : touch released at 360,263     <- first tap, opens the picker
+D AERA UI : touch released at 0,460       <- next taps, all at x=360
+D AERA UI : touch released at 0,657
+D AERA UI : touch released at 0,854
+D AERA UI : touch released at 0,1000      <- lifecycle probe, previous contact also at x=360
+D AERA UI : touch released at 350,1012    <- new x: arrives intact and counts
+D AERA UI : touch released at 0,790       <- Recents card tap after a press at x=360
+```
+The same run's tap check moved every press by a few pixels (354,1007 /
+348,1014 / 342,1021, then 373,665 / 368,670 / 363,675 on Files): all six
+arrived intact and all three app taps counted (`aera-taps/`).
+
+- Cause: `minuitwrp/events.cpp` sets `mt_p.x = mt_p.y = 0` when a contact
+  ends (`ABS_MT_TRACKING_ID -1`, also on `ABS_MT_PRESSURE 0` /
+  `ABS_MT_TOUCH_MAJOR 0`), but the kernel's input core drops an
+  `ABS_MT_POSITION_X/Y` equal to the slot's current value, so the next
+  contact on that slot at the same x (or y) never re-sends it. AERA then
+  sees the press at x=0: inside the left edge zone, where a pixel plugin's
+  press is held pending as a possible Back swipe (0015) and a tap there
+  does nothing. This is the "second tap lost" of the earlier runs (raw
+  evdev and AERA Remote alike); minuitwrp's 2 s input reload is not
+  involved (the taps check had none to explain).
+- Not Cuttlefish-only: any panel reports an unchanged coordinate the same
+  way (two taps on the same pixel, coarse panels, stylus/virtual input,
+  AERA Remote).
+- Suggested upstream fix: keep each slot's last reported position across
+  a release (only mark the contact up), as the kernel's own slot state
+  does; or read the slot state with `EVIOCGMTSLOTS` when a new tracking id
+  starts.
+- Lab workaround until then: the checks shift every press by 1 px from the
+  previous one.
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do

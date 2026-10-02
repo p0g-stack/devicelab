@@ -31,8 +31,13 @@ remote() {
   [ -n "$RCODE" ] || { log "AERA Remote did not start: $r"; return 1; }
   a forward tcp:18088 tcp:8088 >/dev/null; REMOTE=http://127.0.0.1:18088; sleep 2
 }
-touch_() { curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" \
-  -d "{\"action\":\"$1\",\"x\":$2,\"y\":$3}" "$REMOTE/api/input/touch" >/dev/null; }
+# D9: minuitwrp zeroes a contact's position on release and the kernel drops
+# a coordinate equal to the slot's last one, so a press at the same x (or y)
+# as the previous contact reaches AERA at 0. Every press here shifts by 1 px
+# from the last one until flutter-aera's fix lands.
+J=0
+touch_() { [ "$1" = down ] && J=$((1 - J)); curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" \
+  -d "{\"action\":\"$1\",\"x\":$(( $2 + J )),\"y\":$(( $3 + J ))}" "$REMOTE/api/input/touch" >/dev/null; }
 tap() { touch_ down "$1" "$2"; sleep 0.1; touch_ up "$1" "$2"; log "tap $1,$2"; }
 # What reached AERA (its "touch released" debug lines) and the app (POINTER lines).
 touches() { a shell 'logcat -d 2>/dev/null | grep -E "touch released|Back gesture|edge" | tail -40' | tr -d '\r' > "$OUT/touches-aera.log"; }
