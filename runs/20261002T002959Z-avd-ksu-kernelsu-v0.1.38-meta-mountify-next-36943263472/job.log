@@ -1,0 +1,929 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 23s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; KernelSU-Next/KernelSU-Next v3.4.0
+total 28968
+drwx------  2 runner runner     4096 Oct  1 23:56 .
+drwxrwxrwt 16 root   root       4096 Oct  1 23:56 ..
+-rw-r--r--  1 runner runner 11859167 Oct  1 23:56 KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+-rw-r--r--  1 runner runner 11857955 Oct  1 23:56 KernelSU_Next_v3.4.0_33294-release.apk
+-rw-r--r--  1 runner runner  5583488 Oct  1 23:56 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   342200 Oct  1 23:56 x86_64-android15-6.6_kernelsu.ko
+== manager installed (com.rifsxd.ksunext, KernelSU_Next_v3.4.0_33294-release.apk)
+/tmp/tmp.If6p8EaUs7/x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 6.8 MB/s (342200 bytes in 0.048s)
+/tmp/tmp.If6p8EaUs7/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 141.2 MB/s (5583488 bytes in 0.038s)
+== ksud: ksud 3.4.0 (uapi: 4)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              258048  0 
+== lsmod: kernelsu              258048  0 
+== ls: /data/adb/ksu/bin: No such file or directory
+== total 356
+== drwx------  2 root   root     4096 2026-10-01 23:56 .
+== drwxrwx--x 51 system system   4096 2026-10-01 23:56 ..
+== -rw-rw-rw-  1 root   root   342200 2026-10-01 23:56 kernelsu.ko
+== restored /data/adb/ksud
+aarch64-android12-5.10_kernelsu.ko
+aarch64-android13-5.10_kernelsu.ko
+aarch64-android13-5.15_kernelsu.ko
+aarch64-android14-5.15_kernelsu.ko
+aarch64-android14-6.1_kernelsu.ko
+aarch64-android15-6.6_kernelsu.ko
+aarch64-android16-6.12_kernelsu.ko
+aarch64-android17-6.18_kernelsu.ko
+KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+KernelSU_Next_v3.4.0_33294-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-unknown-linux-musl
+x86_64-android12-5.10_kernelsu.ko
+x86_64-android13-5.10_kernelsu.ko
+x86_64-android13-5.15_kernelsu.ko
+x86_64-android14-5.15_kernelsu.ko
+x86_64-android14-6.1_kernelsu.ko
+x86_64-android15-6.6_kernelsu.ko
+x86_64-android16-6.12_kernelsu.ko
+x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in KernelSU-Next/KernelSU-Next v3.4.0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.053s)
+== modules: [
+  {
+    "update": "false",
+    "id": "devicelab_probe",
+    "enabled": "true",
+    "name": "devicelab probe",
+    "version": "1",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "remove": "false",
+    "web": "true",
+    "action": "false",
+    "versionCode": "1",
+    "author": "p0g-stack",
+    "mount": "false"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+== home text: text="Working" text="LKM (GKI2)" text="Jailbreak mode" text="Version: v3.4.0 (33294-4)" text="Custom" text="Superuser" text="0" text="Module" text="1" text="Manager version" text="v3.4.0 (33294-4)" text="Hook mode" text="Tracepoint" text="Metamodule status" text="Not installed" text="Having trouble?" text="Encountered a bug or have feedback?" text="KernelSU-Next" 
+== manager activities: com.rifsxd.ksunext/.FlashModule com.rifsxd.ksunext/.ui.MainActivity com.rifsxd.ksunext/androidx.core.content.FileProvider com.rifsxd.ksunext/androidx.profileinstaller.ProfileInstallReceiver com.rifsxd.ksunext/androidx.startup.InitializationProvider 
+== metamodule candidate backslashxx/mountify mountify.zip: id=mountify version=v2.0.4 versionCode=204 metamodule=true 
+== metamodule repo (given): backslashxx/mountify
+== metamodule zip: mountify.zip sha256 dde361c444f6990b759890720487785402a391a61cf6530f960deb98e5ef864d
+== metamodule module.prop: id=mountify name=mountify version=v2.0.4 versionCode=204 author=xx, KOWX712 metamodule=true description=Globally mounted modules via OverlayFS. updateJson=https://raw.githubusercontent.com/backslashxx/mountify/master/update.json 
+/tmp/tmp.AYN3UbrLmW/rel/mountify.zip: 1 file pushed, 0 skipped. 342.1 MB/s (554873 bytes in 0.002s)
+== install mountify.zip
+[H[J[|]
+[H[J[\]
+[H[J[+] mountify
+[+] SysReq test
+[+] CONFIG_OVERLAY_FS
+[+] overlay found in /proc/filesystems
+[+] CONFIG_TMPFS_XATTR
+[+] tmpfs extended attribute test passed
+[!] using fresh config.sh
+[+] moving modules.txt
+[+] moving whiteouts.txt
+[+] mountify will be installed in metamodule mode!
+- Done
+- Creating metamodule symlink
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (34s): [
+  {
+    "action": "false",
+    "author": "p0g-stack",
+    "mount": "false",
+    "versionCode": "1",
+    "version": "1",
+    "enabled": "true",
+    "web": "true",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "id": "devicelab_probe",
+    "name": "devicelab probe",
+    "update": "false",
+    "remove": "false"
+  },
+  {
+    "update": "false",
+    "remove": "false",
+    "action": "true",
+    "web": "true",
+    "mount": "false",
+    "versionCode": "204",
+    "version": "v2.0.4",
+    "id": "mountify",
+    "metamodule": "true",
+    "name": "mountify",
+    "description": "mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted",
+    "author": "xx, KOWX712",
+    "updateJson": "https://raw.githubusercontent.com/backslashxx/mountify/master/update.json",
+    "enabled": "true"
+  }
+]
+total 32
+drwxrwxrwx 4 root root 4096 2026-10-01 23:56 .
+drwx------ 6 root root 4096 2026-10-01 23:56 ..
+drwxr-xr-x 3 root root 4096 2026-10-01 23:56 devicelab_probe
+drwxr-xr-x 5 root root 4096 2026-10-01 23:56 mountify
+== metamodule active: lrwxrwxrwx 1 root root 26 2026-10-01 23:56 /data/adb/metamodule -> /data/adb/modules/mountify id=mountify name=mountify version=v2.0.4 versionCode=204 author=xx, KOWX712 metamodule=true description=mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted updateJson=https://raw.githubusercontent.com/backslashxx/mountify/master/update.json 
+inputs/modules/flutter_webui_counter-0.1.5.zip: 1 file pushed, 0 skipped. 301.8 MB/s (21434766 bytes in 0.068s)
+== install flutter_webui_counter-0.1.5.zip
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.8.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.2.woff2
+   creating: webroot/fonts/notosansmath/
+   creating: webroot/fonts/notosansmath/v15/
+  inflating: webroot/fonts/notosansmath/v15/7Aump_cpkSecTWaHRlH2hyV5UHkD-V048PW0.woff2
+   creating: webroot/fonts/roboto/
+   creating: webroot/fonts/roboto/v32/
+  inflating: webroot/fonts/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2
+  inflating: webroot/.last_build_id
+  inflating: webroot/config.json
+  inflating: webroot/flutter_webui.js
+  inflating: customize.sh
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 509.0 MB/s (6582359 bytes in 0.012s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+inputs/modules/demo.zip: 1 file pushed, 0 skipped. 417.2 MB/s (28109334 bytes in 0.064s)
+== install demo.zip
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/pkg/.gitignore
+  inflating: webroot/pkg/demo_native.js
+  inflating: webroot/pkg/demo_native_bg.wasm
+  inflating: webroot/pkg/package.json
+  inflating: webroot/version.json
+  inflating: webroot/workers/demo_service.web.g.dart.js
+  inflating: webroot/workers/hello_service.web.g.dart.js
+  inflating: webui_app_plane/arm64-v8a/webui_termux_api.aot
+  inflating: webui_app_plane/termux-api
+  inflating: webui_app_plane/x86_64/webui_termux_api.aot
+- Done
+- Handle partition /product
+- Module installed successfully!
+/home/runner/work/devicelab/devicelab/app_plane.zip: 1 file pushed, 0 skipped. 552.4 MB/s (4528283 bytes in 0.008s)
+== install app_plane.zip
+Archive:  /data/local/tmp/m.zip
+- Extracting module files
+Archive:  /data/local/tmp/m.zip
+  inflating: post-fs-data.sh
+  inflating: module.prop
+   creating: system/
+   creating: system/product/
+   creating: system/product/app/
+   creating: system/product/app/WebuiTermuxApi/
+  inflating: system/product/app/WebuiTermuxApi/WebuiTermuxApi.apk
+  inflating: service.sh
+  inflating: sockprobe
+- Done
+- Handle partition /product
+- Module installed successfully!
+/home/runner/work/devicelab/devicelab/envdump.zip: 1 file pushed, 0 skipped. 28.7 MB/s (1766 bytes in 0.000s)
+== install envdump.zip
+ devicelab envdump 
+ by p0g-stack 
+*******************
+**************************
+ Powered by KernelSU-Next 
+**************************
+Archive:  /data/local/tmp/m.zip
+  inflating: customize.sh
+- Extracting module files
+Archive:  /data/local/tmp/m.zip
+  inflating: module.prop
+  inflating: customize.sh
+- devicelab envdump: written /data/local/tmp/customize-env.txt
+- Done
+- Module installed successfully!
+== soft-reboot: 
+no boot_completed after soft-reboot
+== after soft-reboot (326s): [
+  {
+    "mount": "false",
+    "remove": "false",
+    "web": "true",
+    "id": "devicelab_probe",
+    "versionCode": "1",
+    "name": "devicelab probe",
+    "enabled": "true",
+    "update": "false",
+    "version": "1",
+    "author": "p0g-stack",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "action": "false"
+  },
+  {
+    "id": "mountify",
+    "version": "v2.0.4",
+    "web": "true",
+    "action": "true",
+    "metamodule": "true",
+    "mount": "false",
+    "updateJson": "https://raw.githubusercontent.com/backslashxx/mountify/master/update.json",
+    "author": "xx, KOWX712",
+    "name": "mountify",
+    "enabled": "true",
+    "update": "false",
+    "versionCode": "204",
+    "description": "mode: auto 🤖 | fstype: tmpfs 🦾 | modules: demo devicelab_app_plane  ",
+    "remove": "false"
+  },
+  {
+    "enabled": "true",
+    "update": "false",
+    "remove": "false",
+    "action": "false",
+    "mount": "false",
+    "web": "true",
+    "name": "flutter-webui Counter",
+    "version": "0.1.5",
+    "author": "p0g-stack",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "id": "flutter_webui_counter",
+    "versionCode": "6"
+  },
+  {
+    "name": "Counter",
+    "versionCode": "1",
+    "description": "A new Flutter project.",
+    "update": "false",
+    "remove": "false",
+    "author": "Yuv",
+    "action": "false",
+    "mount": "false",
+    "version": "v1.0.0",
+    "web": "true",
+    "enabled"
+total 72
+drwxrwxrwx 9 root root 4096 2026-10-01 23:57 .
+drwx------ 6 root root 4096 2026-10-01 23:56 ..
+drwxr-xr-x 3 root root 4096 2026-10-01 23:57 counter
+drwxr-xr-x 7 root root 4096 2026-10-01 23:57 demo
+drwxr-xr-x 3 root root 4096 2026-10-01 23:57 devicelab_app_plane
+drwxr-xr-x 2 root root 4096 2026-10-01 23:57 devicelab_envdump
+drwxr-xr-x 3 root root 4096 2026-10-01 23:56 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-10-01 23:57 flutter_webui_counter
+drwxr-xr-x 5 root root 4096 2026-10-01 23:57 mountify
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 332.1 MB/s (7843260 bytes in 0.023s)
+cmd: Can't find service: activity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Segmentation fault 
+intent path: no page; manager log:
+10-02 00:03:16.952 28670 28670 F DEBUG   :     rbp 0000000000000001  rsp 00007ffe022b2e80  rip 000070b3f118030b
+10-02 00:03:16.952 28670 28670 F DEBUG   : 13 total frames
+10-02 00:03:16.952 28670 28670 F DEBUG   : backtrace:
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #00 pc 00000000000b830b  /apex/com.android.runtime/lib64/bionic/libc.so (mstep+427) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #01 pc 00000000000b7537  /apex/com.android.runtime/lib64/bionic/libc.so (mwalk+1415) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #02 pc 00000000000b697d  /apex/com.android.runtime/lib64/bionic/libc.so (regexec+2829) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #03 pc 000000000003897f  /system/bin/toybox (regexec0+61) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #04 pc 000000000004cf15  /system/bin/toybox (do_grep+991) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #05 pc 000000000004d835  /system/bin/toybox (do_grep_r+311) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #06 pc 00000000000358a8  /system/bin/toybox (dirtree_handle_callback.llvm.2910373161557995379+39) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #07 pc 000000000003581b  /system/bin/toybox (dirtree_recurse+430) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #08 pc 0000000000035913  /system/bin/toybox (dirtree_handle_callback.llvm.2910373161557995379+146) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #09 pc 000000000004cac1  /system/bin/toybox (grep_main+1618) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #10 pc 000000000003c7c1  /system/bin/toybox (toybox_main+633) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #11 pc 000000000003cd8d  /system/bin/toybox (main+94) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:03:16.952 28670 28670 F DEBUG   :       #12 pc 0000000000057c82  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+114) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+10-02 00:03:17.115     0     0 I logd    : logdr: UID=0 GID=0 PID=28670 n tail=500 logMask=1 pid=28665 start=0ns deadline=0ns
+10-02 00:03:16.953   230   230 E tombstoned: Tombstone written to: tombstone_01
+10-02 00:03:17.119     0     0 I init    : Untracked pid 28670 exited with status 0
+10-02 00:03:17.120     0     0 I init    : Untracked pid 28670 did not have an associated service entry and will not be reaped
+10-02 00:03:17.122     0     0 I init    : Untracked pid 28672 exited with status 0
+10-02 00:03:17.123     0     0 I init    : Untracked pid 28672 did not have an associated service entry and will not be reaped
+10-02 00:03:17.018   170   170 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-02 00:03:17.181     0     0 I servicemanager: Caller(pid=28678,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+10-02 00:03:17.223     0     0 I logd    : logdr: UID=0 GID=0 PID=28680 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
+ui: tapped 'Module' at 235,260
+Traceback (most recent call last):
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 98, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 52, in main
+    w, h = size(); x, y = int(sys.argv[2]) * w // 320, int(sys.argv[3]) * h // 640
+           ^^^^^^
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 46, in size
+    m = re.search(r"(\d+)x(\d+)", adb("shell", "wm", "size").splitlines()[-1])
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^
+IndexError: list index out of range
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+[16,104][304,216] Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom
+[16,232][153,288] Superuser | 0
+[167,232][304,288] Module | 1
+[136,502][184,530] Show more
+[174,632][222,640] 
+[232,632][280,640] 
+[16,32][195,80] KernelSU-Next
+[220,32][268,80] Install
+[268,32][316,80] Reboot
+[42,538][98,594] Home
+[102,538][158,594] Superuser
+[162,538][218,594] Module
+[222,538][278,594] Settings
+ui: no node with 'Open'
+
+
+
+
+
+
+
+
+
+
+
+
+[16,104][304,216] Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom
+[16,232][153,288] Superuser | 0
+[167,232][304,288] Module | 1
+[136,502][184,530] Show more
+[174,632][222,640] 
+[232,632][280,640] 
+[16,32][195,80] KernelSU-Next
+[220,32][268,80] Install
+[268,32][316,80] Reboot
+[42,538][98,594] Home
+[102,538][158,594] Superuser
+[162,538][218,594] Module
+[222,538][278,594] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"globals","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ksu-exec","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ws-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"fetch-loopback","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"webview-uid","result":[]}
+{"check":"while-home-heartbeat","result":{"error":"no page target","sockets":[],"targets":[]}}
+cmd: Can't find service: input
+cmd: Can't find service: window
+cmd: Can't find service: input
+{"check":"lifecycle","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"dev-url","result":{"error":"no page target","sockets":[],"targets":[]}}
+cmd: Can't find service: activity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Segmentation fault 
+intent path: no page; manager log:
+10-02 00:05:15.536  3376  3376 I PackageManager: /data/apex/decompressed/com.android.neuralnetworks@350820300.decompressed.apex changed; collecting certs
+10-02 00:05:15.538  3376  3376 I PackageManager: /data/apex/decompressed/com.android.rkpd@350820300.decompressed.apex changed; collecting certs
+10-02 00:05:15.540  3376  3376 I PackageManager: /system/apex/com.android.runtime.apex changed; collecting certs
+10-02 00:05:15.542  3376  3376 I PackageManager: /data/apex/decompressed/com.android.scheduling@350820300.decompressed.apex changed; collecting certs
+10-02 00:05:15.544  3376  3376 I PackageManager: /data/apex/decompressed/com.android.sdkext@350820300.decompressed.apex changed; collecting certs
+10-02 00:05:15.545  3376  3376 I PackageManager: /data/apex/decompressed/com.android.tethering@350820300.decompressed.apex changed; collecting certs
+10-02 00:05:15.547  3376  3376 I PackageManager: /system/apex/com.google.android.tzdata6.apex changed; collecting certs
+10-02 00:05:15.549  3376  3376 I PackageManager: /data/apex/decompressed/com.android.uwb@350820300.decompressed.apex changed; collecting certs
+10-02 00:05:15.551  3376  3376 I PackageManager: /system/apex/com.android.virt.apex changed; collecting certs
+10-02 00:05:15.553  3376  3376 I PackageManager: /data/apex/decompressed/com.android.wifi@350820300.decompressed.apex changed; collecting certs
+10-02 00:05:15.554  3376  3376 I PackageManager: /vendor/apex/com.google.android.widevine-11775005.apex changed; collecting certs
+10-02 00:05:15.556  3376  3376 I PackageManager: /system/apex/com.google.mainline.primary.libs.apex changed; collecting certs
+10-02 00:05:15.558  3376  3376 I PackageManager: /data/apex/decompressed/com.android.permission@350820360.decompressed.apex changed; collecting certs
+10-02 00:05:15.560  3376  3376 I PackageManager: /data/apex/decompressed/com.android.resolv@350820300.decompressed.apex changed; collecting certs
+10-02 00:05:15.561  3376  3376 D PackageManager: No files in app dir /apex/com.android.hardware.cas/overlay
+10-02 00:05:15.561  3376  3376 D PackageManager: No files in app dir /apex/com.android.hardware.authsecret/overlay
+10-02 00:05:15.561  3376  3376 D PackageManager: No files in app dir /apex/com.google.android.widevine/overlay
+10-02 00:05:15.561  3376  3376 D PackageManager: No files in app dir /apex/com.android.hardware.rebootescrow/overlay
+10-02 00:05:15.561  3376  3376 D PackageManager: No files in app dir /apex/com.android.hardware.neuralnetworks/overlay
+10-02 00:05:15.561  3376  3376 D PackageManager: No files in app dir /apex/com.android.compos/overlay
+10-02 00:05:15.561  3376  3376 D PackageManager: No files in app dir /system_ext/overlay
+10-02 00:05:15.602  3376  3376 D PackageManager: No files in app dir /oem/overlay
+10-02 00:05:15.602  3376  3376 D PackageManager: No files in app dir /odm/overlay
+10-02 00:05:15.606  3376  3376 W PackageManager: Failed to parse /system/framework/oat: Missing base APK in /system/framework/oat/x86_64
+10-02 00:05:15.606  3376  3376 W PackageManager: Failed to parse /system/framework/x86_64: Missing base APK in /system/framework/x86_64
+ui: tapped 'Module' at 235,260
+Traceback (most recent call last):
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 98, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 52, in main
+    w, h = size(); x, y = int(sys.argv[2]) * w // 320, int(sys.argv[3]) * h // 640
+           ^^^^^^
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 46, in size
+    m = re.search(r"(\d+)x(\d+)", adb("shell", "wm", "size").splitlines()[-1])
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^
+IndexError: list index out of range
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+[16,104][304,216] Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom
+[16,232][153,288] Superuser | 0
+[167,232][304,288] Module | 1
+[136,502][184,530] Show more
+[174,632][222,640] 
+[232,632][280,640] 
+[16,32][195,80] KernelSU-Next
+[220,32][268,80] Install
+[268,32][316,80] Reboot
+[42,538][98,594] Home
+[102,538][158,594] Superuser
+[162,538][218,594] Module
+[222,538][278,594] Settings
+ui: no node with 'Open'
+
+
+
+
+
+
+
+
+
+
+
+
+[16,104][304,216] Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom
+[16,232][153,288] Superuser | 0
+[167,232][304,288] Module | 1
+[136,502][184,530] Show more
+[174,632][222,640] 
+[232,632][280,640] 
+[16,32][195,80] KernelSU-Next
+[220,32][268,80] Install
+[268,32][316,80] Reboot
+[42,538][98,594] Home
+[102,538][158,594] Superuser
+[162,538][218,594] Module
+[222,538][278,594] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"java-exceptions","result":["10-02 00:06:56.418  9520  9520 E Zygote  : \tat android.app.ApplicationPackageManager.getInstalledModules(ApplicationPackageManager.java:1198)", "10-02 00:06:56.418  9520  9520 E Zygote  : \tat com.android.server.am.AppRestrictionController.initSystemModuleNames(AppRestrictionController.java:1602)", "10-02 00:06:56.418  9520  9520 E Zygote  : \tat com.android.server.am.AppRestrictionController.onSystemReady(AppRestrictionController.java:1515)", "10-02 00:06:56.418  9520  9520 E Zygote  : \tat com.android.server.am.ActivityManagerService.systemReady(ActivityManagerService.java:9047)", "10-02 00:06:56.418  9520  9520 E Zygote  : \tat com.android.server.SystemServer.startOtherServices(SystemServer.java:3028)", "10-02 00:06:56.418  9520  9520 E Zygote  : \tat com.android.server.SystemServer.run(SystemServer.java:936)", "10-02 00:06:56.418  9520  9520 E Zygote  : \tat com.android.server.SystemServer.main(SystemServer.java:657)", "10-02 00:06:56.418  9520  9520 E Zygote  : \tat java.lang.reflect.Method.invoke(Native Method)", "10-02 00:06:56.418  9520  9520 E Zygote  : \tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)", "10-02 00:06:56.418  9520  9520 E Zygote  : \tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:864)", "--", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: java.lang.IllegalStateException: Call to getInstalledModules before metadata loaded", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat com.android.server.pm.ModuleInfoProvider.getInstalledModules(ModuleInfoProvider.java:191)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat com.android.server.pm.IPackageManagerBase.getInstalledModules(IPackageManagerBase.java:481)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat android.app.ApplicationPackageManager.getInstalledModules(ApplicationPackageManager.java:1198)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat com.android.server.am.AppRestrictionController.initSystemModuleNames(AppRestrictionController.java:1602)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat com.android.server.am.AppRestrictionController.onSystemReady(AppRestrictionController.java:1515)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat com.android.server.am.ActivityManagerService.systemReady(ActivityManagerService.java:9047)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat com.android.server.SystemServer.startOtherServices(SystemServer.java:3028)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat com.android.server.SystemServer.run(SystemServer.java:936)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat com.android.server.SystemServer.main(SystemServer.java:657)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat java.lang.reflect.Method.invoke(Native Method)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)", "10-02 00:06:56.418  9520  9520 E AndroidRuntime: \tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:864)", "--", "10-02 00:06:56.419  9520  9656 E WifiStaIfaceAidlImpl: getBackgroundScanCapabilities failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)", "10-02 00:06:56.419  9520  9644 E WifiChipAidlImpl: setMultiStaUseCase failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)", "10-02 00:06:56.420  9520  9644 E WifiChipAidlImpl: setMultiStaPrimaryConnection failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)", "10-02 00:06:56.420  9520  9644 D WifiCountryCode: evaluateAllCmmStateAndApplyIfAllReady: {ConcreteClientModeManager{id=680859 iface=wlan0 role=ROLE_CLIENT_PRIMARY}=true}", "10-02 00:06:56.421  9520  9644 D WifiCountryCode: Reading country code from telephony", "10-02 00:06:56.421  9520  9644 D WifiCountryCode: Set telephony country code to: ", "10-02 00:06:56.421  9520  9644 D WifiCountryCode: updateCountryCode to null", "10-02 00:06:56.422  9520  9520 I Process : Sending signal. PID: 9520 SIG: 9", "10-02 00:06:56.866   165   165 I lowmemorykiller: lmkd data connection dropped", "10-02 00:06:56.867   165   165 I lowmemorykiller: closing lmkd data connection", "10-02 00:06:57.050  9500  9500 E Zygote  : Zygote failed to write to system_server FD: Connection refused", "10-02 00:06:57.050  9500  9500 I Zygote  : Process 9520 exited due to signal 9 (Killed)", "10-02 00:06:57.050  9500  9500 E Zygote  : Exit zygote because system server (pid 9520) has terminated", "10-02 00:06:57.215     0     0 I binder  : undelivered TRANSACTION_COMPLETE", "10-02 00:06:57.216     0     0 I binder  : undelivered transaction 1170519, process died."]}
+{"check":"console-errors","result":[]}
+{"check":"first-frame-warm","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"root-start","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"session","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"ws-hello","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"channel-process","result":""}
+{"check":"root-log","result":"tail: /data/adb/modules/flutter_webui_counter/webroot/.run/root.log: No such file or directory"}
+{"check":"session-mode","result":"ls: /data/adb/modules/flutter_webui_counter/webroot/.run/: No such file or directory"}
+cmd: Can't find service: input
+cmd: Can't find service: input
+cmd: Failure calling service input: Broken pipe (32)
+{"check":"home-resume","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"before-back","result":{"error":"no page target","sockets":[],"targets":[]}}
+cmd: Can't find service: input
+{"check":"back-events","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"back-console","result":["10-02 00:07:09.950 10379 10379 D nativeloader: InitDefaultPublicLibraries for_preload=1: libandroid.so:libaaudio.so:libamidi.so:libbinder_ndk.so:libc.so:libcamera2ndk.so:libdl.so:libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libicu.so:libicui18n.so:libicuuc.so:libjnigraphics.so:liblog.so:libmediandk.so:libm.so:libnativehelper.so:libnativewindow.so:libOpenMAXAL.so:libOpenSLES.so:libRS.so:libstdc++.so:libsync.so:libvulkan.so:libwebviewchromium_plat_support.so:libz.so", "10-02 00:07:10.197 10379 10379 D nativeloader: InitDefaultPublicLibraries for_preload=0: libandroid.so:libaaudio.so:libamidi.so:libbinder_ndk.so:libc.so:libcamera2ndk.so:libclang_rt.hwasan-aarch64-android.so:libdl.so:libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libjnigraphics.so:liblog.so:libmediandk.so:libm.so:libnativewindow.so:libOpenMAXAL.so:libOpenSLES.so:libRS.so:libstdc++.so:libsync.so:libvulkan.so:libwebviewchromium_plat_support.so:libz.so", "10-02 00:07:10.212 10379 10379 D nativeloader: Load libwebviewchromium_loader.so using system ns (caller=/system/framework/framework.jar!classes4.dex): ok"]}
+Can't find service: activity
+{"check":"back-at-root","result":""}
+Can't find service: activity
+cmd: Can't find service: activity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Segmentation fault 
+intent path: no page; manager log:
+10-02 00:07:30.153 11612 11612 F DEBUG   :       #06 pc 00000000000358a8  /system/bin/toybox (dirtree_handle_callback.llvm.2910373161557995379+39) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:07:30.153 11612 11612 F DEBUG   :       #07 pc 000000000003581b  /system/bin/toybox (dirtree_recurse+430) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:07:30.154 11612 11612 F DEBUG   :       #08 pc 0000000000035913  /system/bin/toybox (dirtree_handle_callback.llvm.2910373161557995379+146) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:07:30.154 11612 11612 F DEBUG   :       #09 pc 000000000004cac1  /system/bin/toybox (grep_main+1618) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:07:30.154 11612 11612 F DEBUG   :       #10 pc 000000000003c7c1  /system/bin/toybox (toybox_main+633) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:07:30.154 11612 11612 F DEBUG   :       #11 pc 000000000003cd8d  /system/bin/toybox (main+94) (BuildId: 0cbd8b725f6e1025db298c652095d356)
+10-02 00:07:30.154 11612 11612 F DEBUG   :       #12 pc 0000000000057c82  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+114) (BuildId: eb58b4d427279994f00c0e1818477e4f)
+10-02 00:07:30.155   230   230 E tombstoned: Tombstone written to: tombstone_03
+10-02 00:07:30.321     0     0 I init    : Untracked pid 11612 exited with status 0
+10-02 00:07:30.322     0     0 I init    : Untracked pid 11612 did not have an associated service entry and will not be reaped
+10-02 00:07:30.323     0     0 I init    : Untracked pid 11614 exited with status 0
+10-02 00:07:30.324     0     0 I init    : Untracked pid 11614 did not have an associated service entry and will not be reaped
+10-02 00:07:30.179 11583 11583 W Zygote  : Class not found for preloading: sun.util.locale.BaseLocale$Key-IA
+10-02 00:07:30.181 11583 11583 I Zygote  : ...preloaded 17758 classes in 198ms.
+10-02 00:07:30.196 11583 11583 I Zygote  : Preloading shared libraries...
+10-02 00:07:30.198 11583 11583 I Zygote  : Called ZygoteHooks.endPreload()
+10-02 00:07:30.198 11583 11583 I Zygote  : Installed AndroidKeyStoreProvider in 0ms.
+10-02 00:07:30.199 11583 11583 I Zygote  : Warmed up JCA providers in 1ms.
+10-02 00:07:30.199 11583 11583 D Zygote  : end preload
+10-02 00:07:30.227   170   170 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-02 00:07:30.390     0     0 I servicemanager: Caller(pid=11619,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+10-02 00:07:30.260 11583 11583 D Zygote  : Forked child process 11623
+10-02 00:07:30.261 11583 11583 I Zygote  : System server process 11623 has been created
+10-02 00:07:30.261 11583 11583 I Zygote  : Accepting command socket connections
+10-02 00:07:30.427     0     0 I logd    : logdr: UID=0 GID=0 PID=11621 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
+ui: tapped 'Module' at 235,260
+Traceback (most recent call last):
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 98, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 52, in main
+    w, h = size(); x, y = int(sys.argv[2]) * w // 320, int(sys.argv[3]) * h // 640
+           ^^^^^^
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 47, in size
+    return int(m.group(1)), int(m.group(2))
+               ^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'group'
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+[16,104][304,216] Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom
+[16,232][153,288] Superuser | 0
+[167,232][304,288] Module | 1
+[136,502][184,530] Show more
+[174,632][222,640] 
+[232,632][280,640] 
+[16,32][195,80] KernelSU-Next
+[220,32][268,80] Install
+[268,32][316,80] Reboot
+[42,538][98,594] Home
+[102,538][158,594] Superuser
+[162,538][218,594] Module
+[222,538][278,594] Settings
+ui: no node with 'Open'
+
+
+
+
+
+
+
+
+
+
+
+
+[16,104][304,216] Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom
+[16,232][153,288] Superuser | 0
+[167,232][304,288] Module | 1
+[136,502][184,530] Show more
+[174,632][222,640] 
+[232,632][280,640] 
+[16,32][195,80] KernelSU-Next
+[220,32][268,80] Install
+[268,32][316,80] Reboot
+[42,538][98,594] Home
+[102,538][158,594] Superuser
+[162,538][218,594] Module
+[222,538][278,594] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"java-exceptions","result":["10-02 00:09:01.633 17161 17161 E Zygote  : \tat android.app.ApplicationPackageManager.getInstalledModules(ApplicationPackageManager.java:1198)", "10-02 00:09:01.633 17161 17161 E Zygote  : \tat com.android.server.am.AppRestrictionController.initSystemModuleNames(AppRestrictionController.java:1602)", "10-02 00:09:01.633 17161 17161 E Zygote  : \tat com.android.server.am.AppRestrictionController.onSystemReady(AppRestrictionController.java:1515)", "10-02 00:09:01.633 17161 17161 E Zygote  : \tat com.android.server.am.ActivityManagerService.systemReady(ActivityManagerService.java:9047)", "10-02 00:09:01.633 17161 17161 E Zygote  : \tat com.android.server.SystemServer.startOtherServices(SystemServer.java:3028)", "10-02 00:09:01.633 17161 17161 E Zygote  : \tat com.android.server.SystemServer.run(SystemServer.java:936)", "10-02 00:09:01.633 17161 17161 E Zygote  : \tat com.android.server.SystemServer.main(SystemServer.java:657)", "10-02 00:09:01.633 17161 17161 E Zygote  : \tat java.lang.reflect.Method.invoke(Native Method)", "10-02 00:09:01.633 17161 17161 E Zygote  : \tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)", "10-02 00:09:01.633 17161 17161 E Zygote  : \tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:864)", "--", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: java.lang.IllegalStateException: Call to getInstalledModules before metadata loaded", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat com.android.server.pm.ModuleInfoProvider.getInstalledModules(ModuleInfoProvider.java:191)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat com.android.server.pm.IPackageManagerBase.getInstalledModules(IPackageManagerBase.java:481)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat android.app.ApplicationPackageManager.getInstalledModules(ApplicationPackageManager.java:1198)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat com.android.server.am.AppRestrictionController.initSystemModuleNames(AppRestrictionController.java:1602)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat com.android.server.am.AppRestrictionController.onSystemReady(AppRestrictionController.java:1515)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat com.android.server.am.ActivityManagerService.systemReady(ActivityManagerService.java:9047)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat com.android.server.SystemServer.startOtherServices(SystemServer.java:3028)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat com.android.server.SystemServer.run(SystemServer.java:936)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat com.android.server.SystemServer.main(SystemServer.java:657)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat java.lang.reflect.Method.invoke(Native Method)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)", "10-02 00:09:01.633 17161 17161 E AndroidRuntime: \tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:864)", "10-02 00:09:01.633 17161 17295 E WifiStaIfaceAidlImpl: getBackgroundScanCapabilities failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)", "10-02 00:09:01.793     0     0 I servicemanager: Caller(pid=17161,uid=1000,sid=u:r:system_server:s0) Found android.hardware.wifi.IWifi/default in device VINTF manifest.", "10-02 00:09:01.634 17161 17161 I DropBoxManagerService: add tag=system_server_crash isTagEnabled=true flags=0x2", "10-02 00:09:01.637 17161 17281 E WifiChipAidlImpl: setMultiStaUseCase failed with service-specific exception: android.os.ServiceSpecificException:  (code 4)", "10-02 00:09:01.637 17161 17161 I Process : Sending signal. PID: 17161 SIG: 9", "10-02 00:09:02.067   165   165 I lowmemorykiller: lmkd data connection dropped", "10-02 00:09:02.067   165   165 I lowmemorykiller: closing lmkd data connection", "10-02 00:09:02.266 17121 17121 E Zygote  : Zygote failed to write to system_server FD: Connection refused", "10-02 00:09:02.266 17121 17121 I Zygote  : Process 17161 exited due to signal 9 (Killed)", "10-02 00:09:02.266 17121 17121 E Zygote  : Exit zygote because system server (pid 17161) has terminated", "10-02 00:09:02.431     0     0 I binder  : undelivered TRANSACTION_COMPLETE", "10-02 00:09:02.432     0     0 I binder  : undelivered transaction 1320973, process died.", "10-02 00:09:02.433     0     0 I binder  : undelivered TRANSACTION_COMPLETE", "10-02 00:09:02.434     0     0 I binder  : undelivered transaction 1320974, process died.", "10-02 00:09:02.270 11510 11510 E IPCThreadState: attemptIncStrongHandle(3): Not supported", "10-02 00:09:02.270 17111 17316 I CaptureStateNotifier: Listener binder died"]}
+{"check":"console-errors","result":[]}
+{"check":"first-frame-warm","result":{"error":"no page target","sockets":[],"targets":[]}}
+cmd: Can't find service: activity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Segmentation fault 
+intent path: no page; manager log:
+10-02 00:09:21.322   508  7180 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi
+10-02 00:09:21.322   508  7180 D installd: Found storage mount /dev/block/dm-46 at /mnt/pass_through/0/emulated
+10-02 00:09:21.323   508   508 D installd: Found quota mount /dev/block/dm-46 at /data
+10-02 00:09:21.323   508   508 D installd: Found quota mount /dev/block/dm-46 at /data/user/0
+10-02 00:09:21.323   508   508 D installd: Found quota mount /dev/block/dm-46 at /mnt/pass_through/0/emulated
+10-02 00:09:21.323   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi
+10-02 00:09:21.323   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi
+10-02 00:09:21.323   508   508 D installd: Found storage mount /dev/block/dm-46 at /mnt/pass_through/0/emulated
+10-02 00:09:21.333   170   170 I hwservicemanager: getTransport: Cannot find entry android.hardware.oemlock@1.0::IOemLock/default in either framework or device VINTF manifest.
+10-02 00:09:21.499     0     0 I servicemanager: Caller(pid=18344,uid=1000,sid=u:r:system_server:s0) Could not find android.hardware.oemlock.IOemLock/default in the VINTF manifest. No alternative instances declared in VINTF.
+10-02 00:09:21.503     0     0 I init    : ... started service 'exec 450 (/system/bin/extra_free_kbytes.sh 2400)' has pid 18467
+10-02 00:09:21.503     0     0 I KernelSU: hook_manager: unmark 18467 exec /system/bin/extra_free_kbytes.sh
+10-02 00:09:21.504     0     0 I init    : SVC_EXEC service 'exec 450 (/system/bin/extra_free_kbytes.sh 2400)' pid 18467 (uid 0 gid 0+0 context default) started; waiting...
+10-02 00:09:21.349   170   170 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-02 00:09:21.512     0     0 I servicemanager: Caller(pid=18461,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+10-02 00:09:21.362 18290 18320 I netd    : registerUnsolicitedEventListener(interface:0x7053e92177b0) <0.06ms>
+10-02 00:09:21.569     0     0 I logd    : logdr: UID=0 GID=0 PID=18484 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
+10-02 00:09:21.409   170   170 I hwservicemanager: getTransport: Cannot find entry android.hardware.wifi@1.0::IWifi/default in either framework or device VINTF manifest.
+10-02 00:09:21.576     0     0 I servicemanager: Caller(pid=18344,uid=1000,sid=u:r:system_server:s0) Found android.hardware.wifi.IWifi/default in device VINTF manifest.
+10-02 00:09:21.578     0     0 I init    : Service 'exec 450 (/system/bin/extra_free_kbytes.sh 2400)' (pid 18467) exited with status 0 waiting took 0.092000 seconds
+10-02 00:09:21.582     0     0 I servicemanager: Caller(pid=18344,uid=1000,sid=u:r:system_server:s0) Found android.hardware.wifi.supplicant.ISupplicant/default in device VINTF manifest.
+10-02 00:09:21.583     0     0 I init    : Sending signal 9 to service 'exec 450 (/system/bin/extra_free_kbytes.sh 2400)' (pid 18467) process group...
+10-02 00:09:21.587     0     0 I libprocessgroup: Removed cgroup /sys/fs/cgroup/uid_0/pid_18467
+10-02 00:09:21.588     0     0 I servicemanager: Caller(pid=18344,uid=1000,sid=u:r:system_server:s0) Found android.hardware.wifi.supplicant.ISupplicant/default in device VINTF manifest.
+10-02 00:09:21.461 18290 18320 I netd    : registerUnsolicitedEventListener(interface:0x7053e9216880) <0.01ms>
+ui: tapped 'Module' at 235,260
+Traceback (most recent call last):
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 98, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 52, in main
+    w, h = size(); x, y = int(sys.argv[2]) * w // 320, int(sys.argv[3]) * h // 640
+           ^^^^^^
+  File "/home/runner/work/devicelab/devicelab/managers/ui.py", line 46, in size
+    m = re.search(r"(\d+)x(\d+)", adb("shell", "wm", "size").splitlines()[-1])
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^
+IndexError: list index out of range
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+ui: no node with 'Clean'
+[16,104][304,216] Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom
+[16,232][153,288] Superuser | 0
+[167,232][304,288] Module | 1
+[136,502][184,530] Show more
+[174,632][222,640] 
+[232,632][280,640] 
+[16,32][195,80] KernelSU-Next
+[220,32][268,80] Install
+[268,32][316,80] Reboot
+[42,538][98,594] Home
+[102,538][158,594] Superuser
+[162,538][218,594] Module
+[222,538][278,594] Settings
+ui: no node with 'Open'
+
+
+
+
+
+
+
+
+
+
+
+
+[16,104][304,216] Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom
+[16,232][153,288] Superuser | 0
+[167,232][304,288] Module | 1
+[136,502][184,530] Show more
+[174,632][222,640] 
+[232,632][280,640] 
+[16,32][195,80] KernelSU-Next
+[220,32][268,80] Install
+[268,32][316,80] Reboot
+[42,538][98,594] Home
+[102,538][158,594] Superuser
+[162,538][218,594] Module
+[222,538][278,594] Settings
+opened: none
+{"check":"targets","result":[]}
+{"check":"page","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"java-exceptions","result":["10-02 00:11:01.693 24425 24425 E System  : \tat com.android.server.pm.ModuleInfoProvider.getInstalledModules(ModuleInfoProvider.java:191)", "10-02 00:11:01.693 24425 24425 E System  : \tat com.android.server.pm.IPackageManagerBase.getInstalledModules(IPackageManagerBase.java:481)", "10-02 00:11:01.693 24425 24425 E System  : \tat android.app.ApplicationPackageManager.getInstalledModules(ApplicationPackageManager.java:1198)", "10-02 00:11:01.693 24425 24425 E System  : \tat com.android.server.am.AppRestrictionController.initSystemModuleNames(AppRestrictionController.java:1602)", "10-02 00:11:01.693 24425 24425 E System  : \tat com.android.server.am.AppRestrictionController.onSystemReady(AppRestrictionController.java:1515)", "10-02 00:11:01.693 24425 24425 E System  : \tat com.android.server.am.ActivityManagerService.systemReady(ActivityManagerService.java:9047)", "10-02 00:11:01.693 24425 24425 E System  : \tat com.android.server.SystemServer.startOtherServices(SystemServer.java:3028)", "10-02 00:11:01.693 24425 24425 E System  : \tat com.android.server.SystemServer.run(SystemServer.java:936)", "10-02 00:11:01.693 24425 24425 E System  : \tat com.android.server.SystemServer.main(SystemServer.java:657)", "10-02 00:11:01.693 24425 24425 E System  : \tat java.lang.reflect.Method.invoke(Native Method)", "10-02 00:11:01.693 24425 24425 E System  : \tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)", "10-02 00:11:01.693 24425 24425 E System  : \tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:864)", "--", "10-02 00:11:01.693 24425 24425 E Zygote  : java.lang.IllegalStateException: Call to getInstalledModules before metadata loaded", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat com.android.server.pm.ModuleInfoProvider.getInstalledModules(ModuleInfoProvider.java:191)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat com.android.server.pm.IPackageManagerBase.getInstalledModules(IPackageManagerBase.java:481)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat android.app.ApplicationPackageManager.getInstalledModules(ApplicationPackageManager.java:1198)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat com.android.server.am.AppRestrictionController.initSystemModuleNames(AppRestrictionController.java:1602)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat com.android.server.am.AppRestrictionController.onSystemReady(AppRestrictionController.java:1515)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat com.android.server.am.ActivityManagerService.systemReady(ActivityManagerService.java:9047)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat com.android.server.SystemServer.startOtherServices(SystemServer.java:3028)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat com.android.server.SystemServer.run(SystemServer.java:936)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat com.android.server.SystemServer.main(SystemServer.java:657)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat java.lang.reflect.Method.invoke(Native Method)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)", "10-02 00:11:01.693 24425 24425 E Zygote  : \tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:864)", "--", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: java.lang.IllegalStateException: Call to getInstalledModules before metadata loaded", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat com.android.server.pm.ModuleInfoProvider.getInstalledModules(ModuleInfoProvider.java:191)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat com.android.server.pm.IPackageManagerBase.getInstalledModules(IPackageManagerBase.java:481)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat android.app.ApplicationPackageManager.getInstalledModules(ApplicationPackageManager.java:1198)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat com.android.server.am.AppRestrictionController.initSystemModuleNames(AppRestrictionController.java:1602)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat com.android.server.am.AppRestrictionController.onSystemReady(AppRestrictionController.java:1515)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat com.android.server.am.ActivityManagerService.systemReady(ActivityManagerService.java:9047)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat com.android.server.SystemServer.startOtherServices(SystemServer.java:3028)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat com.android.server.SystemServer.run(SystemServer.java:936)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat com.android.server.SystemServer.main(SystemServer.java:657)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat java.lang.reflect.Method.invoke(Native Method)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:580)", "10-02 00:11:01.693 24425 24425 E AndroidRuntime: \tat com.android.internal.os.ZygoteInit.main(ZygoteInit.java:864)"]}
+{"check":"console-errors","result":[]}
+{"check":"first-frame-warm","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"error":"no page target","sockets":[],"targets":[]}
+{"check":"home","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"home-device","result":"00:11:05 up 15 min,  0 users,  load average: 1.98, 2.98, 2.63\nTasks: 293 total,   3 running, 286 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4881328K used,  1190840K free,   102252K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226768K cached\n400%cpu  92%user   4%nice  69%sys 227%idle   4%iow   4%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n24724 system       18  -2  16G 192M 116M R  119   3.2   0:00.34 system_server\n  501 logd         30  10  10G 4.2M 3.4M R 19.2   0.0   0:57.57 logcat -f /dev/hvc1 *:V\n  166 system       20   0  10G 5.9M 4.4M S 15.3   0.1   0:30.80 servicemanager\n  508 root         20   0  10G 7.4M 5.5M S 11.5   0.1   0:08.81 installd\n    1 root         20   0  10G  14M  10M S  7.6   0.2   0:36.44 init second_stage\n24790 root         20   0  10G 4.9M 4.1M R  3.8   0.0   0:00.00 top -b -n1 -m 12\n  378 statsd       20   0  10G 6.2M 4.9M S  3.8   0.1   0:01.52 statsd\n  160 logd         30  10  10G 9.1M 4.2M S  3.8   0.1   0:24.58 logd\n24787 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n24705 root         20   0  14G 183M 133M S  0.0   3.0   0:00.42 zygote64\n24680 root         20   0  10G 3.3M 2.6M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n24679 root         20   0  10G 3.2M 2.5M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\nMemAvailable:    5282112 kB\nSwapFree:        4553096 kB"}
+{"check":"colors-css","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"colors-css-device","result":"00:11:06 up 15 min,  0 users,  load average: 2.54, 3.08, 2.67\nTasks: 293 total,   2 running, 287 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4918360K used,  1153808K free,   102264K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4227352K cached\n400%cpu 100%user   4%nice  85%sys 208%idle   0%iow   4%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n24724 system       18  -2  16G 255M 131M R  100   4.2   0:00.80 system_server\n  501 logd         30  10  10G 4.2M 3.4M S 15.3   0.0   0:57.64 logcat -f /dev/hvc1 *:V\n  166 system       20   0  10G 5.9M 4.4M S 15.3   0.1   0:30.86 servicemanager\n24676 audioserver  20   0  11G  27M  22M S  7.6   0.4   0:00.05 audioserver\n    1 root         20   0  10G  14M  10M S  7.6   0.2   0:36.46 init second_stage\n24838 root         20   0  10G 4.8M 3.9M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n  190 system       20   0  10G 6.4M 4.2M S  3.8   0.1   0:01.95 android.system.suspend-service\n  170 system       20   0  10G 6.1M 5.2M S  3.8   0.1   0:00.81 hwservicemanager\n  160 logd         30  10  10G 9.3M 4.2M S  3.8   0.1   0:24.61 logd\n24833 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n24705 root         20   0  14G 183M 133M S  0.0   3.0   0:00.42 zygote64\n24680 root         20   0  10G 3.3M 2.6M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\nMemAvailable:    5244144 kB\nSwapFree:        4553096 kB"}
+{"check":"wasm-at-home","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"wasm-at-home-device","result":"00:11:06 up 15 min,  0 users,  load average: 2.54, 3.08, 2.67\nTasks: 294 total,   4 running, 286 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4817476K used,  1254692K free,   102264K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4227336K cached\n400%cpu  15%user   4%nice  38%sys 342%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n24724 system       18  -2  17G 321M 170M R 26.9   5.4   0:01.20 system_server\n  501 logd         30  10  10G 4.2M 3.4M R  7.6   0.0   0:57.72 logcat -f /dev/hvc1 *:V\n24957 root         20   0  10G 5.1M 4.2M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n 1493 root         20   0    0    0    0 I  3.8   0.0   0:00.14 [kworker/3:2-events]\n  166 system       20   0  10G 5.9M 4.4M S  3.8   0.1   0:30.92 servicemanager\n  160 logd         30  10  10G 9.4M 4.2M S  3.8   0.1   0:24.64 logd\n24950 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n24924 system       20   0  10G 5.4M 4.6M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n24705 root         20   0  14G 183M 133M S  0.0   3.0   0:00.42 zygote64\n24680 root         20   0  10G 3.3M 2.6M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n24679 root         20   0  10G 3.2M 2.5M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\n24676 audioserver  20   0  11G  27M  22M S  0.0   0.4   0:00.07 audioserver\nError with service 'activity' while dumping: DEAD_OBJECT\nMemAvailable:    5344312 kB\nSwapFree:        4553096 kB"}
+{"check":"tap-places","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-places-device","result":"00:11:07 up 15 min,  0 users,  load average: 2.54, 3.08, 2.67\nTasks: 294 total,   1 running, 288 sleeping,   0 stopped,   5 zombie\n  Mem:  6072168K total,  4821188K used,  1250980K free,   102264K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4227336K cached\n400%cpu   4%user   0%nice   4%sys 384%idle   0%iow   4%irq   4%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n   99 root         20   0  10G 7.8M 6.2M S  4.0   0.1   0:01.07 ueventd\n24976 root         20   0  10G 4.8M 3.9M R  0.0   0.0   0:00.01 top -b -n1 -m 12\n24973 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n24924 system       20   0  10G 5.4M 4.6M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n24724 system       18  -2    0    0    0 Z  0.0   0.0   0:01.27 [system_server]\n24705 root         20   0  14G 183M 133M S  0.0   3.0   0:00.42 zygote64\n24680 root         20   0  10G 3.3M 2.6M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n24679 root         20   0  10G 3.2M 2.5M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\n24676 audioserver  20   0  11G  27M  22M S  0.0   0.4   0:00.07 audioserver\n24675 audioserver  20   0  11G  15M  13M S  0.0   0.2   0:00.01 android.hardware.audio.service\n24674 root         20   0  10G  11M  10M S  0.0   0.1   0:00.02 netd\n24661 wifi         20   0  10G 7.1M 5.9M S  0.0   0.1   0:00.00 wificond\nError with service 'activity' while dumping: DEAD_OBJECT\nMemAvailable:    5342036 kB\nSwapFree:        4553096 kB"}
+{"check":"places","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"places-device","result":"00:11:19 up 15 min,  0 users,  load average: 2.61, 3.07, 2.67\nTasks: 287 total,   1 running, 282 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4754360K used,  1317808K free,   102316K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226736K cached\n400%cpu   0%user   0%nice   8%sys 392%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n25561 root         20   0  10G 4.8M 3.9M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n25558 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n25546 wifi         20   0  10G 6.8M 5.9M S  0.0   0.1   0:00.01 wificond\n25545 media        20   0  11G  27M  23M S  0.0   0.4   0:00.02 mediaserver\n25544 cameraserver 20   0  11G  26M  22M S  0.0   0.4   0:00.03 cameraserver\n25508 system       20   0  10G 5.3M 4.5M S  0.0   0.0   0:00.01 android.hardware.biometrics.fingerprint-service.ranchu\n25260 wifi         20   0  10G  11M 9.2M S  0.0   0.1   0:00.01 wpa_supplicant -Dnl80211 -iwlan0 -c/vendor/etc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0]\n14018 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/2:4-virtio_vsock]\n12723 root         20   0    0    0    0 I  0.0   0.0   0:00.08 [kworker/0:3-events]\nCan't find service: activity\nMemAvailable:    5408988 kB\nSwapFree:        4553096 kB"}
+cmd: Can't find service: input
+{"check":"places-scroll-1","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"places-scroll-1-device","result":"00:11:22 up 15 min,  0 users,  load average: 2.48, 3.04, 2.66\nTasks: 294 total,   1 running, 288 sleeping,   0 stopped,   5 zombie\n  Mem:  6072168K total,  4811892K used,  1260276K free,   102336K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4227368K cached\n400%cpu   0%user   0%nice   4%sys 392%idle   0%iow   0%irq   4%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n25840 root         20   0  10G 5.0M 4.1M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n25576 audioserver  20   0  11G  27M  22M S  3.8   0.4   0:00.07 audioserver\n 9252 system       -3  -8  10G  31M  20M S  3.8   0.5   0:12.52 surfaceflinger\n25837 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n25803 system       20   0  10G 5.2M 4.4M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n25626 system       18  -2    0    0    0 Z  0.0   0.0   0:01.17 [system_server]\n25594 root         20   0  14G 183M 133M S  0.0   3.0   0:00.41 zygote64\n25580 root         20   0  10G 3.5M 2.7M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n25579 root         20   0  10G 3.5M 2.7M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\n25575 audioserver  20   0  10G  15M  13M S  0.0   0.2   0:00.02 android.hardware.audio.service\n25572 root         20   0  10G  11M  10M S  0.0   0.1   0:00.01 netd\n25546 wifi         20   0  10G 7.1M 6.0M S  0.0   0.1   0:00.01 wificond\nError with service 'activity' while dumping: DEAD_OBJECT\nMemAvailable:    5351468 kB\nSwapFree:        4553096 kB"}
+cmd: Can't find service: input
+{"check":"places-scroll-2","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"places-scroll-2-device","result":"00:11:24 up 15 min,  0 users,  load average: 2.48, 3.04, 2.66\nTasks: 287 total,   1 running, 282 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4760236K used,  1311932K free,   102336K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226700K cached\n400%cpu   4%user   0%nice   8%sys 385%idle   0%iow   0%irq   4%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n25879 root         20   0  10G 4.8M 3.9M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n  415 system       -3  -8  10G  15M  10M S  3.8   0.2   0:08.37 android.hardware.graphics.composer3-service.ranchu\n25876 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n25865 wifi         20   0  10G 6.7M 5.9M S  0.0   0.1   0:00.00 wificond\n25864 media        20   0  11G  27M  23M S  0.0   0.4   0:00.04 mediaserver\n25863 cameraserver 20   0  11G  26M  22M S  0.0   0.4   0:00.04 cameraserver\n25803 system       20   0  10G 5.2M 4.4M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n25260 wifi         20   0  10G  11M 9.2M S  0.0   0.1   0:00.01 wpa_supplicant -Dnl80211 -iwlan0 -c/vendor/etc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0]\n14018 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/2:4-virtio_vsock]\nCan't find service: activity\nMemAvailable:    5403364 kB\nSwapFree:        4553096 kB"}
+cmd: Can't find service: input
+{"check":"places-scroll-3","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"places-scroll-3-device","result":"00:11:27 up 15 min,  0 users,  load average: 2.76, 3.09, 2.68\nTasks: 294 total,   1 running, 288 sleeping,   0 stopped,   5 zombie\n  Mem:  6072168K total,  4812932K used,  1259236K free,   102352K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4227348K cached\n400%cpu   4%user   0%nice   0%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n26159 root         20   0  10G 4.9M 4.1M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n26156 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n26123 system       20   0  10G 5.3M 4.6M S  0.0   0.0   0:00.01 android.hardware.biometrics.fingerprint-service.ranchu\n25944 system       18  -2    0    0    0 Z  0.0   0.0   0:01.29 [system_server]\n25916 root         20   0  14G 183M 133M S  0.0   3.0   0:00.47 zygote64\n25898 root         20   0  10G 3.6M 2.7M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n25897 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\n25892 audioserver  20   0  11G  27M  22M S  0.0   0.4   0:00.09 audioserver\n25890 audioserver  20   0  11G  15M  13M S  0.0   0.2   0:00.02 android.hardware.audio.service\n25887 root         20   0  10G  11M  10M S  0.0   0.1   0:00.02 netd\n25865 wifi         20   0  10G 6.9M 5.9M S  0.0   0.1   0:00.00 wificond\n25864 media        20   0  11G  27M  23M S  0.0   0.4   0:00.04 mediaserver\nError with service 'activity' while dumping: DEAD_OBJECT\nMemAvailable:    5349420 kB\nSwapFree:        4553096 kB"}
+{"check":"tap-strategy","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-strategy-device","result":"00:11:27 up 15 min,  0 users,  load average: 2.76, 3.09, 2.68\nTasks: 284 total,   1 running, 279 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4756816K used,  1315352K free,   102352K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226756K cached\n400%cpu   0%user   0%nice  27%sys 373%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n    1 root         20   0  10G  14M  10M S 23.0   0.2   0:37.37 init second_stage\n  160 logd         30  10  10G  10M 4.2M S  3.8   0.1   0:25.11 logd\n26184 root         20   0  10G 4.7M 3.8M R  0.0   0.0   0:00.01 top -b -n1 -m 12\n26181 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n26123 system       20   0  10G 5.3M 4.6M S  0.0   0.0   0:00.01 android.hardware.biometrics.fingerprint-service.ranchu\n25260 wifi         20   0  10G  11M 9.2M S  0.0   0.1   0:00.01 wpa_supplicant -Dnl80211 -iwlan0 -c/vendor/etc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0]\n14018 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/2:4-virtio_vsock]\n12723 root         20   0    0    0    0 I  0.0   0.0   0:00.09 [kworker/0:3-events]\n30798 root         20   0    0    0    0 I  0.0   0.0   0:00.07 [kworker/2:1-events]\nCan't find service: activity\nMemAvailable:    5407292 kB\nSwapFree:        4553096 kB"}
+{"check":"strategy","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"strategy-device","result":"00:11:38 up 16 min,  0 users,  load average: 2.64, 3.05, 2.67\nTasks: 284 total,   1 running, 279 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4748792K used,  1323376K free,   102420K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226752K cached\n400%cpu   0%user   0%nice   4%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n26750 root         20   0  10G 4.8M 3.9M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n26747 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n26735 wifi         20   0  10G  11M 9.4M S  0.0   0.1   0:00.00 wpa_supplicant -Dnl80211 -iwlan0 -c/vendor/etc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0\n26704 system       20   0  10G 5.4M 4.7M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0-events]\n14018 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/2:4-virtio_vsock]\n12723 root         20   0    0    0    0 I  0.0   0.0   0:00.09 [kworker/0:3-virtio_vsock]\n30798 root         20   0    0    0    0 I  0.0   0.0   0:00.07 [kworker/2:1-events]\n28673 root          0 -20    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0H]\n27581 root         20   0 1.1G 5.0M 4.3M S  0.0   0.0   0:00.00 labserver\nCan't find service: activity\nMemAvailable:    5415528 kB\nSwapFree:        4553096 kB"}
+{"check":"tap-strategy-root","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-strategy-root-device","result":"00:11:38 up 16 min,  0 users,  load average: 2.64, 3.05, 2.67\nTasks: 284 total,   1 running, 279 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4754460K used,  1317708K free,   102420K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226688K cached\n400%cpu  23%user   0%nice  31%sys 342%idle   0%iow   4%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n26765 root         20   0  10G 4.8M 4.0M R  3.8   0.0   0:00.00 top -b -n1 -m 12\n  166 system       20   0  10G 5.9M 4.4M S  3.8   0.1   0:32.16 servicemanager\n    1 root         20   0  10G  14M  10M S  3.8   0.2   0:37.83 init second_stage\n26762 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n26735 wifi         20   0  10G  11M 9.4M S  0.0   0.1   0:00.00 wpa_supplicant -Dnl80211 -iwlan0 -c/vendor/etc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0\n26704 system       20   0  10G 5.4M 4.7M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0-events]\n14018 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/2:4-virtio_vsock]\n12723 root         20   0    0    0    0 I  0.0   0.0   0:00.09 [kworker/0:3-virtio_vsock]\n30798 root         20   0    0    0    0 I  0.0   0.0   0:00.07 [kworker/2:1-events]\nCan't find service: activity\nMemAvailable:    5408976 kB\nSwapFree:        4553096 kB"}
+{"check":"strategy-root","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"strategy-root-device","result":"00:11:45 up 16 min,  0 users,  load average: 2.51, 3.02, 2.66\nTasks: 287 total,   1 running, 282 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4805916K used,  1266252K free,   102456K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226696K cached\n400%cpu  42%user   0%nice  77%sys 277%idle   0%iow   4%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n  166 system       20   0  10G 5.9M 4.4M S 15.3   0.1   0:32.37 servicemanager\n    1 root         20   0  10G  14M  10M S 15.3   0.2   0:38.04 init second_stage\n27063 root         20   0  10G 4.8M 3.9M R  7.6   0.0   0:00.00 top -b -n1 -m 12\n  501 logd         30  10  10G 4.2M 3.4M S  3.8   0.0   1:00.06 logcat -f /dev/hvc1 *:V\n   26 root         20   0    0    0    0 S  3.8   0.0   0:00.58 [ksoftirqd/1]\n27060 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n27048 wifi         20   0  10G 6.8M 5.8M S  0.0   0.1   0:00.00 wificond\n27047 media        20   0  11G  26M  23M S  0.0   0.4   0:00.03 mediaserver\n27046 cameraserver 20   0  11G  26M  22M S  0.0   0.4   0:00.03 cameraserver\n27008 system       20   0  10G 5.3M 4.5M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n26735 wifi         20   0  10G  11M  10M S  0.0   0.1   0:00.00 wpa_supplicant -Dnl80211 -iwlan0 -c/vendor/etc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\nCan't find service: activity\nMemAvailable:    5357320 kB\nSwapFree:        4553096 kB"}
+cmd: Can't find service: input
+{"check":"strategy-root-scroll-1","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"strategy-root-scroll-1-device","result":"00:11:47 up 16 min,  0 users,  load average: 2.47, 3.00, 2.66\nTasks: 284 total,   2 running, 278 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4756684K used,  1315484K free,   102492K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226776K cached\n400%cpu   4%user   0%nice  23%sys 369%idle   0%iow   4%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n    1 root         20   0  10G  14M  10M R 23.0   0.2   0:38.16 init second_stage\n27349 root         20   0  10G 4.7M 3.8M R  7.6   0.0   0:00.00 top -b -n1 -m 12\n  501 logd         30  10  10G 4.2M 3.4M S  3.8   0.0   1:00.35 logcat -f /dev/hvc1 *:V\n  166 system       20   0  10G 5.9M 4.4M S  3.8   0.1   0:32.55 servicemanager\n   38 root         20   0    0    0    0 S  3.8   0.0   0:02.68 [ksoftirqd/3]\n27346 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n27305 system       20   0  10G 5.3M 4.6M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n26735 wifi         20   0  10G  11M  10M S  0.0   0.1   0:00.00 wpa_supplicant -Dnl80211 -iwlan0 -c/vendor/etc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0-events]\n14018 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/2:4-virtio_vsock]\nCan't find service: activity\nMemAvailable:    5407628 kB\nSwapFree:        4553096 kB"}
+cmd: Can't find service: input
+{"check":"strategy-root-scroll-2","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"strategy-root-scroll-2-device","result":"00:11:50 up 16 min,  0 users,  load average: 2.47, 3.00, 2.66\nTasks: 287 total,   1 running, 282 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4810612K used,  1261556K free,   102492K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226696K cached\n400%cpu  42%user   8%nice  77%sys 273%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n    1 root         20   0  10G  14M  10M S 15.3   0.2   0:38.23 init second_stage\n  166 system       20   0  10G 5.9M 4.4M S 11.5   0.1   0:32.57 servicemanager\n 9252 system       -3  -8  10G  30M  20M S  3.8   0.5   0:12.67 surfaceflinger\n  514 media        20   0  10G  11M 7.0M S  3.8   0.1   0:00.57 media.metrics diametrics\n  501 logd         30  10  10G 4.2M 3.4M S  3.8   0.0   1:00.37 logcat -f /dev/hvc1 *:V\n  160 logd         30  10  10G 9.3M 4.2M S  3.8   0.1   0:25.54 logd\n27379 root         20   0  10G 4.8M 3.9M R  0.0   0.0   0:00.01 top -b -n1 -m 12\n27376 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n27365 wifi         20   0  10G 6.9M 5.9M S  0.0   0.1   0:00.00 wificond\n27364 media        20   0  11G  26M  23M S  0.0   0.4   0:00.02 mediaserver\n27363 cameraserver 20   0  11G  26M  22M S  0.0   0.4   0:00.03 cameraserver\n27305 system       20   0  10G 5.3M 4.6M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\nCan't find service: activity\nMemAvailable:    5353172 kB\nSwapFree:        4553096 kB"}
+{"check":"tap-rust","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-rust-device","result":"00:11:50 up 16 min,  0 users,  load average: 2.47, 3.00, 2.66\nTasks: 293 total,   2 running, 287 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4840872K used,  1231296K free,   102492K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226728K cached\n400%cpu  46%user   0%nice  35%sys 315%idle   0%iow   0%irq   4%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n27403 nobody        0 -20  13G 178M 126M R 30.7   2.9   0:00.38 zygote64\n  501 logd         30  10  10G 4.2M 3.4M S  7.6   0.0   1:00.39 logcat -f /dev/hvc1 *:V\n27445 root         20   0  10G 4.9M 4.1M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n 9353 root         20   0  10G 8.9M 7.3M S  3.8   0.1   0:03.01 apexd\n  160 logd         30  10  10G 9.3M 4.2M S  3.8   0.1   0:25.56 logd\n27442 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n27386 root         20   0  10G 3.6M 2.7M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n27385 root         20   0  10G 3.5M 2.7M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\n27382 audioserver  20   0  11G  27M  22M S  0.0   0.4   0:00.05 audioserver\n27381 audioserver  20   0  10G  15M  13M S  0.0   0.2   0:00.02 android.hardware.audio.service\n27380 root         20   0  10G  11M  10M S  0.0   0.1   0:00.01 netd\n27365 wifi         20   0  10G 6.9M 5.9M S  0.0   0.1   0:00.00 wificond\nCan't find service: activity\nMemAvailable:    5323432 kB\nSwapFree:        4553096 kB"}
+{"check":"rust","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"rust-device","result":"00:12:00 up 16 min,  0 users,  load average: 2.47, 2.98, 2.66\nTasks: 292 total,   3 running, 285 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4872564K used,  1199604K free,   102540K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226680K cached\n400%cpu  85%user   0%nice 108%sys 204%idle   0%iow   4%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n28008 system       18  -2  16G 182M 114M R  126   3.0   0:00.26 system_server\n  501 logd         30  10  10G 4.2M 3.4M S 42.3   0.0   1:01.09 logcat -f /dev/hvc1 *:V\n  166 system       20   0  10G 5.9M 4.4M R  7.6   0.1   0:33.02 servicemanager\n28069 root         20   0  10G 4.9M 4.1M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n 9353 root         20   0  10G 8.9M 7.3M S  3.8   0.1   0:03.06 apexd\n  160 logd         30  10  10G 9.4M 4.2M S  3.8   0.1   0:25.79 logd\n28066 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n27985 root         20   0  14G 183M 133M S  0.0   3.0   0:00.41 zygote64\n27963 root         20   0  10G 3.3M 2.6M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n27962 root         20   0  10G 3.6M 2.8M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\n27959 audioserver  20   0  11G  27M  22M S  0.0   0.4   0:00.05 audioserver\n27958 audioserver  20   0  11G  15M  13M S  0.0   0.2   0:00.02 android.hardware.audio.service\nCan't find service: activity\nMemAvailable:    5289988 kB\nSwapFree:        4553096 kB"}
+{"check":"tap-rust-run","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-rust-run-device","result":"00:12:01 up 16 min,  0 users,  load average: 3.07, 3.10, 2.70\nTasks: 292 total,   2 running, 286 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4909976K used,  1162192K free,   102564K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4227292K cached\n400%cpu 104%user   4%nice  96%sys 188%idle   0%iow   4%irq   0%sirq   4%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n28008 system       16  -4  17G 252M 129M R  100   4.2   0:00.79 system_server\n  501 logd         30  10  10G 4.2M 3.4M S 15.3   0.0   1:01.22 logcat -f /dev/hvc1 *:V\n  166 system       20   0  10G 5.9M 4.4M S 15.3   0.1   0:33.08 servicemanager\n27959 audioserver  20   0  11G  26M  22M S  7.6   0.4   0:00.05 audioserver\n  160 logd         30  10  10G  10M 4.2M S  7.6   0.1   0:25.82 logd\n    1 root         20   0  10G  14M  10M S  7.6   0.2   0:38.69 init second_stage\n28120 root         20   0  10G 4.8M 4.0M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n   99 root         20   0  10G 7.8M 6.2M S  3.8   0.1   0:01.13 ueventd\n28113 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n27985 root         20   0  14G 183M 133M S  0.0   3.0   0:00.41 zygote64\n27963 root         20   0  10G 3.3M 2.6M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n27962 root         20   0  10G 3.6M 2.8M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\nMemAvailable:    5251928 kB\nSwapFree:        4553096 kB"}
+{"check":"rust-ran","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"rust-ran-device","result":"00:12:21 up 16 min,  0 users,  load average: 3.06, 3.09, 2.70\nTasks: 293 total,   1 running, 287 sleeping,   0 stopped,   5 zombie\n  Mem:  6072168K total,  4820620K used,  1251548K free,   102712K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4227420K cached\n400%cpu   0%user   0%nice   4%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n29359 root         20   0  10G 5.0M 4.1M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n29095 audioserver  20   0  11G  27M  22M S  3.8   0.4   0:00.07 audioserver\n29356 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n29322 system       20   0  10G 5.4M 4.6M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n29145 system       18  -2    0    0    0 Z  0.0   0.0   0:01.24 [system_server]\n29107 root         20   0  14G 183M 133M S  0.0   3.0   0:00.41 zygote64\n29099 root         20   0  10G 3.5M 2.7M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n29098 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\n29094 audioserver  20   0  11G  15M  13M S  0.0   0.2   0:00.01 android.hardware.audio.service\n29093 root         20   0  11G  11M  10M S  0.0   0.1   0:00.02 netd\n29086 wifi         20   0  10G 7.3M 6.1M S  0.0   0.1   0:00.00 wificond\n29085 media        20   0  11G  26M  22M S  0.0   0.4   0:00.03 mediaserver\nError with service 'activity' while dumping: DEAD_OBJECT\nMemAvailable:    5342980 kB\nSwapFree:        4553096 kB"}
+{"check":"wasm-after-rust","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"wasm-after-rust-device","result":"00:12:22 up 16 min,  0 users,  load average: 3.06, 3.09, 2.70\nTasks: 292 total,   1 running, 287 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4767628K used,  1304540K free,   102712K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226764K cached\n400%cpu   8%user   0%nice  19%sys 373%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n29373 root         20   0  10G 4.8M 3.9M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n29107 root         20   0  14G 183M 133M S  3.8   3.0   0:00.41 zygote64\n29095 audioserver  20   0  11G  27M  22M S  3.8   0.4   0:00.08 audioserver\n12723 root         20   0    0    0    0 I  3.8   0.0   0:00.11 [kworker/0:3-rcu_gp]\n 9252 system       -3  -8  10G  31M  20M S  3.8   0.5   0:12.83 surfaceflinger\n 8982 root         20   0  10G 5.9M 4.6M S  3.8   0.1   0:00.35 ksud soft-reboot\n  180 root         20   0    0    0    0 I  3.8   0.0   0:01.16 [kworker/1:2-virtio_vsock]\n  166 system       20   0  10G 5.9M 4.4M S  3.8   0.1   0:33.95 servicemanager\n    1 root         20   0  10G  14M  10M S  3.8   0.2   0:39.52 init second_stage\n29370 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n29322 system       20   0  10G 5.4M 4.6M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n29099 root         20   0  10G 3.5M 2.7M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\nCan't find service: activity\nMemAvailable:    5396240 kB\nSwapFree:        4553096 kB"}
+{"check":"tap-rust-run-2","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-rust-run-2-device","result":"00:12:22 up 16 min,  0 users,  load average: 3.06, 3.09, 2.70\nTasks: 283 total,   1 running, 278 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4753892K used,  1318276K free,   102712K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226748K cached\n400%cpu   4%user   0%nice   4%sys 392%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n29393 root         20   0  10G 4.8M 3.9M R  7.6   0.0   0:00.00 top -b -n1 -m 12\n 9252 system       -3  -8  10G  31M  20M S  3.8   0.5   0:12.84 surfaceflinger\n  415 system       -3  -8  10G  15M  10M S  3.8   0.2   0:08.54 android.hardware.graphics.composer3-service.ranchu\n29390 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n29322 system       20   0  10G 5.4M 4.6M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0-events]\n14018 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/2:4-virtio_vsock]\n12723 root         20   0    0    0    0 I  0.0   0.0   0:00.12 [kworker/0:3-events]\n30798 root         20   0    0    0    0 I  0.0   0.0   0:00.07 [kworker/2:1-events]\n28673 root          0 -20    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0H]\nCan't find service: activity\nMemAvailable:    5410716 kB\nSwapFree:        4553096 kB"}
+{"check":"rust-ran-2","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"rust-ran-2-device","result":"00:12:38 up 17 min,  0 users,  load average: 2.95, 3.07, 2.70\nTasks: 283 total,   1 running, 278 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4750188K used,  1321980K free,   102824K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226736K cached\n400%cpu   0%user   0%nice   4%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n30236 root         20   0  10G 4.8M 3.9M R  3.8   0.0   0:00.00 top -b -n1 -m 12\n30233 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n30190 system       20   0  10G 5.3M 4.5M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n29942 wifi         20   0  10G  11M 9.3M S  0.0   0.1   0:00.00 wpa_supplicant -Dnl80211 -iwlan0 -c/vendor/etc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0-events]\n14018 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/2:4-virtio_vsock]\n12723 root         20   0    0    0    0 I  0.0   0.0   0:00.13 [kworker/0:3-events]\n30798 root         20   0    0    0    0 I  0.0   0.0   0:00.07 [kworker/2:1-events]\n28673 root          0 -20    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0H]\n27581 root         20   0 1.1G 5.0M 4.3M S  0.0   0.0   0:00.00 labserver\nCan't find service: activity\nMemAvailable:    5414032 kB\nSwapFree:        4553096 kB"}
+{"check":"tap-lifecycle","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-lifecycle-device","result":"00:12:38 up 17 min,  0 users,  load average: 2.95, 3.07, 2.70\nTasks: 284 total,   2 running, 278 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4750992K used,  1321176K free,   102824K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226736K cached\n400%cpu  19%user   0%nice  23%sys 358%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n30250 cameraserver 20   0 7.2M 1.0M 768K R 11.5   0.0   0:00.00 cameraserver\n30252 root         20   0  10G 4.8M 4.0M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n  166 system       20   0  10G 5.9M 4.4M S  3.8   0.1   0:34.53 servicemanager\n  160 logd         30  10  10G  10M 4.2M S  3.8   0.1   0:26.71 logd\n   38 root         20   0    0    0    0 S  3.8   0.0   0:02.71 [ksoftirqd/3]\n    1 root         20   0  10G  14M  10M D  3.8   0.2   0:40.24 init second_stage\n30248 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n30190 system       20   0  10G 5.3M 4.5M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n29942 wifi         20   0  10G  11M 9.3M S  0.0   0.1   0:00.00 wpa_supplicant -Dnl80211 -iwlan0 -c/vendor/etc/wifi/wpa_supplicant.conf -g@android:wpa_wlan0\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0-events]\nCan't find service: activity\nMemAvailable:    5411968 kB\nSwapFree:        4553096 kB"}
+{"check":"tap-root-process","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-root-process-device","result":"00:12:43 up 17 min,  0 users,  load average: 3.27, 3.14, 2.73\nTasks: 282 total,   1 running, 277 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4748312K used,  1323856K free,   102860K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226764K cached\n400%cpu   0%user   0%nice   4%sys 396%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n30541 root         20   0  10G 4.8M 3.9M R  0.0   0.0   0:00.01 top -b -n1 -m 12\n30538 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n30494 system       20   0  10G 5.4M 4.6M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0-events]\n14018 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/2:4-virtio_vsock]\n12723 root         20   0    0    0    0 I  0.0   0.0   0:00.13 [kworker/0:3-mld]\n30798 root         20   0    0    0    0 I  0.0   0.0   0:00.07 [kworker/2:1-events]\n28673 root          0 -20    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0H]\n27581 root         20   0 1.1G 5.0M 4.3M S  0.0   0.0   0:00.00 labserver\n27496 root         20   0    0    0    0 I  0.0   0.0   0:00.08 [kworker/u8:2-ext4-rsv-conversion]\nCan't find service: activity\nMemAvailable:    5416484 kB\nSwapFree:        4553096 kB"}
+{"check":"tap-start","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-start-device","result":"00:12:46 up 17 min,  0 users,  load average: 3.41, 3.17, 2.74\nTasks: 291 total,   2 running, 285 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4914488K used,  1157680K free,   102880K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4227316K cached\n400%cpu  85%user   4%nice  92%sys 219%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n30607 system       18  -2  16G 250M 128M S  100   4.2   0:00.84 system_server\n  166 system       20   0  10G 5.9M 4.4M S 15.3   0.1   0:34.84 servicemanager\n  501 logd         30  10  10G 4.2M 3.4M S 11.5   0.0   1:04.07 logcat -f /dev/hvc1 *:V\n30556 audioserver  20   0  11G  27M  22M S  7.6   0.4   0:00.05 audioserver\n    1 root         20   0  10G  14M  10M S  7.6   0.2   0:40.52 init second_stage\n30701 root         20   0  10G 4.8M 3.9M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n  190 system       20   0  10G 6.1M 4.2M S  3.8   0.1   0:02.17 android.system.suspend-service\n  160 logd         30  10  10G  10M 4.2M S  3.8   0.1   0:26.92 logd\n30698 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n30566 root         20   0  14G 183M 133M S  0.0   3.0   0:00.45 zygote64\n30560 root         20   0  10G 3.5M 2.7M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n30559 root         20   0  10G 3.3M 2.6M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\nMemAvailable:    5243020 kB\nSwapFree:        4553096 kB"}
+{"check":"lifecycle-running","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"lifecycle-running-device","result":"00:12:54 up 17 min,  0 users,  load average: 3.22, 3.13, 2.73\nTasks: 284 total,   1 running, 279 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4779752K used,  1292416K free,   102908K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4226772K cached\n400%cpu  23%user   0%nice  50%sys 327%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n    1 root         20   0  10G  14M  10M S 15.3   0.2   0:40.85 init second_stage\n31130 root         20   0  10G 4.8M 4.0M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n31127 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n31116 wifi         20   0  10G 6.7M 5.8M S  0.0   0.1   0:00.01 wificond\n31115 media        20   0  11G  26M  23M S  0.0   0.4   0:00.03 mediaserver\n31114 cameraserver 20   0  11G  27M  22M S  0.0   0.4   0:00.04 cameraserver\n31075 system       20   0  10G 5.1M 4.4M S  0.0   0.0   0:00.00 android.hardware.biometrics.fingerprint-service.ranchu\n23049 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/u8:3]\n16812 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/1:1]\n15934 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/3:0-events]\n14018 root         20   0    0    0    0 I  0.0   0.0   0:00.00 [kworker/2:4-virtio_vsock]\n12723 root         20   0    0    0    0 I  0.0   0.0   0:00.14 [kworker/0:3-virtio_vsock]\nCan't find service: activity\nMemAvailable:    5384356 kB\nSwapFree:        4553096 kB"}
+cmd: Can't find service: input
+cmd: Can't find service: input
+cmd: Failure calling service input: Broken pipe (32)
+{"check":"lifecycle-after-home","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"lifecycle-after-home-device","result":"00:13:06 up 17 min,  0 users,  load average: 3.23, 3.14, 2.74\nTasks: 290 total,   1 running, 285 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4908516K used,  1163652K free,   103004K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4227320K cached\n400%cpu  69%user   0%nice  81%sys 242%idle   0%iow   4%irq   4%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n31760 system       18  -2  17G 242M 124M D 92.3   4.0   0:00.86 system_server\n  501 logd         30  10  10G 4.2M 3.4M S 11.5   0.0   1:05.32 logcat -f /dev/hvc1 *:V\n  166 system       20   0  10G 5.9M 4.4M S 11.5   0.1   0:35.60 servicemanager\n    1 root         20   0  10G  14M  10M S  7.6   0.2   0:41.31 init second_stage\n31849 root         20   0  10G 4.7M 3.8M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n 9252 system       -3  -8  10G  30M  20M S  3.8   0.5   0:13.07 surfaceflinger\n  508 root         20   0  10G 7.4M 5.5M S  3.8   0.1   0:10.12 installd\n  182 root         20   0  10G 8.9M 7.3M S  3.8   0.1   0:00.85 vold --blkid_context=u:r:blkid:s0 --blkid_untrusted_context=u:r:blkid_untrusted:s0 --fsck_context=u:r:fsck:s0 --fsck_untrusted_context=u:r:fsck_untrusted:s0\n  170 system       20   0  10G 6.1M 5.2M S  3.8   0.1   0:00.94 hwservicemanager\n  160 logd         30  10  10G  10M 4.2M S  3.8   0.1   0:27.45 logd\n   99 root         20   0  10G 7.8M 6.2M S  3.8   0.1   0:01.20 ueventd\n31846 root         20   0  10G 3.2M 2.6M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\nMemAvailable:    5254684 kB\nSwapFree:        4553096 kB"}
+{"check":"root-process","result":""}
+/home/runner/work/devicelab/devicelab/out/sockprobe: 1 file pushed, 0 skipped. 283.6 MB/s (3501149 bytes in 0.012s)
+{"check":"block-devices","result":"dm-0\ndm-1\ndm-11\ndm-13\ndm-14\ndm-16\ndm-17\ndm-18\ntotal 0\ndrwxr-xr-x 2 root root u:object_r:block_device:s0                140 2026-10-01 23:55 by-name\nbrw------- 1 root root u:object_r:dm_device:s0              254,   0 2026-10-01 23:55 dm-0\nbrw------- 1 root root u:object_r:dm_device:s0              254,   1 2026-10-01 23:55 dm-1\nbrw------- 1 root root u:object_r:dm_device:s0              254,  11 2026-10-01 23:55 dm-11\nbrw------- 1 root root u:object_r:dm_device:s0              254,  13 2026-10-01 23:55 dm-13\nbrw------- 1 root root u:object_r:dm_device:s0              254,  14 2026-10-01 23:55 dm-14\nbrw------- 1 root root u:object_r:dm_device:s0              254,  16 2026-10-01 23:55 dm-16\nbrw------- 1 root root u:object_r:dm_device:s0              254,  17 2026-10-01 23:55 dm-17\nbrw------- 1 root root u:object_r:dm_device:s0              254,  18 2026-10-01 23:55 dm-18\nbrw------- 1 root root u:object_r:dm_device:s0              254,  19 2026-10-01 23:55 dm-19\nbrw------- 1 root root u:object_r:dm_device:s0              254,   2 2026-10-01 23:55 dm-2\n-- su:\n0000000  \\0\n-- ksu:\n{\"error\":\"write /proc/thread-self/attr/current: operation not permitted\",\"op\":\"setcon\"}\n-- avc:"}
+{"check":"back-1","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"back-1-device","result":"00:13:10 up 17 min,  0 users,  load average: 3.23, 3.14, 2.74\nTasks: 289 total,   3 running, 282 sleeping,   0 stopped,   4 zombie\n  Mem:  6072168K total,  4852204K used,  1219964K free,   103024K buffers\n Swap:  4554120K total,     1024K used,  4553096K free,  4230196K cached\n400%cpu  65%user   0%nice  35%sys 300%idle   0%iow   0%irq   0%sirq   0%host\n  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS\n32046 nobody        0 -20  13G 143M 101M R 88.4   2.4   0:00.21 zygote64\n32093 root         20   0  10G 4.9M 4.0M R  3.8   0.0   0:00.01 top -b -n1 -m 12\n 9252 system       -3  -8  10G  30M  20M S  3.8   0.5   0:13.09 surfaceflinger\n32090 root         20   0  10G 3.3M 2.7M S  0.0   0.0   0:00.00 sh -c uptime; top -b -n1 -m 12; dumpsys activity activities | grep -m1 topResumedActivity; grep -E \"MemAvailable|SwapFree\" /proc/meminfo\n32042 root         20   0  10G 3.6M 2.7M S  0.0   0.0   0:00.00 ip6tables-restore --noflush -w -v\n32041 root         20   0  10G 3.3M 2.6M S  0.0   0.0   0:00.00 iptables-restore --noflush -w -v\n32038 audioserver  20   0  11G  27M  22M S  0.0   0.4   0:00.06 audioserver\n32037 audioserver  20   0  11G  15M  13M S  0.0   0.2   0:00.02 android.hardware.audio.service\n32036 root         20   0  10G  11M  10M S  0.0   0.1   0:00.01 netd\n32029 wifi         20   0  10G 6.9M 6.1M S  0.0   0.1   0:00.00 wificond\n32028 media        20   0  11G  27M  23M S  0.0   0.4   0:00.04 mediaserver\n32027 cameraserver 20   0  11G  27M  22M S  0.0   0.4   0:00.04 cameraserver\nCan't find service: activity\nMemAvailable:    5328856 kB\nSwapFree:        4553096 kB"}
+Can't find service: activity
+{"check":"back-1-top","result":""}
+cmd: Can't find service: input
+Can't find service: activity
+{"check":"back-2-top","result":""}
+cmd: Can't find service: input
+Error with service 'activity' while dumping: DEAD_OBJECT
+{"check":"back-3-top","result":""}
+{"check":"sys-dark","night":"yes","color_mode":"","opened":"opened: none","result":{"error":"no page target","sockets":[],"targets":[]}}
+cmd: Can't find service: uimode
+{"check":"sys-light","night":"no","color_mode":"","opened":"opened: none","result":{"error":"no page target","sockets":[],"targets":[]}}
+cmd: Can't find service: uimode
+{"check":"app","result":"cmd: Can't find service: package\ntotal 3708\ndrwxr-xr-x 2 root root u:object_r:system_file:s0       60 2026-10-01 23:57 .\ndrwxr-xr-x 1 root root u:object_r:system_file:s0       80 2026-10-01 23:57 ..\n-rw-r--r-- 1 root root u:object_r:system_file:s0  3792939 2026-10-01 23:57 WebuiApi_demo.apk\nCan't find service: package\nCan't find service: package"}
+{"check":"mounts","result":"lrwxrwxrwx 1 root root 26 2026-10-01 23:56 /data/adb/metamodule -> /data/adb/modules/mountify\ntmpfs /product/app tmpfs rw,seclabel,relatime,mode=755 0 0\noverlay /product/app overlay ro,seclabel,relatime,lowerdir=/mnt/vendor/mountify/product/app:/product/app,redirect_dir=on 0 0\nCalendarGooglePrebuilt Camera2 Chrome Chrome-Stub Drive GoogleContacts GoogleTTS LatinIMEGooglePrebuilt LicenseChecker Maps MarkupGoogle_v2 ModuleMetadataGoogle NexusWallpapersStubPrebuilt2018 Photos PixelThemesStub PrebuiltDeskClockGoogle PrebuiltGmail PrebuiltGoogleAdservicesTvp PrebuiltGoogleTelemetryTvp SoundPickerPrebuilt TrichromeLibrary TrichromeLibrary-Stub WebViewGoogle WebViewGoogle-Stub WebuiApi_demo WebuiTermuxApi YouTube YouTubeMusicPrebuilt talkback"}
+{"check":"app-label","result":"cmd: Can't find service: package\nCan't find service: package"}
+{"check":"module-config","result":"manage module configuration\n\nUsage: ksud module config [OPTIONS] <COMMAND>\n\nCommands:\n  get     Get a config value\n  set     Set a config value\n  list    List all config entries\n  delete  Delete a config entry\n  clear   Clear all config entries\n  help    Print this message or the help of the given subcommand(s)\n\n-- files:\ntotal 24\ndrwxr-xr-x 2 root root 4096 2026-10-01 23:57 .\ndrwxr-xr-x 3 root root 4096 2026-10-01 23:57 ..\n-rw-r--r-- 1 root root   36 2026-10-01 23:57 persist.config\n== /data/adb/ksu/module_configs/demo/persist.config\nMUSK\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\u000f\u0000\u0000\u0000webui.installed\u0001\u0000\u0000\u00001\n-- ksud get:\n1\nwebui.installed=1"}
+{"check":"module-dirs","result":"ls: /data/adb/demo: No such file or directory\nls: /data/adb/demo/tmp: No such file or directory"}
+{"check":"open","result":"opened: none"}
+{"check":"tap-places","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"tap-plugins","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"plugins","result":null}
+{"check":"tap-share","result":{"error":"no page target","sockets":[],"targets":[]}}
+Can't find service: activity
+{"check":"share-top","result":""}
+{"check":"app-process","result":""}
+{"check":"share-log","result":"10-02 00:19:21.242 22530 22530 D nativeloader: Configuring clns-shared-7 for other apk /system/framework/com.android.location.provider.jar:/system/framework/services.jar:/apex/com.android.adservices/javalib/service-adservices.jar:/apex/com.android.adservices/javalib/service-sdksandbox.jar:/apex/com.android.appsearch/javalib/service-appsearch.jar:/apex/com.android.art/javalib/service-art.jar:/apex/com.android.compos/javalib/service-compos.jar:/apex/com.android.configinfrastructure/javalib/service-configinfrastructure.jar:/apex/com.android.healthfitness/javalib/service-healthfitness.jar:/apex/com.android.media/javalib/service-media-s.jar:/apex/com.android.ondevicepersonalization/javalib/service-ondevicepersonalization.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.android.rkpd/javalib/service-rkp.jar:/apex/com.android.virt/javalib/service-virtualization.jar. target_sdk_version=10000, uses_libraries=ALL, library_path=/system/lib64:/system_ext/lib64, permitted_path=/data:/mnt/expand:/system/lib64:/system_ext/lib64\n10-02 00:19:21.244 22530 22530 D nativeloader: Configuring clns-shared-8 for other apk /apex/com.android.btservices/javalib/service-bluetooth.jar. target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand\n10-02 00:19:21.245 22530 22530 D nativeloader: Configuring clns-shared-9 for other apk /apex/com.android.devicelock/javalib/service-devicelock.jar. target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand\n10-02 00:19:21.246 22530 22530 D nativeloader: Configuring clns-shared-10 for other apk /apex/com.android.os.statsd/javalib/service-statsd.jar. target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand\n10-02 00:19:21.247 22530 22530 D nativeloader: Configuring clns-shared-11 for other apk /apex/com.android.profiling/javalib/service-profiling.jar. target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand\n10-02 00:19:21.247 22530 22530 D nativeloader: Configuring clns-shared-12 for other apk /apex/com.android.scheduling/javalib/service-scheduling.jar. target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand\n10-02 00:19:21.248 22530 22530 D nativeloader: Configuring clns-shared-13 for other apk /apex/com.android.tethering/javalib/service-connectivity.jar. target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand\n10-02 00:19:21.249 22530 22530 D nativeloader: Configuring clns-shared-14 for other apk /apex/com.android.uwb/javalib/service-uwb.jar. target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand\n10-02 00:19:21.250 22530 22530 D nativeloader: Configuring clns-shared-15 for other apk /apex/com.android.wifi/javalib/service-wifi.jar. target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand\n10-02 00:19:21.345 22530 22564 I SystemConfig: Reading permissions from /system/etc/sysconfig/package-shareduid-allowlist.xml\n10-02 00:19:21.362 22530 22564 I SystemConfig: Ignore shared library android.net.ipsec.ike: /apex/com.google.android.ipsec/javalib/android.net.ipsec.ike.jar does not exist\n10-02 00:19:21.466 22557 22557 W app_process: ClassLoaderContext shared library size mismatch. Expected=2, found=0 (PCL[]{PCL[/system/framework/android.test.base.jar*724373495]#PCL[/system/framework/android.test.mock.jar*1452759902]} | PCL[])"}
+cmd: Can't find service: input
+{"check":"share-result","result":null}
+cmd: Can't find service: package
+cmd: Can't find service: package
+{"check":"cam-deny-1-tap","result":{"error":"no page target","sockets":[],"targets":[]}}
+Can't find service: activity
+{"check":"cam-deny-1-top","result":""}
+{"check":"cam-deny-1-dialog","result":"Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom\nSuperuser | 0\nModule | 1\nShow more\n\n\nKernelSU-Next\nInstall\nReboot\nHome\nSuperuser\nModule"}
+{"check":"cam-deny-1-press","result":"ui: no node with 'Don'"}
+{"check":"cam-deny-1-status","result":null}
+{"check":"cam-deny-1-perm","result":"android.permission.CAMERA\n      android.permission.SET_WALLPAPER"}
+{"check":"cam-deny-2-tap","result":{"error":"no page target","sockets":[],"targets":[]}}
+Can't find service: activity
+{"check":"cam-deny-2-top","result":""}
+{"check":"cam-deny-2-dialog","result":"Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom\nSuperuser | 0\nModule | 1\nShow more\n\n\nKernelSU-Next\nInstall\nReboot\nHome\nSuperuser\nModule"}
+{"check":"cam-deny-2-press","result":"ui: no node with 'Don'"}
+{"check":"cam-deny-2-status","result":null}
+{"check":"cam-deny-2-perm","result":"Can't find service: package"}
+{"check":"cam-after-deny-tap","result":{"error":"no page target","sockets":[],"targets":[]}}
+Error with service 'activity' while dumping: DEAD_OBJECT
+{"check":"cam-after-deny-top","result":""}
+{"check":"cam-after-deny-dialog","result":"Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom\nSuperuser | 0\nModule | 1\nShow more\n\n\nKernelSU-Next\nInstall\nReboot\nHome\nSuperuser\nModule"}
+{"check":"cam-after-deny-status","result":null}
+{"check":"cam-after-deny-perm","result":"Can't find service: package"}
+cmd: Can't find service: package
+cmd: Can't find service: package
+{"check":"cam-grant-tap","result":{"error":"no page target","sockets":[],"targets":[]}}
+Can't find service: activity
+{"check":"cam-grant-top","result":""}
+{"check":"cam-grant-dialog","result":"Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom\nSuperuser | 0\nModule | 1\nShow more\n\n\nKernelSU-Next\nInstall\nReboot\nHome\nSuperuser\nModule"}
+{"check":"cam-grant-press","result":"ui: no node with 'While using the app'"}
+{"check":"cam-grant-status","result":null}
+{"check":"cam-grant-perm","result":"Can't find service: package"}
+cmd: Can't find service: input
+cmd: Can't find service: input
+{"check":"clipboard","result":"no Paste button on page 6"}
+{"check":"file-pick","result":"no Pick a file button on page 6"}
+{"check":"app-settings","result":"Working | LKM (GKI2) | Jailbreak mode | Version: v3.4.0 (33294-4) | Custom\nSuperuser | 0\nModule | 1\nShow more\n\n\nKernelSU-Next\nInstall\nReboot\nHome\nSuperuser\nModule"}
+cmd: Can't find service: input
+{"check":"uninstall","result":""}
+{"check":"after-uninstall","result":"ls: /data/adb/modules/demo: No such file or directory\nls: /data/adb/demo: No such file or directory\nls: /data/adb/ksu/module_configs/demo: No such file or directory\nls: /product/app/WebuiApi_demo: No such file or directory\ncmd: Can't find service: package\ncmd: Can't find service: package"}
+{"check":"mount","result":"mount: mounting overlay on /product/app failed: Invalid argument\noverlay failed: 255\nmagic mount ok\nmount: mounting overlay on /product/app failed: Invalid argument\noverlay failed: 255\nmagic mount ok\ntotal 3736\ndrwxr-xr-x 2 root root u:object_r:system_file:s0     4096 2026-10-01 23:57 .\ndrwxr-xr-x 4 root root u:object_r:system_file:s0       80 2026-10-02 00:20 ..\n-rw-r--r-- 1 root root u:object_r:system_file:s0  3809993 2026-10-01 23:57 WebuiTermuxApi.apk\n*\nWebuiTermuxApi\n/dev/block/dm-3 /product ext4 ro,seclabel,relatime 0 0\ntmpfs /dev/app_plane_app tmpfs rw,seclabel,relatime,mode=755 0 0\ntmpfs /product/app tmpfs rw,seclabel,relatime,mode=755 0 0\n/dev/block/dm-3 /product/app/CalendarGooglePrebuilt ext4 ro,seclabel,relatime 0 0\n/dev/block/dm-3 /product/app/Camera2 ext4 ro,seclabel,relatime 0 0\n/dev/block/dm-3 /product/app/Chrome ext4 ro,seclabel,relatime 0 0\n/dev/block/dm-3 /product/app/Chrome-Stub ext4 ro,seclabel,relatime 0 0\n/dev/block/dm-3 /product/app/Drive ext4 ro,seclabel,relatime 0 0\n32"}
+{"check":"package","result":"package:/product/app/WebuiTermuxApi/WebuiTermuxApi.apk\n    flags=0x0\n    flags=0x0\n    codePath=/product/app/WebuiTermuxApi\n    versionName=0.53.0-webui.1\n    flags=[ SYSTEM HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]\n    privateFlags=[ PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION PRIVATE_FLAG_REQUEST_LEGACY_EXTERNAL_STORAGE PRODUCT PRIVATE_FLAG_ALLOW_NATIVE_HEAP_POINTER_TAGGING ]\n        android.permission.READ_SMS: granted=false, flags=[ RESTRICTION_UPGRADE_EXEMPT]\n        android.permission.READ_CALL_LOG: granted=false, flags=[ RESTRICTION_UPGRADE_EXEMPT]"}
+/home/runner/work/devicelab/devicelab/out/sockprobe: 1 file pushed, 0 skipped. 337.7 MB/s (3501149 bytes in 0.010s)
+cmd: Can't find service: activity
+cmd: Can't find service: activity
+{"check":"broadcast","result":"cmd: Can't find service: activity\ncmd: Can't find service: activity"}
+{"check":"app-process","result":""}
+{"check":"listener-module","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"wx_ksu_out\",\"wx_ksu_in\"],\"uid\":0}"}
+{"check":"listener-su","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"wx_su_out\",\"wx_su_in\"],\"uid\":0}"}
+{"check":"avc","result":"10-02 00:28:27.849 22295 22295 W PackageSettings: Missing permission state for package com.webui.termux.api on user 0\n10-02 00:28:28.242   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.242   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.242   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.242   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.242   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.242   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.394   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.394   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.394   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.394   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.394   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.394   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.397   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.397   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.397   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.397   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.397   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.397   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.398   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.398   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.398   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:28.398   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.398   508  3863 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:28.398   508  3863 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi"}
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+{"check":"restorecon","result":"u:object_r:system_data_file:s0 /data/data/com.webui.termux.api\nu:object_r:system_data_file:s0 /data/data/com.webui.termux.api/files/devicelab/probe.txt"}
+{"check":"app-read","result":"u:object_r:system_data_file:s0 chcon.txt\nu:object_r:system_data_file:s0 probe.txt\ninvalid value \"-as-ctx\" for flag -as-uid: parse error\nUsage of /data/local/tmp/sockprobe:\n  -as-ctx string\n    \twith -as-uid: SELinux context to switch to (setcon)\n  -as-uid int\n    \tdo the r:/w: ops in the arguments as this uid (and gid) (default -1)\n  -reply string\n    \ttext written to each connection, then its write side closed (EOF)\n  -t int\n    \texit after this many seconds (default 300)"}
+Can't find service: activity
+{"check":"share-text","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_text_out\",\"sh_text_in\"],\"uid\":0}\n10-02 00:28:43.458   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:43.458   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:43.458   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:43.458   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:43.459   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:43.459   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:43.459   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:43.459   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:43.459   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:43.459   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:43.493 23225 23225 D nativeloader: Load libservice-connectivity.so using ns clns-shared-13 from class loader (caller=/apex/com.android.tethering/javalib/service-connectivity.jar): ok\n10-02 00:28:43.587 23174 23174 D AudioFlinger: isLowRamDevice:false totalMemory:6217900032 mClientSharedHeapSize:33554432"}
+cmd: Can't find service: input
+Can't find service: activity
+{"check":"share-file","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_file_out\",\"sh_file_in\"],\"uid\":0}\n10-02 00:28:58.495   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:58.495   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:58.495   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:58.495   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:58.496   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:58.496   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:58.497   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:58.497   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:58.497   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:28:58.497   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:28:58.530 24119 24119 D nativeloader: Load libservice-connectivity.so using ns clns-shared-13 from class loader (caller=/apex/com.android.tethering/javalib/service-connectivity.jar): ok\n10-02 00:28:58.620 24070 24070 D AudioFlinger: isLowRamDevice:false totalMemory:6217900032 mClientSharedHeapSize:33554432"}
+cmd: Can't find service: input
+Can't find service: activity
+{"check":"share-text-saw","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_text-saw_out\",\"sh_text-saw_in\"],\"uid\":0}\n10-02 00:29:13.527   508   517 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:13.527   508   517 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:13.527   508   517 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:13.527   508   517 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:13.528   508   517 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:13.528   508   517 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:13.528   508   517 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:13.528   508   517 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:13.528   508   517 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:13.528   508   517 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:13.558 25011 25011 D nativeloader: Load libservice-connectivity.so using ns clns-shared-13 from class loader (caller=/apex/com.android.tethering/javalib/service-connectivity.jar): ok\n10-02 00:29:13.651 24962 25080 D AudioFlinger: isLowRamDevice:false totalMemory:6217900032 mClientSharedHeapSize:33554432"}
+cmd: Can't find service: input
+Can't find service: activity
+{"check":"share-file-saw","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"sh_file-saw_out\",\"sh_file-saw_in\"],\"uid\":0}\n10-02 00:29:32.859   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:32.859   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:32.859   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:32.859   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:32.859   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:32.987 26196 26196 D PackageManagerTiming: addSharedUsers\n10-02 00:29:32.988 26196 26196 V PackageManagerTiming: addSharedUsers took to complete: 0ms\n10-02 00:29:33.032 26196 26196 W PackageSettings: Missing permission state for package com.google.android.ext.shared on user 0\n10-02 00:29:33.033 26196 26196 W PackageSettings: Missing permission state for package com.android.sharedstoragebackup on user 0\n10-02 00:29:33.034 26196 26196 W PackageSettings: Missing permission state for package com.webui.termux.api on user 0\n10-02 00:29:33.034 26196 26196 W PackageSettings: Missing permission state for shared user: android.uid.log\n10-02 00:29:33.034 26196 26196 W PackageSettings: Missing permission state for shared user: android.uid.uwb"}
+cmd: Can't find service: input
+app uid: 
+/system/bin/sh: can't create /storage/emulated/0/Download/dl-scan-fuse.txt: Transport endpoint is not connected
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+Error while accessing provider:media
+java.lang.IllegalStateException: Could not find provider: media
+	at com.android.commands.content.Content$Command.execute(Content.java:519)
+	at com.android.commands.content.Content.main(Content.java:735)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:369)
+{"check":"media-before","result":"-rw-rw---- 1 10189 1023 u:object_r:media_rw_data_file:s0  4 2026-10-02 00:29 dl-scan-app.txt\n-rw-rw---- 1 10189 1023 u:object_r:media_rw_data_file:s0  6 2026-10-02 00:29 dl-scan-bcast.txt\n-rw-rw---- 1 10189 1023 u:object_r:media_rw_data_file:s0  5 2026-10-02 00:29 dl-scan-none.txt\n-- mediastore:"}
+Error while accessing provider:media
+android.os.DeadObjectException
+	at android.os.BinderProxy.transactNative(Native Method)
+	at android.os.BinderProxy.transact(BinderProxy.java:586)
+	at android.app.IActivityManager$Stub$Proxy.getContentProviderExternal(IActivityManager.java:8154)
+	at com.android.commands.content.Content$Command.execute(Content.java:516)
+	at com.android.commands.content.Content.main(Content.java:735)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:369)
+{"check":"media-scan-app","result":"{\"context\":\"u:r:su:s0\",\"event\":\"start\",\"names\":[\"ms_out\",\"ms_in\"],\"uid\":0}\n10-02 00:29:48.553   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:48.553   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:48.553   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:48.553   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:48.554   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:48.554   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:48.554   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n10-02 00:29:48.554   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:48.554   508   508 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi\n10-02 00:29:48.554   508   508 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi\n-- mediastore:"}
+Error while accessing provider:media
+java.lang.IllegalStateException: Could not find provider: media
+	at com.android.commands.content.Content$Command.execute(Content.java:519)
+	at com.android.commands.content.Content.main(Content.java:735)
+	at com.android.internal.os.RuntimeInit.nativeFinishInit(Native Method)
+	at com.android.internal.os.RuntimeInit.main(RuntimeInit.java:369)
+{"check":"media-scan-bcast","result":"cmd: Can't find service: activity\n10-02 00:29:57.895     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.mediaprovider.apex\n10-02 00:29:57.966     0     0 I apexd   : Found \"/apex/com.android.mediaprovider@350820300\" backed by file /data/apex/decompressed/com.android.mediaprovider@350820300.decompressed.apex\n10-02 00:29:57.841 27701 27701 D CompatConfig: Found a config file: /apex/com.android.mediaprovider/etc/compatconfig/framework-pdf-v-platform-compat-config.xml\n10-02 00:29:57.842 27701 27701 D CompatConfig: Found a config file: /apex/com.android.mediaprovider/etc/compatconfig/media-provider-platform-compat-config.xml\n10-02 00:29:58.007 27701 27701 W PackageManager: No package known for package restrictions com.google.android.mediaprovider\n10-02 00:29:58.027 27701 27701 D PackageManager: Directories scanned as system partitions: [/system:0, /vendor:524288, /odm:4194304, /oem:262144, /product:1048576, /system_ext:2097152, /apex/com.android.uwb:41943040, /apex/com.android.adbd:41943040, /apex/com.android.adservices:41943040, /apex/com.android.devicelock:41943040, /apex/com.android.conscrypt:41943040, /apex/com.android.appsearch:41943040, /apex/com.android.extservices:41943040, /apex/com.android.nfcservices:41943040, /apex/com.android.rkpd:41943040, /apex/com.android.cellbroadcast:41943040, /apex/com.android.permission:41943040, /apex/com.android.runtime:41943040, /apex/com.google.android.widevine:42467328, /apex/com.android.ondevicepersonalization:41943040, /apex/com.android.btservices:41943040, /apex/com.android.mediaprovider:41943040, /apex/com.android.compos:44040192, /apex/com.android.configinfrastructure:41943040, /apex/com.android.tzdata:41943040, /apex/com.android.healthfitness:41943040, /apex/com.android.profiling:41943040, /apex/com.google.mainline.primary.libs:41943040, /apex/com.android.virt:41943040, /apex/com.android.hardware.authsecret:42467328, /apex/com.android.media.swcodec:41943040, /apex/com.android.scheduling:41943040, /apex/com.android.wifi:41943040, /apex/com.android.neuralnetworks:41943040, /apex/com.android.art:41943040, /apex/com.android.apex.cts.shim:41943040, /apex/com.android.tethering:41943040, /apex/com.android.hardware.neuralnetworks:42467328, /apex/com.android.hardware.rebootescrow:42467328, /apex/com.android.media:41943040, /apex/com.android.os.statsd:41943040, /apex/com.android.i18n:41943040, /apex/com.android.sdkext:41943040, /apex/com.android.hardware.cas:42467328, /apex/com.android.resolv:41943040, /apex/com.android.ipsec:41943040]\n10-02 00:29:58.127 27701 27701 I PackageManager: /data/apex/decompressed/com.android.mediaprovider@350820300.decompressed.apex changed; collecting certs\n10-02 00:29:58.262 27701 27701 I ApexManager: Registering com.google.android.providers.media.module as apk-in-apex of com.android.mediaprovider\n10-02 00:29:58.262 27701 27701 D PackageManager: No files in app dir /apex/com.android.mediaprovider/app\n10-02 00:29:58.353 27701 27773 W PackageManager: Skipping preparing app data for com.google.android.mediaprovider\n-- mediastore:"}
