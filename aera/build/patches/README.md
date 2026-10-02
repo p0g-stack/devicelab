@@ -8,5 +8,6 @@ patches/bootable/recovery/0001-plugin_api-host-api-3-pixel-surface.patch
 ```
 
 The Host API 3 series under `bootable/recovery/` is owned by the flutter-aera
-thread; drop updated patches here (or point `AERA_PATCHES` at another
+thread, and so is the LVGL series under `external/lvgl/`
+(flutter-aera `third_party/aera/lvgl-patches/`); drop updated patches here (or point `AERA_PATCHES` at another
 directory) and rerun the build.
