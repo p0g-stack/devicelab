@@ -1,0 +1,21 @@
+{"check":"apk","result":"pkg com.webui.termux.api sha256 c629df377c72f1d7b1f9a25f9a9f4713c5d0a2356f1e65a82f1ec027e4f4672a aapt2 /usr/local/lib/android/sdk/build-tools/37.0.0/aapt2"}
+{"check":"install","result":"Success\npackage:/data/app/~~VJZIvdQc6JjkF1rUDWxQ8g==/com.webui.termux.api-K56ere_9xka__vL-7mXmCA==/base.apk\n    versionCode=1010 minSdk=24 targetSdk=28\n    versionName=0.53.0-webui.8\nFailed to write while dumping service package: Broken pipe"}
+{"check":"su-domain","result":"su: invalid uid/gid '-c'\n\nls: /system/bin/su: No such file or directory\n-rwxr-xr-x 1 root root 4941416 2026-10-02 22:22 /data/adb/ksud"}
+{"check":"idle-start","result":"Starting service: Intent { cmp=com.webui.termux.api/com.termux.api.RootHelperService }"}
+{"check":"idle-up","result":"1"}
+{"check":"idle-gone","result":"9"}
+{"check":"ksu-setcon-start","result":"Starting service: Intent { cmp=com.webui.termux.api/com.termux.api.RootHelperService }"}
+{"check":"ksu-setcon-held","result":"up=0 {\"error\":\"write /proc/thread-self/attr/current: operation not permitted\",\"op\":\"setcon\"}"}
+{"check":"ksu-setcon-holder","result":"{\"error\":\"write /proc/thread-self/attr/current: operation not permitted\",\"op\":\"setcon\"}"}
+{"check":"ksu-setcon-gone","result":"0"}
+{"check":"ksu-setcon-avc","result":""}
+{"check":"ksu-su-start","result":"Starting service: Intent { cmp=com.webui.termux.api/com.termux.api.RootHelperService }"}
+{"check":"ksu-su-held","result":"up=0 su: invalid uid/gid '-c'"}
+{"check":"ksu-su-holder","result":"su: invalid uid/gid '-c'"}
+{"check":"ksu-su-gone","result":"0"}
+{"check":"ksu-su-avc","result":""}
+{"check":"su-adbroot-start","result":"Starting service: Intent { cmp=com.webui.termux.api/com.termux.api.RootHelperService }"}
+{"check":"su-adbroot-held","result":"up=1 {\"context\":\"u:r:su:s0\",\"op\":\"as\",\"uid\":0}\n{\"connected\":\"2026-10-02T22:24:54.980821264Z\",\"op\":\"hold\",\"path\":\"@com.webui.termux.api/hold\"}"}
+{"check":"su-adbroot-holder","result":"{\"context\":\"u:r:su:s0\",\"op\":\"as\",\"uid\":0}\n{\"connected\":\"2026-10-02T22:24:54.980821264Z\",\"op\":\"hold\",\"path\":\"@com.webui.termux.api/hold\"}\n{\"at\":\"2026-10-02T22:25:15.000599121Z\",\"op\":\"released\",\"path\":\"@com.webui.termux.api/hold\"}"}
+{"check":"su-adbroot-gone","result":"0"}
+{"check":"su-adbroot-avc","result":""}
