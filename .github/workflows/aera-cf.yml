@@ -179,6 +179,7 @@ jobs:
           { flutter_p0g create --platforms=aera . && flutter_p0g build aera --debug; } 2>&1 | tail -20 | tee "$LAB_OUT/lifecycle-probe-build.log"
           "$GITHUB_WORKSPACE/aera/tools/aerap.py" retarget build/aera/*.aerap "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/lifecycle-probe-x64.aerap" || exit 0
           cd "$GITHUB_WORKSPACE" && RECENTS_CARD="${{ inputs.recents_card }}" aera/cuttlefish/aera-lifecycle-check.sh "$LAB_OUT/lifecycle-probe-x64.aerap"
+          aera/cuttlefish/symbolize-cores.sh "${{ steps.aera.outputs.tag }}" || true
       - name: D10, Recents card of a paused pixel plugin (exception trace, no-preview and Browser A/B)
         if: steps.p0g.outputs.rev != ''
         timeout-minutes: 15

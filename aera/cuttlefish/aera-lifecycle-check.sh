@@ -68,7 +68,28 @@ tap 360 1000; sleep 1; tap 350 1012; sleep 2; shot 2-tapped
 edge_swipe; sleep 3; shot 3-home
 log "pids at Home: $(apppids)"
 key menu; sleep 3; shot 4-recents  # Recents by Menu (0023); swipe-and-hold missed in run 36934450186
+arm_core() { a shell "echo /tmp/core.%e.%p > /proc/sys/kernel/core_pattern; toybox ulimit -P \$(pidof recovery) -c unlimited" >/dev/null 2>&1; }
+arm_core
 xy=${RECENTS_CARD:-360,790}; tap "${xy%,*}" "${xy#*,}"; sleep 4; shot 5-reopened
+# Image c102212 (adaptive resolution, run 36987489592 attempt 2): after this
+# tap AERA stopped answering (no frames, empty RPC results) without dying.
+# If it does not answer, dump its threads (SIGABRT -> core) and let init
+# restart it, so the later checks get a working AERA.
+ping_() {  # does AERA answer an RPC status within 15 s?
+  echo '{"v":1,"id":"ping","op":"status"}' > "$OUT/.req.json"; a push "$OUT/.req.json" /tmp/lab-req.json >/dev/null
+  a shell '[ -p /system/bin/aerain ] && { timeout 15 cat /system/bin/aeraout & sleep 0.3; timeout 15 sh -c "cat /tmp/lab-req.json > /system/bin/aerain"; wait; }' 2>/dev/null | grep -q '"result"'
+}
+if [ ! -s "$OUT/5-reopened.png" ] && ! ping_; then
+  rp=$(a shell pidof recovery | tr -d '\r'); log "AERA HUNG after the card tap (recovery pid $rp): dumping its threads"
+  a shell "cat /proc/$rp/wchan; echo; for t in /proc/$rp/task/*; do echo \"\${t##*/} \$(cat \$t/comm) \$(cat \$t/wchan) \$(cut -d' ' -f3 \$t/stat)\"; done" | tr -d '\r' > "$OUT/hang-threads.txt"
+  a shell "kill -ABRT $rp"; sleep 10
+  for _ in $(seq 30); do a shell true >/dev/null 2>&1 && break; sleep 2; done
+  for c in $(a shell 'ls /tmp/core.* 2>/dev/null' | tr -d '\r'); do a pull "$c" "$OUT/hang-${c##*/}" >/dev/null 2>&1 && a shell "rm -f $c"; done
+  log "recovery pid now $(a shell pidof recovery | tr -d '\r'); cores: $(ls "$OUT" | grep -c core)"
+  sleep 10
+  r=$(rpc '{"v":1,"id":"lifecycle-mirror2","op":"mirror","args":{"action":"start","port":8088}}')
+  RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1); a forward tcp:18088 tcp:8088 >/dev/null
+fi
 after=$(apppids); log "pids: $after"
 [ -n "$before" ] && [ "$before" = "$after" ] && log "SAME PROCESS" || log "PROCESS CHANGED or gone"
 applog | grep -E "LIFECYCLE|POINTER" > "$OUT/lifecycle.log"

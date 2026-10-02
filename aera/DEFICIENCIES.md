@@ -441,6 +441,23 @@ Rotation back kills AERA with SIGSEGV; init restarts it to Home.
   The landscape shade overlaps text: "Brightness" over the Network button,
   "10%" over "Check updates" (`shade-landscape-overlap.png`, run 36978191707).
 
+## D13. With adaptive resolution, opening a paused pixel plugin from its Recents card hangs AERA
+
+Image c102212 (devicelab c660add: `AERA_UI_ADAPTIVE_RESOLUTION := true`,
+`AERA_SCREEN_H := 2022`, `AERA_STATUS_H := 124`; patches as 3f593bb), run
+`runs/20261002T095354Z-aera-cf-recovery-36987489592` (attempt 2; attempt 1
+never came back from the reboot into AERA, no kernel output: host flake).
+Lifecycle check: the probe opens and counts two taps (the scaled UI looks
+right: frames 1-4), Home, Menu shows Recents with the probe's card, the tap
+on the card (360,790) and then AERA stops answering: no more frame captures,
+every RPC (`plugin open`, `mirror start`) returns nothing, Remote never
+starts again, yet init sees no exit (no `Service 'recovery'` line, same
+pid). Every later check failed with "AERA Remote did not start". Frames:
+project files `devicelab-aera/aera-ui/d13-adaptive-recents-hang.png`.
+On 3f593bb (same patches, no adaptive) the same steps pass (D10 FIXED).
+The lifecycle check now detects the hang, saves each thread's wchan and
+state, sends SIGABRT for a core and symbolizes it.
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do
