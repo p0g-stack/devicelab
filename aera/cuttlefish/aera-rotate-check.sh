@@ -84,7 +84,9 @@ sleep 6; log "recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; after
 # the same rotation and back with no plugin running, on Home.
 # After rotating back the portrait shade keeps a different tile layout (run
 # 36968103917, 5-toggled-back.png: Rotation moved), so restart AERA for a
-# fresh portrait layout before the Home control.
+# fresh portrait layout before the Home control. A fresh AERA's landscape
+# shade is laid out full width with its chevron at landscape 1297,45 (run
+# 36975433377), the shade after a plugin at 590,110: tap both.
 a shell 'pkill -f aera-fl[u]tter'; r0=$(a shell pidof recovery | tr -d '\r'); a shell 'setprop ctl.restart recovery'; sleep 15
 for _ in $(seq 20); do a shell true >/dev/null 2>&1 && break; sleep 2; done
 log "AERA restart for the control: recovery pid $r0 -> $(a shell pidof recovery | tr -d '\r')"
@@ -94,7 +96,7 @@ if [ "$(a shell pidof recovery | tr -d '\r')" != "$rp" ]; then
 fi
 a shell 'pkill -f aera-fl[u]tter'; sleep 2; arm_core; rp=$(a shell pidof recovery | tr -d '\r')
 xy=${ROTATE_TILE:-240,400}
-swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; ltap 590 110; sleep 3; shot 6-home-landscape
+swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; ltap 590 110; sleep 2; ltap 1297 45; sleep 3; shot 6-home-landscape
 lswipe 674 10 674 600; sleep 2; ltap 432 345; sleep 4; shot 7-home-back
 sleep 4; log "no plugin: recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; cores home
 a shell 'logcat -d 2>/dev/null | grep -E "touch released|orientation|frame capture" | tail -25' | tr -d '\r' > "$OUT/logcat-rotate.txt"
