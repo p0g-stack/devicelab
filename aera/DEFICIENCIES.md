@@ -266,6 +266,32 @@ SIGSEGV; init restarts it (and adbd), the plugin process is killed and
   now lets recovery dump core and runs gdb against `recovery-unstripped.elf`.
   The stock comparison (AERA Browser) is not possible here: RPC `plugin open`
   refuses browser-runtime plugins.
+- Symbolized (run `runs/20261002T033625Z-aera-cf-recovery-36958612067`, image
+  b9f360d, matching its `recovery-unstripped.elf`; `aera-d10/backtrace.txt`).
+  Both cases fault on the LVGL draw thread writing a pixel through a NULL
+  destination:
+  ```
+  A: #0 lv_color_24_24_mix (dest=0x0, mix=5)       lv_draw_sw_blend_to_rgb888.c:1144
+     #1 lv_draw_sw_blend_color_to_rgb888            lv_draw_sw_blend_to_rgb888.c:343
+     #3 lv_draw_sw_blend                            lv_draw_sw_blend.c:117
+     #4 lv_draw_sw_box_shadow                       lv_draw_sw_box_shadow.c:437
+     ... #11 lv_obj_draw  #17 refr_obj_matrix (lv_refr.c:1294)  #28 lv_display_refr_timer
+  B: #0 lv_color_24_24_mix (dest=0x1684)           lv_draw_sw_blend_to_rgb888.c:1144
+     #1 lv_draw_sw_blend_color_to_rgb888            lv_draw_sw_blend_to_rgb888.c:325
+     #4 draw_letter_cb                              lv_draw_sw_letter.c:166
+     ... #13 lv_label draw_main  #23 refr_obj_matrix (lv_refr.c:1294)
+  ```
+  `fill_dsc.dest_buf` comes from `lv_draw_layer_go_to_xy()`
+  (`lv_draw_sw_blend.c:109`), and `lv_draw_buf_goto_xy()` returns NULL when
+  the blend area's x or y lies outside the layer's draw buffer (it logs that,
+  but AERA builds with `LV_USE_LOG 0`); the SW blender does not check for
+  NULL and walks rows from 0 (B's 0x1684 is a few rows in). Every faulting
+  object sits under `refr_obj_matrix`, i.e. a transformed object drawn with
+  `LV_DRAW_TRANSFORM_USE_MATRIX 1` (AERA's `external/lvgl/lv_conf.h:77`) on
+  the SW renderer. Inferred: the Recents card's transform (zoom/scale)
+  produces draw areas outside the layer, A while drawing the card's shadow,
+  B a label. Not yet confirmed whether 1d2dc5a's 0021 change (no second
+  scene in case B) avoids that draw.
 
 ## D11. A plugin's data dir counts as storage when /data is not mounted
 
@@ -315,6 +341,23 @@ Rotation back kills AERA with SIGSEGV; init restarts it to Home.
   base from the core's NT_FILE note (`aera/tools/core_maps.py`) and loads
   `recovery-unstripped.elf` at it. D10's rip 0x6109d1602054 and D12's rip
   0x5a07bf139fcc are symbolized in the next run.
+- Symbolized (run `runs/20261002T033625Z-aera-cf-recovery-36958612067`,
+  `aera-rotate/backtrace.txt`): the crash on rotating back is the same fault
+  as D10, with and without a plugin:
+  ```
+  counter + home control (identical):
+     #0 lv_color_24_24_mix (dest=0x0)              lv_draw_sw_blend_to_rgb888.c:1138
+     #1 lv_draw_sw_blend_color_to_rgb888            lv_draw_sw_blend_to_rgb888.c:325
+     #4 draw_letter_cb                              lv_draw_sw_letter.c:166
+     ... #13 lv_label draw_main  #19 refr_obj_matrix (lv_refr.c:1294)
+     #27 refr_configured_layer  #29 refr_invalid_areas
+  ```
+  So a label under a transformed object is blended outside the layer's draw
+  buffer (NULL from `lv_draw_buf_goto_xy`). Inferred: with the display
+  rotated, the matrix path yields areas outside the (unrotated) layer
+  buffer; the landscape freeze may be the same mismatch before it faults.
+  One fix site for D10 and D12 is AERA's rotation/transform setup, plus a
+  NULL guard in `lv_draw_sw_blend` as a backstop.
 
 ## Lab gaps (devicelab, not AERA yet)
 
