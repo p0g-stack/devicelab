@@ -55,7 +55,7 @@ cam() { # <tag> <button to press in the dialog or ''>
 cam deny-1 "Don"   # "Don’t allow" (curly apostrophe)
 cam deny-2 "Don"
 cam after-deny ''   # permanently denied: expect no dialog
-adb shell input keyevent KEYCODE_BACK >/dev/null 2>&1; sleep 1
+top | grep -q -i webui || { adb shell input keyevent KEYCODE_BACK >/dev/null 2>&1; sleep 1; }  # Back on the page itself closes a manager WebUI
 reset_cam
 cam grant "While using the app"
 UI_WAIT=1 $UI has "Only this time" && { $UI tap "Only this time"; sleep 3; rec cam-grant-status-2 "$(page_text 'Camera:')"; }
