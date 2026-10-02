@@ -59,9 +59,11 @@ before=$(pids); log "before: $before"
 swipe 360 10 360 900; sleep 2; shot 2-shade
 xy=${ROTATE_TILE:-240,400}; tap "${xy%,*}" "${xy#*,}"; sleep 3; shot 3-after-toggle
 # Close the shade with its collapse chevron (Back reached the counter, which
-# quit, in run 36940214987). The chevron is at portrait 588,108.
+# quit, in run 36940214987), then its handle swiped up (the chevron tap did
+# not close it in run 36944590907). The chevron is at portrait 588,108.
 a shell 'logcat -d 2>/dev/null | grep -iE "rotat|landscape" | tail -10' | tr -d '\r' >> "$OUT/log.txt"
-xy=${SHADE_CLOSE:-588,108}; tap "${xy%,*}" "${xy#*,}"; log "(shade collapse chevron)"; sleep 3
+xy=${SHADE_CLOSE:-588,108}; tap "${xy%,*}" "${xy#*,}"; log "(shade collapse chevron)"; sleep 3; shot 3b-after-chevron
+swipe 360 1250 360 200; log "(shade swiped up from above the bottom gesture zone)"; sleep 3
 sleep 5; shot 4-rotated
 after=$(pids); log "after: $after"
 [ -n "$before" ] && [ "$(echo "$before" | head -1)" = "$(echo "$after" | head -1)" ] \

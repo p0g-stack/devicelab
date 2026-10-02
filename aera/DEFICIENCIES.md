@@ -229,6 +229,46 @@ arrived intact and all three app taps counted (`aera-taps/`).
   starts.
 - Lab workaround until then: the checks shift every press by 1 px from the
   previous one.
+- FIXED by 0025 on image 98d86c4 (run `runs/20261002T005722Z-aera-cf-recovery-36944590907`):
+  three Remote taps on the same pixel arrive as `354,1007` each time and
+  all three count; three same-pixel taps on Files arrive as `378,660`.
+  The 1 px shift is now the `press_shift` fallback, off by default.
+
+## D10. Opening a paused pixel plugin from its Recents card crashes AERA
+
+```
+kernel.log, run runs/20261002T005722Z-aera-cf-recovery-36944590907 (image 98d86c4, 0001-0025):
+[  863.371202] audit: ... comm="recovery" exe="/system/bin/recovery" sig=11
+[  863.514133] init: Service 'recovery' (pid 93) received signal 11
+[  863.545324] init: Untracked pid 1269 received signal 9      <- the paused plugin
+[  863.549450] init: starting service 'recovery'...
+logcat: 02:51:55 AERA UI : AERA Recovery Project native engine active   <- new pid 1542
+```
+Repro (`aera-lifecycle-check.sh`): open the lifecycle probe, tap + twice,
+swipe Home from the bottom edge (the app logs inactive > hidden > paused),
+press Menu (Recents shows the Lifecycle Probe card, frame
+`aera-lifecycle/4-recents.png`), tap the card (360,790). AERA dies with
+SIGSEGV; init restarts it (and adbd), the plugin process is killed and
+`5-reopened.png` is a fresh Home.
+
+- Reopening the same paused plugin through the plugin list (RPC
+  `plugin open`) works: the Back check resumes it in the same process with
+  its count (`aera-back/`, both rounds). So the fault is in the Recents
+  card's launch of a paused pixel plugin (0021's resume path from
+  Recents), not in the resume itself.
+- No backtrace: recovery has no crash_dump. flutter-aera's harness can
+  reproduce it with the steps above.
+
+## D11 (to confirm). A plugin's data dir counts as storage when /data is not mounted
+
+On this Cuttlefish userdata `/data` does not mount (`I:Failed to mount
+'/data' (Invalid argument)`, `/data/media: No such file or directory`),
+yet `/sdcard/AERA` exists (created by AERA at boot) and pixel plugins get
+`AERA_PLUGIN_DATA=/sdcard/AERA/plugin-data/<id>` without
+`AERA_PLUGIN_DATA_VOLATILE=1`. `DataDirectory()` checks only that
+`/sdcard/AERA` is a directory, so with storage unmounted the "storage" data
+dir is in the ramdisk and does not survive a reboot. The next run logs
+the mount table to confirm `/sdcard` is not storage here.
 
 ## Lab gaps (devicelab, not AERA yet)
 
