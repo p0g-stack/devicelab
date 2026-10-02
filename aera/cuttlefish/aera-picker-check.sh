@@ -46,7 +46,7 @@ RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1)
 [ -n "$RCODE" ] || { log "AERA Remote did not start: $r"; exit 0; }
 a forward tcp:18088 tcp:8088 >/dev/null; REMOTE=http://127.0.0.1:18088
 sleep 2  # minuitwrp picks the new input device up within 2 s
-a shell 'pkill -f aera-flutter; sleep 2'
+a shell 'pkill -f aera-fl[u]tter; sleep 2'
 log "open: $(rpc '{"v":1,"id":"picker","op":"plugin","args":{"action":"open","id":"'"$id"'"}}' | tr '\n' ' ')"
 sleep "${APP_WAIT:-25}"; shot 00-app
 

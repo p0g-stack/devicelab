@@ -66,16 +66,16 @@ gesture_nav() {  # gesture_nav 0|1: save it and restart AERA so it is read
   rm -f "$OUT/.aera"; a pull "$f" "$OUT/.aera" >/dev/null 2>&1
   python3 "$here/tools/aera_settings.py" set "$OUT/.aera" "aera_recents_enabled=$1" >/dev/null
   a push "$OUT/.aera" "$f" >/dev/null
-  a shell 'pkill -f aera-flutter; setprop ctl.restart recovery'; sleep 5
+  a shell 'pkill -f aera-fl[u]tter'; local r0; r0=$(a shell pidof recovery | tr -d '\r'); a shell 'setprop ctl.restart recovery'; sleep 5
   for _ in $(seq 30); do rpc '{"v":1,"id":"back-up","op":"status"}' | grep -q '"result"' && break; sleep 2; done
-  log "gesture navigation $1 in $f, AERA restarted"
+  log "gesture navigation $1 in $f, AERA restarted (recovery pid $r0 -> $(a shell pidof recovery | tr -d '\r'))"
   remote
 }
 reloads() { a shell 'grep -nE "lab-back|Reloading input devices" /tmp/recovery.log; stat -c "%y %n" /dev/input /dev/input/*' | tr -d '\r' > "$OUT/input-reload-$1.txt"; }
 round() {  # round NAME: open, tap, short Back, held Back key, reopen, held swipe, reopen
   local n=$1 before
   a shell "echo 'lab-back: round $n' >> /tmp/recovery.log"
-  a shell 'pkill -f aera-flutter; sleep 2'
+  a shell 'pkill -f aera-fl[u]tter; sleep 2'
   open_; sleep "${APP_WAIT:-25}"
   tap 360 1000; sleep 1; tap 352 1010; sleep 2; shot "$n-1-tapped"
   before=$(apppids); log "$n pids: $before"
@@ -110,6 +110,6 @@ touches
 applog | grep -E "LIFECYCLE|POINTER" > "$OUT/lifecycle.log"
 log "app saw: $(grep -oE 'LIFECYCLE [a-z]+ [^ ]*' "$OUT/lifecycle.log" | sed 's/LIFECYCLE //' | tr '\n' ';')"
 a shell 'grep -iE "Back|held|lifecycle|pause|resume" /tmp/recovery.log | tail -60' > "$OUT/recovery-back.log" 2>&1
-a shell 'pkill -f aera-flutter'
+a shell 'pkill -f aera-fl[u]tter'
 rm -rf "$OUT/.pkg" "$OUT/.req.json" "$OUT/.aera" "$OUT"/*.ev
 exit 0

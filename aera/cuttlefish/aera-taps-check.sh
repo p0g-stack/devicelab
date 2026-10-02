@@ -41,7 +41,7 @@ r=$(rpc '{"v":1,"id":"taps-mirror","op":"mirror","args":{"action":"start","port"
 RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1)
 [ -n "$RCODE" ] || { log "AERA Remote did not start: $r"; exit 0; }
 a forward tcp:18088 tcp:8088 >/dev/null; REMOTE=http://127.0.0.1:18088; sleep 2
-a shell 'pkill -f aera-flutter; sleep 2; rm -f /sdcard/AERA/plugin-data/'"$id"'/aera-flutter.log; logcat -c'
+a shell 'pkill -f aera-fl[u]tter; sleep 2; rm -f /sdcard/AERA/plugin-data/'"$id"'/aera-flutter.log; logcat -c'
 a shell 'getevent -lt' >> "$OUT/getevent.txt" 2>&1 & GE=$!
 sleep 1
 log "open: $(rpc '{"v":1,"id":"taps","op":"plugin","args":{"action":"open","id":"'"$id"'"}}' | tr '\n' ' ')"
@@ -62,6 +62,6 @@ a shell 'logcat -d 2>/dev/null | grep -E "lab-taps|touch|Touch|pointer|edge|Back
 applog | grep -E "POINTER|LIFECYCLE" > "$OUT/app.txt"
 log "app got: $(grep -c 'POINTER down' "$OUT/app.txt") downs, $(grep -c 'LIFECYCLE tap' "$OUT/app.txt") counted taps"
 log "kernel BTN_TOUCH DOWN on AERA Remote Input: $(grep -c 'BTN_TOUCH *DOWN' "$OUT/getevent.txt")"
-a shell 'pkill -f aera-flutter'
+a shell 'pkill -f aera-fl[u]tter'
 rm -rf "$OUT/.pkg" "$OUT/.req.json"
 exit 0

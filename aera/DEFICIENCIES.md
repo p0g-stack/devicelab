@@ -408,6 +408,19 @@ Rotation back kills AERA with SIGSEGV; init restarts it to Home.
   tiles cut off at the right, "Brightness" drawn over "Network"; compare
   `2-shade.png` before rotating with `5-toggled-back.png`).
 
+- Image 3f593bb (0027, run `runs/20261002T061442Z-aera-cf-recovery-36969150407`):
+  AERA Remote's `screen.jpg` matches AERA's own capture in portrait (counter
+  at 0, 08:13) and in landscape (0027 verified). Rotate back again without a
+  crash, counter same pid; D10 A and B still pass. The counter is still
+  missing in landscape (old kit; embedder fix bcd5e6e not in the payload yet).
+- Home's bottom nav over the cards in landscape: not answered yet. The lab's
+  restart before the Home control never happened: `pkill -f aera-flutter`
+  in the same `adb shell` line matched that shell's own command line and
+  killed it before `setprop ctl.restart recovery` (the same pattern was in
+  the Back and lifecycle checks; the Back check's gestures-off round may not
+  have run with gestures off). All checks now use `aera-fl[u]tter` and log
+  the recovery pid around each restart.
+
 ## Lab gaps (devicelab, not AERA yet)
 
 - Taps written to `/dev/input/event2` (Cuttlefish multitouch, 720x1348) do

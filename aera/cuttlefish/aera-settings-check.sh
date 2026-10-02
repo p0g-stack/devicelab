@@ -33,7 +33,7 @@ save() {
   done
 }
 launch() {  # launch NAME: stop the running app, open it, capture
-  a shell 'pkill -f aera-flutter; sleep 2'
+  a shell 'pkill -f aera-fl[u]tter; sleep 2'
   log "open: $(rpc '{"v":1,"id":"settings","op":"plugin","args":{"action":"open","id":"'"$id"'"}}' | tr '\n' ' ')"
   sleep "${APP_WAIT:-25}"; shot "$1"
 }

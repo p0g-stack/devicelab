@@ -61,7 +61,7 @@ RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1)
 [ -n "$RCODE" ] || { log "AERA Remote did not start: $r"; exit 0; }
 a forward tcp:18088 tcp:8088 >/dev/null; REMOTE=http://127.0.0.1:18088
 sleep 2
-a shell 'pkill -f aera-flutter; sleep 2'
+a shell 'pkill -f aera-fl[u]tter; sleep 2'
 open_; sleep "${APP_WAIT:-25}"; shot 1-open
 before=$(apppids); log "pids: $before"
 tap 360 1000; sleep 1; tap 350 1012; sleep 2; shot 2-tapped
@@ -77,12 +77,12 @@ log "env (storage): $(appenv | tr '\n' ' ')"
 
 # Data directory in RAM: no /sdcard/AERA at launch.
 # A file named /sdcard/AERA keeps AERA from recreating the folder before the launch.
-log "move /sdcard/AERA: $(a shell 'pkill -f aera-flutter; sleep 2; ls -ld /sdcard; mount | grep -E " /sdcard| /data| /storage"; mv /sdcard/AERA /sdcard/AERA.lab 2>&1 && touch /sdcard/AERA 2>&1; echo rc=$?' | tr -d '\r' | tr '\n' ' ')"
+log "move /sdcard/AERA: $(a shell 'pkill -f aera-fl[u]tter; sleep 2; ls -ld /sdcard; mount | grep -E " /sdcard| /data| /storage"; mv /sdcard/AERA /sdcard/AERA.lab 2>&1 && touch /sdcard/AERA 2>&1; echo rc=$?' | tr -d '\r' | tr '\n' ' ')"
 log "storage before RAM launch: $(a shell 'ls -ld /sdcard/AERA /sdcard/AERA.lab /data/media/0/AERA 2>&1' | tr -d '\r' | tr '\n' ' ')"
 open_; sleep "${APP_WAIT:-25}"; shot 6-ram-data
 log "env (RAM): $(appenv | tr '\n' ' ')"
 applog | grep 'LIFECYCLE start' | tail -1 | sed 's/^/[lifecycle] app (RAM): /' | tee -a "$OUT/log.txt"
-a shell 'pkill -f aera-flutter; sleep 2; [ -d /sdcard/AERA.lab ] && { rm -rf /sdcard/AERA; mv /sdcard/AERA.lab /sdcard/AERA; }'
+a shell 'pkill -f aera-fl[u]tter; sleep 2; [ -d /sdcard/AERA.lab ] && { rm -rf /sdcard/AERA; mv /sdcard/AERA.lab /sdcard/AERA; }'
 touches
 
 # D8 (flutter-aera 0023): Remote's Home and Menu buttons reach Home and
@@ -92,7 +92,7 @@ key home; sleep 3; shot 8-key-home
 key menu; sleep 3; shot 9-key-menu-recents
 key menu; sleep 3; shot 10-key-menu-again
 log "pids after keys: $(apppids)"
-a shell 'pkill -f aera-flutter'
+a shell 'pkill -f aera-fl[u]tter'
 a shell 'grep -iE "lifecycle|pause|resume|recents|plugin" /tmp/recovery.log | tail -60' > "$OUT/recovery-lifecycle.log" 2>&1
 applog | tail -60 > "$OUT/aera-flutter.log"
 rm -rf "$OUT/.pkg" "$OUT/.req.json"

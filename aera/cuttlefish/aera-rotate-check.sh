@@ -53,7 +53,7 @@ RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1)
 [ -n "$RCODE" ] || { log "AERA Remote did not start: $r"; exit 0; }
 a forward tcp:18088 tcp:8088 >/dev/null; REMOTE=http://127.0.0.1:18088
 sleep 2
-a shell 'pkill -f aera-flutter; sleep 2'
+a shell 'pkill -f aera-fl[u]tter; sleep 2'
 log "open: $(rpc '{"v":1,"id":"rotate","op":"plugin","args":{"action":"open","id":"'"$id"'"}}' | tr '\n' ' ')"
 sleep "${APP_WAIT:-25}"; shot 1-portrait
 before=$(pids); log "before: $before"
@@ -85,13 +85,14 @@ sleep 6; log "recovery pid $rp -> $(a shell pidof recovery | tr -d '\r')"; after
 # After rotating back the portrait shade keeps a different tile layout (run
 # 36968103917, 5-toggled-back.png: Rotation moved), so restart AERA for a
 # fresh portrait layout before the Home control.
-a shell 'pkill -f aera-flutter; setprop ctl.restart recovery'; sleep 15
+a shell 'pkill -f aera-fl[u]tter'; r0=$(a shell pidof recovery | tr -d '\r'); a shell 'setprop ctl.restart recovery'; sleep 15
 for _ in $(seq 20); do a shell true >/dev/null 2>&1 && break; sleep 2; done
+log "AERA restart for the control: recovery pid $r0 -> $(a shell pidof recovery | tr -d '\r')"
 if [ "$(a shell pidof recovery | tr -d '\r')" != "$rp" ]; then
   sleep 5; r=$(rpc '{"v":1,"id":"rotate-mirror2","op":"mirror","args":{"action":"start","port":8088}}')
   RCODE=$(echo "$r" | sed -n 's/.*"access_code":"\([0-9]*\)".*/\1/p' | head -1); sleep 2; a forward tcp:18088 tcp:8088 >/dev/null
 fi
-a shell 'pkill -f aera-flutter'; sleep 2; arm_core; rp=$(a shell pidof recovery | tr -d '\r')
+a shell 'pkill -f aera-fl[u]tter'; sleep 2; arm_core; rp=$(a shell pidof recovery | tr -d '\r')
 xy=${ROTATE_TILE:-240,400}
 swipe 360 10 360 900; sleep 2; tap "${xy%,*}" "${xy#*,}"; sleep 4; ltap 590 110; sleep 3; shot 6-home-landscape
 lswipe 674 10 674 600; sleep 2; ltap 432 345; sleep 4; shot 7-home-back

@@ -72,14 +72,14 @@ remote || exit 0
 card=${RECENTS_CARD:-360,790}
 
 log "== A: left by the edge swipe, reopened from its card"
-a shell 'pkill -f aera-flutter; sleep 2'; p=$(rec_pid); arm_core
+a shell 'pkill -f aera-fl[u]tter; sleep 2'; p=$(rec_pid); arm_core
 open_ "$id"; sleep "${APP_WAIT:-25}"; shot A1-app; ap=$(apppids)
 swipe_home; sleep 3; key menu; sleep 3; shot A2-recents
 tap "${card%,*}" "${card#*,}"; sleep 5; shot A3-after-card
 verdict "$p" A; apps A "$ap"
 
 log "== B: never left, Menu from inside the app, its card"
-a shell 'pkill -f aera-flutter; sleep 2'; p=$(rec_pid); arm_core
+a shell 'pkill -f aera-fl[u]tter; sleep 2'; p=$(rec_pid); arm_core
 open_ "$id"; sleep "${APP_WAIT:-25}"; shot B1-app; ap=$(apppids)
 key menu; sleep 3; shot B2-recents
 tap "$(( ${card%,*} + 1 ))" "$(( ${card#*,} + 1 ))"; sleep 5; shot B3-after-card
@@ -88,6 +88,6 @@ verdict "$p" B; apps B "$ap"
 # C (AERA Browser) dropped: RPC plugin open refuses browser-runtime plugins
 # ("not an installed Host API 2 or 3 plugin", run 36949565316).
 
-a shell 'pkill -f aera-flutter; dmesg | grep -E "segfault|traps:" | tail -10' | tr -d '\r' > "$OUT/dmesg-segfault.txt"
+a shell 'pkill -f aera-fl[u]tter; dmesg | grep -E "segfault|traps:" | tail -10' | tr -d '\r' > "$OUT/dmesg-segfault.txt"
 rm -rf "$OUT/.pkg" "$OUT/.req.json"
 exit 0
