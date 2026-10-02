@@ -1,0 +1,70 @@
+10-02 07:53:04.839     0     0 I init    : Setting product property ro.product.device to 'aera_cf' (from ro.product.product.device)
+10-02 07:53:04.840     0     0 I init    : Setting product property ro.product.model to 'AERA Cuttlefish x86_64' (from ro.product.product.model)
+10-02 07:53:04.840     0     0 I init    : Setting product property ro.product.name to 'aera_aera' (from ro.product.product.name)
+10-02 07:53:04.840     0     0 I init    : Setting property 'ro.build.fingerprint' to 'p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys'
+10-02 07:53:05.079     1     1 I unknown : type=1107 audit(0.0:25): uid=0 auid=4294967295 ses=4294967295 subj=u:r:init:s0 msg='avc:  denied  { set } for property=aera.super.partition pid=91 uid=0 gid=0 scontext=u:r:recovery:s0 tcontext=u:object_r:default_prop:s0 tclass=property_service permissive=1'
+10-02 07:53:05.095    96    96 I chmod   : type=1400 audit(0.0:26): avc:  denied  { setattr } for  name="aera" dev="rootfs" ino=239 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=file permissive=1
+10-02 07:53:05.110    91    91 W libc    : Unable to set property "ro.product.device" to "aera_cf": PROP_ERROR_READ_ONLY_PROPERTY (0xb)
+10-02 07:53:05.266    91   110 W AeraGpu : Adreno EGL unavailable: dlopen failed: library "/vendor/lib64/egl/libEGL_adreno.so" not found
+10-02 07:53:05.275    91   110 I AERA UI : engine initialized at logical 720x1348 on physical 720x1348 with software DRM scanout rendering (3.70 MiB); 120 Hz scheduler
+10-02 07:53:05.275    91   110 I AERA UI : AERA Recovery Project native engine active; hardware Back and edge swipe use navigation history
+10-02 07:53:06.239   118   118 I aerastart.sh: type=1400 audit(0.0:506): avc:  denied  { append } for  name="aera-live.cfg" dev="rootfs" ino=727 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=file permissive=1
+10-02 07:53:06.239   118   118 W aerastart.sh: type=1300 audit(0.0:506): arch=c000003e syscall=257 success=yes exit=3 a0=ffffff9c a1=7cee30e10828 a2=441 a3=1b6 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/system/bin/sh" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:06.283    91   110 I AERA UI : active animation submitted 116.7 fps (118 frames / 1003 ms)
+10-02 07:53:07.127    91    91 I recovery: type=1400 audit(0.0:639): avc:  denied  { create } for  name="AERA" scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=dir permissive=1
+10-02 07:53:07.131    91    91 I recovery: type=1400 audit(0.0:640): avc:  denied  { relabelfrom } for  name="AERA" dev="rootfs" ino=733 scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=dir permissive=1
+10-02 07:53:07.223    91    91 I recovery: type=1400 audit(0.0:653): avc:  denied  { add_name } for  name="aerain" scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1
+10-02 07:53:07.223    91    91 I recovery: type=1400 audit(0.0:653): avc:  denied  { create } for  name="aerain" scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+10-02 07:53:07.223    91    91 I recovery: type=1400 audit(0.0:654): avc:  denied  { read } for  name="aerain" dev="rootfs" ino=741 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+10-02 07:53:07.223    91    91 I recovery: type=1400 audit(0.0:654): avc:  denied  { open } for  path="/system/bin/aerain" dev="rootfs" ino=741 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+10-02 07:53:07.260    91   110 I AERA UI : recovery backend ready; native workflows unlocked
+10-02 07:53:07.291    91   110 I AERA UI : active animation submitted 107.0 fps (109 frames / 1009 ms)
+10-02 07:53:34.707    91    91 I recovery: type=1400 audit(0.0:658): avc:  denied  { unlink } for  name="aeraui-capture" dev="tmpfs" ino=10 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 07:53:34.787    91   110 I AERA UI : frame capture finished with result 0
+10-02 07:53:38.517    91   110 I AERA UI : frame capture finished with result 0
+10-02 07:53:39.567    91    91 I recovery: type=1400 audit(0.0:659): avc:  denied  { write } for  name="aeraout" dev="rootfs" ino=742 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+10-02 07:53:39.567    91    91 I recovery: type=1400 audit(0.0:660): avc:  denied  { read } for  name="plugin.json" dev="tmpfs" ino=17 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 07:53:39.567    91    91 I recovery: type=1400 audit(0.0:660): avc:  denied  { open } for  path="/tmp/aera/plugins/counter/plugin.json" dev="tmpfs" ino=17 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 07:53:39.577    91   110 I AERA UI : CLI requested plugin counter
+10-02 07:53:39.571    91    91 I recovery: type=1400 audit(0.0:661): avc:  denied  { getattr } for  path="/tmp/aera/plugins/counter/plugin.json" dev="tmpfs" ino=17 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 07:53:39.571    91    91 I recovery: type=1400 audit(0.0:662): avc:  denied  { search } for  name="AERA" dev="rootfs" ino=737 scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=dir permissive=1
+10-02 07:53:39.571    91    91 I recovery: type=1400 audit(0.0:663): avc:  denied  { getattr } for  path="/system/bin/aeraout" dev="rootfs" ino=742 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+10-02 07:53:39.571    91    91 I recovery: type=1400 audit(0.0:664): avc:  denied  { remove_name } for  name="aerain" dev="rootfs" ino=741 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1
+10-02 07:53:39.571    91    91 I recovery: type=1400 audit(0.0:664): avc:  denied  { unlink } for  name="aerain" dev="rootfs" ino=741 scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=fifo_file permissive=1
+10-02 07:53:39.575    91    91 I recovery: type=1400 audit(0.0:665): avc:  denied  { map } for  path="/tmp/aera/plugins/counter/runtime.xz" dev="tmpfs" ino=18 scontext=u:r:recovery:s0 tcontext=u:object_r:appdomain_tmpfs:s0 tclass=file permissive=1
+10-02 07:53:40.595    91   110 I AERA UI : active animation submitted 38.8 fps (40 frames / 1006 ms)
+10-02 07:53:41.615    91   110 I AERA UI : active animation submitted 29.4 fps (31 frames / 1019 ms)
+10-02 07:53:42.622    91   110 I AERA UI : active animation submitted 38.7 fps (40 frames / 1008 ms)
+10-02 07:53:42.767    91    91 I recovery: type=1400 audit(0.0:666): avc:  denied  { getattr } for  path="/sdcard/AERA" dev="rootfs" ino=737 scontext=u:r:recovery:s0 tcontext=u:object_r:media_rw_data_file:s0 tclass=dir permissive=1
+10-02 07:53:42.771   387   387 I aera-plugin: type=1400 audit(0.0:667): avc:  denied  { create } for  name="usr" scontext=u:r:recovery:s0 tcontext=u:object_r:rootfs:s0 tclass=dir permissive=1
+10-02 07:53:42.771   387   387 W aera-plugin: type=1300 audit(0.0:667): arch=c000003e syscall=83 success=yes exit=0 a0=7ffc508ab450 a1=1ff a2=4 a3=1 items=2 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/bin/aera-plugin" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.771    89    89 W auditd  : type=1307 audit(0.0:667): cwd="/tmp/aera-p2-6uMEZB"
+10-02 07:53:42.771   387   387 I aera-plugin: type=1400 audit(0.0:668): avc:  denied  { read write } for  name="renderD128" dev="tmpfs" ino=827 scontext=u:r:recovery:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+10-02 07:53:42.771   387   387 I aera-plugin: type=1400 audit(0.0:668): avc:  denied  { open } for  path="/dev/dri/renderD128" dev="tmpfs" ino=827 scontext=u:r:recovery:s0 tcontext=u:object_r:device:s0 tclass=chr_file permissive=1
+10-02 07:53:42.771   387   387 W aera-plugin: type=1300 audit(0.0:668): arch=c000003e syscall=257 success=yes exit=5 a0=ffffff9c a1=782154fcf57f a2=80002 a3=0 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/bin/aera-plugin" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.779   387   387 W ld-linux-x86-64: type=1300 audit(0.0:669): arch=c000003e syscall=262 success=yes exit=0 a0=ffffff9c a1=7fff11b5f870 a2=7fff11b5f7e0 a3=0 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.783   387   387 W ld-linux-x86-64: type=1300 audit(0.0:670): arch=c000003e syscall=9 success=yes exit=132314998419456 a0=0 a1=103000 a2=3 a3=1 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.803   387   387 W ld-linux-x86-64: type=1300 audit(0.0:671): arch=c000003e syscall=257 success=yes exit=18 a0=ffffff9c a1=7856fd0673b3 a2=0 a3=0 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.803   387   387 W ld-linux-x86-64: type=1300 audit(0.0:672): arch=c000003e syscall=5 success=yes exit=0 a0=12 a1=7fff11b69ad0 a2=785700f08ee0 a3=ffffffffffffff28 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.811   387   387 W DartWorker: type=1300 audit(0.0:673): arch=c000003e syscall=9 success=yes exit=132314923274240 a0=7856ff759020 a1=ff000 a2=7 a3=22 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.847   387   387 W DartWorker: type=1300 audit(0.0:674): arch=c000003e syscall=257 success=yes exit=18 a0=ffffff9c a1=785700ed8aa0 a2=80000 a3=0 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.851   387   387 W DartWorker: type=1300 audit(0.0:675): arch=c000003e syscall=49 success=yes exit=0 a0=12 a1=7856e95fdac8 a2=c a3=7856eb7df149 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.855   387   387 W DartWorker: type=1300 audit(0.0:676): arch=c000003e syscall=51 success=yes exit=0 a0=12 a1=7856e95fdac8 a2=7856e95fdac4 a3=7856eb7df149 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.867   387   387 W DartWorker: type=1300 audit(0.0:677): arch=c000003e syscall=54 success=yes exit=0 a0=12 a1=1 a2=2 a3=7856ea4bf074 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.867   387   387 W DartWorker: type=1300 audit(0.0:678): arch=c000003e syscall=49 success=yes exit=0 a0=12 a1=7856ea4bf148 a2=10 a3=7856ea4bf074 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.867   387   387 W DartWorker: type=1300 audit(0.0:679): arch=c000003e syscall=51 success=yes exit=0 a0=12 a1=7856ea4befd8 a2=7856ea4bf058 a3=7856ea4bf074 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:42.871   387   387 W DartWorker: type=1300 audit(0.0:680): arch=c000003e syscall=50 success=yes exit=0 a0=12 a1=1000 a2=7856ea4bf058 a3=7856ea4bf074 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:53:59.658    91   110 I AERA UI : frame capture finished with result 0
+10-02 07:54:00.339   387   387 W io.flutter.rast: type=1300 audit(0.0:681): arch=c000003e syscall=16 success=yes exit=0 a0=5 a1=c0406442 a2=7856fbdcd8d0 a3=0 items=0 ppid=91 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 exe="/tmp/aera-p2-6uMEZB/usr/lib/ld-linux-x86-64.so.2" subj=u:r:recovery:s0 key=(null)
+10-02 07:54:00.439    91   110 D AERA UI : touch released at 619,1277
+10-02 07:54:03.329    91   110 I AERA UI : frame capture finished with result 0
+10-02 07:54:04.116    91   110 D AERA UI : touch released at 609,1285
+10-02 07:54:07.003    91   110 I AERA UI : frame capture finished with result 0
+10-02 07:54:07.712    91   110 D AERA UI : touch released at 679,1277
+10-02 07:54:10.601    91   110 I AERA UI : frame capture finished with result 0
+10-02 07:54:11.352    91   110 D AERA UI : touch released at 673,1285
+10-02 07:54:14.239    91   110 I AERA UI : frame capture finished with result 0
+10-02 07:54:14.822     0     0 I input   : AERA Remote Input as /devices/virtual/input/input6
+10-02 07:54:18.129    91   110 D AERA UI : touch released at 620,1278
+10-02 07:54:20.238    91   110 I AERA UI : frame capture finished with result 0
+10-02 07:54:24.443    91   110 I AERA UI : frame capture finished with result 0
