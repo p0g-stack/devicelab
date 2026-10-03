@@ -24,17 +24,21 @@ Findings file: project files `real-device-infiniti-2026-10-02.md`.
 | D3 no SDE, nothing on screen | reproduced, fixed by 0013 | not applicable: real SDE, `Atomic Commit succeed. Using drm graphics.` |
 | D4 logd abort loop | reproduced, fixed by 0014 | not reproduced (`init.svc.logd=running`) |
 | D11 data dir when /data unmounted | reproduced, fixed in 0005 | not applicable: `/data` mounted |
-| D5 Back edge swallows edge taps | reproduced, open (run 36894820751) | **reproduces**: bottom-nav taps at x=1230 and x=60 (y=2622) dropped, x=1164 and x=104 work; AERA logged all four at their true coordinates, so the zone (x<72 or x>=1200 on 1272x2772) eats them. flutter-aera patching |
+| D5 Back edge swallows edge taps | reproduced pre-0015; on cbabeb5 all edge taps count, Remote and raw alike (run 37072566547 `aera-d5/`) | **withdrawn**: a rerun with a reset between trials got 14 of 15 in-zone taps through, Remote and raw alike. The earlier drops were single synthetic taps |
+| H1 Recents preview arms on a still press | (lab check `aera-input-check.sh`) | **reproduces**: a still press in the bottom strip (Yuv's finger, then repeated trials) starts the Recents gesture preview within 250 ms, about 9.6% of pixels change, reverts on release; the tap still reaches the plugin. Fix: F0001 (arm on upward movement) |
 | D6 RPC POLLHUP | fixed by 0016 | passes |
-| D7 Remote loses the first touch | fixed | passes: event8 "AERA Remote Input" present before the first touch, first tap intact |
-| D8 Remote Home/Menu | fixed by 0023 | half: Menu opens Recents reliably; the session's first `home` did nothing before Recents had ever been opened, later ones worked. Cuttlefish check `aera-home-check.sh` |
-| D9 repeated coordinate reaches 0 | fixed by 0025 | passes: the kernel drops the repeated coords (taps 2 and 3 carry only a new tracking id), AERA logged all three at the same point |
-| D10, D12-D14 | fixed/verified on Cuttlefish | not yet checked on hardware (rotation, Recents cards) |
+| D7 Remote loses the first touch | fixed (now R0001) | passes: event8 "AERA Remote Input" present before the first touch, first tap intact |
+| D8 Remote Home/Menu | fixed by 0023; the first `home` on a freshly restarted AERA goes Home (run 37072566547 `aera-home/2-first-home.png`, 6 KEY_HOMEPAGE events seen) | observation only: once, the session's first `home` did nothing before Recents had been opened; not reproduced on Cuttlefish |
+| D9 repeated coordinate reaches 0 | fixed by 0025 for Remote's uinput path | **reproduces on the panel path**: raw taps on the panel's event7 sharing an axis with the slot's previous contact were released at 1163,0 and 0,2599 (once at -1,65535); Remote's event8 delivered the same taps intact. Fix: 0025 amended (every MT slot keeps its last position). Lab check: `aera-input-check.sh` D9 taps over slots 0 and 1 |
+| H2 Partial repaint after rotation | not seen (rotate check passes) | **reproduces** (Yuv, two rotations both ways): the surface swaps (2772x1154 / 1279x2647) and Flutter lays out, but only part of the new buffer is repainted until the page moves. No crash: D12/D13 do not reproduce. Fixed in the embedder (flutter-aera 4803872, reproduced in the simulator) |
+| H3 Portrait surface 7 px wide | n/a (canvas has the panel's shape) | 1279 instead of 1272; fixed by 0029 (per-axis scale) |
+| D10, D14 | fixed/verified on Cuttlefish | not yet checked on hardware |
 
-Also seen on the infiniti: tapping the plugin's Home tile while the plugin
-already runs does nothing (only its Recents card re-enters it); qseecomd
-logs DrmLibFs "Partition not mounted" repeatedly (vendor noise, not ours).
-Hardware D5-D9 by the PC worker with getevent + logcat.
+Bar for hardware entries (Yuv, 2026-10-02): a finding is a reproduction only
+with repeated trials and a reset between them; single synthetic taps are
+observations. qseecomd logs DrmLibFs "Partition not mounted" repeatedly on
+the infiniti (vendor noise, not ours). Hardware D5-D9 by the PC worker with
+getevent + logcat, rotation by Yuv.
 
 So 0010-0014 are Cuttlefish-motivated, as sorted. Hardware-only items
 (SELinux labels for the GPU nodes, audio backends) are in `DEVICE-TREES.md`.
