@@ -1,0 +1,368 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 32s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; KernelSU-Next/KernelSU-Next v3.4.0
+total 28968
+drwx------  2 runner runner     4096 Oct  3 01:28 .
+drwxrwxrwt 16 root   root       4096 Oct  3 01:28 ..
+-rw-r--r--  1 runner runner 11859167 Oct  3 01:28 KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+-rw-r--r--  1 runner runner 11857955 Oct  3 01:28 KernelSU_Next_v3.4.0_33294-release.apk
+-rw-r--r--  1 runner runner  5583488 Oct  3 01:28 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   342200 Oct  3 01:28 x86_64-android15-6.6_kernelsu.ko
+== manager installed (com.rifsxd.ksunext, KernelSU_Next_v3.4.0_33294-release.apk)
+/tmp/tmp.jcYBPmPOVW/x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 5.6 MB/s (342200 bytes in 0.058s)
+/tmp/tmp.jcYBPmPOVW/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 113.6 MB/s (5583488 bytes in 0.047s)
+== ksud: ksud 3.4.0 (uapi: 4)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              258048  0 
+== lsmod: kernelsu              258048  0 
+== ls: /data/adb/ksu/bin: No such file or directory
+== total 356
+== drwx------  2 root   root     4096 2026-10-03 01:28 .
+== drwxrwx--x 51 system system   4096 2026-10-03 01:28 ..
+== -rw-rw-rw-  1 root   root   342200 2026-10-03 01:28 kernelsu.ko
+== restored /data/adb/ksud
+aarch64-android12-5.10_kernelsu.ko
+aarch64-android13-5.10_kernelsu.ko
+aarch64-android13-5.15_kernelsu.ko
+aarch64-android14-5.15_kernelsu.ko
+aarch64-android14-6.1_kernelsu.ko
+aarch64-android15-6.6_kernelsu.ko
+aarch64-android16-6.12_kernelsu.ko
+aarch64-android17-6.18_kernelsu.ko
+KernelSU_Next_v3.4.0-spoofed_33294-release.apk
+KernelSU_Next_v3.4.0_33294-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-unknown-linux-musl
+x86_64-android12-5.10_kernelsu.ko
+x86_64-android13-5.10_kernelsu.ko
+x86_64-android13-5.15_kernelsu.ko
+x86_64-android14-5.15_kernelsu.ko
+x86_64-android14-6.1_kernelsu.ko
+x86_64-android15-6.6_kernelsu.ko
+x86_64-android16-6.12_kernelsu.ko
+x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in KernelSU-Next/KernelSU-Next v3.4.0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.044s)
+== modules: [
+  {
+    "web": "true",
+    "update": "false",
+    "name": "devicelab probe",
+    "enabled": "true",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "author": "p0g-stack",
+    "versionCode": "1",
+    "id": "devicelab_probe",
+    "version": "1",
+    "remove": "false",
+    "action": "false",
+    "mount": "false"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+== home text: text="Working" text="LKM (GKI2)" text="Jailbreak mode" text="Version: v3.4.0 (33294-4)" text="Custom" text="Superuser" text="0" text="Module" text="1" text="Manager version" text="v3.4.0 (33294-4)" text="Hook mode" text="Tracepoint" text="Metamodule status" text="Not installed" text="Having trouble?" text="Encountered a bug or have feedback?" text="KernelSU-Next" 
+== manager activities: com.rifsxd.ksunext/.FlashModule com.rifsxd.ksunext/.ui.MainActivity com.rifsxd.ksunext/androidx.core.content.FileProvider com.rifsxd.ksunext/androidx.profileinstaller.ProfileInstallReceiver com.rifsxd.ksunext/androidx.startup.InitializationProvider 
+== metamodule releases backslashxx/mountify: 204 Latest 204 2026-08-25T05:14:18Z;203  203 2026-06-25T15:03:16Z;202  202 2026-06-23T03:45:32Z;
+== metamodule candidate backslashxx/mountify mountify.zip: id=mountify version=v2.0.4 versionCode=204 metamodule=true 
+== metamodule repo (given): backslashxx/mountify
+== metamodule zip: mountify.zip sha256 dde361c444f6990b759890720487785402a391a61cf6530f960deb98e5ef864d
+== metamodule module.prop: id=mountify name=mountify version=v2.0.4 versionCode=204 author=xx, KOWX712 metamodule=true description=Globally mounted modules via OverlayFS. updateJson=https://raw.githubusercontent.com/backslashxx/mountify/master/update.json 
+/tmp/tmp.BTZouu9swJ/rel/mountify.zip: 1 file pushed, 0 skipped. 351.1 MB/s (554873 bytes in 0.002s)
+== install mountify.zip
+[H[J[|]
+[H[J[\]
+[H[J[+] mountify
+[+] SysReq test
+[+] CONFIG_OVERLAY_FS
+[+] overlay found in /proc/filesystems
+[+] CONFIG_TMPFS_XATTR
+[+] tmpfs extended attribute test passed
+[!] using fresh config.sh
+[+] moving modules.txt
+[+] moving whiteouts.txt
+[+] mountify will be installed in metamodule mode!
+- Done
+- Creating metamodule symlink
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (43s): [
+  {
+    "id": "devicelab_probe",
+    "remove": "false",
+    "mount": "false",
+    "author": "p0g-stack",
+    "version": "1",
+    "action": "false",
+    "name": "devicelab probe",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "enabled": "true",
+    "web": "true",
+    "versionCode": "1",
+    "update": "false"
+  },
+  {
+    "updateJson": "https://raw.githubusercontent.com/backslashxx/mountify/master/update.json",
+    "enabled": "true",
+    "metamodule": "true",
+    "web": "true",
+    "remove": "false",
+    "name": "mountify",
+    "action": "true",
+    "mount": "false",
+    "update": "false",
+    "version": "v2.0.4",
+    "id": "mountify",
+    "description": "mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted",
+    "versionCode": "204",
+    "author": "xx, KOWX712"
+  }
+]
+total 32
+drwxrwxrwx 4 root root 4096 2026-10-03 01:28 .
+drwx------ 6 root root 4096 2026-10-03 01:28 ..
+drwxr-xr-x 3 root root 4096 2026-10-03 01:28 devicelab_probe
+drwxr-xr-x 5 root root 4096 2026-10-03 01:28 mountify
+== metamodule active: lrwxrwxrwx 1 root root 26 2026-10-03 01:28 /data/adb/metamodule -> /data/adb/modules/mountify id=mountify name=mountify version=v2.0.4 versionCode=204 author=xx, KOWX712 metamodule=true description=mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted updateJson=https://raw.githubusercontent.com/backslashxx/mountify/master/update.json 
+inputs/modules/flutter_webui_counter-0.1.5.zip: 1 file pushed, 0 skipped. 163.7 MB/s (21434766 bytes in 0.125s)
+== install flutter_webui_counter-0.1.5.zip
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.8.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.2.woff2
+   creating: webroot/fonts/notosansmath/
+   creating: webroot/fonts/notosansmath/v15/
+  inflating: webroot/fonts/notosansmath/v15/7Aump_cpkSecTWaHRlH2hyV5UHkD-V048PW0.woff2
+   creating: webroot/fonts/roboto/
+   creating: webroot/fonts/roboto/v32/
+  inflating: webroot/fonts/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2
+  inflating: webroot/.last_build_id
+  inflating: webroot/config.json
+  inflating: webroot/flutter_webui.js
+  inflating: customize.sh
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 258.7 MB/s (6582359 bytes in 0.024s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+inputs/modules/demo.zip: 1 file pushed, 0 skipped. 397.6 MB/s (28139859 bytes in 0.067s)
+== install demo.zip
+  inflating: webroot/pkg/.gitignore
+  inflating: webroot/pkg/demo_native.js
+  inflating: webroot/pkg/demo_native_bg.wasm
+  inflating: webroot/pkg/package.json
+  inflating: webroot/version.json
+  inflating: webroot/workers/demo_service.web.g.dart.js
+  inflating: webroot/workers/hello_service.web.g.dart.js
+  inflating: webui_app_plane/app-install.sh
+  inflating: webui_app_plane/app.apk
+  inflating: webui_app_plane/arm64-v8a/webui_termux_api.aot
+  inflating: webui_app_plane/termux-api
+  inflating: webui_app_plane/x86_64/webui_termux_api.aot
+  Installed com.webui.api.demo 1011
+- Done
+- Module installed successfully!
+/home/runner/work/devicelab/devicelab/envdump.zip: 1 file pushed, 0 skipped. 19.3 MB/s (1766 bytes in 0.000s)
+== install envdump.zip
+ devicelab envdump 
+ by p0g-stack 
+*******************
+**************************
+ Powered by KernelSU-Next 
+**************************
+Archive:  /data/local/tmp/m.zip
+  inflating: customize.sh
+- Extracting module files
+Archive:  /data/local/tmp/m.zip
+  inflating: module.prop
+  inflating: customize.sh
+- devicelab envdump: written /data/local/tmp/customize-env.txt
+- Done
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (43s): [
+  {
+    "web": "true",
+    "versionCode": "1",
+    "author": "p0g-stack",
+    "name": "devicelab probe",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "id": "devicelab_probe",
+    "update": "false",
+    "remove": "false",
+    "action": "false",
+    "version": "1",
+    "mount": "false",
+    "enabled": "true"
+  },
+  {
+    "web": "true",
+    "name": "mountify",
+    "description": "mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted",
+    "author": "xx, KOWX712",
+    "updateJson": "https://raw.githubusercontent.com/backslashxx/mountify/master/update.json",
+    "mount": "false",
+    "action": "true",
+    "id": "mountify",
+    "versionCode": "204",
+    "version": "v2.0.4",
+    "metamodule": "true",
+    "update": "false",
+    "remove": "false",
+    "enabled": "true"
+  },
+  {
+    "versionCode": "6",
+    "author": "p0g-stack",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "update": "false",
+    "web": "true",
+    "mount": "false",
+    "version": "0.1.5",
+    "enabled": "true",
+    "name": "flutter-webui Counter",
+    "action": "false",
+    "remove": "false",
+    "id": "flutter_webui_counter"
+  },
+  {
+    "author": "Yuv",
+    "version": "v1.0.0",
+    "enabled": "true",
+    "id": "counter",
+    "description": "A new Flutter project.",
+    "web": "true",
+    "name": "Counter",
+    "mount": "false",
+    "versionCode": "1",
+    "update": "false",
+    "remove": "false",
+    "acti
+total 64
+drwxrwxrwx 8 root root 4096 2026-10-03 01:29 .
+drwx------ 6 root root 4096 2026-10-03 01:28 ..
+drwxr-xr-x 3 root root 4096 2026-10-03 01:29 counter
+drwxr-xr-x 6 root root 4096 2026-10-03 01:29 demo
+drwxr-xr-x 2 root root 4096 2026-10-03 01:29 devicelab_envdump
+drwxr-xr-x 3 root root 4096 2026-10-03 01:28 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-10-03 01:29 flutter_webui_counter
+drwxr-xr-x 5 root root 4096 2026-10-03 01:28 mountify
+{"check":"back-open","result":"opened: intent"}
+{"check":"back-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_10941","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"back-before-uptime","result":"222.83"}
+{"check":"back-before-rootlog","result":"2026-10-03T01:30:54.824033 listening on 127.0.0.1:41379"}
+{"check":"back-before-proclog","result":"total 8\n-rw------- 1 root root 215 2026-10-03 01:30 1790991056391498-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1790991056391498-0.log\n2026-10-03T01:30:56.503246 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":34687,\"token\":\"rV7zZOdwyqW0-TTmBT5Fjf7XT0ghaHlwBTyvngYlbfw\",\"pid\":11254,\"launch_id\":\"c6333e3225d52673\"}"}
+{"check":"back-before-sockets","result":"port 41379\n0100007F:A1A3 00000000:0000 st=0A ino=57022 pid=11157 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /\n0100007F:8E4A 0100007F:A1A3 st=01 ino=55079 pid=10941 com.rifsxd.ksunext                                          \n0100007F:A1A3 0100007F:8E4A st=01 ino=56023 pid=11157 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /"}
+{"check":"back-before-procs","result":"9050  8691       02:12 u:r:webview_zygote:s0          webview_zygote\n10941  8691       01:30 u:r:untrusted_app:s0:c209,c256,c512,c768 com.rifsxd.ksunext\n10960 10941       01:30 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n10973  8691       01:30 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_service\n10977  9050       01:30 u:r:isolated_app:s0:c512,c768  com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0\n11011 10941       01:30 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n11024  8691       01:29 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_apk\n11157     1       01:17 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru\n11182  8691       01:17 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n11249     1       01:16 u:r:ksu:s0                     sh -c trap : TERM INT HUP USR1 USR2; exec 0</dev/null; \"$@\" >>\"$FLUTTER_WEBUI_LOG\" 2>&1; c=$?; (umask 077 && echo $c >\"$FLUTTER_WEBUI_EXIT.tmp\");\n11254 11249       01:16 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/bin/x86_64/demo.aot serve --session-file /data/adb/modules/demo/run/demo.place.json --launch-id c6333e3225d"}
+{"check":"back-before-activity","result":"topResumedActivity=ActivityRecord{2ca8bf2 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t10}\n    * Hist  #0: ActivityRecord{2ca8bf2 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t10}\n    Resumed: ActivityRecord{2ca8bf2 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t10}\n  ResumedActivity: ActivityRecord{2ca8bf2 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t10}\n  deepestLastOrientationSource=ActivityRecord{2ca8bf2 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t10}\n  mFocusedApp=ActivityRecord{2ca8bf2 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t10}\n        * ActivityRecord{2ca8bf2 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t10}\n    mSystemBarColorApps={ActivityRecord{2ca8bf2 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t10}}\n    lastActivityTime=-1m29s522ms    startUpTime=-1m29s754ms    startElapsedTime=-1m29s754ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-1m29s645ms\n    lastActivityTime=-1m28s947ms    startUpTime=-1m29s244ms    startElapsedTime=-1m29s244ms\n    curProcState=3 mRepProcState=3 setProcState=3 lastStateTime=-1m29s193ms"}
+{"check":"back-before-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_10941\",\n  \"port\": 9300,\n  \"description\": \"{\\\"attached\\\":true,\\\"empty\\\":false,\\\"height\\\":640,\\\"never_attached\\\":false,\\\"screenX\\\":0,\\\"screenY\\\":0,\\\"visible\\\":true,\\\"width\\\":320}\",\n  \"devtoolsFrontendUrl\": \"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/13DA389F6D21687235173E9711FF0F11\",\n  \"id\": \"13DA389F6D21687235173E9711FF0F11\",\n  \"title\": \"Demo\",\n  \"type\": \"page\",\n  \"url\": \"https://mui.kernelsu.org/index.html\",\n  \"webSocketDebuggerUrl\": \"ws://127.0.0.1:9300/devtools/page/13DA389F6D21687235173E9711FF0F11\"\n }\n]"}
+{"check":"back-before-service","result":"* ServiceRecord{458c8aa u0 com.webui.api.demo/com.termux.api.RootHelperService c:com.android.shell}\n    isForeground=true foregroundId=32363 types=0x40000000 foregroundNoti=Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)\n2"}
+{"check":"back-closed","result":"after 1 Back:       topResumedActivity=ActivityRecord{6d5315e u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t9}"}
+{"check":"back-t0-uptime","result":"291.16"}
+{"check":"back-t0-rootlog","result":"2026-10-03T01:30:54.824033 listening on 127.0.0.1:41379"}
+{"check":"back-t0-proclog","result":"total 8\n-rw------- 1 root root 215 2026-10-03 01:30 1790991056391498-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1790991056391498-0.log\n2026-10-03T01:30:56.503246 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":34687,\"token\":\"rV7zZOdwyqW0-TTmBT5Fjf7XT0ghaHlwBTyvngYlbfw\",\"pid\":11254,\"launch_id\":\"c6333e3225d52673\"}"}
+{"check":"back-t0-sockets","result":"port 41379\n0100007F:A1A3 00000000:0000 st=0A ino=57022 pid=11157 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /"}
+{"check":"back-t0-procs","result":"9050  8691       02:38 u:r:webview_zygote:s0          webview_zygote\n10941  8691       01:56 u:r:untrusted_app:s0:c209,c256,c512,c768 com.rifsxd.ksunext\n10960 10941       01:56 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n10973  8691       01:56 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_service\n11011 10941       01:56 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n11024  8691       01:55 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_apk\n11157     1       01:43 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru\n11182  8691       01:43 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo"}
+{"check":"back-t0-activity","result":"lastActivityTime=-1m55s745ms    startUpTime=-1m55s977ms    startElapsedTime=-1m55s977ms\n    curProcState=18 mRepProcState=18 setProcState=18 lastStateTime=-26s12ms"}
+{"check":"back-t0-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_10941\",\n  \"port\": 9300,\n  \"error\": \"TimeoutError: The operation was aborted due to timeout\"\n }\n]"}
+{"check":"back-t0-service","result":"0"}
+{"check":"back-t60-uptime","result":"374.46"}
+{"check":"back-t60-rootlog","result":"2026-10-03T01:30:54.824033 listening on 127.0.0.1:41379\n2026-10-03T01:32:42.486219 shutting down\n2026-10-03T01:32:42.527446 am stopservice --user 0 -n com.webui.api.demo/com.termux.api.RootHelperService: exit 255 Stopping service: Intent { cmp=com.webui.api.demo/com.termux.api.RootHelperService }\nService stopped"}
+{"check":"back-t60-proclog","result":"total 16\n-rw------- 1 root root   2 2026-10-03 01:32 1790991056391498-0.exit\n-rw------- 1 root root 215 2026-10-03 01:30 1790991056391498-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1790991056391498-0.log\n2026-10-03T01:30:56.503246 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":34687,\"token\":\"rV7zZOdwyqW0-TTmBT5Fjf7XT0ghaHlwBTyvngYlbfw\",\"pid\":11254,\"launch_id\":\"c6333e3225d52673\"}"}
+{"check":"back-t60-sockets","result":"port 41379"}
+{"check":"back-t60-procs","result":"9050  8691       03:38 u:r:webview_zygote:s0          webview_zygote\n10941  8691       02:56 u:r:untrusted_app:s0:c209,c256,c512,c768 com.rifsxd.ksunext\n10960 10941       02:56 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n10973  8691       02:56 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_service\n11011 10941       02:56 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n11024  8691       02:55 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_apk\n11182  8691       02:43 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo"}
+{"check":"back-t60-activity","result":"lastActivityTime=-2m56s124ms    startUpTime=-2m56s356ms    startElapsedTime=-2m56s356ms\n    curProcState=18 mRepProcState=18 setProcState=18 lastStateTime=-1m26s391ms"}
+{"check":"back-t60-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_10941\",\n  \"port\": 9300,\n  \"error\": \"TimeoutError: The operation was aborted due to timeout\"\n }\n]"}
+{"check":"back-t60-service","result":"0"}
+{"check":"back-t120-uptime","result":"434.85"}
+{"check":"back-t120-rootlog","result":"2026-10-03T01:30:54.824033 listening on 127.0.0.1:41379\n2026-10-03T01:32:42.486219 shutting down\n2026-10-03T01:32:42.527446 am stopservice --user 0 -n com.webui.api.demo/com.termux.api.RootHelperService: exit 255 Stopping service: Intent { cmp=com.webui.api.demo/com.termux.api.RootHelperService }\nService stopped"}
+{"check":"back-t120-proclog","result":"total 16\n-rw------- 1 root root   2 2026-10-03 01:32 1790991056391498-0.exit\n-rw------- 1 root root 215 2026-10-03 01:30 1790991056391498-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1790991056391498-0.log\n2026-10-03T01:30:56.503246 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":34687,\"token\":\"rV7zZOdwyqW0-TTmBT5Fjf7XT0ghaHlwBTyvngYlbfw\",\"pid\":11254,\"launch_id\":\"c6333e3225d52673\"}"}
+{"check":"back-t120-sockets","result":"port 41379"}
+{"check":"back-t120-procs","result":"9050  8691       04:39 u:r:webview_zygote:s0          webview_zygote\n10941  8691       03:57 u:r:untrusted_app:s0:c209,c256,c512,c768 com.rifsxd.ksunext\n10960 10941       03:57 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n10973  8691       03:57 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_service\n11011 10941       03:57 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n11024  8691       03:56 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_apk\n11182  8691       03:44 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo"}
+{"check":"back-t120-activity","result":"lastActivityTime=-3m56s506ms    startUpTime=-3m56s738ms    startElapsedTime=-3m56s738ms\n    curProcState=18 mRepProcState=18 setProcState=18 lastStateTime=-2m26s773ms"}
+{"check":"back-t120-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_10941\",\n  \"port\": 9300,\n  \"error\": \"TimeoutError: The operation was aborted due to timeout\"\n }\n]"}
+{"check":"back-t120-service","result":"0"}
+{"check":"back-t240-uptime","result":"555.23"}
+{"check":"back-t240-rootlog","result":"2026-10-03T01:30:54.824033 listening on 127.0.0.1:41379\n2026-10-03T01:32:42.486219 shutting down\n2026-10-03T01:32:42.527446 am stopservice --user 0 -n com.webui.api.demo/com.termux.api.RootHelperService: exit 255 Stopping service: Intent { cmp=com.webui.api.demo/com.termux.api.RootHelperService }\nService stopped"}
+{"check":"back-t240-proclog","result":"total 16\n-rw------- 1 root root   2 2026-10-03 01:32 1790991056391498-0.exit\n-rw------- 1 root root 215 2026-10-03 01:30 1790991056391498-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1790991056391498-0.log\n2026-10-03T01:30:56.503246 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":34687,\"token\":\"rV7zZOdwyqW0-TTmBT5Fjf7XT0ghaHlwBTyvngYlbfw\",\"pid\":11254,\"launch_id\":\"c6333e3225d52673\"}"}
+{"check":"back-t240-sockets","result":"port 41379"}
+{"check":"back-t240-procs","result":"9050  8691       06:39 u:r:webview_zygote:s0          webview_zygote\n10941  8691       05:57 u:r:untrusted_app:s0:c209,c256,c512,c768 com.rifsxd.ksunext\n10960 10941       05:57 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n10973  8691       05:57 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_service\n11011 10941       05:57 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n11024  8691       05:56 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_apk\n11182  8691       05:44 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo"}
+{"check":"back-t240-activity","result":"lastActivityTime=-5m56s889ms    startUpTime=-5m57s121ms    startElapsedTime=-5m57s121ms\n    curProcState=18 mRepProcState=18 setProcState=18 lastStateTime=-4m27s156ms"}
+{"check":"back-t240-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_10941\",\n  \"port\": 9300,\n  \"error\": \"TimeoutError: The operation was aborted due to timeout\"\n }\n]"}
+{"check":"back-t240-service","result":"0"}
+{"check":"exit-open","result":"opened: intent"}
+{"check":"exit-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_22463","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"exit-before-uptime","result":"584.40"}
+{"check":"exit-before-rootlog","result":"2026-10-03T01:36:56.280330 listening on 127.0.0.1:33875"}
+{"check":"exit-before-proclog","result":"total 24\n-rw------- 1 root root 215 2026-10-03 01:36 1790991417260173-0.log\n-rw------- 1 root root   2 2026-10-03 01:32 1790991056391498-0.exit\n-rw------- 1 root root 215 2026-10-03 01:30 1790991056391498-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1790991417260173-0.log\n2026-10-03T01:36:57.386451 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":36213,\"token\":\"BiK5PoQ4_aHXZw810tlFHViqln7Y5LBb6But6vHeMfo\",\"pid\":22698,\"launch_id\":\"64216b8a214d6be1\"}"}
+{"check":"exit-before-sockets","result":"port 33875\n0100007F:8453 00000000:0000 st=0A ino=254619 pid=22631 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /\n0100007F:9F46 0100007F:8453 st=01 ino=255020 pid=22463 com.rifsxd.ksunext                                          \n0100007F:8453 0100007F:9F46 st=01 ino=255025 pid=22631 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /"}
+{"check":"exit-before-procs","result":"9050  8691       08:20 u:r:webview_zygote:s0          webview_zygote\n10973  8691       07:38 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_service\n11024  8691       07:37 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_apk\n11182  8691       07:25 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n22463  8691       01:36 u:r:untrusted_app:s0:c209,c256,c512,c768 com.rifsxd.ksunext\n22482 22463       01:36 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n22494  9050       01:35 u:r:isolated_app:s0:c512,c768  com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0\n22526 22463       01:35 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n22631     1       01:24 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru\n22695     1       01:23 u:r:ksu:s0                     sh -c trap : TERM INT HUP USR1 USR2; exec 0</dev/null; \"$@\" >>\"$FLUTTER_WEBUI_LOG\" 2>&1; c=$?; (umask 077 && echo $c >\"$FLUTTER_WEBUI_EXIT.tmp\");\n22698 22695       01:23 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/bin/x86_64/demo.aot serve --session-file /data/adb/modules/demo/run/demo.place.json --launch-id 64216b8a214"}
+{"check":"exit-before-activity","result":"topResumedActivity=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    * Hist  #0: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    Resumed: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  ResumedActivity: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  deepestLastOrientationSource=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  mFocusedApp=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n        * ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    mSystemBarColorApps={ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}}\n    lastActivityTime=-1m35s335ms    startUpTime=-1m35s463ms    startElapsedTime=-1m35s463ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-1m35s408ms\n    lastActivityTime=-1m34s912ms    startUpTime=-1m35s131ms    startElapsedTime=-1m35s131ms\n    curProcState=3 mRepProcState=3 setProcState=3 lastStateTime=-1m35s49ms"}
+{"check":"exit-before-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_22463\",\n  \"port\": 9300,\n  \"description\": \"{\\\"attached\\\":true,\\\"empty\\\":false,\\\"height\\\":640,\\\"never_attached\\\":false,\\\"screenX\\\":0,\\\"screenY\\\":0,\\\"visible\\\":true,\\\"width\\\":320}\",\n  \"devtoolsFrontendUrl\": \"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/C143916E750DC3999E6340680C50A2EA\",\n  \"id\": \"C143916E750DC3999E6340680C50A2EA\",\n  \"title\": \"Demo\",\n  \"type\": \"page\",\n  \"url\": \"https://mui.kernelsu.org/index.html\",\n  \"webSocketDebuggerUrl\": \"ws://127.0.0.1:9300/devtools/page/C143916E750DC3999E6340680C50A2EA\"\n }\n]"}
+{"check":"exit-before-service","result":"* ServiceRecord{6af9edf u0 com.webui.api.demo/com.termux.api.RootHelperService c:com.android.shell}\n    isForeground=true foregroundId=32363 types=0x40000000 foregroundNoti=Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)\n2"}
+{"check":"exit-exit-api","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_22463","value":"{\"ksu\":\"object\",\"exit\":\"undefined\",\"webui\":\"undefined\"}"}}
+{"check":"exit-exit-call","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_22463","value":"called"}}
+{"check":"exit-closed","result":"    topResumedActivity=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}"}
+{"check":"exit-t0-uptime","result":"659.93"}
+{"check":"exit-t0-rootlog","result":"2026-10-03T01:36:56.280330 listening on 127.0.0.1:33875"}
+{"check":"exit-t0-proclog","result":"total 24\n-rw------- 1 root root 215 2026-10-03 01:36 1790991417260173-0.log\n-rw------- 1 root root   2 2026-10-03 01:32 1790991056391498-0.exit\n-rw------- 1 root root 215 2026-10-03 01:30 1790991056391498-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1790991417260173-0.log\n2026-10-03T01:36:57.386451 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":36213,\"token\":\"BiK5PoQ4_aHXZw810tlFHViqln7Y5LBb6But6vHeMfo\",\"pid\":22698,\"launch_id\":\"64216b8a214d6be1\"}"}
+{"check":"exit-t0-sockets","result":"port 33875\n0100007F:8453 00000000:0000 st=0A ino=254619 pid=22631 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /\n0100007F:9F46 0100007F:8453 st=01 ino=255020 pid=22463 com.rifsxd.ksunext                                          \n0100007F:8453 0100007F:9F46 st=01 ino=255025 pid=22631 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /"}
+{"check":"exit-t0-procs","result":"9050  8691       09:37 u:r:webview_zygote:s0          webview_zygote\n10973  8691       08:55 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_service\n11024  8691       08:54 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_apk\n11182  8691       08:42 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n22463  8691       02:53 u:r:untrusted_app:s0:c209,c256,c512,c768 com.rifsxd.ksunext\n22482 22463       02:53 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n22494  9050       02:52 u:r:isolated_app:s0:c512,c768  com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0\n22526 22463       02:52 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n22631     1       02:41 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru\n22695     1       02:40 u:r:ksu:s0                     sh -c trap : TERM INT HUP USR1 USR2; exec 0</dev/null; \"$@\" >>\"$FLUTTER_WEBUI_LOG\" 2>&1; c=$?; (umask 077 && echo $c >\"$FLUTTER_WEBUI_EXIT.tmp\");\n22698 22695       02:40 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/bin/x86_64/demo.aot serve --session-file /data/adb/modules/demo/run/demo.place.json --launch-id 64216b8a214"}
+{"check":"exit-t0-activity","result":"topResumedActivity=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    * Hist  #0: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    Resumed: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  ResumedActivity: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  deepestLastOrientationSource=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  mFocusedApp=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n        * ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    mSystemBarColorApps={ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}}\n    lastActivityTime=-2m52s164ms    startUpTime=-2m52s292ms    startElapsedTime=-2m52s292ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-2m52s237ms\n    lastActivityTime=-2m51s741ms    startUpTime=-2m51s960ms    startElapsedTime=-2m51s960ms\n    curProcState=3 mRepProcState=3 setProcState=3 lastStateTime=-2m51s878ms"}
+{"check":"exit-t0-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_22463\",\n  \"port\": 9300,\n  \"description\": \"{\\\"attached\\\":true,\\\"empty\\\":false,\\\"height\\\":640,\\\"never_attached\\\":false,\\\"screenX\\\":0,\\\"screenY\\\":0,\\\"visible\\\":true,\\\"width\\\":320}\",\n  \"devtoolsFrontendUrl\": \"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/C143916E750DC3999E6340680C50A2EA\",\n  \"id\": \"C143916E750DC3999E6340680C50A2EA\",\n  \"title\": \"Demo\",\n  \"type\": \"page\",\n  \"url\": \"https://mui.kernelsu.org/index.html\",\n  \"webSocketDebuggerUrl\": \"ws://127.0.0.1:9300/devtools/page/C143916E750DC3999E6340680C50A2EA\"\n }\n]"}
+{"check":"exit-t0-service","result":"* ServiceRecord{6af9edf u0 com.webui.api.demo/com.termux.api.RootHelperService c:com.android.shell}\n    isForeground=true foregroundId=32363 types=0x40000000 foregroundNoti=Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)\n2"}
+{"check":"exit-t60-uptime","result":"788.29"}
+{"check":"exit-t60-rootlog","result":"2026-10-03T01:36:56.280330 listening on 127.0.0.1:33875"}
+{"check":"exit-t60-proclog","result":"total 24\n-rw------- 1 root root 215 2026-10-03 01:36 1790991417260173-0.log\n-rw------- 1 root root   2 2026-10-03 01:32 1790991056391498-0.exit\n-rw------- 1 root root 215 2026-10-03 01:30 1790991056391498-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1790991417260173-0.log\n2026-10-03T01:36:57.386451 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":36213,\"token\":\"BiK5PoQ4_aHXZw810tlFHViqln7Y5LBb6But6vHeMfo\",\"pid\":22698,\"launch_id\":\"64216b8a214d6be1\"}"}
+{"check":"exit-t60-sockets","result":"port 33875\n0100007F:8453 00000000:0000 st=0A ino=254619 pid=22631 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /\n0100007F:9F46 0100007F:8453 st=01 ino=255020 pid=22463 com.rifsxd.ksunext                                          \n0100007F:8453 0100007F:9F46 st=01 ino=255025 pid=22631 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /"}
+{"check":"exit-t60-procs","result":"9050  8691       11:21 u:r:webview_zygote:s0          webview_zygote\n10973  8691       10:39 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_service\n11024  8691       10:38 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_apk\n11182  8691       10:26 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n22463  8691       04:37 u:r:untrusted_app:s0:c209,c256,c512,c768 com.rifsxd.ksunext\n22482 22463       04:37 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n22494  9050       04:36 u:r:isolated_app:s0:c512,c768  com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0\n22526 22463       04:36 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n22631     1       04:25 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru\n22695     1       04:24 u:r:ksu:s0                     sh -c trap : TERM INT HUP USR1 USR2; exec 0</dev/null; \"$@\" >>\"$FLUTTER_WEBUI_LOG\" 2>&1; c=$?; (umask 077 && echo $c >\"$FLUTTER_WEBUI_EXIT.tmp\");\n22698 22695       04:24 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/bin/x86_64/demo.aot serve --session-file /data/adb/modules/demo/run/demo.place.json --launch-id 64216b8a214"}
+{"check":"exit-t60-activity","result":"topResumedActivity=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    * Hist  #0: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    Resumed: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  ResumedActivity: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  deepestLastOrientationSource=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  mFocusedApp=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n        * ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    mSystemBarColorApps={ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}}\n    lastActivityTime=-4m36s904ms    startUpTime=-4m37s32ms    startElapsedTime=-4m37s32ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-4m36s977ms\n    lastActivityTime=-4m36s482ms    startUpTime=-4m36s701ms    startElapsedTime=-4m36s701ms\n    curProcState=3 mRepProcState=3 setProcState=3 lastStateTime=-4m36s619ms"}
+{"check":"exit-t60-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_22463\",\n  \"port\": 9300,\n  \"description\": \"{\\\"attached\\\":true,\\\"empty\\\":false,\\\"height\\\":640,\\\"never_attached\\\":false,\\\"screenX\\\":0,\\\"screenY\\\":0,\\\"visible\\\":true,\\\"width\\\":320}\",\n  \"devtoolsFrontendUrl\": \"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/C143916E750DC3999E6340680C50A2EA\",\n  \"id\": \"C143916E750DC3999E6340680C50A2EA\",\n  \"title\": \"Demo\",\n  \"type\": \"page\",\n  \"url\": \"https://mui.kernelsu.org/index.html\",\n  \"webSocketDebuggerUrl\": \"ws://127.0.0.1:9300/devtools/page/C143916E750DC3999E6340680C50A2EA\"\n }\n]"}
+{"check":"exit-t60-service","result":"* ServiceRecord{6af9edf u0 com.webui.api.demo/com.termux.api.RootHelperService c:com.android.shell}\n    isForeground=true foregroundId=32363 types=0x40000000 foregroundNoti=Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)\n2"}
+{"check":"exit-t120-uptime","result":"893.02"}
+{"check":"exit-t120-rootlog","result":"2026-10-03T01:36:56.280330 listening on 127.0.0.1:33875"}
+{"check":"exit-t120-proclog","result":"total 24\n-rw------- 1 root root 215 2026-10-03 01:36 1790991417260173-0.log\n-rw------- 1 root root   2 2026-10-03 01:32 1790991056391498-0.exit\n-rw------- 1 root root 215 2026-10-03 01:30 1790991056391498-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1790991417260173-0.log\n2026-10-03T01:36:57.386451 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":36213,\"token\":\"BiK5PoQ4_aHXZw810tlFHViqln7Y5LBb6But6vHeMfo\",\"pid\":22698,\"launch_id\":\"64216b8a214d6be1\"}"}
+{"check":"exit-t120-sockets","result":"port 33875\n0100007F:8453 00000000:0000 st=0A ino=254619 pid=22631 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /\n0100007F:9F46 0100007F:8453 st=01 ino=255020 pid=22463 com.rifsxd.ksunext                                          \n0100007F:8453 0100007F:9F46 st=01 ino=255025 pid=22631 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /"}
+{"check":"exit-t120-procs","result":"9050  8691       12:55 u:r:webview_zygote:s0          webview_zygote\n10973  8691       12:13 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_service\n11024  8691       12:12 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_apk\n11182  8691       12:00 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n22463  8691       06:11 u:r:untrusted_app:s0:c209,c256,c512,c768 com.rifsxd.ksunext\n22482 22463       06:11 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n22494  9050       06:10 u:r:isolated_app:s0:c512,c768  com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0\n22526 22463       06:10 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n22631     1       05:59 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru\n22695     1       05:58 u:r:ksu:s0                     sh -c trap : TERM INT HUP USR1 USR2; exec 0</dev/null; \"$@\" >>\"$FLUTTER_WEBUI_LOG\" 2>&1; c=$?; (umask 077 && echo $c >\"$FLUTTER_WEBUI_EXIT.tmp\");\n22698 22695       05:58 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/bin/x86_64/demo.aot serve --session-file /data/adb/modules/demo/run/demo.place.json --launch-id 64216b8a214"}
+{"check":"exit-t120-activity","result":"topResumedActivity=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    * Hist  #0: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    Resumed: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  ResumedActivity: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  deepestLastOrientationSource=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  mFocusedApp=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n        * ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    mSystemBarColorApps={ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}}\n    lastActivityTime=-6m10s772ms    startUpTime=-6m10s900ms    startElapsedTime=-6m10s900ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-6m10s845ms\n    lastActivityTime=-6m10s349ms    startUpTime=-6m10s568ms    startElapsedTime=-6m10s568ms\n    curProcState=3 mRepProcState=3 setProcState=3 lastStateTime=-6m10s486ms"}
+{"check":"exit-t120-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_22463\",\n  \"port\": 9300,\n  \"description\": \"{\\\"attached\\\":true,\\\"empty\\\":false,\\\"height\\\":640,\\\"never_attached\\\":false,\\\"screenX\\\":0,\\\"screenY\\\":0,\\\"visible\\\":true,\\\"width\\\":320}\",\n  \"devtoolsFrontendUrl\": \"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/C143916E750DC3999E6340680C50A2EA\",\n  \"id\": \"C143916E750DC3999E6340680C50A2EA\",\n  \"title\": \"Demo\",\n  \"type\": \"page\",\n  \"url\": \"https://mui.kernelsu.org/index.html\",\n  \"webSocketDebuggerUrl\": \"ws://127.0.0.1:9300/devtools/page/C143916E750DC3999E6340680C50A2EA\"\n }\n]"}
+{"check":"exit-t120-service","result":"* ServiceRecord{6af9edf u0 com.webui.api.demo/com.termux.api.RootHelperService c:com.android.shell}\n    isForeground=true foregroundId=32363 types=0x40000000 foregroundNoti=Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)\n2"}
+{"check":"exit-t240-uptime","result":"1046.90"}
+{"check":"exit-t240-rootlog","result":"2026-10-03T01:36:56.280330 listening on 127.0.0.1:33875"}
+{"check":"exit-t240-proclog","result":"total 24\n-rw------- 1 root root 215 2026-10-03 01:36 1790991417260173-0.log\n-rw------- 1 root root   2 2026-10-03 01:32 1790991056391498-0.exit\n-rw------- 1 root root 215 2026-10-03 01:30 1790991056391498-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1790991417260173-0.log\n2026-10-03T01:36:57.386451 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":36213,\"token\":\"BiK5PoQ4_aHXZw810tlFHViqln7Y5LBb6But6vHeMfo\",\"pid\":22698,\"launch_id\":\"64216b8a214d6be1\"}"}
+{"check":"exit-t240-sockets","result":"port 33875\n0100007F:8453 00000000:0000 st=0A ino=254619 pid=22631 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /\n0100007F:9F46 0100007F:8453 st=01 ino=255020 pid=22463 com.rifsxd.ksunext                                          \n0100007F:8453 0100007F:9F46 st=01 ino=255025 pid=22631 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /"}
+{"check":"exit-t240-procs","result":"9050  8691       15:26 u:r:webview_zygote:s0          webview_zygote\n10973  8691       14:44 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_service\n11024  8691       14:43 u:r:untrusted_app:s0:c152,c256,c512,c768 com.google.android.webview:webview_apk\n11182  8691       14:31 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n22463  8691       08:42 u:r:untrusted_app:s0:c209,c256,c512,c768 com.rifsxd.ksunext\n22482 22463       08:42 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n22494  9050       08:41 u:r:isolated_app:s0:c512,c768  com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0\n22526 22463       08:41 u:r:untrusted_app:s0:c209,c256,c512,c768 sh -c /data/app/~~j1bQ-4TKUDrh_7jdyfPsLQ==/com.rifsxd.ksunext-FeI2xQ5ujtJdWXzQfuHeqA==/lib/x86_64/libksud.so debug su -g || su --mount-\n22631     1       08:30 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru\n22695     1       08:29 u:r:ksu:s0                     sh -c trap : TERM INT HUP USR1 USR2; exec 0</dev/null; \"$@\" >>\"$FLUTTER_WEBUI_LOG\" 2>&1; c=$?; (umask 077 && echo $c >\"$FLUTTER_WEBUI_EXIT.tmp\");\n22698 22695       08:29 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/bin/x86_64/demo.aot serve --session-file /data/adb/modules/demo/run/demo.place.json --launch-id 64216b8a214"}
+{"check":"exit-t240-activity","result":"topResumedActivity=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    * Hist  #0: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    Resumed: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  ResumedActivity: ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  deepestLastOrientationSource=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n  mFocusedApp=ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n        * ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}\n    mSystemBarColorApps={ActivityRecord{85a3323 u0 com.rifsxd.ksunext/.ui.webui.WebUIActivity t11}}\n    lastActivityTime=-8m42s111ms    startUpTime=-8m42s239ms    startElapsedTime=-8m42s239ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-8m42s184ms\n    lastActivityTime=-8m41s689ms    startUpTime=-8m41s908ms    startElapsedTime=-8m41s908ms\n    curProcState=3 mRepProcState=3 setProcState=3 lastStateTime=-8m41s826ms"}
+{"check":"exit-t240-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_22463\",\n  \"port\": 9300,\n  \"description\": \"{\\\"attached\\\":true,\\\"empty\\\":false,\\\"height\\\":640,\\\"never_attached\\\":false,\\\"screenX\\\":0,\\\"screenY\\\":0,\\\"visible\\\":true,\\\"width\\\":320}\",\n  \"devtoolsFrontendUrl\": \"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/C143916E750DC3999E6340680C50A2EA\",\n  \"id\": \"C143916E750DC3999E6340680C50A2EA\",\n  \"title\": \"Demo\",\n  \"type\": \"page\",\n  \"url\": \"https://mui.kernelsu.org/index.html\",\n  \"webSocketDebuggerUrl\": \"ws://127.0.0.1:9300/devtools/page/C143916E750DC3999E6340680C50A2EA\"\n }\n]"}
+{"check":"exit-t240-service","result":"* ServiceRecord{6af9edf u0 com.webui.api.demo/com.termux.api.RootHelperService c:com.android.shell}\n    isForeground=true foregroundId=32363 types=0x40000000 foregroundNoti=Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)\n2"}
