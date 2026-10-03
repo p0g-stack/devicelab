@@ -18,3 +18,4 @@ rec staged "$(appinfo)"
 adb shell /data/adb/ksud soft-reboot >/dev/null 2>&1; sleep 5; timeout 120 adb wait-for-device; t0=$SECONDS
 until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ] && adb shell pidof system_server >/dev/null; do (( SECONDS - t0 > 300 )) && break; sleep 3; done; sleep 30
 rec after-reboot "$(appinfo)"
+rec runtime "$(sh_ "cd /data/adb/modules/$ID; du -sh . ; find . -name dartaotruntime -o -name '*.aot' -o -name '*.so' | xargs stat -c '%h links inode %i %s %n'")"

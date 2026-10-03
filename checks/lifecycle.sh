@@ -44,6 +44,8 @@ close_back() { # Back until the WebUI activity is no longer resumed; records whe
 }
 wake() { adb shell input keyevent KEYCODE_WAKEUP; sleep 1; adb shell wm dismiss-keyguard; sleep 2; }
 
+rec webview "$(sh_ "dumpsys webviewupdate | grep -E 'Current WebView package|versionName|Valid package' | head -6; dumpsys package com.google.android.webview | grep -m2 -E 'versionName|versionCode'")"
+rec runtime "$(sh_ "cd /data/adb/modules/$ID; du -sh . ; find . -name dartaotruntime -o -name '*.aot' -o -name '*.so' | xargs stat -c '%h links inode %i %s %n'; ls webroot/canvaskit")"
 rec setup "$(sh_ "getenforce; pm path $APP; dumpsys package $APP | grep -m2 -E 'versionCode|versionName'; /data/adb/ksud -V; dumpsys package $HPKG | grep -m1 versionName")"
 adb shell "dmesg -c >/dev/null; logcat -c" 2>/dev/null
 rootlog start

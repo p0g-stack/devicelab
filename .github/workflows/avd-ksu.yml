@@ -15,6 +15,7 @@ on:
       metamodule: { default: "", description: "KernelSU metamodule to install first, e.g. meta-overlayfs (empty = none)" }
       hold_tag: { default: "", description: "webui-termux-api release tag (e.g. webui-v0.53.0-webui.8): run checks/hold_socket.sh with its APK" }
       demo_tag: { default: "", description: "demo release tag to install (e.g. v0.1.28) instead of the module branch; also runs the manager update check and checks/lifecycle.sh" }
+      demo_zip: { default: "", description: "zip name under lab-inputs modules/ to install as the demo (instead of the module branch or demo_tag); also runs checks/lifecycle.sh" }
       backclose: { default: "", description: "non-empty: only checks/backclose.sh on the demo (skips the WebUI checks)" }
       update_to: { default: "", description: "demo release tag to install over demo_tag with ksud module install (checks/update_to.sh) instead of the manager update check and lifecycle" }
       modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
@@ -70,7 +71,10 @@ jobs:
         run: |
           git fetch -q --depth 1 origin lab-inputs && mkdir -p inputs && git archive FETCH_HEAD modules | tar -x -C inputs
           # The demo module comes from demo CI (its `module` branch), not lab-inputs.
-          if [ -n "${{ inputs.demo_tag }}" ]; then
+          if [ -n "${{ inputs.demo_zip }}" ]; then
+            cp "inputs/modules/${{ inputs.demo_zip }}" inputs/modules/demo.zip
+            echo "demo zip: lab-inputs ${{ inputs.demo_zip }}" | tee -a "$LAB_OUT/inputs.txt"
+          elif [ -n "${{ inputs.demo_tag }}" ]; then
             gh release download -R p0g-stack/demo "${{ inputs.demo_tag }}" -D "$RUNNER_TEMP/demo-rel" -p 'demo-v*.zip'
             z=$(ls "$RUNNER_TEMP"/demo-rel/demo-v*.zip | head -1); cp "$z" inputs/modules/demo.zip
             echo "demo zip: release ${{ inputs.demo_tag }} $(basename "$z")" | tee -a "$LAB_OUT/inputs.txt"
@@ -122,7 +126,7 @@ jobs:
           name=$(unzip -p inputs/modules/demo.zip module.prop | sed -n 's/^name=//p' | tr -d '\r')
           checks/backclose.sh "$HOST-demo" "$PKG" demo "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Lifecycle
-        if: always() && inputs.demo_tag != '' && inputs.update_to == ''
+        if: always() && (inputs.demo_tag != '' || inputs.demo_zip != '') && inputs.update_to == ''
         timeout-minutes: 35
         run: |
           case $HOST in
@@ -134,8 +138,12 @@ jobs:
       - name: Update to
         if: always() && inputs.update_to != ''
         run: |
-          gh release download -R p0g-stack/demo "${{ inputs.update_to }}" -D "$RUNNER_TEMP/demo-upd" -p 'demo-v*.zip'
-          checks/update_to.sh "$HOST-demo" demo "$(ls "$RUNNER_TEMP"/demo-upd/demo-v*.zip | head -1)" 2>&1 | tee -a "$LAB_OUT/job.log"
+          # update_to: a demo release tag, or lab-inputs:<zip name under modules/>
+          case "${{ inputs.update_to }}" in
+            lab-inputs:*) z="inputs/modules/${{ inputs.update_to }}"; z=${z/lab-inputs:/};;
+            *) gh release download -R p0g-stack/demo "${{ inputs.update_to }}" -D "$RUNNER_TEMP/demo-upd" -p 'demo-v*.zip'; z=$(ls "$RUNNER_TEMP"/demo-upd/demo-v*.zip | head -1);;
+          esac
+          checks/update_to.sh "$HOST-demo" demo "$z" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Hold socket
         if: always() && inputs.hold_tag != ''
         env: { GH_TOKEN: "${{ github.token }}" }
