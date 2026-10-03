@@ -12,7 +12,9 @@ thread, and so is the LVGL series under `external/lvgl/`
 (flutter-aera `third_party/aera/lvgl-patches/`). `bootable/recovery/` holds
 three flutter-aera directories copied side by side, and name order is their
 apply order: `third_party/aera/patches/` (`0001`-`0029`, gaps on purpose),
-then `refinement-patches/` (`F*`), then `remote-patches/` (`R*`); drop updated patches here (or point `AERA_PATCHES` at another
+then `cuttlefish-patches/` (`C*`, x86_64/Cuttlefish only: leave them out
+of a device build), then `refinement-patches/` (`F*`), then
+`remote-patches/` (`R*`); drop updated patches here (or point `AERA_PATCHES` at another
 directory) and rerun the build.
 
 Device-tree patches live under the tree's checkout path, e.g.
