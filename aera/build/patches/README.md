@@ -24,3 +24,7 @@ local manifest (at the path above, pinned to the commit the patch was made
 against); `build.sh` skips them elsewhere. `device/oneplus/infiniti/` is made
 against `android_device_oneplus_infiniti-AERA` `0d5f0b6`; see
 `../../DEVICE-TREES.md`.
+
+Sync with `aera/build/sync-patches.sh <flutter-aera checkout> <commit>`: it
+replaces every `*.patch` in `bootable/recovery/` and `external/lvgl/`, so
+patches dropped upstream do not linger, and writes both SOURCE files.
