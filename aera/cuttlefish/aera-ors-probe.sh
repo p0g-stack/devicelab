@@ -17,7 +17,7 @@ for v in $VARS; do sh_ "timeout 10 twrp get $v"; done
 for v in status_h status_indent_left status_indent_right; do sh_ "timeout 10 twrp getval $v"; done
 sh_ 'timeout 10 twrp get'   # no variable: what it lists or says
 # Without the twrp binary: write the command to orsin, read orsout.
-sh_ '{ timeout 10 cat /system/bin/orsout & sleep 0.3; echo "get status_indent_left" > /system/bin/orsin; wait; } 2>&1'
+sh_ '{ timeout 10 cat /system/bin/orsout & sleep 0.3; [ -p /system/bin/orsin ] && echo "get status_indent_left" > /system/bin/orsin; wait; } 2>&1'
 
 # From the plugin's side: its uid, mount namespace and whether the FIFOs and
 # the twrp binary are visible and writable there.
