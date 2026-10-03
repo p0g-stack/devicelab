@@ -87,7 +87,8 @@ jpg 2-before-press
 ev st-d.ev SLOT=0 TRACK=130 MX=640 MY=1300 KEY=1 X=640 Y=1300 SYN=0; ev st-u.ev SLOT=0 TRACK=-1 KEY=0 SYN=0
 mark "still press 640,1300"; put st-d.ev; sleep 0.5; jpg 3-during-press; sleep 0.3; put st-u.ev; log "still press 640,1300 for 0.8 s"
 sleep 1.5; jpg 4-after-press; shot 4-after-press   # expected 8, no Home/Recents
-python3 - "$OUT" <<'PY' | tee -a "$OUT/log.txt"
+python3 -c "import PIL" 2>/dev/null || pip3 install -q pillow >/dev/null 2>&1 || python3 -m pip install -q --break-system-packages pillow >/dev/null 2>&1
+python3 - "$OUT" <<'PY' 2>&1 | tee -a "$OUT/log.txt"
 import sys
 from PIL import Image, ImageChops
 d = sys.argv[1]
@@ -99,13 +100,19 @@ try:
 except Exception as e:
     print(f"[input] still press: compare failed: {e}")
 PY
+# A short still tap in the strip on the + counts (the 0.8 s press above is a
+# Flutter long press: tooltip, no count).
+ev st2-d.ev SLOT=0 TRACK=131 MX=644 MY=1302 KEY=1 X=644 Y=1302 SYN=0
+a shell "cat /tmp/st2-d.ev > $TS; sleep 0.15; cat /tmp/st-u.ev > $TS"; log "short still tap 644,1302"
+sleep 1.5; shot 4b-after-short-tap   # expected one more than 4-after-press
 # Swipe up from the strip goes Home; up and hold opens Recents.
-swipe() {  # swipe NAME HOLD
-  local f=() i y; f+=(SLOT=0 TRACK=140 MX=360 MY=1340 KEY=1 X=360 Y=1340 SYN=0)
-  ev "$1-d.ev" "${f[@]}"; put "$1-d.ev"
-  for i in 1 2 3 4 5 6; do y=$(( 1340 - 300 * i / 6 )); ev "$1-m.ev" "MY=$y" "Y=$y" SYN=0; put "$1-m.ev"; sleep 0.03; done
-  if [ "$2" = 1 ]; then for i in 1 2 3 4 5 6; do y=$(( 1040 + i % 2 )); ev "$1-m.ev" "MY=$y" "Y=$y" SYN=0; put "$1-m.ev"; sleep 0.1; done; fi
-  ev "$1-u.ev" TRACK=-1 KEY=0 SYN=0; put "$1-u.ev"; log "raw swipe up${2/1/ and hold}"
+swipe() {  # swipe NAME HOLD: every event file pushed first, then one adb shell plays them
+  local i y cmd
+  ev "$1-0.ev" SLOT=0 TRACK=140 MX=360 MY=1340 KEY=1 X=360 Y=1340 SYN=0; cmd="cat /tmp/$1-0.ev > $TS"
+  for i in 1 2 3 4 5 6; do y=$(( 1340 - 300 * i / 6 )); ev "$1-$i.ev" "MY=$y" "Y=$y" SYN=0; cmd="$cmd; sleep 0.03; cat /tmp/$1-$i.ev > $TS"; done
+  if [ "$2" = 1 ]; then for i in 7 8 9 10 11 12; do y=$(( 1040 + i % 2 )); ev "$1-$i.ev" "MY=$y" "Y=$y" SYN=0; cmd="$cmd; sleep 0.1; cat /tmp/$1-$i.ev > $TS"; done; fi
+  ev "$1-u.ev" TRACK=-1 KEY=0 SYN=0; cmd="$cmd; sleep 0.03; cat /tmp/$1-u.ev > $TS"
+  a shell "$cmd"; log "raw swipe up$([ "$2" = 1 ] && echo ' and hold')"
 }
 swipe home 0; sleep 3; shot 5-swipe-home
 log "reopen: $(rpc '{"v":1,"id":"input2","op":"plugin","args":{"action":"open","id":"'"$id"'"}}' | tr '\n' ' ')"; sleep 4

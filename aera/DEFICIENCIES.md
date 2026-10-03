@@ -34,6 +34,17 @@ Findings file: project files `real-device-infiniti-2026-10-02.md`.
 | H3 Portrait surface 7 px wide | n/a (canvas has the panel's shape) | 1279 instead of 1272; fixed by 0029 (per-axis scale) |
 | D10, D14 | fixed/verified on Cuttlefish | not yet checked on hardware |
 
+Gate for the infiniti image `aera-infiniti-arm64-bf09617-a0ed7c0a20c82b0e`:
+Cuttlefish `aera-cf-x86_64-90aeba8-242db857a00545f4` (same tree, flutter-aera
+5c54636 = 8ef1989) passed every check in run
+`runs/20261003T011751Z-aera-cf-recovery-37083192787`: settings, picker,
+lifecycle, volatile, back (on/off), taps, d10 (A/B same process), rotate,
+first-Home, D5 A/B, and `aera-input-check.sh`: D9 seven raw taps over slots
+0/1 sharing axes counted 0 -> 7 with no zeroed release (amended 0025); a
+still 0.8 s bottom-strip press on the + showed no Recents preview (0.8% of
+pixels, the button's pressed highlight) and reached Flutter (tooltip, a long
+press, so no count; F0001); surface 720x1286 / 1348x658 unchanged (0029).
+
 Bar for hardware entries (Yuv, 2026-10-02): a finding is a reproduction only
 with repeated trials and a reset between them; single synthetic taps are
 observations. qseecomd logs DrmLibFs "Partition not mounted" repeatedly on
