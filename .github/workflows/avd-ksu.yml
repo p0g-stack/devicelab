@@ -80,7 +80,7 @@ jobs:
             echo "demo zip: release ${{ inputs.demo_tag }} $(basename "$z")" | tee -a "$LAB_OUT/inputs.txt"
           else
           git clone -q --depth 1 -b module https://github.com/p0g-stack/demo "$RUNNER_TEMP/demo-module"
-          (cd "$RUNNER_TEMP/demo-module" && sha256sum -c SHA256SUMS && git log -1 --format='demo module: %s' && z=$(ls demo-*.zip | head -1) && cp "$z" "$GITHUB_WORKSPACE/inputs/modules/demo.zip" && echo "demo zip: $z") | tee -a "$LAB_OUT/inputs.txt"
+          (cd "$RUNNER_TEMP/demo-module" && sha256sum -c --ignore-missing SHA256SUMS && git log -1 --format='demo module: %s' && z=$(ls demo-*.zip | head -1) && cp "$z" "$GITHUB_WORKSPACE/inputs/modules/demo.zip" && echo "demo zip: $z") | tee -a "$LAB_OUT/inputs.txt"
           fi
           sha256sum inputs/modules/*.zip | tee -a "$LAB_OUT/inputs.txt"
           zips=(); for m in $MODULES; do zips+=("inputs/modules/$m"); done
