@@ -14,7 +14,8 @@ on:
       label: { default: "", description: "extra name for the lab-results run, e.g. demo-0.9" }
       metamodule: { default: "", description: "KernelSU metamodule to install first, e.g. meta-overlayfs (empty = none)" }
       hold_tag: { default: "", description: "webui-termux-api release tag (e.g. webui-v0.53.0-webui.8): run checks/hold_socket.sh with its APK" }
-      demo_tag: { default: "", description: "demo release tag to install (e.g. v0.1.28) instead of the module branch; also runs the manager update check" }
+      demo_tag: { default: "", description: "demo release tag to install (e.g. v0.1.28) instead of the module branch; also runs the manager update check and checks/lifecycle.sh" }
+      update_to: { default: "", description: "demo release tag to install over demo_tag with ksud module install (checks/update_to.sh) instead of the manager update check and lifecycle" }
       modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
     branches: [main]
@@ -106,8 +107,23 @@ jobs:
             if [ "$id" = demo ]; then checks/theme.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ]; then checks/root_channel.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ]; then UNINSTALL=$([ -n "${{ inputs.demo_tag }}" ] && echo 0 || echo 1) NAME="$name" checks/app_plane_module.sh "$HOST-$id" "$PKG" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
-            if [ "$id" = demo ] && [ -n "${{ inputs.demo_tag }}" ] && [ "$HOST" = kernelsu ]; then checks/module_update.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
+            if [ "$id" = demo ] && [ -n "${{ inputs.demo_tag }}" ] && [ -z "${{ inputs.update_to }}" ] && [ "$HOST" = kernelsu ]; then checks/module_update.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
           done
+      - name: Lifecycle
+        if: always() && inputs.demo_tag != '' && inputs.update_to == ''
+        timeout-minutes: 35
+        run: |
+          case $HOST in
+            webuix) PKG=com.dergoogler.mmrl.wx;;
+            *) case $FLAVOR in kernelsu) PKG=me.weishu.kernelsu;; next) PKG=com.rifsxd.ksunext;; esac;;
+          esac
+          name=$(unzip -p inputs/modules/demo.zip module.prop | sed -n 's/^name=//p' | tr -d '\r')
+          checks/lifecycle.sh "$HOST-demo" "$PKG" demo "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: Update to
+        if: always() && inputs.update_to != ''
+        run: |
+          gh release download -R p0g-stack/demo "${{ inputs.update_to }}" -D "$RUNNER_TEMP/demo-upd" -p 'demo-v*.zip'
+          checks/update_to.sh "$HOST-demo" demo "$(ls "$RUNNER_TEMP"/demo-upd/demo-v*.zip | head -1)" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Hold socket
         if: always() && inputs.hold_tag != ''
         env: { GH_TOKEN: "${{ github.token }}" }
