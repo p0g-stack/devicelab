@@ -21,7 +21,7 @@ O=$OUT/$LABEL-lc; J=$O.jsonl; : >"$J"
 js() { python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))'; }
 rec() { echo "{\"check\":\"$1\",\"result\":${2:-null}}" | tee -a "$J"; }
 sh_() { adb shell "$1" 2>&1 | tr -d '\r' | js; }
-now() { adb shell cut -d' ' -f1 /proc/uptime | tr -d '\r'; }
+now() { adb shell "cut -d' ' -f1 /proc/uptime" | tr -d '\r'; }
 mark() { rec "mark-$1" "\"$(now)\""; }
 shot() { timeout 20 adb exec-out screencap -p >"$O-$1.png"; $UI dump "$O-$1.xml" >/dev/null 2>&1; }
 top() { adb shell dumpsys activity activities | grep -m1 topResumedActivity | tr -d '\r'; }
@@ -39,8 +39,8 @@ open_places() { # <tag>: open the module's page fresh, then Places; sample from 
 }
 close_back() { # Back until the WebUI activity is no longer resumed; records when it left
   local n
-  for n in 1 2 3 4; do adb shell input keyevent KEYCODE_BACK; sleep 1.5; top | grep -q -i webui || { mark "$1-closed-after-back-$n"; return; }; done
-  rec "$1-close" "\"still on top: $(top)\""
+  for n in 1 2 3 4 5 6; do adb shell input keyevent KEYCODE_BACK; sleep 2.5; top | grep -q -i webui || { mark "$1-closed-after-back-$n"; return; }; done
+  rec "$1-close" "\"still on top: $(top)\""; shot "$1-not-closed"
 }
 wake() { adb shell input keyevent KEYCODE_WAKEUP; sleep 1; adb shell wm dismiss-keyguard; sleep 2; }
 
@@ -93,9 +93,7 @@ notify() { # <tag> <button in Android's prompt>
   top | grep -q -i webui || "$HERE/managers/back_to_app.sh" >/dev/null 2>&1; sleep 3
 }
 rec tap-plugins "$(step Plugins)"; sleep 6
-for _ in 1 2; do adb shell input swipe 160 480 160 160 400; sleep 2; done
-ev "$HELP" >/dev/null
-if ev "new Promise(r => { __w.on(); setTimeout(() => r(!!__w.find('Show notification')), 600) })" | grep -q '"value": *true'; then
+if scroll_to 'Show notification'; then
   rec notify-before "$(perm)"
   notify deny "Don"
   notify after-deny ""
@@ -107,8 +105,12 @@ rec tap-places-2 "$(step Places)"; sleep 4
 
 # swipe: Recents, swipe the top card away (page on Places, FGS up).
 read -r W H < <(adb shell wm size | sed -n 's/.*: \([0-9]*\)x\([0-9]*\).*/\1 \2/p' | tail -1)
-sample swipe 60; mark swipe-recents; adb shell input keyevent KEYCODE_APP_SWITCH; sleep 2; shot swipe-recents
-adb shell input swipe $((W / 2)) $((H / 2)) $((W / 2)) $((H / 12)) 200; mark swipe-done; sleep 2; shot swipe-after
+TASK=$(top | sed -n 's/.* t\([0-9]*\)}.*/\1/p')
+recents_swipe() { adb shell input keyevent KEYCODE_APP_SWITCH; for _ in 1 2 3 4 5; do sleep 1; adb shell dumpsys activity activities | grep -m1 topResumedActivity | grep -q -i -E 'recents|launcher' && break; done; sleep 1
+  adb shell input swipe $((W / 2)) $((H / 2)) $((W / 2)) $((H / 12)) 200; }
+task_alive() { adb shell dumpsys activity recents | grep -q "#$TASK "; }
+sample swipe 60; mark swipe-recents; recents_swipe; mark swipe-done; sleep 2; shot swipe-after
+task_alive && { rec swipe-retry "\"task $TASK still in recents\""; recents_swipe; mark swipe-done-2; sleep 2; shot swipe-after-2; }
 rec swipe-tasks "$(sh_ "dumpsys activity recents | grep -E 'Recent #|realActivity' | head -10; pidof $HPKG")"
 adb shell input keyevent KEYCODE_HOME; sample_wait swipe; rootlog swipe; avc swipe
 

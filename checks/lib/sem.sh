@@ -9,3 +9,12 @@ HELP='window.__w = window.__w || {
 }; "ok"'
 step() { ev "$HELP" >/dev/null; ev "new Promise(r => { __w.on(); setTimeout(() => r(__w.tap($(python3 -c 'import json,sys; print(json.dumps(sys.argv[1]))' "$1"))), 600) })"; }
 text() { ev "$HELP" >/dev/null; ev 'new Promise(r => { __w.on(); setTimeout(() => r(__w.text()), 600) })'; }
+# on <label>: true when a node with that label is on screen. scroll_to <label>:
+# back to the top, then small upward swipes until it is (page layouts change
+# between releases, so no fixed swipe count).
+on() { ev "$HELP" >/dev/null; ev "new Promise(r => { __w.on(); setTimeout(() => r(!!__w.find($(python3 -c 'import json,sys; print(json.dumps(sys.argv[1]))' "$1"))), 600) })" | grep -q '"value": *true'; }
+scroll_to() {
+  for _ in 1 2 3; do adb shell input swipe 160 160 160 500 200; sleep 1; done
+  for _ in 1 2 3 4 5 6 7 8 9 10; do on "$1" && return 0; adb shell input swipe 160 420 160 300 400; sleep 1.5; done
+  on "$1"
+}

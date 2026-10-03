@@ -44,7 +44,7 @@ rec share-top "\"$(top)\""; shot share
 rec app-process "$(sh_ "ps -A -o USER,UID,LABEL,PID,NAME | grep -E 'webui.api' ")"
 rec app-mounts "$(sh_ "p=\$(pidof $APP); [ -n \"\$p\" ] && { echo \"pid \$p\"; grep -c . /proc/\$p/mounts; grep -E '/product/app|/data/adb|mountify|KSU' /proc/\$p/mounts | head -6; } || echo 'app not running'")"
 rec share-log "$(adb logcat -d | grep -i -E "$APP|chooser|share|BackgroundActivityStart|avc" | grep -v -E 'Enqueued|Broadcasting' | tail -12 | js)"
-adb shell input keyevent KEYCODE_BACK; sleep 4
+for _ in 1 2 3; do adb shell input keyevent KEYCODE_BACK; sleep 3; top | grep -q -i webui && break; done  # WX on KernelSU: one Back left the chooser up
 rec share-result "$(page_text 'Share result')"
 
 # Camera: reset to never asked, then deny, deny (permanent), grant.
@@ -82,10 +82,10 @@ back_to_page() { # leave Settings by Back (its task returns to the WebUI's); Rec
 LISTEN='window.__msgs = []; addEventListener("message", e => __msgs.push([Math.round(performance.now()), typeof e.data === "string" ? e.data : JSON.stringify(e.data)])); document.addEventListener("visibilitychange", () => __msgs.push([Math.round(performance.now()), "visibility " + document.visibilityState])); "listening"'
 # The buttons sit below the fold: scroll page 6 down first (Flutter scrolls on
 # touch, not on DOM scrollIntoView).
-for _ in 1 2; do adb shell input swipe 160 480 160 160 400; sleep 2; done; shot plugins-scrolled
-if has_btn Paste; then
+scroll_to Paste; shot plugins-scrolled
+if on Paste; then
   ext_copy "lab-clip-$$"; back_to_page
-  for _ in 1 2; do adb shell input swipe 160 480 160 160 400; sleep 2; done
+  scroll_to Paste
   rec clip-listen "$(ev "$LISTEN")"
   rec clip-paste-tap "$(step Paste)"; sleep 8
   rec clip-paste-top "\"$(top)\""; shot clip-paste
@@ -95,9 +95,8 @@ if has_btn Paste; then
   rec clip-copy-tap "$(step 'Copy text')"; sleep 5
   rec clip-copied "$(page_text Copied Copy clipboard)"
   rec clip-ext-paste "$(ext_paste | js)"; back_to_page
-  for _ in 1 2; do adb shell input swipe 160 480 160 160 400; sleep 2; done
 else rec clipboard '"no Paste button on page 6"'; fi
-if has_btn 'Pick a file'; then
+if scroll_to 'Pick a file'; then
   adb shell "echo lab-pick >/sdcard/Download/lab-pick.txt; am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d file:///sdcard/Download/lab-pick.txt" >/dev/null 2>&1
   rec pick-tap "$(step 'Pick a file')"; sleep 6
   rec pick-top "\"$(top)\""; shot pick
