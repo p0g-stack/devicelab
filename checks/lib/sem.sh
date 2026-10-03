@@ -15,6 +15,8 @@ text() { ev "$HELP" >/dev/null; ev 'new Promise(r => { __w.on(); setTimeout(() =
 on() { ev "$HELP" >/dev/null; ev "new Promise(r => { __w.on(); setTimeout(() => r(!!__w.find($(python3 -c 'import json,sys; print(json.dumps(sys.argv[1]))' "$1"))), 600) })" | grep -q '"value": *true'; }
 scroll_to() {
   for _ in 1 2 3; do adb shell input swipe 160 160 160 500 200; sleep 1; done
-  for _ in 1 2 3 4 5 6 7 8 9 10; do on "$1" && return 0; adb shell input swipe 160 420 160 300 400; sleep 1.5; done
-  on "$1"
+  for _ in 1 2 3 4 5 6 7 8 9 10; do on_btn "$1" && return 0; adb shell input swipe 160 420 160 300 400; sleep 1.5; done
+  on_btn "$1"
 }
+# on_btn <label>: a button with exactly that label sits wholly between the app bar and the nav bar.
+on_btn() { ev "$HELP" >/dev/null; ev "new Promise(r => { __w.on(); setTimeout(() => { const l = $(python3 -c 'import json,sys; print(json.dumps(sys.argv[1]))' "$1"); const e = [...document.querySelectorAll('flt-semantics')].find(e => (e.getAttribute('aria-label') || e.textContent || '').trim() === l && (e.hasAttribute('flt-tappable') || e.getAttribute('role') === 'button')); if (!e) return r(false); const b = e.getBoundingClientRect(); r(b.top >= 80 && b.bottom <= innerHeight - 110) }, 600) })" | grep -q '"value": *true'; }
