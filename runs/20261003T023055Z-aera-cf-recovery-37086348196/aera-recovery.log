@@ -1,0 +1,702 @@
+Starting AERA Recovery R1.0 [default, core: R1.0] (built on Sat Oct  3 00:34:07 2026 for aera_cf [dev_ver: 2026-10-01 (90aeba8) (branch: broken repo)]; pid 92)
+I:=> device id not found, using 'serialno'
+I:CPU temperature file '/sys/class/thermal/thermal_zone0/temp' not found, disabling CPU temp.
+TW_NO_USB_STORAGE := true
+I:TW_BRIGHTNESS_PATH := /sys/class/backlight/cf/brightness
+I:Specified brightness file '/sys/class/backlight/cf/brightness' not found.
+I:Find_File: Error opening '/sys/class/leds/lcd-backlight'
+I:Unable to locate brightness file
+I:TW_EXCLUDE_ENCRYPTED_BACKUPS := true
+I:LANG: en
+I:AB_OTA_UPDATER := true
+I:Startup Commands: 
+=> Linking mtab
+=> Processing /etc/recovery.fstab
+I:Reading /etc/recovery.fstab
+I:Processing '/metadata'
+I:Processing '/data'
+I:Processing '/misc'
+I:GetFstabPath: /odm/etc/fstab.cf.f2fs.hctr2
+I:GetFstabPath: /vendor/etc/fstab.cf.f2fs.hctr2
+I:GetFstabPath: /system/etc/fstab.cf.f2fs.hctr2
+I:GetFstabPath: /first_stage_ramdisk/system/etc/fstab.cf.f2fs.hctr2
+I:Fstab: /first_stage_ramdisk/system/etc/fstab.cf.f2fs.hctr2
+I:Reading /etc/additional.fstab
+I:Processing '/data'
+I:Unhandled flag: 'latemount'
+I:setting Key_Directory to: /metadata/vold/metadata_encryption
+I:FBE contents 'aes-256-xts', filenames 'aes-256-hctr2:inlinecrypt_optimized'
+I:Ignoring the 'fscompress' fstab flag
+I:Unhandled flag: 'checkpoint=fs'
+I:Processing '/data'
+I:Unhandled flag: 'latemount'
+I:Unhandled flag: 'reservedsize=128M'
+I:setting Key_Directory to: /metadata/vold/metadata_encryption
+I:FBE contents 'aes-256-xts', filenames 'aes-256-hctr2:inlinecrypt_optimized'
+I:Ignoring the 'fscompress' fstab flag
+I:Unhandled flag: 'checkpoint=fs'
+I:Processing '/metadata'
+I:Unhandled flag: 'first_stage_mount'
+I:Processing '/metadata'
+I:Unhandled flag: 'first_stage_mount'
+I:Done processing fstab files
+I:Property ro.boot.product.vendor.sku not found, trying to get vintf manifest file name from ro.board.platform
+I:Separate manifest doesn't exist for 'android.hardware.keymaster'
+I:/vendor/etc/vintf/manifest_aera_cf.xml not found. Using default path for manifest.xml
+I:Keymaster_Ver::Unable to find vendor manifest on the device, and no default value set. Checking the ramdisk manifest
+I:Property ro.boot.product.vendor.sku not found, trying to get vintf manifest file name from ro.board.platform
+I:Separate manifest doesn't exist for 'android.hardware.keymaster'
+I:/vendor/etc/vintf/manifest_aera_cf.xml not found. Using default path for manifest.xml
+I:Keymaster_Ver::Using keymaster version '4.x' for decryption
+Starting the UI...
+display mode: 720x1348 @ 60 Hz (720x1348)
+setting DRM_FORMAT_XRGB8888 and GGL_PIXEL_FORMAT_BGRA_8888
+setting DRM_FORMAT_XRGB8888 and GGL_PIXEL_FORMAT_BGRA_8888
+no SDE topology: 1 layer mixer, plane 32
+Could not find obj_id = 32
+Atomic Commit succeedUsing drm graphics.
+I:Using automatic handling for /data/media emulated storage device.
+I:Setting up '/data' as data/media emulated storage.
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Backup folder set to '/data/media/AERA/BACKUPS/serialno'
+I:Settings storage is '/data/media'
+Updating partition details...
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+...done
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+Unable to mount storage
+/super | /dev/block/by-name/super | Size: 0MB
+   Flags: Can_Be_Backed_Up IsPresent Can_Flash_Img 
+   Alternate_Block_Device: /dev/block/by-name/super
+   Display_Name: super
+   Backup_Path: /super
+   Backup_Name: super
+   Backup_Display_Name: Super ()
+   Current_File_System: emmc
+   Backup_Method: dd
+
+I:Unmounting main partitions...
+Unable to find partition for path '/system_root'
+I:failed to read default fstab
+ro.boot.vendor.apex.com.google.emulated.camera.provider.hal=com.google.emulated.camera.provider.hal
+ro.boot.vendor.apex.com.android.hardware.weaver=none
+ro.boot.vendor.apex.com.android.hardware.keymint=com.android.hardware.keymint.rust_nonsecure
+ro.boot.vendor.apex.com.android.hardware.graphics.composer=com.android.hardware.graphics.composer.ranchu
+ro.boot.vendor.apex.com.android.hardware.strongbox=none
+ro.boot.vendor.apex.com.android.hardware.gatekeeper=com.android.hardware.gatekeeper.nonsecure
+ro.boot.vendor.apex.com.android.hardware.secure_element=com.android.hardware.secure_element
+ro.boot.vbmeta.size=22912
+ro.boot.vbmeta.device=PARTUUID=2a6ff304-f1db-4a5f-44b7-bd641b41fda6
+ro.boot.vbmeta.digest=a21d61eaf900bc1b2ffb4d97a584f44fd0be788f85d0ce2bda278af11f5a72e0
+ro.boot.vbmeta.hash_alg=sha256
+ro.boot.vbmeta.avb_version=1.2
+ro.boot.vbmeta.device_state=unlocked
+ro.boot.vbmeta.invalidate_on_error=yes
+ro.boot.vendor.audiocontrol.server.cid=3
+ro.boot.vendor.audiocontrol.server.port=9410
+ro.boot.ddr_size=4915MB
+ro.boot.hardware=cutf_cvm
+ro.boot.hardware.cpu.pagesize=4096
+ro.boot.hardware.egl=angle
+ro.boot.hardware.vulkan=ranchu
+ro.boot.hardware.gralloc=minigbm
+ro.boot.hardware.hwcomposer=ranchu
+ro.boot.hardware.hwcomposer.display_finder_mode=drm
+ro.boot.hardware.hwcomposer.display_framebuffer_format=rgba
+ro.boot.hardware.gltransport=virtio-gpu-asg
+ro.boot.hardware.angle_feature_overrides_enabled=mapUnspecifiedColorSpaceToPassThrough
+ro.boot.hardware.angle_feature_overrides_disabled=exposeES32ForTesting
+ro.boot.opengles.version=196609
+ro.boot.cpuvulkan.version=0
+ro.boot.wifi_impl=mac80211_hwsim_virtio
+ro.boot.veritymode=enforcing
+ro.boot.lcd_density=280
+ro.boot.boot_devices=pci0000:00/0000:00:13.0, pci0000:00/0000:00:14.0
+ro.boot.serialconsole=0
+ro.boot.wifi_mac_prefix=5554
+ro.boot.setupwizard_mode=DISABLED
+ro.boot.vsock_lights_cid=3
+ro.boot.verifiedbootstate=orange
+ro.boot.vsock_lights_port=6900
+ro.boot.openthread_node_id=1
+ro.boot.auto_eth_guest_addr=192.168.98.3
+ro.boot.enable_bootanimation=1
+ro.boot.vsock_tombstone_port=6600
+ro.boot.enable_confirmationui=1
+ro.boot.hw_timeout_multiplier=3
+ro.boot.modem_simulator_ports=9600
+ro.boot.vhal_proxy_server_port=9300
+ro.baseband=unknown
+ro.bootmode=unknown
+ro.hardware=cutf_cvm
+ro.revision=0
+ro.bootloader=unknown
+ro.boottime.adbd=2162781334
+ro.boottime.init=1277312898
+ro.boottime.init.modules=664
+ro.boottime.init.selinux=36585747
+ro.boottime.init.first_stage=676303759
+ro.boottime.init.cold_boot_wait=62
+ro.boottime.logd=2115703137
+ro.boottime.charger=2146630986
+ro.boottime.console=2112203508
+ro.boottime.ueventd=2042225386
+ro.boottime.recovery=2154249268
+ro.boottime.servicemanager=2127243199
+ro.boottime.hwservicemanager=2119434453
+ro.boottime.vndservicemanager=2134024774
+ro.product.bootimage.name=aosp_cf_x86_64_only_phone
+ro.product.bootimage.brand=generic
+ro.product.bootimage.model=Cuttlefish x86_64 phone 64-bit only
+ro.product.bootimage.device=vsoc_x86_64_only
+ro.product.bootimage.manufacturer=Google
+ro.bootimage.build.id=CP2A.260605.016
+ro.bootimage.build.date=Thu Sep 17 15:55:36 UTC 2026
+ro.bootimage.build.date.utc=1789660536
+ro.bootimage.build.tags=test-keys
+ro.bootimage.build.type=userdebug
+ro.bootimage.build.version.sdk=37
+ro.bootimage.build.version.release=17
+ro.bootimage.build.version.incremental=16373615
+ro.bootimage.build.version.release_or_codename=17
+ro.bootimage.build.fingerprint=generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys
+ro.odm.build.date=Sat Oct  3 00:31:03 UTC 2026
+ro.odm.build.date.utc=1790987463
+ro.odm.build.version.incremental=eng.vivy
+ro.odm.build.fingerprint=p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys
+ro.product.odm.name=aera_aera
+ro.product.odm.brand=p0g
+ro.product.odm.model=AERA Cuttlefish x86_64
+ro.product.odm.device=aera_cf
+ro.product.odm.manufacturer=p0g
+ro.build.id=BP2A.250605.031.A2
+ro.build.date=Sat Oct  3 00:31:03 UTC 2026
+ro.build.date.utc=1790987647
+ro.build.host=aosp-builder-noble
+ro.build.tags=test-keys
+ro.build.type=eng
+ro.build.user=vivy
+ro.build.flavor=aera_aera-eng
+ro.build.display.id=aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys
+ro.build.product=aera_cf
+ro.build.version.sdk=36
+ro.build.version.base_os=
+ro.build.version.release=99.87.36
+ro.build.version.codename=REL
+ro.build.version.incremental=eng.vivy
+ro.build.version.preview_sdk=0
+ro.build.version.all_codenames=REL
+ro.build.version.security_patch=2099-12-31
+ro.build.version.release_or_codename=99.87.36
+ro.build.version.preview_sdk_fingerprint=REL
+ro.build.version.min_supported_target_sdk=28
+ro.build.description=aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys
+ro.build.characteristics=default
+ro.build.backported_fixes.alias_bitset.long_list=18
+ro.force.debuggable=0
+ro.llndk.api_level=202504
+ro.system.build.id=BP2A.250605.031.A2
+ro.system.build.date=Sat Oct  3 00:31:03 UTC 2026
+ro.system.build.date.utc=1790987463
+ro.system.build.tags=test-keys
+ro.system.build.type=eng
+ro.system.build.version.sdk=36
+ro.system.build.version.release=99.87.36
+ro.system.build.version.incremental=eng.vivy
+ro.system.build.version.release_or_codename=99.87.36
+ro.system.build.fingerprint=p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys
+ro.treble.enabled=true
+ro.product.cpu.abi=x86_64
+ro.product.cpu.abilist=x86_64
+ro.product.cpu.pagesize.max=16384
+ro.product.cpu.abilist32=
+ro.product.cpu.abilist64=x86_64
+ro.product.name=aera_aera
+ro.product.brand=p0g
+ro.product.build.id=BP2A.250605.031.A2
+ro.product.build.date=Sat Oct  3 00:31:03 UTC 2026
+ro.product.build.date.utc=1790987463
+ro.product.build.tags=test-keys
+ro.product.build.type=eng
+ro.product.build.version.sdk=36
+ro.product.build.version.release=99.87.36
+ro.product.build.version.incremental=eng.vivy
+ro.product.build.version.release_or_codename=99.87.36
+ro.product.build.fingerprint=p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys
+ro.product.model=AERA Cuttlefish x86_64
+ro.product.device=aera_cf
+ro.product.system.name=aera_aera
+ro.product.system.brand=p0g
+ro.product.system.model=AERA Cuttlefish x86_64
+ro.product.system.device=aera_cf
+ro.product.system.manufacturer=p0g
+ro.product.product.name=aera_aera
+ro.product.product.brand=p0g
+ro.product.product.model=AERA Cuttlefish x86_64
+ro.product.product.device=aera_cf
+ro.product.product.manufacturer=p0g
+ro.product.system_ext.name=aera_aera
+ro.product.system_ext.brand=p0g
+ro.product.system_ext.model=AERA Cuttlefish x86_64
+ro.product.system_ext.device=aera_cf
+ro.product.system_ext.manufacturer=p0g
+ro.product.manufacturer=p0g
+ro.system_ext.build.id=BP2A.250605.031.A2
+ro.system_ext.build.date=Sat Oct  3 00:31:03 UTC 2026
+ro.system_ext.build.date.utc=1790987463
+ro.system_ext.build.tags=test-keys
+ro.system_ext.build.type=eng
+ro.system_ext.build.version.sdk=36
+ro.system_ext.build.version.release=99.87.36
+ro.system_ext.build.version.incremental=eng.vivy
+ro.system_ext.build.version.release_or_codename=99.87.36
+ro.system_ext.build.fingerprint=p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys
+ro.actionable_compatible_property.enabled=true
+ro.board.api_level=202504
+ro.board.api_frozen=true
+ro.vendor.build.date=Sat Oct  3 00:25:47 UTC 2026
+ro.vendor.build.date.utc=1790987147
+ro.vendor.product.cpu.abilist=x86_64
+ro.vendor.product.cpu.abilist32=
+ro.vendor.product.cpu.abilist64=x86_64
+ro.vendor.api_level=34
+ro.product.board=aera_cf
+ro.product.vendor.name=aera_aera
+ro.product.vendor.brand=p0g
+ro.product.vendor.model=AERA Cuttlefish x86_64
+ro.product.vendor.device=aera_cf
+ro.product.vendor.manufacturer=p0g
+ro.product.first_api_level=34
+ro.cold_boot_done=true
+ro.bionic.arch=x86_64
+ro.bionic.2nd_arch=
+ro.bionic.cpu_variant=generic
+ro.bionic.2nd_cpu_variant=
+ro.dalvik.vm.native.bridge=0
+ro.dalvik.vm.enable_uffd_gc=true
+ro.zygote=zygote64
+dalvik.vm.isa.x86_64.variant=generic
+dalvik.vm.isa.x86_64.features=default
+dalvik.vm.dexopt.secondary=true
+dalvik.vm.dexopt.thermal-cutoff=2
+dalvik.vm.usejit=true
+dalvik.vm.madvise.odexfile.size=104857600
+dalvik.vm.madvise.vdexfile.size=104857600
+dalvik.vm.lockprof.threshold=500
+dalvik.vm.dex2oat64.enabled=true
+dalvik.vm.dex2oat-Xms=64m
+dalvik.vm.dex2oat-Xmx=512m
+dalvik.vm.minidebuginfo=true
+dalvik.vm.useartservice=true
+dalvik.vm.appimageformat=lz4
+dalvik.vm.enable_pr_dexopt=true
+dalvik.vm.disable-odrefresh=true
+dalvik.vm.image-dex2oat-Xms=64m
+dalvik.vm.image-dex2oat-Xmx=64m
+dalvik.vm.usap_pool_enabled=false
+dalvik.vm.usap_pool_size_max=3
+dalvik.vm.usap_pool_size_min=1
+dalvik.vm.dex2oat-minidebuginfo=true
+dalvik.vm.usap_refill_threshold=1
+dalvik.vm.usap_pool_refill_delay_ms=3000
+dalvik.vm.disable-art-service-dexopt=true
+dalvik.vm.dex2oat-max-image-block-size=524288
+dalvik.vm.dex2oat-resolve-startup-strings=true
+persist.sys.dalvik.vm.lib.2=libart.so
+debug.atrace.tags.enableflags=0
+ro.product.debugfs_restrictions.enabled=true
+ro.aera.boot=1
+ro.aera.boot.header.version=4
+ro.aera.type=Unofficial
+ro.aera.build=aera
+ro.aera.build.status=Unofficial
+ro.aera.status=Unofficial
+ro.aera.release.channel=Nightly
+ro.aera.release.version=R1.0
+ro.aera.vanilla=1
+ro.aera.variant=default
+ro.aera.crypto_enabled=0
+ro.aera.substitute_permissions=1
+ro.wifi.channels=
+ro.allow.mock.location=1
+ro.build.date.utc_aera=1790987647
+ro.build.aera_id=c6481f91-4e43-4ff1-8b47-34897dce06d1
+ro.build.selinux=1
+ro.build.version.sdk_full=36.0
+ro.build.version.known_codenames=Base,Base11,Cupcake,Donut,Eclair,Eclair01,EclairMr1,Froyo,Gingerbread,GingerbreadMr1,Honeycomb,HoneycombMr1,HoneycombMr2,IceCreamSandwich,IceCreamSandwichMr1,JellyBean,JellyBeanMr1,JellyBeanMr2,Kitkat,KitkatWatch,Lollipop,LollipopMr1,M,N,NMr1,O,OMr1,P,Q,R,S,Sv2,Tiramisu,UpsideDownCake,VanillaIceCream,Baklava
+ro.build.version.release_or_preview_display=16
+ro.build.aera_codebase=2026-10-01 (90aeba8)
+ro.kernel.android.checkjni=1
+ro.kernel.version=6.12
+ro.system.build.version.sdk_full=36.0
+ro.system.product.cpu.abilist=x86_64
+ro.system.product.cpu.abilist32=
+ro.system.product.cpu.abilist64=x86_64
+ro.product.build.version.sdk_full=36.0
+ro.appsearch.feature.enable_isolated_storage=
+ro.bootimage.build.date.utc_aera=1790987647
+ro.bootimage.build.uuid=yXiZJxwbP2KHkAC0PFhrTHbybdRL6BEFcNnVSXoAgeY
+ro.bootimage.build.version.sdk_full=37.0
+ro.system_ext.build.version.sdk_full=36.0
+ro.postinstall.fstab.prefix=/system
+fbe.contents=aes-256-xts
+fbe.filenames=aes-256-hctr2:inlinecrypt_optimized
+aera.super.partition=false
+aera.crash_counter=0
+init.svc_debug.no_fatal.zygote=true
+fstab.additional=1
+keymaster_ver=4.x
+tw_boot_header_version=4
+ro.product.build.16k_page.enabled=false
+ro.apex.updatable=true
+ro.boot.slot_suffix=_a
+ro.boot.fstab_suffix=cf.f2fs.hctr2
+ro.hwui.use_vulkan=
+ro.board.platform=aera_cf
+ro.build.ab_update=true
+pm.dexopt.ab-ota=speed-profile
+pm.dexopt.shared=speed
+pm.dexopt.cmdline=verify
+pm.dexopt.install=speed-profile
+pm.dexopt.inactive=verify
+pm.dexopt.bg-dexopt=speed-profile
+pm.dexopt.post-boot=verify
+pm.dexopt.first-boot=verify
+pm.dexopt.install-bulk=speed-profile
+pm.dexopt.install-fast=skip
+pm.dexopt.boot-after-ota=verify
+pm.dexopt.install-bulk-secondary=verify
+pm.dexopt.install-bulk-downgraded=verify
+pm.dexopt.boot-after-mainline-update=verify
+pm.dexopt.install-bulk-secondary-downgraded=verify
+ro.build.fingerprint=p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys
+ro.gsid.image_running=0
+gsid.image_installed=0
+hwservicemanager.disabled=true
+ro.boot.hypervisor.vm.supported=1
+ro.boot.hypervisor.version=cf-crosvm
+ro.boot.hypervisor.protected_vm.supported=0
+init.svc.logd=running
+init.svc.charger=running
+init.svc.ueventd=running
+init.svc.recovery=running
+init.svc.servicemanager=running
+init.svc.hwservicemanager=running
+init.svc.vndservicemanager=running
+init.svc.adbd=restarting
+init.svc.console=stopped
+init.svc_debug_pid.adbd=93
+init.svc_debug_pid.logd=81
+init.svc_debug_pid.charger=91
+init.svc_debug_pid.console=
+init.svc_debug_pid.ueventd=76
+init.svc_debug_pid.recovery=92
+init.svc_debug_pid.servicemanager=83
+init.svc_debug_pid.hwservicemanager=82
+init.svc_debug_pid.vndservicemanager=87
+ro.logd.kernel=true
+logd.ready=true
+ro.vendor.build.ab_ota_partitions=
+ro.product.ab_ota_partitions=
+ro.cp_system_other_odex=1
+ro.product.page_size=4096
+persist.debug.dalvik.vm.core_platform_api_policy=just-warn
+persist.debug.perfetto.persistent_sysui_tracing_for_bugreport=1
+ro.property_service.version=2
+ro.minui.pixel_format=RGBX_8888
+ro.minui.overscan_percent=0
+ro.recovery.usb.adb.pid=D001
+ro.recovery.usb.vid=18D1
+ro.recovery.usb.fastboot.pid=4EE0
+ro.boot.serialno=CUTTLEFISHCVD01
+ro.serialno=CUTTLEFISHCVD01
+servicemanager.ready=true
+service.adb.root=1
+ro.surface_flinger.game_default_frame_rate_override=60
+net.bt.name=Android
+persist.sys.usb.config=adb
+persist.sys.disable_rescue=true
+persist.traced.enable=1
+sys.usb.state=adb
+sys.usb.config=adb
+sys.usb.configfs=0
+sys.usb.config.aera_fastbootd=0
+sys.usb.config.aera_soft_switch=0
+ro.secure=0
+ro.debuggable=1
+ro.odm.build.id=BP2A.250605.031.A2
+ro.odm.build.tags=test-keys
+ro.odm.build.type=eng
+ro.odm.build.version.sdk=36
+ro.odm.build.version.release=99.87.36
+ro.odm.build.version.sdk_full=36.0
+ro.odm.build.version.release_or_codename=99.87.36
+ro.odm.product.cpu.abilist=x86_64
+ro.odm.product.cpu.abilist32=
+ro.odm.product.cpu.abilist64=x86_64
+ro.vendor.build.security_patch=2099-12-31
+
+I:Overriding ro.build.date.utc with value: "0"
+I:Overriding ro.bootimage.build.date.utc with value: "0"
+I:Overriding ro.vendor.build.date.utc with value: "0"
+I:Overriding ro.system.build.date.utc with value: "0"
+I:Overriding ro.system_ext.build.date.utc with value: "0"
+I:Overriding ro.product.build.date.utc with value: "0"
+I:Overriding ro.odm.build.date.utc with value: "0"
+I:DEBUG: AERA: running the startup script...
+AERA_BUILD_DATE=Sat Oct 3 00:34:07 2026
+DEBUG: AERA: AERA_DEVICE=aera_cf
+DEBUG: AERA: AERA_KERNEL=6.12.74-android16-6-g3ec022196c4e-ab15076761
+DEBUG: AERA: SYSTEM_ROOT=0
+DEBUG: AERA: PROPER_SAR=0
+DEBUG: AERA: AERA_SCRIPT_DATE=20251120
+DEBUG: AERA: error - I cannot find the system build.prop
+DEBUG: AERA: can't identify the ROM
+DEBUG: AERA: Fox properties:
+[aera.crash_counter]: [0]
+[aera.postinit.status]: [1]
+[aera.product.partition]: [0]
+[aera.super.block_device]: [/dev/block/by-name/super]
+[aera.super.mount_point]: [/super]
+[aera.super.partition]: [true]
+[ro.aera.boot]: [1]
+[ro.aera.boot.header.version]: [4]
+[ro.aera.build]: [aera]
+[ro.aera.build.status]: [Unofficial]
+[ro.aera.crypto_enabled]: [0]
+[ro.aera.home]: [/sdcard/AERA]
+[ro.aera.kernel]: [6.12.74-android16-6-g3ec022196c4e-ab15076761]
+[ro.aera.release.channel]: [Nightly]
+[ro.aera.release.version]: [R1.0]
+[ro.aera.sar]: [0]
+[ro.aera.settings]: [/data/recovery/AERA]
+[ro.aera.status]: [Unofficial]
+[ro.aera.substitute_permissions]: [1]
+[ro.aera.type]: [Unofficial]
+[ro.aera.vanilla]: [1]
+[ro.aera.variant]: [default]
+[ro.board.platform]: [aera_cf]
+[ro.bootimage.build.date.utc_aera]: [1790987647]
+[ro.build.aera_codebase]: [2026-10-01 (90aeba8)]
+[ro.build.aera_id]: [c6481f91-4e43-4ff1-8b47-34897dce06d1]
+[ro.build.date.utc_aera]: [1790987647]
+[ro.build.description]: [aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys]
+[ro.build.display.id]: [aera_aera-eng 99.87.36 BP2A.250605.031.A2 eng.vivy test-keys]
+[ro.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.build.flavor]: [aera_aera-eng]
+[ro.build.product]: [aera_cf]
+[ro.odm.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.product.board]: [aera_cf]
+[ro.product.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.product.device]: [aera_cf]
+[ro.product.name]: [aera_aera]
+[ro.product.odm.device]: [aera_cf]
+[ro.product.odm.name]: [aera_aera]
+[ro.product.product.device]: [aera_cf]
+[ro.product.product.name]: [aera_aera]
+[ro.product.system.device]: [aera_cf]
+[ro.product.system.name]: [aera_aera]
+[ro.product.system_ext.device]: [aera_cf]
+[ro.product.system_ext.name]: [aera_aera]
+[ro.product.vendor.device]: [aera_cf]
+[ro.product.vendor.name]: [aera_aera]
+[ro.system.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[ro.system_ext.build.fingerprint]: [p0g/aera_aera/aera_cf:99.87.36/BP2A.250605.031.A2/eng.vivy:eng/test-keys]
+[sys.usb.config.aera_fastbootd]: [0]
+[sys.usb.config.aera_soft_switch]: [0]
+I:Process ended with no errors.
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:- ROM fingerprint not available
+Updating partition details...
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+...done
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+Unable to mount storage
+tw_get_context failed to get selinux context, file /data/recovery/AERA
+tw_get_context failed to get selinux context, file /data/media
+I:Failed to get default contexts and file mode for storage files.
+SELinux contexts loaded from /file_contexts
+Full SELinux support is present.
+
+
+Partition Logs:
+/misc | /dev/block/vda7 | Size: 1MB
+   Flags: IsPresent 
+   Primary_Block_Device: /dev/block/vda7
+   Display_Name: misc
+   Storage_Name: misc
+   Backup_Path: /misc
+   Backup_Name: misc
+   Backup_Display_Name: misc
+   Storage_Path: /misc
+   Current_File_System: emmc
+   Fstab_File_System: emmc
+   Backup_Method: dd
+
+/data | /dev/block/vda9 | Size: 0MB Used: 0MB Free: 0MB Backup Size: 0MB
+   Flags: Can_Be_Mounted Can_Be_Wiped Can_Be_Backed_Up Wipe_During_Factory_Reset Wipe_Available_in_GUI IsPresent Has_Data_Media Can_Encrypt_Backup Use_Userdata_Encryption Is_Storage Is_Settings_Storage 
+   Symlink_Path: /data/media
+   Symlink_Mount_Point: /sdcard
+   Primary_Block_Device: /dev/block/vda9
+   Display_Name: Data
+   Storage_Name: Internal Storage
+   Backup_Path: /data
+   Backup_Name: data
+   Backup_Display_Name: Data
+   Storage_Path: /data/media
+   Current_File_System: ext4
+   Fstab_File_System: ext4
+   Backup_Method: files
+   Mount_Flags: 1030, Mount_Options: 
+   MTP_Storage_ID: 65537
+   Metadata Key Directory: /metadata/vold/metadata_encryption
+
+/metadata | /dev/block/vda6 | Size: 51MB Used: 1MB Free: 50MB Backup Size: 1MB
+   Flags: Can_Be_Mounted Can_Be_Wiped IsPresent 
+   Primary_Block_Device: /dev/block/vda6
+   Display_Name: Metadata
+   Storage_Name: Metadata
+   Backup_Path: /metadata
+   Backup_Name: metadata
+   Backup_Display_Name: Metadata
+   Storage_Path: /metadata
+   Current_File_System: ext4
+   Fstab_File_System: ext4
+   Backup_Method: files
+   Mount_Flags: 1030, Mount_Options: 
+
+/super | /dev/block/by-name/super | Size: 8192MB
+   Flags: Can_Be_Backed_Up IsPresent Can_Flash_Img 
+   Alternate_Block_Device: /dev/block/by-name/super
+   Display_Name: super
+   Backup_Path: /super
+   Backup_Name: super
+   Backup_Display_Name: Super ()
+   Current_File_System: emmc
+   Backup_Method: dd
+
+I:Recreating /data/recovery/ folder.
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Path /data/recovery/log.gz does not exist. Unable to copy file to /data/recovery/last_log.gz
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+Unable to mount /data/recovery/AERA/.aera
+I:Attempt to load settings from settings file...
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:InfoManager file '/data/recovery/AERA/.aera' not found.
+I:Backup folder set to '/data/media/AERA/BACKUPS/serialno'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Version number saved to '/data/recovery/.version'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+--------------------------
+Welcome to AERA Recovery!
+[Release]   : R1.0
+[Variant]   : default
+[Codebase]  : 36, 2026-10-01 (90aeba8)
+[Branch]    : broken repo
+[Settings]  : /data/recovery/AERA
+[Misc]      : /sdcard/AERA
+[Build date]: Sat Oct  3 00:34:07 2026
+[Build type]: Nightly
+[Build status]: Unofficial
+[Build status]: Unofficial. No official support for unofficial builds
+
+AERA websites:
+[Downloads] : https://aera-recovery.com/#downloads
+[Guides/FAQ]: https://t.me/aera_recovery_project
+--------------------------
+I:DEBUG: AERA: the startup script has been executed.
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+* Storage is not encrypted
+* Platform:   aera_cf
+* Device:     aera_cf (aera_cf)
+* Dynamic:    yes
+* Boot slot:  _a
+* Virtual_AB: no
+* Kernel:     6.12.74-android16-6-g3ec022196c4e-ab15076761
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+* No ROM.
+--------------------------
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:ROM Status: Is not installed
+I:Themes version mismatch (old='0'; new='2.0')
+I:Mount: Unable to find partition for path '/persist'
+I:Can't probe device /dev/block/vda9
+I:Failed to mount '/data' (Invalid argument)
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:InfoManager saving '/data/recovery/AERA/.aera'
+I:Saved settings file values to '/data/recovery/AERA/.aera'
+I:Starting MTP
+I:Cannot find file /sys/class/android_usb/android0/idVendor
+I:Cannot find file /sys/class/android_usb/android0/idProduct
+I:[MTP] Starting MTP
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+MTP Enabled
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Starting Adb Backup FIFO
+E:[MTP] could not open MTP driver, errno: 2
