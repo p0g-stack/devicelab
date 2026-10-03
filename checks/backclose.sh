@@ -29,14 +29,15 @@ snap() { # <tag>
   rec "$1-rootport" "$(sh_ "p=\$(sed -n 's/.*\"port\": *\\([0-9]*\\).*/\\1/p' /data/adb/modules/$ID/run/demo.place.json 2>/dev/null | head -1); echo \"root process port \$p\"; [ -n \"\$p\" ] && { hp=\$(printf '%04X' \"\$p\"); cat /proc/net/tcp /proc/net/tcp6 | awk -v p=\":\$hp\" 'substr(\$2, length(\$2)-4) == p || substr(\$3, length(\$3)-4) == p { print \$2, \$3, \$4, \$10 }' | while read l r st ino; do o=\$(for f in /proc/[0-9]*/fd/*; do [ \"\$(readlink \$f 2>/dev/null)\" = \"socket:[\$ino]\" ] && { d=\${f#/proc/}; echo \${d%%/*}; break; }; done); echo \"\$l \$r st=\$st pid=\$o \$([ -n \"\$o\" ] && tr '\\0' ' ' </proc/\$o/cmdline | cut -c1-50)\"; done; }")"
   rec "$1-service" "$(sh_ "dumpsys activity services $APP/com.termux.api.RootHelperService | grep -E 'ServiceRecord|isForeground' ; grep -c '@$APP/hold' /proc/net/unix")"
 }
-phase() { # <tag> <how: back|exit>
-  rec "$1-open" "\"$("$HERE/managers/open_webui.sh" "$LABEL-bc-$1" "$HPKG" "$ID" "$NAME" 2>&1 | tail -1)\""; sleep 6
+phase() { # <tag> <how: back|sleep|exit> [open via: ui|intent]
+  rec "$1-open" "\"$(OPEN_VIA=${3:-} "$HERE/managers/open_webui.sh" "$LABEL-bc-$1" "$HPKG" "$ID" "$NAME" 2>&1 | tail -1)\""; sleep 6
   ev "$HELP" >/dev/null; ev '__w.on(); "semantics on"' >/dev/null; sleep 2
   rec "$1-places" "$(step Places)"; sleep 12
   snap "$1-before"
-  if [ "$2" = back ]; then
+  if [ "$2" = back ] || [ "$2" = sleep ]; then
     for n in 1 2 3 4; do adb shell input keyevent KEYCODE_BACK; sleep 2.5; top | grep -q -i webui || break; done
     rec "$1-closed" "\"after $n Back: $(top)\""
+    [ "$2" = sleep ] && { adb shell input keyevent KEYCODE_SLEEP; rec "$1-screen" '"off"'; }
   else
     rec "$1-exit-api" "$(ev 'JSON.stringify({ksu: typeof window.ksu, exit: window.ksu && typeof ksu.exit, webui: typeof window.webui, webuiExit: window.webui && typeof webui.exit})')"
     rec "$1-exit-call" "$(ev 'setTimeout(() => { try { (window.webui && webui.exit) ? webui.exit() : ksu.exit() } catch (e) { console.log(e) } }, 200); "called"')"
@@ -45,5 +46,10 @@ phase() { # <tag> <how: back|exit>
   timeout 20 adb exec-out screencap -p >"$O-$1-closed.png"
   snap "$1-t0"; sleep 55; snap "$1-t60"; sleep 55; snap "$1-t120"; sleep 115; snap "$1-t240"
 }
-phase back back
-phase exit exit
+if [ -n "${BC_PHASES:-}" ]; then
+  for p in $BC_PHASES; do IFS=: read -r tag how via <<<"$p"; phase "$tag" "$how" "$via"
+    [ "$how" = sleep ] && { adb shell input keyevent KEYCODE_WAKEUP; sleep 1; adb shell wm dismiss-keyguard; sleep 2; }; done
+else
+  phase back back
+  phase exit exit
+fi

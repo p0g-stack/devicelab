@@ -16,7 +16,7 @@ on:
       hold_tag: { default: "", description: "webui-termux-api release tag (e.g. webui-v0.53.0-webui.8): run checks/hold_socket.sh with its APK" }
       demo_tag: { default: "", description: "demo release tag to install (e.g. v0.1.28) instead of the module branch; also runs the manager update check and checks/lifecycle.sh" }
       demo_zip: { default: "", description: "zip name under lab-inputs modules/ to install as the demo (instead of the module branch or demo_tag); also runs checks/lifecycle.sh" }
-      backclose: { default: "", description: "non-empty: only checks/backclose.sh on the demo (skips the WebUI checks)" }
+      backclose: { default: "", description: "non-empty: only checks/backclose.sh on the demo (skips the WebUI checks); a value other than 1 is BC_PHASES, e.g. 'back:back:intent sleep:sleep:intent exit:exit:intent ui:back:ui'" }
       update_to: { default: "", description: "demo release tag to install over demo_tag with ksud module install (checks/update_to.sh) instead of the manager update check and lifecycle" }
       modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
@@ -117,13 +117,14 @@ jobs:
           done
       - name: Back close
         if: inputs.backclose != ''
-        timeout-minutes: 30
+        timeout-minutes: 60
         run: |
           case $HOST in
             webuix) PKG=com.dergoogler.mmrl.wx;;
             *) case $FLAVOR in kernelsu) PKG=me.weishu.kernelsu;; next) PKG=com.rifsxd.ksunext;; esac;;
           esac
           name=$(unzip -p inputs/modules/demo.zip module.prop | sed -n 's/^name=//p' | tr -d '\r')
+          [ "${{ inputs.backclose }}" != 1 ] && export BC_PHASES="${{ inputs.backclose }}"
           checks/backclose.sh "$HOST-demo" "$PKG" demo "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Lifecycle
         if: always() && (inputs.demo_tag != '' || inputs.demo_zip != '') && inputs.update_to == '' && inputs.backclose == ''

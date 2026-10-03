@@ -20,7 +20,7 @@ adb logcat -c
 adb shell am force-stop "$PKG"
 # A first-launch notification prompt sits on top of the manager UI otherwise.
 adb shell pm grant "$PKG" android.permission.POST_NOTIFICATIONS 2>/dev/null
-if [ -n "$ACT" ]; then
+if [ -n "$ACT" ] && [ "${OPEN_VIA:-}" != ui ]; then
   adb shell am start -W -n "$ACT" -e id "'$ID'" -e name "'$NAME'" 2>&1 | tr -d '\r' | grep -E 'Status|Activity|Error|Warning'
   if wait_page 8; then adb exec-out screencap -p >"$O-intent.png"; echo "opened: intent"; exit 0; fi
   # KernelSU Next starts its WebUI as dat=kernelsu://webui/<id> (seen in its own launch).
