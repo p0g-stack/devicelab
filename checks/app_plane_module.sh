@@ -33,8 +33,12 @@ rec open "\"$("$HERE/managers/open_webui.sh" "$LABEL-appmod" "$HPKG" "$ID" "${NA
 ev "$HELP" >/dev/null; ev '__w.on(); "semantics on"' >/dev/null; sleep 2
 rec tap-places "$(step Places)"; sleep 6
 rec tap-plugins "$(step Plugins)"; sleep 6
-fgs() { sh_ "dumpsys activity services $APP 2>&1 | grep -E 'ServiceRecord|isForeground|foregroundId' | head -6; echo '-- notification:'; dumpsys notification --noredact 2>&1 | grep -A4 \"pkg=$APP\" | head -12; echo '-- procs:'; ps -A -o USER,PID,NAME | grep -E 'webui.api|dartaotruntime'"; }
+fgs() { sh_ "dumpsys activity services $APP 2>&1 | grep -E 'ServiceRecord|isForeground|foregroundId' | head -6; echo '-- posted:'; dumpsys notification --noredact 2>&1 | grep -E 'NotificationRecord\\(.*$APP' | head -4; echo '-- procs:'; ps -A -o USER,PID,NAME | grep -E 'webui.api|dartaotruntime'"; }
+notif() { sh_ "dumpsys package $APP | grep -i -E 'POST_NOTIFICATIONS' | head -3; echo '-- appops:'; appops get $APP POST_NOTIFICATION 2>&1; echo '-- importance:'; dumpsys notification 2>&1 | grep -i -A6 \"AppSettings: $APP\" | grep -i -E 'importance|banned|blocked|AppSettings' | head -6; dumpsys notification 2>&1 | grep -i -E \"$APP.*(importance|banned)|(importance|banned).*$APP\" | head -4"; }
+roothold() { sh_ "grep -i -E 'hold|foreground|stopservice|idle|denied|connect' /data/adb/modules/$ID/flutter_webui/run/root.log 2>&1 | tail -12; echo '-- avc:'; dmesg | grep avc | grep -E 'unix_stream_socket|connectto' | tail -4"; }
+shade() { adb shell cmd statusbar expand-notifications >/dev/null 2>&1; sleep 2; timeout 20 adb exec-out screencap -p >"$O-shade-$1.png"; $UI dump "$O-shade-$1.xml" >/dev/null 2>&1; adb shell cmd statusbar collapse >/dev/null 2>&1; sleep 1; }
 rec fgs-open "$(fgs)"
+rec notif-settings "$(notif)"; rec root-hold-open "$(roothold)"; shade open
 rec plugins "$(page_text Camera Share share_plus permission)"; shot plugins
 
 # Share: Android's chooser, started by the module's app.
@@ -111,7 +115,13 @@ adb shell input keyevent KEYCODE_BACK; sleep 2
 
 # Foreground helper service: up while the WebUI's root channel is wound up, gone after its idle exit.
 adb shell input keyevent KEYCODE_HOME; sleep 50; rec fgs-home "$(fgs)"
-adb shell am force-stop "$HPKG"; sleep 45; rec fgs-closed "$(fgs)"
+# The gap case: close the manager with the FGS up; expect the service gone within ~10 s.
+rec fgs-before-close "$(fgs)"; adb shell am force-stop "$HPKG"; t0=$SECONDS
+until [ "$(adb shell "dumpsys activity services $APP | grep -c RootHelperService" | tr -d '\r')" = 0 ] || (( SECONDS - t0 > 30 )); do sleep 1; done
+rec fgs-gone-after "\"$((SECONDS - t0)) s\""; rec fgs-closed "$(fgs)"; shade closed
+# Root channel processes after the close (idle exit), up to 120 s.
+until ! adb shell "pgrep -f flutter_webui_root.aot" >/dev/null 2>&1 || (( SECONDS - t0 > 120 )); do sleep 2; done
+rec channel-gone-after "\"$((SECONDS - t0)) s\""; rec root-hold-end "$(roothold)"
 # Reboot keeps the user app (soft-reboot here: the AVD has no KernelSU at real boot).
 adb shell /data/adb/ksud soft-reboot >/dev/null 2>&1; sleep 5; timeout 120 adb wait-for-device
 t0=$SECONDS; until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ]; do (( SECONDS - t0 > 300 )) && break; sleep 3; done; sleep 30
