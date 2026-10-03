@@ -9,7 +9,10 @@ patches/bootable/recovery/0001-plugin_api-host-api-3-pixel-surface.patch
 
 The Host API 3 series under `bootable/recovery/` is owned by the flutter-aera
 thread, and so is the LVGL series under `external/lvgl/`
-(flutter-aera `third_party/aera/lvgl-patches/`); drop updated patches here (or point `AERA_PATCHES` at another
+(flutter-aera `third_party/aera/lvgl-patches/`). `bootable/recovery/` holds
+three flutter-aera directories copied side by side, and name order is their
+apply order: `third_party/aera/patches/` (`0001`-`0029`, gaps on purpose),
+then `refinement-patches/` (`F*`), then `remote-patches/` (`R*`); drop updated patches here (or point `AERA_PATCHES` at another
 directory) and rerun the build.
 
 Device-tree patches live under the tree's checkout path, e.g.
