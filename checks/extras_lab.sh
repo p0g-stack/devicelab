@@ -41,39 +41,74 @@ adb shell cmd overlay enable-exclusive --category com.android.internal.systemui.
 swipe_setup
 rec env "$(adb shell "echo touch=$TOUCH max=${MX}x$MY screen=${W}x$H; settings get secure navigation_mode; dumpsys activity service com.android.systemui/.SystemUIService 2>/dev/null | grep -A3 'EdgeBackGestureHandler:' | tr -s ' '" 2>&1 | tr -d '\r' | q)"
 
+# Cases to run: XL_CASES (default 1-8; the swipe cases 2, 3, 6 need SystemUI's
+# back gesture, which is off on the AVD).
+XL_CASES=" ${XL_CASES:-1 2 3 4 5 6 7 8} "
+want() { case "$XL_CASES" in *" $1 "*) return 0;; esac; return 1; }
+ui_text() { $UI dump "$O-$1.xml" 2>/dev/null | head -14 | q; }
+
 # 1: open, start line, push to depth 2.
 adb shell am force-stop "$HPKG"; mark
 rec 1-open "\"$(open_ 1)\""; sleep 5
 rec 1-start "$(lines 1)"; rec 1-ui "$(text)"
 mark; step 'push depth 1' >/dev/null; sleep 2; step 'push depth 2' >/dev/null; sleep 2
-rec 1-push "$(lines 1)"; rec 1-depth "$(depth)"; shot 1-depth2
-# 2: swipe, hold 1 s at halfway, release.
-mark; edge_swipe "$O" 2 commit 1; rec 2-log "$(lines 2)"; rec 2-depth "$(depth)"; rec 2-top "\"$(top)\""
-# 3: swipe out and back to the edge (cancel). Push back to depth 2 first if 2 popped.
-case $(depth) in *'depth 1'*) step 'push depth 2' >/dev/null; sleep 2;; esac
-mark; edge_swipe "$O" 3 cancel 0.5; rec 3-log "$(lines 2)"; rec 3-depth "$(depth)"
-# 4: keyevent Back at depth 1.
-case $(depth) in *'depth 2'*) mark; adb shell input keyevent 4; sleep 2; rec 4-pre-pop "$(lines 1)";; esac
-rec 4-depth-before "$(depth)"
-mark; adb shell input keyevent 4; rec 4-log "$(lines 2)"; rec 4-depth "$(depth)"
-# 5: swipe at the root: the page closes; the root channel shuts down as before.
-mark; edge_swipe "$O" 5 commit 0; rec 5-log "$(lines 2)"; rec 5-top "\"$(top)\""
-# Swipe did nothing (gesture handler off on the AVD): close with keyevent Back.
-case "$(top)" in *WebUIActivity*) mark; adb shell input keyevent 4; rec 5-key-log "$(lines 2)"; rec 5-key-top "\"$(top)\"";; esac
-sleep 60; rec 5-rootlog "$(adb shell "tail -6 $FW/run/root.log 2>&1" | tr -d '\r' | q)"
-# 6: cold start, one push, swipe right away.
-adb shell am force-stop "$HPKG"; mark
-rec 6-open "\"$(open_ 6)\""; sleep 4
-step 'push depth 1' >/dev/null; edge_swipe "$O" 6 commit 1; rec 6-log "$(lines 2)"; rec 6-depth "$(depth)"
-# 7: create shortcut, accept the launcher's pin dialog, reopen: exists=true.
-mark; rec 7-tap "$(step 'create shortcut')"; sleep 3
-rec 7-log "$(lines 1)"; shot 7-dialog; rec 7-dialog "$($UI dump "$O-7.xml" 2>/dev/null | head -12 | q)"
-UI_WAIT=3 $UI tap 'Add automatically' || UI_WAIT=3 $UI tap 'Add to home screen' || UI_EXACT=1 UI_WAIT=3 $UI tap 'Add'; sleep 2
-rec 7-pinned "$(adb shell "dumpsys shortcut | grep -i -B2 -A6 'pinned\|$HPKG' | grep -i -E 'package|id=|flags|pinned' | head -12" | tr -d '\r' | q)"
-adb shell am force-stop "$HPKG"; mark
-rec 7-reopen "\"$(open_ 7)\""; sleep 5; rec 7-start "$(lines 1)"; rec 7-ui "$(text)"
-# 8: package info for android; the icon row.
-mark; rec 8-tap "$(step 'package info for android')"; sleep 3
-rec 8-log "$(lines 2)"; rec 8-ui "$(text)"; shot 8-icon
-rec 8-icon-dom "$(ev 'new Promise(r => { const i = [...document.querySelectorAll("img")].filter(x => (x.src || "").startsWith("ksu://icon")); r(i.map(x => ({src: x.src, complete: x.complete, w: x.naturalWidth, h: x.naturalHeight}))) })')"
+rec 1-push "$(lines 1)"; shot 1-depth2
+if want 2; then mark; edge_swipe "$O" 2 commit 1; rec 2-log "$(lines 2)"; rec 2-top "\"$(top)\""; fi
+if want 3; then mark; edge_swipe "$O" 3 cancel 0.5; rec 3-log "$(lines 2)"; fi
+# 4: keyevent Back at depth 2 then at depth 1: one pop each.
+if want 4; then
+  mark; adb shell input keyevent 4; rec 4-log-d2 "$(lines 2)"
+  mark; adb shell input keyevent 4; rec 4-log-d1 "$(lines 2)"; rec 4-top "\"$(top)\""
+fi
+# 5: at the root: swipe (if the gesture works), else keyevent Back; the page closes.
+if want 5; then
+  mark; edge_swipe "$O" 5 commit 0; rec 5-log "$(lines 2)"; rec 5-top "\"$(top)\""
+  case "$(top)" in *WebUIActivity*) mark; adb shell input keyevent 4; rec 5-key-log "$(lines 2)"; rec 5-key-top "\"$(top)\"";; esac
+  sleep 60; rec 5-rootlog "$(adb shell "tail -6 $FW/run/root.log 2>&1" | tr -d '\r' | q)"
+fi
+if want 6; then
+  adb shell am force-stop "$HPKG"; mark
+  rec 6-open "\"$(open_ 6)\""; sleep 4
+  step 'push depth 1' >/dev/null; edge_swipe "$O" 6 commit 1; rec 6-log "$(lines 2)"
+fi
+# 7: create shortcut; accept the launcher's pin dialog; open the page from the
+# shortcut on the home screen (start line exists=true); tap again (false).
+if want 7; then
+  case "$(top)" in *WebUIActivity*) ;; *) adb shell am force-stop "$HPKG"; rec 7-open "\"$(open_ 7a)\""; sleep 4;; esac
+  mark; rec 7-tap "$(step 'create shortcut')"; sleep 3
+  rec 7-log "$(lines 1)"; shot 7-dialog; rec 7-dialog "$(ui_text 7-dialog)"
+  rec 7-accept "\"$( (UI_WAIT=3 $UI tap 'Add automatically' || UI_WAIT=3 $UI tap 'Add to home screen' || UI_EXACT=1 UI_WAIT=3 $UI tap 'Add') 2>&1 | tail -1)\""; sleep 3
+  rec 7-pinned "$(adb shell "dumpsys shortcut | grep -A12 'Package: $HPKG' | head -30" | tr -d '\r' | q)"
+  adb shell am force-stop "$HPKG"; adb shell input keyevent KEYCODE_HOME; sleep 3; shot 7-home
+  mark; rec 7-home-tap "\"$(UI_EXACT=1 UI_WAIT=5 $UI tap "$NAME" 2>&1 | tail -1)\""; sleep 8
+  rec 7-from-shortcut-top "\"$(top)\""; rec 7-from-shortcut "$(adb shell dumpsys activity activities | grep -m3 -E 'intent=.*WebUI|MODULE_ID' | tr -d '\r' | q)"
+  ev "$HOOK" >/dev/null 2>&1; rec 7-start "$(lines 1)"; rec 7-ui "$(text)"
+  mark; rec 7-tap-2 "$(step 'create shortcut')"; sleep 3; rec 7-log-2 "$(lines 1)"; shot 7-second
+fi
+# 8: package info for android and the first user package; the icon row.
+if want 8; then
+  case "$(top)" in *WebUIActivity*) ;; *) adb shell am force-stop "$HPKG"; rec 8-open "\"$(open_ 8)\""; sleep 4;; esac
+  mark; rec 8-tap "$(step 'package info for android')"; sleep 3
+  rec 8-log "$(lines 2)"; rec 8-ui "$(text)"; shot 8-icon
+  rec 8-icon-dom "$(ev 'new Promise(r => { const i = [...document.querySelectorAll("img")].filter(x => (x.src || "").startsWith("ksu://icon")); r(i.map(x => ({src: x.src, complete: x.complete, w: x.naturalWidth, h: x.naturalHeight}))) })')"
+fi
+# 9 (noshell module): connect root channel, Reject the overlay -> shell-refused
+# after ~2 s; then Allow in a fresh process -> page reloads, tap again: connected.
+if want 9; then
+  adb shell "rm -rf /data/adb/.config/$ID"; adb shell am force-stop "$HPKG"; mark
+  rec 9-open "\"$(open_ 9)\""; sleep 4
+  mark; rec 9-tap "$(step 'connect root channel')"
+  for i in 1 2 3 4 5 6; do sleep 1; $UI has Reject >/dev/null 2>&1 && break; done
+  shot 9-overlay; rec 9-overlay "$(ui_text 9-overlay)"
+  rec 9-reject "\"$(UI_EXACT=1 UI_WAIT=3 $UI tap Reject 2>&1 | tail -1)\""
+  rec 9-log-reject "$(lines 6)"; shot 9-refused
+  adb shell am force-stop "$HPKG"; mark
+  rec 9-open-2 "\"$(open_ 9b)\""; sleep 4
+  mark; rec 9-tap-2 "$(step 'connect root channel')"
+  for i in 1 2 3 4 5 6; do sleep 1; $UI has Allow >/dev/null 2>&1 && break; done
+  rec 9-allow "\"$(UI_EXACT=1 UI_WAIT=3 $UI tap Allow 2>&1 | tail -1)\""; sleep 6
+  rec 9-host-config "$(adb shell "cat /data/adb/.config/$ID/config.webroot.json 2>&1 | head -20" | tr -d '\r' | q)"
+  ev "$HOOK" >/dev/null 2>&1; mark; rec 9-tap-3 "$(step 'connect root channel')"
+  rec 9-log-allow "$(lines 6)"; shot 9-connected
+fi
 rec end-top "\"$(top)\""

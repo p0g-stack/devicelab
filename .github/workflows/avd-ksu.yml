@@ -18,7 +18,7 @@ on:
       demo_zip: { default: "", description: "zip name under lab-inputs modules/ to install as the demo (instead of the module branch or demo_tag); also runs checks/lifecycle.sh" }
       backclose: { default: "", description: "non-empty: only checks/backclose.sh on the demo (skips the WebUI checks); a value other than 1 is BC_PHASES, e.g. 'back:back:intent sleep:sleep:intent exit:exit:intent ui:back:ui'" }
       update_to: { default: "", description: "demo release tag to install over demo_tag with ksud module install (checks/update_to.sh) instead of the manager update check and lifecycle" }
-      extras: { default: "", description: "non-empty: only checks/extras_lab.sh on the demo_zip module (flutter-webui extras lab, 8 cases); skips the WebUI checks" }
+      extras: { default: "", description: "non-empty: only checks/extras_lab.sh on the demo_zip module (flutter-webui extras lab); a value other than 1 is the case list, e.g. '1 4 7 8' or '9'; skips the WebUI checks" }
       backswipe: { default: "", description: "non-empty: only checks/wx_backswipe.sh on the demo (gesture nav, predictive back swipe cancel/commit with page-side event log); skips the WebUI checks" }
       strip_shell_key: { default: "", description: "non-empty: drop the permissions key from the demo zip's webroot/config.json (a module built before the WebUI X SHELL key, for the refused-exec case)" }
       modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
@@ -155,6 +155,7 @@ jobs:
           esac
           id=$(unzip -p inputs/modules/demo.zip module.prop | sed -n 's/^id=//p' | tr -d '\r')
           name=$(unzip -p inputs/modules/demo.zip module.prop | sed -n 's/^name=//p' | tr -d '\r')
+          [ "${{ inputs.extras }}" != 1 ] && export XL_CASES="${{ inputs.extras }}"
           checks/extras_lab.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Back swipe
         if: inputs.backswipe != ''
