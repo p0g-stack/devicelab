@@ -18,6 +18,7 @@ on:
       demo_zip: { default: "", description: "zip name under lab-inputs modules/ to install as the demo (instead of the module branch or demo_tag); also runs checks/lifecycle.sh" }
       backclose: { default: "", description: "non-empty: only checks/backclose.sh on the demo (skips the WebUI checks); a value other than 1 is BC_PHASES, e.g. 'back:back:intent sleep:sleep:intent exit:exit:intent ui:back:ui'" }
       update_to: { default: "", description: "demo release tag to install over demo_tag with ksud module install (checks/update_to.sh) instead of the manager update check and lifecycle" }
+      strip_shell_key: { default: "", description: "non-empty: drop the permissions key from the demo zip's webroot/config.json (a module built before the WebUI X SHELL key, for the refused-exec case)" }
       modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
     branches: [main]
@@ -93,6 +94,20 @@ jobs:
           git clone -q --depth 1 -b module https://github.com/p0g-stack/demo "$RUNNER_TEMP/demo-module"
           (cd "$RUNNER_TEMP/demo-module" && sha256sum -c --ignore-missing SHA256SUMS && git log -1 --format='demo module: %s' && z=$(ls demo-*.zip | head -1) && cp "$z" "$GITHUB_WORKSPACE/inputs/modules/demo.zip" && echo "demo zip: $z") | tee -a "$LAB_OUT/inputs.txt"
           fi
+          if [ -n "${{ inputs.strip_shell_key }}" ]; then
+            python3 - inputs/modules/demo.zip <<'PY' | tee -a "$LAB_OUT/inputs.txt"
+          import json, shutil, sys, zipfile
+          src = sys.argv[1]; tmp = src + ".tmp"
+          with zipfile.ZipFile(src) as a, zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as b:
+              for i in a.infolist():
+                  d = a.read(i.filename)
+                  if i.filename == "webroot/config.json":
+                      c = json.loads(d); c.pop("permissions", None); d = json.dumps(c, indent=2).encode()
+                      print("demo zip: permissions key dropped:", json.dumps(c))
+                  b.writestr(i, d)
+          shutil.move(tmp, src)
+          PY
+          fi
           sha256sum inputs/modules/*.zip | tee -a "$LAB_OUT/inputs.txt"
           zips=(); for m in $MODULES; do zips+=("inputs/modules/$m"); done
           # The lab's self-mounting app_plane module rbinds a tmpfs over /product/app; with a
@@ -117,6 +132,7 @@ jobs:
           for m in $MODULES; do
             id=$(unzip -p "inputs/modules/$m" module.prop | sed -n 's/^id=//p' | tr -d '\r')
             name=$(unzip -p "inputs/modules/$m" module.prop | sed -n 's/^name=//p' | tr -d '\r')
+            case $HOST in webuix*) if [ "$id" = demo ]; then checks/wx_shell.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi;; esac
             MODULE=$id checks/open_module.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
             if [ "$id" = flutter_webui_counter ]; then checks/flutter_webui.sh "$HOST-$id" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ]; then checks/demo_walk.sh "$HOST-$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
