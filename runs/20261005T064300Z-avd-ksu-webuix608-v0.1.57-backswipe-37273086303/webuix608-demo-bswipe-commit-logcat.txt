@@ -1,0 +1,200 @@
+10-05 06:42:41.440 13361 13361 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+10-05 06:42:41.441 13361 13361 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-05 06:42:41.448   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-05 06:42:41.448 13361 13362 I Gralloc4: mapper 4.x is not supported
+10-05 06:42:41.600     0     0 I servicemanager: Caller(pid=13361,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+10-05 06:42:41.497 12697 12723 D EGL_emulation: app_time_stats: avg=1002.16ms min=11.47ms max=1992.84ms count=2
+10-05 06:42:41.507 10460 11334 I ActivityManager: Broadcasting: Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }
+10-05 06:42:41.507 10460 11334 I ActivityManager: Enqueued broadcast Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }: 0
+10-05 06:42:41.508 10460 10757 W JobInfo : Job 'com.google.android.providers.media.module/com.android.providers.media.MediaService#-300' has a deadline with no functional constraints. The deadline won't improve job execution latency. Consider removing the deadline.
+10-05 06:42:41.510 10460 10479 I ActivityManager: Broadcast completed: result=0
+10-05 06:42:41.510 11250 11675 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService }
+10-05 06:42:41.518 11250 11675 W MediaProvider: isAppCloneUserPair for user 0: false
+10-05 06:42:41.523 11250 11675 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.google.android.providers.media.module/com.android.providers.media.MediaService }
+10-05 06:42:41.526 11250 11432 D WM-Processor: Processor cancelling 7f0c71c4-a410-4cbb-a2f9-f3761a776535
+10-05 06:42:41.526 11250 11432 D WM-Processor: WorkerWrapper could not be found for 7f0c71c4-a410-4cbb-a2f9-f3761a776535
+10-05 06:42:41.527 11250 11432 D WM-GreedyScheduler: Cancelling work ID 7f0c71c4-a410-4cbb-a2f9-f3761a776535
+10-05 06:42:41.529 11250 11432 D WM-SystemJobScheduler: Scheduling work ID 88c518b3-b7f2-461e-9642-2f4739345cafJob ID 8
+10-05 06:42:41.530 11250 11432 D WM-GreedyScheduler: Ignoring {WorkSpec: e4d0ee3c-53b1-42fe-aa73-3ee073fbe39f}. Requires device idle.
+10-05 06:42:41.530 11250 11432 D WM-GreedyScheduler: Ignoring {WorkSpec: d54ac0bd-01c5-4a90-bd82-35ddff2769a3}. Requires device idle.
+10-05 06:42:41.548 10911 13193 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService started execution. cause:9 exec_start_elapsed_seconds: 452 [CONTEXT service_id=218 ]
+10-05 06:42:41.551 10911 12999 I NetworkScheduler.Stats: Task com.google.android.gms/com.google.android.gms.ipa.base.IpaGcmTaskService finished executing. cause:9 result: 1 elapsed_millis: 7 uptime_millis: 7 exec_start_elapsed_seconds: 452 [CONTEXT service_id=218 ]
+10-05 06:42:42.569 10460 10479 D CompatChangeReporter: Compat change id reported: 296060945; UID 10143; state: ENABLED
+10-05 06:42:43.026 11250 11250 D WM-DelayedWorkTracker: Scheduling work 88c518b3-b7f2-461e-9642-2f4739345caf
+10-05 06:42:43.027 11250 11250 D WM-GreedyScheduler: Starting tracking for 88c518b3-b7f2-461e-9642-2f4739345caf
+10-05 06:42:43.028 11250 11420 D WM-ConstraintTracker: BatteryNotLowTracker: initial state = true
+10-05 06:42:43.028 11250 11420 D WM-BrdcstRcvrCnstrntTrc: BatteryNotLowTracker: registering receiver
+10-05 06:42:43.029 11250 11420 D WM-GreedyScheduler: Constraints met: Scheduling work ID WorkGenerationalId(workSpecId=88c518b3-b7f2-461e-9642-2f4739345caf, generation=0)
+10-05 06:42:43.030 11250 11420 D WM-Processor: Processor: processing WorkGenerationalId(workSpecId=88c518b3-b7f2-461e-9642-2f4739345caf, generation=0)
+10-05 06:42:43.031 11250 11250 D WM-WorkerWrapper: Starting work for com.android.providers.media.photopicker.sync.ProactiveSyncWorker
+10-05 06:42:43.031 11250 13373 I PSyncWorker: Starting proactive picker sync from sync source: 1
+10-05 06:42:43.031 11250 13373 I PickerSyncTracker: Created new sync future java.util.concurrent.CompletableFuture@6ac8d75[Not completed, 1 dependents]. Future map: {88c518b3-b7f2-461e-9642-2f4739345caf=java.util.concurrent.CompletableFuture@6ac8d75[Not completed, 1 dependents]}
+10-05 06:42:43.032 11250 13373 D PickerSyncController: syncAllMediaFromProvider() LOCAL, auth=com.android.providers.media.photopicker, retry=true
+10-05 06:42:43.032 11250 13373 D PickerSyncController: getSyncRequestParams() LOCAL, auth=com.android.providers.media.photopicker
+10-05 06:42:43.033 11250 13373 D PickerSyncController:    Latest ID/Gen=1409:93da8df0-319e-4de2-b2dc-23dab2646fc1:external_primary/18
+10-05 06:42:43.033 11250 13373 D PickerSyncController:    Cached ID/Gen=1409:93da8df0-319e-4de2-b2dc-23dab2646fc1:external_primary/12
+10-05 06:42:43.033 11250 13373 D PickerSyncController:    RESULT=SyncRequestParams{type=MEDIA_INCREMENTAL, gen=12, latest=Bundle[{last_media_sync_generation=18, media_collection_id=1409:93da8df0-319e-4de2-b2dc-23dab2646fc1:external_primary}], pageSize=1000}
+10-05 06:42:43.033 11250 13373 I PickerSyncController: Executing SyncAdd. isLocal: true. authority: com.android.providers.media.photopicker
+10-05 06:42:43.033 11250 13373 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+10-05 06:42:43.033 11250 13373 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Locked by thread pool-3-thread-2]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-05 06:42:43.033 11250 13373 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-05 06:42:43.033 11250 13373 D ExternalDbFacade: Token received for queryMedia = null
+10-05 06:42:43.034 11250 13373 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+10-05 06:42:43.034 11250 13373 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Locked by thread pool-3-thread-2]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-05 06:42:43.034 11250 13373 D PickerSyncController: Saving next page token: 1791182560000|1000000021 for key: local_provider:media_add:resume
+10-05 06:42:43.034 11250 13373 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-05 06:42:43.034 11250 13373 D PickerNotificationSender: Sending a notification for media update
+10-05 06:42:43.034 11250 13373 D PickerNotificationSender: Sending a notification for merged album media update Favorites
+10-05 06:42:43.034 11250 13373 D PickerNotificationSender: Sending a notification for album media update Favorites
+10-05 06:42:43.035 11250 13373 D PickerNotificationSender: Sending a notification for merged album media update Videos
+10-05 06:42:43.035 11250 13373 D PickerNotificationSender: Sending a notification for album media update Videos
+10-05 06:42:43.035 11250 13373 D ExternalDbFacade: Token received for queryMedia = 1791182560000|1000000021
+10-05 06:42:43.035 11250 13373 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+10-05 06:42:43.035 11250 13373 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Locked by thread pool-3-thread-2]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-05 06:42:43.035 11250 13373 D PickerSyncController: Clearing next page token for key: local_provider:media_add:resume
+10-05 06:42:43.036 11250 13373 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-05 06:42:43.036 11250 13373 D PickerNotificationSender: Sending a notification for media update
+10-05 06:42:43.036 11250 13373 D PickerNotificationSender: Sending a notification for merged album media update Favorites
+10-05 06:42:43.036 11250 13373 D PickerNotificationSender: Sending a notification for album media update Favorites
+10-05 06:42:43.036 11250 13373 D PickerNotificationSender: Sending a notification for merged album media update Videos
+10-05 06:42:43.036 11250 13373 D PickerNotificationSender: Sending a notification for album media update Videos
+10-05 06:42:43.037 11250 13373 I PickerSyncController: Paged sync successful. QueryArgs: Bundle[{android.provider.extra.PAGE_TOKEN=1791182560000|1000000021, android.provider.extra.SYNC_GENERATION=12, android.provider.extra.PAGE_SIZE=1000}] Total Rows: 3
+10-05 06:42:43.037 11250 13373 I PickerSyncController: Executing SyncRemove. isLocal: true. authority: com.android.providers.media.photopicker
+10-05 06:42:43.037 11250 13373 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+10-05 06:42:43.037 11250 13373 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Locked by thread pool-3-thread-2]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-05 06:42:43.037 11250 13373 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-05 06:42:43.037 11250 13373 D PickerSyncLockManager: Trying to acquire lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = [] with timeout.
+10-05 06:42:43.037 11250 13373 D CloseableReentrantLock: Successfully acquired lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Locked by thread pool-3-thread-2]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-05 06:42:43.037 11250 13373 D PickerSyncController: Clearing next page token for key: local_provider:media_remove:resume
+10-05 06:42:43.037 11250 13373 D CloseableReentrantLock: Successfully released lock com.android.providers.media.photopicker.sync.CloseableReentrantLock@8f31534[Unlocked]. Lock Name = CLOUD_PROVIDER_LOCK. Threads that may be waiting to acquire this lock = []
+10-05 06:42:43.037 11250 13373 D PickerNotificationSender: Sending a notification for media update
+10-05 06:42:43.038 11250 13373 D PickerNotificationSender: Sending a notification for merged album media update Favorites
+10-05 06:42:43.038 11250 13373 D PickerNotificationSender: Sending a notification for album media update Favorites
+10-05 06:42:43.038 11250 13373 D PickerNotificationSender: Sending a notification for merged album media update Videos
+10-05 06:42:43.038 11250 13373 D PickerNotificationSender: Sending a notification for album media update Videos
+10-05 06:42:43.038 11250 13373 I PickerSyncController: Paged sync successful. QueryArgs: Bundle[{android.provider.extra.PAGE_TOKEN=1791182560000|1000000021, android.provider.extra.SYNC_GENERATION=12, android.provider.extra.PAGE_SIZE=1000}] Total Rows: 0
+10-05 06:42:43.038 11250 13373 I PickerSyncTracker: Marked sync future complete for work id: 88c518b3-b7f2-461e-9642-2f4739345caf. Future map: {}
+10-05 06:42:43.038 11250 13373 I PSyncWorker: Completed picker proactive sync complete from local provider.
+10-05 06:42:43.039 11250 11420 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=88c518b3-b7f2-461e-9642-2f4739345caf, tags={ com.android.providers.media.photopicker.sync.ProactiveSyncWorker } ]
+10-05 06:42:43.039 11250 11250 D WM-Processor: Processor 88c518b3-b7f2-461e-9642-2f4739345caf executed; reschedule = false
+10-05 06:42:43.039 11250 11250 D WM-GreedyScheduler: Stopping tracking for WorkGenerationalId(workSpecId=88c518b3-b7f2-461e-9642-2f4739345caf, generation=0)
+10-05 06:42:43.041 11250 11420 D WM-GreedyScheduler: Cancelling work ID 88c518b3-b7f2-461e-9642-2f4739345caf
+10-05 06:42:43.041 11250 11420 D WM-GreedyScheduler: Ignoring {WorkSpec: e4d0ee3c-53b1-42fe-aa73-3ee073fbe39f}. Requires device idle.
+10-05 06:42:43.041 11250 11420 D WM-GreedyScheduler: Ignoring {WorkSpec: d54ac0bd-01c5-4a90-bd82-35ddff2769a3}. Requires device idle.
+10-05 06:42:43.041 11250 11420 D WM-BrdcstRcvrCnstrntTrc: BatteryNotLowTracker: unregistering receiver
+10-05 06:42:43.059 11396 11396 I NearbySharing: SharingTileService destroyed [CONTEXT service_id=194 ]
+10-05 06:42:43.069 10460 10555 D ActivityManager: freezing 11333 com.android.traceur
+10-05 06:42:43.070 10460 10555 D ActivityManager: freezing 11559 com.google.android.onetimeinitializer
+10-05 06:42:43.070 10460 10555 D ActivityManager: freezing 11714 com.android.externalstorage
+10-05 06:42:43.071 10460 10555 D ActivityManager: freezing 11817 com.android.localtransport
+10-05 06:42:43.071 10460 10555 D ActivityManager: freezing 11460 com.android.keychain
+10-05 06:42:43.071 10460 10555 D ActivityManager: freezing 11619 android.process.media
+10-05 06:42:43.071 10460 10555 D ActivityManager: freezing 11016 com.google.android.cellbroadcastreceiver
+10-05 06:42:43.071 10460 10555 D ActivityManager: freezing 11367 com.android.printspooler
+10-05 06:42:43.072 10460 10555 D ActivityManager: freezing 11994 com.android.camera2
+10-05 06:42:43.072 10460 10555 D ActivityManager: freezing 11771 com.google.android.apps.wallpaper
+10-05 06:42:43.072 10460 10555 D ActivityManager: freezing 12032 com.android.imsserviceentitlement
+10-05 06:42:43.072 10460 10555 D ActivityManager: freezing 12049 com.android.dynsystem
+10-05 06:42:43.073 10460 10555 D ActivityManager: freezing 12063 com.android.dynsystem:dynsystem
+10-05 06:42:43.073 10460 10555 D ActivityManager: freezing 12062 com.android.managedprovisioning
+10-05 06:42:43.073 10460 10555 D ActivityManager: freezing 12131 com.android.shell
+10-05 06:42:43.073 10460 10555 D ActivityManager: freezing 12182 com.google.android.configupdater
+10-05 06:42:43.073 10460 10555 D ActivityManager: freezing 12148 com.google.android.apps.safetyhub
+10-05 06:42:43.074 10460 10555 D ActivityManager: freezing 12203 com.google.android.federatedcompute
+10-05 06:42:43.074 10460 10555 D ActivityManager: freezing 11915 com.google.android.tts
+10-05 06:42:43.074 10460 10555 D ActivityManager: freezing 12222 com.google.android.healthconnect.controller
+10-05 06:42:43.074 10460 10555 D ActivityManager: freezing 12237 com.google.android.ondevicepersonalization.services
+10-05 06:42:43.075 10460 10555 D ActivityManager: freezing 12250 com.google.android.packageinstaller
+10-05 06:42:43.075 10460 10555 D ActivityManager: freezing 12395 com.android.chrome
+10-05 06:42:43.075 10460 10555 D ActivityManager: freezing 12268 com.google.android.partnersetup
+10-05 06:42:43.075 10460 10555 D ActivityManager: freezing 12503 com.google.android.marvin.talkback
+10-05 06:42:43.076 10460 10555 D ActivityManager: freezing 10858 com.android.settings
+10-05 06:42:43.076 10460 10555 D ActivityManager: freezing 12114 com.android.providers.calendar
+10-05 06:42:43.076 10460 10555 D ActivityManager: freezing 11217 com.google.android.apps.wellbeing
+10-05 06:42:43.077 10460 10555 D ActivityManager: freezing 12488 com.google.android.gms.ui
+10-05 06:42:43.077 10460 10555 D ActivityManager: freezing 12316 com.google.android.settings.intelligence
+10-05 06:42:43.077 10460 10555 D ActivityManager: freezing 12767 com.google.android.webview:webview_service
+10-05 06:42:43.078 10460 10555 D ActivityManager: freezing 12814 com.google.android.webview:webview_apk
+10-05 06:42:43.079 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.080 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.080 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10124} in 2ms
+10-05 06:42:43.081 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.081 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.081 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10128} in 1ms
+10-05 06:42:43.082 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.083 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.083 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10103} in 1ms
+10-05 06:42:43.083 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.084 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.084 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10095} in 1ms
+10-05 06:42:43.084 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.085 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.085 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10206} in 2ms
+10-05 06:42:43.085 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.086 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.086 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10127} in 1ms
+10-05 06:42:43.086 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.087 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.087 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10156} in 1ms
+10-05 06:42:43.088 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.088 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.088 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10175} in 1ms
+10-05 06:42:43.089 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.089 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.089 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10137} in 1ms
+10-05 06:42:43.090 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.090 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.090 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10104} in 1ms
+10-05 06:42:43.091 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.091 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.091 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={2000} in 1ms
+10-05 06:42:43.092 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.092 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.092 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10136} in 1ms
+10-05 06:42:43.093 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.093 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.093 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10129} in 1ms
+10-05 06:42:43.094 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.094 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.094 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10204} in 1ms
+10-05 06:42:43.095 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.095 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.095 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10166} in 1ms
+10-05 06:42:43.096 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.096 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.096 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10192} in 1ms
+10-05 06:42:43.097 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.097 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.097 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10203} in 1ms
+10-05 06:42:43.098 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.098 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.098 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10101} in 1ms
+10-05 06:42:43.099 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.099 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.099 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10145} in 1ms
+10-05 06:42:43.099 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.100 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.100 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10131} in 1ms
+10-05 06:42:43.100 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.101 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.101 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10165} in 1ms
+10-05 06:42:43.101 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.102 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.102 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10100} in 1ms
+10-05 06:42:43.102 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.103 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.103 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10142} in 0ms
+10-05 06:42:43.103 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.104 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.104 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10140} in 1ms
+10-05 06:42:43.104 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:43.105 10381 10398 I netd    : tetherGetStats() -> {[]} <0.46ms>
+10-05 06:42:43.105 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:43.105 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10151} in 2ms
+10-05 06:42:44.468 10460 10540 D WifiNl80211Manager: Scan result ready event
+10-05 06:42:44.468 10460 10540 D WifiNative: Scan result ready event
+10-05 06:42:44.470 10460 10607 I HalDevMgr: bestIfaceCreationProposal is null, requestIface=STA, existingIface=[name=wlan0 type=STA]
+10-05 06:42:44.607 10460 10555 D ActivityManager: freezing 11546 com.google.android.as.oss
+10-05 06:42:44.608 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+10-05 06:42:44.609 10460 10614 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+10-05 06:42:44.609 10460 10614 D InetDiagMessage: Destroyed live tcp sockets for uids={10132} in 2ms
