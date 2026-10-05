@@ -34,6 +34,10 @@ shot() { timeout 20 adb exec-out screencap -p >"$O-$1.png"; }
 
 # SystemUI on the AVD has shown an ANR window and a disabled EdgeBackGestureHandler; restart it once.
 adb shell "pkill -f com.android.systemui$"; sleep 20; adb shell input keyevent KEYCODE_WAKEUP; sleep 2
+# The handler stayed disabled after that (run 37274405346): flip the navigation
+# mode to three-button and back so SystemUI re-attaches the gesture handler.
+adb shell cmd overlay enable-exclusive --category com.android.internal.systemui.navbar.threebutton; sleep 6
+adb shell cmd overlay enable-exclusive --category com.android.internal.systemui.navbar.gestural; sleep 8
 swipe_setup
 rec env "$(adb shell "echo touch=$TOUCH max=${MX}x$MY screen=${W}x$H; settings get secure navigation_mode; dumpsys activity service com.android.systemui/.SystemUIService 2>/dev/null | grep -A3 'EdgeBackGestureHandler:' | tr -s ' '" 2>&1 | tr -d '\r' | q)"
 
@@ -54,6 +58,8 @@ rec 4-depth-before "$(depth)"
 mark; adb shell input keyevent 4; rec 4-log "$(lines 2)"; rec 4-depth "$(depth)"
 # 5: swipe at the root: the page closes; the root channel shuts down as before.
 mark; edge_swipe "$O" 5 commit 0; rec 5-log "$(lines 2)"; rec 5-top "\"$(top)\""
+# Swipe did nothing (gesture handler off on the AVD): close with keyevent Back.
+case "$(top)" in *WebUIActivity*) mark; adb shell input keyevent 4; rec 5-key-log "$(lines 2)"; rec 5-key-top "\"$(top)\"";; esac
 sleep 60; rec 5-rootlog "$(adb shell "tail -6 $FW/run/root.log 2>&1" | tr -d '\r' | q)"
 # 6: cold start, one push, swipe right away.
 adb shell am force-stop "$HPKG"; mark
