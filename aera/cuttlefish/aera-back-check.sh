@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
-# Hold-Back escape (flutter-aera 0024) with the lifecycle probe
+# Back and the way out of a pixel plugin, with the lifecycle probe
 # (aera/apps/lifecycle_probe, whose PopScope keeps Back and logs it):
 #   short Back (Remote key)            -> the app gets it, stays in front
-#   held Back key (raw evdev, 0.8 s)   -> AERA Home, app paused in Recents
-#   held edge swipe (Remote touch)     -> the same
+#   gesture navigation on:  swipe up from the bottom edge -> AERA Home,
+#                           app paused in Recents
+#   gesture navigation off: AERA Remote's Home key (R0003) -> the same
 # reopening keeps the count and the process. Runs with Gesture navigation on,
 # then off (AERA restarted with aera_recents_enabled=0), then restores it.
+# (A held Back that also left the app, flutter-aera 0024, was dropped
+# 2026-10-05: swipe-up is the way out.)
 # Usage: aera-back-check.sh PKG.aerap  ->  $LAB_OUT/aera-back/
 set -uo pipefail
 PKG=$1
@@ -43,19 +46,11 @@ tap() { touch_ down "$1" "$2"; sleep 0.1; touch_ up "$1" "$2"; log "tap $1,$2"; 
 # What reached AERA (its "touch released" debug lines) and the app (POINTER lines).
 touches() { a shell 'logcat -d 2>/dev/null | grep -E "touch released|Back gesture|edge" | tail -40' | tr -d '\r' > "$OUT/touches-aera.log"; }
 key() { log "key $1: $(curl -s -m 5 -X POST -H 'Content-Type: application/json' -H "x-aera-code: $RCODE" -d "{\"key\":\"$1\"}" "$REMOTE/api/input/key")"; }
-# Held Back key: KEY_BACK down, 0.8 s, up, written to Remote's uinput node
-# (it has KEY_BACK); Remote's own key API presses and releases at once.
-held_back() {
-  local node; node=$(a shell 'grep -A5 "AERA Remote Input" /proc/bus/input/devices | sed -n "s/.*Handlers=.*\(event[0-9]*\).*/\1/p"' | tr -d '\r' | head -1)
-  [ -n "$node" ] || { log "no AERA Remote Input node"; return; }
-  a shell "cat /tmp/back-down.ev > /dev/input/$node; sleep 0.8; cat /tmp/back-up.ev > /dev/input/$node"
-  log "held Back key on /dev/input/$node"
-}
-# Held edge swipe: in from the left edge past width/6, still for 0.8 s, release.
-held_swipe() {
-  local i; touch_ down 8 700
-  for i in 1 2 3 4 5 6; do touch_ move $(( 8 + 220 * i / 6 )) $(( 700 + i )); sleep 0.03; done
-  sleep 0.8; touch_ up 228 706; log "held edge swipe"
+# Swipe up from the bottom edge and let go: AERA Home (no hold, so not Recents).
+swipe_up() {
+  local i; touch_ down 360 1340
+  for i in 1 2 3 4 5 6; do touch_ move 360 $(( 1340 - 300 * i / 6 )); sleep 0.03; done
+  touch_ up 360 1040; log "swipe up"
 }
 apppids() { a shell 'for p in /proc/[0-9]*; do grep -qa "aera-host-ap[i]" $p/cmdline 2>/dev/null && echo ${p#/proc/}; done' | tr -d '\r' | sort -n | tr '\n' ' '; }
 open_() { log "open: $(rpc '{"v":1,"id":"back","op":"plugin","args":{"action":"open","id":"'"$id"'"}}' | tr '\n' ' ')"; }
@@ -72,7 +67,7 @@ gesture_nav() {  # gesture_nav 0|1: save it and restart AERA so it is read
   remote
 }
 reloads() { a shell 'grep -nE "lab-back|Reloading input devices" /tmp/recovery.log; stat -c "%y %n" /dev/input /dev/input/*' | tr -d '\r' > "$OUT/input-reload-$1.txt"; }
-round() {  # round NAME: open, tap, short Back, held Back key, reopen, held swipe, reopen
+round() {  # round NAME on|off: open, tap, short Back, leave (swipe up or Home key), reopen
   local n=$1 before
   a shell "echo 'lab-back: round $n' >> /tmp/recovery.log"
   a shell 'pkill -f aera-fl[u]tter; sleep 2'
@@ -80,11 +75,10 @@ round() {  # round NAME: open, tap, short Back, held Back key, reopen, held swip
   tap 360 1000; sleep 1; tap 352 1010; sleep 2; shot "$n-1-tapped"
   before=$(apppids); log "$n pids: $before"
   key back; sleep 3; shot "$n-2-short-back"
-  held_back; sleep 3; shot "$n-3-held-back"
-  log "$n pids after held Back: $(apppids)"
+  if [ "$n" = on ]; then swipe_up; else key home; fi
+  sleep 3; shot "$n-3-left"
+  log "$n pids after leaving: $(apppids)"
   open_; sleep 4; shot "$n-4-reopened"
-  held_swipe; sleep 3; shot "$n-5-held-swipe"
-  open_; sleep 4; shot "$n-6-reopened"
   [ -n "$before" ] && [ "$before" = "$(apppids)" ] && log "$n SAME PROCESS" || log "$n PROCESS CHANGED or gone"
   reloads "$n"
 }
@@ -93,13 +87,6 @@ id=$(unzip -p "$PKG" plugin.json | python3 -c 'import json,sys;print(json.load(s
 rm -rf "$OUT/.pkg"; mkdir -p "$OUT/.pkg"; unzip -q "$PKG" -d "$OUT/.pkg"
 a shell "mkdir -p /tmp/aera/plugins/$id && chmod 700 /tmp/aera /tmp/aera/plugins"
 a push "$OUT/.pkg/plugin.json" "$OUT/.pkg/runtime.xz" "/tmp/aera/plugins/$id/" >/dev/null
-python3 - "$OUT" <<'PY'
-import struct, sys
-ev = lambda t, c, v: struct.pack("<qqHHi", 0, 0, t, c, v)
-open(sys.argv[1] + "/back-down.ev", "wb").write(ev(1, 158, 1) + ev(0, 0, 0))
-open(sys.argv[1] + "/back-up.ev", "wb").write(ev(1, 158, 0) + ev(0, 0, 0))
-PY
-a push "$OUT/back-down.ev" "$OUT/back-up.ev" /tmp/ >/dev/null
 log "installed $id"
 remote || exit 0
 
@@ -111,5 +98,5 @@ applog | grep -E "LIFECYCLE|POINTER" > "$OUT/lifecycle.log"
 log "app saw: $(grep -oE 'LIFECYCLE [a-z]+ [^ ]*' "$OUT/lifecycle.log" | sed 's/LIFECYCLE //' | tr '\n' ';')"
 a shell 'grep -iE "Back|held|lifecycle|pause|resume" /tmp/recovery.log | tail -60' > "$OUT/recovery-back.log" 2>&1
 a shell 'pkill -f aera-fl[u]tter'
-rm -rf "$OUT/.pkg" "$OUT/.req.json" "$OUT/.aera" "$OUT"/*.ev
+rm -rf "$OUT/.pkg" "$OUT/.req.json" "$OUT/.aera"
 exit 0

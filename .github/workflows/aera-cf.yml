@@ -208,7 +208,7 @@ jobs:
         if: steps.p0g.outputs.rev != ''
         timeout-minutes: 10
         run: '[ -f "$LAB_OUT/lifecycle-probe-x64.aerap" ] && aera/cuttlefish/aera-taps-check.sh "$LAB_OUT/lifecycle-probe-x64.aerap" || true'
-      - name: Short and held Back on a pixel plugin, gesture navigation on and off (flutter-aera 0024)
+      - name: Short Back reaches a pixel plugin; swipe up (gesture navigation on) or the Remote Home key (off, R0003) leaves it
         if: steps.p0g.outputs.rev != ''
         timeout-minutes: 15
         run: '[ -f "$LAB_OUT/lifecycle-probe-x64.aerap" ] && aera/cuttlefish/aera-back-check.sh "$LAB_OUT/lifecycle-probe-x64.aerap" || true'
