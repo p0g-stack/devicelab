@@ -1,0 +1,14 @@
+--------- beginning of system
+10-05 05:45:54.995 10354 27678 I ActivityManager: Force stopping com.dergoogler.mmrl.wx appid=10210 user=0: from pid 1284
+10-05 05:45:54.996 10354 27678 I AppsFilter: interaction: PackageSetting{7aa4528 com.android.microdroid.empty_payload/10185} -> PackageSetting{74c980 com.dergoogler.mmrl.wx/10210} BLOCKED
+10-05 05:45:54.997 10354 10530 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_RESTARTED on user 0
+10-05 05:45:54.997 10354 10530 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10210 package com.dergoogler.mmrl.wx isStopped true
+--------- beginning of main
+10-05 05:45:54.997 10707 10707 D CarrierSvcBindHelper: onHandleForceStop: [com.dergoogler.mmrl.wx]
+10-05 05:45:54.997 10707 10707 D CarrierSvcBindHelper: No carrier app for: 0
+10-05 05:45:55.056  1294  1294 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+10-05 05:45:55.056  1294  1294 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-05 05:45:55.062   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-05 05:45:55.062  1294  1295 I Gralloc4: mapper 4.x is not supported
+--------- beginning of kernel
+10-05 05:45:55.211     0     0 I servicemanager: Caller(pid=1294,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
