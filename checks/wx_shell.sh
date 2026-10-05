@@ -61,8 +61,12 @@ print(json.dumps([x[:200] for x in (v or []) if any(k in x.lower() for k in ("ru
   ov=$($UI dump "$O-hello-$i.xml" 2>/dev/null | grep -i -E 'allow|reject|missing permission' | head -3 | tr '\n' '|')
   rec "hello-t$i" "$(printf '{"uptime":"%s","since_tap":"%s","page":%s,"overlay":%s}' "$t" "$(echo "$t - $TH" | bc 2>/dev/null)" "${pt:-null}" "$(printf %s "$ov" | js)")"
   case "$pt" in *[a-zA-Z]*) case "$pt" in '[]') ;; *) [ $i -ge 3 ] && break;; esac;; esac
+  # v608 shows its Allow/Reject overlay for a module without the SHELL key:
+  # answer Reject once (the refused case) and keep timing from there.
+  if [ -n "$ov" ] && [ -z "${REJ:-}" ] && [ $i -ge 3 ]; then REJ=$(now); rec reject-tap "\"$(UI_EXACT=1 $UI tap Reject 2>&1 | tail -1)\""; rec reject-uptime "\"$REJ\""; fi
   sleep 1
 done
+rec hello-all-text "$(text)"
 timeout 20 adb exec-out screencap -p >"$O-hello.png"
 # Straight from the page: does ksu.exec run and call back, and how fast?
 rec exec-probe "$(ev 'new Promise(r => { if (!window.ksu || typeof ksu.exec !== "function") return r({ksu: typeof window.ksu}); const t = performance.now(), cb = "__labcb" + Date.now(); window[cb] = (c, o, e) => r({callback: true, code: c, out: String(o).slice(0, 80), ms: Math.round(performance.now() - t)}); let ret; try { ret = ksu.exec("id", "{}", cb) } catch (e) { return r({threw: String(e)}) } setTimeout(() => r({callback: false, returned: String(ret), ms: 5000}), 5000) })')"
