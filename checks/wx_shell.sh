@@ -45,6 +45,23 @@ done
 timeout 20 adb exec-out screencap -p >"$O-end.png"
 rec root-log "$(sh_ "cat $FW/run/root.log 2>&1 | head -8")"
 rec host-config-after "$(sh_ "ls -la /data/adb/.config/$ID 2>&1; cat /data/adb/.config/$ID/config.webroot.json 2>&1 | head -40")"
+# A root call from the page's own UI: Say hello starts the root channel through
+# ksu.exec. Time until the page shows the hello, or an error (a refused shell
+# should fail in about 2 s, not after the 30 s exec timeout).
+TH=$(now); rec hello-tap "$(step 'Say hello')"
+for i in $(seq 1 20); do
+  t=$(now)
+  pt=$(text | python3 -c 'import json,sys
+try: v = json.loads(sys.stdin.read())
+except Exception: v = []
+v = v.get("value", v) if isinstance(v, dict) else v
+print(json.dumps([x[:200] for x in (v or []) if any(k in x.lower() for k in ("uid", "hello from", "refus", "error", "timeout", "denied", "permission"))][:6]))' 2>/dev/null)
+  ov=$($UI dump "$O-hello-$i.xml" 2>/dev/null | grep -i -E 'allow|reject|missing permission' | head -3 | tr '\n' '|')
+  rec "hello-t$i" "$(printf '{"uptime":"%s","since_tap":"%s","page":%s,"overlay":%s}' "$t" "$(echo "$t - $TH" | bc 2>/dev/null)" "${pt:-null}" "$(printf %s "$ov" | js)")"
+  case "$pt" in *[a-zA-Z]*) case "$pt" in '[]') ;; *) [ $i -ge 3 ] && break;; esac;; esac
+  sleep 1
+done
+timeout 20 adb exec-out screencap -p >"$O-hello.png"
 # Straight from the page: does ksu.exec run and call back, and how fast?
 rec exec-probe "$(ev 'new Promise(r => { if (!window.ksu || typeof ksu.exec !== "function") return r({ksu: typeof window.ksu}); const t = performance.now(), cb = "__labcb" + Date.now(); window[cb] = (c, o, e) => r({callback: true, code: c, out: String(o).slice(0, 80), ms: Math.round(performance.now() - t)}); let ret; try { ret = ksu.exec("id", "{}", cb) } catch (e) { return r({threw: String(e)}) } setTimeout(() => r({callback: false, returned: String(ret), ms: 5000}), 5000) })')"
 adb logcat -d 2>/dev/null | grep -i -E 'permission|shell|webui' | grep -v -E 'nativeloader|PackageManager' | tail -60 >"$O-logcat.txt"
