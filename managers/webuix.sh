@@ -32,26 +32,32 @@ log "activities: $(adb shell dumpsys package $PKG | grep -o "$PKG/[A-Za-z0-9_.]*
 # Superuser tab (tap the app, flip its Superuser switch).
 adb shell /data/adb/ksud profile --help >"$OUT/ksud-profile-help.txt" 2>&1
 granted=no
-adb shell am force-stop $KSU; adb shell monkey -p $KSU -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 4
-UI_EXACT=1 UI_WAIT=30 $UI tap Superuser; sleep 8
-adb exec-out screencap -p >"$OUT/webuix-ksu-superuser.png"
-# The list may expose its rows directly; if not, search (retyping when the
-# field took focus too late) and tap the row.
-found=no
-if UI_WAIT=8 $UI tap "$PKG"; then found=yes; else
-  $UI tapxy 160 152; sleep 3
-  for _ in 1 2 3; do
-    $UI type "WebUI"; sleep 4
-    UI_WAIT=4 $UI tap "$PKG" && { found=yes; break; }
-    UI_EXACT=1 UI_WAIT=2 $UI tap Clean; sleep 2
-  done
-fi
-if [ $found = yes ]; then
-  sleep 3; $UI dump "$OUT/webuix-ksu-profile.xml"; adb exec-out screencap -p >"$OUT/webuix-ksu-profile.png"
-  # The App Profile screen: its first switch is Superuser.
-  $UI switch 1 && sleep 2 && granted=ui
-  adb exec-out screencap -p >"$OUT/webuix-ksu-granted.png"; $UI dump "$OUT/webuix-ksu-granted.xml" >/dev/null
-fi
+# The grant walks the manager UI; a busy AVD can throw ANR dialogs over it
+# (seen 2026-10-05), so retry from a fresh manager start.
+for attempt in 1 2 3; do
+  adb shell am force-stop $KSU; adb shell monkey -p $KSU -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 4
+  UI_EXACT=1 UI_WAIT=30 $UI tap Superuser; sleep 8
+  adb exec-out screencap -p >"$OUT/webuix-ksu-superuser.png"
+  # The list may expose its rows directly; if not, search (retyping when the
+  # field took focus too late) and tap the row.
+  found=no
+  if UI_WAIT=8 $UI tap "$PKG"; then found=yes; else
+    $UI tapxy 160 152; sleep 3
+    for _ in 1 2 3; do
+      $UI type "WebUI"; sleep 4
+      UI_WAIT=4 $UI tap "$PKG" && { found=yes; break; }
+      UI_EXACT=1 UI_WAIT=2 $UI tap Clean; sleep 2
+    done
+  fi
+  if [ $found = yes ]; then
+    sleep 3; $UI dump "$OUT/webuix-ksu-profile.xml"; adb exec-out screencap -p >"$OUT/webuix-ksu-profile.png"
+    # The App Profile screen: its first switch is Superuser.
+    $UI switch 1 && sleep 2 && granted=ui
+    adb exec-out screencap -p >"$OUT/webuix-ksu-granted.png"; $UI dump "$OUT/webuix-ksu-granted.xml" >/dev/null
+  fi
+  [ $granted = ui ] && break
+  log "root grant attempt $attempt failed; retrying"; sleep 15
+done
 log "ksud feature list: $(adb shell /data/adb/ksud feature list 2>&1 | tr -d '\r' | tr '\n' ' ')"
 log "su_compat: $(adb shell /data/adb/ksud feature get su_compat 2>&1 | tr -d '\r' | tr '\n' ' ')"
 log "root grant: $granted; su as app uid $UID_: $(adb shell "su $UID_ /system/bin/su -c id 2>&1 || true" | tr -d '\r' | head -2)"
