@@ -18,6 +18,7 @@ on:
       demo_zip: { default: "", description: "zip name under lab-inputs modules/ to install as the demo (instead of the module branch or demo_tag); also runs checks/lifecycle.sh" }
       backclose: { default: "", description: "non-empty: only checks/backclose.sh on the demo (skips the WebUI checks); a value other than 1 is BC_PHASES, e.g. 'back:back:intent sleep:sleep:intent exit:exit:intent ui:back:ui'" }
       update_to: { default: "", description: "demo release tag to install over demo_tag with ksud module install (checks/update_to.sh) instead of the manager update check and lifecycle" }
+      backswipe: { default: "", description: "non-empty: only checks/wx_backswipe.sh on the demo (gesture nav, predictive back swipe cancel/commit with page-side event log); skips the WebUI checks" }
       strip_shell_key: { default: "", description: "non-empty: drop the permissions key from the demo zip's webroot/config.json (a module built before the WebUI X SHELL key, for the refused-exec case)" }
       modules: { default: "flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip", description: "zip names under modules/ on the lab-inputs branch, space separated" }
   push:
@@ -121,7 +122,7 @@ jobs:
           managers/install_modules.sh "${zips[@]}" 2>&1 | tee -a "$LAB_OUT/job.log"
           adb shell cat /data/local/tmp/customize-env.txt >"$LAB_OUT/customize-env.txt" 2>&1 || true
       - name: WebUI checks
-        if: inputs.backclose == ''
+        if: inputs.backclose == '' && inputs.backswipe == ''
         timeout-minutes: 55
         run: |
           case $HOST in
@@ -143,6 +144,16 @@ jobs:
             if [ "$id" = demo ]; then UNINSTALL=$([ -n "${{ inputs.demo_tag }}${{ inputs.demo_zip }}" ] && echo 0 || echo 1) NAME="$name" checks/app_plane_module.sh "$HOST-$id" "$PKG" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ] && [ -n "${{ inputs.demo_tag }}" ] && [ -z "${{ inputs.update_to }}" ] && [ "$HOST" = kernelsu ]; then checks/module_update.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
           done
+      - name: Back swipe
+        if: inputs.backswipe != ''
+        timeout-minutes: 20
+        run: |
+          case $HOST in
+            webuix*) PKG=com.dergoogler.mmrl.wx;;
+            *) case $FLAVOR in kernelsu) PKG=me.weishu.kernelsu;; next) PKG=com.rifsxd.ksunext;; esac;;
+          esac
+          name=$(unzip -p inputs/modules/demo.zip module.prop | sed -n 's/^name=//p' | tr -d '\r')
+          checks/wx_backswipe.sh "$HOST-demo" "$PKG" demo "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Back close
         if: inputs.backclose != ''
         timeout-minutes: 60
@@ -155,7 +166,7 @@ jobs:
           [ "${{ inputs.backclose }}" != 1 ] && export BC_PHASES="${{ inputs.backclose }}"
           checks/backclose.sh "$HOST-demo" "$PKG" demo "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Lifecycle
-        if: always() && (inputs.demo_tag != '' || inputs.demo_zip != '') && inputs.update_to == '' && inputs.backclose == ''
+        if: always() && (inputs.demo_tag != '' || inputs.demo_zip != '') && inputs.update_to == '' && inputs.backclose == '' && inputs.backswipe == ''
         timeout-minutes: 35
         run: |
           case $HOST in
