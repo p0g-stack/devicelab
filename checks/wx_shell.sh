@@ -67,3 +67,13 @@ timeout 20 adb exec-out screencap -p >"$O-hello.png"
 # Straight from the page: does ksu.exec run and call back, and how fast?
 rec exec-probe "$(ev 'new Promise(r => { if (!window.ksu || typeof ksu.exec !== "function") return r({ksu: typeof window.ksu}); const t = performance.now(), cb = "__labcb" + Date.now(); window[cb] = (c, o, e) => r({callback: true, code: c, out: String(o).slice(0, 80), ms: Math.round(performance.now() - t)}); let ret; try { ret = ksu.exec("id", "{}", cb) } catch (e) { return r({threw: String(e)}) } setTimeout(() => r({callback: false, returned: String(ret), ms: 5000}), 5000) })')"
 adb logcat -d 2>/dev/null | grep -i -E 'permission|shell|webui' | grep -v -E 'nativeloader|PackageManager' | tail -60 >"$O-logcat.txt"
+# Host extras as the page sees them (WebUI X v608: webui.createShortcut /
+# hasShortcut, ksu.listPackages / getPackagesInfo, ksu://icon/<pkg>), probed
+# straight from JS, not through flutter-webui's WebUi.* wrappers.
+rec host-extras "$(ev 'new Promise(async r => { const o = {}; const t = (k, f) => { try { o[k] = f() } catch (e) { o[k] = "throw " + String(e).slice(0, 120) } };
+  for (const [ns, m] of [["webui", "createShortcut"], ["webui", "hasShortcut"], ["ksu", "listPackages"], ["ksu", "getPackagesInfo"], ["ksu", "listUserPackages"], ["ksu", "exit"], ["webui", "exit"]]) o["typeof " + ns + "." + m] = typeof (window[ns] && window[ns][m]);
+  if (window.ksu && typeof ksu.listPackages === "function") t("listPackages(user) length", () => { const v = ksu.listPackages("user"); try { return JSON.parse(v).length } catch (e) { return String(v).slice(0, 120) } });
+  if (window.ksu && typeof ksu.getPackagesInfo === "function") t("getPackagesInfo([android])", () => String(ksu.getPackagesInfo(JSON.stringify(["android"]))).slice(0, 400));
+  if (window.webui && typeof webui.hasShortcut === "function") t("hasShortcut()", () => String(webui.hasShortcut()));
+  o.icon = await new Promise(q => { const i = new Image(); i.onload = () => q("loaded " + i.naturalWidth + "x" + i.naturalHeight); i.onerror = () => q("error"); i.src = "ksu://icon/android"; setTimeout(() => q("timeout"), 4000) });
+  r(o) })')"
