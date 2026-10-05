@@ -38,15 +38,26 @@ rec logger "$(ev "$LOGGER")"
 rec push-route "$(step "$ROUTE")"; sleep 3
 rec route-before "$(text)"
 
-# swipe <tag> <commit|cancel>: DOWN at the left edge, MOVE in steps to 45% of
-# the width (cancel: back to the edge), a screencap at 3 points, UP.
+# The touchscreen's evdev node and range: `input motionevent` steps (one
+# process each, own downTime) did not start the system back gesture on the
+# AVD (2026-10-05 run 37267772813), so drive the kernel device directly, as
+# the AERA lab does: one adb shell of sendevent writes.
+TOUCH=$(adb shell getevent -pl 2>/dev/null | tr -d '\r' | awk '/^add device/ {d=$4} /ABS_MT_POSITION_X/ {print d; exit}')
+read -r MX MY < <(adb shell getevent -pl "$TOUCH" 2>/dev/null | tr -d '\r' | awk '/ABS_MT_POSITION_X/ {for (i=1;i<=NF;i++) if ($i=="max") x=$(i+1)} /ABS_MT_POSITION_Y/ {for (i=1;i<=NF;i++) if ($i=="max") y=$(i+1)} END {gsub(",","",x); gsub(",","",y); print x, y}')
+rec touch "\"$TOUCH max ${MX}x$MY\""
+# swipe <tag> <commit|cancel>: finger down at the left edge, 12 moves out to
+# 45% of the width (cancel: 6 moves back to the edge), screencaps mid-gesture
+# (after move 6 and at the far point), lift.
 swipe() {
-  local tag=$1 mode=$2 y=$((H / 2)) x1=$((W * 45 / 100)) s="" i x
-  s="input motionevent DOWN 1 $y; sleep 0.05;"
-  for i in 1 2 3 4 5 6 7 8 9 10; do x=$((1 + (x1 - 1) * i / 10)); s+=" input motionevent MOVE $x $y; sleep 0.04;"; [ $i = 5 ] && s+=" screencap -p /sdcard/bs-$tag-1.png;"; done
+  local tag=$1 mode=$2 i px py sy s
+  sx() { echo $(( $1 * MX / W )); }
+  py=$((H / 2)); sy=$(( py * MY / H ))
+  E="sendevent $TOUCH"
+  s="$E 3 57 7; $E 3 53 $(sx 1); $E 3 54 $sy; $E 3 58 50; $E 1 330 1; $E 0 0 0; sleep 0.03;"
+  for i in 1 2 3 4 5 6 7 8 9 10 11 12; do px=$((1 + (W * 45 / 100 - 1) * i / 12)); s+=" $E 3 53 $(sx $px); $E 0 0 0; sleep 0.03;"; [ $i = 6 ] && s+=" screencap -p /sdcard/bs-$tag-1.png;"; done
   s+=" screencap -p /sdcard/bs-$tag-2.png;"
-  if [ "$mode" = cancel ]; then for i in 9 7 5 3 1; do x=$((1 + (x1 - 1) * i / 10)); s+=" input motionevent MOVE $x $y; sleep 0.04;"; done; x=1; else x=$x1; fi
-  s+=" input motionevent UP $x $y; sleep 0.3; screencap -p /sdcard/bs-$tag-3.png"
+  if [ "$mode" = cancel ]; then for i in 10 8 6 4 2 0; do px=$((1 + (W * 45 / 100 - 1) * i / 12)); s+=" $E 3 53 $(sx $px); $E 0 0 0; sleep 0.03;"; done; fi
+  s+=" $E 3 57 4294967295; $E 1 330 0; $E 0 0 0; sleep 0.4; screencap -p /sdcard/bs-$tag-3.png"
   adb shell "$s" 2>&1 | tr -d '\r' | tail -3
   for i in 1 2 3; do adb pull "/sdcard/bs-$tag-$i.png" "$O-$tag-$i.png" >/dev/null 2>&1; done
   adb shell "rm -f /sdcard/bs-$tag-*.png"
@@ -63,5 +74,9 @@ rec commit-route "$(text)"; rec commit-top "\"$(top)\""
 ev 'window.__bs && (__bs.length = 0)' >/dev/null
 swipe root commit; sleep 3
 rec root-events "$(ev 'window.__bs || "logger gone"')"; rec root-top "\"$(top)\""
+# Comparison: one `input swipe` from the edge on a pushed route.
+step "$ROUTE" >/dev/null; sleep 3; ev 'window.__bs && (__bs.length = 0)' >/dev/null
+adb shell input swipe 1 $((H / 2)) $((W * 45 / 100)) $((H / 2)) 600
+sleep 3; rec inputswipe-events "$(ev 'window.__bs || "logger gone"')"; rec inputswipe-route "$(text)"; rec inputswipe-top "\"$(top)\""
 adb logcat -d 2>/dev/null | grep -i -E 'BackGesture|OnBackInvoked|BackNavigation|predictive' | tail -40 >"$O-logcat.txt"
 adb shell cmd overlay enable-exclusive --category com.android.internal.systemui.navbar.threebutton >/dev/null 2>&1
