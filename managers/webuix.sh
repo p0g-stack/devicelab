@@ -21,7 +21,7 @@ else
   gh release view -R "$REPO" "$TAG" --json assets -q '.assets[].name' | tee "$OUT/webuix-assets.txt"
   APK=$(grep -i -E '\.apk$' "$OUT/webuix-assets.txt" | grep -i -v -E 'debug|arm|x86' | head -1)
   [ -n "$APK" ] || APK=$(grep -i -E '\.apk$' "$OUT/webuix-assets.txt" | head -1)
-  gh release download -R "$REPO" "$TAG" -D "$D" -p "$APK" && log "downloaded $REPO $TAG $APK"
+  gh release download -R "$REPO" "$TAG" -D "$D" -p "$APK" && log "downloaded $REPO $TAG $APK sha256 $(sha256sum "$D/$APK" | cut -d' ' -f1)"
 fi
 adb install -r -g "$D/$APK" 2>&1 | tail -1
 UID_=$(adb shell stat -c %u /data/data/$PKG | tr -d '\r')

@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       flavor: { default: kernelsu, description: "kernelsu | next" }
-      host: { default: all, description: "all | kernelsu | webuix | webuix608 (WebUI host legs to run; webuix = WebUI X Portable latest GitHub release, v438; webuix608 = the Play v608 APK from lab-inputs, sha256-pinned in managers/webuix-apks.sha256)" }
+      host: { default: all, description: "all | kernelsu | webuix | webuix608 (WebUI host legs to run; webuix = WebUI X Portable v438 from GitHub (pinned: Latest moved to v608 on 2026-10-05); webuix608 = the Play v608 APK from lab-inputs, sha256-pinned in managers/webuix-apks.sha256)" }
       tag: { default: "", description: "release tag, empty = latest" }
       api: { default: "35" }
       label: { default: "", description: "extra name for the lab-results run, e.g. demo-0.9" }
@@ -77,7 +77,7 @@ jobs:
             case $f in *.enc) openssl enc -d -aes-256-cbc -pbkdf2 -pass env:WEBUIX_APK_KEY -in "$f" -out "${f%.enc}"; f=${f%.enc};; esac
             export WEBUIX_APK=$f
           fi
-          managers/webuix.sh 2>&1 | tee -a "$LAB_OUT/job.log"
+          managers/webuix.sh "$([ "$HOST" = webuix ] && echo v438)" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Install modules
         if: env.MODULES != ''
         run: |
