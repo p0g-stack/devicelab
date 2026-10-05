@@ -1,0 +1,60 @@
+10-05 09:26:22.902  7747  7785 V WindowManagerShell:  try handler com.android.wm.shell.pip.PipTransition@bb7cc76
+10-05 09:26:22.902  7747  7785 V WindowManagerShell:  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@6d23277
+10-05 09:26:22.902  7747  7785 V WindowManagerShell:  try handler com.android.wm.shell.recents.RecentsTransitionHandler@1e9eee4
+10-05 09:26:22.902  7747  7785 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-05 09:26:22.902  7747  7785 V WindowManagerShell:  try handler com.android.wm.shell.splitscreen.StageCoordinator@fbc5f4d
+10-05 09:26:22.902  7747  7785 V WindowManagerShell:  try handler com.android.wm.shell.transition.RemoteTransitionHandler@acc3a02
+10-05 09:26:22.902  7747  7785 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=15 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@9119e37} m=OPEN f=NONE leash=Surface(name=Task=18)/@0xb436bf8 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0 taskParent=-1},{WCT{android.window.IWindowContainerToken$Stub$Proxy@3f4fa4} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x6ab8d1 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0 taskParent=-1}]}
+10-05 09:26:22.902  7747  7785 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@8b2a1d1, appThread = android.app.IApplicationThread$Stub$Proxy@a02c436, debugName = LauncherToDream }}
+10-05 09:26:22.902  7747  7785 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@2ba2f37, appThread = android.app.IApplicationThread$Stub$Proxy@f330ca4, debugName = QuickstepLaunchHome }}
+10-05 09:26:22.902  7747  7785 V WindowManagerShell:  Delegate animation for (#15) to null
+10-05 09:26:22.902  7747  7785 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultTransitionHandler@1e6f96f
+10-05 09:26:22.902  7747  7785 V WindowManagerShell: start default transition animation, info = {id=15 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@9119e37} m=OPEN f=NONE leash=Surface(name=Task=18)/@0xb436bf8 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0 taskParent=-1},{WCT{android.window.IWindowContainerToken$Stub$Proxy@3f4fa4} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x6ab8d1 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0 taskParent=-1}]}
+10-05 09:26:22.902  7747  7785 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@18468c2 animAttr=0x13 type=OPEN isEntrance=false
+10-05 09:26:22.903  7747  7785 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@557e6d3 animAttr=0x12 type=OPEN isEntrance=true
+10-05 09:26:22.906  7747  7785 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@1e6f96f
+10-05 09:26:22.906  7747  7785 W Looper  : Slow dispatch took 33ms wmshell.main h=android.os.Handler c=com.android.wm.shell.transition.RemoteTransitionHandler$1$$ExternalSyntheticLambda0@fb01d2f m=0
+10-05 09:26:22.906  7747  7785 W Looper  : Slow delivery took 30ms wmshell.main h=android.os.Handler c=android.window.TaskOrganizer$1$$ExternalSyntheticLambda7@83aef3c m=0
+10-05 09:26:22.948  7527  7980 D CoreBackPreview: Window{afdb64a u0 com.dergoogler.mmrl.wx/com.dergoogler.mmrl.wx.ui.webui.WebUIActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@9edd697, mPriority=-1, mIsAnimationCallback=false}
+10-05 09:26:23.180  7527  7546 I ActivityTaskManager: Displayed com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity for user 0: +461ms
+10-05 09:26:23.199  7747  7785 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#15) android.os.BinderProxy@81a40c8@0
+10-05 09:26:23.208  7747  7785 V WindowManagerShell: Track 0 became idle
+10-05 09:26:23.208  7747  7785 V WindowManagerShell: All active transition animations finished
+10-05 09:26:23.438 10804 10804 W l.process.webui: Entry not found
+10-05 09:26:23.472  7527  7980 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 99003, packageName = null, attributionTag = null, token = android.os.Binder@359a9e0, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-05 09:26:23.523  7527  7542 W ProcessStats: Tracking association SourceState{a277257 com.dergoogler.mmrl.process.webui/10210 BTop #2156} whose proc state 2 is better than process ProcessState{17f4a0a com.google.android.webview:webview_service/10151 pkg=com.google.android.webview} proc state 14 (2 skipped)
+10-05 09:26:23.562  7527  7980 D CoreBackPreview: Window{afdb64a u0 com.dergoogler.mmrl.wx/com.dergoogler.mmrl.wx.ui.webui.WebUIActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@9939f47, mPriority=0, mIsAnimationCallback=true}
+10-05 09:26:23.565 10804 10804 D WebUIProvider.kt:497: Added Event Listener bb7554bd-f5fd-4be9-949c-7356f28df91e
+10-05 09:26:23.785 10804 10804 D WebUIProvider.kt:339: Added interface 311f5389-d266-4a3e-8862-60a17ca7ea94 | ModuleInterface
+10-05 09:26:23.794 10804 10804 D WebUIProvider.kt:339: Added interface e7334dcc-bd1a-4e5b-aa9d-09b8736c34ed | FileInputInterface
+10-05 09:26:23.802 10804 10804 D WebUIProvider.kt:339: Added interface 53d11fec-6af0-49ed-89bc-f65fc21faa71 | FileOutputInterface
+10-05 09:26:23.822 10804 10804 D WebUIProvider.kt:339: Added interface demo | ModuleInterface
+10-05 09:26:23.824 10804 10804 D WebUIProvider.kt:339: Added interface ksu | KernelSUInterface
+10-05 09:26:23.845 10804 10804 D WebUIProvider.kt:339: Added interface 21359511-7398-42f4-84b2-ccb2778f9cf7 | ApplicationInterface
+10-05 09:26:23.846 10804 10804 D WebUIProvider.kt:497: Added Event Listener 8e2bfcba-28cf-4c48-86d2-33628042a14d
+10-05 09:26:23.871 10804 10804 D WebUIProvider.kt:339: Added interface b3fb1cce-508e-4ae6-a425-4d685cc2f62a | FileSystemInterface
+10-05 09:26:23.907 10804 10804 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/internal/
+10-05 09:26:23.907 10804 10804 D WebUIProvider.kt:432: Added Path Handler ksu://icon/
+10-05 09:26:23.907 10804 10804 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/.demo/
+10-05 09:26:23.908 10804 10804 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/.adb/
+10-05 09:26:23.908 10804 10804 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/.config/
+10-05 09:26:23.908 10804 10804 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/.local/
+10-05 09:26:23.910 10804 10804 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/
+10-05 09:26:23.913 10804 10869 W cr_media: BLUETOOTH_CONNECT permission is missing.
+10-05 09:26:23.913 10804 10869 W cr_media: registerBluetoothIntentsIfNeeded: Requires BLUETOOTH permission
+10-05 09:26:34.087 10804 10810 W l.process.webui: ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~WjVyjE6_j8zE9hFGKFPzew==/com.google.android.webview--WuBlS_GUL5mrqh2gTLzWA==/WebViewGoogle.apk' with 2 weak references
+10-05 09:27:45.811 11478 11478 I KernelSU: ksud::cli: command: Module { command: Config { internal: None, command: Get { key: "webui.boot" } } }
+10-05 09:27:45.849 11481 11481 I KernelSU: ksud::cli: command: Module { command: Config { internal: None, command: Set { key: "webui.boot", value: None, stdin: true, temp: true } } }
+10-05 09:27:45.975 11482 11482 I KernelSU: ksud::cli: command: Module { command: Config { internal: None, command: Get { key: "webui.session" } } }
+10-05 09:27:46.230 11500 11500 I KernelSU: ksud::cli: command: Module { command: Config { internal: None, command: Set { key: "webui.session", value: None, stdin: true, temp: true } } }
+10-05 09:27:46.261  7527  7541 I ActivityManager: Background started FGS: Allowed [callingPackage: com.android.shell; callingUid: 0; uidState: NONE; uidBFSL: n/a; intent: Intent { cmp=com.webui.api.demo/com.termux.api.RootHelperService }; code:SYSTEM_UID; tempAllowListReason:<null>; targetSdkVersion:28; callerTargetSdkVersion:35; startForegroundCount:0; bindFromPackage:null: isBindService:false]
+10-05 09:27:46.263  7527  7541 I AppsFilter: interaction: PackageSetting{933b365 com.android.microdroid.empty_payload/10208} -> PackageSetting{7c20e14 com.webui.api.demo/10211} BLOCKED
+10-05 09:27:46.263  7527  7541 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 10211, packageName = null, attributionTag = null, token = android.os.Binder@359a9e0, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-05 09:27:46.270  7527  7700 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10211 package com.webui.api.demo isStopped false
+10-05 09:27:46.273  7527  7564 I ActivityManager: Start proc 11514:com.webui.api.demo/u0a211 for service {com.webui.api.demo/com.termux.api.RootHelperService}
+10-05 09:27:46.292 11514 11514 I .webui.api.demo: Using CollectorTypeCMC GC.
+10-05 09:27:46.293 11514 11514 W .webui.api.demo: Unexpected CPU variant for x86: x86_64.
+10-05 09:27:46.293 11514 11514 W .webui.api.demo: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+10-05 09:27:46.294 11514 11514 E .webui.api.demo: Not starting debugger since process cannot load the jdwp agent.
+10-05 09:27:46.322  7527  7563 I ActivityManager: Deferring FGS notification in legacy app com.webui.api.demo/u0a211 : Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)
+10-05 09:27:51.953 11514 11577 D ProfileInstaller: Installing profile for com.webui.api.demo
