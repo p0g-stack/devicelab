@@ -45,3 +45,7 @@ Results so far: `observations/avd-35-x86_64/managers-2026-10-01.md`.
 ## TODO
 
 - WebUI X root grant: the Superuser-tab grant was flaky (search typing raced focus; 18:28 KernelSU run got none) and always drove KernelSU even in `flavor=next`. 2026-10-01 fix: tap the row directly, retry the search, use the flavor's manager. Unverified until Actions runs again.
+
+- WebUI X after v438 (Play v608, master): the activity is `.ui.webui.WebUIActivity` and reads only `-e MODULE_ID <id>`;
+  the old `.ui.activity.webui.WebUIActivity` stays in the manifest but its class is gone. `open_webui.sh` tries the new
+  form first. Host `webuix608` in avd-ksu installs the supplied Play APK, sha256-checked against `webuix-apks.sha256`.

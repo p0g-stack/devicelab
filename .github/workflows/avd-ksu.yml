@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       flavor: { default: kernelsu, description: "kernelsu | next" }
-      host: { default: all, description: "all | kernelsu | webuix (WebUI host legs to run)" }
+      host: { default: all, description: "all | kernelsu | webuix | webuix608 (WebUI host legs to run; webuix = WebUI X Portable latest GitHub release, v438; webuix608 = the Play v608 APK from lab-inputs, sha256-pinned in managers/webuix-apks.sha256)" }
       tag: { default: "", description: "release tag, empty = latest" }
       api: { default: "35" }
       label: { default: "", description: "extra name for the lab-results run, e.g. demo-0.9" }
@@ -31,7 +31,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        host: ${{ fromJSON((inputs.host == '' || inputs.host == 'all') && '["kernelsu","webuix"]' || format('["{0}"]', inputs.host)) }}
+        host: ${{ fromJSON((inputs.host == '' || inputs.host == 'all') && '["kernelsu","webuix","webuix608"]' || format('["{0}"]', inputs.host)) }}
     env:
       LAB_OUT: ${{ github.workspace }}/out
       GH_TOKEN: ${{ github.token }}
@@ -64,8 +64,19 @@ jobs:
       - name: Manager
         run: managers/ksu.sh "$FLAVOR" "${{ inputs.tag }}" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: WebUI X Portable
-        if: matrix.host == 'webuix'
-        run: managers/webuix.sh 2>&1 | tee -a "$LAB_OUT/job.log"
+        if: startsWith(matrix.host, 'webuix')
+        env:
+          WEBUIX_APK_KEY: ${{ secrets.WEBUIX_APK_KEY }}
+        run: |
+          if [ "$HOST" = webuix608 ]; then
+            # Play builds are not on GitHub: the APK sits on lab-inputs under
+            # managers/ (as .enc when encrypted with the WEBUIX_APK_KEY secret).
+            git fetch -q --depth 1 origin lab-inputs && mkdir -p "$RUNNER_TEMP/wx" && git archive FETCH_HEAD managers | tar -x -C "$RUNNER_TEMP/wx"
+            f=$(ls "$RUNNER_TEMP"/wx/managers/WebUI-X-v608-*.apk* | head -1)
+            case $f in *.enc) openssl enc -d -aes-256-cbc -pbkdf2 -pass env:WEBUIX_APK_KEY -in "$f" -out "${f%.enc}"; f=${f%.enc};; esac
+            export WEBUIX_APK=$f
+          fi
+          managers/webuix.sh 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Install modules
         if: env.MODULES != ''
         run: |
@@ -99,7 +110,7 @@ jobs:
         timeout-minutes: 55
         run: |
           case $HOST in
-            webuix) PKG=com.dergoogler.mmrl.wx;;
+            webuix*) PKG=com.dergoogler.mmrl.wx;;
             *) case $FLAVOR in kernelsu) PKG=me.weishu.kernelsu;; next) PKG=com.rifsxd.ksunext;; esac;;
           esac
           checks/webui_host.sh "$HOST" "$PKG" 2>&1 | tee -a "$LAB_OUT/job.log"
@@ -121,7 +132,7 @@ jobs:
         timeout-minutes: 60
         run: |
           case $HOST in
-            webuix) PKG=com.dergoogler.mmrl.wx;;
+            webuix*) PKG=com.dergoogler.mmrl.wx;;
             *) case $FLAVOR in kernelsu) PKG=me.weishu.kernelsu;; next) PKG=com.rifsxd.ksunext;; esac;;
           esac
           name=$(unzip -p inputs/modules/demo.zip module.prop | sed -n 's/^name=//p' | tr -d '\r')
@@ -132,7 +143,7 @@ jobs:
         timeout-minutes: 35
         run: |
           case $HOST in
-            webuix) PKG=com.dergoogler.mmrl.wx;;
+            webuix*) PKG=com.dergoogler.mmrl.wx;;
             *) case $FLAVOR in kernelsu) PKG=me.weishu.kernelsu;; next) PKG=com.rifsxd.ksunext;; esac;;
           esac
           name=$(unzip -p inputs/modules/demo.zip module.prop | sed -n 's/^name=//p' | tr -d '\r')

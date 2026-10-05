@@ -12,4 +12,5 @@ Pins: what this repo holds fixed, where, and who moves it. Values read from the 
 | AERA kit + sim in the CF lab | `.github/workflows/aera-cf.yml` | release kit-3.47.5, **latest upload every run**, sha256 from the release itself | follows flutter-aera |
 | AERA image under test | `aera-cf.yml` input `aera_release` | default `latest`; gate image aera-cf-x86_64-90aeba8-242db857a00545f4 | lab run dispatcher |
 | Managers (KernelSU, WebUI X, …) | `managers/*.sh` `TAG` arg | latest release when not given | per run |
+| WebUI X Play build (host `webuix608`) | `managers/webuix-apks.sha256`; APK on lab-inputs `managers/` | v608 `ae88a8ca…afb2` (Play, 2026-10-03) | devicelab, from an APK Yuv supplies |
 | Flutter in the CF lab | `aera-cf.yml` `flutter-version` | 3.47.5 | devicelab |

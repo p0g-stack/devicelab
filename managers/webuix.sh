@@ -2,17 +2,27 @@
 # Put WebUI X Portable on an AVD that already runs KernelSU (managers/ksu.sh),
 # grant it root through KernelSU, and record its first screens and
 # activities. Usage: webuix.sh [tag]     needs gh (GH_TOKEN) and adb.
+# WEBUIX_APK=<file> installs that APK instead of a GitHub release (Play builds
+# such as v608 are not on GitHub); its sha256 must be listed in
+# managers/webuix-apks.sha256 or the script stops.
 set -uo pipefail
 TAG=${1:-}; REPO=MMRLApp/WebUI-X-Portable; PKG=com.dergoogler.mmrl.wx
 case ${FLAVOR:-kernelsu} in next) KSU=com.rifsxd.ksunext;; *) KSU=me.weishu.kernelsu;; esac
 OUT=${LAB_OUT:-$PWD/out}; mkdir -p "$OUT"; D=$(mktemp -d)
 HERE=$(cd "$(dirname "$0")/.." && pwd); UI="python3 $HERE/managers/ui.py"
 log() { echo "== $*"; }
-[ -n "$TAG" ] || TAG=$(gh release view -R "$REPO" --json tagName -q .tagName)
-gh release view -R "$REPO" "$TAG" --json assets -q '.assets[].name' | tee "$OUT/webuix-assets.txt"
-APK=$(grep -i -E '\.apk$' "$OUT/webuix-assets.txt" | grep -i -v -E 'debug|arm|x86' | head -1)
-[ -n "$APK" ] || APK=$(grep -i -E '\.apk$' "$OUT/webuix-assets.txt" | head -1)
-gh release download -R "$REPO" "$TAG" -D "$D" -p "$APK" && log "downloaded $REPO $TAG $APK"
+if [ -n "${WEBUIX_APK:-}" ]; then
+  APK=$(basename "$WEBUIX_APK"); cp "$WEBUIX_APK" "$D/$APK"
+  SUM=$(sha256sum "$D/$APK" | cut -d' ' -f1)
+  grep -q "^$SUM " "$HERE/managers/webuix-apks.sha256" || { log "$APK sha256 $SUM is not in managers/webuix-apks.sha256"; exit 1; }
+  log "supplied APK $APK sha256 $SUM (pinned)"
+else
+  [ -n "$TAG" ] || TAG=$(gh release view -R "$REPO" --json tagName -q .tagName)
+  gh release view -R "$REPO" "$TAG" --json assets -q '.assets[].name' | tee "$OUT/webuix-assets.txt"
+  APK=$(grep -i -E '\.apk$' "$OUT/webuix-assets.txt" | grep -i -v -E 'debug|arm|x86' | head -1)
+  [ -n "$APK" ] || APK=$(grep -i -E '\.apk$' "$OUT/webuix-assets.txt" | head -1)
+  gh release download -R "$REPO" "$TAG" -D "$D" -p "$APK" && log "downloaded $REPO $TAG $APK"
+fi
 adb install -r -g "$D/$APK" 2>&1 | tail -1
 UID_=$(adb shell stat -c %u /data/data/$PKG | tr -d '\r')
 log "installed $PKG uid=$UID_ $(adb shell dumpsys package $PKG | grep -m1 versionName | tr -d '\r')"

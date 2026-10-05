@@ -13,7 +13,7 @@ page() { node "$HERE/driver/webview.mjs" list 2>/dev/null | python3 -c 'import j
 wait_page() { for _ in $(seq 1 "${1:-8}"); do sleep 1; page && return 0; done; return 1; }
 case $PKG in
   me.weishu.kernelsu|com.rifsxd.ksunext|com.sukisu.ultra) ACT=$PKG/.ui.webui.WebUIActivity;;
-  com.dergoogler.mmrl.wx) ACT=$PKG/.ui.activity.webui.WebUIActivity;;
+  com.dergoogler.mmrl.wx) ACT=$PKG/.ui.activity.webui.WebUIActivity;;   # v438; newer builds below
   *) ACT=${WEBUI_ACTIVITY:-};;
 esac
 adb logcat -c
@@ -21,6 +21,13 @@ adb shell am force-stop "$PKG"
 # A first-launch notification prompt sits on top of the manager UI otherwise.
 adb shell pm grant "$PKG" android.permission.POST_NOTIFICATIONS 2>/dev/null
 if [ -n "$ACT" ] && [ "${OPEN_VIA:-}" != ui ]; then
+  # WebUI X after v438 (v608 on Play, master): the activity moved to
+  # .ui.webui.WebUIActivity and reads only the MODULE_ID extra; the old class
+  # name stays in the manifest but is gone, so try the new form first.
+  if [ "$PKG" = com.dergoogler.mmrl.wx ]; then
+    adb shell am start -W -n "$PKG/.ui.webui.WebUIActivity" -e MODULE_ID "'$ID'" 2>&1 | tr -d '\r' | grep -E 'Status|Activity|Error|Warning'
+    if wait_page 8; then adb exec-out screencap -p >"$O-intent.png"; echo "opened: intent-module-id"; exit 0; fi
+  fi
   adb shell am start -W -n "$ACT" -e id "'$ID'" -e name "'$NAME'" 2>&1 | tr -d '\r' | grep -E 'Status|Activity|Error|Warning'
   if wait_page 8; then adb exec-out screencap -p >"$O-intent.png"; echo "opened: intent"; exit 0; fi
   # KernelSU Next starts its WebUI as dat=kernelsu://webui/<id> (seen in its own launch).
