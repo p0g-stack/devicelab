@@ -1,0 +1,28 @@
+--------- beginning of system
+10-05 05:40:11.061  9023  9347 I ActivityManager: Force stopping me.weishu.kernelsu appid=10209 user=0: from pid 21142
+10-05 05:40:11.062  9023  9347 I ActivityManager: Killing 22115:me.weishu.kernelsu/u0a209 (adj 900): stop me.weishu.kernelsu due to from pid 21142
+10-05 05:40:11.062  9023  9043 D DisplayManagerService: Drop pending events for gone uid 10209
+10-05 05:40:11.063  9023  9064 I ActivityManager: Process PhantomProcessRecord {4edd087 22133:22115:sh/0} died
+10-05 05:40:11.064  9023  9347 I AppsFilter: interaction: PackageSetting{dff0b0f com.android.microdroid.empty_payload/10190} -> PackageSetting{ef590ff me.weishu.kernelsu/10209} BLOCKED
+--------- beginning of main
+10-05 05:40:11.066  9391  9391 D CarrierSvcBindHelper: onHandleForceStop: [me.weishu.kernelsu]
+10-05 05:40:11.067  9391  9391 D CarrierSvcBindHelper: No carrier app for: 0
+10-05 05:40:11.067  9023  9203 I AppWidgetServiceImpl: Received broadcast: android.intent.action.PACKAGE_RESTARTED on user 0
+10-05 05:40:11.067  9023  9203 I AppWidgetServiceImpl: Updating package stopped masked state for uid 10209 package me.weishu.kernelsu isStopped true
+10-05 05:40:11.077  9023  9898 V ActivityManager: Got obituary of 22115:me.weishu.kernelsu
+10-05 05:40:11.077  9023  9045 W ActivityManager: setHasOverlayUi called on unknown pid: 22115
+10-05 05:40:11.078  8972  8972 I Zygote  : Process 22115 exited due to signal 9 (Killed)
+--------- beginning of kernel
+10-05 05:40:11.267     0     0 I KernelSU: ksu fd released
+10-05 05:40:11.269     0     0 I init    : Untracked pid 22133 received signal 9
+10-05 05:40:11.270     0     0 I init    : Untracked pid 22133 did not have an associated service entry and will not be reaped
+10-05 05:40:11.272     0     0 I init    : Untracked pid 22137 received signal 9
+10-05 05:40:11.273     0     0 I init    : Untracked pid 22137 did not have an associated service entry and will not be reaped
+10-05 05:40:11.085  8948  8948 I netd    : tetherGetStats() -> {[]} <0.41ms>
+10-05 05:40:11.093  9023  9064 I libprocessgroup: Removed cgroup /sys/fs/cgroup/uid_10209/pid_22115
+10-05 05:40:11.093  9023  9064 I ActivityManager: Process PhantomProcessRecord {e351bb4 22137:22115:sh/0} died
+10-05 05:40:11.150 21153 21153 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+10-05 05:40:11.150 21153 21153 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+10-05 05:40:11.157   170   170 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+10-05 05:40:11.157 21153 21154 I Gralloc4: mapper 4.x is not supported
+10-05 05:40:11.346     0     0 I servicemanager: Caller(pid=21153,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
