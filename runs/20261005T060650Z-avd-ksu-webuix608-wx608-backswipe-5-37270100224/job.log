@@ -1,0 +1,356 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 29s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.0
+total 16428
+drwx------  2 runner runner     4096 Oct  5 05:59 .
+drwxrwxrwt 16 root   root       4096 Oct  5 05:59 ..
+-rw-r--r--  1 runner runner 10777987 Oct  5 05:59 KernelSU_v3.3.0_32601-release.apk
+-rw-r--r--  1 runner runner  5713312 Oct  5 05:59 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   318824 Oct  5 05:59 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu, KernelSU_v3.3.0_32601-release.apk)
+/tmp/tmp.JBu9F5Elm8/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 6.0 MB/s (318824 bytes in 0.051s)
+/tmp/tmp.JBu9F5Elm8/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 118.2 MB/s (5713312 bytes in 0.046s)
+== ksud: ksud 3.3.0 (uapi: 2)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              159744  0 
+== lsmod: kernelsu              159744  1 
+KernelSU_v3.3.0_32601-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-pc-windows-gnu.exe
+ksud-x86_64-unknown-linux-musl
+ksuinit-aarch64
+ksuinit-x86_64
+lkm-aarch64-android12-5.10_kernelsu.ko
+lkm-aarch64-android13-5.10_kernelsu.ko
+lkm-aarch64-android13-5.15_kernelsu.ko
+lkm-aarch64-android14-5.15_kernelsu.ko
+lkm-aarch64-android14-6.1_kernelsu.ko
+lkm-aarch64-android15-6.6_kernelsu.ko
+lkm-aarch64-android16-6.12_kernelsu.ko
+lkm-aarch64-android17-6.18_kernelsu.ko
+lkm-x86_64-android12-5.10_kernelsu.ko
+lkm-x86_64-android13-5.10_kernelsu.ko
+lkm-x86_64-android13-5.15_kernelsu.ko
+lkm-x86_64-android14-5.15_kernelsu.ko
+lkm-x86_64-android14-6.1_kernelsu.ko
+lkm-x86_64-android15-6.6_kernelsu.ko
+lkm-x86_64-android16-6.12_kernelsu.ko
+lkm-x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in tiann/KernelSU v3.3.0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.043s)
+== modules: [
+  {
+    "id": "devicelab_probe",
+    "update": "false",
+    "action": "false",
+    "remove": "false",
+    "enabled": "true",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "versionCode": "1",
+    "author": "p0g-stack",
+    "web": "true",
+    "version": "1",
+    "name": "devicelab probe",
+    "mount": "false"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+== home text: text="LKM" text="Working [Jailbreak mode]" text="Version: 32601-2" text="Manager version" text="v3.3.0 (32601-2)" text="Kernel version" text="6.6.50-android15-8-g8adecb593e9b-ab12525588" text="Device model" text="Google sdk_gphone64_x86_64" text="Fingerprint" text="google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys" text="Enforcing" text="KernelSU" text="Home" text="Superuser" text="1" text="Module" text="Settings" 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+== supplied APK WebUI-X-v608-release-official.apk sha256 ae88a8cad10b7d7d2146e9b02726fe588595691ae1d9e95206e0c293deb2afb2 (pinned)
+Success
+== installed com.dergoogler.mmrl.wx uid=10210     versionName=v608-release
+== activities: com.dergoogler.mmrl.wx/.provider.WXDocumentsProvider com.dergoogler.mmrl.wx/.ui.activity.FileExplorerActivity com.dergoogler.mmrl.wx/.ui.activity.MainActivity com.dergoogler.mmrl.wx/.ui.activity.webui.WebUIActivity com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity com.dergoogler.mmrl.wx/.util.NonRootService com.dergoogler.mmrl.wx/androidx.core.content.FileProvider com.dergoogler.mmrl.wx/androidx.profileinstaller.ProfileInstallReceiver com.dergoogler.mmrl.wx/androidx.startup.InitializationProvider com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxy com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.RescheduleReceiver com.dergoogler.mmrl.wx/androidx.work.impl.diagnostics.DiagnosticsReceiver 
+ui: tapped 'Superuser' at 120,584
+ui: no node with 'com.dergoogler.mmrl.wx'
+ui: tapped 160,152
+ui: tapped 'com.dergoogler.mmrl.wx' at 160,130
+[12,230][308,290] Superuser
+[243,236][292,284] 
+[12,302][308,358] App Profile | Default
+[12,26][60,74] 
+[260,26][308,74] Settings
+ui: tapped switch 1 ('', was checked=false)
+== ksud feature list: Available Features: ================================================================================ [ENABLED (1)] su_compat (ID=0)     SU Compatibility Mode - allows authorized apps to gain root via traditional 'su' command  [ENABLED (1)] kernel_umount (ID=1)     Kernel Umount - controls whether kernel automatically unmounts modules when not needed  [DISABLED] sulog (ID=2)     SU Log - streams kernel sulog events to userspace and persists them to disk  [DISABLED] adb_root (ID=3)     ADB Root - Enable adbd root  [DISABLED] selinux_hide (ID=4)     SELinux Hide - sanitize /sys/fs/selinux access results for app UIDs  [DISABLED] webview_zygote_umount (ID=5)     WebView Zygote Umount - unmount modules from WebView zygote and its isolated children  
+== su_compat: Feature: su_compat (0) Description: SU Compatibility Mode - allows authorized apps to gain root via traditional 'su' command Value: 1 Status: enabled 
+== root grant: ui; su as app uid 10210: su: failed to exec /system/bin/su: No such file or directory
+ui: tapped 'KernelSU' at 160,265
+[40,165][280,221] Magisk
+[40,309][280,389] KernelSU Next
+[40,405][280,461] APatch
+[40,477][280,557] SukiSU Ultra
+[40,573][280,629] Non-Root
+[40,644][280,692] Continue with KernelSU
+ui: tapped 'Continue with KernelSU' at 160,668
+[90,243][144,290] 
+[90,365][144,412] 
+[16,612][304,768] Support Us | WebUI X is, and always will be, free, and open source. You can however show us that you care by making a do
+[110,796][211,876] 
+[219,796][320,876] 
+ui: no node with 'Continue with KernelSU'
+ui: no node with 'Next'
+ui: no node with 'Continue'
+ui: no node with 'Grant'
+ui: no node with 'Allow'
+ui: no node with 'Get started'
+ui: no node with 'Done'
+ui: no node with 'OK'
+ui: no node with 'Finish'
+[90,243][144,290] 
+[90,365][144,412] 
+[16,612][304,768] Support Us | WebUI X is, and always will be, free, and open source. You can however show us that you care by making a do
+[110,796][211,876] 
+[219,796][320,876] 
+ui: no node with 'Continue with KernelSU'
+ui: no node with 'Next'
+ui: no node with 'Continue'
+ui: no node with 'Grant'
+ui: no node with 'Allow'
+ui: no node with 'Get started'
+ui: no node with 'Done'
+ui: no node with 'OK'
+ui: no node with 'Finish'
+[90,243][144,290] 
+[90,365][144,412] 
+[16,612][304,768] Support Us | WebUI X is, and always will be, free, and open source. You can however show us that you care by making a do
+[110,796][211,876] 
+[219,796][320,876] 
+== WebUI X platform after onboarding: preferences.pb 
+== devtools sockets: 
+== metamodule releases backslashxx/mountify: 204 Latest 204 2026-08-25T05:14:18Z;203  203 2026-06-25T15:03:16Z;202  202 2026-06-23T03:45:32Z;
+== metamodule candidate backslashxx/mountify mountify.zip: id=mountify version=v2.0.4 versionCode=204 metamodule=true 
+== metamodule repo (given): backslashxx/mountify
+== metamodule zip: mountify.zip sha256 dde361c444f6990b759890720487785402a391a61cf6530f960deb98e5ef864d
+== metamodule module.prop: id=mountify name=mountify version=v2.0.4 versionCode=204 author=xx, KOWX712 metamodule=true description=Globally mounted modules via OverlayFS. updateJson=https://raw.githubusercontent.com/backslashxx/mountify/master/update.json 
+/tmp/tmp.JQpyoGt1Tw/rel/mountify.zip: 1 file pushed, 0 skipped. 311.4 MB/s (554873 bytes in 0.002s)
+== install mountify.zip
+[H[J[|]
+[H[J[\]
+[H[J[+] mountify
+[+] SysReq test
+[+] CONFIG_OVERLAY_FS
+[+] overlay found in /proc/filesystems
+[+] CONFIG_TMPFS_XATTR
+[+] tmpfs extended attribute test passed
+[!] using fresh config.sh
+[+] moving modules.txt
+[+] moving whiteouts.txt
+[+] mountify will be installed in metamodule mode!
+- Done
+- Creating metamodule symlink
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (47s): [
+  {
+    "version": "1",
+    "action": "false",
+    "author": "p0g-stack",
+    "enabled": "true",
+    "remove": "false",
+    "name": "devicelab probe",
+    "id": "devicelab_probe",
+    "update": "false",
+    "versionCode": "1",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "web": "true",
+    "mount": "false"
+  },
+  {
+    "updateJson": "https://raw.githubusercontent.com/backslashxx/mountify/master/update.json",
+    "name": "mountify",
+    "description": "mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted",
+    "action": "true",
+    "mount": "false",
+    "author": "xx, KOWX712",
+    "id": "mountify",
+    "version": "v2.0.4",
+    "versionCode": "204",
+    "metamodule": "true",
+    "enabled": "true",
+    "update": "false",
+    "remove": "false",
+    "web": "true"
+  }
+]
+total 32
+drwxrwxrwx 4 root root 4096 2026-10-05 06:04 .
+drwx------ 6 root root 4096 2026-10-05 06:04 ..
+drwxr-xr-x 3 root root 4096 2026-10-05 05:59 devicelab_probe
+drwxr-xr-x 5 root root 4096 2026-10-05 06:04 mountify
+== metamodule active: lrwxrwxrwx 1 root root 26 2026-10-05 06:04 /data/adb/metamodule -> /data/adb/modules/mountify id=mountify name=mountify version=v2.0.4 versionCode=204 author=xx, KOWX712 metamodule=true description=mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted updateJson=https://raw.githubusercontent.com/backslashxx/mountify/master/update.json 
+inputs/modules/flutter_webui_counter-0.1.5.zip: 1 file pushed, 0 skipped. 456.3 MB/s (21434766 bytes in 0.045s)
+== install flutter_webui_counter-0.1.5.zip
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.8.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.2.woff2
+   creating: webroot/fonts/notosansmath/
+   creating: webroot/fonts/notosansmath/v15/
+  inflating: webroot/fonts/notosansmath/v15/7Aump_cpkSecTWaHRlH2hyV5UHkD-V048PW0.woff2
+   creating: webroot/fonts/roboto/
+   creating: webroot/fonts/roboto/v32/
+  inflating: webroot/fonts/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2
+  inflating: webroot/.last_build_id
+  inflating: webroot/config.json
+  inflating: webroot/flutter_webui.js
+  inflating: customize.sh
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 575.9 MB/s (6582359 bytes in 0.011s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+inputs/modules/demo.zip: 1 file pushed, 0 skipped. 456.6 MB/s (19825982 bytes in 0.041s)
+== install demo.zip
+  inflating: webroot/pkg/.gitignore
+  inflating: webroot/pkg/demo_native.js
+  inflating: webroot/pkg/demo_native_bg.wasm
+  inflating: webroot/pkg/package.json
+  inflating: webroot/version.json
+  inflating: webroot/workers/demo_service.web.g.dart.js
+  inflating: webroot/workers/hello_service.web.g.dart.js
+  inflating: webui_app_plane/app-install.sh
+  inflating: webui_app_plane/app.apk
+  inflating: webui_app_plane/arm64-v8a/webui_termux_api.aot
+  inflating: webui_app_plane/termux-api
+  inflating: webui_app_plane/x86_64/webui_termux_api.aot
+  Installed com.webui.api.demo 1011
+- Done
+- Module installed successfully!
+/home/runner/work/devicelab/devicelab/envdump.zip: 1 file pushed, 0 skipped. 16.2 MB/s (1766 bytes in 0.000s)
+== install envdump.zip
+ devicelab envdump 
+ by p0g-stack 
+*******************
+*********************
+ Powered by KernelSU 
+*********************
+Archive:  /data/local/tmp/m.zip
+  inflating: customize.sh
+- Extracting module files
+Archive:  /data/local/tmp/m.zip
+  inflating: module.prop
+  inflating: customize.sh
+- devicelab envdump: written /data/local/tmp/customize-env.txt
+- Done
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (47s): [
+  {
+    "version": "1",
+    "name": "devicelab probe",
+    "author": "p0g-stack",
+    "enabled": "true",
+    "web": "true",
+    "action": "false",
+    "remove": "false",
+    "update": "false",
+    "id": "devicelab_probe",
+    "mount": "false",
+    "versionCode": "1",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools."
+  },
+  {
+    "id": "mountify",
+    "name": "mountify",
+    "version": "v2.0.4",
+    "update": "false",
+    "action": "true",
+    "remove": "false",
+    "versionCode": "204",
+    "mount": "false",
+    "metamodule": "true",
+    "updateJson": "https://raw.githubusercontent.com/backslashxx/mountify/master/update.json",
+    "web": "true",
+    "enabled": "true",
+    "description": "mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted",
+    "author": "xx, KOWX712"
+  },
+  {
+    "remove": "false",
+    "action": "false",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "id": "flutter_webui_counter",
+    "mount": "false",
+    "version": "0.1.5",
+    "name": "flutter-webui Counter",
+    "author": "p0g-stack",
+    "versionCode": "6",
+    "enabled": "true",
+    "update": "false",
+    "web": "true"
+  },
+  {
+    "id": "counter",
+    "web": "true",
+    "version": "v1.0.0",
+    "action": "false",
+    "update": "false",
+    "author": "Yuv",
+    "description": "A new Flutter project.",
+    "versionCode": "1",
+    "name": "Counter",
+    "enabled": "true",
+    "remove": "false",
+    "mou
+total 64
+drwxrwxrwx 8 root root 4096 2026-10-05 06:05 .
+drwx------ 6 root root 4096 2026-10-05 06:04 ..
+drwxr-xr-x 3 root root 4096 2026-10-05 06:05 counter
+drwxr-xr-x 6 root root 4096 2026-10-05 06:05 demo
+drwxr-xr-x 2 root root 4096 2026-10-05 06:05 devicelab_envdump
+drwxr-xr-x 3 root root 4096 2026-10-05 05:59 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-10-05 06:05 flutter_webui_counter
+drwxr-xr-x 5 root root 4096 2026-10-05 06:04 mountify
+{"check":"nav-before","result":"[ ] com.android.internal.systemui.navbar.threebutton\n[ ] com.android.internal.systemui.navbar.twobutton\n[ ] com.android.internal.systemui.navbar.transparent\n[x] com.android.internal.systemui.navbar.gestural"}
+{"check":"nav-after","result":"[ ] com.android.internal.systemui.navbar.threebutton\n[ ] com.android.internal.systemui.navbar.twobutton\n[ ] com.android.internal.systemui.navbar.transparent\n[x] com.android.internal.systemui.navbar.gestural\n2"}
+{"check":"screen","result":"320x640"}
+{"check":"open","result":"opened: intent-module-id"}
+{"check":"logger","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_12715","value":{"addMXEventListener":true,"historyLength":2,"href":"https://mui.kernelsu.org/"}}}
+{"check":"push-route","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_12715","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"route-before","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_12715","value":["Back\nBack","One service, DemoService, opened in every place this build knows. Each place probes its own facts from inside; the page never guesses from the platform it was built for.","200k","1M","3M","Count primes in every place","Restart places","inline (the caller)\nkind: inline\nstart 517 ms, first facts() round trip 397 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 491 ms, first facts() round trip 40 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+tr: write error: Broken pipe
+{"check":"touch","result":"/dev/input/event2 max 32767x32767"}
+{"check":"gesture-settings","result":"backup_enabled=0\nbackup_transport=com.google.android.gms/.backup.BackupTransportService\ndoze_tap_gesture=null\nhush_gesture_used=0\nnavigation_mode=2\nsilence_gesture=0\nskip_gesture=0\nvolume_hush_gesture=1\nwake_gesture_enabled=1\nname=\nname='962f45d Application Not Responding: com.android.systemui'\nname='962f45d Application Not Responding: com.android.systemui' result='OK'\nname='ActivityRecord{f93afcc u0 com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity t14}'\nname='[Gesture Monitor] swipe-up'\nname=283d58 Taskbar\nname=55a885c StatusBar\nname=68845ff ActivityRecordInputSink com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity\nname=7e860af com.dergoogler.mmrl.wx/com.dergoogler.mmrl.wx.ui.webui.WebUIActivity\nname=8a24790 com.android.systemui.wallpapers.ImageWallpaper\nname=962f45d Application Not Responding: com.android.systemui\nname=ActivityRecord{f93afcc u0 com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity t14}\nname=[Gesture Monitor] swipe-up\nname=e90eb56 ActivityRecordInputSink com.google.android.apps.nexuslauncher/.NexusLauncherActivity\nname=stylus-handwriting-event-receiver-0\n    EdgeBackGestureHandler:\n      mIsEnabled=false\n      mIsAttached=false\n      mIsBackGestureAllowed=true\n      mIsGestureHandlingEnabled=false\n      mIsNavBarShownTransiently=false\n      mGestureBlockingActivityRunning=false\n      mAllowGesture=false\n      mUseMLModel=false\n      mDisabledForQuickstep=false\n      mStartingQuickstepRotation=-1\n      mInRejectedExclusion=false\n      mExcludeRegion=SkRegion()\n      mUnrestrictedExcludeRegion=SkRegion()\n      mIsInPip=false\n      mPipExcludedBounds=Rect(0, 0 - 0, 0)\n      mDesktopModeExclusionRegion=SkRegion()\n      mNavBarOverlayExcludedBounds=Rect(0, 0 - 0, 0)\n      mEdgeWidthLeft=30\n      mEdgeWidthRight=30\n      mLeftInset=0\n      mRightInset=0\n      mMLEnableWidth=12\n      mMLModelThreshold=0.0\n      mTouchSlop=6.0\n      mBottomGestureHeight=32.0\n      mPredictionLog=\n      mGestureLogInsideInsets=\n      mGestureLogOutsideInsets=\n      mTrackpadsConnected=\n      mUsingThreeButtonNav=false\n      mEdgeBackPlugin=null\n\n    CRITICAL dump took 0ms -- com.android.systemui.navigationbar.TaskbarDelegate\n\n    com.android.systemui.power.PowerUI:\n    ----------------------------------------------------------------------------\n    mLowBatteryAlertCloseLevel=25\n    mLowBatteryReminderLevels=[20, 10]\n    mBatteryLevel=100\n    mBatteryStatus=2\n  mSystemGestureExclusion=SkRegion()\n  system_gesture_exclusion_log_debounce_millis=1500\n  system_gesture_exclusion_limit_dp=200"}
+{"check":"cancel-events","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_12715","value":[]}}
+{"check":"cancel-route","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_12715","value":["Back\nBack","One service, DemoService, opened in every place this build knows. Each place probes its own facts from inside; the page never guesses from the platform it was built for.","200k","1M","3M","Count primes in every place","Restart places","inline (the caller)\nkind: inline\nstart 517 ms, first facts() round trip 397 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 491 ms, first facts() round trip 40 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"cancel-top","result":"topResumedActivity=ActivityRecord{f93afcc u0 com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity t14}"}
+{"check":"commit-events","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_12715","value":[]}}
+{"check":"commit-route","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_12715","value":["Back\nBack","One service, DemoService, opened in every place this build knows. Each place probes its own facts from inside; the page never guesses from the platform it was built for.","200k","1M","3M","Count primes in every place","Restart places","inline (the caller)\nkind: inline\nstart 517 ms, first facts() round trip 397 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 491 ms, first facts() round trip 40 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"commit-top","result":"topResumedActivity=ActivityRecord{f93afcc u0 com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity t14}"}
+{"check":"root-events","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_12715","value":[]}}
+{"check":"root-top","result":"topResumedActivity=ActivityRecord{f93afcc u0 com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity t14}"}
+{"check":"inputswipe-events","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_12715","value":[]}}
+{"check":"inputswipe-route","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_12715","value":["Back\nBack","One service, DemoService, opened in every place this build knows. Each place probes its own facts from inside; the page never guesses from the platform it was built for.","200k","1M","3M","Count primes in every place","Restart places","inline (the caller)\nkind: inline\nstart 517 ms, first facts() round trip 397 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","worker (isolate or Web Worker)\nkind: web_worker\nstart 491 ms, first facts() round trip 40 ms\nroot\ncheck: effective uid 0\nblock_devices\ncheck: a kernel-listed block device opens for reading\nusb.native\ncheck: /dev/bus/usb lists\nusb.web\ncheck: navigator.usb exists\nprocess.spawn\ncheck: a shell runs\nfs.persistent\ncheck: working dir writable, or storage persisted\nnet\ncheck: a non-loopback interface is up, or onLine\nnative\ncheck: null","Places","Strategy","Rust","Lifecycle","Shell","Plugins"]}}
+{"check":"inputswipe-top","result":"topResumedActivity=ActivityRecord{f93afcc u0 com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity t14}"}
