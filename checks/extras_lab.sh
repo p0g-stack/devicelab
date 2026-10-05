@@ -51,7 +51,11 @@ ui_text() { $UI dump "$O-$1.xml" 2>/dev/null | head -14 | q; }
 adb shell am force-stop "$HPKG"; mark
 rec 1-open "\"$(open_ 1)\""; sleep 5
 rec 1-start "$(lines 1)"; rec 1-ui "$(text)"
-mark; step 'push depth 1' >/dev/null; sleep 2; step 'push depth 2' >/dev/null; sleep 2
+# Real taps (uiautomator on the WebView's accessibility nodes): a JS click()
+# carries no user activation, and run 37281608189 showed Back then closing the
+# page from depth 2 with no pop on all three hosts.
+tap_() { UI_WAIT=5 $UI tap "$1" >/dev/null 2>&1 || step "$1" >/dev/null; }
+mark; tap_ 'push depth 1'; sleep 2; tap_ 'push depth 2'; sleep 2
 rec 1-push "$(lines 1)"; shot 1-depth2
 if want 2; then mark; edge_swipe "$O" 2 commit 1; rec 2-log "$(lines 2)"; rec 2-top "\"$(top)\""; fi
 if want 3; then mark; edge_swipe "$O" 3 cancel 0.5; rec 3-log "$(lines 2)"; fi
@@ -69,7 +73,7 @@ fi
 if want 6; then
   adb shell am force-stop "$HPKG"; mark
   rec 6-open "\"$(open_ 6)\""; sleep 4
-  step 'push depth 1' >/dev/null; edge_swipe "$O" 6 commit 1; rec 6-log "$(lines 2)"
+  tap_ 'push depth 1'; edge_swipe "$O" 6 commit 1; rec 6-log "$(lines 2)"
 fi
 # 7: create shortcut; accept the launcher's pin dialog; open the page from the
 # shortcut on the home screen (start line exists=true); tap again (false).
