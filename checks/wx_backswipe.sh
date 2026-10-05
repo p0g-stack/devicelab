@@ -45,6 +45,7 @@ rec route-before "$(text)"
 TOUCH=$(adb shell getevent -pl 2>/dev/null | tr -d '\r' | awk '/^add device/ {d=$4} /ABS_MT_POSITION_X/ {print d; exit}')
 read -r MX MY < <(adb shell getevent -pl "$TOUCH" 2>/dev/null | tr -d '\r' | awk '/ABS_MT_POSITION_X/ {for (i=1;i<=NF;i++) if ($i=="max") x=$(i+1)} /ABS_MT_POSITION_Y/ {for (i=1;i<=NF;i++) if ($i=="max") y=$(i+1)} END {gsub(",","",x); gsub(",","",y); print x, y}')
 rec touch "\"$TOUCH max ${MX}x$MY\""
+rec gesture-settings "$(adb shell "settings list secure | grep -i -E 'gesture|navigation_mode|back'; dumpsys input | grep -i -E -A2 'monitor' | head -20; dumpsys window | grep -i -E 'exclusion|gesturalNav|NavigationMode' | head -10" 2>&1 | tr -d '\r' | q)"
 # swipe <tag> <commit|cancel>: finger down at the left edge, 12 moves out to
 # 45% of the width (cancel: 6 moves back to the edge), screencaps mid-gesture
 # (after move 6 and at the far point), lift.
@@ -67,7 +68,11 @@ swipe cancel cancel; sleep 2
 rec cancel-events "$(ev 'window.__bs || "logger gone"')"
 rec cancel-route "$(text)"; rec cancel-top "\"$(top)\""
 ev 'window.__bs && (__bs.length = 0)' >/dev/null
+adb shell "getevent -lt $TOUCH > /sdcard/ge.txt 2>&1 & echo \$! > /sdcard/ge.pid"
+adb logcat -c
 swipe commit commit; sleep 3
+adb shell 'kill $(cat /sdcard/ge.pid)'; adb pull /sdcard/ge.txt "$O-commit-getevent.txt" >/dev/null 2>&1
+adb logcat -d 2>/dev/null | grep -v -E 'nativeloader|chromium' | tail -200 >"$O-commit-logcat.txt"
 rec commit-events "$(ev 'window.__bs || "logger gone"')"
 rec commit-route "$(text)"; rec commit-top "\"$(top)\""
 # At the root route a committed swipe should close the page.
