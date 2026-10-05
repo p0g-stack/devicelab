@@ -45,6 +45,12 @@ rec route-before "$(text)"
 TOUCH=$(adb shell getevent -pl 2>/dev/null | tr -d '\r' | awk '/^add device/ {d=$4} /ABS_MT_POSITION_X/ {print d; exit}')
 read -r MX MY < <(adb shell getevent -pl "$TOUCH" 2>/dev/null | tr -d '\r' | awk '/ABS_MT_POSITION_X/ {for (i=1;i<=NF;i++) if ($i=="max") x=$(i+1)} /ABS_MT_POSITION_Y/ {for (i=1;i<=NF;i++) if ($i=="max") y=$(i+1)} END {gsub(",","",x); gsub(",","",y); print x, y}')
 rec touch "\"$TOUCH max ${MX}x$MY\""
+# Seen 2026-10-05: SystemUI ANR window up and EdgeBackGestureHandler
+# mIsEnabled=false/mIsAttached=false (TaskbarDelegate). Dismiss ANRs, restart
+# SystemUI once, and record the handler state again below.
+rec density "\"$(adb shell wm density | tr -d '\r' | tr '\n' ' ')\""
+adb shell "pkill -f com.android.systemui$" ; sleep 20
+adb shell input keyevent KEYCODE_WAKEUP; sleep 2
 rec gesture-settings "$(adb shell "settings list secure | grep -i -E 'gesture|navigation_mode|back'; dumpsys input | grep -o 'name=[^,]*' | sort -u | head -40; dumpsys activity service com.android.systemui/.SystemUIService 2>/dev/null | grep -i -A40 'EdgeBackGestureHandler' | head -60; dumpsys window | grep -i -E 'exclusion|gesturalNav|NavigationMode' | head -10" 2>&1 | tr -d '\r' | q)"
 # swipe <tag> <commit|cancel>: finger down at the left edge, 12 moves out to
 # 45% of the width (cancel: 6 moves back to the edge), screencaps mid-gesture

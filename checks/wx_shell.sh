@@ -48,6 +48,8 @@ rec host-config-after "$(sh_ "ls -la /data/adb/.config/$ID 2>&1; cat /data/adb/.
 # A root call from the page's own UI: Say hello starts the root channel through
 # ksu.exec. Time until the page shows the hello, or an error (a refused shell
 # should fail in about 2 s, not after the 30 s exec timeout).
+# The home card runs in a Web Worker until "Process" (the root process) is picked.
+rec process-tap "$(step 'Process')"; sleep 1
 TH=$(now); rec hello-tap "$(step 'Say hello')"
 for i in $(seq 1 20); do
   t=$(now)
@@ -55,7 +57,7 @@ for i in $(seq 1 20); do
 try: v = json.loads(sys.stdin.read())
 except Exception: v = []
 v = v.get("value", v) if isinstance(v, dict) else v
-print(json.dumps([x[:200] for x in (v or []) if any(k in x.lower() for k in ("uid", "hello from", "refus", "error", "timeout", "denied", "permission"))][:6]))' 2>/dev/null)
+print(json.dumps([x[:200] for x in (v or []) if any(k in x.lower() for k in ("runs in", "hello,", "uid", "refus", "error", "timeout", "denied", "permission", "opening", "fail"))][:6]))' 2>/dev/null)
   ov=$($UI dump "$O-hello-$i.xml" 2>/dev/null | grep -i -E 'allow|reject|missing permission' | head -3 | tr '\n' '|')
   rec "hello-t$i" "$(printf '{"uptime":"%s","since_tap":"%s","page":%s,"overlay":%s}' "$t" "$(echo "$t - $TH" | bc 2>/dev/null)" "${pt:-null}" "$(printf %s "$ov" | js)")"
   case "$pt" in *[a-zA-Z]*) case "$pt" in '[]') ;; *) [ $i -ge 3 ] && break;; esac;; esac
