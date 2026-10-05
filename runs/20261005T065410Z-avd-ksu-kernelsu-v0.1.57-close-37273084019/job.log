@@ -1,0 +1,383 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 26s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.0
+total 16428
+drwx------  2 runner runner     4096 Oct  5 06:35 .
+drwxrwxrwt 16 root   root       4096 Oct  5 06:35 ..
+-rw-r--r--  1 runner runner 10777987 Oct  5 06:35 KernelSU_v3.3.0_32601-release.apk
+-rw-r--r--  1 runner runner  5713312 Oct  5 06:35 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   318824 Oct  5 06:35 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu, KernelSU_v3.3.0_32601-release.apk)
+/tmp/tmp.r4X4QAsfL5/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 2.3 MB/s (318824 bytes in 0.131s)
+/tmp/tmp.r4X4QAsfL5/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 109.1 MB/s (5713312 bytes in 0.050s)
+== ksud: ksud 3.3.0 (uapi: 2)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              159744  0 
+== lsmod: kernelsu              159744  1 
+KernelSU_v3.3.0_32601-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-pc-windows-gnu.exe
+ksud-x86_64-unknown-linux-musl
+ksuinit-aarch64
+ksuinit-x86_64
+lkm-aarch64-android12-5.10_kernelsu.ko
+lkm-aarch64-android13-5.10_kernelsu.ko
+lkm-aarch64-android13-5.15_kernelsu.ko
+lkm-aarch64-android14-5.15_kernelsu.ko
+lkm-aarch64-android14-6.1_kernelsu.ko
+lkm-aarch64-android15-6.6_kernelsu.ko
+lkm-aarch64-android16-6.12_kernelsu.ko
+lkm-aarch64-android17-6.18_kernelsu.ko
+lkm-x86_64-android12-5.10_kernelsu.ko
+lkm-x86_64-android13-5.10_kernelsu.ko
+lkm-x86_64-android13-5.15_kernelsu.ko
+lkm-x86_64-android14-5.15_kernelsu.ko
+lkm-x86_64-android14-6.1_kernelsu.ko
+lkm-x86_64-android15-6.6_kernelsu.ko
+lkm-x86_64-android16-6.12_kernelsu.ko
+lkm-x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in tiann/KernelSU v3.3.0
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.046s)
+== modules: [
+  {
+    "author": "p0g-stack",
+    "action": "false",
+    "mount": "false",
+    "name": "devicelab probe",
+    "version": "1",
+    "update": "false",
+    "enabled": "true",
+    "versionCode": "1",
+    "web": "true",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "id": "devicelab_probe",
+    "remove": "false"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+== home text: text="LKM" text="Working [Jailbreak mode]" text="Version: 32601-2" text="Manager version" text="v3.3.0 (32601-2)" text="Kernel version" text="6.6.50-android15-8-g8adecb593e9b-ab12525588" text="Device model" text="Google sdk_gphone64_x86_64" text="Fingerprint" text="google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys" text="Enforcing" text="KernelSU" text="Home" text="Superuser" text="1" text="Module" text="Settings" 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+== metamodule releases backslashxx/mountify: 204 Latest 204 2026-08-25T05:14:18Z;203  203 2026-06-25T15:03:16Z;202  202 2026-06-23T03:45:32Z;
+== metamodule candidate backslashxx/mountify mountify.zip: id=mountify version=v2.0.4 versionCode=204 metamodule=true 
+== metamodule repo (given): backslashxx/mountify
+== metamodule zip: mountify.zip sha256 dde361c444f6990b759890720487785402a391a61cf6530f960deb98e5ef864d
+== metamodule module.prop: id=mountify name=mountify version=v2.0.4 versionCode=204 author=xx, KOWX712 metamodule=true description=Globally mounted modules via OverlayFS. updateJson=https://raw.githubusercontent.com/backslashxx/mountify/master/update.json 
+/tmp/tmp.4Ytry1sQaB/rel/mountify.zip: 1 file pushed, 0 skipped. 306.6 MB/s (554873 bytes in 0.002s)
+== install mountify.zip
+[H[J[|]
+[H[J[\]
+[H[J[+] mountify
+[+] SysReq test
+[+] CONFIG_OVERLAY_FS
+[+] overlay found in /proc/filesystems
+[+] CONFIG_TMPFS_XATTR
+[+] tmpfs extended attribute test passed
+[!] using fresh config.sh
+[+] moving modules.txt
+[+] moving whiteouts.txt
+[+] mountify will be installed in metamodule mode!
+- Done
+- Creating metamodule symlink
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (40s): [
+  {
+    "id": "devicelab_probe",
+    "author": "p0g-stack",
+    "remove": "false",
+    "action": "false",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "enabled": "true",
+    "name": "devicelab probe",
+    "web": "true",
+    "update": "false",
+    "mount": "false",
+    "version": "1",
+    "versionCode": "1"
+  },
+  {
+    "mount": "false",
+    "enabled": "true",
+    "update": "false",
+    "description": "mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted",
+    "action": "true",
+    "versionCode": "204",
+    "updateJson": "https://raw.githubusercontent.com/backslashxx/mountify/master/update.json",
+    "name": "mountify",
+    "web": "true",
+    "remove": "false",
+    "version": "v2.0.4",
+    "id": "mountify",
+    "metamodule": "true",
+    "author": "xx, KOWX712"
+  }
+]
+total 32
+drwxrwxrwx 4 root root 4096 2026-10-05 06:36 .
+drwx------ 6 root root 4096 2026-10-05 06:36 ..
+drwxr-xr-x 3 root root 4096 2026-10-05 06:35 devicelab_probe
+drwxr-xr-x 5 root root 4096 2026-10-05 06:36 mountify
+== metamodule active: lrwxrwxrwx 1 root root 26 2026-10-05 06:36 /data/adb/metamodule -> /data/adb/modules/mountify id=mountify name=mountify version=v2.0.4 versionCode=204 author=xx, KOWX712 metamodule=true description=mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted updateJson=https://raw.githubusercontent.com/backslashxx/mountify/master/update.json 
+inputs/modules/flutter_webui_counter-0.1.5.zip: 1 file pushed, 0 skipped. 390.9 MB/s (21434766 bytes in 0.052s)
+== install flutter_webui_counter-0.1.5.zip
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.8.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.2.woff2
+   creating: webroot/fonts/notosansmath/
+   creating: webroot/fonts/notosansmath/v15/
+  inflating: webroot/fonts/notosansmath/v15/7Aump_cpkSecTWaHRlH2hyV5UHkD-V048PW0.woff2
+   creating: webroot/fonts/roboto/
+   creating: webroot/fonts/roboto/v32/
+  inflating: webroot/fonts/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2
+  inflating: webroot/.last_build_id
+  inflating: webroot/config.json
+  inflating: webroot/flutter_webui.js
+  inflating: customize.sh
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 374.3 MB/s (6582359 bytes in 0.017s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+inputs/modules/demo.zip: 1 file pushed, 0 skipped. 306.2 MB/s (19826855 bytes in 0.062s)
+== install demo.zip
+  inflating: webroot/pkg/.gitignore
+  inflating: webroot/pkg/demo_native.js
+  inflating: webroot/pkg/demo_native_bg.wasm
+  inflating: webroot/pkg/package.json
+  inflating: webroot/version.json
+  inflating: webroot/workers/demo_service.web.g.dart.js
+  inflating: webroot/workers/hello_service.web.g.dart.js
+  inflating: webui_app_plane/app-install.sh
+  inflating: webui_app_plane/app.apk
+  inflating: webui_app_plane/arm64-v8a/webui_termux_api.aot
+  inflating: webui_app_plane/termux-api
+  inflating: webui_app_plane/x86_64/webui_termux_api.aot
+  Installed com.webui.api.demo 1011
+- Done
+- Module installed successfully!
+/home/runner/work/devicelab/devicelab/envdump.zip: 1 file pushed, 0 skipped. 18.8 MB/s (1766 bytes in 0.000s)
+== install envdump.zip
+ devicelab envdump 
+ by p0g-stack 
+*******************
+*********************
+ Powered by KernelSU 
+*********************
+Archive:  /data/local/tmp/m.zip
+  inflating: customize.sh
+- Extracting module files
+Archive:  /data/local/tmp/m.zip
+  inflating: module.prop
+  inflating: customize.sh
+- devicelab envdump: written /data/local/tmp/customize-env.txt
+- Done
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (40s): [
+  {
+    "remove": "false",
+    "name": "devicelab probe",
+    "web": "true",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "enabled": "true",
+    "author": "p0g-stack",
+    "mount": "false",
+    "version": "1",
+    "action": "false",
+    "versionCode": "1",
+    "id": "devicelab_probe",
+    "update": "false"
+  },
+  {
+    "id": "mountify",
+    "action": "true",
+    "mount": "false",
+    "author": "xx, KOWX712",
+    "version": "v2.0.4",
+    "updateJson": "https://raw.githubusercontent.com/backslashxx/mountify/master/update.json",
+    "enabled": "true",
+    "update": "false",
+    "remove": "false",
+    "web": "true",
+    "versionCode": "204",
+    "name": "mountify",
+    "metamodule": "true",
+    "description": "mode: auto 🤖 | fstype: tmpfs 🦾 | no modules mounted"
+  },
+  {
+    "enabled": "true",
+    "name": "flutter-webui Counter",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "web": "true",
+    "mount": "false",
+    "remove": "false",
+    "version": "0.1.5",
+    "versionCode": "6",
+    "action": "false",
+    "id": "flutter_webui_counter",
+    "update": "false",
+    "author": "p0g-stack"
+  },
+  {
+    "remove": "false",
+    "web": "true",
+    "version": "v1.0.0",
+    "description": "A new Flutter project.",
+    "mount": "false",
+    "action": "false",
+    "name": "Counter",
+    "author": "Yuv",
+    "update": "false",
+    "id": "counter",
+    "versionCode": "1",
+    "enab
+total 64
+drwxrwxrwx 8 root root 4096 2026-10-05 06:37 .
+drwx------ 6 root root 4096 2026-10-05 06:36 ..
+drwxr-xr-x 3 root root 4096 2026-10-05 06:37 counter
+drwxr-xr-x 6 root root 4096 2026-10-05 06:37 demo
+drwxr-xr-x 2 root root 4096 2026-10-05 06:37 devicelab_envdump
+drwxr-xr-x 3 root root 4096 2026-10-05 06:35 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-10-05 06:37 flutter_webui_counter
+drwxr-xr-x 5 root root 4096 2026-10-05 06:36 mountify
+{"check":"back-open","result":"opened: intent-token"}
+{"check":"back-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_11256","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"back-before-uptime","result":"239.99"}
+{"check":"back-before-rootlog","result":"2026-10-05T06:38:58.473724 cgroup before: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/uid_10209/pid_11256\n2026-10-05T06:38:58.473772 cgroup after: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/\n2026-10-05T06:38:58.492126 listening on 127.0.0.1:43485"}
+{"check":"back-before-proclog","result":"total 8\n-rw------- 1 root root 215 2026-10-05 06:38 1791182339354753-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1791182339354753-0.log\n2026-10-05T06:38:59.433377 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":33697,\"token\":\"UrZ-wcUxewGJlknuQtR5WAFWdtCCUHzbuLKqWUh-djU\",\"pid\":11677,\"launch_id\":\"447f75d701dbf30d\"}"}
+{"check":"back-before-sockets","result":"port 43485\n0100007F:A9DD 00000000:0000 st=0A ino=62468 pid=11597 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /\n0100007F:C612 0100007F:A9DD st=01 ino=59008 pid=11256 me.weishu.kernelsu                                          \n0100007F:A9DD 0100007F:C612 st=01 ino=59011 pid=11597 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /"}
+{"check":"back-before-procs","result":"9323  8994       02:30 u:r:webview_zygote:s0          webview_zygote\n11256  8994       01:49 u:r:untrusted_app:s0:c209,c256,c512,c768 me.weishu.kernelsu\n11401  8994       01:13 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_service\n11403  9323       01:13 u:r:isolated_app:s0:c512,c768  com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0\n11450  8994       01:13 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_apk\n11597     1       01:02 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru\n11621  8994       01:02 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n11676     1       01:01 u:r:ksu:s0                     sh -c trap : TERM INT HUP USR1 USR2; exec 0</dev/null; \"$@\" >>\"$FLUTTER_WEBUI_LOG\" 2>&1; c=$?; (umask 077 && echo $c >\"$FLUTTER_WEBUI_EXIT.tmp\");\n11677 11676       01:01 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/bin/x86_64/demo.aot serve --session-file /data/adb/modules/demo/run/demo.place.json --launch-id 447f75d701d"}
+{"check":"back-before-activity","result":"topResumedActivity=ActivityRecord{cb2d0b2 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t13}\n    * Hist  #0: ActivityRecord{cb2d0b2 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t13}\n    Resumed: ActivityRecord{cb2d0b2 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t13}\n  ResumedActivity: ActivityRecord{cb2d0b2 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t13}\n  deepestLastOrientationSource=ActivityRecord{cb2d0b2 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t13}\n  mFocusedApp=ActivityRecord{cb2d0b2 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t13}\n        * ActivityRecord{cb2d0b2 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t13}\n    mSystemBarColorApps={ActivityRecord{cb2d0b2 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t13}}\n    lastActivityTime=-1m13s600ms    startUpTime=-1m49s115ms    startElapsedTime=-1m49s115ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-1m13s601ms\n    lastActivityTime=-1m12s791ms    startUpTime=-1m12s971ms    startElapsedTime=-1m12s971ms\n    curProcState=3 mRepProcState=3 setProcState=3 lastStateTime=-1m12s924ms"}
+{"check":"back-before-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_11256\",\n  \"port\": 9300,\n  \"description\": \"{\\\"attached\\\":true,\\\"empty\\\":false,\\\"height\\\":640,\\\"never_attached\\\":false,\\\"screenX\\\":0,\\\"screenY\\\":0,\\\"visible\\\":true,\\\"width\\\":320}\",\n  \"devtoolsFrontendUrl\": \"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/22FC5984DE852D80C34CD3B718A305AF\",\n  \"id\": \"22FC5984DE852D80C34CD3B718A305AF\",\n  \"title\": \"Demo\",\n  \"type\": \"page\",\n  \"url\": \"https://mui.kernelsu.org/index.html\",\n  \"webSocketDebuggerUrl\": \"ws://127.0.0.1:9300/devtools/page/22FC5984DE852D80C34CD3B718A305AF\"\n }\n]"}
+{"check":"back-before-cgroup","result":"== pid 11597: /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /data/adb/m\n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/\nState:\tS (sleeping)\n/system/bin/sh: can't open /sys/fs/cgroup//cgroup.events: No such file or directory\ncgroup.freeze cat: /sys/fs/cgroup//cgroup.freeze: No such file or directory cgroup.events: \n== pid 11677: /data/adb/modules/demo/bin/x86_64/dartaotruntime /data/adb/modules/dem\n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/\nState:\tS (sleeping)\n/system/bin/sh: can't open /sys/fs/cgroup//cgroup.events: No such file or directory\ncgroup.freeze cat: /sys/fs/cgroup//cgroup.freeze: No such file or directory cgroup.events: \n== pid 11256: me.weishu.kernelsu                                                    \n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/uid_10209/pid_11256\nState:\tS (sleeping)\ncgroup.freeze 0 cgroup.events: populated 1 frozen 0"}
+{"check":"back-before-rootport","result":"root process port 33697\n0100007F:83A1 00000000:0000 st=0A pid=11677 /data/adb/modules/demo/bin/x86_64/dartaotruntime /\n0100007F:958E 0100007F:83A1 st=01 pid=11256 me.weishu.kernelsu                                \n0100007F:956E 0100007F:83A1 st=01 pid=11256 me.weishu.kernelsu                                \n0100007F:83A1 0100007F:958E st=01 pid=11677 /data/adb/modules/demo/bin/x86_64/dartaotruntime /\n0100007F:9586 0100007F:83A1 st=01 pid=11256 me.weishu.kernelsu                                \n0100007F:9576 0100007F:83A1 st=01 pid=11256 me.weishu.kernelsu                                \n0100007F:83A1 0100007F:9576 st=01 pid=11677 /data/adb/modules/demo/bin/x86_64/dartaotruntime /\n0100007F:83A1 0100007F:956E st=01 pid=11677 /data/adb/modules/demo/bin/x86_64/dartaotruntime /\n0100007F:83A1 0100007F:9586 st=01 pid=11677 /data/adb/modules/demo/bin/x86_64/dartaotruntime /"}
+{"check":"back-before-service","result":"* ServiceRecord{78c52a5 u0 com.webui.api.demo/com.termux.api.RootHelperService c:com.android.shell}\n    isForeground=true foregroundId=32363 types=0x40000000 foregroundNoti=Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)\n2"}
+{"check":"back-closed","result":"after 1 Back:       topResumedActivity=ActivityRecord{b98e94c u0 com.google.android.apps.nexuslauncher/.NexusLauncherActivity t10}"}
+{"check":"back-t0-uptime","result":"443.87"}
+{"check":"back-t0-rootlog","result":"2026-10-05T06:38:58.473724 cgroup before: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/uid_10209/pid_11256\n2026-10-05T06:38:58.473772 cgroup after: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/\n2026-10-05T06:38:58.492126 listening on 127.0.0.1:43485"}
+{"check":"back-t0-proclog","result":"total 8\n-rw------- 1 root root 215 2026-10-05 06:38 1791182339354753-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1791182339354753-0.log\n2026-10-05T06:38:59.433377 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":33697,\"token\":\"UrZ-wcUxewGJlknuQtR5WAFWdtCCUHzbuLKqWUh-djU\",\"pid\":11677,\"launch_id\":\"447f75d701dbf30d\"}"}
+{"check":"back-t0-sockets","result":"port 43485\n0100007F:A9DD 00000000:0000 st=0A ino=62468 pid=11597 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /"}
+{"check":"back-t0-procs","result":"9323  8994       05:21 u:r:webview_zygote:s0          webview_zygote\n11256  8994       04:40 u:r:untrusted_app:s0:c209,c256,c512,c768 me.weishu.kernelsu\n11401  8994       04:04 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_service\n11450  8994       04:04 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_apk\n11597     1       03:53 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru\n11621  8994       03:53 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo"}
+{"check":"back-t0-activity","result":"lastActivityTime=-4m4s587ms    startUpTime=-4m40s102ms    startElapsedTime=-4m40s102ms\n    curProcState=18 mRepProcState=18 setProcState=18 lastStateTime=-20s520ms"}
+{"check":"back-t0-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_11256\",\n  \"port\": 9300,\n  \"error\": \"TimeoutError: The operation was aborted due to timeout\"\n }\n]"}
+{"check":"back-t0-cgroup","result":"== pid 11597: /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /data/adb/m\n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/\nState:\tS (sleeping)\n/system/bin/sh: can't open /sys/fs/cgroup//cgroup.events: No such file or directory\ncgroup.freeze cat: /sys/fs/cgroup//cgroup.freeze: No such file or directory cgroup.events: \n== pid 11256: me.weishu.kernelsu                                                    \n4:memory:/\n3:cpuset:/background\n2:cpu:/background\n1:blkio:/background\n0::/uid_10209/pid_11256\nState:\tS (sleeping)\ncgroup.freeze 1 cgroup.events: populated 1 frozen 1"}
+{"check":"back-t0-rootport","result":"root process port"}
+{"check":"back-t0-service","result":"* ServiceRecord{78c52a5 u0 com.webui.api.demo/com.termux.api.RootHelperService c:com.android.shell}\n    isForeground=true foregroundId=32363 types=0x40000000 foregroundNoti=Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)\n2"}
+{"check":"back-t60-uptime","result":"521.87"}
+{"check":"back-t60-rootlog","result":"2026-10-05T06:38:58.473724 cgroup before: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/uid_10209/pid_11256\n2026-10-05T06:38:58.473772 cgroup after: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/\n2026-10-05T06:38:58.492126 listening on 127.0.0.1:43485\n2026-10-05T06:43:01.984842 shutting down\n2026-10-05T06:43:02.008601 am stopservice --user 0 -n com.webui.api.demo/com.termux.api.RootHelperService: exit 255 Stopping service: Intent { cmp=com.webui.api.demo/com.termux.api.RootHelperService }\nService stopped"}
+{"check":"back-t60-proclog","result":"total 16\n-rw------- 1 root root   2 2026-10-05 06:42 1791182339354753-0.exit\n-rw------- 1 root root 215 2026-10-05 06:38 1791182339354753-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1791182339354753-0.log\n2026-10-05T06:38:59.433377 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":33697,\"token\":\"UrZ-wcUxewGJlknuQtR5WAFWdtCCUHzbuLKqWUh-djU\",\"pid\":11677,\"launch_id\":\"447f75d701dbf30d\"}"}
+{"check":"back-t60-sockets","result":"port 43485"}
+{"check":"back-t60-procs","result":"9323  8994       06:22 u:r:webview_zygote:s0          webview_zygote\n11256  8994       05:41 u:r:untrusted_app:s0:c209,c256,c512,c768 me.weishu.kernelsu\n11401  8994       05:05 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_service\n11450  8994       05:05 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_apk\n11621  8994       04:54 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo"}
+{"check":"back-t60-activity","result":"lastActivityTime=-5m5s24ms    startUpTime=-5m40s539ms    startElapsedTime=-5m40s539ms\n    curProcState=18 mRepProcState=18 setProcState=18 lastStateTime=-1m20s957ms"}
+{"check":"back-t60-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_11256\",\n  \"port\": 9300,\n  \"error\": \"TimeoutError: The operation was aborted due to timeout\"\n }\n]"}
+{"check":"back-t60-cgroup","result":"== pid 11256: me.weishu.kernelsu                                                    \n4:memory:/\n3:cpuset:/background\n2:cpu:/background\n1:blkio:/background\n0::/uid_10209/pid_11256\nState:\tS (sleeping)\ncgroup.freeze 1 cgroup.events: populated 1 frozen 1"}
+{"check":"back-t60-rootport","result":"root process port"}
+{"check":"back-t60-service","result":"0"}
+{"check":"back-t120-uptime","result":"582.28"}
+{"check":"back-t120-rootlog","result":"2026-10-05T06:38:58.473724 cgroup before: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/uid_10209/pid_11256\n2026-10-05T06:38:58.473772 cgroup after: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/\n2026-10-05T06:38:58.492126 listening on 127.0.0.1:43485\n2026-10-05T06:43:01.984842 shutting down\n2026-10-05T06:43:02.008601 am stopservice --user 0 -n com.webui.api.demo/com.termux.api.RootHelperService: exit 255 Stopping service: Intent { cmp=com.webui.api.demo/com.termux.api.RootHelperService }\nService stopped"}
+{"check":"back-t120-proclog","result":"total 16\n-rw------- 1 root root   2 2026-10-05 06:42 1791182339354753-0.exit\n-rw------- 1 root root 215 2026-10-05 06:38 1791182339354753-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1791182339354753-0.log\n2026-10-05T06:38:59.433377 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":33697,\"token\":\"UrZ-wcUxewGJlknuQtR5WAFWdtCCUHzbuLKqWUh-djU\",\"pid\":11677,\"launch_id\":\"447f75d701dbf30d\"}"}
+{"check":"back-t120-sockets","result":"port 43485"}
+{"check":"back-t120-procs","result":"9323  8994       07:22 u:r:webview_zygote:s0          webview_zygote\n11256  8994       06:41 u:r:untrusted_app:s0:c209,c256,c512,c768 me.weishu.kernelsu\n11401  8994       06:05 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_service\n11450  8994       06:05 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_apk\n11621  8994       05:54 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo"}
+{"check":"back-t120-activity","result":"lastActivityTime=-6m5s438ms    startUpTime=-6m40s953ms    startElapsedTime=-6m40s953ms\n    curProcState=18 mRepProcState=18 setProcState=18 lastStateTime=-2m21s371ms"}
+{"check":"back-t120-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_11256\",\n  \"port\": 9300,\n  \"error\": \"TimeoutError: The operation was aborted due to timeout\"\n }\n]"}
+{"check":"back-t120-cgroup","result":"== pid 11256: me.weishu.kernelsu                                                    \n4:memory:/\n3:cpuset:/background\n2:cpu:/background\n1:blkio:/background\n0::/uid_10209/pid_11256\nState:\tS (sleeping)\ncgroup.freeze 1 cgroup.events: populated 1 frozen 1"}
+{"check":"back-t120-rootport","result":"root process port"}
+{"check":"back-t120-service","result":"0"}
+{"check":"back-t240-uptime","result":"702.68"}
+{"check":"back-t240-rootlog","result":"2026-10-05T06:38:58.473724 cgroup before: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/uid_10209/pid_11256\n2026-10-05T06:38:58.473772 cgroup after: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/\n2026-10-05T06:38:58.492126 listening on 127.0.0.1:43485\n2026-10-05T06:43:01.984842 shutting down\n2026-10-05T06:43:02.008601 am stopservice --user 0 -n com.webui.api.demo/com.termux.api.RootHelperService: exit 255 Stopping service: Intent { cmp=com.webui.api.demo/com.termux.api.RootHelperService }\nService stopped"}
+{"check":"back-t240-proclog","result":"total 16\n-rw------- 1 root root   2 2026-10-05 06:42 1791182339354753-0.exit\n-rw------- 1 root root 215 2026-10-05 06:38 1791182339354753-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1791182339354753-0.log\n2026-10-05T06:38:59.433377 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":33697,\"token\":\"UrZ-wcUxewGJlknuQtR5WAFWdtCCUHzbuLKqWUh-djU\",\"pid\":11677,\"launch_id\":\"447f75d701dbf30d\"}"}
+{"check":"back-t240-sockets","result":"port 43485"}
+{"check":"back-t240-procs","result":"9323  8994       09:22 u:r:webview_zygote:s0          webview_zygote\n11256  8994       08:41 u:r:untrusted_app:s0:c209,c256,c512,c768 me.weishu.kernelsu\n11401  8994       08:05 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_service\n11450  8994       08:05 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_apk\n11621  8994       07:54 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo"}
+{"check":"back-t240-activity","result":"lastActivityTime=-8m5s850ms    startUpTime=-8m41s365ms    startElapsedTime=-8m41s365ms\n    curProcState=18 mRepProcState=18 setProcState=18 lastStateTime=-4m21s783ms"}
+{"check":"back-t240-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_11256\",\n  \"port\": 9300,\n  \"error\": \"TimeoutError: The operation was aborted due to timeout\"\n }\n]"}
+{"check":"back-t240-cgroup","result":"== pid 11256: me.weishu.kernelsu                                                    \n4:memory:/\n3:cpuset:/background\n2:cpu:/background\n1:blkio:/background\n0::/uid_10209/pid_11256\nState:\tS (sleeping)\ncgroup.freeze 1 cgroup.events: populated 1 frozen 1"}
+{"check":"back-t240-rootport","result":"root process port"}
+{"check":"back-t240-service","result":"0"}
+{"check":"exit-open","result":"opened: ui"}
+{"check":"exit-places","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_22991","value":"tapped Places at 16,572 size 288x56 role button tappable"}}
+{"check":"exit-before-uptime","result":"775.10"}
+{"check":"exit-before-rootlog","result":"2026-10-05T06:47:53.581785 cgroup before: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/uid_10209/pid_22991\n2026-10-05T06:47:53.581834 cgroup after: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/\n2026-10-05T06:47:53.599720 listening on 127.0.0.1:39497"}
+{"check":"exit-before-proclog","result":"total 24\n-rw------- 1 root root 215 2026-10-05 06:47 1791182874458714-0.log\n-rw------- 1 root root   2 2026-10-05 06:42 1791182339354753-0.exit\n-rw------- 1 root root 215 2026-10-05 06:38 1791182339354753-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1791182874458714-0.log\n2026-10-05T06:47:54.553942 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":44693,\"token\":\"osMWQpm4DX6EMcBI1MGmbAQVqM1YMcyts1V1HmauWMU\",\"pid\":23556,\"launch_id\":\"7acaef1ce960cec3\"}"}
+{"check":"exit-before-sockets","result":"port 39497\n0100007F:9A49 00000000:0000 st=0A ino=783900 pid=23492 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /\n0100007F:9A49 0100007F:EBB0 st=01 ino=784495 pid=23492 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /\n0100007F:EBB0 0100007F:9A49 st=01 ino=782530 pid=22991 me.weishu.kernelsu"}
+{"check":"exit-before-procs","result":"9323  8994       11:06 u:r:webview_zygote:s0          webview_zygote\n11401  8994       09:49 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_service\n11450  8994       09:49 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_apk\n11621  8994       09:38 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n22991  8994       01:38 u:r:untrusted_app:s0:c209,c256,c512,c768 me.weishu.kernelsu\n23404  9323       00:54 u:r:isolated_app:s0:c512,c768  com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0\n23492     1       00:43 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru\n23555     1       00:42 u:r:ksu:s0                     sh -c trap : TERM INT HUP USR1 USR2; exec 0</dev/null; \"$@\" >>\"$FLUTTER_WEBUI_LOG\" 2>&1; c=$?; (umask 077 && echo $c >\"$FLUTTER_WEBUI_EXIT.tmp\");\n23556 23555       00:42 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/bin/x86_64/demo.aot serve --session-file /data/adb/modules/demo/run/demo.place.json --launch-id 7acaef1ce96"}
+{"check":"exit-before-activity","result":"mLastPausedActivity: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    topResumedActivity=ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t16}\n    * Hist  #1: ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t16}\n      resultTo=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16} resultWho=null resultCode=614940059\n    * Hist  #0: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    Resumed: ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t16}\n  ResumedActivity: ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t16}\n  deepestLastOrientationSource=ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t16}\n  mFocusedApp=ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t16}\n        * ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t16}\n    lastActivityTime=-54s19ms    startUpTime=-1m38s337ms    startElapsedTime=-1m38s337ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-1m20s100ms\n    lastActivityTime=-53s557ms    startUpTime=-53s698ms    startElapsedTime=-53s698ms\n    curProcState=3 mRepProcState=3 setProcState=3 lastStateTime=-53s630ms"}
+{"check":"exit-before-devtools","result":"[\n {\n  \"socket\": \"webview_devtools_remote_22991\",\n  \"port\": 9300,\n  \"description\": \"{\\\"attached\\\":true,\\\"empty\\\":false,\\\"height\\\":640,\\\"never_attached\\\":false,\\\"screenX\\\":0,\\\"screenY\\\":0,\\\"visible\\\":true,\\\"width\\\":320}\",\n  \"devtoolsFrontendUrl\": \"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/918115195952DBFA45AEEB4B5037F086\",\n  \"id\": \"918115195952DBFA45AEEB4B5037F086\",\n  \"title\": \"Demo\",\n  \"type\": \"page\",\n  \"url\": \"https://mui.kernelsu.org/index.html\",\n  \"webSocketDebuggerUrl\": \"ws://127.0.0.1:9300/devtools/page/918115195952DBFA45AEEB4B5037F086\"\n }\n]"}
+{"check":"exit-before-cgroup","result":"== pid 23492: /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /data/adb/m\n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/\nState:\tS (sleeping)\n/system/bin/sh: can't open /sys/fs/cgroup//cgroup.events: No such file or directory\ncgroup.freeze cat: /sys/fs/cgroup//cgroup.freeze: No such file or directory cgroup.events: \n== pid 23556: /data/adb/modules/demo/bin/x86_64/dartaotruntime /data/adb/modules/dem\n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/\nState:\tS (sleeping)\n/system/bin/sh: can't open /sys/fs/cgroup//cgroup.events: No such file or directory\ncgroup.freeze cat: /sys/fs/cgroup//cgroup.freeze: No such file or directory cgroup.events: \n== pid 22991: me.weishu.kernelsu                                                    \n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/uid_10209/pid_22991\nState:\tS (sleeping)\ncgroup.freeze 0 cgroup.events: populated 1 frozen 0"}
+{"check":"exit-before-rootport","result":"root process port 44693\n0100007F:AE95 00000000:0000 st=0A pid=23556 /data/adb/modules/demo/bin/x86_64/dartaotruntime /\n0100007F:AE95 0100007F:C236 st=01 pid=23556 /data/adb/modules/demo/bin/x86_64/dartaotruntime /\n0100007F:C236 0100007F:AE95 st=01 pid=22991 me.weishu.kernelsu                                \n0100007F:C250 0100007F:AE95 st=01 pid=22991 me.weishu.kernelsu                                \n0100007F:AE95 0100007F:C250 st=01 pid=23556 /data/adb/modules/demo/bin/x86_64/dartaotruntime /\n0100007F:C258 0100007F:AE95 st=01 pid=22991 me.weishu.kernelsu                                \n0100007F:AE95 0100007F:C244 st=01 pid=23556 /data/adb/modules/demo/bin/x86_64/dartaotruntime /\n0100007F:C244 0100007F:AE95 st=01 pid=22991 me.weishu.kernelsu                                \n0100007F:AE95 0100007F:C258 st=01 pid=23556 /data/adb/modules/demo/bin/x86_64/dartaotruntime /"}
+{"check":"exit-before-service","result":"* ServiceRecord{f9d6b6 u0 com.webui.api.demo/com.termux.api.RootHelperService c:com.android.shell}\n    isForeground=true foregroundId=32363 types=0x40000000 foregroundNoti=Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)\n2"}
+{"check":"exit-exit-api","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_22991","value":"{\"ksu\":\"object\",\"exit\":\"function\",\"webui\":\"undefined\"}"}}
+{"check":"exit-exit-call","result":{"url":"https://mui.kernelsu.org/index.html","socket":"webview_devtools_remote_22991","value":"called"}}
+{"check":"exit-closed","result":"    topResumedActivity=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}"}
+{"check":"exit-t0-uptime","result":"902.17"}
+{"check":"exit-t0-rootlog","result":"2026-10-05T06:47:53.581785 cgroup before: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/uid_10209/pid_22991\n2026-10-05T06:47:53.581834 cgroup after: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/\n2026-10-05T06:47:53.599720 listening on 127.0.0.1:39497"}
+{"check":"exit-t0-proclog","result":"total 24\n-rw------- 1 root root 215 2026-10-05 06:47 1791182874458714-0.log\n-rw------- 1 root root   2 2026-10-05 06:42 1791182339354753-0.exit\n-rw------- 1 root root 215 2026-10-05 06:38 1791182339354753-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1791182874458714-0.log\n2026-10-05T06:47:54.553942 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":44693,\"token\":\"osMWQpm4DX6EMcBI1MGmbAQVqM1YMcyts1V1HmauWMU\",\"pid\":23556,\"launch_id\":\"7acaef1ce960cec3\"}"}
+{"check":"exit-t0-sockets","result":"port 39497\n0100007F:9A49 00000000:0000 st=0A ino=783900 pid=23492 /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /"}
+{"check":"exit-t0-procs","result":"9323  8994       12:52 u:r:webview_zygote:s0          webview_zygote\n11401  8994       11:35 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_service\n11450  8994       11:35 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_apk\n11621  8994       11:24 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n22991  8994       03:24 u:r:untrusted_app:s0:c209,c256,c512,c768 me.weishu.kernelsu\n23492     1       02:29 u:r:ksu:s0                     dartaotruntime /data/adb/modules/demo/flutter_webui/x86_64/flutter_webui_root.aot serve --module-dir /data/adb/modules/demo --module-id demo --ru"}
+{"check":"exit-t0-activity","result":"mLastPausedActivity: ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t-1 f}}\n    topResumedActivity=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    * Hist  #0: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    Resumed: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  ResumedActivity: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  deepestLastOrientationSource=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  mFocusedApp=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n        * ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    mSystemBarColorApps={ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}}\n    lastActivityTime=-13s473ms    startUpTime=-3m24s439ms    startElapsedTime=-3m24s439ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-3m6s202ms"}
+{"check":"exit-t0-devtools","result":"[]"}
+{"check":"exit-t0-cgroup","result":"== pid 23492: /data/adb/modules/demo/flutter_webui/x86_64/dartaotruntime /data/adb/m\n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/\nState:\tS (sleeping)\n/system/bin/sh: can't open /sys/fs/cgroup//cgroup.events: No such file or directory\ncgroup.freeze cat: /sys/fs/cgroup//cgroup.freeze: No such file or directory cgroup.events: \n== pid 22991: me.weishu.kernelsu                                                    \n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/uid_10209/pid_22991\nState:\tS (sleeping)\ncgroup.freeze 0 cgroup.events: populated 1 frozen 0"}
+{"check":"exit-t0-rootport","result":"root process port"}
+{"check":"exit-t0-service","result":"* ServiceRecord{f9d6b6 u0 com.webui.api.demo/com.termux.api.RootHelperService c:com.android.shell}\n    isForeground=true foregroundId=32363 types=0x40000000 foregroundNoti=Notification(channel=root_helper shortcut=null contentView=null vibrate=null sound=null defaults=0 flags=ONGOING_EVENT|FOREGROUND_SERVICE color=0x00000000 vis=PRIVATE)\n2"}
+{"check":"exit-t60-uptime","result":"968.00"}
+{"check":"exit-t60-rootlog","result":"2026-10-05T06:47:53.581785 cgroup before: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/uid_10209/pid_22991\n2026-10-05T06:47:53.581834 cgroup after: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/\n2026-10-05T06:47:53.599720 listening on 127.0.0.1:39497\n2026-10-05T06:50:40.162757 shutting down\n2026-10-05T06:50:40.188335 am stopservice --user 0 -n com.webui.api.demo/com.termux.api.RootHelperService: exit 255 Stopping service: Intent { cmp=com.webui.api.demo/com.termux.api.RootHelperService }\nService stopped"}
+{"check":"exit-t60-proclog","result":"total 32\n-rw------- 1 root root   2 2026-10-05 06:50 1791182874458714-0.exit\n-rw------- 1 root root 215 2026-10-05 06:47 1791182874458714-0.log\n-rw------- 1 root root   2 2026-10-05 06:42 1791182339354753-0.exit\n-rw------- 1 root root 215 2026-10-05 06:38 1791182339354753-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1791182874458714-0.log\n2026-10-05T06:47:54.553942 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":44693,\"token\":\"osMWQpm4DX6EMcBI1MGmbAQVqM1YMcyts1V1HmauWMU\",\"pid\":23556,\"launch_id\":\"7acaef1ce960cec3\"}"}
+{"check":"exit-t60-sockets","result":"port 39497"}
+{"check":"exit-t60-procs","result":"9323  8994       13:48 u:r:webview_zygote:s0          webview_zygote\n11401  8994       12:31 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_service\n11450  8994       12:31 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_apk\n11621  8994       12:20 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n22991  8994       04:20 u:r:untrusted_app:s0:c209,c256,c512,c768 me.weishu.kernelsu"}
+{"check":"exit-t60-activity","result":"mLastPausedActivity: ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t-1 f}}\n    topResumedActivity=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    * Hist  #0: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    Resumed: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  ResumedActivity: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  deepestLastOrientationSource=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  mFocusedApp=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n        * ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    mSystemBarColorApps={ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}}\n    lastActivityTime=-1m8s951ms    startUpTime=-4m19s917ms    startElapsedTime=-4m19s917ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-4m1s680ms"}
+{"check":"exit-t60-devtools","result":"[]"}
+{"check":"exit-t60-cgroup","result":"== pid 22991: me.weishu.kernelsu                                                    \n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/uid_10209/pid_22991\nState:\tS (sleeping)\ncgroup.freeze 0 cgroup.events: populated 1 frozen 0"}
+{"check":"exit-t60-rootport","result":"root process port"}
+{"check":"exit-t60-service","result":"0"}
+{"check":"exit-t120-uptime","result":"1023.45"}
+{"check":"exit-t120-rootlog","result":"2026-10-05T06:47:53.581785 cgroup before: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/uid_10209/pid_22991\n2026-10-05T06:47:53.581834 cgroup after: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/\n2026-10-05T06:47:53.599720 listening on 127.0.0.1:39497\n2026-10-05T06:50:40.162757 shutting down\n2026-10-05T06:50:40.188335 am stopservice --user 0 -n com.webui.api.demo/com.termux.api.RootHelperService: exit 255 Stopping service: Intent { cmp=com.webui.api.demo/com.termux.api.RootHelperService }\nService stopped"}
+{"check":"exit-t120-proclog","result":"total 32\n-rw------- 1 root root   2 2026-10-05 06:50 1791182874458714-0.exit\n-rw------- 1 root root 215 2026-10-05 06:47 1791182874458714-0.log\n-rw------- 1 root root   2 2026-10-05 06:42 1791182339354753-0.exit\n-rw------- 1 root root 215 2026-10-05 06:38 1791182339354753-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1791182874458714-0.log\n2026-10-05T06:47:54.553942 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":44693,\"token\":\"osMWQpm4DX6EMcBI1MGmbAQVqM1YMcyts1V1HmauWMU\",\"pid\":23556,\"launch_id\":\"7acaef1ce960cec3\"}"}
+{"check":"exit-t120-sockets","result":"port 39497"}
+{"check":"exit-t120-procs","result":"9323  8994       14:43 u:r:webview_zygote:s0          webview_zygote\n11401  8994       13:26 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_service\n11450  8994       13:26 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_apk\n11621  8994       13:15 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n22991  8994       05:15 u:r:untrusted_app:s0:c209,c256,c512,c768 me.weishu.kernelsu"}
+{"check":"exit-t120-activity","result":"mLastPausedActivity: ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t-1 f}}\n    topResumedActivity=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    * Hist  #0: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    Resumed: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  ResumedActivity: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  deepestLastOrientationSource=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  mFocusedApp=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n        * ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    mSystemBarColorApps={ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}}\n    lastActivityTime=-2m4s409ms    startUpTime=-5m15s375ms    startElapsedTime=-5m15s375ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-4m57s138ms"}
+{"check":"exit-t120-devtools","result":"[]"}
+{"check":"exit-t120-cgroup","result":"== pid 22991: me.weishu.kernelsu                                                    \n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/uid_10209/pid_22991\nState:\tS (sleeping)\ncgroup.freeze 0 cgroup.events: populated 1 frozen 0"}
+{"check":"exit-t120-rootport","result":"root process port"}
+{"check":"exit-t120-service","result":"0"}
+{"check":"exit-t240-uptime","result":"1138.91"}
+{"check":"exit-t240-rootlog","result":"2026-10-05T06:47:53.581785 cgroup before: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/uid_10209/pid_22991\n2026-10-05T06:47:53.581834 cgroup after: 4:memory:/ 3:cpuset:/top-app 2:cpu:/top-app 1:blkio:/ 0::/\n2026-10-05T06:47:53.599720 listening on 127.0.0.1:39497\n2026-10-05T06:50:40.162757 shutting down\n2026-10-05T06:50:40.188335 am stopservice --user 0 -n com.webui.api.demo/com.termux.api.RootHelperService: exit 255 Stopping service: Intent { cmp=com.webui.api.demo/com.termux.api.RootHelperService }\nService stopped"}
+{"check":"exit-t240-proclog","result":"total 32\n-rw------- 1 root root   2 2026-10-05 06:50 1791182874458714-0.exit\n-rw------- 1 root root 215 2026-10-05 06:47 1791182874458714-0.log\n-rw------- 1 root root   2 2026-10-05 06:42 1791182339354753-0.exit\n-rw------- 1 root root 215 2026-10-05 06:38 1791182339354753-0.log\n== /data/adb/modules/demo/flutter_webui/run/proc/1791182874458714-0.log\n2026-10-05T06:47:54.553942 INFO cli.serve: serving hello, demo\n{\"squadron_process\":1,\"host\":\"127.0.0.1\",\"port\":44693,\"token\":\"osMWQpm4DX6EMcBI1MGmbAQVqM1YMcyts1V1HmauWMU\",\"pid\":23556,\"launch_id\":\"7acaef1ce960cec3\"}"}
+{"check":"exit-t240-sockets","result":"port 39497"}
+{"check":"exit-t240-procs","result":"9323  8994       16:39 u:r:webview_zygote:s0          webview_zygote\n11401  8994       15:22 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_service\n11450  8994       15:22 u:r:untrusted_app:s0:c151,c256,c512,c768 com.google.android.webview:webview_apk\n11621  8994       15:11 u:r:untrusted_app_27:s0:c210,c256,c512,c768 com.webui.api.demo\n22991  8994       07:11 u:r:untrusted_app:s0:c209,c256,c512,c768 me.weishu.kernelsu"}
+{"check":"exit-t240-activity","result":"mLastPausedActivity: ActivityRecord{4b59410 u0 me.weishu.kernelsu/.ui.webui.WebUIActivity t-1 f}}\n    topResumedActivity=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    * Hist  #0: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    Resumed: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  ResumedActivity: ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  deepestLastOrientationSource=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n  mFocusedApp=ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n        * ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}\n    mSystemBarColorApps={ActivityRecord{f093e05 u0 me.weishu.kernelsu/.ui.MainActivity t16}}\n    lastActivityTime=-3m59s867ms    startUpTime=-7m10s833ms    startElapsedTime=-7m10s833ms\n    curProcState=2 mRepProcState=2 setProcState=2 lastStateTime=-6m52s596ms"}
+{"check":"exit-t240-devtools","result":"[]"}
+{"check":"exit-t240-cgroup","result":"== pid 22991: me.weishu.kernelsu                                                    \n4:memory:/\n3:cpuset:/top-app\n2:cpu:/top-app\n1:blkio:/\n0::/uid_10209/pid_22991\nState:\tS (sleeping)\ncgroup.freeze 0 cgroup.events: populated 1 frozen 0"}
+{"check":"exit-t240-rootport","result":"root process port"}
+{"check":"exit-t240-service","result":"0"}
