@@ -1,0 +1,15 @@
+cvd(7013)  I 10-05 02:17:52  7013  7013 main.cc:137] version: 1.57.0 | VCS: 9bb9c72329cedcb436bb75afc05c24d73fbcdf5d
+HOME=/var/tmp/cvd/1001/1791166565918574/home ANDROID_HOST_OUT=/var/tmp/cvd/1001/1791166565918574/artifacts/host_tools ANDROID_SOONG_HOST_OUT=/var/tmp/cvd/1001/1791166565918574/artifacts/host_tools /var/tmp/cvd/1001/1791166565918574/artifacts/host_tools/bin/cvd_internal_display screenshot --display=0 --screenshot_path=/home/runner/work/devicelab/devicelab/out/aera-recovery.png --instance_num=1 1. main.cpp:224 | DoScreenshot | Failed to get success response from launcher.
+ | cuttlefish/host/libs/command_util/util.cc:205
+ v Result<void> cuttlefish::RunLauncherAction(SharedFD, const run_cvd::ExtendedLauncherAction &, std::optional<int>)
+Expected "response" == "LauncherResponse::kSuccess" but was LauncherResponse::kError vs LauncherResponse::kSuccess. 4. main.cc:161 | CvdMain | 
+3. cvd.cpp:93 | HandleCvdCommand | 
+2. cvd.cpp:78 | HandleCommand | 
+1. display.cpp:131 | Handle | 
+ | cuttlefish/host/commands/cvd/cli/utils.cpp:71
+ v Result<void> cuttlefish::CheckProcessExitedNormally(siginfo_t, int)
+Exited with code '1'
+
+    If the error above is unclear, please copy the text and `cvd version` output into an issue at:
+        http://go/cuttlefish-bug
+
