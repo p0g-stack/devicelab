@@ -1,0 +1,190 @@
+{
+ "check": "webui_host",
+ "label": "webuix608",
+ "date": "2026-10-05",
+ "fingerprint": "google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+ "kernel": "6.6.50-android15-8-g8adecb593e9b-ab12525588",
+ "webview": "versionName=124.0.6367.219",
+ "results": [
+  {
+   "check": "targets",
+   "result": [
+    {
+     "socket": "webview_devtools_remote_12102",
+     "type": "page",
+     "url": "https://mui.kernelsu.org/",
+     "title": "devicelab probe"
+    }
+   ]
+  },
+  {
+   "check": "globals",
+   "result": {
+    "url": "https://mui.kernelsu.org/",
+    "socket": "webview_devtools_remote_12102",
+    "value": {
+     "ua": "WebUI X/608 (Linux; Android 15; sdk_gphone64_x86_64; KernelSU/-1)",
+     "origin": "https://mui.kernelsu.org",
+     "href": "https://mui.kernelsu.org/",
+     "globals": [
+      "ksu",
+      "$devicelab_probe",
+      "$DeFileInputStream",
+      "$DeFileOutputStream",
+      "webui"
+     ],
+     "ksu": [
+      "exec",
+      "execBool",
+      "fullScreen",
+      "getPackagesInfo",
+      "io",
+      "listPackages",
+      "mmrl",
+      "moduleInfo",
+      "spawn",
+      "toast",
+      "exec",
+      "execBool",
+      "fullScreen",
+      "getPackagesInfo",
+      "io",
+      "listPackages",
+      "mmrl",
+      "moduleInfo",
+      "spawn",
+      "toast"
+     ]
+    }
+   }
+  },
+  {
+   "check": "ksu-exec",
+   "result": {
+    "url": "https://mui.kernelsu.org/",
+    "socket": "webview_devtools_remote_12102",
+    "value": "timeout"
+   }
+  },
+  {
+   "check": "ws-loopback",
+   "result": {
+    "url": "https://mui.kernelsu.org/",
+    "socket": "webview_devtools_remote_12102",
+    "value": {
+     "got": [
+      "{\"origin\":\"https://mui.kernelsu.org\",\"peerUid\":10210,\"remote\":\"127.0.0.1:35310\",\"serverUid\":0,\"t\":1791182527782,\"uidSource\":\"/proc/net/tcp\"}",
+      "hi"
+     ],
+     "ms": 30
+    }
+   }
+  },
+  {
+   "check": "fetch-loopback",
+   "result": {
+    "url": "https://mui.kernelsu.org/",
+    "socket": "webview_devtools_remote_12102",
+    "value": {
+     "origin": "https://mui.kernelsu.org",
+     "peerUid": 10210,
+     "remote": "127.0.0.1:35322",
+     "serverUid": 0,
+     "t": 1791182527920,
+     "uidSource": "/proc/net/tcp"
+    }
+   }
+  },
+  {
+   "check": "webview-uid",
+   "result": [
+    "webview_zygote 1053 webview_zygote",
+    "root             0 com.dergoogler.mmrl.wx:root:0",
+    "u0_a151      10151 com.google.android.webview:webview_service",
+    "u0_i9000     99000 com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0"
+   ]
+  },
+  {
+   "check": "while-home-heartbeat",
+   "result": {
+    "url": "https://mui.kernelsu.org/",
+    "socket": "webview_devtools_remote_12102",
+    "value": {
+     "now": 17562,
+     "vis": "hidden"
+    }
+   }
+  },
+  {
+   "check": "lifecycle",
+   "result": {
+    "url": "https://mui.kernelsu.org/",
+    "socket": "webview_devtools_remote_12102",
+    "value": {
+     "events": [
+      {
+       "type": "pageshow",
+       "t": 208,
+       "vis": "visible"
+      },
+      {
+       "type": "visibilitychange",
+       "t": 11459,
+       "vis": "hidden"
+      },
+      {
+       "type": "visibilitychange",
+       "t": 20067,
+       "vis": "visible"
+      }
+     ],
+     "gaps": [
+      {
+       "from": 11457,
+       "ms": 1112,
+       "vis": "hidden"
+      },
+      {
+       "from": 15565,
+       "ms": 1000,
+       "vis": "hidden"
+      },
+      {
+       "from": 16565,
+       "ms": 1001,
+       "vis": "hidden"
+      }
+     ],
+     "slow": {
+      "heldMs": 3002,
+      "sentAt": 1791182531100,
+      "resolvedAt": 1791182531102,
+      "vis": "hidden"
+     }
+    }
+   }
+  },
+  {
+   "check": "dev-url",
+   "result": {
+    "error": "no page target",
+    "sockets": [
+     "webview_devtools_remote_12102"
+    ],
+    "targets": [
+     {
+      "socket": "webview_devtools_remote_12102",
+      "port": 9300,
+      "description": "{\"attached\":true,\"empty\":false,\"height\":640,\"never_attached\":false,\"screenX\":0,\"screenY\":0,\"visible\":false,\"width\":320}",
+      "devtoolsFrontendUrl": "https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/65E7ADA90EF4C8C979CDEAB0DFE93D1D",
+      "id": "65E7ADA90EF4C8C979CDEAB0DFE93D1D",
+      "title": "devicelab probe",
+      "type": "page",
+      "url": "https://mui.kernelsu.org/",
+      "webSocketDebuggerUrl": "ws://127.0.0.1:9300/devtools/page/65E7ADA90EF4C8C979CDEAB0DFE93D1D"
+     }
+    ]
+   }
+  }
+ ]
+}
