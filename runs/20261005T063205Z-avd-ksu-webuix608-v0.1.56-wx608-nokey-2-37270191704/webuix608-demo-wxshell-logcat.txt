@@ -1,0 +1,60 @@
+10-05 06:07:07.799  9846  9898 V WindowManagerShell:  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@9eb150d
+10-05 06:07:07.799  9846  9898 V WindowManagerShell:  try handler com.android.wm.shell.recents.RecentsTransitionHandler@e901cc2
+10-05 06:07:07.799  9846  9898 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+10-05 06:07:07.799  9846  9898 V WindowManagerShell:  try handler com.android.wm.shell.splitscreen.StageCoordinator@c2b8ad3
+10-05 06:07:07.799  9846  9898 V WindowManagerShell:  try handler com.android.wm.shell.transition.RemoteTransitionHandler@5089610
+10-05 06:07:07.799  9846  9898 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=9 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@42e19e4} m=OPEN f=NONE leash=Surface(name=Task=16)/@0x15b0211 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0 taskParent=-1},{WCT{android.window.IWindowContainerToken$Stub$Proxy@ddcae4d} m=TO_BACK f=NONE leash=Surface(name=Task=15)/@0x8873f76 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0 taskParent=-1}]}
+10-05 06:07:07.799  9846  9898 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x0 checks=[{atype=dream independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null},{atype=home independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@716c61a, appThread = android.app.IApplicationThread$Stub$Proxy@72a754b, debugName = LauncherToDream }}
+10-05 06:07:07.799  9846  9898 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity} launchCookie=null},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null launchCookie=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@fd2fb28, appThread = android.app.IApplicationThread$Stub$Proxy@e4b5041, debugName = QuickstepLaunchHome }}
+10-05 06:07:07.799  9846  9898 V WindowManagerShell:  Delegate animation for (#9) to null
+10-05 06:07:07.799  9846  9898 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultTransitionHandler@afad8c5
+10-05 06:07:07.799  9846  9898 V WindowManagerShell: start default transition animation, info = {id=9 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@42e19e4} m=OPEN f=NONE leash=Surface(name=Task=16)/@0x15b0211 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0 taskParent=-1},{WCT{android.window.IWindowContainerToken$Stub$Proxy@ddcae4d} m=TO_BACK f=NONE leash=Surface(name=Task=15)/@0x8873f76 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0 taskParent=-1}]}
+10-05 06:07:07.799  9846  9898 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@9fdd02 animAttr=0x9 type=OPEN isEntrance=false
+10-05 06:07:07.800  9846  9898 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@af3e613 animAttr=0x8 type=OPEN isEntrance=true
+10-05 06:07:07.800  9846  9898 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@afad8c5
+10-05 06:07:07.802 12232 12232 I l.process.webui: Using CollectorTypeCMC GC.
+10-05 06:07:07.803 12232 12232 W l.process.webui: Unexpected CPU variant for x86: x86_64.
+10-05 06:07:07.803 12232 12232 W l.process.webui: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+10-05 06:07:07.802  9622  9641 V WindowManager: Sent Transition (#9) createdAt=10-05 06:07:07.769 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=16 displayId=0 isRunning=true baseIntent=Intent { flg=0x10080000 cmp=com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity } baseActivity=ComponentInfo{com.dergoogler.mmrl.wx/com.dergoogler.mmrl.wx.ui.webui.WebUIActivity} topActivity=ComponentInfo{com.dergoogler.mmrl.wx/com.dergoogler.mmrl.wx.ui.webui.WebUIActivity} origActivity=null realActivity=ComponentInfo{com.dergoogler.mmrl.wx/com.dergoogler.mmrl.wx.ui.webui.WebUIActivity} numActivities=1 lastActiveTime=408348 supportsMultiWindow=true resizeMode=2 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{a8f5664 Task{8c1cf07 #16 type=standard A=10210:com.dergoogler.mmrl.wx.WEBUI_X}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{b270cd com.dergoogler.mmrl.wx.ui.webui.WebUIActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false locusId=null displayAreaFeatureId=1 isTopActivityTransparent=false appCompatTaskInfo=AppCompatTaskInfo { topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= falseisLetterboxEducationEnabled= true isLetterboxDoubleTapEnabled= false topActivityEligibleForUserAspectRatioButton= false topActivityBoundsLetterboxed= false isFromLetterboxDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=320 topActivityLetterboxHeight=640 isUserFullscreenOverrideEnabled=false isSystemFullscreenOverrideEnabled=false cameraCompatTaskInfo=CameraCompatTaskInfo { cameraCompatControlState=hidden freeformCameraCompatMode=inactive}}}, pipTask = null, remoteTransition = null, displayChange = null, flags = 0, debugId = 9 }
+10-05 06:07:07.803  9622  9641 V WindowManager:         {WCT{RemoteToken{a8f5664 Task{8c1cf07 #16 type=standard A=10210:com.dergoogler.mmrl.wx.WEBUI_X}}} m=OPEN f=NONE leash=Surface(name=Task=16)/@0xf2a07f6 sb=Rect(0, 0 - 320, 640) eb=Rect(0, 0 - 320, 640) d=0 taskParent=-1},
+10-05 06:07:07.804 12232 12232 E l.process.webui: Not starting debugger since process cannot load the jdwp agent.
+10-05 06:07:07.826 12232 12232 W l.process.webui: Unsupported class loader
+10-05 06:07:07.847 12232 12232 W l.process.webui: Unsupported class loader
+10-05 06:07:07.847 12232 12232 W l.process.webui: Unsupported class loader
+10-05 06:07:07.883  9622 10068 D CoreBackPreview: Window{5bafa39 u0 com.dergoogler.mmrl.wx/com.dergoogler.mmrl.wx.ui.webui.WebUIActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@22501df, mPriority=-1, mIsAnimationCallback=false}
+10-05 06:07:08.037  9622  9641 I ActivityTaskManager: Displayed com.dergoogler.mmrl.wx/.ui.webui.WebUIActivity for user 0: +266ms
+10-05 06:07:08.237 12232 12232 W l.process.webui: Entry not found
+10-05 06:07:08.261  9622 11145 V GrammaticalInflectionUtils: AttributionSource: AttributionSource { uid = 99001, packageName = null, attributionTag = null, token = android.os.Binder@bdf1df7, deviceId = 0, next = null } does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+10-05 06:07:08.317  9846  9898 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#9) android.os.BinderProxy@70aa354@0
+10-05 06:07:08.327  9846  9898 V WindowManagerShell: Track 0 became idle
+10-05 06:07:08.328  9846  9898 V WindowManagerShell: All active transition animations finished
+10-05 06:07:08.335  9622  9897 D CoreBackPreview: Window{5bafa39 u0 com.dergoogler.mmrl.wx/com.dergoogler.mmrl.wx.ui.webui.WebUIActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@2d7bd31, mPriority=0, mIsAnimationCallback=true}
+10-05 06:07:08.341 12232 12232 D WebUIProvider.kt:497: Added Event Listener e6c7595c-6a92-4bec-8d81-26b134ae3d27
+10-05 06:07:08.549 12232 12232 D WebUIProvider.kt:339: Added interface c7e4b1ef-6275-440d-96e0-b7de263eeef5 | ModuleInterface
+10-05 06:07:08.557 12232 12232 D WebUIProvider.kt:339: Added interface bfb89af6-dc91-446f-badf-826d75e52521 | FileInputInterface
+10-05 06:07:08.563 12232 12232 D WebUIProvider.kt:339: Added interface fd80a915-92e9-4d59-b442-f804536f5915 | FileOutputInterface
+10-05 06:07:08.574 12232 12232 D WebUIProvider.kt:339: Added interface demo | ModuleInterface
+10-05 06:07:08.576 12232 12232 D WebUIProvider.kt:339: Added interface ksu | KernelSUInterface
+10-05 06:07:08.596 12232 12232 D WebUIProvider.kt:339: Added interface 1d03f61f-444e-4eb3-8b7a-27dd617c8e7d | ApplicationInterface
+10-05 06:07:08.597 12232 12232 D WebUIProvider.kt:497: Added Event Listener 2114ba17-579d-435d-b824-35e64a1c9fa3
+10-05 06:07:08.624 12232 12232 D WebUIProvider.kt:339: Added interface 8d485759-515b-4565-9cef-d6a171c25eef | FileSystemInterface
+10-05 06:07:08.659 12232 12232 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/internal/
+10-05 06:07:08.659 12232 12232 D WebUIProvider.kt:432: Added Path Handler ksu://icon/
+10-05 06:07:08.659 12232 12232 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/.demo/
+10-05 06:07:08.659 12232 12232 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/.adb/
+10-05 06:07:08.659 12232 12232 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/.config/
+10-05 06:07:08.660 12232 12232 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/.local/
+10-05 06:07:08.661 12232 12232 D WebUIProvider.kt:432: Added Path Handler https://mui.kernelsu.org/
+10-05 06:07:08.663 12232 12294 W cr_media: BLUETOOTH_CONNECT permission is missing.
+10-05 06:07:08.664 12232 12294 W cr_media: registerBluetoothIntentsIfNeeded: Requires BLUETOOTH permission
+10-05 06:07:09.457  9622  9932 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+10-05 06:07:17.785  9553  9558 D PermissionCache: checking android.permission.DUMP for uid=10144 => granted (106 us)
+10-05 06:07:17.934 12232 12239 W l.process.webui: ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~azfryAuWsn43_wuWKCQUeg==/com.google.android.webview-dc7sVYTcv1dNivWKZPcYDQ==/WebViewGoogle.apk' with 2 weak references
+10-05 06:07:18.468  9622 10488 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+10-05 06:07:22.309  9622  9653 D SafetySourceDataValidat: No cert check requested for package com.google.android.permissioncontroller
+10-05 06:07:24.637  9622  9712 D ActivityManager: freezing 10130 com.google.android.permissioncontroller
+10-05 06:09:03.991  9622  9634 W system_server: ApkAssets: Deleting an ApkAssets object '<empty> and /apex/com.android.permission/priv-app/GooglePermissionController@350820360/GooglePermissionController.apk' with 1 weak references
+10-05 06:09:03.991  9622  9634 W system_server: ApkAssets: Deleting an ApkAssets object '/product/overlay/GooglePermissionControllerOverlay.apk' with 1 weak references
+10-05 06:09:48.978  9622  9653 D CoreBackPreview: Window{286b88b u0 com.dergoogler.mmrl.wx/com.dergoogler.mmrl.wx.ui.webui.WebUIActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@853d8bd, mPriority=-1, mIsAnimationCallback=false}
+10-05 06:09:48.978  9622  9653 D CoreBackPreview: Window{286b88b u0 com.dergoogler.mmrl.wx/com.dergoogler.mmrl.wx.ui.webui.WebUIActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@6eb0eb2, mPriority=0, mIsAnimationCallback=true}
+10-05 06:09:49.031 12232 12236 W l.process.webui: Missing inline cache for void androidx.navigationevent.NavigationEventProcessor.updateEnabledHandlerInfo$navigationevent(androidx.navigationevent.NavigationEventHandler)
