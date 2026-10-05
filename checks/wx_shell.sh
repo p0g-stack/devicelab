@@ -31,7 +31,7 @@ rec open "\"$("$HERE/managers/open_webui.sh" "$LABEL-wxshell" "$HPKG" "$ID" "$NA
 rec open-uptime "\"$T0\""
 for i in $(seq 1 20); do
   t=$(now)
-  ov=$($UI dump "$O-$i.xml" 2>/dev/null | grep -i -E 'allow|reject|permission|shell|deny' | head -5 | tr '\n' '|')
+  ov=$($UI dump "$O-$i.xml" 2>/dev/null | grep -i -E 'allow|reject|missing permission|deny' | head -5 | tr '\n' '|')
   [ -n "$ov" ] && timeout 20 adb exec-out screencap -p >"$O-overlay-$i.png"
   pt=$(text | python3 -c 'import json,sys
 try: v = json.loads(sys.stdin.read())
