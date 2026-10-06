@@ -219,6 +219,10 @@ jobs:
         run: |
           aera/cuttlefish/aera-rotate-check.sh "$LAB_OUT/counter-1.0.0-x64.aerap" || true
           aera/cuttlefish/symbolize-cores.sh "${{ steps.aera.outputs.tag }}" 
+      - name: AERA's own UI, no plugin (press a card, mode transition, power menu reboot; last, it reboots)
+        if: steps.aera.outputs.tag != ''
+        timeout-minutes: 15
+        run: aera/cuttlefish/aera-stock-ui-check.sh || true
       - name: Logs
         if: always()
         run: |
