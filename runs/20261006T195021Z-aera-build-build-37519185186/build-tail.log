@@ -1,0 +1,67 @@
+[aera 19:29:47] host: 4 jobs, 15 GB RAM + 23 GB swap, 92 GB free at /home/runner/aera
+[aera 19:29:47] WARNING: under 120 GB free; the sync + out/ needs ~150 GB
+[aera 19:29:47] installing build packages (apt)
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+ /etc/needrestart/restart.d/systemd-manager
+ systemctl restart packagekit.service php8.3-fpm.service systemd-journald.service systemd-networkd.service systemd-resolved.service systemd-udevd.service udisks2.service
+
+Service restarts being deferred:
+ systemctl restart hosted-compute-agent.service
+ systemctl restart systemd-logind.service
+ systemctl restart walinuxagent.service
+
+No containers need to be restarted.
+
+User sessions running outdated binaries:
+ runner @ user manager service: systemd[1143]
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+[aera 19:29:53] repo init android_manifest@250b38eed4b7bb663a945deb3c4f12e4ff2339dd
+[aera 19:29:56] repo sync (attempt 1)
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+git@github.com: Permission denied (publickey).
+[aera 19:50:19] sync done in 1213s; 78G
+error: sha1 information is lacking or useless (aeraui/core/engine.cpp).
+error: could not build fake ancestor
+hint: Use 'git am --show-current-patch=diff' to see the failed patch
+hint: When you have resolved this problem, run "git am --continue".
+hint: If you prefer to skip this patch, run "git am --skip" instead.
+hint: To restore the original branch and stop patching, run "git am --abort".
+hint: Disable this message with "git config set advice.mergeConflict false"
+Patch failed at 0024 aeraui: start the Recents swipe on movement, not on touch-down
