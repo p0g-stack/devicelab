@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+  actions: write
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -38,13 +39,13 @@ jobs:
       - name: Disk
         if: always()
         run: df -h / /mnt; du -sh ~/aera/.repo /mnt/aera 2>/dev/null || true; tail -80 "$LAB_OUT/build.log" > "$LAB_OUT/build-tail.log" 2>/dev/null || true
-      - name: Release the ramdisk
+      - name: Release the image, then run the Cuttlefish checks on it
         if: success()
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
-          tag=aera-cf-x86_64-$(date -u +%Y%m%d)-${GITHUB_RUN_ID}
-          gh release create "$tag" --prerelease --title "AERA recovery ramdisk, Cuttlefish x86_64" \
-            --notes "aera/build/build.sh at $GITHUB_SHA; AERA android_manifest aera-16.0" "$LAB_OUT"/*.img "$LAB_OUT"/recovery-root.tgz
+          # A release made with the job token triggers no workflow, so dispatch aera-cf here.
+          tag=$(aera/build/publish.sh "$LAB_OUT" | sed -n 's/^published //p')
+          gh workflow run aera-cf.yml -R "$GITHUB_REPOSITORY" -r main -f aera_release="$tag"
       - name: Publish to lab-results
         if: always()
         env: { GH_TOKEN: "${{ github.token }}" }

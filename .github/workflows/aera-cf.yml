@@ -94,8 +94,11 @@ jobs:
           fi
           [ -n "$tag" ] || { echo "no AERA release yet"; exit 0; }
           mkdir -p "$RUNNER_TEMP/aera-img" && cd "$RUNNER_TEMP/aera-img"
-          gh release download "$tag" -R "$GITHUB_REPOSITORY" -p ramdisk-recovery.img -p BUILD-INFO -p SHA256SUMS
-          grep ramdisk-recovery.img SHA256SUMS | sha256sum -c -
+          gh release download "$tag" -R "$GITHUB_REPOSITORY" -p ramdisk-recovery.img
+          # Releases from aera-build.yml before publish.sh have no BUILD-INFO/SHA256SUMS (the job log has them).
+          gh release download "$tag" -R "$GITHUB_REPOSITORY" -p BUILD-INFO -p SHA256SUMS || true
+          if [ -f SHA256SUMS ]; then grep ramdisk-recovery.img SHA256SUMS | sha256sum -c -
+          else echo "release $tag has no SHA256SUMS"; sha256sum ramdisk-recovery.img; echo "release $tag (no BUILD-INFO)" > BUILD-INFO; fi
           cp BUILD-INFO "$LAB_OUT/aera-BUILD-INFO"; echo "tag=$tag" >> "$GITHUB_OUTPUT"; echo "release $tag"; cat BUILD-INFO
       - name: Boot AERA recovery
         timeout-minutes: 20
