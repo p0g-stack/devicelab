@@ -21,6 +21,9 @@ log() { echo "[stock-ui] $*" | tee -a "$OUT/log.txt"; }
 shot() {
   a shell 'rm -f /tmp/aeraui.png; touch /tmp/aeraui-capture'
   for _ in $(seq 20); do a shell '[ -s /tmp/aeraui.png ] && [ ! -e /tmp/aeraui-capture ]' && break; sleep 0.5; done
+  # The PNG is still being written when it first appears: wait for its size to settle.
+  local s0= s1; for _ in $(seq 20); do s1=$(a shell 'stat -c %s /tmp/aeraui.png 2>/dev/null' | tr -d '\r')
+    [ -n "$s1" ] && [ "$s1" = "$s0" ] && break; s0=$s1; sleep 0.3; done
   a pull /tmp/aeraui.png "$OUT/$1.png" >/dev/null 2>&1 && log "frame $1.png" || log "no frame for $1"
 }
 rpc() {
@@ -82,6 +85,10 @@ mark "transition recovery"
 log "transition recovery: $(rpc '{"v":1,"id":"stock-tr2","op":"transition","args":{"target":"recovery"}}' | tr '\n' ' ')"
 sleep 0.4; shot 2-back-during; sleep 3; shot 2-recovery
 log "after transitions: recovery pid $(a shell pidof recovery | tr -d '\r'), status $(rpc '{"v":1,"id":"stock-st","op":"status"}' | grep -c '"result"')"
+# A UI that stopped drawing: busy (spinning) or asleep, and where its threads wait.
+cpu=$(a shell 'p=$(pidof recovery); t0=$(cut -d" " -f14,15 /proc/$p/stat | tr " " +); sleep 2; t1=$(cut -d" " -f14,15 /proc/$p/stat | tr " " +); echo $(( (t1) - (t0) ))' | tr -d '\r')
+log "recovery CPU over 2 s: $cpu ticks (200 = one core busy)"
+a shell 'p=$(pidof recovery); for t in /proc/$p/task/*; do echo "$(cat $t/comm) $(cat $t/stat | cut -d" " -f3) $(cat $t/wchan)"; done' | tr -d '\r' > "$OUT/recovery-threads.txt" 2>&1
 key_home; sleep 3
 
 # 3. Power menu, Recovery: the power transition must reboot.
