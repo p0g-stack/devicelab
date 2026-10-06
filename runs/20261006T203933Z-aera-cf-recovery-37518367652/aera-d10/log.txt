@@ -1,0 +1,31 @@
+[d10] installed lifecycle-probe
+[d10] exception-trace=1
+[d10] == A: left by the edge swipe, reopened from its card
+[d10] core limit: unlimited
+[d10] open lifecycle-probe: {"event":"log","id":"d10","text":"Opening lifecycle-probe\n"} {"code":0,"event":"result","id":"d10"} 
+[d10] frame A1-app.png
+[d10] edge swipe Home
+[d10] key menu
+[d10] frame A2-recents.png
+[d10] tap 360,790
+[d10] frame A3-after-card.png
+[d10] A: AERA RESTARTED (recovery pid 2697 -> 3470)
+[d10]   [ 1191.607935] init: Service 'recovery' (pid 811) received signal 11
+[d10]   [ 1310.180871] init: Service 'recovery' (pid 2697) received signal 11
+[d10]   -rw------- 1 root root 83292160 2026-10-06 22:32 /tmp/core.recovery.2697
+[d10]   -rw------- 1 root root 85757952 2026-10-06 22:30 /tmp/core.recovery.811
+[d10] A: plugin pids 3320 -> none
+[d10] == B: never left, Menu from inside the app, its card
+[d10] core limit: unlimited
+[d10] open lifecycle-probe: {"event":"log","id":"d10","text":"Opening lifecycle-probe\n"} {"code":0,"event":"result","id":"d10"} 
+[d10] frame B1-app.png
+[d10] key menu
+[d10] frame B2-recents.png
+[d10] tap 361,791
+[d10] frame B3-after-card.png
+[d10] B: AERA RESTARTED (recovery pid 3470 -> 3814)
+[d10]   [ 1191.607935] init: Service 'recovery' (pid 811) received signal 11
+[d10]   [ 1310.180871] init: Service 'recovery' (pid 2697) received signal 11
+[d10]   [ 1375.427179] init: Service 'recovery' (pid 3470) received signal 11
+[d10]   -rw------- 1 root root 81039360 2026-10-06 22:33 /tmp/core.recovery.3470
+[d10] B: plugin pids 3676 -> none
