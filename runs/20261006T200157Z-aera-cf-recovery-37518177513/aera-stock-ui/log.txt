@@ -1,0 +1,24 @@
+[stock-ui] frame 1-home.png
+[stock-ui] frame 1-held.png
+[stock-ui] frame 1-after.png
+[stock-ui] held vs home: Traceback (most recent call last):
+  File "<stdin>", line 4, in <module>
+  File "/home/runner/work/devicelab/devicelab/aera/cuttlefish/../tools/png_read.py", line 23, in read_png
+    raw, stride = zlib.decompress(idat), width * bpp
+                  ^^^^^^^^^^^^^^^^^^^^^
+zlib.error: Error -5 while decompressing data: incomplete or truncated stream
+[stock-ui] frame 1-home-again.png
+[stock-ui] transition fastboot: {"event":"log","id":"stock-tr","text":"Transitioning to fastboot\n"} {"code":0,"event":"result","id":"stock-tr"} 
+[stock-ui] no frame for 2-during-1
+[stock-ui] no frame for 2-during-2
+[stock-ui] no frame for 2-fastboot
+[stock-ui] recovery pid 5301 -> 5301
+[stock-ui] transition recovery: 
+[stock-ui] no frame for 2-back-during
+[stock-ui] no frame for 2-recovery
+[stock-ui] after transitions: recovery pid 5301, status 0
+[stock-ui] no frame for 3-power-menu
+[stock-ui] no frame for 3-recovery-held
+[stock-ui] no frame for 3-transition
+[stock-ui] NOT REBOOTED (uptime 1789 -> 2012, adb gone at +20 s: 0)
+[stock-ui] no frame for 3-stuck
