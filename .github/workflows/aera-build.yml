@@ -3,6 +3,8 @@
 name: aera-build
 on:
   workflow_dispatch:
+    inputs:
+      skip_patches: { default: "", description: "project paths whose series to leave out, e.g. external/lvgl (A/B images)" }
 permissions:
   contents: write
   actions: write
@@ -35,6 +37,11 @@ jobs:
           set -o pipefail
           # Sources on / (bigger after cleanup), out/ on /mnt.
           mkdir -p ~/aera && ln -sfn /mnt/aera ~/aera/out
+          if [ -n "${{ inputs.skip_patches }}" ]; then
+            cp -r aera/build/patches "$RUNNER_TEMP/patches"
+            for d in ${{ inputs.skip_patches }}; do rm -rf "${RUNNER_TEMP:?}/patches/$d"; echo "leaving out $d"; done
+            export AERA_PATCHES=$RUNNER_TEMP/patches
+          fi
           aera/build/build.sh ~/aera "$LAB_OUT" 2>&1 | tee "$LAB_OUT/job.log"
       - name: Disk
         if: always()
