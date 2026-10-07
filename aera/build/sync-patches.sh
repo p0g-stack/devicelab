@@ -17,9 +17,9 @@ find "$rec" "$lvgl" -maxdepth 1 -name '*.patch' -delete
 for d in patches cuttlefish-patches refinement-patches remote-patches; do
   [ -d "$ta/$d" ] && cp "$ta/$d"/*.patch "$rec/"
 done
-cp "$ta/lvgl-patches"/*.patch "$lvgl/"
+ls "$ta/lvgl-patches"/*.patch >/dev/null 2>&1 && ls "$ta/lvgl-patches"/*.patch >/dev/null 2>&1 && cp "$ta/lvgl-patches"/*.patch "$lvgl/"
 short=$(git -C "$src" rev-parse --short "$rev")
 echo "from p0g-stack/flutter-aera $short third_party/aera/patches, then cuttlefish-patches (C*), refinement-patches (F*), remote-patches (R*); name order = apply order" > "$rec/SOURCE"
 echo "from p0g-stack/flutter-aera $short third_party/aera/lvgl-patches (series order = name order)" > "$lvgl/SOURCE"
 echo "recovery: $(cd "$rec" && ls *.patch | sed 's/-.*//' | tr '\n' ' ')"
-echo "lvgl:     $(cd "$lvgl" && ls *.patch | sed 's/-.*//' | tr '\n' ' ')"
+echo "lvgl:     $(cd "$lvgl" && ls *.patch 2>/dev/null | sed 's/-.*//' | tr '\n' ' ')"

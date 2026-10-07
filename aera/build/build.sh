@@ -71,7 +71,7 @@ fi
 
 # Patches: reset each patched project to its pin first, so reruns are
 # clean; then the series, then the devicelab-only fakes.
-projects=$(for p in "$PATCHES" "$PATCHES_CF"; do [ -d "$p" ] && (cd "$p" && find . -name '*.patch' -printf '%h\n'); done | sed 's#^\./##' | sort -u)
+projects=$(for p in "$PATCHES" "$PATCHES_CF"; do [ -d "$p" ] && (cd "$p" && find . \( -name '*.patch' -o -name SOURCE \) -printf '%h\n'); done | sed 's#^\./##' | sort -u)
 # Device-tree patches (patches/device/<vendor>/<device>/) apply only when that
 # tree is in the checkout, from the build machine's local manifest.
 for d in $projects; do
