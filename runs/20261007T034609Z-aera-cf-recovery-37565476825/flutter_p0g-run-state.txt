@@ -1,0 +1,77 @@
+prw-rw---- 1 root root 0 2026-10-07 05:26 /system/bin/aerain
+prw-rw-rw- 1 root root 0 2026-10-07 05:26 /system/bin/aeraout
+  PID S WCHAN  NAME                        ARGS                       
+    1 S do_epoll_wait init                 init second_stage
+   75 S do_sys_poll init                   init subcontext u:r:vendor_init:s0 16
+   76 S do_sys_poll ueventd                ueventd
+   81 S __x64_sys_rt_sigsuspend logd       logd
+   82 S hrtimer_nanosleep hwservicemanager hwservicemanager
+   83 S do_epoll_wait servicemanager       servicemanager
+   87 S do_epoll_wait vndservicemanager    vndservicemanager /dev/vndbinder
+   91 S do_epoll_wait charger              charger
+  810 S futex_wait_queue recovery          recovery
+  839 S do_epoll_wait adbd                 adbd --root_seclabel=u:r:su:s0 --device_banner=recovery
+ 1791 S do_sys_poll ld-linux-x86-64.so.2   ld-linux-x86-64.so.2 --library-path /tmp/aera-p2-QSMoJC/usr/lib /tmp/aera-p2-QSMoJC/usr/bin/aera-flutter --vulkan --aera-host-api=3
+lrwx------ 1 root root 64 2026-10-07 05:21 18 -> /memfd:aera-plugin-surface (deleted)
+lr-x------ 1 root root 64 2026-10-07 05:21 19 -> /system/bin/aeracancel
+lr-x------ 1 root root 64 2026-10-07 05:21 9 -> /system/bin/aerain
+[Guides/FAQ]: https://t.me/aera_recovery_project
+--------------------------
+I:DEBUG: AERA: the startup script has been executed.
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+* Storage is not encrypted
+* Platform:   aera_cf
+* Device:     aera_cf (aera_cf)
+* Dynamic:    yes
+* Boot slot:  _a
+* Virtual_AB: no
+* Kernel:     6.12.74-android16-6-g3ec022196c4e-ab15076761
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+* No ROM.
+--------------------------
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:Is_Mounted: Unable to find partition for path '/system_root'
+Unable to find partition for path '/system_root'
+I:ROM Status: Is not installed
+I:Themes version: 2.0
+I:AERA crashed; disabling MTP as a precaution.
+I:Cannot find file /sys/class/android_usb/android0/idVendor
+I:Cannot find file /sys/class/android_usb/android0/idProduct
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Can't probe device /dev/block/vda9
+I:Unable to mount '/data'
+I:Actual block device: '/dev/block/vda9', current file system: 'ext4'
+I:Starting Adb Backup FIFO
+I:Reloading input devices
+lab-home: key home
+lab-home: key home
+lab-home: key menu
+lab-home: key menu
+lab-home: key home
+lab-d5: remote tap 620,1272
+lab-d5: remote tap 688,1272
+lab-d5: remote tap 360,449
+lab-d5: raw tap 618,1275 (panel 618,1275)
+lab-d5: raw tap 690,1269 (panel 690,1269)
+lab-d5: raw tap 363,452 (panel 363,452)
+I:Cannot find file /sys/class/timed_output/vibrator/enable
