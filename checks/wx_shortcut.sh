@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# WebUI X home-screen shortcut for a shipped module (v608 builds it from the
+# Current WebUI X home-screen shortcut for a shipped module (built from the
 # module icon named by module.prop webuiIcon=; without one create returns false
 # with an "invalid icon" toast). Calls webui.createShortcut() from the page as
 # flutter-webui's WebUi.extras does, accepts the launcher's pin dialog, checks
@@ -36,3 +36,7 @@ rec home-tap "\"$(UI_EXACT=1 UI_WAIT=5 $UI tap "$NAME" 2>&1 | tail -1)\""; sleep
 rec from-shortcut-top "\"$(top)\""; shot from-shortcut
 rec state-from-shortcut "$(ev "$STATE")"
 rec page "$(text)"
+# v660 shortcuts must target the new-process activity, not the removed class.
+top | grep -q 'ui.webui.activity.NewProcessWebUIActivity' || {
+  echo 'shortcut did not open the v660 new-process activity'; exit 1;
+}

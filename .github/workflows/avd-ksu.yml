@@ -28,6 +28,9 @@ on:
     paths: [".github/workflows/avd-ksu.yml", "managers/**", "checks/**", "driver/**", "modules/**", "tools/labserver/**", "tools/sockprobe/**"]
 permissions:
   contents: write
+defaults:
+  run:
+    shell: bash
 jobs:
   ksu:
     runs-on: ubuntu-24.04

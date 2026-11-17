@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# WebUI X shell permission gate (v608 and later gate ksu.exec behind
+# Current WebUI X shell permission gate: ksu.exec requires
 # "kernelsu.permission.SHELL" in the module's webroot/config.json permissions;
 # without it the host shows an Allow/Reject overlay and exec returns null with
 # no callback). From a fresh host state (WebUI X's per-module config under
@@ -61,7 +61,7 @@ print(json.dumps([x[:200] for x in (v or []) if any(k in x.lower() for k in ("ru
   ov=$($UI dump "$O-hello-$i.xml" 2>/dev/null | grep -i -E 'allow|reject|missing permission' | head -3 | tr '\n' '|')
   rec "hello-t$i" "$(printf '{"uptime":"%s","since_tap":"%s","page":%s,"overlay":%s}' "$t" "$(echo "$t - $TH" | bc 2>/dev/null)" "${pt:-null}" "$(printf %s "$ov" | js)")"
   case "$pt" in *[a-zA-Z]*) case "$pt" in '[]') ;; *) [ $i -ge 3 ] && break;; esac;; esac
-  # v608 shows its Allow/Reject overlay for a module without the SHELL key:
+  # The host shows its Allow/Reject overlay for a module without the SHELL key:
   # answer Reject once (the refused case) and keep timing from there.
   if [ -n "$ov" ] && [ -z "${REJ:-}" ] && [ $i -ge 3 ]; then REJ=$(now); rec reject-tap "\"$(UI_EXACT=1 $UI tap Reject 2>&1 | tail -1)\""; rec reject-uptime "\"$REJ\""; fi
   sleep 1
@@ -71,13 +71,16 @@ timeout 20 adb exec-out screencap -p >"$O-hello.png"
 # Straight from the page: does ksu.exec run and call back, and how fast?
 rec exec-probe "$(ev 'new Promise(r => { if (!window.ksu || typeof ksu.exec !== "function") return r({ksu: typeof window.ksu}); const t = performance.now(), cb = "__labcb" + Date.now(); window[cb] = (c, o, e) => r({callback: true, code: c, out: String(o).slice(0, 80), ms: Math.round(performance.now() - t)}); let ret; try { ret = ksu.exec("id", "{}", cb) } catch (e) { return r({threw: String(e)}) } setTimeout(() => r({callback: false, returned: String(ret), ms: 5000}), 5000) })')"
 adb logcat -d 2>/dev/null | grep -i -E 'permission|shell|webui' | grep -v -E 'nativeloader|PackageManager' | tail -60 >"$O-logcat.txt"
-# Host extras as the page sees them (WebUI X v608: webui.createShortcut /
-# hasShortcut, ksu.listPackages / getPackagesInfo, ksu://icon/<pkg>), probed
-# straight from JS, not through flutter-webui's WebUi.* wrappers.
-rec host-extras "$(ev 'new Promise(async r => { const o = {}; const t = (k, f) => { try { o[k] = f() } catch (e) { o[k] = "throw " + String(e).slice(0, 120) } };
-  for (const [ns, m] of [["webui", "createShortcut"], ["webui", "hasShortcut"], ["ksu", "listPackages"], ["ksu", "getPackagesInfo"], ["ksu", "listUserPackages"], ["ksu", "exit"], ["webui", "exit"]]) o["typeof " + ns + "." + m] = typeof (window[ns] && window[ns][m]);
-  if (window.ksu && typeof ksu.listPackages === "function") t("listPackages(user) length", () => { const v = ksu.listPackages("user"); try { return JSON.parse(v).length } catch (e) { return String(v).slice(0, 120) } });
-  if (window.ksu && typeof ksu.getPackagesInfo === "function") t("getPackagesInfo([android])", () => String(ksu.getPackagesInfo(JSON.stringify(["android"]))).slice(0, 400));
-  if (window.webui && typeof webui.hasShortcut === "function") t("hasShortcut()", () => String(webui.hasShortcut()));
+# Current package manager class, not the deprecated direct package APIs.
+# No IO permission is requested: flutter-webui keeps its root transport.
+extras=$(ev 'new Promise(async r => { const o = {}; const t = (k, f) => { try { o[k] = f() } catch (e) { o[k] = "throw " + String(e).slice(0, 120) } };
+  for (const [ns, m] of [["webui", "createShortcut"], ["webui", "hasShortcut"], ["ksu", "pm"], ["ksu", "io"], ["webui", "exit"]]) o[ns + "." + m] = typeof (window[ns] && window[ns][m]);
+  t("pmVersion", () => ksu.pm().version());
+  t("packages", () => JSON.parse(ksu.pm().listPackages("user")));
+  t("android", () => JSON.parse(ksu.pm().getPackagesInfo(["android"]))[0]);
   o.icon = await new Promise(q => { const i = new Image(); i.onload = () => q("loaded " + i.naturalWidth + "x" + i.naturalHeight); i.onerror = () => q("error"); i.src = "ksu://icon/android"; setTimeout(() => q("timeout"), 4000) });
-  r(o) })')"
+  r(o) })')
+rec host-extras "$extras"
+jq -e '.value | .pmVersion == 1 and (.packages | type == "array") and .android.packageName == "android" and .android.error == null' <<<"$extras" >/dev/null || {
+  echo 'current WebUI X package manager qualification failed'; exit 1;
+}
