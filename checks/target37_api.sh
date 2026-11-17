@@ -7,6 +7,14 @@ OUT=${LAB_OUT:-$PWD/out}; API=/data/adb/modules/$ID/webui_app_plane/termux-api
 J=$OUT/$LABEL-target37.jsonl
 : >"$J"
 [ "$(adb shell getprop ro.kernel.qemu | tr -d '\r')" = 1 ] || { echo 'AVD required'; exit 1; }
+# app_plane_module.sh soft-reboots before this runs. boot_completed can be
+# back while system_server is still starting, and then every dumpsys answers
+# "Can't find service: package" (run 44138145375's kernelsu leg failed the
+# targetSdk read that way). Wait for the app's package entry itself.
+for _ in $(seq 1 60); do
+  adb shell cmd package path "$APP" 2>/dev/null | grep -q 'package:' && break
+  sleep 5
+done
 package_info=$(adb shell dumpsys package "$APP")
 grep -q 'targetSdk=37' <<<"$package_info" || { echo 'targetSdk 37 APK required'; exit 1; }
 api() { adb shell sh "$API" --package "$APP" --wait 60 "$@" </dev/null | tr -d '\r'; }

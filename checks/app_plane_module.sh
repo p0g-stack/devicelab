@@ -15,6 +15,17 @@ O=$OUT/$LABEL-appmod; J=$O.jsonl; : >"$J"
 js() { python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))'; }
 rec() { echo "{\"check\":\"$1\",\"result\":${2:-null}}" | tee -a "$J"; }
 sh_() { adb shell "$1" 2>&1 | tr -d '\r' | js; }
+# A KernelSU soft-reboot clears sys.boot_completed before system_server is
+# ready: a check that runs then reads "Can't find service: package" (run
+# 44138145375's kernelsu leg). Require the package service as well.
+wait_boot() {
+  local t0=$SECONDS
+  until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ] &&
+        adb shell cmd package path android 2>/dev/null | grep -q 'package:'; do
+    (( SECONDS - t0 > 420 )) && break
+    sleep 3
+  done
+}
 shot() { timeout 20 adb exec-out screencap -p >"$O-$1.png"; $UI dump "$O-$1.xml" >/dev/null 2>&1; }
 top() { adb shell dumpsys activity activities | grep -m1 topResumedActivity | tr -d '\r' | sed 's/.*ActivityRecord{[^ ]* [^ ]* //; s/ t[0-9]*}//'; }
 dialog() { $UI dump 2>/dev/null | cut -d' ' -f2- | head -12; }   # visible clickable labels
@@ -124,11 +135,11 @@ until ! adb shell "pgrep -f flutter_webui_root.aot" >/dev/null 2>&1 || (( SECOND
 rec channel-gone-after "\"$((SECONDS - t0)) s\""; rec root-hold-end "$(roothold)"
 # Reboot keeps the user app (soft-reboot here: the AVD has no KernelSU at real boot).
 adb shell /data/adb/ksud soft-reboot >/dev/null 2>&1; sleep 5; timeout 120 adb wait-for-device
-t0=$SECONDS; until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ]; do (( SECONDS - t0 > 300 )) && break; sleep 3; done; sleep 30
+wait_boot; sleep 30
 rec after-reboot "$(sh_ "pm path $APP; dumpsys package $APP | grep -E 'versionCode|codePath' | head -2; echo '-- service.sh log:'; cat /data/adb/modules/$ID/webui_app_plane/app-install.log 2>&1 | tail -5")"
 if [ "${UNINSTALL:-0}" = 1 ]; then
   rec uninstall "$(sh_ "/data/adb/ksud module uninstall $ID 2>&1 | tail -3")"
   adb shell /data/adb/ksud soft-reboot >/dev/null 2>&1; sleep 5; timeout 120 adb wait-for-device
-  t0=$SECONDS; until [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ]; do (( SECONDS - t0 > 300 )) && break; sleep 3; done; sleep 45  # uninstall.sh runs pm uninstall after boot_completed
+  wait_boot; sleep 45  # uninstall.sh runs pm uninstall after boot_completed
   rec after-uninstall "$(sh_ "ls -d /data/adb/modules/$ID /data/adb/$ID /data/adb/ksu/module_configs/$ID /product/app/WebuiApi_$ID 2>&1; pm path $APP 2>&1; pm list packages $APP")"
 fi
