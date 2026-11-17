@@ -1,8 +1,24 @@
-# flutter_p0g's dart-android kits (on the lab-inputs branch under kits/) run
-# as root: x86_64 on the AVD, arm64 against the arm64 image under qemu-user.
+# flutter_p0g's dart-android kits run as root: x86_64 on the AVD, arm64
+# against the arm64 image under qemu-user. Kits come from the lab-inputs
+# branch under kits/ (as before), or, when kit_url_<abi> and sha256_<abi>
+# are given, from that exact HTTPS asset, checked against the hash before
+# use: the bytes probed are then the bytes pinned elsewhere.
 name: kit-probe
 on:
   workflow_dispatch:
+    inputs:
+      kit_url_x86_64:
+        description: x86_64 kit tarball (release download URL or api.github.com asset); empty reads lab-inputs kits/
+        default: ''
+      sha256_x86_64:
+        description: SHA256 of that x86_64 kit (64 lowercase hex); required with kit_url_x86_64
+        default: ''
+      kit_url_arm64:
+        description: arm64-v8a kit tarball (release download URL or api.github.com asset); empty reads lab-inputs kits/
+        default: ''
+      sha256_arm64:
+        description: SHA256 of that arm64-v8a kit (64 lowercase hex); required with kit_url_arm64
+        default: ''
 permissions:
   contents: write
 jobs:
@@ -17,13 +33,65 @@ jobs:
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
           sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
-          mkdir -p "$LAB_OUT" inputs && git fetch -q --depth 1 origin lab-inputs && git archive FETCH_HEAD kits | tar -x -C inputs && ls -l inputs/kits
+          mkdir -p "$LAB_OUT"
+      - name: Kit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KIT_URL: ${{ inputs.kit_url_x86_64 }}
+          KIT_SHA: ${{ inputs.sha256_x86_64 }}
+          KIT_ABI: x86_64
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/kits
+          # Identical in both jobs: a supplied kit replaces the lab-inputs
+          # copy, and its hash is checked before anything runs it.
+          if [[ -z ${KIT_URL:-} ]]; then
+            [[ -z ${KIT_SHA:-} ]] || { echo "::error::sha256_${KIT_ABI} without kit_url_${KIT_ABI}; pass both or neither"; exit 1; }
+            git fetch -q --depth 1 origin lab-inputs
+            git archive FETCH_HEAD kits | tar -x -C inputs || true
+            ls inputs/kits/*"${KIT_ABI}"*.tar.gz >/dev/null 2>&1 || {
+              echo "::error::lab-inputs has no kits/*${KIT_ABI}*.tar.gz; pass kit_url_${KIT_ABI} and sha256_${KIT_ABI}"; exit 1; }
+            exit 0
+          fi
+          [[ ${KIT_SHA} =~ ^[0-9a-f]{64}$ ]] || { echo "::error::sha256_${KIT_ABI} must be 64 lowercase hex characters, got '${KIT_SHA}'"; exit 1; }
+          name=$(basename "${KIT_URL%%[?#]*}")
+          [[ ${name} == *.tar.gz ]] || name=kit-"${KIT_ABI}".tar.gz
+          # Same rules as flutter_p0g's fetchBytes: HTTPS only, at most five
+          # redirects, and a token only ever to api.github.com -- the release
+          # download URL and whatever api.github.com redirects to are fetched
+          # anonymously.
+          fetch() { # url dest
+            local url=$1 dest=$2 code host loc
+            for _ in 0 1 2 3 4 5; do
+              case ${url} in https://*) ;; *) echo "::error::refusing non-HTTPS URL ${url}"; return 1 ;; esac
+              host=${url#https://}; host=${host%%/*}
+              local hdr=()
+              if [[ ${host} == api.github.com ]]; then
+                hdr=(-H 'Accept: application/octet-stream')
+                [[ -n ${GH_TOKEN:-} ]] && hdr+=(-H "Authorization: Bearer ${GH_TOKEN}")
+              fi
+              code=$(curl -sS -o "${dest}.part" -D "${dest}.head" -w '%{http_code}' "${hdr[@]}" "${url}") || return 1
+              case ${code} in
+                200) mv "${dest}.part" "${dest}"; rm -f "${dest}.head"; return 0 ;;
+                301|302|303|307|308) ;;
+                *) rm -f "${dest}.part" "${dest}.head"; echo "::error::GET ${url}: HTTP ${code}"; return 1 ;;
+              esac
+              loc=$(tr -d '\r' < "${dest}.head" | sed -n 's/^[Ll]ocation: //p' | head -1)
+              [[ -n ${loc} ]] || { echo "::error::GET ${url}: redirect without Location"; return 1; }
+              url=$(python3 -c 'import sys,urllib.parse;print(urllib.parse.urljoin(sys.argv[1],sys.argv[2]))' "${url}" "${loc}")
+            done
+            rm -f "${dest}.part" "${dest}.head"; echo "::error::GET $1: too many redirects"; return 1
+          }
+          fetch "${KIT_URL}" "inputs/kits/${name}"
+          echo "${KIT_SHA}  inputs/kits/${name}" | sha256sum -c -
+          echo "kit ${name} from ${KIT_URL} (sha256 ${KIT_SHA})" >> "$LAB_OUT/job.log"
+          ls -l inputs/kits
       - name: Boot AVD
         run: |
           echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
           set -o pipefail; PATH=$ANDROID_HOME/platform-tools:$PATH platforms/avd/up.sh 35 google_apis x86_64 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Probe
-        run: probes/dart_bionic/run_kit_avd.sh "$(ls inputs/kits/*x86_64*.tar.gz | head -1)" 2>&1 | tee -a "$LAB_OUT/job.log"
+        run: probes/dart_bionic/run_kit_avd.sh "$(find inputs/kits -maxdepth 1 -name '*x86_64*.tar.gz' -print -quit)" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Publish to lab-results
         if: always()
         env: { GH_TOKEN: "${{ github.token }}" }
@@ -37,9 +105,61 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           sudo apt-get install -y -qq qemu-user-static binfmt-support >/dev/null
-          mkdir -p "$LAB_OUT" inputs && git fetch -q --depth 1 origin lab-inputs && git archive FETCH_HEAD kits | tar -x -C inputs
+          mkdir -p "$LAB_OUT"
+      - name: Kit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          KIT_URL: ${{ inputs.kit_url_arm64 }}
+          KIT_SHA: ${{ inputs.sha256_arm64 }}
+          KIT_ABI: arm64
+        run: |
+          set -euo pipefail
+          mkdir -p inputs/kits
+          # Identical in both jobs: a supplied kit replaces the lab-inputs
+          # copy, and its hash is checked before anything runs it.
+          if [[ -z ${KIT_URL:-} ]]; then
+            [[ -z ${KIT_SHA:-} ]] || { echo "::error::sha256_${KIT_ABI} without kit_url_${KIT_ABI}; pass both or neither"; exit 1; }
+            git fetch -q --depth 1 origin lab-inputs
+            git archive FETCH_HEAD kits | tar -x -C inputs || true
+            ls inputs/kits/*"${KIT_ABI}"*.tar.gz >/dev/null 2>&1 || {
+              echo "::error::lab-inputs has no kits/*${KIT_ABI}*.tar.gz; pass kit_url_${KIT_ABI} and sha256_${KIT_ABI}"; exit 1; }
+            exit 0
+          fi
+          [[ ${KIT_SHA} =~ ^[0-9a-f]{64}$ ]] || { echo "::error::sha256_${KIT_ABI} must be 64 lowercase hex characters, got '${KIT_SHA}'"; exit 1; }
+          name=$(basename "${KIT_URL%%[?#]*}")
+          [[ ${name} == *.tar.gz ]] || name=kit-"${KIT_ABI}".tar.gz
+          # Same rules as flutter_p0g's fetchBytes: HTTPS only, at most five
+          # redirects, and a token only ever to api.github.com -- the release
+          # download URL and whatever api.github.com redirects to are fetched
+          # anonymously.
+          fetch() { # url dest
+            local url=$1 dest=$2 code host loc
+            for _ in 0 1 2 3 4 5; do
+              case ${url} in https://*) ;; *) echo "::error::refusing non-HTTPS URL ${url}"; return 1 ;; esac
+              host=${url#https://}; host=${host%%/*}
+              local hdr=()
+              if [[ ${host} == api.github.com ]]; then
+                hdr=(-H 'Accept: application/octet-stream')
+                [[ -n ${GH_TOKEN:-} ]] && hdr+=(-H "Authorization: Bearer ${GH_TOKEN}")
+              fi
+              code=$(curl -sS -o "${dest}.part" -D "${dest}.head" -w '%{http_code}' "${hdr[@]}" "${url}") || return 1
+              case ${code} in
+                200) mv "${dest}.part" "${dest}"; rm -f "${dest}.head"; return 0 ;;
+                301|302|303|307|308) ;;
+                *) rm -f "${dest}.part" "${dest}.head"; echo "::error::GET ${url}: HTTP ${code}"; return 1 ;;
+              esac
+              loc=$(tr -d '\r' < "${dest}.head" | sed -n 's/^[Ll]ocation: //p' | head -1)
+              [[ -n ${loc} ]] || { echo "::error::GET ${url}: redirect without Location"; return 1; }
+              url=$(python3 -c 'import sys,urllib.parse;print(urllib.parse.urljoin(sys.argv[1],sys.argv[2]))' "${url}" "${loc}")
+            done
+            rm -f "${dest}.part" "${dest}.head"; echo "::error::GET $1: too many redirects"; return 1
+          }
+          fetch "${KIT_URL}" "inputs/kits/${name}"
+          echo "${KIT_SHA}  inputs/kits/${name}" | sha256sum -c -
+          echo "kit ${name} from ${KIT_URL} (sha256 ${KIT_SHA})" >> "$LAB_OUT/job.log"
+          ls -l inputs/kits
       - name: Probe
-        run: KIT=$(ls inputs/kits/*arm64*.tar.gz | head -1) probes/dart_bionic/run_arm64_qemu.sh 35 2>&1 | tee -a "$LAB_OUT/job.log"
+        run: KIT=$(find inputs/kits -maxdepth 1 -name '*arm64*.tar.gz' -print -quit) probes/dart_bionic/run_arm64_qemu.sh 35 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Publish to lab-results
         if: always()
         env: { GH_TOKEN: "${{ github.token }}" }
