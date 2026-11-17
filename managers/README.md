@@ -35,6 +35,8 @@ Checks that run in an opened page live in `checks/` (`webui_host.sh`,
   `MODULE_ID`, matching its launcher shortcuts. Its default in-app launch
   mode is a navigation-stack screen; the lab explicitly exercises the
   separate-process activity. Onboarding selects KernelSU and Continue.
+  The installer enables Developer Mode through Settings → Developer so the
+  host exposes its WebView to the lab's DevTools driver (off by default).
 - KernelSU 2+ mounts module `system/` only through a metamodule; `ksu.sh`
   installs the release's one if it ships one.
 - After `ksud soft-reboot` system_server is slow for a while (ANR dialogs);
