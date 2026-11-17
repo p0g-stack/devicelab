@@ -4,6 +4,14 @@
 # Every downloaded runtime is pinned by URL and SHA256 here; the bytes are
 # hashed before they are unpacked or run. A release's own checksum files are
 # never the authority.
+#
+# api2_kit_run (a successful flutter-aera Kit run on upstream-host-api-2)
+# switches the job to Host API 2: that run's kit-x64 artifact, checked
+# against the run, the artifact digest the API reports and kit.json, plus
+# ci/apps/api2_probe built at the run's head commit with the pinned Flutter,
+# packed with the API 2 manifest and run in the candidate image (aera_release
+# + aera_sha256, required) by aera-api2-check.sh. The Host API 3 counter,
+# simulator, flutter_p0g, lifecycle, rotation and stock UI steps are skipped.
 name: aera-cf
 on:
   workflow_dispatch:
@@ -16,11 +24,13 @@ on:
       aera_release: { default: "", description: "candidate devicelab release (aera-cf-x86_64-*) with aera_sha256, none, or empty for the pinned image" }
       aera_sha256: { default: "", description: "SHA256 of the candidate's ramdisk-recovery.img, from the build that made it" }
       aera_taps: { default: "", description: "launcher taps 'x,y x,y' in AERA screen pixels, used when the image has no RPC plugin open (patch 0008)" }
+      api2_kit_run: { default: "", description: "flutter-aera Kit run ID (successful, upstream-host-api-2): Host API 2 mode, needs aera_release and aera_sha256" }
   push:
     branches: [main]
     paths: [".github/workflows/aera-cf.yml", "aera/cuttlefish/**", "aera/kit/**", "aera/tools/**"]
 permissions:
   contents: write
+  actions: read
 concurrency: { group: aera-cf, cancel-in-progress: false }
 jobs:
 
@@ -44,6 +54,18 @@ jobs:
       # flutter-aera 67e6c29edd0c3c6728b30900b82b2cc6629dfbff (its BUILD-INFO).
       AERA_PINNED_TAG: aera-cf-x86_64-84736fe-c07ed742cefdb67c
       AERA_PINNED_SHA256: 339127018320454ceaefa63e6c1c2b7b2a2f67880ef0fd5d2a9d82761df8d105
+      # Host API 2 mode. The Kit run supplies the flutter-aera commit (its
+      # head_sha, checked against kit.json); Flutter and the engine are the
+      # pins of flutter-aera spec/engine-pin.md, the SDK by URL and SHA256
+      # from Flutter's releases_linux.json.
+      API2_KIT_RUN: ${{ inputs.api2_kit_run || '' }}
+      API2_REPO: p0g-stack/flutter-aera
+      API2_BRANCH: upstream-host-api-2
+      API2_FLUTTER: 3.47.9
+      API2_FLUTTER_REV: c197ca5199e9ee5661e865596c9c07294dfab51c
+      API2_ENGINE: 89c39edfdfae2949f6806e4a315c0c08522238b7
+      API2_FLUTTER_SDK_URL: https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.47.9-stable.tar.xz
+      API2_FLUTTER_SDK_SHA256: 25ed8c3c29d51a7353f2a944310b478af8214920639524b19c50a19e6c044c5a
     steps:
       - uses: actions/checkout@v4
       - name: KVM and disk
@@ -54,6 +76,93 @@ jobs:
           # Cuttlefish wants ~8.5 GB for userdata alone; the runner starts with 14 GB free.
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL /usr/share/swift || true
           mkdir -p "$LAB_OUT"; df -h / /mnt; nproc; free -g
+      - name: API2 kit (flutter-aera Kit run artifact kit-x64, checked against the run, its digest and kit.json)
+        id: api2kit
+        if: env.API2_KIT_RUN != ''
+        env:
+          # Artifact downloads need an authenticated token even from a public
+          # repository; FLUTTER_AERA_ACTIONS_READ (actions:read on flutter-aera)
+          # is used when the job token is refused.
+          GH_TOKEN: ${{ secrets.FLUTTER_AERA_ACTIONS_READ || github.token }}
+          TAG: ${{ inputs.aera_release }}
+          SHA: ${{ inputs.aera_sha256 }}
+        run: |
+          set -euo pipefail
+          err() { echo "::error::$*"; exit 1; }
+          [[ $API2_KIT_RUN =~ ^[1-9][0-9]*$ ]] || err "api2_kit_run must be a numeric Actions run ID, got '$API2_KIT_RUN'"
+          # The pinned image is Host API 3: API 2 mode names its candidate image.
+          [[ $TAG == aera-cf-x86_64-* && $TAG != "$AERA_PINNED_TAG" ]] || err "API 2 mode needs aera_release (an API 2 aera-cf-x86_64-* image, not the pinned API 3 one), got '$TAG'"
+          [[ $SHA =~ ^[0-9a-f]{64}$ ]] || err "API 2 mode needs aera_sha256 (64 hex) for $TAG"
+          log=$LAB_OUT/api2-kit.txt; d=$RUNNER_TEMP/api2; mkdir -p "$d/kit"; cd "$d"
+          gh api "repos/$API2_REPO/actions/runs/$API2_KIT_RUN" > run.json
+          want() { local got; got=$(jq -r "$1" run.json); [ "$got" = "$2" ] || err "run $API2_KIT_RUN: $1 is '$got', want '$2'"; echo "run $1 $got" | tee -a "$log"; }
+          want .repository.full_name "$API2_REPO"
+          want .head_repository.full_name "$API2_REPO"
+          want .path .github/workflows/kit.yml
+          want .head_branch "$API2_BRANCH"
+          want .status completed
+          want .conclusion success
+          src=$(jq -r .head_sha run.json); [[ $src =~ ^[0-9a-f]{40}$ ]] || err "run $API2_KIT_RUN: head_sha '$src'"
+          echo "run .head_sha $src" | tee -a "$log"
+          gh api "repos/$API2_REPO/actions/runs/$API2_KIT_RUN/artifacts?name=kit-x64" > artifacts.json
+          [ "$(jq '.artifacts | length' artifacts.json)" = 1 ] || err "run $API2_KIT_RUN: want exactly one kit-x64 artifact"
+          jq -e '.artifacts[0] | .expired == false and .workflow_run.head_sha == $src' --arg src "$src" artifacts.json >/dev/null \
+            || err "kit-x64 of run $API2_KIT_RUN is expired or not from $src"
+          id=$(jq -r '.artifacts[0].id' artifacts.json); digest=$(jq -r '.artifacts[0].digest' artifacts.json)
+          [[ $digest =~ ^sha256:[0-9a-f]{64}$ ]] || err "kit-x64 artifact $id has no sha256 digest ('$digest')"
+          gh api "repos/$API2_REPO/actions/artifacts/$id/zip" > kit-x64.zip \
+            || err "kit-x64 artifact $id download refused: the job token cannot read $API2_REPO artifacts; set secret FLUTTER_AERA_ACTIONS_READ (actions:read)"
+          echo "${digest#sha256:}  kit-x64.zip" | sha256sum -c - | tee -a "$log"
+          unzip -q kit-x64.zip -d artifact
+          kit=flutter-aera-kit-linux-x64-debug-$API2_FLUTTER.tar.xz
+          # Each .sha256 must name its own file with its own hash, nothing else.
+          for f in "$kit" aera-host-sim-linux-x64; do
+            [ -f "artifact/dist/$f" ] && [ -f "artifact/dist/$f.sha256" ] || err "kit-x64 artifact has no dist/$f with dist/$f.sha256 (Flutter $API2_FLUTTER)"
+            [ "$(cat "artifact/dist/$f.sha256")" = "$(cd artifact/dist && sha256sum "$f")" ] || err "artifact dist/$f does not match dist/$f.sha256"
+            echo "dist/$f $(cat "artifact/dist/$f.sha256")" | tee -a "$log"
+          done
+          tar -C kit -xJf "artifact/dist/$kit"
+          echo "== kit/kit.json" | tee -a "$log"; tee -a "$log" < kit/kit.json
+          jq -e '.kit == 1 and .arch == "x64" and .mode == "debug" and .flutter == $f and .engine_revision == $e and .flutter_aera_commit == $c' \
+            --arg f "$API2_FLUTTER" --arg e "$API2_ENGINE" --arg c "$src" kit/kit.json >/dev/null \
+            || err "kit.json is not debug x64 Flutter $API2_FLUTTER, engine $API2_ENGINE, flutter-aera $src"
+          mkdir -p "$LAB_OUT/api2-kit-sim"; cp artifact/sim/*.png "$LAB_OUT/api2-kit-sim/" 2>/dev/null || true
+          echo "sha=$src" >> "$GITHUB_OUTPUT"
+      - name: flutter-aera at the Kit run's head commit
+        if: env.API2_KIT_RUN != ''
+        uses: actions/checkout@v4
+        with: { repository: "${{ env.API2_REPO }}", ref: "${{ steps.api2kit.outputs.sha }}", path: api2-src, persist-credentials: false }
+      - name: API2 probe .aerap (ci/apps/api2_probe debug bundle, Host API 2 manifest, the kit above)
+        if: env.API2_KIT_RUN != ''
+        env: { SRC: "${{ steps.api2kit.outputs.sha }}" }
+        run: |
+          set -euo pipefail
+          err() { echo "::error::$*"; exit 1; }
+          [ "$(git -C api2-src rev-parse HEAD)" = "$SRC" ] || err "api2-src is not at $SRC"
+          d=$RUNNER_TEMP/api2; cd "$d"
+          curl -fsSL "$API2_FLUTTER_SDK_URL" -o flutter.tar.xz
+          echo "$API2_FLUTTER_SDK_SHA256  flutter.tar.xz" | sha256sum -c - | tee -a "$LAB_OUT/api2-kit.txt"
+          tar -xJf flutter.tar.xz && rm flutter.tar.xz
+          export PATH=$d/flutter/bin:$PATH
+          flutter --disable-analytics >/dev/null
+          flutter --version --machine | tee "$LAB_OUT/api2-flutter-version.json"
+          # The bundle's kernel must match the kit's engine.
+          jq -e '.frameworkVersion == $v and .frameworkRevision == $r and .engineRevision == $e' \
+            --arg v "$API2_FLUTTER" --arg r "$API2_FLUTTER_REV" --arg e "$API2_ENGINE" "$LAB_OUT/api2-flutter-version.json" >/dev/null \
+            || err "Flutter SDK is not $API2_FLUTTER ($API2_FLUTTER_REV) with engine $API2_ENGINE"
+          # Laid out as flutter-aera's ci/api2-check.sh builds it; the app is not edited.
+          mkdir -p app/lib
+          cp "$GITHUB_WORKSPACE/api2-src/ci/apps/api2_probe/pubspec.yaml" app/pubspec.yaml
+          cp "$GITHUB_WORKSPACE/api2-src/ci/apps/api2_probe/main.dart" app/lib/main.dart
+          (cd app && flutter pub get && flutter build bundle --debug) 2>&1 | tee "$LAB_OUT/api2-probe-build.log"
+          cp app/pubspec.lock "$LAB_OUT/api2-probe-pubspec.lock"
+          cd "$GITHUB_WORKSPACE"
+          aera/tools/aerap_api2.py "$d/kit" "$d/app/build/flutter_assets" "$LAB_OUT/api2-probe.aerap" \
+            --id org.p0g.api2-probe --name "API2 Probe" --description "flutter-aera ci/apps/api2_probe at $SRC" \
+            --payload-url "https://github.com/$API2_REPO/actions/runs/$API2_KIT_RUN" 2>&1 | tee -a "$LAB_OUT/job.log"
+          sha256sum "$LAB_OUT/api2-probe.aerap" | tee -a "$LAB_OUT/api2-kit.txt"
+          # Cuttlefish needs the disk; nothing below builds.
+          rm -rf "$d/flutter" "$HOME/.pub-cache" "$d/app" "$d/artifact" "$d/kit-x64.zip"
       - name: Boot Cuttlefish
         run: set -o pipefail; aera/cuttlefish/up.sh "${{ inputs.build }}" "$CF_BUILD_ID" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Android frame
@@ -61,6 +170,7 @@ jobs:
       - name: Stock recovery
         run: set -o pipefail; aera/cuttlefish/recovery.sh stock-recovery 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: flutter-aera x64 kit + static sim (kit-3.47.5 assets pinned by id and SHA256)
+        if: env.API2_KIT_RUN == ''
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/kitx64/kit"; cd "$RUNNER_TEMP/kitx64"
@@ -73,6 +183,7 @@ jobs:
           # Which flutter-aera commit built the kit.
           echo "== kit/kit.json" | tee -a "$LAB_OUT/kit-release.txt"; cat kit/kit.json | tee -a "$LAB_OUT/kit-release.txt"
       - name: Counter .aerap from flutter_p0g, retargeted to the x64 kit (lab-inputs aera/)
+        if: env.API2_KIT_RUN == ''
         run: |
           set -euo pipefail
           git fetch -q --depth 1 origin lab-inputs && git archive FETCH_HEAD aera | tar -x -C "$RUNNER_TEMP"
@@ -80,6 +191,7 @@ jobs:
           aera/tools/aerap.py retarget "$RUNNER_TEMP/aera/counter-1.0.0.aerap" "$RUNNER_TEMP/kitx64/kit" "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 | tee -a "$LAB_OUT/job.log"
           aera/tools/aerap.py unpack "$LAB_OUT/counter-1.0.0-x64.aerap" "$RUNNER_TEMP/counter-x64"
       - name: Counter through the kit in recovery (simulated host, frames to PNG)
+        if: env.API2_KIT_RUN == ''
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           taps=(--until 9000 --snap start@4000 --tap '980,2250@4500' --tap '980,2250@5000' --tap '980,2250@5500' --snap after@8000)
@@ -90,6 +202,7 @@ jobs:
           # CPU reference: softpipe.
           sim counter-softpipe
       - name: vulkaninfo through the kit's launcher and loader
+        if: env.API2_KIT_RUN == ''
         run: |
           adb=$CF_HOME/bin/adb
           $adb -s 0.0.0.0:6520 shell 'cd /tmp/aera-lab/root && AERA_PLUGIN_ROOT=/tmp/aera-lab/root usr/bin/aera-plugin --vulkan-info' > "$LAB_OUT/vulkan-info.txt" 2>&1 || true
@@ -119,32 +232,42 @@ jobs:
           aera/cuttlefish/boot-aera.sh "$RUNNER_TEMP/aera-img/ramdisk-recovery.img" 2>&1 | tee -a "$LAB_OUT/job.log"
           aera/cuttlefish/recovery.sh aera-recovery 2>&1 | tee -a "$LAB_OUT/job.log"
           aera/cuttlefish/aera-diag.sh 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: API2 probe from AERA's launcher (Host API 2 desktop surface, aera-api2-check.sh)
+        timeout-minutes: 30
+        if: steps.aera.outputs.tag != '' && env.API2_KIT_RUN != ''
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: |
+          set -o pipefail
+          rc=0
+          aera/cuttlefish/aera-api2-check.sh "$LAB_OUT/api2-probe.aerap" 2>&1 | tee -a "$LAB_OUT/job.log" || rc=$?
+          aera/cuttlefish/symbolize-cores.sh "${{ steps.aera.outputs.tag }}" || true
+          exit "$rc"
       - name: Counter from AERA's launcher (Host API 3, LVGL pixel scene)
         timeout-minutes: 20
-        if: steps.aera.outputs.tag != ''
+        if: steps.aera.outputs.tag != '' && env.API2_KIT_RUN == ''
         env: { AERA_TAPS: "${{ inputs.aera_taps }}" }
         run: |
           set -o pipefail
           aera/cuttlefish/aera-open.sh aera-counter "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Status-bar metrics over the TWRP command channel (read-only probe)
         timeout-minutes: 5
-        if: steps.aera.outputs.tag != ''
+        if: steps.aera.outputs.tag != '' && env.API2_KIT_RUN == ''
         run: aera/cuttlefish/aera-ors-probe.sh "$LAB_OUT/counter-1.0.0-x64.aerap" || true
       - name: Remote Home as the first key on a fresh AERA (D8 on the infiniti)
         timeout-minutes: 10
-        if: steps.aera.outputs.tag != ''
+        if: steps.aera.outputs.tag != '' && env.API2_KIT_RUN == ''
         run: aera/cuttlefish/aera-home-check.sh "$LAB_OUT/counter-1.0.0-x64.aerap" || true
       - name: D5 A/B, edge-zone tap on the counter via Remote and raw evdev
         timeout-minutes: 10
-        if: steps.aera.outputs.tag != ''
+        if: steps.aera.outputs.tag != '' && env.API2_KIT_RUN == ''
         run: aera/cuttlefish/aera-d5-check.sh "$LAB_OUT/counter-1.0.0-x64.aerap" || true
       - name: Raw panel input, D9 slots (0025), still bottom press (F0001), surface (0029)
         timeout-minutes: 10
-        if: steps.aera.outputs.tag != ''
+        if: steps.aera.outputs.tag != '' && env.API2_KIT_RUN == ''
         run: aera/cuttlefish/aera-input-check.sh "$LAB_OUT/counter-1.0.0-x64.aerap" || true
       - name: flutter_p0g checkout
         id: p0g
-        if: steps.aera.outputs.tag != ''
+        if: steps.aera.outputs.tag != '' && env.API2_KIT_RUN == ''
         run: |
           git clone -q --depth 1 https://github.com/p0g-stack/flutter_p0g "$RUNNER_TEMP/flutter_p0g"
           echo "rev=$(git -C "$RUNNER_TEMP/flutter_p0g" rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
@@ -229,14 +352,14 @@ jobs:
         timeout-minutes: 15
         run: '[ -f "$LAB_OUT/lifecycle-probe-x64.aerap" ] && aera/cuttlefish/aera-back-check.sh "$LAB_OUT/lifecycle-probe-x64.aerap" || true'
       - name: Rotate AERA with the counter running (flutter-aera 0020)
-        if: steps.aera.outputs.tag != ''
+        if: steps.aera.outputs.tag != '' && env.API2_KIT_RUN == ''
         timeout-minutes: 10
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           aera/cuttlefish/aera-rotate-check.sh "$LAB_OUT/counter-1.0.0-x64.aerap" || true
           aera/cuttlefish/symbolize-cores.sh "${{ steps.aera.outputs.tag }}" 
       - name: AERA's own UI, no plugin (press a card, mode transition, power menu reboot; last, it reboots)
-        if: steps.aera.outputs.tag != ''
+        if: steps.aera.outputs.tag != '' && env.API2_KIT_RUN == ''
         timeout-minutes: 15
         run: aera/cuttlefish/aera-stock-ui-check.sh || true
       - name: Logs
@@ -245,6 +368,16 @@ jobs:
           rm -f "$LAB_OUT"/*.aerap
           cp "$CF_HOME"/cuttlefish_runtime/{kernel.log,launcher.log,logcat} "$LAB_OUT"/ 2>/dev/null || true
           tail -30 "$LAB_OUT"/kernel.log 2>/dev/null || true
+      - name: API2 screenshots and logs (Actions artifact)
+        if: always() && env.API2_KIT_RUN != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: api2-cf-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ env.LAB_OUT }}
+            !${{ env.LAB_OUT }}/**/*.aerap
+            !${{ env.LAB_OUT }}/**/runtime.xz
+          if-no-files-found: error
       - name: Publish to lab-results
         if: always()
         env: { GH_TOKEN: "${{ github.token }}" }
