@@ -2,14 +2,14 @@
 # KernelSU's jailbreak mode), then per host (matrix): the probe module's WebUI
 # opened in that host and the WebUI host checks run in it, plus each
 # lab-inputs module opened. Hosts: kernelsu (the manager itself), webuix
-# (WebUI X Portable, root through KernelSU's su).
+# (WebUI X v660 official, root through KernelSU's su).
 name: avd-ksu
 on:
   workflow_dispatch:
     inputs:
       flavor: { default: kernelsu, description: "kernelsu | next" }
-      host: { default: all, description: "all | kernelsu | webuix | webuix608 (WebUI host legs to run; webuix = WebUI X Portable v438 from GitHub (pinned: Latest moved to v608 on 2026-10-05); webuix608 = the Play v608 APK from lab-inputs, sha256-pinned in managers/webuix-apks.sha256)" }
-      tag: { default: "", description: "release tag, empty = latest" }
+      host: { default: all, description: "all | kernelsu | webuix (WebUI X v660 official; v438 and v608 retired)" }
+      tag: { default: "", description: "KernelSU v3.3.1 (pinned); empty selects it, or latest for next" }
       api: { default: "35" }
       label: { default: "", description: "extra name for the lab-results run, e.g. demo-0.9" }
       metamodule: { default: "", description: "KernelSU metamodule to install first, e.g. meta-overlayfs (empty = none)" }
@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        host: ${{ fromJSON((inputs.host == '' || inputs.host == 'all') && '["kernelsu","webuix","webuix608"]' || format('["{0}"]', inputs.host)) }}
+        host: ${{ fromJSON((inputs.host == '' || inputs.host == 'all') && '["kernelsu","webuix"]' || format('["{0}"]', inputs.host)) }}
     env:
       LAB_OUT: ${{ github.workspace }}/out
       GH_TOKEN: ${{ github.token }}
@@ -135,20 +135,9 @@ jobs:
           set -o pipefail; PATH=$ANDROID_HOME/platform-tools:$PATH platforms/avd/up.sh "${{ inputs.api || '35' }}" google_apis x86_64 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Manager
         run: managers/ksu.sh "$FLAVOR" "${{ inputs.tag }}" 2>&1 | tee -a "$LAB_OUT/job.log"
-      - name: WebUI X Portable
-        if: startsWith(matrix.host, 'webuix')
-        env:
-          WEBUIX_APK_KEY: ${{ secrets.WEBUIX_APK_KEY }}
-        run: |
-          if [ "$HOST" = webuix608 ]; then
-            # Play builds are not on GitHub: the APK sits on lab-inputs under
-            # managers/ (as .enc when encrypted with the WEBUIX_APK_KEY secret).
-            git fetch -q --depth 1 origin lab-inputs && mkdir -p "$RUNNER_TEMP/wx" && git archive FETCH_HEAD managers | tar -x -C "$RUNNER_TEMP/wx"
-            f=$(find "$RUNNER_TEMP/wx/managers" -maxdepth 1 -name 'WebUI-X-v608-*.apk*' | sort | head -1)
-            case $f in *.enc) openssl enc -d -aes-256-cbc -pbkdf2 -pass env:WEBUIX_APK_KEY -in "$f" -out "${f%.enc}"; f=${f%.enc};; esac
-            export WEBUIX_APK=$f
-          fi
-          managers/webuix.sh "$([ "$HOST" = webuix ] && echo v438)" 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: WebUI X v660 official
+        if: matrix.host == 'webuix'
+        run: managers/webuix.sh 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Install modules
         if: env.MODULES != ''
         run: |
@@ -272,7 +261,7 @@ jobs:
           esac
           checks/update_to.sh "$HOST-demo" demo "$z" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Hold socket
-        if: always() && inputs.hold_tag != ''
+        if: always() && matrix.host == 'kernelsu' && inputs.hold_tag != ''
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           gh release download -R p0g-stack/webui-termux-api "${{ inputs.hold_tag }}" -D hold-apk -p '*.apk' && find hold-apk -maxdepth 1 -type f -printf '%p %s bytes\n' | sort

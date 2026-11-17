@@ -10,7 +10,7 @@ DevTools attached. Entry point: `.github/workflows/avd-ksu.yml` (matrix
 | Script | Does |
 |---|---|
 | `ksu.sh <kernelsu\|next> [tag]` | KernelSU release LKM + ksud + manager. `ksud late-load` (jailbreak mode: adb root loads the LKM, no boot patch) |
-| `webuix.sh [tag]` | WebUI X Portable: install, root grant in KernelSU's App Profile, onboarding (picks KernelSU) |
+| `webuix.sh` | WebUI X v660 official: verify committed SHA256, install, root grant in KernelSU's App Profile, onboarding (picks KernelSU) |
 | `install_modules.sh <zip>...` | `ksud module install`, then `ksud soft-reboot` so module stages run |
 | `open_webui.sh <label> <pkg> <id> [name]` | Opens a module's WebUI: intent first, then the manager's own UI. Last line says which path worked |
 | `back_to_app.sh` | Recents + tap, so the activity resumes rather than relaunches |
@@ -31,10 +31,10 @@ Checks that run in an opened page live in `checks/` (`webui_host.sh`,
   searched; the search box is driven by position (`ui.py tapxy 160 152`).
 - First launch of the KernelSU manager shows a notification prompt over
   everything: `pm grant ... POST_NOTIFICATIONS` first.
-- WebUI X Portable v438: `.ui.activity.webui.WebUIActivity -e id <id>` opens a
-  module directly; DevTools is on without a setting. Its onboarding button
-  ("Continue with KernelSU") has zero height on the AVD's 320x640 screen, so
-  `webuix.sh` sets `wm size 320x900` for onboarding only.
+- WebUI X v660 uses `.ui.webui.activity.NewProcessWebUIActivity` with
+  `MODULE_ID`, matching its launcher shortcuts. Its default in-app launch
+  mode is a navigation-stack screen; the lab explicitly exercises the
+  separate-process activity. Onboarding selects KernelSU and Continue.
 - KernelSU 2+ mounts module `system/` only through a metamodule; `ksu.sh`
   installs the release's one if it ships one.
 - After `ksud soft-reboot` system_server is slow for a while (ANR dialogs);
@@ -42,10 +42,11 @@ Checks that run in an opened page live in `checks/` (`webui_host.sh`,
 
 Results so far: `observations/avd-35-x86_64/managers-2026-10-01.md`.
 
-## TODO
+## Current qualification inputs
 
-- WebUI X root grant: the Superuser-tab grant was flaky (search typing raced focus; 18:28 KernelSU run got none) and always drove KernelSU even in `flavor=next`. 2026-10-01 fix: tap the row directly, retry the search, use the flavor's manager. Unverified until Actions runs again.
-
-- WebUI X after v438 (Play v608, master): the activity is `.ui.webui.WebUIActivity` and reads only `-e MODULE_ID <id>`;
-  the old `.ui.activity.webui.WebUIActivity` stays in the manifest but its class is gone. `open_webui.sh` tries the new
-  form first. Host `webuix608` in avd-ksu installs the supplied Play APK, sha256-checked against `webuix-apks.sha256`.
+- KernelSU v3.3.1 manager, x86_64 ksud and Android 15/6.6 LKM are pinned in
+  `kernelsu.sha256`. Other KernelSU tags require an explicit pin update.
+- WebUI X v660 official is pinned in `webuix-apks.sha256` and downloaded
+  from its GitHub release. The v438 Portable and v608 Play legs are retired.
+- KernelSU plus webui-termux-api remains the non-WebUI-X path. `hold_tag`
+  runs its socket-hold check on the KernelSU leg only.

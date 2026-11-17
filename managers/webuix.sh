@@ -1,28 +1,17 @@
 #!/usr/bin/env bash
-# Put WebUI X Portable on an AVD that already runs KernelSU (managers/ksu.sh),
-# grant it root through KernelSU, and record its first screens and
-# activities. Usage: webuix.sh [tag]     needs gh (GH_TOKEN) and adb.
-# WEBUIX_APK=<file> installs that APK instead of a GitHub release (Play builds
-# such as v608 are not on GitHub); its sha256 must be listed in
-# managers/webuix-apks.sha256 or the script stops.
+# Put the current official WebUI X on an AVD that runs KernelSU.
+# Usage: webuix.sh     needs gh (GH_TOKEN) and adb.
+# Release identity is committed in managers/webuix-apks.sha256.
 set -uo pipefail
-TAG=${1:-}; REPO=MMRLApp/WebUI-X-Portable; PKG=com.dergoogler.mmrl.wx
+TAG=v660; REPO=MMRLApp/WebUI-X-Portable; PKG=com.dergoogler.mmrl.wx
 case ${FLAVOR:-kernelsu} in next) KSU=com.rifsxd.ksunext;; *) KSU=me.weishu.kernelsu;; esac
 OUT=${LAB_OUT:-$PWD/out}; mkdir -p "$OUT"; D=$(mktemp -d)
 HERE=$(cd "$(dirname "$0")/.." && pwd); UI="python3 $HERE/managers/ui.py"
 log() { echo "== $*"; }
-if [ -n "${WEBUIX_APK:-}" ]; then
-  APK=$(basename "$WEBUIX_APK"); cp "$WEBUIX_APK" "$D/$APK"
-  SUM=$(sha256sum "$D/$APK" | cut -d' ' -f1)
-  grep -q "^$SUM " "$HERE/managers/webuix-apks.sha256" || { log "$APK sha256 $SUM is not in managers/webuix-apks.sha256"; exit 1; }
-  log "supplied APK $APK sha256 $SUM (pinned)"
-else
-  [ -n "$TAG" ] || TAG=$(gh release view -R "$REPO" --json tagName -q .tagName)
-  gh release view -R "$REPO" "$TAG" --json assets -q '.assets[].name' | tee "$OUT/webuix-assets.txt"
-  APK=$(grep -i -E '\.apk$' "$OUT/webuix-assets.txt" | grep -i -v -E 'debug|arm|x86' | head -1)
-  [ -n "$APK" ] || APK=$(grep -i -E '\.apk$' "$OUT/webuix-assets.txt" | head -1)
-  gh release download -R "$REPO" "$TAG" -D "$D" -p "$APK" && log "downloaded $REPO $TAG $APK sha256 $(sha256sum "$D/$APK" | cut -d' ' -f1)"
-fi
+APK=WebUI-X-v660-release-official.apk
+gh release download -R "$REPO" "$TAG" -D "$D" -p "$APK" || exit 1
+(cd "$D" && sha256sum -c "$HERE/managers/webuix-apks.sha256") || exit 1
+log "downloaded $REPO $TAG $APK (sha256 verified)"
 adb install -r -g "$D/$APK" 2>&1 | tail -1
 UID_=$(adb shell stat -c %u /data/data/$PKG | tr -d '\r')
 log "installed $PKG uid=$UID_ $(adb shell dumpsys package $PKG | grep -m1 versionName | tr -d '\r')"
@@ -65,21 +54,17 @@ adb shell input keyevent KEYCODE_HOME
 
 # First launch: walk through any onboarding, keep what it shows.
 adb shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 6
-# Onboarding (v438): "Select your Platform" list, then a button that gets
-# zero height on the AVD's 320x640 (160 dpi) screen, so make the screen
-# taller for the onboarding only.
+# v660 SetupScreen still selects a platform then Continue with KernelSU.
+# Give its platform list and fixed-height button room on the small AVD.
 adb shell wm size 320x900; sleep 2
 adb shell am force-stop $PKG; adb shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 6
 export UI_EXACT=1
-UI_WAIT=20 $UI tap KernelSU && sleep 1
-for i in 1 2 3 4 5; do
-  adb exec-out screencap -p >"$OUT/webuix-start-$i.png"; $UI dump "$OUT/webuix-start-$i.xml" | head -20
-  hit=no
-  for b in "Continue with KernelSU" Next Continue Grant Allow "Get started" Done OK Finish; do UI_WAIT=1 $UI tap "$b" && { hit=yes; break; }; done
-  [ $hit = yes ] || { $UI scroll; sleep 2; }
-  sleep 2
-  UI_WAIT=2 $UI has "Select your Platform" || [ $i -lt 3 ] || break
-done
+UI_WAIT=20 $UI tap KernelSU || exit 1
+UI_WAIT=10 $UI tap "Continue with KernelSU" || exit 1
+sleep 3
+if UI_WAIT=2 $UI has "Select your Platform"; then
+  log "onboarding did not finish"; exit 1
+fi
 unset UI_EXACT
 adb exec-out screencap -p >"$OUT/webuix-after-onboarding.png"; $UI dump "$OUT/webuix-after-onboarding.xml" | head -20
 adb shell wm size reset; sleep 2

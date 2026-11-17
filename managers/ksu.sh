@@ -8,7 +8,7 @@ FLAVOR=${1:-kernelsu}; TAG=${2:-}
 OUT=${LAB_OUT:-$PWD/out}; mkdir -p "$OUT"; D=$(mktemp -d)
 HERE=$(cd "$(dirname "$0")/.." && pwd)
 case $FLAVOR in
-  kernelsu) REPO=tiann/KernelSU; KO='lkm-x86_64-%s_kernelsu.ko'; APK='KernelSU_v*-release.apk'; PKG=me.weishu.kernelsu;;
+  kernelsu) REPO=tiann/KernelSU; KO='lkm-x86_64-%s_kernelsu.ko'; APK='KernelSU_v3.3.1_32680-release.apk'; PKG=me.weishu.kernelsu; TAG=${TAG:-v3.3.1};;
   next) REPO=KernelSU-Next/KernelSU-Next; KO='x86_64-%s_kernelsu.ko'; APK='KernelSU_Next_v*_[0-9]*-release.apk'; PKG=com.rifsxd.ksunext;;
   *) echo "flavor?"; exit 2;;
 esac
@@ -17,6 +17,10 @@ UNAME=$(adb shell uname -r | tr -d '\r')
 KMI=$(echo "$UNAME" | sed -E 's/^([0-9]+\.[0-9]+)\.[0-9]+-(android[0-9]+).*/\2-\1/')
 echo "kernel $UNAME -> kmi $KMI; $REPO $TAG"
 gh release download -R "$REPO" "$TAG" -D "$D" -p "$(printf "$KO" "$KMI")" -p "$APK" -p 'ksud-x86_64-linux-android'
+if [ "$FLAVOR" = kernelsu ]; then
+  [ "$TAG" = v3.3.1 ] || { echo "KernelSU must use the pinned v3.3.1 release"; exit 1; }
+  (cd "$D" && sha256sum -c "$HERE/managers/kernelsu.sha256") || exit 1
+fi
 ls -la "$D"
 log() { echo "== $*"; }
 
