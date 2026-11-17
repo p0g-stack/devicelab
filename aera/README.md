@@ -86,6 +86,28 @@ sample showed `soong_build` at 7.8 GiB resident with 10.7 GiB build-cgroup swap,
 while 5.6 GiB system memory and 33 GiB disk remained available; no cgroup
 OOM or kill events had occurred.
 
+The bounded hosted build completed successfully:
+[`aera-build` 44092852637](https://github.com/p0g-stack/devicelab/actions/runs/44092852637),
+devicelab `9b7f65c7392b556a30812ab8cb888b3d9f58e157`, 2h01m39s total;
+sync 1,434s, compilation 5,600s (`build rc=0`). Recorded cgroup memory peaked
+at 10.002 GiB, swap at 14.568 GiB, and `soong_build` RSS at 9.180 GiB.
+There were 138,887 memory-high events but zero max/OOM/OOM-kill events;
+the runner survived and uploaded its evidence, with 22 GiB disk remaining.
+This proves the hosted build fits with cgroup reclaim and swap. Memory
+starvation is the supported explanation for the earlier runner losses,
+not a proven kernel OOM diagnosis: GitHub retained only lost-communication
+annotations for those runs. No hard hosted-runner limit was demonstrated.
+
+That CI build published
+[`aera-cf-x86_64-d80a712-bb6bd33fcbbfb8a7`](https://github.com/p0g-stack/devicelab/releases/tag/aera-cf-x86_64-d80a712-bb6bd33fcbbfb8a7),
+ramdisk SHA256
+`4fb5242971e86776a436a34c5ef6da496789fff77881eb364c25089d490c2156`.
+It has the same recovery revision but different build bytes from the local
+image below. The Cuttlefish result qualifies the local image's exact hash,
+not this hosted artifact. The green run used the cgroup fix with the old,
+ineffective shell `GOMEMLIMIT`; the branch subsequently removed that setting
+and its misleading comment, and `bash -n aera/build/hosted-build.sh` passed.
+
 ### Host API 2 qualification (2026-11-17)
 
 Recovery `d80a712b739a9e6cde0fe3ff7bd00e8e101625d9` contains upstream
