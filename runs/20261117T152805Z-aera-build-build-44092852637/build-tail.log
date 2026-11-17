@@ -1,0 +1,80 @@
+#########################################################################
+Variables exported from build/core/Makefile:
+AERA_ENABLE_MOBILE_DATA=0 AERA_SUPPORT_FINGERPRINT=0 AERA_FINGERPRINT_BACKEND=aidl AERA_ENABLE_ROOT_MANAGER=0 AERA_VENDOR_CMD=Fox_After_Recovery_Image AERA_MANIFEST_VER=16.0 BOARD_BOOT_HEADER_VERSION=4 TARGET_ARCH=x86_64 TARGET_RECOVERY_ROOT_OUT=/home/runner/aera/out/target/product/aera_cf/recovery/root TARGET_VENDOR_RAMDISK_OUT=/home/runner/aera/out/target/product/aera_cf/vendor_ramdisk MKBOOTIMG=/home/runner/aera/out/host/linux-x86/bin/mkbootimg MKBOOTFS=/home/runner/aera/out/host/linux-x86/bin/mkbootfs INTERNAL_RECOVERYIMAGE_ARGS="--ramdisk /home/runner/aera/out/target/product/aera_cf/ramdisk-recovery.img " INTERNAL_MKBOOTIMG_VERSION_ARGS= BOARD_MKBOOTIMG_ARGS="--header_version 4" TARGET_OUT=/home/runner/aera/out/target/product/aera_cf/system COMPRESSION_COMMAND=/home/runner/aera/out/host/linux-x86/bin/lz4 -l -12 --favor-decSpeed INSTALLED_RECOVERYIMAGE_TARGET=/home/runner/aera/out/target/product/aera_cf/recovery.img INSTALLED_BOOTIMAGE_TARGET= BOARD_BOOTIMAGE_PARTITION_SIZE= BOARD_RECOVERYIMAGE_PARTITION_SIZE=134217728 BOARD_USES_RECOVERY_AS_BOOT= INTERNAL_KERNEL_CMDLINE= ORANGEFOX_CALLING_CARD=4.0 recovery_ramdisk=/home/runner/aera/out/target/product/aera_cf/ramdisk-recovery.img
+#########################################################################
+-- Setting up environment variables
+-- This is NOT a system-as-root build - removing the system_sar_mount directory ...
+-- Copying recovery: "/home/runner/aera/out/target/product/aera_cf/recovery.img" --> "/home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.img" 
+-- Creating the AERA zip installer ...
+- Creating /home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.zip for deployment ...
+-- This build will skip all AERA patches ... 
+-- This build will use /sdcard for its stuff ... 
+-- This build will use /data/recovery for its settings ... 
+-- Deleting the initd addon ...
+- Running ZIP command: zip --exclude=*.git* -r9 /home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.zip .
+  adding: recovery.img (deflated 12%)
+  adding: META-INF/ (stored 0%)
+  adding: META-INF/debug/ (stored 0%)
+  adding: META-INF/debug/default.prop (deflated 75%)
+  adding: META-INF/debug/fox_build_vars.txt (deflated 57%)
+  adding: META-INF/com/ (stored 0%)
+  adding: META-INF/com/google/ (stored 0%)
+  adding: META-INF/com/google/android/ (stored 0%)
+  adding: META-INF/com/google/android/aera-installer (deflated 71%)
+  adding: META-INF/com/google/android/update-binary (deflated 71%)
+  adding: META-INF/com/google/android/updater-script (stored 0%)
+  adding: INSTALL.txt (deflated 41%)
+  adding: sdcard/ (stored 0%)
+  adding: sdcard/AERA/ (stored 0%)
+  adding: sdcard/AERA/Files/ (stored 0%)
+  adding: sdcard/AERA/aera.bashrc (deflated 47%)
+enter new zip file comment (end with .):
+- Running ZIP command: /home/runner/aera/vendor/recovery/signature/sign_zip.sh -z /home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.zip
+- Signing /home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.zip ...
+-- Creating md5 for /home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.zip
+- Finished:
+---------------------------------
+ -rw-r--r-- 1 runner runner 30501183 Nov 17 15:27 /home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.zip
+---------------------------------
+
+
+
+        █████╗ ███████╗██████╗  █████╗
+       ██╔══██╗██╔════╝██╔══██╗██╔══██╗
+       ███████║█████╗  ██████╔╝███████║
+       ██╔══██║██╔══╝  ██╔══██╗██╔══██║
+       ██║  ██║███████╗██║  ██║██║  ██║
+       ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
+
+                 RECOVERY PROJECT R1.0
+
+
+=================Finished building AERA R1.0=================
+
+Recovery image: /home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.img
+          MD5: /home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.img.md5
+
+Recovery zip: /home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.zip
+          MD5: /home/runner/aera/out/target/product/aera_cf/AERA-R1.0-Nightly-Unofficial-aera.zip.md5
+
+==================================================================
+
+#### build completed successfully (01:33:03 (hh:mm:ss)) ####
+
+[aera 15:27:12] build rc=0 in 5600s
+[aera 15:27:16] done. Results in /home/runner/work/devicelab/devicelab/out:
+android_manifest aabd43b2478f3e6dcd0330e7cd5839746c0bf9a7
+bootable/recovery d80a712b739a9e6cde0fe3ff7bd00e8e101625d9
+patches bb6bd33fcbbfb8a7
+patch-source device/oneplus/infiniti/SOURCE from AERA-Recovery/android_device_oneplus_infiniti-AERA 0d5f0b6 + devicelab drafts (not upstream yet)
+patch device/oneplus/infiniti/0001-infiniti-start-whichever-stock-charger-HAL-version-t.patch
+patch system/core/0001-libcutils-restore-arch-x86_64-cache.h-for-android_me.patch
+devicelab 9b7f65c7392b556a30812ab8cb888b3d9f58e157
+built 2026-11-17T15:27:16Z on runnervm8axu0
+
+46d7f00fc7f45dec72b7b7df8afd414d6a6fb1d99164f5fdaa97bcf603c6ee19  AERA-R1.0-Nightly-Unofficial-aera.img
+4fb5242971e86776a436a34c5ef6da496789fff77881eb364c25089d490c2156  ramdisk-recovery.img
+46d7f00fc7f45dec72b7b7df8afd414d6a6fb1d99164f5fdaa97bcf603c6ee19  recovery.img
+167c8f3c56d6cc68cc0df5edcc9e9fcb94dfbebab55fa254e34840433076b06b  recovery-root.tgz
+a6ac33dc8c17538ac4985e7de7eb4331ed0d8879ada120271e5e164063c10c0c  AERA-R1.0-Nightly-Unofficial-aera.zip
+435e95183441d6e71b5c50ba5cf95d8a3dbcee67b86245bbeca7c96cb83b2061  recovery-unstripped.elf
