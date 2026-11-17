@@ -73,31 +73,12 @@ jobs:
         with:
           path: /usr/local/lib/android/sdk/system-images/android-${{ inputs.api || '35' }}/google_apis/x86_64
           key: sysimg-${{ inputs.api || '35' }}-google_apis-x86_64-v1
-      - name: Boot AVD
-        run: |
-          echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
-          set -o pipefail; PATH=$ANDROID_HOME/platform-tools:$PATH platforms/avd/up.sh "${{ inputs.api || '35' }}" google_apis x86_64 2>&1 | tee -a "$LAB_OUT/job.log"
-      - name: Manager
-        run: managers/ksu.sh "$FLAVOR" "${{ inputs.tag }}" 2>&1 | tee -a "$LAB_OUT/job.log"
-      - name: WebUI X Portable
-        if: startsWith(matrix.host, 'webuix')
-        env:
-          WEBUIX_APK_KEY: ${{ secrets.WEBUIX_APK_KEY }}
-        run: |
-          if [ "$HOST" = webuix608 ]; then
-            # Play builds are not on GitHub: the APK sits on lab-inputs under
-            # managers/ (as .enc when encrypted with the WEBUIX_APK_KEY secret).
-            git fetch -q --depth 1 origin lab-inputs && mkdir -p "$RUNNER_TEMP/wx" && git archive FETCH_HEAD managers | tar -x -C "$RUNNER_TEMP/wx"
-            f=$(find "$RUNNER_TEMP/wx/managers" -maxdepth 1 -name 'WebUI-X-v608-*.apk*' | sort | head -1)
-            case $f in *.enc) openssl enc -d -aes-256-cbc -pbkdf2 -pass env:WEBUIX_APK_KEY -in "$f" -out "${f%.enc}"; f=${f%.enc};; esac
-            export WEBUIX_APK=$f
-          fi
-          managers/webuix.sh "$([ "$HOST" = webuix ] && echo v438)" 2>&1 | tee -a "$LAB_OUT/job.log"
       # The candidate's own bytes, from the run that built them: its
       # candidate.json and the demo-webui-module lab bundle. Every hash is
       # checked before anything is installed, and the evidence promote.yml
       # reads (runs/<stamp>-<label>-<manager_run_id>/demo-candidate.json) is
-      # written here. No release is consulted on this path.
+      # written here. No release is consulted on this path, and a bad run ID
+      # fails before the AVD boots.
       - name: Demo candidate
         if: inputs.demo_run_id != ''
         env:
@@ -148,6 +129,26 @@ jobs:
             '{manager: "avd-ksu", host: $host, version: $version, source_run_id: $run, source_sha: $sha, module_zip_sha256: $zip}' \
             > "$LAB_OUT/demo-candidate.json"
           echo "demo zip: candidate run $DEMO_RUN_ID ($sha) v$version, sha256 $got" | tee -a "$LAB_OUT/inputs.txt"
+      - name: Boot AVD
+        run: |
+          echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
+          set -o pipefail; PATH=$ANDROID_HOME/platform-tools:$PATH platforms/avd/up.sh "${{ inputs.api || '35' }}" google_apis x86_64 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: Manager
+        run: managers/ksu.sh "$FLAVOR" "${{ inputs.tag }}" 2>&1 | tee -a "$LAB_OUT/job.log"
+      - name: WebUI X Portable
+        if: startsWith(matrix.host, 'webuix')
+        env:
+          WEBUIX_APK_KEY: ${{ secrets.WEBUIX_APK_KEY }}
+        run: |
+          if [ "$HOST" = webuix608 ]; then
+            # Play builds are not on GitHub: the APK sits on lab-inputs under
+            # managers/ (as .enc when encrypted with the WEBUIX_APK_KEY secret).
+            git fetch -q --depth 1 origin lab-inputs && mkdir -p "$RUNNER_TEMP/wx" && git archive FETCH_HEAD managers | tar -x -C "$RUNNER_TEMP/wx"
+            f=$(find "$RUNNER_TEMP/wx/managers" -maxdepth 1 -name 'WebUI-X-v608-*.apk*' | sort | head -1)
+            case $f in *.enc) openssl enc -d -aes-256-cbc -pbkdf2 -pass env:WEBUIX_APK_KEY -in "$f" -out "${f%.enc}"; f=${f%.enc};; esac
+            export WEBUIX_APK=$f
+          fi
+          managers/webuix.sh "$([ "$HOST" = webuix ] && echo v438)" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Install modules
         if: env.MODULES != ''
         run: |
