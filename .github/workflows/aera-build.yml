@@ -14,12 +14,6 @@ jobs:
     timeout-minutes: 360
     env:
       LAB_OUT: ${{ github.workspace }}/out
-      # Three builds of the upstream-rebase branch (runs 44054551155,
-      # 44065104375, 44066161702) died 65-67 minutes in, in the last build
-      # phase, with the runner gone and no step log to upload; the same tree
-      # builds on a 16-core/60 GB host. Half the runner's ninja parallelism
-      # keeps the link/LTO peak inside the 16 GB runner.
-      JOBS: 2
     steps:
       - uses: actions/checkout@v4
       - name: Free disk, add swap
