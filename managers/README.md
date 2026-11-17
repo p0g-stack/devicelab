@@ -52,3 +52,7 @@ Results so far: `observations/avd-35-x86_64/managers-2026-10-01.md`.
   from its GitHub release. The v438 Portable and v608 Play legs are retired.
 - KernelSU plus webui-termux-api remains the non-WebUI-X path. `hold_tag`
   runs its socket-hold check on the KernelSU leg only.
+- Candidate runs also execute `checks/target37_api.sh`: targetSdk 37 APK
+  identity, root WifiEnable off/on with original state restored, and a photo
+  from the AVD's synthetic camera through the visible API dispatcher. This
+  is Android 15 simulator evidence, not physical camera or Android 17 proof.
