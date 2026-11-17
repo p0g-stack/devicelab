@@ -41,13 +41,14 @@ finish() {
   exit "$rc"
 }
 trap finish EXIT
-# Four GiB stay available to the runner, monitoring, and the kernel. Soong's
-# Go heap has its own soft limit; a runaway build fails without killing CI.
+# Four GiB stay available to the runner, monitoring, and the kernel. Soong
+# clears its bootstrap process environment, so shell GOMEMLIMIT is ineffective
+# there; the cgroup bounds that single large process independently of make -j.
 sudo systemd-run --unit=aera-build --wait --pipe --collect \
   --uid="$(id -u)" --gid="$(id -g)" --working-directory="$GITHUB_WORKSPACE" \
   -p MemoryAccounting=yes -p MemoryHigh=10G -p MemoryMax=12G \
   -p MemorySwapMax=20G -p CPUWeight=50 \
   --setenv="HOME=$HOME" --setenv="PATH=$PATH" \
-  --setenv=NO_APT=1 --setenv=JOBS=3 --setenv=GOMEMLIMIT=8GiB \
+  --setenv=NO_APT=1 --setenv=JOBS=3 \
   --setenv="AERA_PATCHES=${AERA_PATCHES:-$GITHUB_WORKSPACE/aera/build/patches}" \
   /bin/bash "$GITHUB_WORKSPACE/aera/build/build.sh" "$src" "$out"
