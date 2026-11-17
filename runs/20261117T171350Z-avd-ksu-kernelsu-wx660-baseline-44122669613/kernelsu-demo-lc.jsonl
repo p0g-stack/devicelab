@@ -1,0 +1,63 @@
+{"check":"webview","result":"Can't find service: webviewupdate\nCan't find service: package"}
+{"check":"runtime","result":"29M\t.\n1 links inode 319510 2290864 ./bin/arm64-v8a/demo.aot\n1 links inode 319511 984752 ./bin/arm64-v8a/libdemo_native.so\n2 links inode 319515 5462400 ./bin/arm64-v8a/dartaotruntime\n2 links inode 319515 5462400 ./flutter_webui/arm64-v8a/dartaotruntime\n1 links inode 319516 2166168 ./flutter_webui/arm64-v8a/flutter_webui_root.aot\n1 links inode 319606 1119184 ./webui_app_plane/arm64-v8a/webui_termux_api.aot\nchromium"}
+{"check":"setup","result":"Enforcing\ncmd: Can't find service: package\nCan't find service: package\nksud 3.3.1 (uapi: 5)\nCan't find service: package"}
+{"check":"rootlog-start","result":"/system/bin/sh: can't open /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory\ntail: /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory"}
+{"check":"open-home","result":"opened: none"}
+{"check":"mark-home-opened","result":"2421.47"}
+{"check":"sample-home","result":"2421.57 ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app=\n2442.09 end ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app="}
+{"check":"mark-tap-places","result":"2445.22"}
+{"check":"tap-places","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"sample-places","result":"2444.31 ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app=\n2469.23 end ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app="}
+{"check":"hold","result":"channel pid 22788\ncat: /proc/22788/attr/current: No such file or directory\n\nUSER           PID  PPID LABEL                          ARGS                       \n-- /proc/net/unix:\n-- channel fds -> sockets:\n0\n-- service:\nCan't find service: activity"}
+{"check":"rootlog-hold","result":"/system/bin/sh: can't open /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory\ntail: /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory"}
+{"check":"avc-hold","result":""}
+{"check":"procs","result":"root         12248     1 u:r:su:s0                      busybox                     busybox sh /data/adb/modules/demo/service.sh\nroot         23544     1 u:r:su:s0                      busybox                     busybox sh /data/adb/modules/demo/service.sh"}
+{"check":"notif-perm","result":"Can't find service: package\n-- appops:\n\nException occurred while executing 'get':\njava.lang.NullPointerException: Attempt to invoke interface method 'int android.app.IActivityManager.getCurrentUserId()' on a null object reference\n\tat android.app.ActivityManager.getCurrentUser(ActivityManager.java:5217)\n\tat com.android.server.appop.AppOpsService$Shell.parseUserPackageOp(AppOpsService.java:5373)\n\tat com.android.server.appop.AppOpsService.onShellCommand(AppOpsService.java:5510)\n\tat com.android.server.appop.AppOpsService$Shell.onCommand(AppOpsService.java:5263)\n\tat com.android.modules.utils.BasicShellCommandHandler.exec(BasicShellCommandHandler.java:97)\n\tat android.os.ShellCommand.exec(ShellCommand.java:38)\n\tat com.android.server.appop.AppOpsService.onShellCommand(AppOpsService.java:5435)\n\tat android.os.Binder.shellCommand(Binder.java:1230)\n\tat android.os.Binder.onTransact(Binder.java:1043)\n\tat com.android.internal.app.IAppOpsService$Stub.onTransact(IAppOpsService.java:1393)\n\tat android.os.Binder.execTransactInternal(Binder.java:1505)\n\tat android.os.Binder.execTransact(Binder.java:1444)\n\nException occurred while executing 'get':\njava.lang.NullPointerException: Attempt to invoke interface method 'int android.app.IActivityManager.getCurrentUserId()' on a null object reference\n\tat android.app.ActivityManager.getCurrentUser(ActivityManager.java:5217)\n\tat com.android.server.appop.AppOpsService$Shell.parseUserPackageOp(AppOpsService.java:5373)\n\tat com.android.server.appop.AppOpsService.onShellCommand(AppOpsService.java:5510)\n\tat com.android.server.appop.AppOpsService$Shell.onCommand(AppOpsService.java:5263)\n\tat com.android.modules.utils.BasicShellCommandHandler.exec(BasicShellCommandHandler.java:97)\n\tat android.os.ShellCommand.exec(ShellCommand.java:38)\n\tat com.android.server.appop.AppOpsService.onShellCommand(AppOpsService.java:5435)\n\tat android.os.Binder.shellCommand(Binder.java:1230)\n\tat android.os.Binder.onTransact(Binder.java:1043)\n\tat com.android.internal.app.IAppOpsService$Stub.onTransact(IAppOpsService.java:1393)\n\tat android.os.Binder.execTransactInternal(Binder.java:1505)\n\tat android.os.Binder.execTransact(Binder.java:1444)\n-- targetSdk:\nCan't find service: package"}
+{"check":"notif-importance","result":"Can't find service: notification\n-- channels:"}
+{"check":"notif-record","result":"Can't find service: notification"}
+{"check":"notif-shade","result":"content-desc=\"Clean\"\ncontent-desc=\"Open\"\ncontent-desc=\"search\"\ntext=\"4\"\ntext=\"Author: \"\ntext=\"Cancel\"\ntext=\"Demo\"\ntext=\"Home\"\ntext=\"Module\"\ntext=\"Open\"\ntext=\"Settings\"\ntext=\"Superuser\"\ntext=\"The demo GUI. Flutter on top of the core.\"\ntext=\"Uninstall\"\ntext=\"Version: v0.1.59\""}
+{"check":"notif-fgs-manager","result":""}
+{"check":"tap-plugins","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"notify","result":"no Show notification button on page 6"}
+{"check":"tap-places-2","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"mark-swipe-recents","result":"2505.81"}
+{"check":"mark-swipe-done","result":"2511.94"}
+{"check":"swipe-tasks","result":"Can't find service: activity"}
+{"check":"sample-swipe","result":"2504.91 ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app=\n2565.59 end ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app="}
+{"check":"rootlog-swipe","result":"/system/bin/sh: can't open /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory\ntail: /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory"}
+{"check":"avc-swipe","result":""}
+{"check":"open-kill","result":"opened: none"}
+{"check":"mark-kill-tap-places","result":"2632.40"}
+{"check":"kill-tap","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"sample-kill-places","result":"2631.48 ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app=\n2657.47 end ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app="}
+{"check":"mark-kill-force-stop","result":"2658.50"}
+{"check":"sample-kill","result":"2657.58 ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app=\n2718.04 end ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app="}
+{"check":"rootlog-kill","result":"/system/bin/sh: can't open /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory\ntail: /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory"}
+{"check":"open-close","result":"opened: none"}
+{"check":"mark-close-tap-places","result":"2784.71"}
+{"check":"close-tap","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"sample-close-places","result":"2783.79 ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app=\n2809.78 end ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app="}
+{"check":"mark-close-back","result":"2810.82"}
+{"check":"mark-close-closed-after-back-1","result":"2813.38"}
+{"check":"sample-close","result":"2809.92 ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app=\n3050.78 end ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app="}
+{"check":"rootlog-close","result":"/system/bin/sh: can't open /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory\ntail: /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory"}
+{"check":"avc-close","result":""}
+{"check":"open-sleep","result":"opened: none"}
+{"check":"mark-sleep-tap-places","result":"3215.72"}
+{"check":"sleep-tap","result":{"error":"no page target","sockets":[],"targets":[]}}
+{"check":"sample-sleep-places","result":"3214.79 ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app=\n3240.67 end ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app="}
+{"check":"mark-sleep-back","result":"3241.71"}
+{"check":"mark-sleep-closed-after-back-1","result":"3244.26"}
+{"check":"mark-sleep-screen-off","result":"3244.29"}
+{"check":"sample-sleep","result":"3240.80 ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app=\n3480.88 end ch= aot= port= conn=0 fgs=0 fg=0 notif=0 hold=0 app="}
+{"check":"rootlog-sleep","result":"/system/bin/sh: can't open /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory\ntail: /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory"}
+{"check":"stopsvc","result":"cmd: Can't find service: activity\nstart-exit=20\ncmd: Can't find service: activity\nstop-up-exit=20\ncmd: Can't find service: activity\nstop-down-exit=20"}
+{"check":"stopsvc-rootlog","result":"grep: /data/adb/modules/demo/flutter_webui/run/root.log: No such file or directory"}
+{"check": "summary-places", "result": {"channel_up_s": null, "conn_up_s": null, "fgs_up_s": null, "hold_connected_s": null, "root_process_up_s": null}}
+{"check": "summary-kill-places", "result": {"channel_up_s": null, "conn_up_s": null, "fgs_up_s": null, "hold_connected_s": null, "root_process_up_s": null}}
+{"check": "summary-close-places", "result": {"channel_up_s": null, "conn_up_s": null, "fgs_up_s": null, "hold_connected_s": null, "root_process_up_s": null}}
+{"check": "summary-sleep-places", "result": {"channel_up_s": null, "conn_up_s": null, "fgs_up_s": null, "hold_connected_s": null, "root_process_up_s": null}}
+{"check": "summary-swipe", "result": {"mark": 2511.94, "page_left_s": null, "conn_zero_s": 53.7, "channel_gone_s": 53.7, "root_process_gone_s": 53.7, "hold_released_s": 53.7, "fgs_gone_s": 53.7, "notif_gone_s": 53.7, "app_gone_s": 53.7, "end_state": {"ch": "", "aot": "", "port": "", "conn": "0", "fgs": "0", "fg": "0", "notif": "0", "hold": "0", "app": ""}}}
+{"check": "summary-kill", "result": {"mark": 2658.5, "page_left_s": null, "conn_zero_s": 59.5, "channel_gone_s": 59.5, "root_process_gone_s": 59.5, "hold_released_s": 59.5, "fgs_gone_s": 59.5, "notif_gone_s": 59.5, "app_gone_s": 59.5, "end_state": {"ch": "", "aot": "", "port": "", "conn": "0", "fgs": "0", "fg": "0", "notif": "0", "hold": "0", "app": ""}}}
+{"check": "summary-close", "result": {"mark": 2810.82, "page_left_s": 2.6, "conn_zero_s": 240.0, "channel_gone_s": 240.0, "root_process_gone_s": 240.0, "hold_released_s": 240.0, "fgs_gone_s": 240.0, "notif_gone_s": 240.0, "app_gone_s": 240.0, "end_state": {"ch": "", "aot": "", "port": "", "conn": "0", "fgs": "0", "fg": "0", "notif": "0", "hold": "0", "app": ""}}}
+{"check": "summary-sleep", "result": {"mark": 3241.71, "page_left_s": 2.6, "conn_zero_s": 239.2, "channel_gone_s": 239.2, "root_process_gone_s": 239.2, "hold_released_s": 239.2, "fgs_gone_s": 239.2, "notif_gone_s": 239.2, "app_gone_s": 239.2, "end_state": {"ch": "", "aot": "", "port": "", "conn": "0", "fgs": "0", "fg": "0", "notif": "0", "hold": "0", "app": ""}}}
