@@ -44,8 +44,9 @@ arm64 Cuttlefish would be TCG emulation.
 - `kit/build-x64.sh OUT`: the x86_64 kit and static simulator from a pinned
   flutter-aera commit.
 - `build/`: AERA's Android 16 tree at the pin (`build/pins.xml`: manifest
-  250b38e, `bootable/recovery` abf3316) + `build/patches/<path>/*.patch`
-  (flutter-aera's Host API 3 series under `bootable/recovery/`) + a
+  aabd43b, `bootable/recovery` and `external/lvgl` on the p0g-stack rebase
+  branches) + `build/patches/<path>/*.patch` (device and `system/core`
+  patches only; the recovery series is in the branch) + a
   Cuttlefish x86_64 device tree (`build/device`). Needs a big machine.
 
 Workflow: `.github/workflows/aera-cf.yml` (push to `aera/**` or dispatch).
@@ -53,13 +54,14 @@ Results land on the `lab-results` branch under `runs/*-aera-cf-*`.
 
 ## Building AERA for Cuttlefish
 
-Pin: AERA `android_manifest` 250b38e (`aera-16.0`, 2026-10-01) with every
-AERA project pinned by commit in `build/pins.xml` (`bootable/recovery`
-abf3316); Android projects stay on the manifest's `android-16.0.0_r1` tag.
-`build/pin.sh` regenerates the pins. `build/patches/bootable/recovery/` holds
-flutter-aera's Host API 3 series (`third_party/aera` there; `SOURCE` names
-the commit). `build/device/` is the `aera_cf` device tree (x86_64, no
-kernel; AERA's arm-only prebuilts dropped in `vendorsetup.sh`).
+Pin: AERA `android_manifest` aabd43b (`aera-16.0`, 2026-11-15) with every
+AERA project pinned by commit in `build/pins.xml`; Android projects stay on
+the manifest's `android-16.0.0_r1` tag. `build/pin.sh` regenerates the pins
+except `bootable/recovery` and `external/lvgl`, which are pinned to p0g-stack
+branches that inherit AERA upstream `1cabc509` and `626794146` and carry the
+rebased non-protocol patches (the pins' comment names them). `build/device/`
+is the `aera_cf` device tree (x86_64, no kernel; AERA's arm-only prebuilts
+dropped in `vendorsetup.sh`).
 
 AERA publishes no images (no GitHub releases, no download page; checked
 2026-10-01), and the build does not fit GitHub's free runners (2 cores,

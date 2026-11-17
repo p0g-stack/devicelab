@@ -17,7 +17,7 @@
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd)
 src=$(realpath -m "${1:-$HOME/aera-src}"); out=$(realpath -m "${2:-$PWD/aera-out}")
-MANIFEST_REV=${MANIFEST_REV:-250b38eed4b7bb663a945deb3c4f12e4ff2339dd}
+MANIFEST_REV=${MANIFEST_REV:-aabd43b2478f3e6dcd0330e7cd5839746c0bf9a7}
 PATCHES=$(realpath -m "${AERA_PATCHES:-$here/patches}")
 # Devicelab-only fakes (Cuttlefish stand-ins, not upstream fixes), applied
 # after the series; AERA_PATCHES_CF= (empty) leaves them out.

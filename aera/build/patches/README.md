@@ -1,21 +1,17 @@
 # Patches on the pinned AERA tree
 
 One directory per project path, `git format-patch` files applied in name
-order with `git am` after sync, e.g.
+order with `git am` after sync, e.g. `patches/system/core/0001-*.patch`.
 
-```
-patches/bootable/recovery/0001-plugin_api-host-api-3-pixel-surface.patch
-```
-
-The Host API 3 series under `bootable/recovery/` is owned by the flutter-aera
-thread, and so is the LVGL series under `external/lvgl/`
-(flutter-aera `third_party/aera/lvgl-patches/`). `bootable/recovery/` holds
-three flutter-aera directories copied side by side, and name order is their
-apply order: `third_party/aera/patches/` (`0001`-`0029`, gaps on purpose),
-then `cuttlefish-patches/` (`C*`, x86_64/Cuttlefish only: leave them out
-of a device build), then `refinement-patches/` (`F*`), then
-`remote-patches/` (`R*`); drop updated patches here (or point `AERA_PATCHES` at another
-directory) and rerun the build.
+AERA's own carried series is not here: `bootable/recovery` and
+`external/lvgl` are pinned in `../pins.xml` to p0g-stack branches that
+inherit AERA upstream and already carry the rebased patches
+(`rebase-1cabc509`, `rebase-626794146`; the pins' comment names the
+upstream commits). Patches are not applied twice, and a series is changed by
+pushing to those branches and moving the pin, not by dropping files here.
+The Host API 3 pixel-plugin series is not part of that set: upstream's
+Host API 2 now provides the surface, text-field and Files-selection
+interfaces it used to add.
 
 Device-tree patches live under the tree's checkout path, e.g.
 `patches/device/oneplus/infiniti/`. The AERA manifest leaves device trees
@@ -24,7 +20,3 @@ local manifest (at the path above, pinned to the commit the patch was made
 against); `build.sh` skips them elsewhere. `device/oneplus/infiniti/` is made
 against `android_device_oneplus_infiniti-AERA` `0d5f0b6`; see
 `../../DEVICE-TREES.md`.
-
-Sync with `aera/build/sync-patches.sh <flutter-aera checkout> <commit>`: it
-replaces every `*.patch` in `bootable/recovery/` and `external/lvgl/`, so
-patches dropped upstream do not linger, and writes both SOURCE files.

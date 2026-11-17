@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- AERA pin taken 2026-10-05 from aera-16.0 heads; android_manifest 250b38eed4b7bb663a945deb3c4f12e4ff2339dd -->
+<!-- AERA pin taken 2026-11-17: AERA projects from their aera-16.0 heads;
+     android_manifest aabd43b2478f3e6dcd0330e7cd5839746c0bf9a7 (android-16.0.0_r1).
+     bootable/recovery and external/lvgl come from the p0g-stack forks, on the
+     branches that rebase the carried non-protocol patches onto AERA upstream:
+     p0g-stack/android_bootable_recovery rebase-1cabc509 (upstream 1cabc509)
+     and p0g-stack/android_external_lvgl rebase-626794146 (upstream 626794146).
+     The carried patches live in those branches, not in patches/. -->
 <manifest>
-  <extend-project name="android_bootable_recovery" path="bootable/recovery" revision="92813466db89cc7450a708a4acc0010087028f8f" />
-  <extend-project name="android_external_lvgl" path="external/lvgl" revision="212fd3a25187f9876356ae66aa13103b002bc322" />
+  <remote name="p0g" fetch="https://github.com/p0g-stack/" revision="main" />
+  <extend-project name="android_bootable_recovery" path="bootable/recovery" remote="p0g" revision="1bd318e1977364e7dfe43c21f3df869e1e78a163" />
+  <extend-project name="android_external_lvgl" path="external/lvgl" remote="p0g" revision="7840a34ab4de0ac24890d70f3bb034e3c6beae46" />
   <extend-project name="android_vendor_recovery" path="vendor/recovery" revision="5f3ef3d5b1e6ab6ab773a8d93a9144d3105359a8" />
   <extend-project name="android_system_core" path="system/core" revision="081c119b3e2182831f0d5b03e8b003279c9a7f13" />
   <extend-project name="android_packages_modules_adb" path="packages/modules/adb" revision="4a449e9803a41735728de2f04292e97120dc8c0b" />
@@ -36,4 +43,9 @@
   <extend-project name="android_external_se_omapi" path="external/se_omapi" revision="34ba4880a85c935cf311eaf03180a2069408856e" />
   <extend-project name="android_external_aeracli" path="external/aeracli" revision="7ad3df32d2ac3bf25853448c80bb3d8a241a68e1" />
   <extend-project name="android_device_qcom_twrp-common" path="device/qcom/twrp-common" revision="98506f7919102378c8d52ee7d6a94a867f1b4c55" />
+  <extend-project name="android_external_libsmb2" path="external/libsmb2" revision="d2e53b65d3c19775f3651b30dd4cad582a4c6f2b" />
+  <extend-project name="android_external_libssh2" path="external/libssh2" revision="c9a3659ff79e540ea767357a29d7574976e9c5a9" />
+  <extend-project name="android_external_aera_qrtr" path="external/aera_qrtr" revision="ab243b82023ad2b8d5d12e22a6492da01167bca3" />
+  <extend-project name="android_external_aera_rmtfs" path="external/aera_rmtfs" revision="e94ab29abeb8d4a944938f269a77cf5bcda7f79f" />
+  <extend-project name="android_external_aera_tqftpserv" path="external/aera_tqftpserv" revision="d9fec51d1a2e0ee277a5a5a8743591467849cc6e" />
 </manifest>

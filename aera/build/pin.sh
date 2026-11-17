@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Re-pin every AERA-remote project of android_manifest@MANIFEST_REV to its
 # current aera-16.0 head. Writes pins.xml next to this script.
+# bootable/recovery and external/lvgl are not re-pinned here: they come from
+# the p0g-stack forks, on the branches that rebase the carried patches onto
+# the upstream heads (see the pins.xml comment); move those by hand.
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd); rev=${1:-aera-16.0}
 m=$(mktemp -d); git clone -q https://github.com/AERA-Recovery/android_manifest "$m"; git -C "$m" checkout -q "$rev"
