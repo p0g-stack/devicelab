@@ -1,0 +1,199 @@
+{
+ "probe": "dart_bionic kit",
+ "kit": "kit-x86_64.tar.gz",
+ "date": "2026-11-17",
+ "fingerprint": "google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+ "kernel": "6.6.50-android15-8-g8adecb593e9b-ab12525588",
+ "results": [
+  {
+   "name": "kit-runtime-empty-env",
+   "cmd": "env -i /data/adb/devicelab-kit/dartaotruntime /data/adb/devicelab-kit/probe.aot",
+   "exit": 0,
+   "ms": 177,
+   "stdout": {
+    "os": "android",
+    "dart": "3.13.7 (stable) (Thu Oct 22 14:28:57 2026 -0700) on \"android_x64\"",
+    "executable": "/data/adb/devicelab-kit/dartaotruntime",
+    "pid": 3325,
+    "env": {
+     "PATH": null,
+     "TMPDIR": null,
+     "LD_LIBRARY_PATH": null,
+     "ANDROID_ROOT": null,
+     "HOME": null
+    },
+    "osVersion": {
+     "ok": true,
+     "value": "sdk_gphone64_x86_64-userdebug 15 AE3A.240806.043 12960925 dev-keys",
+     "ms": 0
+    },
+    "selinux": {
+     "ok": true,
+     "value": "u:r:su:s0\u0000",
+     "ms": 0
+    },
+    "status": {
+     "ok": true,
+     "value": [
+      "Uid:\t0\t0\t0\t0",
+      "Gid:\t0\t0\t0\t0"
+     ],
+     "ms": 0
+    },
+    "tempDir": {
+     "ok": true,
+     "value": "/data/local/tmp/probeDHVJTH",
+     "ms": 0
+    },
+    "processRun": {
+     "ok": true,
+     "value": {
+      "exit": 0,
+      "stdout": "uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:su:s0\ngoogle/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+      "stderr": ""
+     },
+     "ms": 23
+    },
+    "isolate": {
+     "ok": true,
+     "value": 499500,
+     "ms": 0
+    },
+    "dnsLocalhost": {
+     "ok": true,
+     "value": [
+      "127.0.0.1"
+     ],
+     "ms": 0
+    },
+    "dnsRemote": {
+     "ok": true,
+     "value": [
+      "199.36.158.100"
+     ],
+     "ms": 81
+    },
+    "loopbackWebSocket": {
+     "ok": true,
+     "value": {
+      "roundTrips": 100,
+      "p50Us": 108,
+      "maxUs": 1402,
+      "connectMs": 3
+     },
+     "ms": 20
+    },
+    "unixAbstract": {
+     "ok": true,
+     "value": "hello",
+     "ms": 6
+    },
+    "unixPath": {
+     "ok": true,
+     "value": "hello",
+     "ms": 5
+    }
+   },
+   "stderr": ""
+  },
+  {
+   "name": "kit-runtime-tmpdir",
+   "cmd": "env -i PATH=/system/bin TMPDIR=/data/adb/devicelab-kit /data/adb/devicelab-kit/dartaotruntime /data/adb/devicelab-kit/probe.aot",
+   "exit": 0,
+   "ms": 125,
+   "stdout": {
+    "os": "android",
+    "dart": "3.13.7 (stable) (Thu Oct 22 14:28:57 2026 -0700) on \"android_x64\"",
+    "executable": "/data/adb/devicelab-kit/dartaotruntime",
+    "pid": 3389,
+    "env": {
+     "PATH": "/system/bin",
+     "TMPDIR": "/data/adb/devicelab-kit",
+     "LD_LIBRARY_PATH": null,
+     "ANDROID_ROOT": null,
+     "HOME": null
+    },
+    "osVersion": {
+     "ok": true,
+     "value": "sdk_gphone64_x86_64-userdebug 15 AE3A.240806.043 12960925 dev-keys",
+     "ms": 0
+    },
+    "selinux": {
+     "ok": true,
+     "value": "u:r:su:s0\u0000",
+     "ms": 0
+    },
+    "status": {
+     "ok": true,
+     "value": [
+      "Uid:\t0\t0\t0\t0",
+      "Gid:\t0\t0\t0\t0"
+     ],
+     "ms": 0
+    },
+    "tempDir": {
+     "ok": true,
+     "value": "/data/adb/devicelab-kit/probeCMDTBL",
+     "ms": 1
+    },
+    "processRun": {
+     "ok": true,
+     "value": {
+      "exit": 0,
+      "stdout": "uid=0(root) gid=0(root) groups=0(root),1004(input),1007(log),1011(adb),1015(sdcard_rw),1028(sdcard_r),1078(ext_data_rw),1079(ext_obb_rw),3001(net_bt_admin),3002(net_bt),3003(inet),3006(net_bw_stats),3009(readproc),3011(uhid),3012(readtracefs) context=u:r:su:s0\ngoogle/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+      "stderr": ""
+     },
+     "ms": 36
+    },
+    "isolate": {
+     "ok": true,
+     "value": 499500,
+     "ms": 0
+    },
+    "dnsLocalhost": {
+     "ok": true,
+     "value": [
+      "127.0.0.1"
+     ],
+     "ms": 3
+    },
+    "dnsRemote": {
+     "ok": true,
+     "value": [
+      "199.36.158.100"
+     ],
+     "ms": 0
+    },
+    "loopbackWebSocket": {
+     "ok": true,
+     "value": {
+      "roundTrips": 100,
+      "p50Us": 97,
+      "maxUs": 1596,
+      "connectMs": 1
+     },
+     "ms": 14
+    },
+    "unixAbstract": {
+     "ok": true,
+     "value": "hello",
+     "ms": 1
+    },
+    "unixPath": {
+     "ok": true,
+     "value": "hello",
+     "ms": 0
+    }
+   },
+   "stderr": ""
+  },
+  {
+   "name": "kit-cold-start-x5",
+   "cmd": "for i in 1 2 3 4 5; do env -i TMPDIR=/data/adb/devicelab-kit /data/adb/devicelab-kit/dartaotruntime /data/adb/devicelab-kit/probe.aot >/dev/null; done",
+   "exit": 0,
+   "ms": 675,
+   "stdout": "",
+   "stderr": ""
+  }
+ ]
+}
