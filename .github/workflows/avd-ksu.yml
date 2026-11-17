@@ -16,6 +16,7 @@ on:
       hold_tag: { default: "", description: "webui-termux-api release tag (e.g. webui-v0.53.0-webui.8): run checks/hold_socket.sh with its APK" }
       demo_tag: { default: "", description: "demo release tag to install (e.g. v0.1.28) instead of the module branch; also runs the manager update check and checks/lifecycle.sh" }
       demo_zip: { default: "", description: "zip name under lab-inputs modules/ to install as the demo (instead of the module branch or demo_tag); also runs checks/lifecycle.sh" }
+      demo_run_id: { default: "", description: "successful p0g-stack/demo ci.yml run on main: install its demo-webui-module lab zip as built (exclusive with demo_tag/demo_zip), verify it against its candidate.json, and record demo-candidate.json for promote.yml; never falls back to a release" }
       backclose: { default: "", description: "non-empty: only checks/backclose.sh on the demo (skips the WebUI checks); a value other than 1 is BC_PHASES, e.g. 'back:back:intent sleep:sleep:intent exit:exit:intent ui:back:ui'" }
       update_to: { default: "", description: "demo release tag to install over demo_tag with ksud module install (checks/update_to.sh) instead of the manager update check and lifecycle" }
       extras: { default: "", description: "non-empty: only checks/extras_lab.sh on the demo_zip module (flutter-webui extras lab); a value other than 1 is the case list, e.g. '1 4 7 8' or '9'; skips the WebUI checks" }
@@ -43,6 +44,18 @@ jobs:
       MODULES: ${{ inputs.modules || 'flutter_webui_counter-0.1.5.zip counter-v1.0.0.zip demo.zip' }}
     steps:
       - uses: actions/checkout@v4
+      # A candidate is installed as built. It is not a release: asking for one
+      # together with demo_tag/demo_zip is a mistake, not a fallback.
+      - name: Candidate input
+        if: inputs.demo_run_id != ''
+        run: |
+          set -euo pipefail
+          id='${{ inputs.demo_run_id }}'
+          [[ $id =~ ^[0-9]+$ ]] || { echo "::error::demo_run_id '$id' is not a run number"; exit 1; }
+          if [ -n '${{ inputs.demo_tag }}${{ inputs.demo_zip }}' ]; then
+            echo "::error::demo_run_id is exclusive with demo_tag and demo_zip: a candidate is installed as built, never instead of or over a release"
+            exit 1
+          fi
       - name: KVM
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm.rules
@@ -75,26 +88,84 @@ jobs:
             # Play builds are not on GitHub: the APK sits on lab-inputs under
             # managers/ (as .enc when encrypted with the WEBUIX_APK_KEY secret).
             git fetch -q --depth 1 origin lab-inputs && mkdir -p "$RUNNER_TEMP/wx" && git archive FETCH_HEAD managers | tar -x -C "$RUNNER_TEMP/wx"
-            f=$(ls "$RUNNER_TEMP"/wx/managers/WebUI-X-v608-*.apk* | head -1)
+            f=$(find "$RUNNER_TEMP/wx/managers" -maxdepth 1 -name 'WebUI-X-v608-*.apk*' | sort | head -1)
             case $f in *.enc) openssl enc -d -aes-256-cbc -pbkdf2 -pass env:WEBUIX_APK_KEY -in "$f" -out "${f%.enc}"; f=${f%.enc};; esac
             export WEBUIX_APK=$f
           fi
           managers/webuix.sh "$([ "$HOST" = webuix ] && echo v438)" 2>&1 | tee -a "$LAB_OUT/job.log"
+      # The candidate's own bytes, from the run that built them: its
+      # candidate.json and the demo-webui-module lab bundle. Every hash is
+      # checked before anything is installed, and the evidence promote.yml
+      # reads (runs/<stamp>-<label>-<manager_run_id>/demo-candidate.json) is
+      # written here. No release is consulted on this path.
+      - name: Demo candidate
+        if: inputs.demo_run_id != ''
+        env:
+          DEMO_RUN_ID: ${{ inputs.demo_run_id }}
+          # Another repository's run artifacts need a token with Actions: read
+          # on p0g-stack/demo; this job's GITHUB_TOKEN is scoped to devicelab.
+          DEMO_TOKEN: ${{ secrets.DEMO_ARTIFACT_TOKEN || github.token }}
+        run: |
+          set -euo pipefail
+          fail() { echo "::error::$*"; exit 1; }
+          run=$(gh api "repos/p0g-stack/demo/actions/runs/$DEMO_RUN_ID") || fail "p0g-stack/demo has no run $DEMO_RUN_ID"
+          q() { jq -r "$1" <<<"$run"; }
+          [ "$(q .repository.full_name)" = p0g-stack/demo ] || fail "run $DEMO_RUN_ID is not in p0g-stack/demo"
+          [ "$(q .path)" = .github/workflows/ci.yml ] || fail "run $DEMO_RUN_ID is $(q .path), not ci.yml"
+          [ "$(q .head_branch)" = main ] || fail "run $DEMO_RUN_ID is on $(q .head_branch), not main"
+          [ "$(q .status)/$(q .conclusion)" = completed/success ] || fail "run $DEMO_RUN_ID is $(q .status)/$(q .conclusion)"
+          case $(q .event) in push|workflow_dispatch) ;; *) fail "run $DEMO_RUN_ID is a $(q .event) run";; esac
+          sha=$(q .head_sha); number=$(q .run_number)
+          list=$(gh api "repos/p0g-stack/demo/actions/runs/$DEMO_RUN_ID/artifacts?per_page=100")
+          for n in demo-candidate demo-webui-module; do
+            state=$(jq -r --arg n "$n" '[.artifacts[] | select(.name == $n)] | if length != 1 then "missing" elif .[0].expired then "expired" else "ok" end' <<<"$list")
+            [ "$state" = ok ] || fail "artifact $n of run $DEMO_RUN_ID is $state"
+          done
+          cand=$RUNNER_TEMP/demo-candidate
+          for n in demo-candidate demo-webui-module; do
+            GH_TOKEN=$DEMO_TOKEN gh run download "$DEMO_RUN_ID" -R p0g-stack/demo -n "$n" -D "$cand/$n" || fail "cannot read $n of p0g-stack/demo run $DEMO_RUN_ID: this job's token is scoped to devicelab. Give devicelab a fine-grained token with Actions: read on p0g-stack/demo as the repository secret DEMO_ARTIFACT_TOKEN."
+          done
+          c=$cand/demo-candidate/candidate.json
+          [ -f "$c" ] || fail "run $DEMO_RUN_ID has no candidate.json"
+          [ "$(jq -r .candidate "$c")" = 1 ] || fail "candidate.json format $(jq -r .candidate "$c")"
+          [ "$(jq -r .repository "$c")" = p0g-stack/demo ] || fail "candidate is from $(jq -r .repository "$c")"
+          [ "$(jq -r .source_sha "$c")" = "$sha" ] || fail "candidate source $(jq -r .source_sha "$c") is not $sha"
+          [ "$(jq -r .source_run_id "$c")" = "$DEMO_RUN_ID" ] || fail "candidate run $(jq -r .source_run_id "$c") is not $DEMO_RUN_ID"
+          [ "$(jq -r .promotable "$c")" = true ] || fail "candidate is not promotable"
+          version=$(jq -r .version "$c")
+          expected=$(jq -r '.module_zips.lab.sha256' "$c")
+          lab=$cand/demo-webui-module/lab
+          (cd "$lab" && sha256sum -c SHA256SUMS) || fail "the lab bundle does not match its SHA256SUMS"
+          z=$lab/$(jq -r '.module_zips.lab.name' "$c")
+          [ -f "$z" ] || fail "the lab bundle has no $(basename "$z")"
+          got=$(sha256sum "$z" | cut -d' ' -f1)
+          [ "$got" = "$expected" ] || fail "lab zip is $got, the candidate says $expected"
+          prop=$(unzip -p "$z" module.prop)
+          grep -qx "version=v$version" <<<"$prop" || fail "lab zip module.prop version is not v$version"
+          grep -qx "versionCode=$number" <<<"$prop" || fail "lab zip module.prop versionCode is not $number"
+          echo "DEMO_CANDIDATE_ZIP=$z" >> "$GITHUB_ENV"
+          jq -n --arg host "$HOST" --arg version "$version" --arg sha "$sha" --arg zip "$got" --argjson run "$DEMO_RUN_ID" \
+            '{manager: "avd-ksu", host: $host, version: $version, source_run_id: $run, source_sha: $sha, module_zip_sha256: $zip}' \
+            > "$LAB_OUT/demo-candidate.json"
+          echo "demo zip: candidate run $DEMO_RUN_ID ($sha) v$version, sha256 $got" | tee -a "$LAB_OUT/inputs.txt"
       - name: Install modules
         if: env.MODULES != ''
         run: |
           git fetch -q --depth 1 origin lab-inputs && mkdir -p inputs && git archive FETCH_HEAD modules | tar -x -C inputs
           # The demo module comes from demo CI (its `module` branch), not lab-inputs.
-          if [ -n "${{ inputs.demo_zip }}" ]; then
+          if [ -n "${{ inputs.demo_run_id }}" ]; then
+            cp "$DEMO_CANDIDATE_ZIP" inputs/modules/demo.zip
+            echo "demo zip: candidate run ${{ inputs.demo_run_id }}" | tee -a "$LAB_OUT/inputs.txt"
+          elif [ -n "${{ inputs.demo_zip }}" ]; then
             cp "inputs/modules/${{ inputs.demo_zip }}" inputs/modules/demo.zip
             echo "demo zip: lab-inputs ${{ inputs.demo_zip }}" | tee -a "$LAB_OUT/inputs.txt"
           elif [ -n "${{ inputs.demo_tag }}" ]; then
             gh release download -R p0g-stack/demo "${{ inputs.demo_tag }}" -D "$RUNNER_TEMP/demo-rel" -p 'demo-v*.zip'
-            z=$(ls "$RUNNER_TEMP"/demo-rel/demo-v*.zip | head -1); cp "$z" inputs/modules/demo.zip
+            z=$(find "$RUNNER_TEMP/demo-rel" -maxdepth 1 -name 'demo-v*.zip' | sort | head -1); cp "$z" inputs/modules/demo.zip
             echo "demo zip: release ${{ inputs.demo_tag }} $(basename "$z")" | tee -a "$LAB_OUT/inputs.txt"
           else
           git clone -q --depth 1 -b module https://github.com/p0g-stack/demo "$RUNNER_TEMP/demo-module"
-          (cd "$RUNNER_TEMP/demo-module" && sha256sum -c --ignore-missing SHA256SUMS && git log -1 --format='demo module: %s' && z=$(ls demo-*.zip | head -1) && cp "$z" "$GITHUB_WORKSPACE/inputs/modules/demo.zip" && echo "demo zip: $z") | tee -a "$LAB_OUT/inputs.txt"
+          (cd "$RUNNER_TEMP/demo-module" && sha256sum -c --ignore-missing SHA256SUMS && git log -1 --format='demo module: %s' && z=$(find . -maxdepth 1 -name 'demo-*.zip' -printf '%f\n' | sort | head -1) && cp "$z" "$GITHUB_WORKSPACE/inputs/modules/demo.zip" && echo "demo zip: $z") | tee -a "$LAB_OUT/inputs.txt"
           fi
           if [ -n "${{ inputs.strip_shell_key }}" ]; then
             python3 - inputs/modules/demo.zip <<'PY' | tee -a "$LAB_OUT/inputs.txt"
@@ -115,8 +186,8 @@ jobs:
           # The lab's self-mounting app_plane module rbinds a tmpfs over /product/app; with a
           # metamodule mounting the same dir system_server crash-loops, so it only runs without one.
           if [ "$HOST" = kernelsu ] && [ -z "${{ inputs.metamodule }}" ]; then
-            gh release download -R p0g-stack/webui-termux-api webui-v0.53.0-webui.1 -D apk -p '*.apk' && ls apk
-            checks/app_plane.sh build "$(ls apk/*.apk | head -1)" "$SOCKPROBE" "$PWD/app_plane.zip" && zips+=("$PWD/app_plane.zip")
+            gh release download -R p0g-stack/webui-termux-api webui-v0.53.0-webui.1 -D apk -p '*.apk' && find apk -maxdepth 1 -type f -printf '%p %s bytes\n' | sort
+            checks/app_plane.sh build "$(find apk -maxdepth 1 -name '*.apk' | sort | head -1)" "$SOCKPROBE" "$PWD/app_plane.zip" && zips+=("$PWD/app_plane.zip")
           fi
           if [ -n "${{ inputs.metamodule }}" ]; then managers/metamodule.sh "${{ inputs.metamodule }}" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
           (cd modules/envdump && zip -qr "$GITHUB_WORKSPACE/envdump.zip" .) && zips+=("$GITHUB_WORKSPACE/envdump.zip")
@@ -144,7 +215,7 @@ jobs:
             if [ "$id" = demo ]; then checks/idle_timing.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ]; then checks/theme.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ]; then checks/root_channel.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
-            if [ "$id" = demo ]; then UNINSTALL=$([ -n "${{ inputs.demo_tag }}${{ inputs.demo_zip }}" ] && echo 0 || echo 1) NAME="$name" checks/app_plane_module.sh "$HOST-$id" "$PKG" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
+            if [ "$id" = demo ]; then UNINSTALL=$([ -n "${{ inputs.demo_tag }}${{ inputs.demo_zip }}${{ inputs.demo_run_id }}" ] && echo 0 || echo 1) NAME="$name" checks/app_plane_module.sh "$HOST-$id" "$PKG" "$id" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
             if [ "$id" = demo ] && [ -n "${{ inputs.demo_tag }}" ] && [ -z "${{ inputs.update_to }}" ] && [ "$HOST" = kernelsu ]; then checks/module_update.sh "$HOST-$id" "$PKG" "$id" "$name" 2>&1 | tee -a "$LAB_OUT/job.log"; fi
           done
       - name: Extras lab
@@ -181,7 +252,7 @@ jobs:
           [ "${{ inputs.backclose }}" != 1 ] && export BC_PHASES="${{ inputs.backclose }}"
           checks/backclose.sh "$HOST-demo" "$PKG" demo "$name" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Lifecycle
-        if: always() && (inputs.demo_tag != '' || inputs.demo_zip != '') && inputs.update_to == '' && inputs.backclose == '' && inputs.backswipe == '' && inputs.extras == ''
+        if: always() && (inputs.demo_tag != '' || inputs.demo_zip != '' || inputs.demo_run_id != '') && inputs.update_to == '' && inputs.backclose == '' && inputs.backswipe == '' && inputs.extras == ''
         timeout-minutes: 35
         run: |
           case $HOST in
@@ -196,15 +267,15 @@ jobs:
           # update_to: a demo release tag, or lab-inputs:<zip name under modules/>
           case "${{ inputs.update_to }}" in
             lab-inputs:*) z="inputs/modules/${{ inputs.update_to }}"; z=${z/lab-inputs:/};;
-            *) gh release download -R p0g-stack/demo "${{ inputs.update_to }}" -D "$RUNNER_TEMP/demo-upd" -p 'demo-v*.zip'; z=$(ls "$RUNNER_TEMP"/demo-upd/demo-v*.zip | head -1);;
+            *) gh release download -R p0g-stack/demo "${{ inputs.update_to }}" -D "$RUNNER_TEMP/demo-upd" -p 'demo-v*.zip'; z=$(find "$RUNNER_TEMP/demo-upd" -maxdepth 1 -name 'demo-v*.zip' | sort | head -1);;
           esac
           checks/update_to.sh "$HOST-demo" demo "$z" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Hold socket
         if: always() && inputs.hold_tag != ''
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
-          gh release download -R p0g-stack/webui-termux-api "${{ inputs.hold_tag }}" -D hold-apk -p '*.apk' && ls -la hold-apk
-          checks/hold_socket.sh "$HOST" "$(ls hold-apk/*.apk | head -1)" 2>&1 | tee -a "$LAB_OUT/job.log"
+          gh release download -R p0g-stack/webui-termux-api "${{ inputs.hold_tag }}" -D hold-apk -p '*.apk' && find hold-apk -maxdepth 1 -type f -printf '%p %s bytes\n' | sort
+          checks/hold_socket.sh "$HOST" "$(find hold-apk -maxdepth 1 -name '*.apk' | sort | head -1)" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: App plane
         if: always() && matrix.host == 'kernelsu' && inputs.metamodule == ''
         run: checks/app_plane.sh run 2>&1 | tee -a "$LAB_OUT/job.log"
