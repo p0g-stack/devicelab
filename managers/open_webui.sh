@@ -46,7 +46,11 @@ echo "intent path: no page; manager log:"; grep -E " $(adb shell pidof "$PKG" | 
 # Manager UI path. KernelSU 3.3.0's module list exposes no uiautomator nodes
 # until it is searched, so: Module tab, tap the search box (reference
 # 320x640 position), type the name, tap the first result's Open.
-adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 5
+# v660 ships a second launcher activity (WX Explorer); monkey picks one at random.
+case $PKG in
+  com.dergoogler.mmrl.wx) adb shell am start -n "$PKG/com.dergoogler.mmrl.wx.ui.activity.MainActivity" >/dev/null 2>&1;;
+  *) adb shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1;;
+esac; sleep 5
 UI_EXACT=1 UI_WAIT=30 $UI tap Module || $UI tap Modules; sleep 6
 adb exec-out screencap -p >"$O-modules.png"
 $UI tapxy 160 152; sleep 3

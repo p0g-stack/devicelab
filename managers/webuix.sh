@@ -4,6 +4,10 @@
 # Release identity is committed in managers/webuix-apks.sha256.
 set -uo pipefail
 TAG=v660; REPO=MMRLApp/WebUI-X-Portable; PKG=com.dergoogler.mmrl.wx
+# v660 ships two launcher activities: MainActivity and WX Explorer. `monkey -c
+# LAUNCHER` picks one at random, and when Explorer is under MainActivity the
+# setup screen finishes onto a file browser with no bottom navigation.
+MAIN=$PKG/com.dergoogler.mmrl.wx.ui.activity.MainActivity
 case ${FLAVOR:-kernelsu} in next) KSU=com.rifsxd.ksunext;; *) KSU=me.weishu.kernelsu;; esac
 OUT=${LAB_OUT:-$PWD/out}; mkdir -p "$OUT"; D=$(mktemp -d)
 HERE=$(cd "$(dirname "$0")/.." && pwd); UI="python3 $HERE/managers/ui.py"
@@ -53,11 +57,11 @@ log "root grant: $granted; su as app uid $UID_: $(adb shell "su $UID_ /system/bi
 adb shell input keyevent KEYCODE_HOME
 
 # First launch: walk through any onboarding, keep what it shows.
-adb shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 6
+adb shell am start -n "$MAIN" >/dev/null 2>&1; sleep 6
 # v660 SetupScreen still selects a platform then Continue with KernelSU.
 # Give its platform list and fixed-height button room on the small AVD.
 adb shell wm size 320x900; sleep 2
-adb shell am force-stop $PKG; adb shell monkey -p $PKG -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1; sleep 6
+adb shell am force-stop $PKG; adb shell am start -n "$MAIN" >/dev/null 2>&1; sleep 6
 export UI_EXACT=1
 UI_WAIT=20 $UI tap KernelSU || exit 1
 UI_WAIT=10 $UI tap "Continue with KernelSU" || exit 1
