@@ -88,6 +88,7 @@ for d in $projects; do
     log "patched $d from ${p#$here/}: $(ls "$p/$d"/*.patch | wc -l) patch(es), now $(git -C "$d" log --oneline -1)"
   done
 done
+recovery_rev=$(git -C bootable/recovery rev-parse HEAD 2>/dev/null || true)
 repo manifest -r -o "$out/manifest-pinned.xml" >/dev/null 2>&1 || log "WARNING: repo manifest -r failed (unsynced projects?)"
 # The sync metadata is tens of GB, and GitHub's runner ends a full build with
 # about 4 GB free: nothing after this point needs .repo (the patch loop above
@@ -122,7 +123,7 @@ ls "$p"/AERA*.zip "$p"/AERA*.img 2>/dev/null | while read -r f; do cp "$f" "$out
 (cd "$out" && sha256sum ./*.img ./*.tgz ./*.zip ./*.elf 2>/dev/null | sed 's# \./# #' > SHA256SUMS)
 {
   echo "android_manifest $MANIFEST_REV"
-  echo "bootable/recovery $(git -C bootable/recovery rev-parse HEAD)"
+  echo "bootable/recovery ${recovery_rev:-$(git -C bootable/recovery rev-parse HEAD 2>/dev/null || true)}"
   echo "patches $( (cd "$PATCHES" 2>/dev/null && find . -name '*.patch' | sort | xargs -r sha256sum; cd "$PATCHES_CF" 2>/dev/null && find . -name '*.patch' | sort | xargs -r sha256sum) | sha256sum | cut -c1-16)"
   (cd "$PATCHES" && find . -name SOURCE | sort | while read -r f; do echo "patch-source ${f#./} $(head -1 "$f")"; done)
   (cd "$PATCHES" 2>/dev/null && find . -name '*.patch' | sort | sed 's#^\./#patch #')
