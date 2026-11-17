@@ -55,7 +55,14 @@ for _ in $(seq 1 5); do
 done
 record camera-answer "$answer"
 [ -z "$answer" ] || { echo 'CameraPhoto returned an API error'; exit 1; }
-adb shell test -s "$photo" || { echo 'CameraPhoto produced no image'; exit 1; }
+# The answer is the API's own stdout and closes before the JPEG is written:
+# the capture runs on an ImageReader thread. Wait for the bytes, and keep the
+# camera log so a real failure says why (run 44150816132 checked 21 ms later
+# and found nothing yet).
+for _ in $(seq 1 20); do adb shell test -s "$photo" && break; sleep 1; done
+adb shell test -s "$photo" || {
+  record camera-log "$(adb shell "logcat -d | grep -E 'CameraPhotoAPI|CameraService' | tail -12" | tr -d '\r' | jq -R -s .)"
+  echo 'CameraPhoto produced no image'; exit 1; }
 record camera-file "$(adb shell stat -c '%s bytes' "$photo" | tr -d '\r')"
 adb shell rm "$photo"
 record result passed
