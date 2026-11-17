@@ -1,0 +1,298 @@
+{
+ "probe": "dart_bionic",
+ "date": "2026-11-17",
+ "platform": "qemu-user chroot of AVD android-35 google_apis arm64-v8a system.img",
+ "cannotShow": "kernel, SELinux, real CPU timing",
+ "termuxDart": "3.14.1",
+ "results": [
+  {
+   "name": "sh-works",
+   "cmd": "echo bionic sh ok; /system/bin/toybox uname -m; ls -l /system/bin/env",
+   "exit": 127,
+   "ms": 145,
+   "stdout": "bionic sh ok\naarch64",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\n/system/bin/sh: ls: inaccessible or not found"
+  },
+  {
+   "name": "aot-host-snapshot-termux-runtime",
+   "cmd": "PATH=/system/bin /data/adb/devicelab/dartaotruntime /data/adb/devicelab/probe-arm64.aot",
+   "exit": 126,
+   "ms": 75,
+   "stdout": "",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\n/system/bin/sh: /data/adb/devicelab/dartaotruntime: No such file or directory"
+  },
+  {
+   "name": "termux-compile-exe",
+   "cmd": "cd /data/adb/devicelab && PATH=/data/data/com.termux/files/usr/bin:/system/bin HOME=/data/adb/devicelab TMPDIR=/data/adb/devicelab /data/data/com.termux/files/usr/lib/dart-sdk/bin/dart compile exe probe.dart -o probe-bionic",
+   "exit": 0,
+   "ms": 57862,
+   "stdout": "Generated: /data/adb/devicelab/probe-bionic",
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\""
+  },
+  {
+   "name": "bionic-exe-no-termux",
+   "cmd": "PATH=/system/bin /data/adb/devicelab/probe-bionic",
+   "exit": 0,
+   "ms": 642,
+   "stdout": {
+    "os": "android",
+    "dart": "3.14.1 (stable) (Tue Nov 17 00:01:24 2026 -0800) on \"android_arm64\"",
+    "executable": "/data/adb/devicelab/probe-bionic",
+    "pid": 2760,
+    "env": {
+     "PATH": "/system/bin",
+     "TMPDIR": null,
+     "LD_LIBRARY_PATH": null,
+     "ANDROID_ROOT": null,
+     "HOME": "/root"
+    },
+    "osVersion": {
+     "ok": false,
+     "error": "OS Error: Invalid argument, errno = 22",
+     "ms": 10
+    },
+    "selinux": {
+     "ok": true,
+     "value": "unconfined",
+     "ms": 10
+    },
+    "status": {
+     "ok": true,
+     "value": [
+      "Uid:\t0\t0\t0\t0",
+      "Gid:\t0\t0\t0\t0"
+     ],
+     "ms": 1
+    },
+    "tempDir": {
+     "ok": false,
+     "error": "PathNotFoundException: Creation of temporary directory failed, path = '/data/data/com.termux/files/usr/tmp/probe' (OS Error: No such file or directory, errno = 2)",
+     "ms": 2
+    },
+    "processRun": {
+     "ok": true,
+     "value": {
+      "exit": 0,
+      "stdout": "uid=0(root) gid=0(root) groups=0(root)",
+      "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\""
+     },
+     "ms": 192
+    },
+    "isolate": {
+     "ok": true,
+     "value": 499500,
+     "ms": 15
+    },
+    "dnsLocalhost": {
+     "ok": true,
+     "value": [
+      "127.0.0.1"
+     ],
+     "ms": 10
+    },
+    "dnsRemote": {
+     "ok": false,
+     "error": "SocketException: Failed host lookup: 'dart.dev' (OS Error: No address associated with hostname, errno = 7)",
+     "ms": 6
+    },
+    "loopbackWebSocket": {
+     "ok": true,
+     "value": {
+      "roundTrips": 100,
+      "p50Us": 768,
+      "maxUs": 13644,
+      "connectMs": 56
+     },
+     "ms": 169
+    },
+    "unixAbstract": {
+     "ok": true,
+     "value": "hello",
+     "ms": 6
+    },
+    "unixPath": {
+     "ok": false,
+     "error": "SocketException: Failed to create server socket (OS Error: No such file or directory, errno = 2), address = /data/data/com.termux/files/usr/tmp/devicelab-probe-2760.sock, port = 0",
+     "ms": 1
+    }
+   },
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\""
+  },
+  {
+   "name": "glibc-loader-linux-runtime-aot",
+   "cmd": "PATH=/system/bin TMPDIR=/data/adb/devicelab /data/adb/devicelab/glibc/ld-linux-aarch64.so.1 --library-path /data/adb/devicelab/glibc /data/adb/devicelab/glibc/dartaotruntime-linux /data/adb/devicelab/probe-arm64.aot",
+   "exit": 0,
+   "ms": 467,
+   "stdout": {
+    "os": "linux",
+    "dart": "3.14.1 (stable) (Tue Nov 17 00:01:24 2026 -0800) on \"linux_arm64\"",
+    "executable": "/data/adb/devicelab/glibc/ld-linux-aarch64.so.1",
+    "pid": 2830,
+    "env": {
+     "PATH": "/system/bin",
+     "TMPDIR": "/data/adb/devicelab",
+     "LD_LIBRARY_PATH": null,
+     "ANDROID_ROOT": null,
+     "HOME": "/root"
+    },
+    "osVersion": {
+     "ok": true,
+     "value": "Linux 7.0.0-1014-aws #14~24.04.1-Ubuntu SMP PREEMPT Fri Sep 18 21:24:59 UTC 2026",
+     "ms": 2
+    },
+    "selinux": {
+     "ok": true,
+     "value": "unconfined",
+     "ms": 6
+    },
+    "status": {
+     "ok": true,
+     "value": [
+      "Uid:\t0\t0\t0\t0",
+      "Gid:\t0\t0\t0\t0"
+     ],
+     "ms": 1
+    },
+    "tempDir": {
+     "ok": true,
+     "value": "/data/adb/devicelab/probeYBSFHA",
+     "ms": 1
+    },
+    "processRun": {
+     "ok": true,
+     "value": {
+      "exit": 0,
+      "stdout": "uid=0(root) gid=0(root) groups=0(root)",
+      "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\""
+     },
+     "ms": 184
+    },
+    "isolate": {
+     "ok": true,
+     "value": 499500,
+     "ms": 14
+    },
+    "dnsLocalhost": {
+     "ok": false,
+     "error": "SocketException: Failed host lookup: 'localhost' (OS Error: Temporary failure in name resolution, errno = -3)",
+     "ms": 15
+    },
+    "dnsRemote": {
+     "ok": false,
+     "error": "SocketException: Failed host lookup: 'dart.dev' (OS Error: Temporary failure in name resolution, errno = -3)",
+     "ms": 0
+    },
+    "loopbackWebSocket": {
+     "ok": true,
+     "value": {
+      "roundTrips": 100,
+      "p50Us": 198,
+      "maxUs": 8639,
+      "connectMs": 32
+     },
+     "ms": 72
+    },
+    "unixAbstract": {
+     "ok": true,
+     "value": "hello",
+     "ms": 3
+    },
+    "unixPath": {
+     "ok": true,
+     "value": "hello",
+     "ms": 0
+    }
+   },
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\""
+  },
+  {
+   "name": "bionic-exe-tmpdir",
+   "cmd": "PATH=/system/bin TMPDIR=/data/adb/devicelab /data/adb/devicelab/probe-bionic",
+   "exit": 0,
+   "ms": 625,
+   "stdout": {
+    "os": "android",
+    "dart": "3.14.1 (stable) (Tue Nov 17 00:01:24 2026 -0800) on \"android_arm64\"",
+    "executable": "/data/adb/devicelab/probe-bionic",
+    "pid": 2856,
+    "env": {
+     "PATH": "/system/bin",
+     "TMPDIR": "/data/adb/devicelab",
+     "LD_LIBRARY_PATH": null,
+     "ANDROID_ROOT": null,
+     "HOME": "/root"
+    },
+    "osVersion": {
+     "ok": false,
+     "error": "OS Error: Invalid argument, errno = 22",
+     "ms": 10
+    },
+    "selinux": {
+     "ok": true,
+     "value": "unconfined",
+     "ms": 10
+    },
+    "status": {
+     "ok": true,
+     "value": [
+      "Uid:\t0\t0\t0\t0",
+      "Gid:\t0\t0\t0\t0"
+     ],
+     "ms": 1
+    },
+    "tempDir": {
+     "ok": true,
+     "value": "/data/adb/devicelab/probeNGZNTN",
+     "ms": 1
+    },
+    "processRun": {
+     "ok": true,
+     "value": {
+      "exit": 0,
+      "stdout": "uid=0(root) gid=0(root) groups=0(root)",
+      "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\""
+     },
+     "ms": 187
+    },
+    "isolate": {
+     "ok": true,
+     "value": 499500,
+     "ms": 15
+    },
+    "dnsLocalhost": {
+     "ok": true,
+     "value": [
+      "127.0.0.1"
+     ],
+     "ms": 10
+    },
+    "dnsRemote": {
+     "ok": false,
+     "error": "SocketException: Failed host lookup: 'dart.dev' (OS Error: No address associated with hostname, errno = 7)",
+     "ms": 7
+    },
+    "loopbackWebSocket": {
+     "ok": true,
+     "value": {
+      "roundTrips": 100,
+      "p50Us": 738,
+      "maxUs": 13973,
+      "connectMs": 56
+     },
+     "ms": 161
+    },
+    "unixAbstract": {
+     "ok": true,
+     "value": "hello",
+     "ms": 5
+    },
+    "unixPath": {
+     "ok": true,
+     "value": "hello",
+     "ms": 1
+    }
+   },
+   "stderr": "linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nlinker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\"\nWARNING: linker: Warning: failed to find generated linker configuration from \"/linkerconfig/ld.config.txt\""
+  }
+ ]
+}
