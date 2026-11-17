@@ -63,6 +63,22 @@ rebased non-protocol patches (the pins' comment names them). `build/device/`
 is the `aera_cf` device tree (x86_64, no kernel; AERA's arm-only prebuilts
 dropped in `vendorsetup.sh`).
 
+This qualification branch adds the two negotiated Host API 2 extension patches
+to `rebase-1cabc509-api2` (desktop integration bit 12 and native editor bit 13).
+It does not change the main-line image or consumer pins. Dispatch `aera-cf`
+on this branch with the image's independently recorded SHA256 and a successful
+`upstream-host-api-2` Kit run; do not run the old API 3 checks against it.
+
+Hosted builds run inside a memory cgroup (10 GiB high, 12 GiB maximum,
+20 GiB swap maximum, three build jobs, 8 GiB Go heap soft limit), leaving
+memory for the Actions listener. `AERA build resources` check output retains
+minute-by-minute latest disk/RAM/cgroup evidence remotely even if a runner
+disappears; the complete resource log is uploaded when the runner survives.
+Earlier failures' annotations report lost runner communication, not a proven
+OOM or disk failure. The prior successful image used a 76 GiB synced tree
+and ended with only 3.6 GiB disk free; the rebased local sync also used 76 GiB.
+The existing disk cleanup, swap and post-sync metadata removal are retained.
+
 AERA publishes no images (no GitHub releases, no download page; checked
 2026-10-01), and the build does not fit GitHub's free runners (2 cores,
 7 GB RAM, 14 GB disk). Run it on any x86_64 Ubuntu 22.04/24.04 box with sudo,

@@ -3,12 +3,13 @@
      android_manifest aabd43b2478f3e6dcd0330e7cd5839746c0bf9a7 (android-16.0.0_r1).
      bootable/recovery and external/lvgl come from the p0g-stack forks, on the
      branches that rebase the carried non-protocol patches onto AERA upstream:
-     p0g-stack/android_bootable_recovery rebase-1cabc509 (upstream 1cabc509)
+     p0g-stack/android_bootable_recovery rebase-1cabc509-api2 (upstream 1cabc509,
+     non-protocol fixes plus negotiated desktop integration/text-input bits 12-13)
      and p0g-stack/android_external_lvgl rebase-626794146 (upstream 626794146).
      The carried patches live in those branches, not in patches/. -->
 <manifest>
   <remote name="p0g" fetch="https://github.com/p0g-stack/" revision="main" />
-  <extend-project name="android_bootable_recovery" path="bootable/recovery" remote="p0g" revision="1bd318e1977364e7dfe43c21f3df869e1e78a163" />
+  <extend-project name="android_bootable_recovery" path="bootable/recovery" remote="p0g" revision="d80a712b739a9e6cde0fe3ff7bd00e8e101625d9" />
   <extend-project name="android_external_lvgl" path="external/lvgl" remote="p0g" revision="7840a34ab4de0ac24890d70f3bb034e3c6beae46" />
   <extend-project name="android_vendor_recovery" path="vendor/recovery" revision="0a060cf8c9d07961f3c468adb913b2997e7a390a" />
   <extend-project name="android_system_core" path="system/core" revision="245ef44aed792314f45f58421a6c5c5fb7c06909" />

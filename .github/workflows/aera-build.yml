@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   actions: write
+  checks: write
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -33,6 +34,7 @@ jobs:
             x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig \
             python3 python-is-python3 rsync bc cpio lz4 >/dev/null
       - name: Sync and build
+        env: { GH_TOKEN: "${{ github.token }}" }
         run: |
           set -o pipefail
           # Sources on / (bigger after cleanup), out/ on /mnt.
@@ -42,18 +44,27 @@ jobs:
             for d in ${{ inputs.skip_patches }}; do rm -rf "${RUNNER_TEMP:?}/patches/$d"; echo "leaving out $d"; done
             export AERA_PATCHES=$RUNNER_TEMP/patches
           fi
-          aera/build/build.sh ~/aera "$LAB_OUT" 2>&1 | tee "$LAB_OUT/job.log"
+          bash aera/build/hosted-build.sh ~/aera "$LAB_OUT" 2>&1 | tee "$LAB_OUT/job.log"
       - name: Disk
         if: always()
         run: df -h / /mnt; du -sh ~/aera/.repo /mnt/aera 2>/dev/null || true; tail -80 "$LAB_OUT/build.log" > "$LAB_OUT/build-tail.log" 2>/dev/null || true
-      - name: Release the image, then run the Cuttlefish checks on it
+      - name: Release the branch image for explicit API 2 qualification
         if: success()
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
-          # A release made with the job token triggers no workflow, so dispatch aera-cf here.
-          tag=$(aera/build/publish.sh "$LAB_OUT" | sed -n 's/^published //p')
-          gh workflow run aera-cf.yml -R "$GITHUB_REPOSITORY" -r main -f aera_release="$tag" \
-            -f aera_sha256="$(awk '$2 == "ramdisk-recovery.img" {print $1}' "$LAB_OUT/SHA256SUMS")"
+          # Do not dispatch the main-line Host API 3 checks with an API 2 image.
+          # aera-cf is dispatched on this branch once its candidate kit is green.
+          aera/build/publish.sh "$LAB_OUT"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: aera-build-evidence
+          path: |
+            out/*.log
+            out/resources-latest.txt
+            out/BUILD-INFO
+            out/SHA256SUMS
+            out/manifest-pinned.xml
       - name: Publish to lab-results
         if: always()
         env: { GH_TOKEN: "${{ github.token }}" }
