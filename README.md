@@ -22,7 +22,7 @@ fakes built from what this lab observed), app code, grading.
 | Target | How it is recreated | Notes |
 |---|---|---|
 | KernelSU, KSU Next, SukiSU, APatch | Cuttlefish or AVD on a GKI kernel with the manager's LKM/patch | Kernel-level root needs a kernel it can patch; container Android can't host these. CBM already qualified on Cuttlefish Android 17 + KSU Next 3.3.0 |
-| WebUI X (MMRL, Portable) | Same images, WebUI X installed | Portable v438 is the known-broken `spawn` case |
+| WebUI X (MMRL, Portable) | Same images, WebUI X installed | v660 official is the pinned host; Portable v438 (the known-broken `spawn` case) and v608 Play are retired |
 | KsuWebUIStandalone | Same images | |
 | Android container (Waydroid, redroid, Anbox) | Container on the host kernel | Fast, for app-side and WebView behaviour only; no KSU |
 | Plain browser | Headless Chromium, plus Android System WebView builds | The degraded web floor |
@@ -31,8 +31,9 @@ fakes built from what this lab observed), app code, grading.
 ## Driving
 
 - adb + uiautomator for the manager UI.
-- The module's WebView over Chrome DevTools (`webview_devtools_remote`), with
-  the manager's WebView debugging switch on.
+- The module's WebView over Chrome DevTools (`webview_devtools_remote`); WebUI
+  X v660 exposes it without a debug switch (Developer Mode off reaches every
+  devtools check).
 - Every observation is a file: platform, host build, method, input, output,
   timing, date. Embedders turn them into fakes.
 
