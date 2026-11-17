@@ -1,0 +1,1500 @@
+11-17 20:27:57.033     0     0 I init    : Service 'exec 981 (/system/bin/flags_health_check UPDATABLE_CRASHING)' (pid 13473) exited with status 0 waiting took 0.032000 seconds
+11-17 20:27:57.036     0     0 I init    : Sending signal 9 to service 'exec 981 (/system/bin/flags_health_check UPDATABLE_CRASHING)' (pid 13473) process group...
+11-17 20:27:57.039     0     0 I libprocessgroup: Removed cgroup /sys/fs/cgroup/uid_1000/pid_13473
+11-17 20:27:57.040     0     0 I init    : processing action (init.svc.media=*) from (/system/etc/init/mediaserver.rc:1)
+11-17 20:27:57.043     0     0 I init    : processing action (init.svc.media=*) from (/system/etc/init/mediaserver.rc:1)
+11-17 20:27:57.948     0     0 I init    : starting service 'cameraserver'...
+11-17 20:27:57.978     0     0 I KernelSU: hook_manager: unmark 13478 exec /system/bin/cameraserver
+11-17 20:27:57.978     0     0 I init    : ... started service 'cameraserver' has pid 13478
+11-17 20:27:57.984     0     0 I init    : starting service 'media'...
+11-17 20:27:57.987     0     0 I KernelSU: hook_manager: unmark 13479 exec /system/bin/mediaserver
+11-17 20:27:57.987     0     0 I init    : ... started service 'media' has pid 13479
+11-17 20:27:57.990     0     0 I init    : processing action (init.svc.media=*) from (/system/etc/init/mediaserver.rc:1)
+11-17 20:27:57.998     0     0 I init    : starting service 'wificond'...
+11-17 20:27:58.001     0     0 I KernelSU: hook_manager: unmark 13480 exec /system/bin/wificond
+11-17 20:27:58.002     0     0 I init    : ... started service 'wificond' has pid 13480
+11-17 20:27:57.760 13480 13480 I wificond: wificond is starting up...
+11-17 20:27:58.015     0     0 I servicemanager: Caller(pid=13480,uid=1010,sid=u:r:wificond:s0) Could not find android.hardware.net.nlinterceptor.IInterceptor/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:57.767 13480 13480 I HidlServiceManagement: Registered android.system.wifi.keystore@1.0::IKeystore/default
+11-17 20:27:57.772 13478 13478 I cameraserver: ServiceManager: 0x7f779bc11f60
+11-17 20:27:57.772 13478 13478 I CameraService: CameraService started (pid=13478)
+11-17 20:27:57.772 13478 13478 I CameraService: CameraService process starting
+11-17 20:27:57.772 13478 13478 W BatteryNotifier: batterystats service unavailable!
+11-17 20:27:57.772 13478 13478 W BatteryNotifier: batterystats service unavailable!
+11-17 20:27:57.773 13478 13478 I cameraserver: Connecting to new camera provider: android.hardware.camera.provider.ICameraProvider/internal/0, isRemote? 1
+11-17 20:27:57.773 13478 13478 W cameraserver: AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+11-17 20:27:57.773 13478 13478 W BpBinder: Linking to death on android.hardware.camera.provider.ICameraProvider but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-17 20:27:57.774 13478 13478 I CameraProviderManager: Enumerating new camera device: device@1.1/internal/1
+11-17 20:27:57.774   392   435 W StreamConfigurationMap: StreamConfigurationMap: ANDROID_SCALER_AVAILABLE_STREAM_CONFIGURATIONS missing, maxResolution ? true!
+11-17 20:27:57.774   392   435 W StreamConfigurationMap: StreamConfigurationMap: ANDROID_SCALER_AVAILABLE_MIN_FRAME_DURATIONS missing!, max resolution ? true
+11-17 20:27:57.774   392   435 W StreamConfigurationMap: StreamConfigurationMap: ANDROID_SCALER_AVAILABLE_STALL_DURATIONS missing! maxResolution ? true
+11-17 20:27:57.774   392   435 W EmulatedCameraDeviceInfo: InitializeControlDefaults: No available post RAW boost! Setting default!
+11-17 20:27:57.774   392   435 I EmulatedCameraDeviceHwlImpl: Create: Created EmulatedCameraDeviceHwlImpl for camera 1
+11-17 20:27:57.774   392   435 D GCH_Utils: FindLibraryPaths: Unable to open directory /vendor/lib64/camera/capture_sessions/ (No such file or directory)
+11-17 20:27:57.774   392   435 I GCH_CameraDevice: Create: Created a camera device for public(1)
+11-17 20:27:57.775 13478 13478 W CameraProviderManager: Camera provider android.hardware.camera.provider.ICameraProvider/internal/0 says an unknown camera device@1.1/internal/1 now has torch status 1. Curious.
+11-17 20:27:57.775 13478 13478 I CameraProviderManager: Camera provider android.hardware.camera.provider.ICameraProvider/internal/0 ready with 1 camera devices
+11-17 20:27:57.776 13478 13478 I cameraserver: Connecting to new camera provider: android.hardware.camera.provider.ICameraProvider/internal/1, isRemote? 1
+11-17 20:27:57.776 13478 13478 W cameraserver: AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+11-17 20:27:57.776 13478 13478 W BpBinder: Linking to death on android.hardware.camera.provider.ICameraProvider but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-17 20:27:57.779 13478 13478 I CameraProviderManager: Camera provider android.hardware.camera.provider.ICameraProvider/internal/1 ready with 0 camera devices
+11-17 20:27:57.779 13478 13478 D CameraProviderManager: tryGetService: AIDL Camera provider HAL 'android.hardware.camera.provider.ICameraProvider/virtual/0' is not actually available
+11-17 20:27:57.779 13478 13478 W CameraProviderManager: tryToInitializeAidlProviderLocked: AIDL Camera provider HAL 'android.hardware.camera.provider.ICameraProvider/virtual/0' is not actually available
+11-17 20:27:57.779 13478 13478 I CameraService: onDeviceStatusChanged: Status changed for cameraId=1, newStatus=1
+11-17 20:27:57.779 13478 13478 I CameraService: onDeviceStatusChanged: Unknown camera ID 1, a new camera is added
+11-17 20:27:57.780 13479 13479 I mediaserver: ServiceManager: 0x764b9986be80
+11-17 20:27:57.781 13479 13479 W BatteryNotifier: batterystats service unavailable!
+11-17 20:27:57.781 13479 13479 W BatteryNotifier: batterystats service unavailable!
+11-17 20:27:57.781 13478 13478 I HidlServiceManagement: Registered android.frameworks.cameraservice.service@2.2::ICameraService/default
+11-17 20:27:58.034     0     0 I init    : starting service 'vendor.audio-hal'...
+11-17 20:27:58.037     0     0 I servicemanager: Caller(pid=13478,uid=1047,sid=u:r:cameraserver:s0) Found android.frameworks.cameraservice.service.ICameraService/default in framework VINTF manifest.
+11-17 20:27:58.038     0     0 I KernelSU: hook_manager: unmark 13485 exec /vendor/bin/hw/android.hardware.audio.service
+11-17 20:27:58.038     0     0 I init    : ... started service 'vendor.audio-hal' has pid 13485
+11-17 20:27:58.040     0     0 I servicemanager: Caller(pid=13478,uid=1047,sid=u:r:cameraserver:s0) Found android.frameworks.cameraservice.service.ICameraService/default in framework VINTF manifest.
+11-17 20:27:57.794 13478 13478 I CameraService: CameraService pinged cameraservice proxy
+11-17 20:27:57.794 13478 13478 I cameraserver: ServiceManager: 0x7f779bc11f60 done instantiate
+11-17 20:27:57.795 13478 13478 W CameraProviderManager: addAidlProviderLocked: Camera provider HAL with name 'android.hardware.camera.provider.ICameraProvider/internal/0' already registered
+11-17 20:27:57.795 13478 13486 W CameraProviderManager: addAidlProviderLocked: Camera provider HAL with name 'android.hardware.camera.provider.ICameraProvider/internal/1' already registered
+11-17 20:27:57.802 13485 13485 I HidlServiceManagement: Registered android.hardware.audio@7.1::IDevicesFactory/default
+11-17 20:27:57.803 13485 13485 I HidlServiceManagement: Removing namespace from process name android.hardware.audio.service to audio.service.
+11-17 20:27:57.803 13485 13485 I LegacySupport: Registration complete for android.hardware.audio@7.1::IDevicesFactory/default.
+11-17 20:27:57.804 13485 13485 I HidlServiceManagement: Registered android.hardware.audio.effect@7.0::IEffectsFactory/default
+11-17 20:27:57.804 13485 13485 I LegacySupport: Registration complete for android.hardware.audio.effect@7.0::IEffectsFactory/default.
+11-17 20:27:57.804   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.soundtrigger@2.3::ISoundTriggerHw/default in either framework or device VINTF manifest.
+11-17 20:27:57.804 13485 13485 E LegacySupport: Could not get passthrough implementation for android.hardware.soundtrigger@2.3::ISoundTriggerHw/default.
+11-17 20:27:57.804   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.soundtrigger@2.2::ISoundTriggerHw/default in either framework or device VINTF manifest.
+11-17 20:27:57.805 13485 13485 E LegacySupport: Could not get passthrough implementation for android.hardware.soundtrigger@2.2::ISoundTriggerHw/default.
+11-17 20:27:57.805   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.soundtrigger@2.1::ISoundTriggerHw/default in either framework or device VINTF manifest.
+11-17 20:27:57.805 13485 13485 E LegacySupport: Could not get passthrough implementation for android.hardware.soundtrigger@2.1::ISoundTriggerHw/default.
+11-17 20:27:57.805   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.soundtrigger@2.0::ISoundTriggerHw/default in either framework or device VINTF manifest.
+11-17 20:27:57.805 13485 13485 E LegacySupport: Could not get passthrough implementation for android.hardware.soundtrigger@2.0::ISoundTriggerHw/default.
+11-17 20:27:57.805 13485 13485 W audiohalservice: Could not register Soundtrigger API
+11-17 20:27:57.805   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.bluetooth.audio@2.2::IBluetoothAudioProvidersFactory/default in either framework or device VINTF manifest.
+11-17 20:27:57.805 13485 13485 E LegacySupport: Could not get passthrough implementation for android.hardware.bluetooth.audio@2.2::IBluetoothAudioProvidersFactory/default.
+11-17 20:27:57.805   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.bluetooth.audio@2.1::IBluetoothAudioProvidersFactory/default in either framework or device VINTF manifest.
+11-17 20:27:57.805 13485 13485 E LegacySupport: Could not get passthrough implementation for android.hardware.bluetooth.audio@2.1::IBluetoothAudioProvidersFactory/default.
+11-17 20:27:57.805   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.bluetooth.audio@2.0::IBluetoothAudioProvidersFactory/default in either framework or device VINTF manifest.
+11-17 20:27:57.805 13485 13485 E LegacySupport: Could not get passthrough implementation for android.hardware.bluetooth.audio@2.0::IBluetoothAudioProvidersFactory/default.
+11-17 20:27:57.805 13485 13485 W audiohalservice: Could not register Bluetooth Audio API
+11-17 20:27:57.805   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.bluetooth.a2dp@1.0::IBluetoothAudioOffload/default in either framework or device VINTF manifest.
+11-17 20:27:57.805 13485 13485 E LegacySupport: Could not get passthrough implementation for android.hardware.bluetooth.a2dp@1.0::IBluetoothAudioOffload/default.
+11-17 20:27:57.805 13485 13485 W audiohalservice: Could not register Bluetooth Audio Offload API
+11-17 20:27:57.811 13485 13485 I audiohalservice: createIBluetoothAudioProviderFactory() from android.hardware.bluetooth.audio-impl success
+11-17 20:27:57.811 13485 13485 E audiohalservice: Failed to dlopen android.hardware.audio.sounddose-vendor-impl.so: dlopen failed: library "android.hardware.audio.sounddose-vendor-impl.so" not found
+11-17 20:27:57.811 13485 13485 W audiohalservice: createISoundDoseFactory() from android.hardware.audio.sounddose-vendor-impl failed
+11-17 20:27:58.062     0     0 I servicemanager: Caller(pid=13485,uid=1041,sid=u:r:hal_audio_default:s0) Found android.hardware.bluetooth.audio.IBluetoothAudioProviderFactory/default in device VINTF manifest.
+11-17 20:27:58.836     0     0 I init    : starting service 'netd'...
+11-17 20:27:58.837     0     0 I init    : Created socket '/dev/socket/dnsproxyd', mode 660, user 0, group 3003
+11-17 20:27:58.839     0     0 I init    : Created socket '/dev/socket/mdns', mode 660, user 0, group 1000
+11-17 20:27:58.840     0     0 I init    : Created socket '/dev/socket/fwmarkd', mode 660, user 0, group 3003
+11-17 20:27:58.866     0     0 I KernelSU: hook_manager: unmark 13494 exec /system/bin/netd
+11-17 20:27:58.866     0     0 I init    : ... started service 'netd' has pid 13494
+11-17 20:27:58.869     0     0 I init    : starting service 'audioserver'...
+11-17 20:27:58.872     0     0 I KernelSU: hook_manager: unmark 13495 exec /system/bin/audioserver
+11-17 20:27:58.872     0     0 I init    : ... started service 'audioserver' has pid 13495
+11-17 20:27:58.624 13494 13494 I netdClient: Skipping libnetd_client init since *we* are netd
+11-17 20:27:58.876     0     0 I init    : processing action (init.svc.audioserver=running) from (/system/etc/init/audioserver.rc:37)
+11-17 20:27:58.626 13494 13494 I netd    : netd 1.0 starting
+11-17 20:27:58.627 13494 13494 I netd    : Pid file removed
+11-17 20:27:58.627 13494 13494 I netd    : SIGPIPE is blocked
+11-17 20:27:58.627 13494 13494 I netd    : setCloseOnExec(dnsproxyd)
+11-17 20:27:58.627 13494 13494 I netd    : setCloseOnExec(fwmarkd)
+11-17 20:27:58.627 13494 13494 I NetdUpdatable: libnetd_updatable_init: Initializing
+11-17 20:27:58.627 13494 13494 I NetdUpdatable: BPF programs are loaded
+11-17 20:27:58.628 13494 13494 I NetdUpdatable: initMaps successfully
+11-17 20:27:58.628 13494 13494 I netd    : libnetd_updatable_init success
+11-17 20:27:58.628 13494 13494 I netd    : NetlinkManager instanced
+11-17 20:27:58.628 13494 13494 I netd    : enter NetworkController ctor
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -22
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -22
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 E TcUtils : NLMSG_ERROR message return error: -2
+11-17 20:27:58.628 13494 13494 I netd    : leave NetworkController ctor
+11-17 20:27:58.628 13494 13494 I netd    : enter TetherController ctor
+11-17 20:27:58.629 13494 13494 D TetherController: Setting IP forward enable = 0
+11-17 20:27:58.629 13494 13494 I netd    : leave TetherController ctor
+11-17 20:27:58.878     0     0 I init    : service 'vendor.audio-hal' requested start, but it is already running (flags: 4)
+11-17 20:27:58.881     0     0 I init    : Command 'start vendor.audio-hal-aidl' action=init.svc.audioserver=running (/system/etc/init/audioserver.rc:39) took 0ms and failed: service vendor.audio-hal-aidl not found
+11-17 20:27:58.885     0     0 I init    : Command 'start vendor.audio-effect-hal-aidl' action=init.svc.audioserver=running (/system/etc/init/audioserver.rc:40) took 0ms and failed: service vendor.audio-effect-hal-aidl not found
+11-17 20:27:58.639 13494 13494 I netd    : Creating child chains: 7089us
+11-17 20:27:58.639 13494 13494 I netd    : Setting up OEM hooks: 76us
+11-17 20:27:58.639 13494 13494 I netd    : Setting up FirewallController hooks: 388us
+11-17 20:27:58.890     0     0 I init    : Command 'start vendor.audio-hal-4-0-msd' action=init.svc.audioserver=running (/system/etc/init/audioserver.rc:41) took 0ms and failed: service vendor.audio-hal-4-0-msd not found
+11-17 20:27:58.640 13494 13494 I netd    : Setting up TetherController hooks: 821us
+11-17 20:27:58.641 13494 13494 I netd    : Setting up BandwidthController hooks: 830us
+11-17 20:27:58.641 13494 13494 I netd    : Setting up IdletimerController hooks: 38us
+11-17 20:27:58.643 13494 13494 I netd    : Setting up StrictController hooks: 1758us
+11-17 20:27:58.643 13494 13494 I netd    : Setting up connmark hooks: 354us
+11-17 20:27:58.894     0     0 I init    : Command 'start audio_proxy_service' action=init.svc.audioserver=running (/system/etc/init/audioserver.rc:42) took 0ms and failed: service audio_proxy_service not found
+11-17 20:27:58.644 13494 13494 I netd    : Enabling bandwidth control: 1330us
+11-17 20:27:58.645 13494 13494 E netd    : Error adding route 0.0.0.0/0 -> (null) dummy0 to table 1002: File exists
+11-17 20:27:58.645 13494 13494 I netd    : Initializing RouteController: 624us
+11-17 20:27:58.645 13494 13494 D XfrmController: XfrmController::ipSecAddXfrmInterface, line=1495
+11-17 20:27:58.645 13494 13494 D XfrmController: XfrmController::ipSecRemoveTunnelInterface, line=1708
+11-17 20:27:58.646 13494 13494 D XfrmController: deviceName=ipsec_test
+11-17 20:27:58.654 13495 13495 I FastMixerState: sMaxFastTracks = 8
+11-17 20:27:58.655 13495 13495 D audioserver: main: starting
+11-17 20:27:58.655 13495 13495 V MediaUtils: physMem: 6217900032
+11-17 20:27:58.655 13495 13495 V MediaUtils: requested limit: 536870912
+11-17 20:27:58.655 13495 13495 I libc    : malloc_limit: Allocation limit enabled, max size 536870912 bytes
+11-17 20:27:58.655 13495 13495 D audio_utils::mutex: get_enable_flag: mutex_priority_inheritance: true
+11-17 20:27:58.659 13495 13495 W FactoryHal: hasAidlHalService android.hardware.audio.core.IModule/default: false
+11-17 20:27:58.910     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Could not find android.hardware.audio.core.IModule/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:58.914     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Could not find android.hardware.audio.effect.IFactory/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:58.664 13495 13495 W FactoryHal: hasAidlHalService android.hardware.audio.effect.IFactory/default: false
+11-17 20:27:58.664   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.audio.effect@7.1::IEffectsFactory/default in either framework or device VINTF manifest.
+11-17 20:27:58.667 13494 13494 D XfrmController: Sending Netlink XFRM Message: XFRM_MSG_FLUSHSA
+11-17 20:27:58.667 13494 13494 D XfrmController: Sending Netlink XFRM Message: XFRM_MSG_FLUSHPOLICY
+11-17 20:27:58.667 13494 13494 I netd    : Initializing XfrmController: 22098us
+11-17 20:27:58.668 13494 13494 I resolv  : resolv_init: Initializing resolver
+11-17 20:27:58.671 13495 13495 W FactoryHal: hasAidlHalService android.hardware.audio.effect.IFactory/default: false
+11-17 20:27:58.671   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.audio.effect@7.1::IEffectsFactory/default in either framework or device VINTF manifest.
+11-17 20:27:58.921     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Could not find android.hardware.audio.effect.IFactory/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:58.926     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Could not find android.hardware.audio.core.IModule/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:58.677 13495 13495 W FactoryHal: hasAidlHalService android.hardware.audio.core.IModule/default: false
+11-17 20:27:58.677 13494 13494 I netd    : Registering NetdNativeService: 91us
+11-17 20:27:58.678 13494 13494 I netd    : Registering MDnsService: 134us
+11-17 20:27:58.678 13495 13495 W BatteryNotifier: batterystats service unavailable!
+11-17 20:27:58.679 13494 13494 I HidlServiceManagement: Registered android.system.net.netd@1.1::INetd/default
+11-17 20:27:58.679 13494 13494 I netd    : Registering NetdHwService: 1507us
+11-17 20:27:58.679 13494 13494 I netd    : Netd started in 52837us
+11-17 20:27:58.932     0     0 I servicemanager: Caller(pid=13494,uid=0,sid=u:r:netd:s0) Found android.system.net.netd.INetd/default in framework VINTF manifest.
+11-17 20:27:58.681 13495 13495 D audioserver: main: AudioFlinger created
+11-17 20:27:58.681 13495 13495 E AudioFlinger: Function: getAudioPolicyConfig Line: 2493 Failed 
+11-17 20:27:58.683 13495 13495 D APM_EngineLoader: Loaded engine from libaudiopolicyenginedefault.so
+11-17 20:27:58.683 13495 13495 D APM::AudioPolicyEngine/Base: loadAudioPolicyEngineConfig: No configuration found, using default matching phone experience.
+11-17 20:27:58.684 13495 13495 W APM::AudioPolicyEngine/Base: processParsingResult: No configuration of AUDIO_STREAM_CALL_ASSISTANT found, using default volume configuration
+11-17 20:27:58.685 13495 13495 W DeviceHalHidl: getSoundDoseInterface service android.hardware.audio.sounddose.ISoundDoseFactory/default doesn't exist
+11-17 20:27:58.685 13495 13495 W MelReporter: activateHalSoundDoseComputation: HAL cannot provide sound dose interface for module primary
+11-17 20:27:58.685 13495 13495 W AudioFlinger: loadHwModule() sound dose reporting is not available
+11-17 20:27:58.685 13495 13495 I AudioFlinger: loadHwModule() Loaded primary audio interface, handle 10
+11-17 20:27:58.686 13495 13495 I AudioFlinger: openOutput() this 0x7688b90120d0, module 10 Device AUDIO_DEVICE_OUT_SPEAKER, @:, SamplingRate 48000, Format 0x000001, Channels 0x3, flags 0x2
+11-17 20:27:58.686 13495 13495 I AudioFlinger: operator(): Using 3000 ms as standby time
+11-17 20:27:58.686 13495 13495 I AudioFlinger: HAL output buffer size 1088 frames, normal sink buffer size 1088 frames
+11-17 20:27:58.691 13495 13495 W FactoryHal: hasAidlHalService android.hardware.audio.effect.IFactory/default: false
+11-17 20:27:58.691   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.audio.effect@7.1::IEffectsFactory/default in either framework or device VINTF manifest.
+11-17 20:27:58.941     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Could not find android.hardware.audio.effect.IFactory/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:58.945     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Could not find android.hardware.audio.core.IModule/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:58.947     0     0 I init    : starting service 'zygote'...
+11-17 20:27:58.695 13495 13495 W FactoryHal: hasAidlHalService android.hardware.audio.core.IModule/default: false
+11-17 20:27:58.697 13495 13495 I BufferProvider: found effect "Multichannel Downmix To Stereo" from The Android Open Source Project
+11-17 20:27:58.697 13495 13495 D AudioFlinger: Failed to add event callback
+11-17 20:27:58.697 13495 13521 I AudioFlinger: AudioFlinger's thread 0x768aa23448e0 tid=13521 ready to run
+11-17 20:27:58.698 13495 13521 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.698 13495 13521 D AudioFlinger: ro.audio.silent is ignored since no output device is set
+11-17 20:27:58.698 13485 13485 E android.hardware.audio@7.1-impl.ranchu: getPresentationPosition:510 failure: Result::INVALID_STATE
+11-17 20:27:58.698 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.698 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.698 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.698 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.698 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.698 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.698 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.950     0     0 I init    : Created socket '/dev/socket/zygote', mode 660, user 0, group 1000
+11-17 20:27:58.952     0     0 I init    : Created socket '/dev/socket/usap_pool_primary', mode 660, user 0, group 1000
+11-17 20:27:58.952     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Found android.system.suspend.ISystemSuspend/default in framework VINTF manifest.
+11-17 20:27:58.703   190  7111 E android.system.suspend-service: WakeLock Stats: Stats capacity met, consider adjusting capacity to avoid stats eviction.
+11-17 20:27:58.704 13495 13521 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.704 13495 13521 D AudioFlinger: ro.audio.silent is ignored since no output device is set
+11-17 20:27:58.704 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.704 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.704 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.704 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.704 13495 13495 W AudioFlinger: moveEffects() AUDIO_SESSION_OUTPUT_MIX not found in orphans, checking other mix
+11-17 20:27:58.704 13495 13495 W AudioFlinger: moveEffects() bad srcIo 0
+11-17 20:27:58.704 13495 13495 I APM::AudioPolicyEngine: getDevicesForStrategyInt no device found for strategy 9
+11-17 20:27:58.982     0     0 I init    : ... started service 'zygote' has pid 13523
+11-17 20:27:58.750 13495 13521 D AudioFlinger: updateHalSupportedLatencyModes_l: thread(13) status -38 supported latency modes: { }
+11-17 20:27:58.751   190  7111 E android.system.suspend-service: WakeLock Stats: Stats capacity met, consider adjusting capacity to avoid stats eviction.
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.751 13495 13495 I AudioFlinger: openOutput() this 0x7688b90120d0, module 10 Device AUDIO_DEVICE_OUT_TELEPHONY_TX, @:, SamplingRate 48000, Format 0x000001, Channels 0x3, flags 0
+11-17 20:27:58.752 13495 13495 I AudioFlinger: HAL output buffer size 1088 frames, normal sink buffer size 1088 frames
+11-17 20:27:58.752 13495 13495 D AudioFlinger: Failed to add event callback
+11-17 20:27:58.752 13495 13524 I AudioFlinger: AudioFlinger's thread 0x768aa22e28e0 tid=13524 ready to run
+11-17 20:27:58.753 13495 13524 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.753 13495 13524 D AudioFlinger: ro.audio.silent is ignored since no output device is set
+11-17 20:27:58.753 13485 13490 E android.hardware.audio@7.1-impl.ranchu: getPresentationPosition:510 failure: Result::INVALID_STATE
+11-17 20:27:58.753 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.753 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.753 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.753 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.753 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.753 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.753 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.753 13495 13524 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.753 13495 13524 D AudioFlinger: ro.audio.silent is ignored since no output device is set
+11-17 20:27:58.754 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.754 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.754 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.754 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.755 13495 13524 D AudioFlinger: updateHalSupportedLatencyModes_l: thread(21) status -38 supported latency modes: { }
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.756 13495 13495 E APM_AudioPolicyManager: invalid volume index range
+11-17 20:27:58.758 13495 13526 I AudioFlinger: AudioFlinger's thread 0x768aa2214b88 tid=13526 ready to run
+11-17 20:27:58.758 13495 13526 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.758 13495 13526 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.759 13495 13528 I AudioFlinger: AudioFlinger's thread 0x768aa2214b88 tid=13528 ready to run
+11-17 20:27:58.759 13495 13528 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.760 13495 13528 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.761 13495 13531 I AudioFlinger: AudioFlinger's thread 0x768aa2214b88 tid=13531 ready to run
+11-17 20:27:58.761 13495 13531 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.761 13495 13531 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.762 13485 13485 I r_submix: adev_open(name=audio_hw_if)
+11-17 20:27:58.762 13495 13495 W DeviceHalHidl: getSoundDoseInterface service android.hardware.audio.sounddose.ISoundDoseFactory/default doesn't exist
+11-17 20:27:58.762 13495 13495 W MelReporter: activateHalSoundDoseComputation: HAL cannot provide sound dose interface for module r_submix
+11-17 20:27:58.762 13495 13495 W AudioFlinger: loadHwModule() sound dose reporting is not available
+11-17 20:27:58.762 13485 13485 I r_submix: adev_init_check()
+11-17 20:27:58.763 13495 13495 I AudioFlinger: loadHwModule() Loaded r_submix audio interface, handle 18
+11-17 20:27:58.763 13485 13530 D r_submix: adev_open_input_stream(addr=0)
+11-17 20:27:58.763 13485 13530 I r_submix: adev_open_input_stream(): about to create pipe at index 9, rate 48000, pipe size 4096
+11-17 20:27:58.763 13485 13530 D r_submix: submix_audio_device_create_pipe_l(addr=0, idx=9)
+11-17 20:27:58.763 13485 13530 D r_submix:   now using address 0 for route 9
+11-17 20:27:58.763 13495 13533 I AudioFlinger: AudioFlinger's thread 0x768aa2214b88 tid=13533 ready to run
+11-17 20:27:58.764 13485 13530 I r_submix: in_standby()
+11-17 20:27:58.764 13495 13533 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.764 13485 13485 I r_submix: in_standby()
+11-17 20:27:58.764 13495 13533 W AudioFlinger: no wake lock to update, system not ready yet
+11-17 20:27:58.764 13485 13485 D r_submix: adev_close_input_stream()
+11-17 20:27:58.764 13485 13485 D r_submix: submix_audio_device_release_pipe_l(idx=9) addr=0
+11-17 20:27:58.764 13485 13485 D r_submix: submix_audio_device_destroy_pipe_l(): pipe destroyed
+11-17 20:27:58.765 13495 13495 W DeviceHalHidl: getSoundDoseInterface service android.hardware.audio.sounddose.ISoundDoseFactory/default doesn't exist
+11-17 20:27:58.765 13495 13495 W MelReporter: activateHalSoundDoseComputation: HAL cannot provide sound dose interface for module bluetooth
+11-17 20:27:58.765 13495 13495 W AudioFlinger: loadHwModule() sound dose reporting is not available
+11-17 20:27:58.765 13495 13495 I AudioFlinger: loadHwModule() Loaded bluetooth audio interface, handle 26
+11-17 20:27:58.771 13495 13495 W FactoryHal: hasAidlHalService android.hardware.audio.effect.IFactory/default: false
+11-17 20:27:58.771   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.audio.effect@7.1::IEffectsFactory/default in either framework or device VINTF manifest.
+11-17 20:27:59.020     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Could not find android.hardware.audio.effect.IFactory/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:58.776 13495 13495 W FactoryHal: hasAidlHalService android.hardware.audio.core.IModule/default: false
+11-17 20:27:59.025     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Could not find android.hardware.audio.core.IModule/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:59.031     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Since 'activity' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+11-17 20:27:58.785   161 13535 W libc    : Unable to set property "ctl.interface_start" to "aidl/activity": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+11-17 20:27:59.036     0     0 E init    : Control message: Could not find 'aidl/activity' for ctl.interface_start from pid: 161 (/system/bin/servicemanager)
+11-17 20:27:59.039     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Tried to start aidl service activity as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+11-17 20:27:58.791 13523 13523 D AndroidRuntime: >>>>>> START com.android.internal.os.ZygoteInit uid 0 <<<<<<
+11-17 20:27:58.794 13523 13523 I AndroidRuntime: Using default boot image
+11-17 20:27:58.794 13523 13523 I AndroidRuntime: Leaving lock profiling enabled
+11-17 20:27:58.795 13523 13523 I zygote64: option[0]=-Xzygote
+11-17 20:27:58.795 13523 13523 I zygote64: option[1]=exit
+11-17 20:27:58.795 13523 13523 I zygote64: option[2]=vfprintf
+11-17 20:27:58.795 13523 13523 I zygote64: option[3]=sensitiveThread
+11-17 20:27:58.795 13523 13523 I zygote64: option[4]=-verbose:gc
+11-17 20:27:58.795 13523 13523 I zygote64: option[5]=-XX:PerfettoHprof=true
+11-17 20:27:58.795 13523 13523 I zygote64: option[6]=-XX:PerfettoJavaHeapStackProf=true
+11-17 20:27:58.795 13523 13523 I zygote64: option[7]=-Xprimaryzygote
+11-17 20:27:58.795 13523 13523 I zygote64: option[8]=-Xms8m
+11-17 20:27:58.795 13523 13523 I zygote64: option[9]=-Xmx576m
+11-17 20:27:58.795 13523 13523 I zygote64: option[10]=-XX:HeapGrowthLimit=192m
+11-17 20:27:58.795 13523 13523 I zygote64: option[11]=-XX:HeapMinFree=512k
+11-17 20:27:58.795 13523 13523 I zygote64: option[12]=-XX:HeapMaxFree=8m
+11-17 20:27:58.795 13523 13523 I zygote64: option[13]=-XX:HeapTargetUtilization=0.75
+11-17 20:27:58.795 13523 13523 I zygote64: option[14]=-Xusejit:true
+11-17 20:27:58.795 13523 13523 I zygote64: option[15]=-Xjitsaveprofilinginfo
+11-17 20:27:58.795 13523 13523 I zygote64: option[16]=-XMadviseWillNeedVdexFileSize:104857600
+11-17 20:27:58.795 13523 13523 I zygote64: option[17]=-XMadviseWillNeedOdexFileSize:104857600
+11-17 20:27:58.795 13523 13523 I zygote64: option[18]=-XMadviseWillNeedArtFileSize:4294967295
+11-17 20:27:58.795 13523 13523 I zygote64: option[19]=-XjdwpOptions:suspend=n,server=y
+11-17 20:27:58.795 13523 13523 I zygote64: option[20]=-XjdwpProvider:default
+11-17 20:27:58.795 13523 13523 I zygote64: option[21]=-Xopaque-jni-ids:swapable
+11-17 20:27:58.795 13523 13523 I zygote64: option[22]=-Xlockprofthreshold:500
+11-17 20:27:58.795 13523 13523 I zygote64: option[23]=-Xcompiler-option
+11-17 20:27:58.795 13523 13523 I zygote64: option[24]=--instruction-set-variant=x86_64
+11-17 20:27:58.795 13523 13523 I zygote64: option[25]=-Xcompiler-option
+11-17 20:27:58.795 13523 13523 I zygote64: option[26]=--instruction-set-features=default
+11-17 20:27:58.795 13523 13523 I zygote64: option[27]=-Xcompiler-option
+11-17 20:27:58.795 13523 13523 I zygote64: option[28]=--generate-mini-debug-info
+11-17 20:27:58.795 13523 13523 I zygote64: option[29]=-Ximage-compiler-option
+11-17 20:27:58.796 13523 13523 I zygote64: option[30]=--runtime-arg
+11-17 20:27:58.796 13523 13523 I zygote64: option[31]=-Ximage-compiler-option
+11-17 20:27:58.796 13523 13523 I zygote64: option[32]=-Xms64m
+11-17 20:27:58.796 13523 13523 I zygote64: option[33]=-Ximage-compiler-option
+11-17 20:27:58.796 13523 13523 I zygote64: option[34]=--runtime-arg
+11-17 20:27:58.796 13523 13523 I zygote64: option[35]=-Ximage-compiler-option
+11-17 20:27:58.796 13523 13523 I zygote64: option[36]=-Xmx64m
+11-17 20:27:58.796 13523 13523 I zygote64: option[37]=-Ximage-compiler-option
+11-17 20:27:58.796 13523 13523 I zygote64: option[38]=--dirty-image-objects=/system/etc/dirty-image-objects
+11-17 20:27:58.796 13523 13523 I zygote64: option[39]=-Ximage-compiler-option
+11-17 20:27:58.796 13523 13523 I zygote64: option[40]=--instruction-set-variant=x86_64
+11-17 20:27:58.796 13523 13523 I zygote64: option[41]=-Ximage-compiler-option
+11-17 20:27:58.796 13523 13523 I zygote64: option[42]=--instruction-set-features=default
+11-17 20:27:58.796 13523 13523 I zygote64: option[43]=-Ximage-compiler-option
+11-17 20:27:58.796 13523 13523 I zygote64: option[44]=--generate-mini-debug-info
+11-17 20:27:58.796 13523 13523 I zygote64: option[45]=-Duser.locale=en-US
+11-17 20:27:58.796 13523 13523 I zygote64: option[46]=-XX:NativeBridge=libndk_translation.so
+11-17 20:27:58.796 13523 13523 I zygote64: option[47]=--cpu-abilist=x86_64,arm64-v8a
+11-17 20:27:58.796 13523 13523 I zygote64: option[48]=-Xcore-platform-api-policy:just-warn
+11-17 20:27:58.796 13523 13523 I zygote64: option[49]=-Xfingerprint:google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+11-17 20:27:58.797 13523 13523 I zygote64: Core platform API reporting enabled, enforcing=false
+11-17 20:27:58.797 13523 13523 I zygote64: Using CollectorTypeCMC GC.
+11-17 20:27:58.864 13523 13523 D zygote64: u_setTimeZoneFilesDirectory("/apex/com.android.tzdata/etc/tz/versioned/8/icu") succeeded. 
+11-17 20:27:58.864 13523 13523 D zygote64: I18n APEX ICU file found: /apex/com.android.i18n/etc/icu/icudt75l.dat
+11-17 20:27:58.867 13523 13523 I zygote64: Using memfd for future sealing
+11-17 20:27:58.867 13523 13523 W zygote64: Unexpected CPU variant for x86: x86_64.
+11-17 20:27:58.867 13523 13523 W zygote64: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+11-17 20:27:58.884 13523 13523 D Zygote  : begin preload
+11-17 20:27:58.884 13523 13523 I Zygote  : Calling ZygoteHooks.beginPreload()
+11-17 20:27:58.900 13523 13536 I zygote64: Background verification of 157 classes from boot classpath took 32.502ms
+11-17 20:27:58.910 13523 13523 V Zygote64Timing: BeginPreload took to complete: 26ms
+11-17 20:27:58.910 13523 13523 I Zygote  : Preloading classes...
+11-17 20:27:58.913 13523 13523 W Zygote  : Class not found for preloading: android.app.PendingIntent$$ExternalSyntheticLambda3
+11-17 20:27:58.929 13523 13523 I Typeface: Preloading /system/fonts/Roboto-Regular.ttf
+11-17 20:27:58.930 13523 13523 I Typeface: Preloading /system/fonts/RobotoStatic-Regular.ttf
+11-17 20:27:58.930 13523 13523 I SystemFonts: Loading font config from /system/etc/fonts.xml
+11-17 20:27:58.946 13523 13523 E ActivityRecognitionHardware: activity_recognition HAL is deprecated. class_init is effectively a no-op
+11-17 20:27:58.967   966   966 I AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification android.hardware.biometrics.face.IFace/virtual has clients: 0
+11-17 20:27:58.967   966   966 I AidlLazyServiceRegistrar: Shutdown prevented by forcePersist override flag.
+11-17 20:27:59.217     0     0 I servicemanager: Notifying android.hardware.biometrics.face.IFace/virtual they don't (previously: do) have clients when we now have no record of a client
+11-17 20:27:59.221     0     0 I servicemanager: Notifying android.hardware.biometrics.fingerprint.IFingerprint/default they don't (previously: do) have clients when we now have no record of a client
+11-17 20:27:58.970 13435 13451 I AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification android.hardware.biometrics.fingerprint.IFingerprint/default has clients: 0
+11-17 20:27:58.970 13435 13451 I AidlLazyServiceRegistrar: Trying to shut down the service. No clients in use for any service in process.
+11-17 20:27:59.224     0     0 I servicemanager: Notifying apexservice they don't (previously: do) have clients when we now have no record of a client
+11-17 20:27:59.227     0     0 I servicemanager: Caller(pid=13435,uid=1000,sid=u:r:hal_fingerprint_default:s0) Unregistering android.hardware.biometrics.fingerprint.IFingerprint/default
+11-17 20:27:59.230     0     0 I AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification apexservice has clients: 0
+11-17 20:27:59.233     0     0 I AidlLazyServiceRegistrar: Trying to shut down the service. No clients in use for any service in process.
+11-17 20:27:59.235     0     0 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-17 20:27:58.982 13435 13451 I AidlLazyServiceRegistrar: Unregistered all clients and exiting
+11-17 20:27:59.237     0     0 I servicemanager: Caller(pid=13272,uid=0,sid=u:r:apexd:s0) Unregistering apexservice
+11-17 20:27:59.238     0     0 I init    : Service 'vendor.biometrics.fingerprint-service.ranchu' (pid 13435) exited with status 0 oneshot service took 3.215000 seconds in background
+11-17 20:27:59.239     0     0 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-17 20:27:59.242     0     0 I init    : Sending signal 9 to service 'vendor.biometrics.fingerprint-service.ranchu' (pid 13435) process group...
+11-17 20:27:59.244     0     0 I AidlLazyServiceRegistrar: Unregistered all clients and exiting
+11-17 20:27:59.247     0     0 I libprocessgroup: Removed cgroup /sys/fs/cgroup/uid_1000/pid_13435
+11-17 20:27:59.252     0     0 I init    : Service 'apexd' (pid 13272) exited with status 0 oneshot service took 4.565000 seconds in background
+11-17 20:27:59.254     0     0 I init    : Sending signal 9 to service 'apexd' (pid 13272) process group...
+11-17 20:27:59.256     0     0 I libprocessgroup: Removed cgroup /sys/fs/cgroup/uid_0/pid_13272
+11-17 20:27:59.018 13523 13523 D MtpDeviceJNI: register_android_mtp_MtpDevice
+11-17 20:27:59.025 13523 13523 I zygote64: Thread[1,tid=13523,Native,Thread*=0x79e19f157380,peer=0x14000c60,"main"] recursive attempt to load library "librtp_jni.so"
+11-17 20:27:59.052 13523 13523 W Zygote  : Class not found for preloading: android.window.ImeOnBackInvokedDispatcher$$ExternalSyntheticLambda0
+11-17 20:27:59.053 13523 13523 W Zygote  : Class not found for preloading: android.window.WindowOnBackInvokedDispatcher$OnBackInvokedCallbackWrapper$CallbackRef
+11-17 20:27:59.053 13523 13523 W zygote64: Core platform API violation: Llibcore/io/Memory;->peekLong(JZ)J from Lcom/android/framework/protobuf/UnsafeUtil; using reflection
+11-17 20:27:59.053 13523 13523 W zygote64: Core platform API violation: Llibcore/io/Memory;->pokeLong(JJZ)V from Lcom/android/framework/protobuf/UnsafeUtil; using reflection
+11-17 20:27:59.053 13523 13523 W zygote64: Core platform API violation: Llibcore/io/Memory;->pokeInt(JIZ)V from Lcom/android/framework/protobuf/UnsafeUtil; using reflection
+11-17 20:27:59.053 13523 13523 W zygote64: Core platform API violation: Llibcore/io/Memory;->peekInt(JZ)I from Lcom/android/framework/protobuf/UnsafeUtil; using reflection
+11-17 20:27:59.053 13523 13523 W zygote64: Core platform API violation: Llibcore/io/Memory;->pokeByte(JB)V from Lcom/android/framework/protobuf/UnsafeUtil; using reflection
+11-17 20:27:59.053 13523 13523 W zygote64: Core platform API violation: Llibcore/io/Memory;->peekByte(J)B from Lcom/android/framework/protobuf/UnsafeUtil; using reflection
+11-17 20:27:59.053 13523 13523 W zygote64: Core platform API violation: Llibcore/io/Memory;->pokeByteArray(J[BII)V from Lcom/android/framework/protobuf/UnsafeUtil; using reflection
+11-17 20:27:59.053 13523 13523 W zygote64: Core platform API violation: Llibcore/io/Memory;->peekByteArray(J[BII)V from Lcom/android/framework/protobuf/UnsafeUtil; using reflection
+11-17 20:27:59.067 13523 13523 W OverlayConfig: partition_order.xml does not exist.
+11-17 20:27:59.109 13542 13542 W idmap2  : failed to create idmap
+11-17 20:27:59.137 13523 13523 W Zygote  : Class not found for preloading: sun.util.locale.BaseLocale$Key-IA
+11-17 20:27:59.139 13523 13523 I Zygote  : ...preloaded 17758 classes in 228ms.
+11-17 20:27:59.139 13523 13523 V Zygote64Timing: PreloadClasses took to complete: 228ms
+11-17 20:27:59.140 13523 13523 D ApplicationLoaders: Created zygote-cached class loader: /system/framework/android.hidl.base-V1.0-java.jar
+11-17 20:27:59.141 13523 13523 D ApplicationLoaders: Created zygote-cached class loader: /system/framework/android.hidl.manager-V1.0-java.jar
+11-17 20:27:59.141 13523 13523 D ApplicationLoaders: Created zygote-cached class loader: /system/framework/android.test.base.jar
+11-17 20:27:59.142 13523 13523 D ApplicationLoaders: Created zygote-cached class loader: /system/framework/org.apache.http.legacy.jar
+11-17 20:27:59.143 13523 13523 D ApplicationLoaders: Created zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+11-17 20:27:59.143 13523 13523 D ApplicationLoaders: Created zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+11-17 20:27:59.143 13523 13523 V Zygote64Timing: CacheNonBootClasspathClassLoaders took to complete: 5ms
+11-17 20:27:59.143 13523 13523 I Resources: Preloading resources...
+11-17 20:27:59.145 13523 13523 W Resources: Preloaded drawable resource #0x10802cb (android:drawable/dialog_background_material) that varies with configuration!!
+11-17 20:27:59.147 13523 13523 W Resources: Preloaded drawable resource #0x1080846 (android:drawable/progress_horizontal_material) that varies with configuration!!
+11-17 20:27:59.147 13523 13523 W Resources: Preloaded drawable resource #0x108084a (android:drawable/progress_indeterminate_horizontal_material) that varies with configuration!!
+11-17 20:27:59.148 13523 13523 I Resources: ...preloaded 63 resources in 5ms.
+11-17 20:27:59.149 13523 13523 I Resources: ...preloaded 41 resources in 1ms.
+11-17 20:27:59.149 13523 13523 V Zygote64Timing: PreloadResources took to complete: 6ms
+11-17 20:27:59.153 13523 13523 I Zygote  : Preloading shared libraries...
+11-17 20:27:59.154 13523 13523 E zygote64: Unable to find pattern file or unable to map it for am
+11-17 20:27:59.155 13523 13523 I Zygote  : Called ZygoteHooks.endPreload()
+11-17 20:27:59.155 13523 13523 I Zygote  : Installed AndroidKeyStoreProvider in 0ms.
+11-17 20:27:59.156 13523 13523 I Zygote  : Warmed up JCA providers in 1ms.
+11-17 20:27:59.156 13523 13523 D Zygote  : end preload
+11-17 20:27:59.156 13523 13523 V Zygote64Timing: ZygotePreload took to complete: 273ms
+11-17 20:27:59.174 13523 13523 I zygote64: Explicit concurrent mark compact GC freed 2675KB AllocSpace bytes, 3(64KB) LOS objects, 49% free, 8169KB/15MB, paused 33us,1.202ms total 18.012ms
+11-17 20:27:59.189 13523 13523 I zygote64: Explicit concurrent mark compact GC freed 320KB AllocSpace bytes, 0(0B) LOS objects, 49% free, 7913KB/15MB, paused 22us,757us total 13.727ms
+11-17 20:27:59.189 13523 13523 V Zygote64Timing: PostZygoteInitGC took to complete: 33ms
+11-17 20:27:59.189 13523 13523 V Zygote64Timing: ZygoteInit took to complete: 311ms
+11-17 20:27:59.226 13523 13523 D Zygote  : Forked child process 13543
+11-17 20:27:59.226 13523 13523 I Zygote  : System server process 13543 has been created
+11-17 20:27:59.227 13523 13523 I Zygote  : Accepting command socket connections
+11-17 20:27:59.565     0     0 I KernelSU: handle_setresuid from 0 to 1000
+11-17 20:27:59.316 13543 13543 I system_server: Using CollectorTypeCMC GC.
+11-17 20:27:59.317 13543 13543 W system_server: Unexpected CPU variant for x86: x86_64.
+11-17 20:27:59.317 13543 13543 W system_server: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, goldmont-without-sha-xsaves, tremont, kabylake, default
+11-17 20:27:59.317 13543 13543 W system_server: Failed to upload odrefresh metrics: Unable to open or parse metrics file /data/misc/odrefresh/odrefresh-metrics.xml (error: Error=XML_ERROR_FILE_NOT_FOUND ErrorID=3 (0x3) Line number=0: filename=/data/misc/odrefresh/odrefresh-metrics.xml)
+11-17 20:27:59.318 13543 13543 E system_server: Not starting debugger since process cannot load the jdwp agent.
+11-17 20:27:59.318 13543 13552 W system_server: AIBinder_linkToDeath is being called with a non-null cookie and no onUnlink callback set. This might not be intended. AIBinder_DeathRecipient_setOnUnlinked should be called first.
+11-17 20:27:59.318 13543 13552 W BpBinder: Linking to death on android.os.IStatsd but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-17 20:27:59.320   377   380 I ServiceManagerCppClient: Waiting for service 'statscompanion' on '/dev/binder'...
+11-17 20:27:59.321 13543 13543 D SystemServerTiming: InitBeforeStartServices
+11-17 20:27:59.322 13543 13543 I SystemServer: Entered the Android system server!
+11-17 20:27:59.384 13543 13543 I SystemServerInitThreadPool: Creating instance with 4 threads
+11-17 20:27:59.384 13543 13543 V SystemServerTiming: InitBeforeStartServices took to complete: 64ms
+11-17 20:27:59.384 13543 13543 D SystemServerTiming: StartServices
+11-17 20:27:59.384 13543 13543 D SystemServerTiming: startBootstrapServices
+11-17 20:27:59.384 13543 13543 D SystemServerTiming: ArtModuleServiceInitializer
+11-17 20:27:59.384 13543 13543 V SystemServerTiming: ArtModuleServiceInitializer took to complete: 0ms
+11-17 20:27:59.384 13543 13543 D SystemServerTiming: StartWatchdog
+11-17 20:27:59.425 13543 13543 V SystemServerTiming: StartWatchdog took to complete: 40ms
+11-17 20:27:59.425 13543 13543 I SystemServer: Reading configuration...
+11-17 20:27:59.425 13543 13543 D SystemServerTiming: ReadingSystemConfig
+11-17 20:27:59.425 13543 13543 V SystemServerTiming: ReadingSystemConfig took to complete: 1ms
+11-17 20:27:59.425 13543 13543 D SystemServerTiming: PlatformCompat
+11-17 20:27:59.425 13543 13570 D SystemServerTimingAsync: InitThreadPoolExec:ReadingSystemConfig
+11-17 20:27:59.425 13543 13570 D SystemServerInitThreadPool: Started executing ReadingSystemConfig
+11-17 20:27:59.425 13543 13543 D CompatConfig: Found a config file: /system/etc/compatconfig/TeleService-platform-compat-config.xml
+11-17 20:27:59.426 13543 13570 I SystemConfig: Reading permissions from /system/etc/sysconfig/hiddenapi-package-whitelist.xml
+11-17 20:27:59.426 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@34599bc
+11-17 20:27:59.426 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ce1ed45
+11-17 20:27:59.426 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@adb3c9a
+11-17 20:27:59.426 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4ebe9cb
+11-17 20:27:59.426 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@7b095a8
+11-17 20:27:59.426 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@bb918c1
+11-17 20:27:59.426 13543 13543 D CompatConfig: Found a config file: /system/etc/compatconfig/documents-ui-compat-config.xml
+11-17 20:27:59.427 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@7cd57a7
+11-17 20:27:59.427 13543 13543 D CompatConfig: Found a config file: /system/etc/compatconfig/calendar-provider-compat-config.xml
+11-17 20:27:59.427 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@37d7ffd
+11-17 20:27:59.427 13543 13543 D CompatConfig: Found a config file: /system/etc/compatconfig/framework-location-compat-config.xml
+11-17 20:27:59.427 13543 13570 I incfs   : Initial API level of the device: 35
+11-17 20:27:59.427 13543 13570 I incfs   : ro.incremental.enable: yes
+11-17 20:27:59.427 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@96dc743
+11-17 20:27:59.427 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@74671c0
+11-17 20:27:59.427 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a271ef9
+11-17 20:27:59.427 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@bae3e3e
+11-17 20:27:59.427 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@21b949f
+11-17 20:27:59.427 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f00e9ec
+11-17 20:27:59.427 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@331b1b5
+11-17 20:27:59.427 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@74c004a
+11-17 20:27:59.428 13543 13570 I incfs   : isFsAvailable: true
+11-17 20:27:59.428 13543 13543 D CompatConfig: Found a config file: /system/etc/compatconfig/contacts-provider-platform-compat-config.xml
+11-17 20:27:59.428 13543 13570 I incfs   : isFsAvailable: true
+11-17 20:27:59.428 13543 13570 I incfs   : IncFs_Features: v2
+11-17 20:27:59.428 13543 13543 D CompatConfig: Found a config file: /system/etc/compatconfig/framework-platform-compat-config.xml
+11-17 20:27:59.428 13543 13570 I SystemConfig: Reading permissions from /system/etc/sysconfig/preinstalled-packages-platform-handheld-system.xml
+11-17 20:27:59.429 13543 13570 I SystemConfig: Reading permissions from /system/etc/sysconfig/enhanced-confirmation.xml
+11-17 20:27:59.429 13543 13570 I SystemConfig: Reading permissions from /system/etc/sysconfig/package-shareduid-allowlist.xml
+11-17 20:27:59.429 13543 13570 I SystemConfig: Reading permissions from /system/etc/sysconfig/preinstalled-packages-asl-files.xml
+11-17 20:27:59.429 13543 13570 I SystemConfig: Reading permissions from /system/etc/sysconfig/preinstalled-packages-strict-signature.xml
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@80c4ea2
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@7f0733
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@eb9caf0
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@690b869
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e04b2ee
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@898e38f
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1f37225
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f0d0ffa
+11-17 20:27:59.429 13543 13570 I SystemConfig: Reading permissions from /system/etc/sysconfig/preinstalled-packages-platform.xml
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8ca29ab
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@c080808
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e0ba1
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d0c31c6
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a7fb587
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f199cb4
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@2dec0dd
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f89a452
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@7182323
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@dd020
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@40b8dd9
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@cf9b39e
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@53fce7f
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@24fce4c
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@cc96baa
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@cd39b
+11-17 20:27:59.429 13543 13570 I SystemConfig: Reading permissions from /system/etc/sysconfig/preinstalled-packages-platform-generic-system.xml
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@2d18338
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e801f11
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e2a9876
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@3db0e77
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9b79ae4
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4b69b4d
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f9fc602
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ce81b13
+11-17 20:27:59.429 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@75e9f49
+11-17 20:27:59.429 13543 13570 I SystemConfig: Reading permissions from /system/etc/sysconfig/initial-package-stopped-states.xml
+11-17 20:27:59.430 13543 13570 I SystemConfig: Reading permissions from /system/etc/sysconfig/framework-sysconfig.xml
+11-17 20:27:59.430 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/com.android.location.provider.xml
+11-17 20:27:59.430 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/android.test.mock.xml
+11-17 20:27:59.430 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/com.android.future.usb.accessory.xml
+11-17 20:27:59.430 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/com.android.intentresolver.xml
+11-17 20:27:59.430 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/com.android.mediadrm.signer.xml
+11-17 20:27:59.431 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/org.apache.http.legacy.xml
+11-17 20:27:59.431 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/android.software.credentials.xml
+11-17 20:27:59.431 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@348404e
+11-17 20:27:59.431 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@3f68367
+11-17 20:27:59.431 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@431f1bd
+11-17 20:27:59.431 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/javax.obex.xml
+11-17 20:27:59.431 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@619b3b2
+11-17 20:27:59.431 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b5def03
+11-17 20:27:59.431 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@523de80
+11-17 20:27:59.431 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@510ecb9
+11-17 20:27:59.431 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@546785f
+11-17 20:27:59.431 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@2862ac
+11-17 20:27:59.431 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@c4a9b75
+11-17 20:27:59.431 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/android.test.runner.xml
+11-17 20:27:59.431 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/privapp-permissions-platform.xml
+11-17 20:27:59.432 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/android.software.webview.xml
+11-17 20:27:59.432 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/android.software.live_wallpaper.xml
+11-17 20:27:59.433 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/privapp-permissions-google.xml
+11-17 20:27:59.433 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/com.android.nfc_extras.xml
+11-17 20:27:59.433 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/com.android.media.remotedisplay.xml
+11-17 20:27:59.433 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/android.test.base.xml
+11-17 20:27:59.433 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/android.software.window_magnification.xml
+11-17 20:27:59.433 13543 13570 I SystemConfig: Reading permissions from /system/etc/permissions/platform.xml
+11-17 20:27:59.434 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.camera.raw.xml
+11-17 20:27:59.434 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.wifi.direct.xml
+11-17 20:27:59.434 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.wifi.passpoint.xml
+11-17 20:27:59.434 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.bluetooth.xml
+11-17 20:27:59.434 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.wifi.xml
+11-17 20:27:59.435 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.vulkan.level.xml
+11-17 20:27:59.435 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.software.opengles.deqp.level.xml
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8a0070a
+11-17 20:27:59.435 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.camera.front.xml
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@88fcc8
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@208c161
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@aac1486
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f29c147
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1951d74
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@72f129d
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@924f312
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8b72ae3
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@3a09ce0
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@6f3b99
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4db2e5e
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f22a70c
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@feef855
+11-17 20:27:59.435 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f27d26a
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e0d135b
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ad927f8
+11-17 20:27:59.435 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.fingerprint.xml
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@3e8ab36
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@fff8a37
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@974cba4
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@19edd0d
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d0c44c2
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b3892d3
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@604fe10
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5e93d09
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@2ddeb0e
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ef892f
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b23eb3c
+11-17 20:27:59.435 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@511aa1a
+11-17 20:27:59.435 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.camera.full.xml
+11-17 20:27:59.435 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.camera.concurrent.xml
+11-17 20:27:59.435 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/handheld_core_hardware.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.keystore.app_attest_key.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.software.autofill.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.biometrics.face.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.identity_credential.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.software.vulkan.deqp.level.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.bluetooth_le.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.vulkan.version.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.hardware_keystore.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.camera.flash-autofocus.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /vendor/etc/permissions/android.hardware.vulkan.compute.xml
+11-17 20:27:59.436 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/preinstalled-packages-platform-handheld-product.xml
+11-17 20:27:59.437 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/preinstalled-packages-platform-telephony-product.xml
+11-17 20:27:59.437 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/preinstalled-packages-platform-overlays.xml
+11-17 20:27:59.437 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/google.xml
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as <- com.android.bluetooth
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as <- com.android.bluetooth.services
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as <- com.android.providers.contacts
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as <- com.android.providers.media
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as <- com.android.providers.telephony
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as <- com.android.systemui
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as <- com.google.android.bluetooth
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as <- com.google.android.bluetooth.services
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as <- com.google.android.providers.media.module
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as <- com.google.android.as.oss
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as.oss <- com.google.android.as
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as.oss <- com.google.android.aicore
+11-17 20:27:59.437 13543 13570 I SystemConfig: Adding association: com.google.android.as.oss <- com.google.android.apps.nexuslauncher
+11-17 20:27:59.437 13543 13570 W SystemConfig: Tag automatic-rollback-denylisted-app is unknown in /product/etc/sysconfig/google.xml at START_TAG (empty) <automatic-rollback-denylisted-app package='com.android.vending'>@145:72 in java.io.FileReader@9480258
+11-17 20:27:59.437 13543 13570 W SystemConfig: Tag automatic-rollback-denylisted-app is unknown in /product/etc/sysconfig/google.xml at START_TAG (empty) <automatic-rollback-denylisted-app package='com.google.android.gms'>@146:75 in java.io.FileReader@9480258
+11-17 20:27:59.437 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/preinstalled-packages-platform-aosp-product.xml
+11-17 20:27:59.437 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/google-staged-installer-whitelist.xml
+11-17 20:27:59.437 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/initial-package-stopped-states-aosp.xml
+11-17 20:27:59.437 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/google_build.xml
+11-17 20:27:59.438 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/google-hiddenapi-package-whitelist.xml
+11-17 20:27:59.438 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/disable-zero-touch.xml
+11-17 20:27:59.438 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/personal-safety.xml
+11-17 20:27:59.438 13543 13570 I SystemConfig: Reading permissions from /product/etc/sysconfig/wellbeing.xml
+11-17 20:27:59.438 13543 13570 I SystemConfig: Reading permissions from /product/etc/permissions/android.hardware.telephony.euicc.xml
+11-17 20:27:59.438 13543 13570 I SystemConfig: Reading permissions from /product/etc/permissions/com.android.imsserviceentitlement.xml
+11-17 20:27:59.438 13543 13570 I SystemConfig: Reading permissions from /product/etc/permissions/privapp-permissions-google-p.xml
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@475894b
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@86db79c
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@350e5a5
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@2083d7a
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@699892b
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@96cb188
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@88f3721
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@c4cb746
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@2a58d07
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@bdf5e34
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d07245d
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@60d01d2
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@483f2a3
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d2e29a0
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f16a959
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@815691e
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@25915ff
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@6dc3fcc
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@aff8215
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9aaf92a
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@633131b
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5738cb8
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5632a91
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f577df6
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@2e5c5f7
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@230bc64
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@17edecd
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a758382
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@aa6ca93
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b6f3ad0
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f279ac9
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@57c55ce
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@3697cef
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@7d533fc
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@c861a85
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@90c00da
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4faf90b
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@3f93e8
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@792da01
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5b950a6
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@cde1ae7
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@c6e0694
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b52153d
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e99d132
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@3e77e83
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e6ef800
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4cfc839
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8fce7e
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1997fdf
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8cb942c
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@bdbaef5
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@256548a
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9403afb
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b73c718
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b854571
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@94d2f56
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ccd8bd7
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@36a3cc4
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@657c7ad
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f04eae2
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1750e73
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9306130
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@25631a9
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@38ad32e
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@2081ecf
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9f2605c
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8b73f65
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@874f43a
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b11d8eb
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@7732648
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5616ce1
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ae1a06
+11-17 20:27:59.439 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@cb318c7
+11-17 20:27:59.440 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ab85ef4
+11-17 20:27:59.440 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@226f61d
+11-17 20:27:59.440 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@101d092
+11-17 20:27:59.440 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e3e7a63
+11-17 20:27:59.440 13543 13543 D CompatConfig: Found a config file: /system/etc/compatconfig/icu4j-platform-compat-config.xml
+11-17 20:27:59.440 13543 13570 I SystemConfig: Reading permissions from /product/etc/permissions/com.google.android.dialer.support.xml
+11-17 20:27:59.440 13543 13570 I SystemConfig: Reading permissions from /product/etc/permissions/privapp-permissions-goldfish.xml
+11-17 20:27:59.440 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f9459bf
+11-17 20:27:59.440 13543 13570 I SystemConfig: Reading permissions from /product/etc/permissions/com.google.android.odad.xml
+11-17 20:27:59.440 13543 13543 D CompatConfig: Found a config file: /system/etc/compatconfig/services-platform-compat-config.xml
+11-17 20:27:59.441 13543 13570 I SystemConfig: Reading permissions from /product/etc/permissions/android.software.verified_boot.xml
+11-17 20:27:59.441 13543 13570 I SystemConfig: Reading permissions from /product/etc/permissions/split-permissions-google.xml
+11-17 20:27:59.441 13543 13570 I SystemConfig: Reading permissions from /product/etc/permissions/privapp-permissions-sdk-google.xml
+11-17 20:27:59.441 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/sysconfig/android.telephony.satellite.xml
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f3710b6
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@44dc1b7
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ab6d24
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@216a08d
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@29b8242
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ef2c253
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@3c43790
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@cd9b889
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1e3808e
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@add30af
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b5d3cbc
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@49c5445
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a9b179a
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5628cb
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d1f68a8
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@232efc1
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@91c86a7
+11-17 20:27:59.441 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e566754
+11-17 20:27:59.441 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/sysconfig/preinstalled-packages-com.android.google.avatarpicker.xml
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d3dc6fd
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a9cfff2
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@200e643
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b5ca4c0
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d24d5f9
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@977293e
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a41a39f
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9c74cec
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@dd3d8b5
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@389b4a
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ca6dabb
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1524bd8
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4364b31
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@eed2216
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e5e6797
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@78c4d84
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e73696d
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f97e633
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a42bdf0
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@bea2f69
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@15e5dee
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9e0b28f
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4adc91c
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8ed5925
+11-17 20:27:59.442 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/com.android.storagemanager.xml
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5d66afa
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@83fe8ab
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b5c5b08
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a3f62a1
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@6903cc6
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5126487
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ae01fb4
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@44e87dd
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4c35f52
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9a6c223
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5398320
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a30c4d9
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b941e9e
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b995d7f
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a03b14c
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5fd595
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@21f86aa
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@3f0529b
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5609638
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f353611
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@2476376
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@bf77d77
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1a4dde4
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@126224d
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@3e4102
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@bdc7a13
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@7c3f450
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8bf9649
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ed36b4e
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@70aa46f
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a624e05
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@c7eee5a
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@247188b
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@841fd68
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5bec581
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@52d9626
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f8cb267
+11-17 20:27:59.442 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/com.google.android.googlesdksetup.xml
+11-17 20:27:59.442 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@fed8814
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b1138bd
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4cceeb2
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ba80e03
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4251180
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@81da3b9
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@69743fe
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@993875f
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@989c5ac
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8ebc275
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d1fa20a
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@7933a7b
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ba39098
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@84310f1
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@f1dd4d6
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a110357
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@48d1e44
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@be6cb2d
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@4fa6862
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8387df3
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@35fdab0
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@891ed29
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@31aa8ae
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d5ff1dc
+11-17 20:27:59.443 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/com.android.emulator.radio.config.xml
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9b332e5
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@ceca1ba
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9e3b86b
+11-17 20:27:59.443 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/privapp-permissions-google-se.xml
+11-17 20:27:59.443 13543 13543 D CompatConfig: Found a config file: /system/system_ext/etc/compatconfig/settings-platform-compat-config.xml
+11-17 20:27:59.443 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@cb31f86
+11-17 20:27:59.444 13543 13543 D ApexManagerTiming: getActiveApexInfos_noCache
+11-17 20:27:59.444 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/com.android.settings.xml
+11-17 20:27:59.444 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/androidx.window.extensions.xml
+11-17 20:27:59.445 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/com.android.systemui.xml
+11-17 20:27:59.445 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/com.android.carrierconfig.xml
+11-17 20:27:59.445 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/android.software.theme_picker.xml
+11-17 20:27:59.445 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/com.android.launcher3.xml
+11-17 20:27:59.445 13543 13570 I SystemConfig: Reading permissions from /system_ext/etc/permissions/androidx.window.sidecar.xml
+11-17 20:27:59.446 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.devicelock/etc/permissions/com.google.android.devicelockcontroller.xml
+11-17 20:27:59.446 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.apex.cts.shim/etc/permissions/signature-permission-allowlist.xml
+11-17 20:27:59.447 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.btservices/etc/permissions/privapp_allowlist_com.google.android.bluetooth.xml
+11-17 20:27:59.447 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.nfcservices/etc/permissions/privapp_allowlist_com.android.nfc.xml
+11-17 20:27:59.447 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.hardware.rebootescrow/etc/permissions/android.hardware.reboot_escrow.prebuilt.xml
+11-17 20:27:59.447 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.virt/etc/permissions/features_com.android.virt.xml
+11-17 20:27:59.448 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.permission/etc/permissions/privapp_allowlist_com.google.android.permissioncontroller.xml
+11-17 20:27:59.448 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.healthfitness/etc/permissions/privapp_allowlist_com.google.android.healthconnect.controller.xml
+11-17 20:27:59.448 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.ipsec/etc/permissions/android.net.ipsec.ike.xml
+11-17 20:27:59.448 13543 13570 I SystemConfig: Ignore shared library android.net.ipsec.ike: /apex/com.google.android.ipsec/javalib/android.net.ipsec.ike.jar does not exist
+11-17 20:27:59.448 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.adservices/etc/permissions/privapp_allowlist_com.google.android.adservices.api.xml
+11-17 20:27:59.449 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.extservices/etc/permissions/privapp_allowlist_com.google.android.ext.services.xml
+11-17 20:27:59.449 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.mediaprovider/etc/permissions/privapp_allowlist_com.google.android.providers.media.module.xml
+11-17 20:27:59.449 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.cellbroadcast/etc/permissions/privapp_allowlist_com.google.android.cellbroadcastreceiver.xml
+11-17 20:27:59.449 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.cellbroadcast/etc/permissions/privapp_allowlist_com.google.android.cellbroadcastservice.xml
+11-17 20:27:59.450 13543 13570 I SystemConfig: Reading permissions from /apex/com.android.tethering/etc/permissions/privapp_allowlist_com.google.android.networkstack.tethering.xml
+11-17 20:27:59.450 13543 13570 D SystemConfig: /vendor/etc/public.libraries.txt does not exist
+11-17 20:27:59.450 13543 13570 V SystemConfig: readAllPermissions took to complete: 25ms
+11-17 20:27:59.450 13543 13570 D SystemServerInitThreadPool: Finished executing ReadingSystemConfig
+11-17 20:27:59.450 13543 13570 V SystemServerTimingAsync: InitThreadPoolExec:ReadingSystemConfig took to complete: 25ms
+11-17 20:27:59.698     0     0 I servicemanager: Caller(pid=13543,uid=1000,sid=u:r:system_server:s0) Since 'apexservice' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+11-17 20:27:59.704     0     0 I init    : starting service 'apexd'...
+11-17 20:27:59.706     0     0 I KernelSU: hook_manager: unmark 13572 exec /system/bin/apexd
+11-17 20:27:59.707     0     0 I init    : ... started service 'apexd' has pid 13572
+11-17 20:27:59.710     0     0 I init    : Control message: Processed ctl.interface_start for 'aidl/apexservice' from pid: 161 (/system/bin/servicemanager)
+11-17 20:27:59.717     0     0 I apexd   : Started. subcommand = (null)
+11-17 20:27:59.719     0     0 I apexd   : Scanning /system/apex for pre-installed ApexFiles
+11-17 20:27:59.720     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.art.apex
+11-17 20:27:59.722     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.healthfitness.apex
+11-17 20:27:59.724     0     0 I apexd   : Found pre-installed APEX /system/apex/com.android.i18n.apex
+11-17 20:27:59.726     0     0 I apexd   : Found pre-installed APEX /system/apex/com.android.apex.cts.shim.apex
+11-17 20:27:59.728     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.cellbroadcast.apex
+11-17 20:27:59.730     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.ipsec.apex
+11-17 20:27:59.732     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.profiling.capex
+11-17 20:27:59.734     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.devicelock.apex
+11-17 20:27:59.736     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.tzdata6.apex
+11-17 20:27:59.738     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.rkpd.apex
+11-17 20:27:59.740     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.adbd.apex
+11-17 20:27:59.741     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.uwb.apex
+11-17 20:27:59.743     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.adservices.apex
+11-17 20:27:59.745     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.appsearch.apex
+11-17 20:27:59.747     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.conscrypt.apex
+11-17 20:27:59.748     0     0 I apexd   : Found pre-installed APEX /system/apex/com.android.runtime.apex
+11-17 20:27:59.750     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.permission.apex
+11-17 20:27:59.752     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.btservices.apex
+11-17 20:27:59.754     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.scheduling.apex
+11-17 20:27:59.756     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.mediaprovider.apex
+11-17 20:27:59.758     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.neuralnetworks.apex
+11-17 20:27:59.760     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.media.apex
+11-17 20:27:59.762     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.configinfrastructure.apex
+11-17 20:27:59.764     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.sdkext.apex
+11-17 20:27:59.766     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.resolv.apex
+11-17 20:27:59.769     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.nfcservices.apex
+11-17 20:27:59.772     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.wifi.apex
+11-17 20:27:59.775     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.ondevicepersonalization.apex
+11-17 20:27:59.778     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.media.swcodec.apex
+11-17 20:27:59.780     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.mainline.primary.libs.apex
+11-17 20:27:59.782     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.extservices.apex
+11-17 20:27:59.784     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.os.statsd.apex
+11-17 20:27:59.786     0     0 I apexd   : Found pre-installed APEX /system/apex/com.android.virt.apex
+11-17 20:27:59.787     0     0 I apexd   : Found pre-installed APEX /system/apex/com.google.android.tethering.apex
+11-17 20:27:59.789     0     0 I apexd   : Scanning /system_ext/apex for pre-installed ApexFiles
+11-17 20:27:59.791     0     0 I apexd   : Found pre-installed APEX /system_ext/apex/com.android.compos.apex
+11-17 20:27:59.793     0     0 I apexd   : Scanning /product/apex for pre-installed ApexFiles
+11-17 20:27:59.795     0     0 W apexd   : /product/apex does not exist. Skipping
+11-17 20:27:59.796     0     0 I apexd   : Scanning /vendor/apex for pre-installed ApexFiles
+11-17 20:27:59.798     0     0 I apexd   : Found pre-installed APEX /vendor/apex/com.android.hardware.neuralnetworks.apex
+11-17 20:27:59.800     0     0 I apexd   : Found pre-installed APEX /vendor/apex/com.android.hardware.cas.apex
+11-17 20:27:59.803     0     0 I apexd   : Found pre-installed APEX /vendor/apex/com.android.hardware.rebootescrow.apex
+11-17 20:27:59.805     0     0 I apexd   : Found pre-installed APEX /vendor/apex/com.android.hardware.authsecret.apex
+11-17 20:27:59.808     0     0 I apexd   : Found pre-installed APEX /vendor/apex/com.google.android.widevine-11775005.apex
+11-17 20:27:59.810     0     0 I apexd   : No block apex metadata partition found, not adding block apexes
+11-17 20:27:59.812     0     0 I apexd   : Populating APEX database from mounts...
+11-17 20:27:59.814     0     0 I apexd   : Found "/apex/com.android.compos@2" backed by file /system_ext/apex/com.android.compos.apex
+11-17 20:27:59.817     0     0 I apexd   : Found "/apex/com.android.apex.cts.shim@1" backed by file /system/apex/com.android.apex.cts.shim.apex
+11-17 20:27:59.820     0     0 I apexd   : Found "/apex/com.android.devicelock@1" backed by file /system/apex/com.google.android.devicelock.apex
+11-17 20:27:59.822     0     0 I apexd   : Found "/apex/com.android.i18n@1" backed by file /system/apex/com.android.i18n.apex
+11-17 20:27:59.825     0     0 I apexd   : Found "/apex/com.android.tzdata@350820260" backed by file /system/apex/com.google.android.tzdata6.apex
+11-17 20:27:59.828     0     0 I apexd   : Found "/apex/com.android.hardware.authsecret@1" backed by file /vendor/apex/com.android.hardware.authsecret.apex
+11-17 20:27:59.831     0     0 I apexd   : Found "/apex/com.google.android.widevine@190240428" backed by file /vendor/apex/com.google.android.widevine-11775005.apex
+11-17 20:27:59.835     0     0 I apexd   : Found "/apex/com.android.hardware.cas@1" backed by file /vendor/apex/com.android.hardware.cas.apex
+11-17 20:27:59.838     0     0 I apexd   : Found "/apex/com.android.btservices@342010060" backed by file /system/apex/com.google.android.btservices.apex
+11-17 20:27:59.841     0     0 I apexd   : Found "/apex/com.google.mainline.primary.libs@350726000" backed by file /system/apex/com.google.mainline.primary.libs.apex
+11-17 20:27:59.844     0     0 I apexd   : Found "/apex/com.android.hardware.rebootescrow@1" backed by file /vendor/apex/com.android.hardware.rebootescrow.apex
+11-17 20:27:59.847     0     0 I apexd   : Found "/apex/com.android.nfcservices@352090000" backed by file /system/apex/com.google.android.nfcservices.apex
+11-17 20:27:59.849     0     0 I apexd   : Found "/apex/com.android.hardware.neuralnetworks@1" backed by file /vendor/apex/com.android.hardware.neuralnetworks.apex
+11-17 20:27:59.852     0     0 I apexd   : Found "/apex/com.android.virt@2" backed by file /system/apex/com.android.virt.apex
+11-17 20:27:59.854     0     0 I apexd   : Found "/apex/com.android.runtime@1" backed by file /system/apex/com.android.runtime.apex
+11-17 20:27:59.601 13577 13577 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+11-17 20:27:59.601 13577 13577 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+11-17 20:27:59.856     0     0 I apexd   : Found "/apex/com.android.art@350820300" backed by file /data/apex/decompressed/com.android.art@350820300.decompressed.apex
+11-17 20:27:59.859     0     0 I servicemanager: Caller(pid=13577,uid=0,sid=u:r:su:s0) Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:59.860     0     0 I apexd   : Found "/apex/com.android.permission@350820360" backed by file /data/apex/decompressed/com.android.permission@350820360.decompressed.apex
+11-17 20:27:59.610   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-17 20:27:59.610 13577 13578 I Gralloc4: mapper 4.x is not supported
+11-17 20:27:59.867     0     0 I apexd   : Found "/apex/com.android.healthfitness@350820300" backed by file /data/apex/decompressed/com.android.healthfitness@350820300.decompressed.apex
+11-17 20:27:59.870     0     0 I apexd   : Found "/apex/com.android.profiling@352090000" backed by file /data/apex/decompressed/com.android.profiling@352090000.decompressed.apex
+11-17 20:27:59.877     0     0 I apexd   : Found "/apex/com.android.appsearch@350820300" backed by file /data/apex/decompressed/com.android.appsearch@350820300.decompressed.apex
+11-17 20:27:59.880     0     0 I apexd   : Found "/apex/com.android.ipsec@350820300" backed by file /data/apex/decompressed/com.android.ipsec@350820300.decompressed.apex
+11-17 20:27:59.883     0     0 I apexd   : Found "/apex/com.android.adbd@350820300" backed by file /data/apex/decompressed/com.android.adbd@350820300.decompressed.apex
+11-17 20:27:59.886     0     0 I apexd   : Found "/apex/com.android.adservices@350820260" backed by file /data/apex/decompressed/com.android.adservices@350820260.decompressed.apex
+11-17 20:27:59.890     0     0 I apexd   : Found "/apex/com.android.uwb@350820300" backed by file /data/apex/decompressed/com.android.uwb@350820300.decompressed.apex
+11-17 20:27:59.894     0     0 I apexd   : Found "/apex/com.android.extservices@350820303" backed by file /data/apex/decompressed/com.android.extservices@350820303.decompressed.apex
+11-17 20:27:59.898     0     0 I apexd   : Found "/apex/com.android.mediaprovider@350820300" backed by file /data/apex/decompressed/com.android.mediaprovider@350820300.decompressed.apex
+11-17 20:27:59.902     0     0 I apexd   : Found "/apex/com.android.media.swcodec@350820300" backed by file /data/apex/decompressed/com.android.media.swcodec@350820300.decompressed.apex
+11-17 20:27:59.906     0     0 I apexd   : Found "/apex/com.android.os.statsd@350820260" backed by file /data/apex/decompressed/com.android.os.statsd@350820260.decompressed.apex
+11-17 20:27:59.910     0     0 I apexd   : Found "/apex/com.android.rkpd@350820300" backed by file /data/apex/decompressed/com.android.rkpd@350820300.decompressed.apex
+11-17 20:27:59.913     0     0 I apexd   : Found "/apex/com.android.media@350820300" backed by file /data/apex/decompressed/com.android.media@350820300.decompressed.apex
+11-17 20:27:59.917     0     0 I apexd   : Found "/apex/com.android.conscrypt@350820300" backed by file /data/apex/decompressed/com.android.conscrypt@350820300.decompressed.apex
+11-17 20:27:59.920     0     0 I apexd   : Found "/apex/com.android.wifi@350820300" backed by file /data/apex/decompressed/com.android.wifi@350820300.decompressed.apex
+11-17 20:27:59.921     0     0 I logd    : logdr: UID=0 GID=0 PID=13579 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
+11-17 20:27:59.923     0     0 I apexd   : Found "/apex/com.android.sdkext@350820300" backed by file /data/apex/decompressed/com.android.sdkext@350820300.decompressed.apex
+11-17 20:27:59.923     0     0 I apexd   : Found "/apex/com.android.configinfrastructure@350820300" backed by file /data/apex/decompressed/com.android.configinfrastructure@350820300.decompressed.apex
+11-17 20:27:59.932     0     0 I apexd   : Found "/apex/com.android.resolv@350820300" backed by file /data/apex/decompressed/com.android.resolv@350820300.decompressed.apex
+11-17 20:27:59.936     0     0 I apexd   : Found "/apex/com.android.cellbroadcast@350820300" backed by file /data/apex/decompressed/com.android.cellbroadcast@350820300.decompressed.apex
+11-17 20:27:59.939     0     0 I apexd   : Found "/apex/com.android.neuralnetworks@350820300" backed by file /data/apex/decompressed/com.android.neuralnetworks@350820300.decompressed.apex
+11-17 20:27:59.942     0     0 I apexd   : Found "/apex/com.android.scheduling@350820300" backed by file /data/apex/decompressed/com.android.scheduling@350820300.decompressed.apex
+11-17 20:27:59.948     0     0 I apexd   : Found "/apex/com.android.ondevicepersonalization@350820260" backed by file /data/apex/decompressed/com.android.ondevicepersonalization@350820260.decompressed.apex
+11-17 20:27:59.954     0     0 I apexd   : Found "/apex/com.android.tethering@350820300" backed by file /data/apex/decompressed/com.android.tethering@350820300.decompressed.apex
+11-17 20:27:59.959     0     0 I apexd   : 40 packages restored.
+11-17 20:27:59.960     0     0 I apexd   : Scanning /data/apex/active for data ApexFiles
+11-17 20:27:59.962     0     0 I AidlLazyServiceRegistrar: Registering service apexservice
+11-17 20:27:59.967     0     0 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-17 20:27:59.971     0     0 I servicemanager: Notifying apexservice they do (previously: don't) have clients when we now have a record of a client
+11-17 20:27:59.975     0     0 I AidlLazyServiceRegistrar: Trying to shut down the service. No clients in use for any service in process.
+11-17 20:27:59.978     0     0 I apexd   : getActivePackages received by ApexService
+11-17 20:27:59.978     0     0 I servicemanager: Caller(pid=13572,uid=0,sid=u:r:apexd:s0) Tried to unregister apexservice, but there are clients.
+11-17 20:27:59.982     0     0 I AidlLazyServiceRegistrar: Failed to unregister service apexservice (Status(-5, EX_ILLEGAL_STATE): 'Can't unregister, known client.')
+11-17 20:27:59.987     0     0 I AidlLazyServiceRegistrar: Process has 1 (of 1 available) client(s) in use after notification apexservice has clients: 1
+11-17 20:27:59.738 13543 13543 V ApexManagerTiming: getActiveApexInfos_noCache took to complete: 294ms
+11-17 20:27:59.738 13543 13543 D CompatConfig: Found a config file: /apex/com.android.wifi/etc/compatconfig/wifi-compat-config.xml
+11-17 20:27:59.738 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1d6c246
+11-17 20:27:59.738 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@fc63c07
+11-17 20:27:59.738 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@21be134
+11-17 20:27:59.740 13543 13543 D CompatConfig: No directory /apex/com.android.virt/etc/compatconfig, skipping
+11-17 20:27:59.740 13543 13543 D CompatConfig: Found a config file: /apex/com.android.btservices/etc/compatconfig/bluetoothapk-platform-compat-config.xml
+11-17 20:27:59.741 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1acbcd2
+11-17 20:27:59.741 13543 13543 D CompatConfig: Found a config file: /apex/com.android.btservices/etc/compatconfig/bluetooth-compat-config.xml
+11-17 20:27:59.742 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e2fdca0
+11-17 20:27:59.742 13543 13543 D CompatConfig: Found a config file: /apex/com.android.btservices/etc/compatconfig/framework-bluetooth-compat-config.xml
+11-17 20:27:59.742 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d75d41e
+11-17 20:27:59.743 13543 13543 D CompatConfig: No directory /apex/com.android.hardware.rebootescrow/etc/compatconfig, skipping
+11-17 20:27:59.743 13543 13543 D CompatConfig: No directory /apex/com.android.sdkext/etc/compatconfig, skipping
+11-17 20:27:59.743 13543 13543 D CompatConfig: No directory /apex/com.android.compos/etc/compatconfig, skipping
+11-17 20:27:59.743 13543 13543 D CompatConfig: No directory /apex/com.android.hardware.authsecret/etc/compatconfig, skipping
+11-17 20:27:59.743 13543 13543 D CompatConfig: No directory /apex/com.android.media.swcodec/etc/compatconfig, skipping
+11-17 20:27:59.743 13543 13543 D CompatConfig: No directory /apex/com.android.adservices/etc/compatconfig, skipping
+11-17 20:27:59.743 13543 13543 D CompatConfig: Found a config file: /apex/com.android.art/etc/compatconfig/libcore-platform-compat-config.xml
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1c622cc
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5bf2915
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@c27142a
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@744921b
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8989fb8
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9f64191
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@cfa48f6
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@d1034f7
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e13ff64
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@1ac65cd
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@6f9fe82
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e892993
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5c3add0
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@22691c9
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@54d80ce
+11-17 20:27:59.743 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@c92cbef
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.configinfrastructure/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.hardware.neuralnetworks/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.conscrypt/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.neuralnetworks/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.cellbroadcast/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.tzdata/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.profiling/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: Found a config file: /apex/com.android.permission/etc/compatconfig/framework-permission-s-compat-config.xml
+11-17 20:27:59.744 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5fd8185
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.apex.cts.shim/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.google.mainline.primary.libs/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.hardware.cas/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.devicelock/etc/compatconfig, skipping
+11-17 20:27:59.744 13543 13543 D CompatConfig: No directory /apex/com.android.os.statsd/etc/compatconfig, skipping
+11-17 20:27:59.745 13543 13543 D CompatConfig: No directory /apex/com.android.uwb/etc/compatconfig, skipping
+11-17 20:27:59.745 13543 13543 D CompatConfig: No directory /apex/com.android.ondevicepersonalization/etc/compatconfig, skipping
+11-17 20:27:59.745 13543 13543 D CompatConfig: No directory /apex/com.android.appsearch/etc/compatconfig, skipping
+11-17 20:27:59.745 13543 13543 D CompatConfig: No directory /apex/com.android.nfcservices/etc/compatconfig, skipping
+11-17 20:27:59.745 13543 13543 D CompatConfig: No directory /apex/com.google.android.widevine/etc/compatconfig, skipping
+11-17 20:27:59.745 13543 13543 D CompatConfig: Found a config file: /apex/com.android.mediaprovider/etc/compatconfig/framework-pdf-v-platform-compat-config.xml
+11-17 20:27:59.745 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@8ea380b
+11-17 20:27:59.745 13543 13543 D CompatConfig: Found a config file: /apex/com.android.mediaprovider/etc/compatconfig/media-provider-platform-compat-config.xml
+11-17 20:27:59.745 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@e99b101
+11-17 20:27:59.745 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@324dba6
+11-17 20:27:59.745 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@a0249e7
+11-17 20:27:59.745 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@5280994
+11-17 20:27:59.745 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@16f5c3d
+11-17 20:27:59.745 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@eb30c32
+11-17 20:27:59.745 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@9f9d83
+11-17 20:27:59.746 13543 13543 D CompatConfig: No directory /apex/com.android.resolv/etc/compatconfig, skipping
+11-17 20:27:59.746 13543 13543 D CompatConfig: No directory /apex/com.android.adbd/etc/compatconfig, skipping
+11-17 20:27:59.746 13543 13543 D CompatConfig: No directory /apex/com.android.media/etc/compatconfig, skipping
+11-17 20:27:59.746 13543 13543 D CompatConfig: No directory /apex/com.android.scheduling/etc/compatconfig, skipping
+11-17 20:27:59.746 13543 13543 D CompatConfig: No directory /apex/com.android.extservices/etc/compatconfig, skipping
+11-17 20:27:59.746 13543 13543 D CompatConfig: No directory /apex/com.android.i18n/etc/compatconfig, skipping
+11-17 20:27:59.746 13543 13543 D CompatConfig: No directory /apex/com.android.rkpd/etc/compatconfig, skipping
+11-17 20:27:59.746 13543 13543 D CompatConfig: No directory /apex/com.android.runtime/etc/compatconfig, skipping
+11-17 20:27:59.746 13543 13543 D CompatConfig: No directory /apex/com.android.ipsec/etc/compatconfig, skipping
+11-17 20:27:59.746 13543 13543 D CompatConfig: No directory /apex/com.android.healthfitness/etc/compatconfig, skipping
+11-17 20:27:59.746 13543 13543 D CompatConfig: Found a config file: /apex/com.android.tethering/etc/compatconfig/connectivity-platform-compat-config.xml
+11-17 20:27:59.746 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@cfa7f39
+11-17 20:27:59.746 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@881b97e
+11-17 20:27:59.746 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@b348edf
+11-17 20:27:59.746 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@862f72c
+11-17 20:27:59.746 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@17ad5f5
+11-17 20:27:59.746 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@efbef8a
+11-17 20:27:59.747 13543 13543 D CompatConfig: Adding: com.android.server.compat.config.Change@2fd39fb
+11-17 20:27:59.749 13543 13543 W CompatConfig: Change ID 203673428 not found. Skipping overrides for it.
+11-17 20:27:59.749 13543 13543 W CompatConfig: Change ID 200324021 not found. Skipping overrides for it.
+11-17 20:27:59.755 13543 13543 V SystemServerTiming: PlatformCompat took to complete: 330ms
+11-17 20:27:59.755 13543 13543 D SystemServerTiming: StartFileIntegrityService
+11-17 20:27:59.755 13543 13543 I SystemServiceManager: Starting com.android.server.security.FileIntegrityService
+11-17 20:27:59.756 13543 13543 E FileIntegrityService: Invalid certificate, ignored: java.security.cert.CertificateException: com.android.org.conscrypt.OpenSSLX509CertificateFactory$ParsingException: com.android.org.conscrypt.OpenSSLX509CertificateFactory$ParsingException: java.lang.RuntimeException: error:0c00006d:ASN.1 encoding routines:OPENSSL_internal:DECODE_ERROR
+11-17 20:27:59.757 13543 13543 E FileIntegrityService: Invalid certificate, ignored: java.security.cert.CertificateException: com.android.org.conscrypt.OpenSSLX509CertificateFactory$ParsingException: com.android.org.conscrypt.OpenSSLX509CertificateFactory$ParsingException: java.lang.RuntimeException: error:0c00006d:ASN.1 encoding routines:OPENSSL_internal:DECODE_ERROR
+11-17 20:27:59.757 13543 13543 V SystemServerTiming: StartFileIntegrityService took to complete: 2ms
+11-17 20:27:59.757 13543 13543 D SystemServerTiming: StartInstaller
+11-17 20:27:59.757 13543 13543 I SystemServiceManager: Starting com.android.server.pm.Installer
+11-17 20:27:59.758   508   514 D installd: Found quota mount /dev/block/dm-46 at /data
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /data/user/0
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /mnt/pass_through/0/emulated
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /product/app/WebuiTermuxApi
+11-17 20:27:59.759   508   514 D installd: Found quota mount /dev/block/dm-46 at /dev/app_plane_app/WebuiTermuxApi
+11-17 20:27:59.760   508   514 D installd: Found storage mount /dev/block/dm-46 at /mnt/pass_through/0/emulated
+11-17 20:27:59.760 13543 13543 V SystemServerTiming: StartInstaller took to complete: 3ms
+11-17 20:27:59.760 13543 13543 D SystemServerTiming: DeviceIdentifiersPolicyService
+11-17 20:27:59.760 13543 13543 I SystemServiceManager: Starting com.android.server.os.DeviceIdentifiersPolicyService
+11-17 20:27:59.760 13543 13543 V SystemServerTiming: DeviceIdentifiersPolicyService took to complete: 0ms
+11-17 20:27:59.760 13543 13543 D SystemServerTiming: StartFeatureFlagsService
+11-17 20:27:59.760 13543 13543 I SystemServiceManager: Starting com.android.server.flags.FeatureFlagsService
+11-17 20:27:59.760 13543 13543 D FeatureFlagsService: Started Feature Flag Service
+11-17 20:27:59.761 13543 13543 V SystemServerTiming: StartFeatureFlagsService took to complete: 1ms
+11-17 20:27:59.761 13543 13543 D SystemServerTiming: UriGrantsManagerService
+11-17 20:27:59.762 13543 13543 I SystemServiceManager: Starting com.android.server.uri.UriGrantsManagerService$Lifecycle
+11-17 20:27:59.762 13543 13543 V SystemServerTiming: UriGrantsManagerService took to complete: 1ms
+11-17 20:27:59.762 13543 13543 D SystemServerTiming: StartPowerStatsService
+11-17 20:27:59.762 13543 13543 I SystemServiceManager: Starting com.android.server.powerstats.PowerStatsService
+11-17 20:27:59.768 13543 13543 V SystemServerTiming: StartPowerStatsService took to complete: 6ms
+11-17 20:27:59.768 13543 13543 D SystemServerTiming: StartIStatsService
+11-17 20:27:59.769   162   162 I hwservicemanager: getTransport: Cannot find entry android.frameworks.stats@1.0::IStats/default in either framework or device VINTF manifest.
+11-17 20:27:59.769 13543 13543 E HidlServiceManagement: Service android.frameworks.stats@1.0::IStats/default must be in VINTF manifest in order to register/get.
+11-17 20:27:59.769 13543 13543 W system_server: Cannot register HIDL android.frameworks.stats@1.0::IStats: -2147483648
+11-17 20:28:00.018     0     0 I servicemanager: Caller(pid=13543,uid=1000,sid=u:r:system_server:s0) Found android.hardware.power.stats.IPowerStats/default in device VINTF manifest.
+11-17 20:28:00.024     0     0 I servicemanager: Caller(pid=13543,uid=1000,sid=u:r:system_server:s0) Found android.frameworks.stats.IStats/default in framework VINTF manifest.
+11-17 20:27:59.774 13543 13543 V SystemServerTiming: StartIStatsService took to complete: 5ms
+11-17 20:27:59.774 13543 13543 D SystemServerTiming: MemtrackProxyService
+11-17 20:28:00.028     0     0 I servicemanager: Caller(pid=13543,uid=1000,sid=u:r:system_server:s0) Could not find android.hardware.memtrack.IMemtrack/default in the VINTF manifest. No alternative instances declared in VINTF.
+11-17 20:27:59.780   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.memtrack@1.0::IMemtrack/default in either framework or device VINTF manifest.
+11-17 20:27:59.780 13543 13543 I Stability: Interface set with vintf stability downgraded to system stability stability
+11-17 20:27:59.780 13543 13543 V SystemServerTiming: MemtrackProxyService took to complete: 6ms
+11-17 20:27:59.780 13543 13543 D SystemServerTiming: StartAccessCheckingService
+11-17 20:27:59.780 13543 13543 I SystemServiceManager: Starting com.android.server.permission.access.AccessCheckingService
+11-17 20:27:59.782 13543 13543 V SystemServerTiming: StartAccessCheckingService took to complete: 1ms
+11-17 20:27:59.782 13543 13543 D SystemServerTiming: StartActivityManager
+11-17 20:27:59.782 13543 13543 I SystemServiceManager: Starting com.android.server.wm.ActivityTaskManagerService$Lifecycle
+11-17 20:27:59.782 13495 13495 W ServiceManagerCppClient: Waited one second for activity (is service started? Number of threads started in the threadpool: 16. Are binder threads started and available?)
+11-17 20:28:00.036     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Since 'activity' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+11-17 20:28:00.044     0     0 E init    : Control message: Could not find 'aidl/activity' for ctl.interface_start from pid: 161 (/system/bin/servicemanager)
+11-17 20:27:59.791 13543 13543 I SystemServiceManager: Starting com.android.server.am.ActivityManagerService$Lifecycle
+11-17 20:27:59.794 13543 13543 I ActivityManager: Memory class: 192
+11-17 20:27:59.795   161 13587 W libc    : Unable to set property "ctl.interface_start" to "aidl/activity": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+11-17 20:27:59.796 13543 13589 I Binder  : Setting heavy hitter watcher config: false, 0, 0.0
+11-17 20:28:00.049     0     0 I servicemanager: Caller(pid=13495,uid=1041,sid=u:r:audioserver:s0) Tried to start aidl service activity as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+11-17 20:27:59.811 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.ext.services: INACTIVE -> PASSED
+11-17 20:27:59.811 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.federatedcompute: INACTIVE -> PASSED
+11-17 20:27:59.812 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.providers.media.module: INACTIVE -> PASSED
+11-17 20:27:59.812 13543 13543 I PackageWatchdog: Updated health check state for package android: INACTIVE -> PASSED
+11-17 20:27:59.812 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.as: INACTIVE -> PASSED
+11-17 20:27:59.812 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.permissioncontroller: INACTIVE -> PASSED
+11-17 20:27:59.812 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.bluetooth: INACTIVE -> PASSED
+11-17 20:27:59.812 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.as.oss: INACTIVE -> PASSED
+11-17 20:27:59.813 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.networkstack: INACTIVE -> PASSED
+11-17 20:27:59.813 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.gms: INACTIVE -> PASSED
+11-17 20:27:59.813 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.apps.nexuslauncher: INACTIVE -> PASSED
+11-17 20:27:59.813 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.healthconnect.controller: INACTIVE -> PASSED
+11-17 20:27:59.813 13543 13543 I PackageWatchdog: Updated health check state for package com.android.settings: INACTIVE -> PASSED
+11-17 20:27:59.813 13543 13543 I PackageWatchdog: Updated health check state for package com.android.phone: INACTIVE -> PASSED
+11-17 20:27:59.813 13543 13543 I PackageWatchdog: Updated health check state for package com.android.systemui: INACTIVE -> PASSED
+11-17 20:27:59.813 13543 13543 I PackageWatchdog: Updated health check state for package com.google.android.ondevicepersonalization.services: INACTIVE -> PASSED
+11-17 20:27:59.816 13543 13543 W PowerProfile: ambient.on is deprecated! Use ambient.on.display0 instead.
+11-17 20:27:59.816 13543 13543 W PowerProfile: screen.on is deprecated! Use screen.on.display0 instead.
+11-17 20:27:59.816 13543 13543 W PowerProfile: screen.full is deprecated! Use screen.full.display0 instead.
+11-17 20:27:59.816 13543 13543 W ModemPowerProfile: getAverageBatteryDrainMaH called with unexpected key: 0x0, drain:SLEEP,RAT:DEFAULT
+11-17 20:27:59.816 13543 13543 W ModemPowerProfile: getAverageBatteryDrainMaH called with unexpected key: 0x10000000, drain:IDLE,RAT:DEFAULT
+11-17 20:27:59.816 13543 13543 W ModemPowerProfile: getAverageBatteryDrainMaH called with unexpected key: 0x20000000, drain:RX,RAT:DEFAULT
+11-17 20:27:59.816 13543 13543 W ModemPowerProfile: getAverageBatteryDrainMaH called with unexpected key: 0x30000000, drain:TX,level:0,RAT:DEFAULT
+11-17 20:27:59.816 13543 13543 W ModemPowerProfile: getAverageBatteryDrainMaH called with unexpected key: 0x31000000, drain:TX,level:1,RAT:DEFAULT
+11-17 20:27:59.816 13543 13543 W ModemPowerProfile: getAverageBatteryDrainMaH called with unexpected key: 0x32000000, drain:TX,level:2,RAT:DEFAULT
+11-17 20:27:59.816 13543 13543 W ModemPowerProfile: getAverageBatteryDrainMaH called with unexpected key: 0x33000000, drain:TX,level:3,RAT:DEFAULT
+11-17 20:27:59.816 13543 13543 W ModemPowerProfile: getAverageBatteryDrainMaH called with unexpected key: 0x34000000, drain:TX,level:4,RAT:DEFAULT
+11-17 20:27:59.822 13543 13543 D BatteryStatsImpl: Reading daily items from /data/system/batterystats-daily.xml
+11-17 20:27:59.826   162   162 I hwservicemanager: getTransport: Cannot find entry android.hardware.power.stats@1.0::IPowerStats/default in either framework or device VINTF manifest.
+11-17 20:27:59.836 13543 13598 E BatteryStatsService: Unable to load Power.Stats.HAL. Setting rail availability to false
+11-17 20:27:59.844 13543 13598 E BluetoothAdapter: Bluetooth service is null
+11-17 20:27:59.874 13543 13598 W KernelMemoryBandwidthStats: No kernel memory bandwidth stats available
+11-17 20:27:59.881 13543 13543 I IntentFirewall: Read new rules (A:0 B:0 S:0)
+11-17 20:27:59.885 13543 13543 D OomAdjuster: Not killing cached processes
+11-17 20:27:59.912 13543 13543 D AppOps  : AppOpsService published
+11-17 20:27:59.912 13543 13559 W android.permission.PermissionManager: Missing ActivityManager; assuming 1047 does not hold android.permission.MANAGE_APP_OPS_MODES
+11-17 20:27:59.920 13543 13543 V SystemServerTiming: StartActivityManager took to complete: 138ms
+11-17 20:27:59.920 13543 13543 D SystemServerTiming: StartDataLoaderManagerService
+11-17 20:27:59.920 13543 13543 I SystemServiceManager: Starting com.android.server.pm.DataLoaderManagerService
+11-17 20:27:59.923 13543 13543 V SystemServerTiming: StartDataLoaderManagerService took to complete: 3ms
+11-17 20:27:59.925 13543 13543 D SystemServerTiming: StartIncrementalService
+11-17 20:27:59.926 13543 13543 I incfs-mounts: [incfs] Loaded incremental-fs mount info: 0 instances, 0 mount points
+11-17 20:27:59.928 13543 13543 V SystemServerTiming: StartIncrementalService took to complete: 3ms
+11-17 20:27:59.928 13543 13543 D SystemServerTiming: StartPowerManager
+11-17 20:27:59.928 13543 13543 I SystemServiceManager: Starting com.android.server.power.PowerManagerService
+11-17 20:27:59.936   190  6356 E android.system.suspend-service: WakeLock Stats: Stats capacity met, consider adjusting capacity to avoid stats eviction.
+11-17 20:27:59.937   190  6356 E android.system.suspend-service: WakeLock Stats: Stats capacity met, consider adjusting capacity to avoid stats eviction.
+11-17 20:28:00.185     0     0 I servicemanager: Caller(pid=13543,uid=1000,sid=u:r:system_server:s0) Found android.system.suspend.ISystemSuspend/default in framework VINTF manifest.
+11-17 20:28:00.193     0     0 I servicemanager: Caller(pid=13543,uid=1000,sid=u:r:system_server:s0) Found android.hardware.power.IPower/default in device VINTF manifest.
+11-17 20:27:59.943 13543 13543 I PowerHalLoader: Successfully connected to Power HAL AIDL service.
+11-17 20:27:59.944   190  6356 E android.system.suspend-service: WakeLock Stats: Stats capacity met, consider adjusting capacity to avoid stats eviction.
+11-17 20:27:59.944   422   422 I android.hardware.power-service.example: Power isModeSupported: 7
+11-17 20:27:59.944   422   422 I android.hardware.power-service.example: Power isModeSupported: 0
+11-17 20:27:59.944 13543 13598 E BluetoothAdapter: Bluetooth service is null
+11-17 20:27:59.945 13543 13543 V SystemServerTiming: StartPowerManager took to complete: 17ms
+11-17 20:27:59.945 13543 13543 D SystemServerTiming: StartThermalManager
+11-17 20:27:59.945 13543 13543 I SystemServiceManager: Starting com.android.server.power.ThermalManagerService
+11-17 20:27:59.945 13543 13543 V SystemServerTiming: StartThermalManager took to complete: 1ms
+11-17 20:27:59.945 13543 13543 D SystemServerTiming: InitPowerManagement
+11-17 20:27:59.955 13543 13543 V SystemServerTiming: InitPowerManagement took to complete: 10ms
+11-17 20:27:59.955 13543 13543 D SystemServerTiming: StartRecoverySystemService
+11-17 20:27:59.956 13543 13543 I SystemServiceManager: Starting com.android.server.recoverysystem.RecoverySystemService$Lifecycle
+11-17 20:27:59.956 13543 13543 V SystemServerTiming: StartRecoverySystemService took to complete: 1ms
+11-17 20:27:59.956 13543 13543 D SystemServerTiming: StartLightsService
+11-17 20:27:59.956 13543 13543 I SystemServiceManager: Starting com.android.server.lights.LightsService
+11-17 20:27:59.962   421   421 I lights_service_exampl..: main::lights: Lights reporting supported lights
+11-17 20:28:00.211     0     0 I servicemanager: Caller(pid=13543,uid=1000,sid=u:r:system_server:s0) Found android.hardware.light.ILights/default in device VINTF manifest.
+11-17 20:27:59.964 13543 13543 V SystemServerTiming: StartLightsService took to complete: 8ms
+11-17 20:27:59.964 13543 13543 D SystemServerTiming: StartDisplayOffloadService
+11-17 20:27:59.964 13543 13543 V SystemServerTiming: StartDisplayOffloadService took to complete: 0ms
+11-17 20:27:59.964 13543 13543 D SystemServerTiming: StartDisplayManager
+11-17 20:27:59.965 13543 13543 I SystemServiceManager: Starting com.android.server.display.DisplayManagerService
+11-17 20:27:59.971 13543 13543 V SystemServerTiming: StartDisplayManager took to complete: 6ms
+11-17 20:27:59.971 13543 13543 D SystemServerTiming: WaitForDisplay
+11-17 20:27:59.971 13543 13543 I SystemServiceManager: Starting phase 100
+11-17 20:27:59.971 13543 13543 D SystemServerTiming: OnBootPhase_100
+11-17 20:27:59.971 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.security.FileIntegrityService
+11-17 20:27:59.971 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.security.FileIntegrityService took to complete: 0ms
+11-17 20:27:59.971 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.pm.Installer
+11-17 20:27:59.971 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.pm.Installer took to complete: 0ms
+11-17 20:27:59.971 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.os.DeviceIdentifiersPolicyService
+11-17 20:27:59.971 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.os.DeviceIdentifiersPolicyService took to complete: 0ms
+11-17 20:27:59.971 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.flags.FeatureFlagsService
+11-17 20:27:59.971 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.flags.FeatureFlagsService took to complete: 0ms
+11-17 20:27:59.971 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.uri.UriGrantsManagerService$Lifecycle
+11-17 20:27:59.971 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.uri.UriGrantsManagerService$Lifecycle took to complete: 0ms
+11-17 20:27:59.971 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.powerstats.PowerStatsService
+11-17 20:27:59.971 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.powerstats.PowerStatsService took to complete: 0ms
+11-17 20:27:59.971 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.permission.access.AccessCheckingService
+11-17 20:27:59.971 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.permission.access.AccessCheckingService took to complete: 0ms
+11-17 20:27:59.971 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.wm.ActivityTaskManagerService$Lifecycle
+11-17 20:27:59.972 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.wm.ActivityTaskManagerService$Lifecycle took to complete: 0ms
+11-17 20:27:59.972 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.am.ActivityManagerService$Lifecycle
+11-17 20:27:59.972 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.am.ActivityManagerService$Lifecycle took to complete: 0ms
+11-17 20:27:59.972 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.pm.DataLoaderManagerService
+11-17 20:27:59.972 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.pm.DataLoaderManagerService took to complete: 0ms
+11-17 20:27:59.972 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.power.PowerManagerService
+11-17 20:27:59.972 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.power.PowerManagerService took to complete: 0ms
+11-17 20:27:59.972 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.power.ThermalManagerService
+11-17 20:27:59.972 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.power.ThermalManagerService took to complete: 0ms
+11-17 20:27:59.972 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.recoverysystem.RecoverySystemService$Lifecycle
+11-17 20:27:59.972 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.recoverysystem.RecoverySystemService$Lifecycle took to complete: 0ms
+11-17 20:27:59.972 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.lights.LightsService
+11-17 20:27:59.972 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.lights.LightsService took to complete: 0ms
+11-17 20:27:59.972 13543 13543 D SystemServerTiming: OnBootPhase_100_com.android.server.display.DisplayManagerService
+11-17 20:27:59.976 13543 13566 W LocalDisplayAdapter: DisplayModeSpecs base mode no longer available, using currently active mode.
+11-17 20:27:59.980 13543 13566 I DisplayDeviceRepository: Display device added: DisplayDeviceInfo{"Built-in Screen": uniqueId="local:4619827259835644672", 320 x 640, modeId 1, renderFrameRate 60.000004, defaultModeId 1, userPreferredModeId -1, supportedModes [{id=1, width=320, height=640, fps=60.000004, vsync=60.000004, synthetic=false, alternativeRefreshRates=[], supportedHdrTypes=[]}], colorMode 0, supportedColorModes [0], hdrCapabilities HdrCapabilities{mSupportedHdrTypes=[], mMaxLuminance=500.0, mMaxAverageLuminance=500.0, mMinLuminance=0.0}, allmSupported false, gameContentTypeSupported false, density 160, 160.0 x 160.0 dpi, appVsyncOff 1000000, presDeadline 16666666, touch INTERNAL, rotation 0, type INTERNAL, address {port=0, model=0x401cec6a7a2b7b}, deviceProductInfo DeviceProductInfo{name=EMU_display_0, manufacturerPnpId=GGL, productId=1, modelYear=null, manufactureDate=ManufactureDate{week=27, year=2006}, connectionToSinkType=0}, state UNKNOWN, committedState UNKNOWN, frameRateOverride , brightnessMinimum 0.0, brightnessMaximum 1.0, brightnessDefault 0.39763778, hdrSdrRatio NaN, FLAG_ALLOWED_TO_BE_DEFAULT_DISPLAY, FLAG_ROTATES_WITH_CONTENT, FLAG_SECURE, FLAG_SUPPORTS_PROTECTED_BUFFERS, FLAG_TRUSTED, installOrientation 0, displayShape DisplayShape{ spec=-2047665221 displayWidth=320 displayHeight=640 physicalPixelDisplaySizeRatio=1.0 rotation=0 offsetX=0 offsetY=0 scale=1.0}}
+11-17 20:27:59.981 13543 13566 I LogicalDisplayMapper: Applying layout: [{dispId: 0(ON), displayGroupName: , addr: {port=0, model=0x401cec6a7a2b7b}, mThermalBrightnessThrottlingMapId: null, mRefreshRateZoneId: null, mLeadDisplayId: -1, mLeadDisplayAddress: null, mThermalRefreshRateThrottlingMapId: null, mPowerThrottlingMapId: null}], Previous layout: null
+11-17 20:27:59.982 13543 13566 I LogicalDisplayMapper: Setting new display group 0 for display 0, from previous group: null
+11-17 20:27:59.984 13543 13543 V SystemServerTiming: OnBootPhase_100_com.android.server.display.DisplayManagerService took to complete: 13ms
+11-17 20:27:59.984 13543 13543 V SystemServerTiming: OnBootPhase_100 took to complete: 13ms
+11-17 20:27:59.984 13543 13543 V SystemServerTiming: WaitForDisplay took to complete: 13ms
+11-17 20:27:59.985 13543 13543 D SystemServerTiming: StartDomainVerificationService
+11-17 20:27:59.985 13543 13566 W StrictMode: No activity manager; failed to Dropbox violation.
+11-17 20:27:59.985 13543 13566 W StrictMode: No activity manager; failed to Dropbox violation.
+11-17 20:27:59.986 13543 13566 W StrictMode: No activity manager; failed to Dropbox violation.
+11-17 20:27:59.986 13543 13566 W StrictMode: No activity manager; failed to Dropbox violation.
+11-17 20:27:59.986 13543 13566 W StrictMode: No activity manager; failed to Dropbox violation.
+11-17 20:27:59.986 13543 13566 W StrictMode: No activity manager; failed to Dropbox violation.
+11-17 20:27:59.986 13543 13566 W StrictMode: No activity manager; failed to Dropbox violation.
+11-17 20:27:59.987 13543 13543 V SystemServerTiming: StartDomainVerificationService took to complete: 2ms
+11-17 20:27:59.987 13543 13543 D SystemServerTiming: StartPackageManagerService
+11-17 20:27:59.987 13543 13543 I Watchdog: Pausing HandlerChecker: main thread for reason: packagemanagermain. Pause count: 1
+11-17 20:27:59.988 13543 13543 D PackageManagerTiming: create package manager
+11-17 20:27:59.990 13543 13543 D PackageManagerTiming: createSubComponents
+11-17 20:27:59.994 13543 13543 I UserManagerService: Upgrading users from userVersion 11 to 11
+11-17 20:27:59.998 13543 13543 V PackageManagerTiming: createSubComponents took to complete: 8ms
+11-17 20:27:59.998 13543 13543 D PackageManagerTiming: addSharedUsers
+11-17 20:27:59.999 13543 13543 V PackageManagerTiming: addSharedUsers took to complete: 0ms
+11-17 20:28:00.000 13543 13543 D PackageManagerTiming: get system config
+11-17 20:28:00.000 13543 13543 V PackageManagerTiming: get system config took to complete: 0ms
+11-17 20:28:00.004 13543 13543 D SELinuxMMAC: Using policy file /system/etc/selinux/plat_mac_permissions.xml
+11-17 20:28:00.005 13543 13543 D SELinuxMMAC: Using policy file /system_ext/etc/selinux/system_ext_mac_permissions.xml
+11-17 20:28:00.005 13543 13543 D SELinuxMMAC: Using policy file /vendor/etc/selinux/vendor_mac_permissions.xml
+11-17 20:28:00.005 13543 13543 D PackageManagerTiming: loadFallbacks
+11-17 20:28:00.006 13543 13543 D FallbackCategoryProvider: Found 387 fallback categories
+11-17 20:28:00.006 13543 13543 V PackageManagerTiming: loadFallbacks took to complete: 1ms
+11-17 20:28:00.006 13543 13543 D PackageManagerTiming: read user settings
+11-17 20:28:00.044 13543 13543 W android.permission.PermissionManager: Missing ActivityManager; assuming 1000 holds android.permission.SET_PREFERRED_APPLICATIONS
+11-17 20:28:00.044 13543 13543 W PackageManager: No package known for package restrictions com.google.android.devicelock
+11-17 20:28:00.045 13543 13543 W PackageManager: No package known for package restrictions com.google.android.tzdata6
+11-17 20:28:00.047 13543 13543 W PackageManager: No package known for package restrictions com.google.android.ondevicepersonalization
+11-17 20:28:00.047 13543 13543 W PackageManager: No package known for package restrictions com.android.hardware.authsecret
+11-17 20:28:00.049 13543 13543 W PackageManager: No package known for package restrictions com.google.android.media.swcodec
+11-17 20:28:00.049 13543 13543 W PackageManager: No package known for package restrictions com.google.android.os.statsd
+11-17 20:28:00.049 13543 13543 W PackageManager: No package known for package restrictions com.google.android.widevine.nonupdatable
+11-17 20:28:00.051 13543 13543 W PackageManager: No package known for package restrictions com.google.mainline.primary.libs
+11-17 20:28:00.054 13543 13543 W PackageManager: No package known for package restrictions com.google.android.extservices
+11-17 20:28:00.054 13543 13543 W PackageManager: No package known for package restrictions com.android.hardware.rebootescrow
+11-17 20:28:00.056 13543 13543 W PackageManager: No package known for package restrictions com.google.android.healthfitness
+11-17 20:28:00.058 13543 13543 W PackageManager: No package known for package restrictions com.google.android.ipsec
+11-17 20:28:00.058 13543 13543 W PackageManager: No package known for package restrictions com.google.android.media
+11-17 20:28:00.059 13543 13543 W PackageManager: No package known for package restrictions com.android.i18n
+11-17 20:28:00.059 13543 13543 W PackageManager: No package known for package restrictions com.android.virt
+11-17 20:28:00.060 13543 13543 W PackageManager: No package known for package restrictions com.google.android.appsearch
+11-17 20:28:00.060 13543 13543 W PackageManager: No package known for package restrictions com.google.android.configinfrastructure
+11-17 20:28:00.060 13543 13543 W PackageManager: No package known for package restrictions com.google.android.cellbroadcast
+11-17 20:28:00.060 13543 13543 W PackageManager: No package known for package restrictions com.android.apex.cts.shim
+11-17 20:28:00.060 13543 13543 W PackageManager: No package known for package restrictions com.android.compos
+11-17 20:28:00.060 13543 13543 W PackageManager: No package known for package restrictions com.google.android.resolv
+11-17 20:28:00.061 13543 13543 W PackageManager: No package known for package restrictions com.google.android.sdkext
+11-17 20:28:00.061 13543 13543 W PackageManager: No package known for package restrictions com.google.android.art
+11-17 20:28:00.061 13543 13543 W PackageManager: No package known for package restrictions com.google.android.uwb
+11-17 20:28:00.064 13543 13543 W PackageManager: No package known for package restrictions com.google.android.runtime
+11-17 20:28:00.064 13543 13543 W PackageManager: No package known for package restrictions com.android.hardware.cas
+11-17 20:28:00.065 13543 13543 W PackageManager: No package known for package restrictions com.google.android.adservices
+11-17 20:28:00.066 13543 13543 W PackageManager: No package known for package restrictions com.google.android.scheduling
+11-17 20:28:00.067 13543 13543 W PackageManager: No package known for package restrictions com.google.android.mediaprovider
+11-17 20:28:00.067 13543 13543 W PackageManager: No package known for package restrictions com.android.hardware.neuralnetworks
+11-17 20:28:00.067 13543 13543 W PackageManager: No package known for package restrictions com.google.android.permission
+11-17 20:28:00.068 13543 13543 W PackageManager: No package known for package restrictions com.google.android.profiling
+11-17 20:28:00.071 13543 13543 W PackageManager: No package known for package restrictions com.google.android.neuralnetworks
+11-17 20:28:00.071 13543 13543 W PackageManager: No package known for package restrictions com.google.android.tethering
+11-17 20:28:00.072 13543 13543 W PackageManager: No package known for package restrictions com.google.android.btservices
+11-17 20:28:00.073 13543 13543 W PackageManager: No package known for package restrictions com.google.android.adbd
+11-17 20:28:00.073 13543 13543 W PackageManager: No package known for package restrictions com.google.android.rkpd
+11-17 20:28:00.073 13543 13543 W PackageManager: No package known for package restrictions com.google.android.wifi
+11-17 20:28:00.073 13543 13543 W PackageManager: No package known for package restrictions com.google.android.conscrypt
+11-17 20:28:00.077 13543 13543 W PackageManager: No package known for package restrictions com.android.nfcservices
+11-17 20:28:00.079 13543 13543 V SLog    : static_init took to complete: 0ms
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.cts.priv.ctsshim on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.display.cutout.emulation.corner on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.google.android.ext.services on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.display.cutout.emulation.double on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.google.android.googlequicksearchbox on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.google.android.onetimeinitializer on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.google.android.ext.shared on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.virtualmachine.res on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.wallpapercropper on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.google.android.federatedcompute on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.managedprovisioning.auto_generated_rro_product__ on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.carrierconfig.auto_generated_rro_vendor__ on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.google.android.server.deviceconfig.resources on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_3_xl on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_4_xl on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_fold on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.providers.telephony.auto_generated_characteristics_rro on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.simappdialog.auto_generated_rro_product__ on user 0
+11-17 20:28:00.080 13543 13543 W PackageSettings: Missing permission state for package com.android.externalstorage on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.htmlviewer on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.companiondevicemanager on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.overlay.largescreenconfig on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.health.connect.backuprestore on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.auto_generated_rro_product__ on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.apps.messaging on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.marvin.talkbackoverlay on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.configupdater on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_3a_xl on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_6_pro on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_7_pro on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_8_pro on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_9_pro on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.providers.media.module on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_3a on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_4a on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_6a on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_7a on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_8a on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.overlay.googlewebview on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.apps.safetyhub on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.plugin.globalactions.wallet on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.hotspot2.osulogin on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.pacprocessor on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.simappdialog on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.adservices.api on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.display.cutout.emulation.hole on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.display.cutout.emulation.tall on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.certinstaller on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.carrierconfig on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.systemui.navbar.threebutton on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.ranchu.commonoverlay on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.sdksandbox on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.egg on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.backupconfirm on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.auto_generated_rro_vendor__ on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.systemui.navbar.twobutton on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.as on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.compos.payload on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.accessibility.accessibilitymenu on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.permissioncontroller on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_3 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_4 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_5 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_6 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_7 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_8 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_9 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.emulator.radio.config on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.sharedstoragebackup on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.printspooler on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.connectivity.resources.goldfish.overlay on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.dreams.basic on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.networkstack.tethering.emulator on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.providers.settings.auto_generated_rro_product__ on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.as.oss on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.traceur.auto_generated_rro_product__ on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.apps.wellbeing on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_9_pro_fold on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.devicelockcontroller on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.dialer on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.bips on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_3 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_4 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_5 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_6 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_7 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_8 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_9 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.captiveportallogin on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package android.auto_generated_characteristics_rro on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.appsearch.apk on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.musicfx on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.display.cutout.emulation.emu01 on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.avatarpicker on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.cellbroadcastreceiver on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.webview on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.rkpdapp on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.server.telecom.auto_generated_rro_product__ on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.phone.auto_generated_characteristics_rro on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.overlay.googleconfig on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.chrome on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package me.weishu.kernelsu on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.bips.auto_generated_rro_product__ on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.packageinstaller on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.tag on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.overlay.permissioncontroller on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.googlesdksetup on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.partnersetup on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.cameraextensions on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.apps.nexuslauncher on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.carrierdefaultapp on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.credentialmanager on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.theme.font.notoserifsource on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.proxyhandler on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.safetycenter.resources on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.display.cutout.emulation.waterfall on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.intentresolver on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.systemui.navbar.transparent on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.connectivity.resources on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.providers.contacts.auto_generated_rro_product__ on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.feedback on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.printservice.recommendation on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.managedprovisioning on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.google.android.documentsui on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_3a_xl on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_6_pro on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_7_pro on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_8_pro on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_9_pro on user 0
+11-17 20:28:00.081 13543 13543 W PackageSettings: Missing permission state for package com.android.carrierconfig.auto_generated_rro_product__ on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.devicediagnostics.auto_generated_rro_product__ on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.devicediagnostics on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.overlay.largescreensettingsprovider on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.providers.partnerbookmarks on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.role.notes.enabled on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.wallpaper.livepicker on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.providers.telephony.auto_generated_rro_product__ on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.phone.auto_generated_rro_vendor__ on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.imsserviceentitlement on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_9_pro_xl on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.healthconnect.controller on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.gms.supervision on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_2_xl on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_3_xl on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_4_xl on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.emulation.pixel_fold on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.storagemanager on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.bookmarkprovider on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.overlay.pixelconfigcommon on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.accessibility.accessibilitymenu.auto_generated_rro_product__ on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_3a on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_4a on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_6a on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_7a on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_8a on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.settings.intelligence on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.uwb.resources on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.wifi.resources on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.wifi.dialog on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.webui.api.demo on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.telephony.satellite on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.wallpaper on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.microdroid.empty_payload on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.trichromelibrary_636771938 on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.vpndialogs on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.apps.wallpaper on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.odad on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.wallpaperbackup on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.settings.auto_generated_rro_product__ on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_9_pro_xl on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.companiondevicemanager.auto_generated_characteristics_rro on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.internal.systemui.navbar.gestural on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.ondevicepersonalization.services on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.bluetoothmidiservice on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.webui.termux.api on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.traceur on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.storagemanager.auto_generated_rro_product__ on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.cellbroadcastreceiver on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.phone.auto_generated_rro_product__ on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.android.systemui.emulation.pixel_9_pro_fold on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package android.auto_generated_rro_product__ on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package android.auto_generated_rro_vendor__ on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for package com.google.android.apps.restore on user 0
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for shared user: android.uid.log
+11-17 20:28:00.082 13543 13543 W PackageSettings: Missing permission state for shared user: android.uid.uwb
+11-17 20:28:00.082 13543 13543 V PackageManagerTiming: read user settings took to complete: 76ms
+11-17 20:28:00.084 13543 13543 W PackageManager: Could not find package com.android.companiondevicemanager
+11-17 20:28:00.105 13543 13543 D PackageManager: Directories scanned as system partitions: [/system:0, /vendor:524288, /odm:4194304, /oem:262144, /product:1048576, /system_ext:2097152, /apex/com.android.wifi:41943040, /apex/com.android.virt:41943040, /apex/com.android.btservices:41943040, /apex/com.android.hardware.rebootescrow:42467328, /apex/com.android.sdkext:41943040, /apex/com.android.compos:44040192, /apex/com.android.hardware.authsecret:42467328, /apex/com.android.media.swcodec:41943040, /apex/com.android.adservices:41943040, /apex/com.android.art:41943040, /apex/com.android.configinfrastructure:41943040, /apex/com.android.hardware.neuralnetworks:42467328, /apex/com.android.conscrypt:41943040, /apex/com.android.neuralnetworks:41943040, /apex/com.android.cellbroadcast:41943040, /apex/com.android.tzdata:41943040, /apex/com.android.profiling:41943040, /apex/com.android.permission:41943040, /apex/com.android.apex.cts.shim:41943040, /apex/com.google.mainline.primary.libs:41943040, /apex/com.android.hardware.cas:42467328, /apex/com.android.devicelock:41943040, /apex/com.android.os.statsd:41943040, /apex/com.android.uwb:41943040, /apex/com.android.ondevicepersonalization:41943040, /apex/com.android.appsearch:41943040, /apex/com.android.nfcservices:41943040, /apex/com.google.android.widevine:42467328, /apex/com.android.mediaprovider:41943040, /apex/com.android.resolv:41943040, /apex/com.android.adbd:41943040, /apex/com.android.media:41943040, /apex/com.android.scheduling:41943040, /apex/com.android.extservices:41943040, /apex/com.android.i18n:41943040, /apex/com.android.rkpd:41943040, /apex/com.android.runtime:41943040, /apex/com.android.ipsec:41943040, /apex/com.android.healthfitness:41943040, /apex/com.android.tethering:41943040]
+11-17 20:28:00.105 13543 13543 D PackageManager: Keeping known cache 0b75d140d5c921e67fdae6ea8e27813b91643bb5
