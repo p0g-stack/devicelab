@@ -70,7 +70,7 @@ on this branch with the image's independently recorded SHA256 and a successful
 `upstream-host-api-2` Kit run; do not run the old API 3 checks against it.
 
 Hosted builds run inside a memory cgroup (10 GiB high, 12 GiB maximum,
-20 GiB swap maximum, three build jobs, 8 GiB Go heap soft limit), leaving
+20 GiB swap maximum, three build jobs), leaving
 memory for the Actions listener. `AERA build resources` check output retains
 minute-by-minute latest disk/RAM/cgroup evidence remotely even if a runner
 disappears; the complete resource log is uploaded when the runner survives.
@@ -78,11 +78,95 @@ Earlier failures' annotations report lost runner communication, not a proven
 OOM or disk failure. The prior successful image used a 76 GiB synced tree
 and ended with only 3.6 GiB disk free; the rebased local sync also used 76 GiB.
 The existing disk cleanup, swap and post-sync metadata removal are retained.
+Soong's `ui/build/soong.go` clears the bootstrap process environment and passes
+only its own invocation variables. A shell `GOMEMLIMIT` is therefore not a
+limit on `soong_build`; reducing make jobs does not bound that single large
+process either. The cgroup applies below both mechanisms. A compilation
+sample showed `soong_build` at 7.8 GiB resident with 10.7 GiB build-cgroup swap,
+while 5.6 GiB system memory and 33 GiB disk remained available; no cgroup
+OOM or kill events had occurred.
 
-AERA publishes no images (no GitHub releases, no download page; checked
-2026-10-01), and the build does not fit GitHub's free runners (2 cores,
-7 GB RAM, 14 GB disk). Run it on any x86_64 Ubuntu 22.04/24.04 box with sudo,
-~150 GB free and 32 GB RAM (+swap):
+### Host API 2 qualification (2026-11-17)
+
+Recovery `d80a712b739a9e6cde0fe3ff7bd00e8e101625d9` contains upstream
+`1cabc509`, the rebased non-protocol fixes, and both extension patches. The
+local image build passed (76 GiB synced tree, 18 GiB metadata, 13 GiB build
+output; 1,246 seconds sync and 499 seconds compilation). Its release is
+[`aera-cf-x86_64-d80a712-a9691570617da5da`](https://github.com/p0g-stack/devicelab/releases/tag/aera-cf-x86_64-d80a712-a9691570617da5da).
+The ramdisk SHA256 is
+`a9691570617da5daac6ee5a8da7e5e8bbafebb1e6aa0345cef0de61eaad240ed`.
+
+flutter-aera `upstream-host-api-2` was rebased onto main's Flutter 3.47.9
+engine and deterministic packaging. Commit
+`235f2d1abf071d21ad6bd995b69a1cffa0763024` passed
+[Kit 44093060655](https://github.com/p0g-stack/flutter-aera/actions/runs/44093060655)
+on both x64 and arm64 with `publish=false`. The x64 debug kit uses engine
+`89c39edfdfae2949f6806e4a315c0c08522238b7`; archive SHA256
+`796388780d92cbafaa025579ee93e48b45fb1999ed15a0760a4aaef37c09902f`.
+The Kit failure before this run was stale API 3 tap coordinates outside the
+API 2 desktop, not a render failure. Correct desktop taps retain the original
+before/after inequality assertion and show the counter changing from 0 to 3.
+
+The unchanged `ci/apps/api2_probe` passed `aera-api2-check.sh` on local
+Cuttlefish build 16373615 (host package 1.57.0, KVM,
+`gfxstream_guest_angle_host_swiftshader`, 720x1348 panel, software landscape):
+
+- Two real Remote touch events produced count 1 then 2; 3,735 guest pixels
+  differed between the captured counter frames.
+- Bit 12 showed the real AERA keyboard. Touching its keys submitted
+  `route42`; Flutter's measured inset changed 0 → 298 → 0.
+- The native Files overlay returned `/data/media/0-api2-selected.txt`.
+  `/data/media` was absent, so the check created this fixture directory on
+  the emulator's ramdisk; this is not evidence of persistent Android storage.
+- The desktop ESC toolbar returned the Details route to Flutter's probe.
+
+Evidence is under
+`/home/vivy/.cache/p0g-agents/AeraApi2Cuttlefish/local-cf/out/api2/`:
+`03-counter-before.png`, `04-counter-after.png`, `05-keyboard.png`,
+`07-submitted.png`, `08-picker.png`, `09-picked.png`, `11-returned.png`,
+their upright annotated `-view.png` counterparts, and `probe-markers.log`.
+The probe asserts actual Flutter log messages and captured pixels; it does
+not synthesize picker replies, text submissions, or Back callbacks.
+
+The same image and kit also passed the branch's hosted
+[`aera-cf` run 44097599856](https://github.com/p0g-stack/devicelab/actions/runs/44097599856)
+in 11m55s. Its `api2-cf-44097599856-1` Actions artifact contains screenshots,
+probe markers, source/SDK/kit identity, and recovery logs. The run accepted
+the successful Kit conclusion gate and verified the downloaded artifact
+digest, kit file checksums, engine/SDK identity and candidate ramdisk hash.
+
+Hosted screenshots and logs are retained in
+[the Actions artifact](https://github.com/p0g-stack/devicelab/actions/runs/44097599856/artifacts/14336305326)
+and [lab-results](https://github.com/p0g-stack/devicelab/tree/lab-results/runs/20261117T140621Z-aera-cf-recovery-44097599856/api2).
+The counter pair is `03-counter-before.png` / `04-counter-after.png`;
+the hosted run measured 3,735 changed guest pixels and the probe logged 1 then 2.
+Use the `-view.png` copies for upright viewing; pixel assertions use raw captures,
+not their annotated copies.
+
+Reproduce the hosted check with the same independently identified inputs:
+
+```sh
+gh workflow run aera-cf.yml -R p0g-stack/devicelab \
+  --ref aera-upstream-1cabc509-api2 -f api2_kit_run=44093060655 \
+  -f aera_release=aera-cf-x86_64-d80a712-a9691570617da5da \
+  -f aera_sha256=a9691570617da5daac6ee5a8da7e5e8bbafebb1e6aa0345cef0de61eaad240ed
+```
+
+This proves the Flutter bit-12 desktop path, not the separate bit-13 native
+modal editor (which Flutter intentionally does not request). The integrated
+recovery session negotiation test passed, but bit-13 UI behavior remains
+unqualified. Also unqualified: Unicode/IME composition on recovery, picker
+cancel/error/folder modes, real system Back, real-vsync timing, live resize
+or rotation, multitouch, persistent Recents/data, shared clipboard, physical
+GPU/panel behavior, and release/AOT. Multi-file and save remain explicitly
+unsupported. No main branches or consumer pins changed; no physical device
+was selected or written.
+
+
+For a local build, use an x86_64 Ubuntu 22.04/24.04 box with sudo,
+~150 GB free and 32 GB RAM (+swap). The hosted qualification uses the
+resource-bounded workflow above; its image must not replace main's API 3
+image or consumer pins implicitly:
 
 ```sh
 git clone https://github.com/p0g-stack/devicelab && cd devicelab
@@ -102,8 +186,7 @@ devicelab):
 aera/build/publish.sh ~/aera-out
 ```
 
-Checked here without a full build (2026-10-01): repo init at the pin and
-manifest resolution (406 projects), sync of every GitHub-hosted project
-(AERA, LineageOS, TeamWin), and the patch series applying in-tree. Not yet
-run: the Android build itself, so expect a first round of x86_64 fixes in
-`build/device/`.
+The Android build and real Cuttlefish qualification have run successfully
+for the explicit API 2 candidate recorded above. This supports a later
+debug-only Host API 2 main-line migration with the two negotiated extensions;
+it does not qualify unmodified upstream recovery or remove the listed limits.
