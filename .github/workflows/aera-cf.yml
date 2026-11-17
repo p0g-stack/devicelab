@@ -1,19 +1,21 @@
 # AERA on Cuttlefish (aera/README.md). Boots x86_64 Cuttlefish and its stock
 # recovery, records what a plugin host sees there, then runs the counter
 # through flutter-aera's x86_64 kit and host simulator inside that recovery.
+# Every downloaded runtime is pinned by URL and SHA256 here; the bytes are
+# hashed before they are unpacked or run. A release's own checksum files are
+# never the authority.
 name: aera-cf
 on:
   workflow_dispatch:
     inputs:
       build: { default: "aosp-android-latest-release/aosp_cf_x86_64_only_phone-userdebug" }
-      build_id: { default: "" }
+      build_id: { default: "", description: "Cuttlefish build; empty = CF_BUILD_ID, the build the pinned AERA image passed on" }
       pick_taps: { default: "", description: "aera-picker-check.sh PICK_TAPS (name:x,y ...)" }
       recents_card: { default: "", description: "aera-lifecycle-check.sh RECENTS_CARD x,y of the app card in Recents" }
       press_shift: { default: "0", description: "1 = checks shift every press by 1 px (D9 fallback for images without flutter-aera 0025)" }
-      aera_release: { default: "latest", description: "devicelab release with ramdisk-recovery.img (aera-cf-x86_64-*), latest, or none" }
+      aera_release: { default: "", description: "candidate devicelab release (aera-cf-x86_64-*) with aera_sha256, none, or empty for the pinned image" }
+      aera_sha256: { default: "", description: "SHA256 of the candidate's ramdisk-recovery.img, from the build that made it" }
       aera_taps: { default: "", description: "launcher taps 'x,y x,y' in AERA screen pixels, used when the image has no RPC plugin open (patch 0008)" }
-  release:
-    types: [published]
   push:
     branches: [main]
     paths: [".github/workflows/aera-cf.yml", "aera/cuttlefish/**", "aera/kit/**", "aera/tools/**"]
@@ -29,6 +31,19 @@ jobs:
       PRESS_SHIFT: ${{ inputs.press_shift || '0' }}
       LAB_OUT: ${{ github.workspace }}/out
       CF_HOME: /mnt/cf
+      CF_BUILD_ID: ${{ inputs.build_id || '16373615' }}
+      # flutter-aera release kit-3.47.5, by asset id: a replaced asset gets a new
+      # id, so these URLs serve these bytes or nothing. kit.json in both:
+      # flutter_aera_commit d1403d6079566a5a2476cc6948357b0df2bc6712.
+      KIT_X64_URL: https://api.github.com/repos/p0g-stack/flutter-aera/releases/assets/610973281
+      KIT_X64_SHA256: 89502b18226472ee3d981eda915f1afee9b5643af67c8da9a1beeb8338ad52aa
+      SIM_X64_URL: https://api.github.com/repos/p0g-stack/flutter-aera/releases/assets/610973279
+      SIM_X64_SHA256: e5ac7c08304ba5f7a74c3d88059ded26d59ad38f1a82d785cea9eeebf1283cda
+      # AERA image that passed every check in run 37582507317: bootable/recovery
+      # 84736fe0af0d424d77e374eb8f0c8ca1e357e3fd with the recovery series of
+      # flutter-aera 67e6c29edd0c3c6728b30900b82b2cc6629dfbff (its BUILD-INFO).
+      AERA_PINNED_TAG: aera-cf-x86_64-84736fe-c07ed742cefdb67c
+      AERA_PINNED_SHA256: 339127018320454ceaefa63e6c1c2b7b2a2f67880ef0fd5d2a9d82761df8d105
     steps:
       - uses: actions/checkout@v4
       - name: KVM and disk
@@ -40,25 +55,23 @@ jobs:
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL /usr/share/swift || true
           mkdir -p "$LAB_OUT"; df -h / /mnt; nproc; free -g
       - name: Boot Cuttlefish
-        run: set -o pipefail; aera/cuttlefish/up.sh "${{ inputs.build }}" "${{ inputs.build_id }}" 2>&1 | tee -a "$LAB_OUT/job.log"
+        run: set -o pipefail; aera/cuttlefish/up.sh "${{ inputs.build }}" "$CF_BUILD_ID" 2>&1 | tee -a "$LAB_OUT/job.log"
       - name: Android frame
         run: aera/cuttlefish/shot.sh "$LAB_OUT/android.png"
       - name: Stock recovery
         run: set -o pipefail; aera/cuttlefish/recovery.sh stock-recovery 2>&1 | tee -a "$LAB_OUT/job.log"
-      - name: flutter-aera x64 kit + static sim (release kit-3.47.5, re-downloaded every run)
-        env: { GH_TOKEN: "${{ github.token }}" }
+      - name: flutter-aera x64 kit + static sim (kit-3.47.5 assets pinned by id and SHA256)
         run: |
           set -euo pipefail
           mkdir -p "$RUNNER_TEMP/kitx64/kit"; cd "$RUNNER_TEMP/kitx64"
-          gh release view kit-3.47.5 -R p0g-stack/flutter-aera --json assets --jq '.assets[] | "\(.name) \(.updatedAt)"' | tee "$LAB_OUT/kit-release.txt"
-          gh release download kit-3.47.5 -R p0g-stack/flutter-aera --clobber -p 'flutter-aera-kit-linux-x64-*' -p 'aera-host-sim-linux-x64*'
-          sha256sum -c ./*.sha256 2>&1 | tee -a "$LAB_OUT/kit-release.txt" || true
-          tar -C kit -xJf flutter-aera-kit-linux-x64-*.tar.xz
-          sim=$(ls aera-host-sim-linux-x64* | grep -v sha256 | head -1); mv "$sim" aera-host-sim; chmod +x aera-host-sim
+          get() { curl -fsSL -H 'Accept: application/octet-stream' "$1" -o "$2"; echo "$3  $2" | sha256sum -c -; }
+          get "$KIT_X64_URL" kit.tar.xz "$KIT_X64_SHA256" 2>&1 | tee "$LAB_OUT/kit-release.txt"
+          get "$SIM_X64_URL" aera-host-sim "$SIM_X64_SHA256" 2>&1 | tee -a "$LAB_OUT/kit-release.txt"
+          tar -C kit -xJf kit.tar.xz
+          chmod +x aera-host-sim
           file aera-host-sim kit/usr/bin/* | tee -a "$LAB_OUT/kit-release.txt"
-          # Which flutter-aera commit built the kit (kit.json), and the kit run that published it.
-          find kit -maxdepth 3 -name kit.json -exec sh -c 'echo "== $1"; cat "$1"' _ {} \; | tee -a "$LAB_OUT/kit-release.txt" || true
-          gh run list -R p0g-stack/flutter-aera -L 5 --json databaseId,workflowName,status,conclusion,headSha,createdAt 2>&1 | tee -a "$LAB_OUT/kit-release.txt" || true
+          # Which flutter-aera commit built the kit.
+          echo "== kit/kit.json" | tee -a "$LAB_OUT/kit-release.txt"; cat kit/kit.json | tee -a "$LAB_OUT/kit-release.txt"
       - name: Counter .aerap from flutter_p0g, retargeted to the x64 kit (lab-inputs aera/)
         run: |
           set -euo pipefail
@@ -69,13 +82,13 @@ jobs:
       - name: Counter through the kit in recovery (simulated host, frames to PNG)
         env: { GH_TOKEN: "${{ github.token }}" }
         run: |
-          taps="--until 9000 --snap start@4000 --tap 980,2250@4500 --tap 980,2250@5000 --tap 980,2250@5500 --snap after@8000"
-          sim() { aera/cuttlefish/run-sim.sh "$1" "$RUNNER_TEMP/counter-x64/root" "$RUNNER_TEMP/kitx64/aera-host-sim" $taps $2 2>&1 | tee -a "$LAB_OUT/job.log" || true; }
+          taps=(--until 9000 --snap start@4000 --tap '980,2250@4500' --tap '980,2250@5000' --tap '980,2250@5500' --snap after@8000)
+          sim() { local name=$1; shift; aera/cuttlefish/run-sim.sh "$name" "$RUNNER_TEMP/counter-x64/root" "$RUNNER_TEMP/kitx64/aera-host-sim" "${taps[@]}" "$@" 2>&1 | tee -a "$LAB_OUT/job.log" || true; }
           # GPU (gfxstream modes): launcher default (Vulkan on gfxstream), Impeller on it, GL forced.
           sim counter-default --gpu
           SWITCHES=--enable-impeller sim counter-impeller --gpu
           # CPU reference: softpipe.
-          sim counter-softpipe ""
+          sim counter-softpipe
       - name: vulkaninfo through the kit's launcher and loader
         run: |
           adb=$CF_HOME/bin/adb
@@ -83,23 +96,21 @@ jobs:
           wc -l "$LAB_OUT/vulkan-info.txt"; head -40 "$LAB_OUT/vulkan-info.txt"
       - name: AERA image (devicelab release from aera/build/publish.sh)
         id: aera
-        env: { GH_TOKEN: "${{ github.token }}" }
+        env: { GH_TOKEN: "${{ github.token }}", TAG: "${{ inputs.aera_release }}", SHA: "${{ inputs.aera_sha256 }}" }
         run: |
-          tag="${{ github.event.release.tag_name || inputs.aera_release || 'latest' }}"
-          [ "$tag" = none ] && exit 0
-          case "$tag" in aera-cf-x86_64-*|latest) ;; *) tag=latest ;; esac
-          if [ "$tag" = latest ]; then
-            tag=$(gh release list -R "$GITHUB_REPOSITORY" --limit 50 --json tagName,createdAt \
-              --jq '[.[] | select(.tagName | startswith("aera-cf-x86_64-"))] | sort_by(.createdAt) | last | .tagName // ""')
-          fi
-          [ -n "$tag" ] || { echo "no AERA release yet"; exit 0; }
+          set -euo pipefail
+          [ "$TAG" = none ] && exit 0
+          if [ -z "$TAG" ]; then TAG=$AERA_PINNED_TAG SHA=$AERA_PINNED_SHA256
+          elif [ "$TAG" = "$AERA_PINNED_TAG" ] && [ -z "$SHA" ]; then SHA=$AERA_PINNED_SHA256; fi
+          case "$TAG" in aera-cf-x86_64-*) ;; *) echo "aera_release must be aera-cf-x86_64-*, none or empty, not $TAG"; exit 1 ;; esac
+          [[ "$SHA" =~ ^[0-9a-f]{64}$ ]] || { echo "release $TAG needs aera_sha256 (64 hex) from the build that made it"; exit 1; }
           mkdir -p "$RUNNER_TEMP/aera-img" && cd "$RUNNER_TEMP/aera-img"
-          gh release download "$tag" -R "$GITHUB_REPOSITORY" -p ramdisk-recovery.img
-          # Releases from aera-build.yml before publish.sh have no BUILD-INFO/SHA256SUMS (the job log has them).
-          gh release download "$tag" -R "$GITHUB_REPOSITORY" -p BUILD-INFO -p SHA256SUMS || true
-          if [ -f SHA256SUMS ]; then grep ramdisk-recovery.img SHA256SUMS | sha256sum -c -
-          else echo "release $tag has no SHA256SUMS"; sha256sum ramdisk-recovery.img; echo "release $tag (no BUILD-INFO)" > BUILD-INFO; fi
-          cp BUILD-INFO "$LAB_OUT/aera-BUILD-INFO"; echo "tag=$tag" >> "$GITHUB_OUTPUT"; echo "release $tag"; cat BUILD-INFO
+          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -p ramdisk-recovery.img
+          echo "$SHA  ramdisk-recovery.img" | sha256sum -c -
+          # BUILD-INFO describes the image; the pinned hash above is what identifies it.
+          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -p BUILD-INFO || echo "release $TAG (no BUILD-INFO)" > BUILD-INFO
+          echo "ramdisk-recovery.img sha256 $SHA" >> BUILD-INFO
+          cp BUILD-INFO "$LAB_OUT/aera-BUILD-INFO"; echo "tag=$TAG" >> "$GITHUB_OUTPUT"; echo "release $TAG"; cat BUILD-INFO
       - name: Boot AERA recovery
         timeout-minutes: 20
         if: steps.aera.outputs.tag != ''
@@ -163,6 +174,8 @@ jobs:
             | timeout 300 flutter_p0g run --aera --ram -s 0.0.0.0:6520 --aerap "$LAB_OUT/counter-1.0.0-x64.aerap" 2>&1 \
             | tee "$LAB_OUT/flutter_p0g-run.log" || true
           # Where a stalled open stops: the pipes, AERA's own log, who holds the FIFOs
+          # Variables and substitutions run on Android, not the CI host.
+          # shellcheck disable=SC2016
           adb -s 0.0.0.0:6520 shell 'ls -la /system/bin/aerain /system/bin/aeraout; ps -A -o PID,S,WCHAN,NAME,ARGS | grep -vE " \\[|ps -A"; for p in $(pidof recovery); do ls -la /proc/$p/fd | grep -iE "aera|pipe"; done; tail -60 /tmp/recovery.log' \
             > "$LAB_OUT/flutter_p0g-run-state.txt" 2>&1 || true
           cd "$GITHUB_WORKSPACE" && aera/cuttlefish/aera-shot.sh flutter_p0g-reloaded || true

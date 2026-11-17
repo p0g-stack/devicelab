@@ -52,7 +52,8 @@ jobs:
         run: |
           # A release made with the job token triggers no workflow, so dispatch aera-cf here.
           tag=$(aera/build/publish.sh "$LAB_OUT" | sed -n 's/^published //p')
-          gh workflow run aera-cf.yml -R "$GITHUB_REPOSITORY" -r main -f aera_release="$tag"
+          gh workflow run aera-cf.yml -R "$GITHUB_REPOSITORY" -r main -f aera_release="$tag" \
+            -f aera_sha256="$(awk '$2 == "ramdisk-recovery.img" {print $1}' "$LAB_OUT/SHA256SUMS")"
       - name: Publish to lab-results
         if: always()
         env: { GH_TOKEN: "${{ github.token }}" }

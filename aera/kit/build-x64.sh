@@ -6,7 +6,7 @@
 #   build-x64.sh OUT        -> OUT/kit (payload tree minus app), OUT/aera-host-sim
 # Needs: Rust, meson>=1.4, ninja, mako, libdrm-dev, the Flutter build deps.
 set -euo pipefail
-FA_REV=${FA_REV:-c9414a50a06305607ff89db9c5baa7eb44a11f35}   # p0g-stack/flutter-aera
+FA_REV=${FA_REV:-67e6c29edd0c3c6728b30900b82b2cc6629dfbff}   # tested recovery series: aera-cf run 37582507317
 out=$(realpath -m "${1:?usage: build-x64.sh OUT}"); mkdir -p "$out"
 work=$out/work; mkdir -p "$work"
 fa=$work/flutter-aera
