@@ -103,10 +103,25 @@ That CI build published
 ramdisk SHA256
 `4fb5242971e86776a436a34c5ef6da496789fff77881eb364c25089d490c2156`.
 It has the same recovery revision but different build bytes from the local
-image below. The Cuttlefish result qualifies the local image's exact hash,
-not this hosted artifact. The green run used the cgroup fix with the old,
+image below. Both exact artifacts have now passed Cuttlefish.
+The green build used the cgroup fix with the old,
 ineffective shell `GOMEMLIMIT`; the branch subsequently removed that setting
 and its misleading comment, and `bash -n aera/build/hosted-build.sh` passed.
+
+The hosted image itself passed
+[`aera-cf` 44115552739](https://github.com/p0g-stack/devicelab/actions/runs/44115552739)
+at devicelab `17d65333dafca4eb2bd3792aabdcf4973c8d047b` in 12m38s,
+using successful Kit run 44093060655. The workflow verified ramdisk SHA256
+`4fb5242971e86776a436a34c5ef6da496789fff77881eb364c25089d490c2156`
+and the same Flutter 3.47.9 kit identity recorded below. It observed count
+1 then 2, 3,735 changed guest pixels, text submission `route42`, inset
+0 → 298 → 0, Files result `/data/media/0-api2-selected.txt`, and route Back.
+Screenshots and logs are in
+[the Actions artifact](https://github.com/p0g-stack/devicelab/actions/runs/44115552739/artifacts/14344660369)
+and [lab-results](https://github.com/p0g-stack/devicelab/tree/lab-results/runs/20261117T154429Z-aera-cf-recovery-44115552739/api2).
+This closes the hosted-build-to-Cuttlefish chain without assuming the locally
+built and hosted image bytes are interchangeable. The capability limits below
+still apply.
 
 ### Host API 2 qualification (2026-11-17)
 
