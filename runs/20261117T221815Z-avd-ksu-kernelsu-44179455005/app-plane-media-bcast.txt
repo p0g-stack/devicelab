@@ -1,0 +1,17 @@
+Broadcasting: Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }
+
+Exception occurred while executing 'broadcast':
+java.lang.IllegalStateException: Cannot broadcast before boot completed
+	at com.android.server.am.ActivityManagerService.verifyBroadcastLocked(ActivityManagerService.java:16263)
+	at com.android.server.am.ActivityManagerService.broadcastIntentWithFeature(ActivityManagerService.java:16311)
+	at com.android.server.am.ActivityManagerShellCommand.runSendBroadcast(ActivityManagerShellCommand.java:1004)
+	at com.android.server.am.ActivityManagerShellCommand.onCommand(ActivityManagerShellCommand.java:276)
+	at com.android.modules.utils.BasicShellCommandHandler.exec(BasicShellCommandHandler.java:97)
+	at android.os.ShellCommand.exec(ShellCommand.java:38)
+	at com.android.server.am.ActivityManagerService.onShellCommand(ActivityManagerService.java:10471)
+	at android.os.Binder.shellCommand(Binder.java:1230)
+	at android.os.Binder.onTransact(Binder.java:1043)
+	at android.app.IActivityManager$Stub.onTransact(IActivityManager.java:5675)
+	at com.android.server.am.ActivityManagerService.onTransact(ActivityManagerService.java:2812)
+	at android.os.Binder.execTransactInternal(Binder.java:1505)
+	at android.os.Binder.execTransact(Binder.java:1444)
