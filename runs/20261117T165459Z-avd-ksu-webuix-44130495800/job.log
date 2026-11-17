@@ -1,0 +1,113 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 19s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.1
+KernelSU_v3.3.1_32680-release.apk: OK
+ksud-x86_64-linux-android: OK
+lkm-x86_64-android15-6.6_kernelsu.ko: OK
+total 19332
+drwx------  2 runner runner     4096 Nov 17 16:52 .
+drwxrwxrwt 16 root   root       4096 Nov 17 16:52 ..
+-rw-r--r--  1 runner runner 13637206 Nov 17 16:52 KernelSU_v3.3.1_32680-release.apk
+-rw-r--r--  1 runner runner  5804528 Nov 17 16:52 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   336504 Nov 17 16:52 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu, KernelSU_v3.3.1_32680-release.apk)
+/tmp/tmp.sWr7r3k5wy/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 7.5 MB/s (336504 bytes in 0.043s)
+/tmp/tmp.sWr7r3k5wy/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 166.9 MB/s (5804528 bytes in 0.033s)
+== ksud: ksud 3.3.1 (uapi: 5)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              167936  0 
+== lsmod: kernelsu              167936  1 
+KernelSU_v3.3.1_32680-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-riscv64-linux-android
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-pc-windows-gnu.exe
+ksud-x86_64-unknown-linux-musl
+ksuinit-aarch64
+ksuinit-riscv64
+ksuinit-x86_64
+lkm-aarch64-android12-5.10_kernelsu.ko
+lkm-aarch64-android13-5.10_kernelsu.ko
+lkm-aarch64-android13-5.15_kernelsu.ko
+lkm-aarch64-android14-5.15_kernelsu.ko
+lkm-aarch64-android14-6.1_kernelsu.ko
+lkm-aarch64-android15-6.6_kernelsu.ko
+lkm-aarch64-android16-6.12_kernelsu.ko
+lkm-aarch64-android17-6.18_kernelsu.ko
+lkm-x86_64-android12-5.10_kernelsu.ko
+lkm-x86_64-android13-5.10_kernelsu.ko
+lkm-x86_64-android13-5.15_kernelsu.ko
+lkm-x86_64-android14-5.15_kernelsu.ko
+lkm-x86_64-android14-6.1_kernelsu.ko
+lkm-x86_64-android15-6.6_kernelsu.ko
+lkm-x86_64-android16-6.12_kernelsu.ko
+lkm-x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in tiann/KernelSU v3.3.1
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.044s)
+== modules: [
+  {
+    "version": "1",
+    "update": "false",
+    "enabled": "true",
+    "web": "true",
+    "action": "false",
+    "name": "devicelab probe",
+    "author": "p0g-stack",
+    "versionCode": "1",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "remove": "false",
+    "mount": "false",
+    "id": "devicelab_probe"
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+== home text: text="LKM" text="Working [Jailbreak mode]" text="Version: 32680-5" text="Custom" text="Manager version" text="v3.3.1 (32680-5)" text="Kernel version" text="6.6.50-android15-8-g8adecb593e9b-ab12525588" text="Device model" text="Google sdk_gphone64_x86_64" text="Fingerprint" text="google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys" text="SELinux status" text="Enforcing" text="KernelSU" text="Home" text="Superuser" text="1" text="Module" text="Settings" 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+WebUI-X-v660-release-official.apk: OK
+== downloaded MMRLApp/WebUI-X-Portable v660 WebUI-X-v660-release-official.apk (sha256 verified)
+Success
+== installed com.dergoogler.mmrl.wx uid=10210     versionName=v660-release
+== activities: com.dergoogler.mmrl.wx/.provider.WXDocumentsProvider com.dergoogler.mmrl.wx/.ui.activity.FileExplorerActivity com.dergoogler.mmrl.wx/.ui.activity.MainActivity com.dergoogler.mmrl.wx/.ui.webui.activity.ExistingProcessWebUIActivity com.dergoogler.mmrl.wx/.ui.webui.activity.NewProcessWebUIActivity com.dergoogler.mmrl.wx/.util.NonRootService com.dergoogler.mmrl.wx/androidx.core.content.FileProvider com.dergoogler.mmrl.wx/androidx.profileinstaller.ProfileInstallReceiver com.dergoogler.mmrl.wx/androidx.startup.InitializationProvider com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxy com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.RescheduleReceiver com.dergoogler.mmrl.wx/androidx.work.impl.diagnostics.DiagnosticsReceiver 
+ui: tapped 'Superuser' at 120,584
+ui: no node with 'com.dergoogler.mmrl.wx'
+ui: tapped 160,152
+ui: tapped 'com.dergoogler.mmrl.wx' at 160,130
+[0,0][240,16] 
+[12,230][308,290] Superuser
+[243,236][292,284] 
+[12,302][308,358] App Profile | Default
+[12,26][60,74] 
+[260,26][308,74] Settings
+ui: tapped switch 1 ('', was checked=false)
+== ksud feature list: Available Features: ================================================================================ [ENABLED (1)] su_compat (ID=0)     SU Compatibility Mode - allows authorized apps to gain root via traditional 'su' command  [ENABLED (1)] kernel_umount (ID=1)     Kernel Umount - controls whether kernel automatically unmounts modules when not needed  [DISABLED] sulog (ID=2)     SU Log - streams kernel sulog events to userspace and persists them to disk  [DISABLED] adb_root (ID=3)     ADB Root - Enable adbd root  [DISABLED] selinux_hide (ID=4)     SELinux Hide - sanitize /sys/fs/selinux access results for app UIDs  [DISABLED] shell_su_adb_only (ID=6)     Shell SU ADB Only - when shell is granted root, additionally require the process to be spawned by adbd or a KernelSU root process (ksu domain)  
+== su_compat: Feature: su_compat (0) Description: SU Compatibility Mode - allows authorized apps to gain root via traditional 'su' command Value: 1 Status: enabled 
+== root grant: ui; su as app uid 10210: su: failed to exec /system/bin/su: No such file or directory
+ui: tapped 'KernelSU' at 160,265
+ui: tapped 'Continue with KernelSU' at 160,668
+[0,88][320,164] devicelab_probe | 17 November 2026
+[0,32][48,80] Back
+[38,44][86,92] Root
+[86,44][132,92] data
+[132,44][180,92] adb
+[187,44][238,92] modules
+[272,32][320,80] Refresh
+[248,804][304,860] File actions
+ui: no node with 'Settings'
