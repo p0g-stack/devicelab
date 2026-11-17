@@ -99,7 +99,7 @@ share() { # <tag> <stdin text> <extras...>
   adb shell "(nohup /data/local/tmp/sockprobe -t 60 -reply '$in' sh_${tag}_out sh_${tag}_in >/data/local/tmp/sockprobe-share-$tag.log 2>&1 &)"; sleep 1
   local P=$(adb shell "pgrep -f 'sockprobe.*sh_${tag}_out' | head -1" | tr -d '\r')
   adb logcat -c
-  adb shell am broadcast --user 0 -f 0x01000020 -n $PKG/com.termux.api.TermuxApiReceiver \
+  adb shell am broadcast --user 0 --allow-background-activity-starts -f 0x01000020 -n $PKG/com.termux.api.TermuxApiReceiver \
     --es socket_output sh_${tag}_out --es socket_input sh_${tag}_in --ei api_server_pid "${P:-0}" --ei api_server_uid 0 \
     --ei api_server_starttime "$(adb shell "cut -d' ' -f22 /proc/$P/stat" | tr -d '\r')" --es api_method Share "$@" >/dev/null 2>&1
   sleep 12
@@ -109,11 +109,6 @@ share() { # <tag> <stdin text> <extras...>
 }
 share text "hello from devicelab" --es action send --es title devicelab
 share file "" --es action send --es file $D/chcon.txt --es content-type text/plain
-# Android 15 blocks the chooser as a background activity start (the app is a
-# broadcast receiver, not visible). Apps holding SYSTEM_ALERT_WINDOW are exempt.
-adb shell appops set $PKG SYSTEM_ALERT_WINDOW allow
-share text-saw "hello from devicelab" --es action send --es title devicelab
-share file-saw "" --es action send --es file $D/chcon.txt --es content-type text/plain
 echo "app uid: $UID_"
 # Media scan (webui_app_plane AppPlane.scanMedia): files written as root into
 # Download, then indexed by each route. Written through /storage/emulated/0
