@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # x86_64 flavour of flutter-aera's runtime kit, for Cuttlefish (x86_64 only
-# under KVM on GitHub runners). Same layout as kit-3.47.5 (spec/aerap.md),
+# under KVM on GitHub runners). Same layout as flutter-aera's kit (spec/aerap.md),
 # but Mesa is softpipe + virgl (virtio-gpu) instead of Zink/Turnip, and the
 # simulator host is built static so it runs inside a bionic recovery.
 #   build-x64.sh OUT        -> OUT/kit (payload tree minus app), OUT/aera-host-sim
@@ -44,8 +44,11 @@ cp "$st/aera-host-sim" "$out/aera-host-sim"
 sed -e 's/ld-linux-aarch64.so.1/ld-linux-x86-64.so.2/' \
     -e 's/DLOPENED = .*/DLOPENED = ["libEGL.so.1", "libGLESv2.so.2"]/' \
     -e '/Turnip.s ICD/,/write_text(json.dumps(icd/d' "$fa/ci/assemble-kit.py" > "$work/assemble-kit-x64.py"
-jq -n --arg rev "$FA_REV" '{kit: 1, arch: "x64", mode: "debug", flutter: "3.47.5",
-  engine_revision: "af7e796e161ae0bb1ff0758c71a7105418bd9ded", mesa: "26.2.2 softpipe+virgl",
+flutter_version=$(sed -n 's/^  FLUTTER_VERSION: //p' "$fa/.github/workflows/kit.yml")
+engine_revision=$(sed -n 's/^rev=//p' "$fa/ci/fetch-engine.sh")
+jq -n --arg rev "$FA_REV" --arg flutter "$flutter_version" --arg engine "$engine_revision" \
+  '{kit: 1, arch: "x64", mode: "debug", flutter: $flutter,
+  engine_revision: $engine, mesa: "26.2.2 softpipe+virgl",
   flutter_aera_commit: $rev, built_by: "p0g-stack/devicelab aera/kit/build-x64.sh"}' > "$work/kit.json"
 rm -rf "$out/kit"
 python3 "$work/assemble-kit-x64.py" --out "$out/kit" --embedder "$fa/target/release/aera-flutter" \
