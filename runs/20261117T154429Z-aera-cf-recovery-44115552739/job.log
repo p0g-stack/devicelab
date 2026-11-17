@@ -1,0 +1,167 @@
+app 11 members, kit 29 members
+/home/runner/work/devicelab/devicelab/out/api2-probe.aerap: 40 members, 152.6 MB expanded, 32.6 MB xz
+/home/runner/work/devicelab/devicelab/out/api2-probe.aerap: 32614981 bytes, id org.p0g.api2-probe, host API 2
+[cf] installing cuttlefish host packages
+
+Running kernel seems to be up-to-date.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ii  cuttlefish-base 1.57.15      amd64        Cuttlefish Android Virtual Device companion package
+[cf] fetching 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(4653)  I 11-17 15:38:28  4653  4653 main.cc:141] version: 1.57.15 | VCS: de4c8b977427d96cb387876232f8492e1a765960
+By using this Android Virtual Device, you agree to Google Terms of Service (https://policies.google.com/terms). The Google Privacy Policy (https://policies.google.com/privacy) describes how Google handles information generated as you use Google services.
+cvd(4653)  I 11-17 15:38:28  4653  4653 fetch_cvd.cc:492] Starting fetch to "/mnt/cf"
+cvd(4653)  I 11-17 15:38:28  4653  4656 host_package.cc:43] Downloading host package for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(4653)  I 11-17 15:38:39  4653  4653 fetch_cvd.cc:206] Downloading image zip for 16373615/aosp_cf_x86_64_only_phone-userdebug
+cvd(4653)  I 11-17 15:39:04  4653  4653 fetch_cvd.cc:508] Completed target fetch to '/mnt/cf' (1 out of 1)
+cvd(4653)  I 11-17 15:39:04  4653  4653 fetch_cvd.cc:517] Completed all fetches
+android-info.txt
+bin
+boot.img
+chromeos
+com.android.i18n
+cuttlefish_example_custom.img
+etc
+fastboot-info.txt
+fetch.log
+fetcher_config.json
+framework
+init_boot.img
+lib64
+metrics
+misc_info.txt
+nativetest64
+otatools
+super.img
+test_suites
+userdata.img
+usr
+vbmeta.img
+vbmeta_system.img
+vbmeta_system_dlkm.img
+vbmeta_vendor_dlkm.img
+vendor_boot.img
+[cf] launching (gpu_mode=gfxstream_guest_angle_host_swiftshader)
+[cf] booted in 54s: generic/aosp_cf_x86_64_only_phone/vsoc_x86_64_only:17/CP2A.260605.016/16373615:userdebug/test-keys
+[cf] state recovery after 6s
+[cf] recovery adb uid 0
+/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf: 1 file pushed, 0 skipped. 2.9 MB/s (759720 bytes in 0.248s)
+/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf: 1 file pushed, 0 skipped. 184.5 MB/s (708920 bytes in 0.004s)
+[cf] /twres/fonts absent in stock recovery: pushed host DejaVu as a stand-in
+[cf] facts: 1110 lines -> /home/runner/work/devicelab/devicelab/out/stock-recovery-facts.txt
+[cf] frame -> /home/runner/work/devicelab/devicelab/out/stock-recovery.png
+5:ramdisk load address: 0x11000000
+6:vendor ramdisk total size: 19034404
+9:product name: 
+13:vendor ramdisk table size: 108
+14:vendor ramdisk table: [
+15:    vendor_ramdisk00: {
+18:        type: 0x1
+19:        name: 
+29:--header_version 4 --pagesize 0x00000800 --base 0x00000000 --kernel_offset 0x10008000 --ramdisk_offset 0x11000000 --tags_offset 0x10000100 --dtb_offset 0x0000000011f00000 --vendor_cmdline printk.devkmsg=on audit=1 panic=-1 8250.nr_uarts=1 binder.impl=rust cma=0 firmware_class.path=/vendor/etc/ loop.max_part=7 init=/init bootconfig --board  --dtb /tmp/tmp.z5p6N1teUY/vb/dtb --vendor_bootconfig /tmp/tmp.z5p6N1teUY/vb/bootconfig --ramdisk_type 1 --ramdisk_name  --vendor_ramdisk_fragment /tmp/tmp.z5p6N1teUY/vb/vendor_ramdisk00 
+[aera-boot] no RECOVERY fragment: overlaying AERA onto the platform fragment /tmp/tmp.z5p6N1teUY/vb/vendor_ramdisk00
+[aera-boot] stock fragment 522 entries, AERA ramdisk 668
+[aera-boot] kept stock first_stage_ramdisk
+[aera-boot] kept stock lib/modules
+[aera-boot] carried init.recovery.cutf_cvm.rc
+[aera-boot] carried ueventd.cutf_cvm.rc
+[aera-boot] vendor_boot-aera.img: 36632576 bytes
+[aera-boot] Android up (782 system libs saved); rebooting into AERA
+[cf] state recovery after 9s
+[cf] recovery adb uid 0
+[cf] facts: 1135 lines -> /home/runner/work/devicelab/devicelab/out/aera-recovery-facts.txt
+[cf] frame -> /home/runner/work/devicelab/devicelab/out/aera-recovery.png
+53:setting DRM_FORMAT_XRGB8888 and GGL_PIXEL_FORMAT_BGRA_8888
+54:setting DRM_FORMAT_XRGB8888 and GGL_PIXEL_FORMAT_BGRA_8888
+55:no SDE topology: 1 layer mixer, plane 32
+57:Atomic Commit succeedUsing drm graphics.
+90:ro.boot.vendor.apex.com.android.hardware.graphics.composer=com.android.hardware.graphics.composer.ranchu
+100:ro.boot.vbmeta.invalidate_on_error=yes
+110:ro.boot.hardware.hwcomposer.display_finder_mode=drm
+413:ro.minui.pixel_format=RGBX_8888
+414:ro.minui.overscan_percent=0
+460:DEBUG: AERA: error - I cannot find the system build.prop
+515:I:Process ended with no errors.
+704:E:[MTP] could not open MTP driver, errno: 2
+$ rm -f /tmp/aeraui.png; touch /tmp/aeraui-capture; sleep 3; ls -la /tmp/aeraui-capture /tmp/aeraui.png 2>&1
+ls: /tmp/aeraui-capture: No such file or directory
+-rw-rw-rw- 1 root root 614228 2026-11-17 16:43 /tmp/aeraui.png
+
+$ getprop init.svc.logd; pidof logd; logcat -d -t 5 2>&1 | tail -5
+running
+82
+11-17 16:43:23.135    93   115 I HidlServiceManagement: Trying to get transport of android.hardware.health@2.0::IHealth/default without hwservicemanager
+--
+$ grep -c "Atomic commit failed" /tmp/recovery.log; grep -E "SDE topology|Atomic Commit" /tmp/recovery.log | head -5
+0
+no SDE topology: 1 layer mixer, plane 32
+Atomic Commit succeedUsing drm graphics.
+$ mountpoint -q /sys/kernel/debug || mount -t debugfs debugfs /sys/kernel/debug; cat /sys/kernel/debug/dri/0/state 2>&1 | head -60
+plane[32]: plane-0
+	crtc=crtc-0
+	fb=146
+		allocated by = recovery
+		refcount=2
+		format=XR24 little-endian (0x34325258)
+		modifier=0x0
+		size=720x1348
+		layers:
+			size[0]=720x1348
+			pitch[0]=2880
+			offset[0]=0
+			obj[0]:
+				name=0
+[api2] package org.p0g.api2-probe: 32613976 byte payload, manifest checked
+/home/runner/work/devicelab/devicelab/out/api2/.pkg/plugin.json: 1 file pushed, 0 skipped. 8.7 MB/s (789 bytes in 0.000s)
+/home/runner/work/devicelab/devicelab/out/api2/.pkg/runtime.xz: 1 file pushed, 0 skipped. 576.4 MB/s (32613976 bytes in 0.054s)
+2 files pushed, 0 skipped. 189.0 MB/s (32614765 bytes in 0.165s)
+[api2] installed org.p0g.api2-probe into the RAM store (/tmp/aera/plugins/org.p0g.api2-probe, unsigned: Unofficial)
+/home/runner/work/devicelab/devicelab/out/api2/.req.json: 1 file pushed, 0 skipped. 0.4 MB/s (37 bytes in 0.000s)
+[api2] AERA restarted: recovery pid 93 -> 412
+/home/runner/work/devicelab/devicelab/out/api2/.req.json: 1 file pushed, 0 skipped. 0.8 MB/s (79 bytes in 0.000s)
+[api2] frame 01-home.png
+[api2] geometry: {"frame_h":540,"frame_w":960,"home_columns":3,"kb_layout":"qwerty","lh":2696,"lw":1440,"nav_h":0,"ph":1348,"pw":720,"rotation":0,"ui_size":"normal"} (logical size from AERA logcat)
+[api2] Remote /api/status: {"height":1348,"input":true,"stream":true,"width":720}
+[api2] Home: /tmp/aera-audio-rotation '0', tapping Home as portrait
+[api2] tap home-tile at panel 136,768 (view 136,768)
+[api2] desktop open, rotation 90 (software landscape); visible logical 69,1 2557x1438; panel box (0, 35, 720, 1314)
+[api2] frame 02-opened.png
+[api2] computed guest rect (view) (34, 0, 1312, 719); bright region (34, 1, 1311, 719)
+[api2] process:   515 ld-linux-x86-64.so.2 --library-path /tmp/aera-p2-V5BvVq/usr/lib /tmp/aera-p2-V5BvVq/usr/bin/aera-flutter --vulkan --aera-host-api=2
+[api2] frame 03-counter-before.png
+[api2] tap fab-1 at panel 661,92 (view 1255,661)
+[api2] tap fab-2 at panel 664,90 (view 1257,664)
+[api2] frame 04-counter-after.png
+[api2] counter captures: /home/runner/work/devicelab/devicelab/aera/cuttlefish/aera-api2-geom.py:273: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  changed = sum(1 for p in diff.getdata() if p != (0, 0, 0))
+3735 of 920880 guest pixels changed (panel box (0, 35, 720, 1314))
+[api2] tap field at panel 227,780 (view 567,227)
+[api2] frame 05-keyboard.png
+[api2] tap key-r at panel 444,874 (view 473,444)
+[api2] tap key-o at panel 444,206 (view 1141,444)
+[api2] tap key-u at panel 444,473 (view 874,444)
+[api2] tap key-t at panel 444,740 (view 607,444)
+[api2] tap key-e at panel 444,1007 (view 340,444)
+[api2] tap key-4 at panel 366,874 (view 473,366)
+[api2] tap key-2 at panel 366,1141 (view 206,366)
+[api2] frame 06-typed.png
+[api2] tap key-done at panel 676,102 (view 1245,676)
+[api2] frame 07-submitted.png
+[api2] created the missing storage folder /data/media (emulator ramdisk)
+[api2] picker start folder /data/media (1 entries); fixture row 1
+[api2] tap pick at panel 373,1206 (view 141,373)
+[api2] frame 08-picker.png
+[api2] tap fixture-row at panel 383,1015 (view 332,383)
+[api2] frame 09-picked.png
+[api2] tap details at panel 444,1219 (view 128,444)
+[api2] frame 10-details.png
+[api2] tap esc at panel 43,993 (view 354,43)
+[api2] frame 11-returned.png
+[api2] insets during text: 298 0 
+[api2] API 2 qualification passed
