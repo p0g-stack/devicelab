@@ -67,23 +67,10 @@ if UI_WAIT=2 $UI has "Select your Platform"; then
 fi
 unset UI_EXACT
 adb exec-out screencap -p >"$OUT/webuix-after-onboarding.png"; $UI dump "$OUT/webuix-after-onboarding.xml" | head -20
-# v660 ties WebView debugging to Developer Mode (false on a fresh install).
-# Enable it through the host's own UI before DevTools-based checks.
-UI_EXACT=1 UI_WAIT=15 $UI tap Settings || exit 1
-for _ in 1 2 3; do
-  UI_EXACT=1 UI_WAIT=2 $UI has Developer && break
-  $UI scroll; sleep 1
-done
-UI_EXACT=1 UI_WAIT=5 $UI tap Developer || exit 1
-UI_EXACT=1 UI_WAIT=10 $UI tap "Developer Mode" || exit 1
-sleep 2
-$UI dump "$OUT/webuix-developer.xml" >/dev/null || exit 1
-python3 - "$OUT/webuix-developer.xml" <<'PY' || exit 1
-import sys, xml.etree.ElementTree as ET
-switches = [n for n in ET.parse(sys.argv[1]).iter('node') if n.get('checkable') == 'true']
-assert switches and switches[0].get('checked') == 'true', 'Developer Mode did not enable'
-PY
-adb exec-out screencap -p >"$OUT/webuix-developer.png"
+# WebView debugging is not gated behind Developer Mode here: a fresh install
+# with the setting off reached every devtools check (run 44049815536). Do not
+# drive Settings: after setup the host can land on WX Explorer, which has no
+# bottom navigation, and a fatal tap there fails the leg for nothing.
 adb shell wm size reset; sleep 2
 log "WebUI X platform after onboarding: $(adb shell "ls /data/data/$PKG/files/datastore/ 2>/dev/null; strings /data/data/$PKG/files/datastore/*.pb 2>/dev/null | head -20" | tr -d '\r' | tr '\n' ' ')"
 log "devtools sockets: $(adb shell cat /proc/net/unix | grep -o '@[a-z_]*devtools_remote[0-9_]*' | tr '\n' ' ')"
