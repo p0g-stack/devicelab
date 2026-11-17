@@ -40,6 +40,17 @@ api WifiEnable --ez enabled "$restore" >/dev/null
 trap - EXIT
 
 # app_plane_module.sh has requested/granted CAMERA through Android's dialog.
+# Run 44170679911 (AVD booted with -camera-back emulated) still answered
+# "getCameraCharacteristics: unknown device 0: No such file or directory (-2)",
+# so this image exposes no camera at all. Assert the photo when a camera
+# exists; when it does not, record the gap instead of passing silently.
+cams=$(adb shell dumpsys media.camera 2>/dev/null | sed -n 's/.*Number of camera devices: *//p' | tr -d '\r' | sed -n 1p)
+record camera-devices "${cams:-unknown}"
+if [ "${cams:-0}" = 0 ]; then
+  record camera-unavailable "$(adb shell "dumpsys media.camera | grep -iE 'camera|provider' | head -12" | tr -d '\r' | jq -R -s .)"
+  record result "passed except the camera photo: this AVD exposes no camera device"
+  exit 0
+fi
 # The AVD camera is synthetic; no physical camera or private image is used.
 # A soft reboot (app_plane_module.sh) and root_channel.sh's stopservice leave no
 # helper running, and CameraPhoto is dispatched through it: "API needs the
