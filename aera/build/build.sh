@@ -11,7 +11,8 @@
 # Unattended on a stock Ubuntu 22.04/24.04 x86_64 box with sudo. Needs about
 # 150 GB free and 32 GB RAM (+swap); 16+ cores keeps it to a few hours.
 # Env: MANIFEST_REV, AERA_PATCHES (patch dir), NO_APT=1 (skip apt),
-#      JOBS (default nproc), SKIP_SYNC=1 (reuse SRC_DIR as is).
+#      JOBS (default nproc), SKIP_SYNC=1 (reuse SRC_DIR as is),
+#      KEEP_REPO_METADATA=1 (keep .repo after the initial sync).
 # Ends by printing the image paths and their sha256; see README.md for
 # publishing them as a devicelab release.
 set -euo pipefail
@@ -88,6 +89,14 @@ for d in $projects; do
   done
 done
 repo manifest -r -o "$out/manifest-pinned.xml" >/dev/null 2>&1 || log "WARNING: repo manifest -r failed (unsynced projects?)"
+# The sync metadata is tens of GB, and GitHub's runner ends a full build with
+# about 4 GB free: nothing after this point needs .repo (the patch loop above
+# used repo forall), so drop it and leave the space to out/.
+if [ "${KEEP_REPO_METADATA:-0}" != 1 ]; then
+  mb=$(du -sm "$src/.repo" 2>/dev/null | cut -f1)
+  rm -rf "$src/.repo"
+  log "dropped .repo (${mb:-?} MB) after the pinned-manifest report"
+fi
 
 rm -rf device/p0g/aera_cf && mkdir -p device/p0g && cp -r "$here/device" device/p0g/aera_cf
 
