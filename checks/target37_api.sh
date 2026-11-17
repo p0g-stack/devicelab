@@ -33,8 +33,18 @@ trap - EXIT
 
 # app_plane_module.sh has requested/granted CAMERA through Android's dialog.
 # The AVD camera is synthetic; no physical camera or private image is used.
+# A soft reboot (app_plane_module.sh) and root_channel.sh's stopservice leave no
+# helper running, and CameraPhoto is dispatched through it: "API needs the
+# authorized root helper to be running". Start it as shell — the client the
+# page's own app plane uses — and re-arm it each try, because a start that no
+# holder follows is stopped 10 s later.
 photo=/data/user/0/$APP/cache/webui-target37.jpg
-answer=$(api CameraPhoto --es file "$photo" --es camera 0)
+answer=
+for _ in $(seq 1 5); do
+  adb shell am start-foreground-service --user 0 -n "$APP/com.termux.api.RootHelperService" >/dev/null 2>&1 || true
+  answer=$(api CameraPhoto --es file "$photo" --es camera 0)
+  case $answer in *authorized*) sleep 2;; *) break;; esac
+done
 record camera-answer "$answer"
 [ -z "$answer" ] || { echo 'CameraPhoto returned an API error'; exit 1; }
 adb shell test -s "$photo" || { echo 'CameraPhoto produced no image'; exit 1; }
