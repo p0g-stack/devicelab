@@ -1,0 +1,262 @@
+yes: standard output: Broken pipe
+Auto-selecting single ABI x86_64
+Do you wish to create a custom hardware profile? [no] lab.avd
+lab.ini
+emulator Android emulator version 37.2.13.0 (build_id 16740729) (CL:N/A)
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+booted in 23s: google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys
+kernel 6.6.50-android15-8-g8adecb593e9b-ab12525588 -> kmi android15-6.6; tiann/KernelSU v3.3.1
+KernelSU_v3.3.1_32680-release.apk: OK
+ksud-x86_64-linux-android: OK
+lkm-x86_64-android15-6.6_kernelsu.ko: OK
+total 19332
+drwx------  2 runner runner     4096 Nov 17 16:24 .
+drwxrwxrwt 16 root   root       4096 Nov 17 16:24 ..
+-rw-r--r--  1 runner runner 13637206 Nov 17 16:24 KernelSU_v3.3.1_32680-release.apk
+-rw-r--r--  1 runner runner  5804528 Nov 17 16:24 ksud-x86_64-linux-android
+-rw-r--r--  1 runner runner   336504 Nov 17 16:24 lkm-x86_64-android15-6.6_kernelsu.ko
+== manager installed (me.weishu.kernelsu, KernelSU_v3.3.1_32680-release.apk)
+/tmp/tmp.C6GZ8lMJwB/lkm-x86_64-android15-6.6_kernelsu.ko: 1 file pushed, 0 skipped. 47.0 MB/s (336504 bytes in 0.007s)
+/tmp/tmp.C6GZ8lMJwB/ksud-x86_64-linux-android: 1 file pushed, 0 skipped. 168.1 MB/s (5804528 bytes in 0.033s)
+== ksud: ksud 3.3.1 (uapi: 5)
+== ksud late-load: rc=0
+== ksud insmod /data/adb/kernelsu.ko: Error: load module failed: /data/adb/kernelsu.ko
+
+Caused by:
+    0: init_module failed without vermagic mismatch
+    1: File exists (os error 17)
+rc=1
+kernelsu              167936  0 
+== lsmod: kernelsu              167936  0 
+KernelSU_v3.3.1_32680-release.apk
+ksud-aarch64-apple-darwin
+ksud-aarch64-linux-android
+ksud-aarch64-unknown-linux-musl
+ksud-riscv64-linux-android
+ksud-x86_64-apple-darwin
+ksud-x86_64-linux-android
+ksud-x86_64-pc-windows-gnu.exe
+ksud-x86_64-unknown-linux-musl
+ksuinit-aarch64
+ksuinit-riscv64
+ksuinit-x86_64
+lkm-aarch64-android12-5.10_kernelsu.ko
+lkm-aarch64-android13-5.10_kernelsu.ko
+lkm-aarch64-android13-5.15_kernelsu.ko
+lkm-aarch64-android14-5.15_kernelsu.ko
+lkm-aarch64-android14-6.1_kernelsu.ko
+lkm-aarch64-android15-6.6_kernelsu.ko
+lkm-aarch64-android16-6.12_kernelsu.ko
+lkm-aarch64-android17-6.18_kernelsu.ko
+lkm-x86_64-android12-5.10_kernelsu.ko
+lkm-x86_64-android13-5.10_kernelsu.ko
+lkm-x86_64-android13-5.15_kernelsu.ko
+lkm-x86_64-android14-5.15_kernelsu.ko
+lkm-x86_64-android14-6.1_kernelsu.ko
+lkm-x86_64-android15-6.6_kernelsu.ko
+lkm-x86_64-android16-6.12_kernelsu.ko
+lkm-x86_64-android17-6.18_kernelsu.ko
+== no metamodule asset in tiann/KernelSU v3.3.1
+/home/runner/work/devicelab/devicelab/modules/probe/./: 2 files pushed, 0 skipped. 0.0 MB/s (1474 bytes in 0.046s)
+== modules: [
+  {
+    "remove": "false",
+    "mount": "false",
+    "version": "1",
+    "name": "devicelab probe",
+    "versionCode": "1",
+    "update": "false",
+    "author": "p0g-stack",
+    "action": "false",
+    "id": "devicelab_probe",
+    "enabled": "true",
+    "web": "true",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools."
+  }
+]
+SELinux: Loaded file context from:
+		/system/etc/selinux/plat_file_contexts
+		/system_ext/etc/selinux/system_ext_file_contexts
+		/vendor/etc/selinux/vendor_file_contexts
+== home text: text="LKM" text="Working [Jailbreak mode]" text="Version: 32680-5" text="Custom" text="Manager version" text="v3.3.1 (32680-5)" text="Kernel version" text="6.6.50-android15-8-g8adecb593e9b-ab12525588" text="Device model" text="Google sdk_gphone64_x86_64" text="Fingerprint" text="google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys" text="SELinux status" text="Enforcing" text="KernelSU" text="Home" text="Superuser" text="1" text="Module" text="Settings" 
+== manager activities: me.weishu.kernelsu/.magica.BootCompletedReceiver me.weishu.kernelsu/.ui.MainActivity me.weishu.kernelsu/androidx.core.content.FileProvider me.weishu.kernelsu/androidx.profileinstaller.ProfileInstallReceiver me.weishu.kernelsu/androidx.startup.InitializationProvider 
+WebUI-X-v660-release-official.apk: OK
+== downloaded MMRLApp/WebUI-X-Portable v660 WebUI-X-v660-release-official.apk (sha256 verified)
+Success
+== installed com.dergoogler.mmrl.wx uid=10210     versionName=v660-release
+== activities: com.dergoogler.mmrl.wx/.provider.WXDocumentsProvider com.dergoogler.mmrl.wx/.ui.activity.FileExplorerActivity com.dergoogler.mmrl.wx/.ui.activity.MainActivity com.dergoogler.mmrl.wx/.ui.webui.activity.ExistingProcessWebUIActivity com.dergoogler.mmrl.wx/.ui.webui.activity.NewProcessWebUIActivity com.dergoogler.mmrl.wx/.util.NonRootService com.dergoogler.mmrl.wx/androidx.core.content.FileProvider com.dergoogler.mmrl.wx/androidx.profileinstaller.ProfileInstallReceiver com.dergoogler.mmrl.wx/androidx.startup.InitializationProvider com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxy com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver com.dergoogler.mmrl.wx/androidx.work.impl.background.systemalarm.RescheduleReceiver com.dergoogler.mmrl.wx/androidx.work.impl.diagnostics.DiagnosticsReceiver 
+ui: tapped 'Superuser' at 120,584
+ui: no node with 'com.dergoogler.mmrl.wx'
+ui: tapped 160,152
+ui: tapped 'com.dergoogler.mmrl.wx' at 160,130
+[0,0][240,16] 
+[12,230][308,290] Superuser
+[243,236][292,284] 
+[12,302][308,358] App Profile | Default
+[12,26][60,74] 
+[260,26][308,74] Settings
+ui: tapped switch 1 ('', was checked=false)
+== ksud feature list: Available Features: ================================================================================ [ENABLED (1)] su_compat (ID=0)     SU Compatibility Mode - allows authorized apps to gain root via traditional 'su' command  [ENABLED (1)] kernel_umount (ID=1)     Kernel Umount - controls whether kernel automatically unmounts modules when not needed  [DISABLED] sulog (ID=2)     SU Log - streams kernel sulog events to userspace and persists them to disk  [DISABLED] adb_root (ID=3)     ADB Root - Enable adbd root  [DISABLED] selinux_hide (ID=4)     SELinux Hide - sanitize /sys/fs/selinux access results for app UIDs  [DISABLED] shell_su_adb_only (ID=6)     Shell SU ADB Only - when shell is granted root, additionally require the process to be spawned by adbd or a KernelSU root process (ksu domain)  
+== su_compat: Feature: su_compat (0) Description: SU Compatibility Mode - allows authorized apps to gain root via traditional 'su' command Value: 1 Status: enabled 
+== root grant: ui; su as app uid 10210: su: failed to exec /system/bin/su: No such file or directory
+ui: tapped 'KernelSU' at 160,265
+ui: tapped 'Continue with KernelSU' at 160,668
+[90,243][144,290] 
+[90,365][144,412] 
+[16,612][304,768] Support Us | WebUI X is, and always will be, free, and open source. You can however show us that you care by making a do
+[110,796][211,876] 
+[219,796][320,876] 
+== WebUI X platform after onboarding: preferences.pb 
+== devtools sockets: 
+inputs/modules/flutter_webui_counter-0.1.5.zip: 1 file pushed, 0 skipped. 508.1 MB/s (21434766 bytes in 0.040s)
+== install flutter_webui_counter-0.1.5.zip
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.3.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.8.woff2
+  inflating: webroot/fonts/notocoloremoji/v32/Yq6P-KqIXTD0t4D9z1ESnKM3-HpFabsE4tq3luCC7p-aXxcn.2.woff2
+   creating: webroot/fonts/notosansmath/
+   creating: webroot/fonts/notosansmath/v15/
+  inflating: webroot/fonts/notosansmath/v15/7Aump_cpkSecTWaHRlH2hyV5UHkD-V048PW0.woff2
+   creating: webroot/fonts/roboto/
+   creating: webroot/fonts/roboto/v32/
+  inflating: webroot/fonts/roboto/v32/KFOmCnqEu92Fr1Me4GZLCzYlKw.woff2
+  inflating: webroot/.last_build_id
+  inflating: webroot/config.json
+  inflating: webroot/flutter_webui.js
+  inflating: customize.sh
+- Done
+- Module installed successfully!
+inputs/modules/counter-v1.0.0.zip: 1 file pushed, 0 skipped. 528.5 MB/s (6582359 bytes in 0.012s)
+== install counter-v1.0.0.zip
+  inflating: webroot/canvaskit/chromium/canvaskit.wasm
+  inflating: webroot/config.json
+  inflating: webroot/favicon.png
+  inflating: webroot/flutter.js
+  inflating: webroot/flutter_bootstrap.js
+  inflating: webroot/icons/Icon-192.png
+  inflating: webroot/icons/Icon-512.png
+  inflating: webroot/icons/Icon-maskable-192.png
+  inflating: webroot/icons/Icon-maskable-512.png
+  inflating: webroot/index.html
+  inflating: webroot/main.dart.js
+  inflating: webroot/manifest.json
+  inflating: webroot/version.json
+- Done
+- Module installed successfully!
+inputs/modules/demo.zip: 1 file pushed, 0 skipped. 604.3 MB/s (19826903 bytes in 0.031s)
+== install demo.zip
+  inflating: webroot/pkg/.gitignore
+  inflating: webroot/pkg/demo_native.js
+  inflating: webroot/pkg/demo_native_bg.wasm
+  inflating: webroot/pkg/package.json
+  inflating: webroot/version.json
+  inflating: webroot/workers/demo_service.web.g.dart.js
+  inflating: webroot/workers/hello_service.web.g.dart.js
+  inflating: webui_app_plane/app-install.sh
+  inflating: webui_app_plane/app.apk
+  inflating: webui_app_plane/arm64-v8a/webui_termux_api.aot
+  inflating: webui_app_plane/termux-api
+  inflating: webui_app_plane/x86_64/webui_termux_api.aot
+  Installed com.webui.api.demo 1011
+- Done
+- Module installed successfully!
+/home/runner/work/devicelab/devicelab/envdump.zip: 1 file pushed, 0 skipped. 25.7 MB/s (1766 bytes in 0.000s)
+== install envdump.zip
+ devicelab envdump 
+ by p0g-stack 
+*******************
+*********************
+ Powered by KernelSU 
+*********************
+Archive:  /data/local/tmp/m.zip
+  inflating: customize.sh
+- Extracting module files
+Archive:  /data/local/tmp/m.zip
+  inflating: module.prop
+  inflating: customize.sh
+- devicelab envdump: written /data/local/tmp/customize-env.txt
+- Done
+- Module installed successfully!
+== soft-reboot: 
+== after soft-reboot (34s): [
+  {
+    "web": "true",
+    "update": "false",
+    "action": "false",
+    "version": "1",
+    "author": "p0g-stack",
+    "name": "devicelab probe",
+    "description": "Observation module for devicelab. Its WebUI page is driven over DevTools.",
+    "mount": "false",
+    "id": "devicelab_probe",
+    "enabled": "true",
+    "remove": "false",
+    "versionCode": "1"
+  },
+  {
+    "version": "0.1.5",
+    "update": "false",
+    "remove": "false",
+    "author": "p0g-stack",
+    "name": "flutter-webui Counter",
+    "web": "true",
+    "action": "false",
+    "mount": "false",
+    "description": "Stock Flutter counter app on flutter-webui (devicelab bring-up build).",
+    "versionCode": "6",
+    "enabled": "true",
+    "id": "flutter_webui_counter"
+  },
+  {
+    "remove": "false",
+    "enabled": "true",
+    "version": "v1.0.0",
+    "id": "counter",
+    "update": "false",
+    "web": "true",
+    "author": "Yuv",
+    "action": "false",
+    "mount": "false",
+    "name": "Counter",
+    "versionCode": "1",
+    "description": "A new Flutter project."
+  },
+  {
+    "name": "Demo",
+    "description": "The demo GUI. Flutter on top of the core.",
+    "author": "",
+    "enabled": "true",
+    "versionCode": "59",
+    "updateJson": "https://github.com/p0g-stack/demo/releases/latest/download/update.json",
+    "version": "v0.1.59",
+    "webuiIcon": "icons/Icon-maskable-512.png",
+    "update": "false",
+    "web": "true",
+    "action": "false",
+    "remove": "false",
+    "mount": "false",
+    "id": "demo"
+  
+total 56
+drwxrwxrwx 7 root root 4096 2026-11-17 16:26 .
+drwx------ 5 root root 4096 2026-11-17 16:26 ..
+drwxr-xr-x 3 root root 4096 2026-11-17 16:26 counter
+drwxr-xr-x 6 root root 4096 2026-11-17 16:26 demo
+drwxr-xr-x 2 root root 4096 2026-11-17 16:26 devicelab_envdump
+drwxr-xr-x 3 root root 4096 2026-11-17 16:24 devicelab_probe
+drwxr-xr-x 4 root root 4096 2026-11-17 16:26 flutter_webui_counter
+/home/runner/work/devicelab/devicelab/out/labserver: 1 file pushed, 0 skipped. 356.4 MB/s (7843260 bytes in 0.021s)
+Starting: Intent { act=android.intent.action.VIEW cmp=com.dergoogler.mmrl.wx/.ui.webui.activity.NewProcessWebUIActivity (has extras) }
+Status: ok
+Activity: com.dergoogler.mmrl.wx/.ui.webui.activity.NewProcessWebUIActivity
+https://mui.kernelsu.org/
+opened: intent-module-id
+{"check":"targets","result":[{"socket": "webview_devtools_remote_9131", "type": "page", "url": "https://mui.kernelsu.org/", "title": "devicelab probe"}]}
+{"check":"globals","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_9131","value":{"ua":"WebUI X/660 (Linux; Android 15; sdk_gphone64_x86_64; KernelSU/32680)","origin":"https://mui.kernelsu.org","href":"https://mui.kernelsu.org/","globals":["__mmrlx_bridge","__mmrlx_msg","__mmrlx","$devicelab_probe","webui","$DeFileInputStream","$DeFileOutputStream","ksu"],"ksu":["toast","listPackages","spawn","execBool","io","moduleInfo","mmrl","getPackagesInfo","pm","exec","fullScreen","cls","toast","listPackages","spawn","execBool","io","moduleInfo","mmrl","getPackagesInfo","pm","exec","fullScreen","cls"]}}}
+{"check":"ksu-exec","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_9131","value":"timeout"}}
+{"check":"ws-loopback","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_9131","value":{"got":["{\"origin\":\"https://mui.kernelsu.org\",\"peerUid\":10210,\"remote\":\"127.0.0.1:57806\",\"serverUid\":0,\"t\":1794932845954,\"uidSource\":\"/proc/net/tcp\"}","hi"],"ms":20}}}
+{"check":"fetch-loopback","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_9131","value":{"origin":"https://mui.kernelsu.org","peerUid":10210,"remote":"127.0.0.1:57808","serverUid":0,"t":1794932846070,"uidSource":"/proc/net/tcp"}}}
+{"check":"webview-uid","result":["webview_zygote 1053 webview_zygote", "root             0 com.dergoogler.mmrl.wx:root:0", "u0_a151      10151 com.google.android.webview:webview_service", "u0_i9000     99000 com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0", "u0_a151      10151 com.google.android.webview:webview_apk"]}
+{"check":"while-home-heartbeat","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_9131","value":{"now":19409,"vis":"hidden"}}}
+{"check":"lifecycle","result":{"url":"https://mui.kernelsu.org/","socket":"webview_devtools_remote_9131","value":{"events":[{"type":"pageshow","t":89,"vis":"visible"},{"type":"visibilitychange","t":13310,"vis":"hidden"},{"type":"visibilitychange","t":21698,"vis":"visible"}],"gaps":[{"from":13087,"ms":1153,"vis":"hidden"},{"from":19240,"ms":1001,"vis":"hidden"}],"slow":{"heldMs":3002,"sentAt":1794932849207,"resolvedAt":1794932849209,"vis":"hidden"}}}}
+{"check":"dev-url","result":{"error":"no page target","sockets":["webview_devtools_remote_9131"],"targets":[{"socket":"webview_devtools_remote_9131","port":9300,"description":"{\"attached\":true,\"empty\":false,\"height\":640,\"never_attached\":false,\"screenX\":0,\"screenY\":0,\"visible\":false,\"width\":320}","devtoolsFrontendUrl":"https://chrome-devtools-frontend.appspot.com/serve_internal_file/@7741f71cbce3b7dfe3eb5890976d2596364b0733/inspector.html?ws=127.0.0.1:9300/devtools/page/03AA4163FA40C335750166090B13901C","id":"03AA4163FA40C335750166090B13901C","title":"devicelab probe","type":"page","url":"https://mui.kernelsu.org/","webSocketDebuggerUrl":"ws://127.0.0.1:9300/devtools/page/03AA4163FA40C335750166090B13901C"}]}}
